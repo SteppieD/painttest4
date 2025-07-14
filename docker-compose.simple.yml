@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: paintquotepro-db
+    environment:
+      POSTGRES_USER: paintquote
+      POSTGRES_PASSWORD: paintquote123
+      POSTGRES_DB: paintquotepro
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paintquote"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Web Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.simple
+    container_name: paintquotepro-web
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: "postgresql://paintquote:paintquote123@postgres:5432/paintquotepro?schema=public"
+      JWT_SECRET: "docker-dev-secret-key-change-in-production"
+      NEXTAUTH_URL: "http://localhost:3001"
+      NEXTAUTH_SECRET: "docker-dev-nextauth-secret"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-your-anthropic-api-key-here}"
+      NEXT_PUBLIC_SITE_URL: "http://localhost:3001"
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./prisma:/app/prisma
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

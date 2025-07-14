@@ -1,0 +1,247 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-1.1.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Company (tenant) model
+model Company {
+  id              Int              @id @default(autoincrement())
+  name            String
+  email           String           @unique
+  phone           String?
+  address         String?
+  settings        Json             @default("{}")
+  
+  // Subscription info
+  plan            String           @default("free") // free, professional, business, enterprise
+  planExpiresAt   DateTime?
+  billingPeriod   String           @default("monthly") // monthly, yearly
+  stripeCustomerId String?         @unique
+  stripeSubscriptionId String?     @unique
+  quotesUsed      Int              @default(0)
+  quotesLimit     Int              @default(1) // 1 for free, -1 for unlimited
+  quotesResetAt   DateTime         @default(now()) // Monthly reset for free plan
+  
+  // Timestamps
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  deletedAt       DateTime?
+  
+  // Relations
+  users           User[]
+  quotes          Quote[]
+  customers       Customer[]
+  paintProducts   PaintProduct[]
+  quoteTemplates  QuoteTemplate[]
+  
+  @@index([email])
+  @@index([deletedAt])
+}
+
+// User model
+model User {
+  id              Int              @id @default(autoincrement())
+  companyId       Int
+  company         Company          @relation(fields: [companyId], references: [id])
+  
+  email           String           @unique
+  name            String
+  role            String           @default("user") // admin, user
+  passwordHash    String
+  
+  // Timestamps
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  deletedAt       DateTime?
+  lastLoginAt     DateTime?
+  
+  // Relations
+  createdQuotes   Quote[]          @relation("CreatedBy")
+  updatedQuotes   Quote[]          @relation("UpdatedBy")
+  
+  @@index([companyId])
+  @@index([email])
+  @@index([deletedAt])
+}
+
+// Customer model
+model Customer {
+  id              Int              @id @default(autoincrement())
+  companyId       Int
+  company         Company          @relation(fields: [companyId], references: [id])
+  
+  name            String
+  email           String
+  phone           String?
+  address         String?
+  notes           String?
+  
+  // Timestamps
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  deletedAt       DateTime?
+  lastContactedAt DateTime?
+  
+  // Relations
+  quotes          Quote[]
+  
+  @@unique([companyId, email])
+  @@index([companyId])
+  @@index([email])
+  @@index([deletedAt])
+}
+
+// Quote model
+model Quote {
+  id              String           @id @default(cuid())
+  companyId       Int
+  company         Company          @relation(fields: [companyId], references: [id])
+  customerId      Int
+  customer        Customer         @relation(fields: [customerId], references: [id])
+  
+  quoteNumber     String           @unique
+  projectType     String           // residential, commercial
+  status          String           @default("draft") // draft, sent, viewed, accepted, rejected, expired
+  
+  // Quote data (stored as JSON for flexibility)
+  surfaces        Json             // SurfaceInputs from calculator
+  paintProducts   Json             // PaintProducts from calculator
+  settings        Json             // CompanySettings from calculator
+  
+  // Calculated values (cached for performance)
+  materials       Json             // MaterialBreakdown
+  labor           Json             // LaborBreakdown
+  subtotal        Decimal          @db.Decimal(10, 2)
+  overhead        Decimal          @db.Decimal(10, 2)
+  profit          Decimal          @db.Decimal(10, 2)
+  tax             Decimal          @db.Decimal(10, 2)
+  totalAmount     Decimal          @db.Decimal(10, 2)
+  
+  // Quote details
+  description     String?
+  notes           String?
+  terms           String?
+  validUntil      DateTime         @default(dbgenerated("NOW() + INTERVAL '30 days'"))
+  
+  // Versioning
+  version         Int              @default(1)
+  parentQuoteId   String?
+  parentQuote     Quote?           @relation("QuoteVersions", fields: [parentQuoteId], references: [id])
+  childQuotes     Quote[]          @relation("QuoteVersions")
+  
+  // Audit fields
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  deletedAt       DateTime?
+  createdById     Int
+  createdBy       User             @relation("CreatedBy", fields: [createdById], references: [id])
+  updatedById     Int?
+  updatedBy       User?            @relation("UpdatedBy", fields: [updatedById], references: [id])
+  
+  // Relations
+  statusHistory   QuoteStatusHistory[]
+  lineItems       QuoteLineItem[]
+  
+  @@index([companyId])
+  @@index([customerId])
+  @@index([quoteNumber])
+  @@index([status])
+  @@index([createdAt])
+  @@index([deletedAt])
+}
+
+// Quote status history for audit trail
+model QuoteStatusHistory {
+  id              Int              @id @default(autoincrement())
+  quoteId         String
+  quote           Quote            @relation(fields: [quoteId], references: [id])
+  
+  fromStatus      String?
+  toStatus        String
+  reason          String?
+  metadata        Json?
+  
+  createdAt       DateTime         @default(now())
+  createdBy       Int?
+  
+  @@index([quoteId])
+  @@index([createdAt])
+}
+
+// Optional: Detailed line items (for future expansion)
+model QuoteLineItem {
+  id              Int              @id @default(autoincrement())
+  quoteId         String
+  quote           Quote            @relation(fields: [quoteId], references: [id])
+  
+  description     String
+  quantity        Decimal          @db.Decimal(10, 2)
+  unit            String
+  unitPrice       Decimal          @db.Decimal(10, 2)
+  totalPrice      Decimal          @db.Decimal(10, 2)
+  
+  sortOrder       Int              @default(0)
+  
+  @@index([quoteId])
+}
+
+// Paint product catalog
+model PaintProduct {
+  id              Int              @id @default(autoincrement())
+  companyId       Int
+  company         Company          @relation(fields: [companyId], references: [id])
+  
+  name            String
+  manufacturer    String?
+  productCode     String?
+  productType     String           // wall, ceiling, trim, primer, specialty
+  
+  costPerGallon   Decimal          @db.Decimal(10, 2)
+  retailPrice     Decimal?         @db.Decimal(10, 2)
+  coveragePerGallon Int            @default(350)
+  
+  color           String?
+  finish          String?          // flat, eggshell, satin, semi-gloss, gloss
+  
+  isActive        Boolean          @default(true)
+  
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  @@unique([companyId, productCode])
+  @@index([companyId])
+  @@index([productType])
+  @@index([isActive])
+}
+
+// Quote templates for quick creation
+model QuoteTemplate {
+  id              Int              @id @default(autoincrement())
+  companyId       Int
+  company         Company          @relation(fields: [companyId], references: [id])
+  
+  name            String
+  description     String?
+  projectType     String           // residential, commercial
+  
+  // Template data
+  surfaces        Json             // Default surfaces
+  paintProducts   Json             // Default paint products
+  settings        Json             // Default settings
+  
+  isActive        Boolean          @default(true)
+  
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  @@index([companyId])
+  @@index([isActive])
+}
