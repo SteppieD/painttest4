@@ -56,7 +56,7 @@ const plans = {
       'No API access'
     ],
     popular: true,
-    highlight: 'Most painters earn $8,400+ more per month'
+    highlight: 'ROI: Win 3 more jobs = $8,400+ revenue per month'
   },
   business: {
     name: 'Business',
@@ -79,7 +79,7 @@ const plans = {
       'Priority feature requests'
     ],
     limitations: [],
-    highlight: 'Average 65% quote-to-job conversion rate'
+    highlight: 'High-volume teams see $25,000+ monthly revenue gains'
   },
   enterprise: {
     name: 'Enterprise',
@@ -123,23 +123,24 @@ export default function PricingPage() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Quote in Minutes, Not Hours
+              Your $8,400/Month Revenue Opportunity
             </h1>
             <p className="mt-4 text-xl text-muted-foreground">
-              Join 2,000+ painting contractors winning more jobs with professional quotes delivered in under 24 hours
+              Based on our research: Win 3 more jobs per month (from 7 to 10 out of 20 quotes) 
+              at $2,800 average = $8,400 additional revenue monthly
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-green-600" />
-                <span>Average quote time: 15 minutes</span>
+                <span>Quote in 10-15 minutes vs 3-6 hours</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-green-600" />
-                <span>40-60% higher win rates</span>
+                <span>Respond within 24 hours (73% win rate)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-green-600" />
-                <span>Professional templates included</span>
+                <span>Professional quotes = 40-60% higher close rate</span>
               </div>
             </div>
           </div>
@@ -243,6 +244,71 @@ export default function PricingPage() {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+
+          {/* ROI Calculator Section */}
+          <div className="mt-16 rounded-lg bg-muted/50 p-8">
+            <h2 className="text-3xl font-bold text-center mb-8">Your ROI Calculator</h2>
+            
+            <div className="mx-auto max-w-3xl">
+              <div className="grid gap-6 md:grid-cols-2 mb-8">
+                <div className="rounded-lg bg-background p-6 border">
+                  <h3 className="font-semibold mb-4">Current Situation</h3>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Quotes per month:</span>
+                      <span className="font-medium">20</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Current win rate:</span>
+                      <span className="font-medium">35% (7 jobs)</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Average job value:</span>
+                      <span className="font-medium">$2,800</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Monthly revenue:</span>
+                      <span className="font-medium">$19,600</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="rounded-lg bg-primary/10 p-6 border border-primary/20">
+                  <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Quotes per month:</span>
+                      <span className="font-medium text-primary">20</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Improved win rate:</span>
+                      <span className="font-medium text-primary">50% (10 jobs)</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Average job value:</span>
+                      <span className="font-medium text-primary">$2,800</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span className="text-muted-foreground">Monthly revenue:</span>
+                      <span className="font-medium text-primary">$28,000</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
+                <p className="text-lg mb-2">Your Additional Monthly Revenue</p>
+                <p className="text-4xl font-bold text-green-600 mb-4">+$8,400</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  That's a <strong>100x return</strong> on your PaintQuote Pro investment
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Based on research showing 40-60% win rate improvement from faster response times 
+                  and professional presentation
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="mt-16 border-t pt-16">
