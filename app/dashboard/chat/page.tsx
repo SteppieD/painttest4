@@ -119,23 +119,23 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8">
+    <div className="mx-auto max-w-4xl space-y-4 md:space-y-8 px-4 md:px-0">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Quote Assistant</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Quote Assistant</h1>
+        <p className="text-sm md:text-base text-muted-foreground">
           Chat with our AI assistant to create a painting quote
         </p>
       </div>
 
-      <Card className="h-[600px] flex flex-col">
-        <CardHeader>
-          <CardTitle>New Quote Conversation</CardTitle>
-          <CardDescription>
+      <Card className="h-[calc(100vh-200px)] md:h-[600px] flex flex-col">
+        <CardHeader className="px-4 py-3 md:px-6 md:py-4">
+          <CardTitle className="text-lg md:text-xl">New Quote Conversation</CardTitle>
+          <CardDescription className="text-sm">
             Answer the assistant&apos;s questions to generate a quote
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex-1 flex flex-col">
-          <div className="flex-1 overflow-y-auto space-y-4 mb-4">
+        <CardContent className="flex-1 flex flex-col px-4 pb-4 md:px-6 md:pb-6">
+          <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 mb-4 -mx-2 px-2">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -144,13 +144,13 @@ export default function ChatPage() {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] rounded-lg px-4 py-2 ${
+                  className={`max-w-[85%] md:max-w-[80%] rounded-2xl px-3 py-2 md:px-4 md:py-2 ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted'
                   }`}
                 >
-                  <p className="text-sm">{message.content}</p>
+                  <p className="text-sm md:text-sm leading-relaxed">{message.content}</p>
                   <p className="text-xs opacity-70 mt-1">
                     <ClientTimestamp timestamp={message.timestamp} />
                   </p>
@@ -159,7 +159,7 @@ export default function ChatPage() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-muted rounded-lg px-4 py-2">
+                <div className="bg-muted rounded-2xl px-4 py-3">
                   <Loader2 className="h-4 w-4 animate-spin" />
                 </div>
               </div>
@@ -174,8 +174,14 @@ export default function ChatPage() {
               onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
               placeholder="Type your message..."
               disabled={isLoading}
+              className="h-10 md:h-9 text-base md:text-sm"
             />
-            <Button onClick={sendMessage} disabled={isLoading}>
+            <Button 
+              onClick={sendMessage} 
+              disabled={isLoading}
+              size="icon"
+              className="h-10 w-10 md:h-9 md:w-9 shrink-0"
+            >
               <Send className="h-4 w-4" />
             </Button>
           </div>

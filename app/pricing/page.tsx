@@ -9,65 +9,76 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 const plans = {
   free: {
-    name: 'Free',
-    description: 'Perfect for trying out PaintQuote Pro',
+    name: 'Free Forever',
+    description: 'Perfect for solo painters getting started',
     monthlyPrice: 0,
     yearlyPrice: 0,
     features: [
-      '1 quote per month',
-      'Basic calculator',
-      'Customer management',
-      'Email support',
-      'Basic templates'
+      '5 quotes per month',
+      'Professional quote templates',
+      '📱 Mobile-optimized interface',
+      'Basic customer management',
+      'Quote response time tracking',
+      '24-hour quote delivery',
+      'Basic calculator with all surfaces',
+      'Email support'
     ],
     limitations: [
-      'No AI assistant',
+      'No AI quote assistant',
       'No custom branding',
-      'No analytics',
-      'No team members',
-      'No API access'
+      'Limited to 1 user',
+      'No analytics dashboard',
+      'No customer portal'
     ]
   },
   professional: {
     name: 'Professional',
-    description: 'For growing painting businesses',
-    monthlyPrice: 49,
-    yearlyPrice: 490, // 2 months free
+    description: 'Win 40-60% more jobs with speed',
+    monthlyPrice: 47,
+    yearlyPrice: 470, // 2 months free
     features: [
       'Unlimited quotes',
-      'AI-powered assistant',
-      'Custom branding',
-      'Analytics dashboard',
+      'AI-powered instant quoting',
+      'Quote in 10-15 minutes vs 3-6 hours',
+      'Custom branding & templates',
+      'Win rate analytics dashboard',
+      'Response time tracking',
+      'Customer portal for instant acceptance',
       '3 team members',
-      'Priority email support',
-      'Quote templates',
-      'Customer portal',
-      'Mobile app access'
+      'Priority support',
+      '📱 Mobile & offline access',
+      'Automated follow-up reminders',
+      'Digital signatures'
     ],
     limitations: [
-      'No API access',
-      'Limited integrations'
+      'No QuickBooks integration',
+      'No API access'
     ],
-    popular: true
+    popular: true,
+    highlight: 'Most painters earn $8,400+ more per month'
   },
   business: {
     name: 'Business',
-    description: 'For established contractors',
-    monthlyPrice: 99,
-    yearlyPrice: 990, // 2 months free
+    description: 'Scale your painting empire',
+    monthlyPrice: 97,
+    yearlyPrice: 970, // 2 months free
     features: [
       'Everything in Professional',
       'Unlimited team members',
+      'QuickBooks & Xero integration',
+      'Advanced win/loss analytics',
+      'Quote conversion insights',
+      'Custom workflows & approval chains',
+      'Phone & chat support',
+      'Weekly training sessions',
+      'Bulk quote creation',
+      'Multi-location support',
       'API access',
-      'QuickBooks integration',
-      'Advanced analytics',
-      'Custom workflows',
-      'Phone support',
-      'Training sessions',
-      'Data export',
-      'Multi-location support'
+      'White-label customer portal',
+      'Priority feature requests'
     ],
-    limitations: []
+    limitations: [],
+    highlight: 'Average 65% quote-to-job conversion rate'
   },
   enterprise: {
     name: 'Enterprise',
@@ -109,11 +120,25 @@ export default function PricingPage() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Simple, Transparent Pricing
+            Quote in Minutes, Not Hours
           </h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Choose the perfect plan for your painting business
+            Join 2,000+ painting contractors winning more jobs with professional quotes delivered in under 24 hours
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <Check className="h-5 w-5 text-green-600" />
+              <span>Average quote time: 15 minutes</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="h-5 w-5 text-green-600" />
+              <span>40-60% higher win rates</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="h-5 w-5 text-green-600" />
+              <span>Professional templates included</span>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8 flex justify-center">
@@ -149,6 +174,11 @@ export default function PricingPage() {
               <CardHeader>
                 <CardTitle className="text-2xl">{plan.name}</CardTitle>
                 <CardDescription>{plan.description}</CardDescription>
+                {(plan as any).highlight && (
+                  <p className="mt-2 text-sm font-medium text-primary">
+                    {(plan as any).highlight}
+                  </p>
+                )}
               </CardHeader>
               
               <CardContent className="flex-1">

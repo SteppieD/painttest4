@@ -15,11 +15,14 @@ export default function Home() {
               <Link href="#features" className="transition-colors hover:text-foreground/80">
                 Features
               </Link>
+              <Link href="/roi-calculator" className="transition-colors hover:text-foreground/80">
+                ROI Calculator
+              </Link>
+              <Link href="/case-studies" className="transition-colors hover:text-foreground/80">
+                Success Stories
+              </Link>
               <Link href="/pricing" className="transition-colors hover:text-foreground/80">
                 Pricing
-              </Link>
-              <Link href="#testimonials" className="transition-colors hover:text-foreground/80">
-                Testimonials
               </Link>
             </nav>
           </div>
@@ -67,8 +70,60 @@ export default function Home() {
                 </Link>
               </div>
               <p className="text-sm text-muted-foreground">
-                No credit card required • 1 free quote per month • Cancel anytime
+                No credit card required • 5 free quotes per month • Cancel anytime
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Time Savings Hero Section */}
+        <section className="py-16 bg-muted/30">
+          <div className="container">
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">
+                Turn Hours Into Minutes
+              </h2>
+              <div className="grid gap-8 md:grid-cols-3 mb-12">
+                <div className="space-y-2">
+                  <div className="text-5xl font-bold text-muted-foreground/50">3-6</div>
+                  <div className="text-lg font-semibold">Hours</div>
+                  <p className="text-sm text-muted-foreground">Traditional quote creation</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-5xl font-bold text-primary">10-15</div>
+                  <div className="text-lg font-semibold">Minutes</div>
+                  <p className="text-sm text-muted-foreground">With PaintQuote Pro</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-5xl font-bold text-green-600">+$8,400</div>
+                  <div className="text-lg font-semibold">Per Month</div>
+                  <p className="text-sm text-muted-foreground">Average revenue increase</p>
+                </div>
+              </div>
+              <div className="rounded-lg border bg-background p-6 text-left">
+                <h3 className="font-semibold mb-3 flex items-center gap-2">
+                  <Zap className="h-5 w-5 text-primary" />
+                  Why Speed Matters in Painting Quotes
+                </h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
+                    <span>73% of customers choose the contractor who responds within 24 hours</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
+                    <span>Professional presentation increases win rates by 40-60%</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
+                    <span>Same-day quotes close 2.5x more often than 48+ hour quotes</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
+                    <span>Automated follow-ups convert 30% more lukewarm leads</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -165,8 +220,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "PaintQuote Pro transformed how we handle estimates. The AI assistant 
-                  understands exactly what we need and saves us hours every week."
+                  "Before PaintQuote Pro, quotes took me 4-5 hours each. Now I'm done in 15 minutes 
+                  and winning 60% more jobs. The speed of response makes all the difference."
                 </p>
                 <p className="font-semibold">Mike Rodriguez</p>
                 <p className="text-sm text-muted-foreground">Rodriguez Painting LLC</p>
@@ -181,8 +236,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "The charge rate system is brilliant. No more complex calculations - 
-                  just set your rates and let the software do the work. Highly recommended!"
+                  "I'm sending quotes same-day now instead of 3-4 days later. My close rate 
+                  jumped from 25% to 65%. The professional templates really impress clients."
                 </p>
                 <p className="font-semibold">Sarah Chen</p>
                 <p className="text-sm text-muted-foreground">Premier Coatings Inc</p>
@@ -197,8 +252,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "We've increased our quote acceptance rate by 40% since switching to 
-                  PaintQuote Pro. Professional quotes make all the difference."
+                  "The analytics showed I was losing jobs to faster competitors. Now I quote 
+                  in under 20 minutes and increased revenue by $12,000/month. Game changer!"
                 </p>
                 <p className="font-semibold">James Wilson</p>
                 <p className="text-sm text-muted-foreground">Wilson & Sons Painting</p>
@@ -238,7 +293,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t bg-background">
         <div className="container py-12">
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-5">
             <div>
               <h3 className="text-lg font-semibold mb-4">Product</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
@@ -260,10 +315,21 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Resources</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/painting-estimate-calculator-free" className="hover:text-foreground">Free Calculator</Link></li>
-                <li><Link href="/how-to-quote-painting-jobs" className="hover:text-foreground">How to Quote</Link></li>
+                <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
+                <li><Link href="/paint-estimate-templates" className="hover:text-foreground">Estimate Templates</Link></li>
                 <li><Link href="/painting-quote-templates" className="hover:text-foreground">Quote Templates</Link></li>
+                <li><Link href="/painting-projects" className="hover:text-foreground">Our Work</Link></li>
                 <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Locations</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link href="/locations/phoenix" className="hover:text-foreground">Phoenix</Link></li>
+                <li><Link href="/locations/denver" className="hover:text-foreground">Denver</Link></li>
+                <li><Link href="/locations/orlando" className="hover:text-foreground">Orlando</Link></li>
+                <li><Link href="/locations/las-vegas" className="hover:text-foreground">Las Vegas</Link></li>
+                <li><Link href="/locations/miami" className="hover:text-foreground">Miami</Link></li>
               </ul>
             </div>
             <div>

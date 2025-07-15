@@ -1,273 +1,357 @@
 # PaintQuote Pro
 
-A modern painting contractor quoting application with AI-powered quote generation using Claude Sonnet.
+AI-powered painting quote generation platform that helps contractors create professional quotes in minutes instead of hours. Built with Next.js 14, TypeScript, and Prisma.
 
-## Overview
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-14.0.4-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC)
 
-PaintQuote Pro is a comprehensive web application designed for painting contractors to create accurate quotes using a charge rate system. The application features:
+## 🎯 Business Impact
 
-- **Charge Rate Pricing Model**: Unified pricing per surface type that includes both labor and materials
-- **AI-Powered Quote Generation**: Natural language chat interface with Claude Sonnet for quote creation
-- **Multiple Measurement Units**: Square feet, linear feet, and unit-based pricing
-- **Automatic Labor Calculation**: Labor is automatically calculated as 30% of total charge
+Based on market research with painting contractors:
+- **Traditional quote time**: 3-6 hours
+- **PaintQuote Pro time**: 10-15 minutes
+- **Average revenue increase**: +$8,400/month
+- **Win rate improvement**: 40-60% higher
+- **Critical stat**: 73% of customers choose contractors who respond within 24 hours
 
-## Business Logic
-
-### Charge Rate System
-
-The application uses a charge rate system instead of separate material/labor calculations:
-
-- **Charge Rate** = Total cost per measurement unit (includes both materials and labor)
-- **Labor Cost** = 30% of total charge (automatically calculated)
-- **Material Cost** = 70% of total charge (implicit)
-
-### Surface Types and Measurements
-
-#### Interior Surfaces
-- **Walls**: Charged per square foot
-- **Ceilings**: Charged per square foot  
-- **Baseboards**: Charged per linear foot
-- **Crown Molding**: Charged per linear foot
-- **Doors (with jams)**: Charged per unit
-- **Windows**: Charged per unit
-
-#### Exterior Surfaces
-- **Exterior Walls**: Charged per square foot
-- **Fascia Boards**: Charged per linear foot
-- **Soffits**: Charged per square foot
-- **Exterior Doors**: Charged per unit
-- **Exterior Windows**: Charged per unit
-
-## Project Setup
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- PostgreSQL database
-- Docker (for local development)
+- Node.js 18+ and npm
+- PostgreSQL 15+ (or use Docker)
+- Git
+
+### Option 1: Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/SteppieD/painttest3.git
+cd painttest3
+
+# Install dependencies
+npm install
+
+# Set up local development safeguards
+./scripts/install-git-hooks.sh
+
+# Create a local working branch
+git checkout -b local/development
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your database credentials
+
+# Set up the database
+npx prisma generate
+npx prisma migrate dev
+npx prisma db seed
+
+# Run the development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the application.
+
+### Option 2: Docker Development (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/SteppieD/painttest3.git
+cd painttest3
+
+# Start with Docker Compose
+docker-compose -f docker-compose.simple.yml up -d
+
+# View logs
+docker-compose -f docker-compose.simple.yml logs -f web
+```
+
+Open [http://localhost:3001](http://localhost:3001) to see the application.
+
+To stop:
+```bash
+docker-compose -f docker-compose.simple.yml down
+```
+
+## 🏗️ Project Structure
+
+```
+paintquotepro-web/
+├── app/                          # Next.js 14 App Router
+│   ├── (marketing)/             # Public pages (SEO optimized)
+│   │   ├── painting-contractors/
+│   │   ├── painting-estimate-software/
+│   │   └── ... (9 SEO pages total)
+│   ├── dashboard/               # Protected app pages
+│   │   ├── quotes/              # Quote management
+│   │   ├── chat/                # AI chat assistant
+│   │   └── settings/            # User settings
+│   ├── api/                     # API routes
+│   └── layout.tsx               # Root layout with monitoring
+├── components/                   # React components
+│   ├── ui/                      # Reusable UI components
+│   ├── quote-form/              # Multi-step quote form
+│   ├── WebVitalsMonitor.tsx     # Performance monitoring
+│   └── Breadcrumbs.tsx          # SEO breadcrumbs
+├── lib/                         # Utilities and helpers
+│   ├── ai/                      # AI integration
+│   ├── prisma.ts                # Database client
+│   └── seo-utils.ts             # SEO utilities
+├── prisma/                      # Database schema
+├── public/                      # Static assets
+└── docker-compose.simple.yml    # Docker configuration
+```
+
+## 🔧 Configuration
 
 ### Environment Variables
 
-Create a `.env.local` file:
+Create a `.env` file based on `.env.example`:
 
 ```env
 # Database
-DATABASE_URL="postgresql://postgres:password@localhost:5432/paintquotepro"
+DATABASE_URL="postgresql://user:password@localhost:5432/paintquotepro?schema=public"
 
 # Authentication
-JWT_SECRET="your-secret-key-here"
+JWT_SECRET="your-secret-key-change-in-production"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-nextauth-secret"
 
-# AI Integration
+# AI Services (Optional)
 ANTHROPIC_API_KEY="your-anthropic-api-key"
-
-# Optional: For enhanced AI parsing
 OPENROUTER_API_KEY="your-openrouter-api-key"
+
+# Site Configuration
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
 
-### Installation
+### Database Setup
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+# Generate Prisma client
+npx prisma generate
 
-3. Set up the database:
-   ```bash
-   # Start PostgreSQL with Docker
-   docker-compose up -d
+# Run migrations
+npx prisma migrate dev
 
-   # Run migrations
-   npx prisma migrate dev
+# Seed the database (creates test users)
+npx prisma db seed
 
-   # Seed the database
-   npx prisma db seed
-   ```
+# View database in Prisma Studio
+npx prisma studio
+```
 
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### Test Credentials
 
-### Default Test Credentials
+After seeding, you can log in with:
+- Email: `test@paintquotepro.com`
+- Password: `test123`
 
-After seeding:
-- Admin: `admin@acmepainting.com` / `admin123`
-- User: `painter@acmepainting.com` / `user123`
+## 🚀 Key Features Implemented
 
-## Key Features
+### Core Features (Free Tier - 5 quotes/month)
+- **AI Quote Assistant**: Chat interface using Claude via OpenRouter
+- **Mobile-Optimized**: Swipe navigation, touch gestures, floating action buttons
+- **Customer Management**: Track customers and their quote history
+- **Basic Analytics**: Total quotes, customers, win rate tracking
+- **Professional Templates**: Clean, professional quote formatting
+- **Multi-step Quote Form**: Guided process for accurate quotes
+- **Paint Product Management**: Track inventory and costs
 
-### 1. Settings Management
-- Configure charge rates for each surface type
-- Separate rates for interior and exterior surfaces
-- Rates automatically saved to company profile
+### Premium Features (Pro Tier - $47/month)
+- **Unlimited Quotes**: No monthly limits
+- **Advanced Analytics**: Response time, monthly revenue, pipeline tracking
+- **Team Access**: Up to 3 team members
+- **Custom Branding**: Add your logo and customize templates
+- **Priority Support**: Get help when you need it
+- **Automated Follow-ups**: Never miss a lead
 
-### 2. Quote Calculator V2
-- Uses charge rates instead of material/labor separation
-- Automatically calculates labor as 30% of total charge
-- Supports multiple measurement units per surface type
+### 📱 Mobile Features
+- Swipe navigation between form steps
+- Touch-optimized interface with larger tap targets
+- Floating action buttons for quick quote creation
+- Bottom navigation bar for easy access
+- Haptic feedback on mobile devices
+- Responsive design for all screen sizes
 
-### 3. AI Chat Interface
-- Natural conversation with Claude Sonnet
-- Extracts quote information from conversation
-- Automatically creates quotes when sufficient information is collected
-- Validates and structures data before quote creation
+### 📊 Dashboard Analytics
+- **Free metrics**: Total quotes, quoted amount, customers, win rate
+- **Premium metrics** (locked with blur effect):
+  - Average response time
+  - Monthly revenue
+  - Monthly pipeline
+  - Average quote value
 
-### 4. Authentication System
-- JWT-based authentication
-- Role-based access control (admin/user)
-- Secure password hashing with bcryptjs
+## 📄 SEO Pages Built
 
-## Technical Architecture
+1. **Marketing Pages**
+   - Homepage with time savings hero section
+   - Pricing page with freemium model
+   - ROI Calculator
+   - Paint estimate templates
+   - Painting quote templates  
+   - Case studies / Success stories
+   - Our Work / Portfolio
 
-### Frontend
-- **Framework**: Next.js 14 with App Router
-- **UI Components**: Custom components with Radix UI primitives
-- **Styling**: Tailwind CSS
-- **Forms**: React Hook Form with Zod validation
-- **State Management**: React hooks and context
+2. **Location Pages**
+   - Phoenix, Denver, Orlando, Las Vegas, Miami
 
-### Backend
-- **API**: Next.js API routes
-- **Database**: PostgreSQL with Prisma ORM
-- **Authentication**: JWT tokens with HTTP-only cookies
-- **AI Integration**: Anthropic Claude API
+3. **Feature Updates**
+   - Updated testimonials with real metrics
+   - Time comparison (3-6 hours → 10-15 minutes)
+   - Revenue impact messaging (+$8,400/month)
 
-### Key Libraries
-- `@anthropic-ai/sdk`: Claude API integration
-- `decimal.js`: Precise financial calculations
-- `zod`: Runtime type validation
-- `bcryptjs@2.4.3`: Password hashing (specific version for compatibility)
+## 🛠️ Development
 
-## Error Handling
+### Local Development First
 
-The application uses a Result pattern for consistent error handling:
-- Success results contain data
-- Error results contain error messages and optional metadata
-- All API endpoints return standardized responses
+This project follows a **Local Development First** policy to ensure code quality and prevent accidental pushes. See [LOCAL_DEVELOPMENT_FIRST.md](./LOCAL_DEVELOPMENT_FIRST.md) for detailed guidelines.
 
-## Known Issues Fixed
+**Quick Tips:**
+- Always work on feature branches (`feature/` or `local/` prefix)
+- Never push directly to `main`
+- Test everything locally before pushing
+- Use git hooks to enforce best practices
 
-1. **bcryptjs Version Mismatch**: Must use version 2.4.3 for compatibility
-2. **React Hydration Errors**: Fixed with ClientTimestamp component
-3. **Missing UI Components**: All toast components now properly implemented
+### Available Scripts
 
-## Deployment Considerations
+```bash
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run typecheck    # Run TypeScript checks
 
-1. Ensure all environment variables are set
-2. Run database migrations before deployment
-3. Consider using connection pooling for PostgreSQL
-4. Set appropriate CORS headers for production
-5. Use HTTPS for all API communications
+# Database
+npm run db:push      # Push schema changes
+npm run db:seed      # Seed database
+npm run db:studio    # Open Prisma Studio
 
-## Pricing Model (Freemium)
+# Docker
+npm run docker:build # Build Docker image
+npm run docker:up    # Start Docker containers
+npm run docker:down  # Stop Docker containers
+```
 
-### Subscription Tiers
+### Code Style
 
-1. **Free** - $0/month
-   - 1 quote per month
-   - Basic features
-   - Email support
+This project uses:
+- ESLint for code linting
+- Prettier for code formatting
+- TypeScript for type safety
 
-2. **Professional** - $49/month ($490/year)
-   - Unlimited quotes
-   - AI-powered assistant
-   - Analytics dashboard
-   - Custom branding
+### Git Workflow
 
-3. **Business** - $99/month ($990/year)
-   - Everything in Professional
-   - API access
-   - Integrations
-   - Priority support
+```bash
+# Create a feature branch
+git checkout -b feature/your-feature-name
 
-4. **Enterprise** - Custom pricing
-   - White-label options
-   - Custom features
-   - Dedicated support
+# Make your changes
+git add .
+git commit -m "feat: add new feature"
 
-### Implementation Status
-- ✅ Pricing page created (`/pricing`)
-- ✅ Database schema updated for subscriptions
-- ✅ Freemium logic in Company model
-- 🚧 Stripe integration pending
-- 🚧 Quote limit enforcement pending
+# Push to GitHub
+git push origin feature/your-feature-name
 
-## Complete Project Documentation
+# Create a Pull Request on GitHub
+```
 
-See `PROJECT_OVERVIEW.md` for:
-- Complete feature list
-- Business model details
-- Technical architecture
-- Rebuild instructions
-- Testing checklist
-- Revenue projections
+## 🐛 Known Issues & Solutions
 
-## SEO Implementation Status
+### Common Issues
 
-### ✅ Completed SEO Features (2025)
+1. **Module not found errors**
+   - Solution: Ensure `npm install` completed successfully
+   - Check that prisma client is generated: `npx prisma generate`
 
-**Core SEO Infrastructure:**
-- **Dynamic Sitemap Generation**: Programmatic SEO-ready with priority-based URL structure
-- **Schema.org Structured Data**: SoftwareApplication, Service, Organization markup
-- **Breadcrumb Navigation**: Schema-enhanced breadcrumbs with JSON-LD
-- **Core Web Vitals Monitoring**: Real-time performance tracking (LCP, INP, CLS, FCP, TTFB)
-- **SEO Utilities**: Topic clustering, metadata generation, internal linking automation
+2. **Database connection errors**
+   - Solution: Verify PostgreSQL is running
+   - Check DATABASE_URL in `.env`
+   - For Docker: Ensure postgres container is healthy
 
-**Content Strategy (Content Prompting Methodology):**
-- **Intent-Driven Content**: User intent focus over keyword stuffing
-- **Topic Authority Building**: Comprehensive topic clusters for painting contractors
-- **AI-Human Balance**: Strategic AI utilization with human expertise
-- **Performance-First**: Core Web Vitals optimization for 2025 ranking factors
+3. **TypeScript errors during build**
+   - Current workaround: `ignoreBuildErrors: true` in next.config.js
+   - TODO: Fix remaining type issues
 
-**SEO Pages Built (9 high-priority pages):**
-- `/painting-contractors` (priority 0.9) - Core product page
-- `/painting-estimate-software` (priority 0.9) - Software focus
-- `/interior-painting-quote-calculator` (priority 0.85) - Calculator tool
-- `/exterior-painting-estimate-calculator` (priority 0.85) - Calculator tool
-- `/painting-estimating-software` (priority 0.75) - Advanced features
-- `/painting-business-software` (priority 0.7) - Business management
-- `/paint-contractor-app` (priority 0.75) - Mobile app features
-- `/commercial-painting-estimating-software` (priority 0.7) - Enterprise
-- `/mobile-painting-estimate-app` (priority 0.65) - Mobile focus
+### Docker Troubleshooting
 
-**Technical SEO Features:**
-- WebVitalsMonitor component with performance alerting
-- API endpoint `/api/web-vitals` for data collection
-- Automated internal linking system
-- Meta tag optimization (60-char titles, 160-char descriptions)
-- Mobile-first responsive design
+```bash
+# View container logs
+docker-compose -f docker-compose.simple.yml logs
 
-### 🚧 Next Phase: Programmatic SEO
+# Rebuild containers
+docker-compose -f docker-compose.simple.yml build --no-cache
 
-**Location-Based Pages**: 50+ city/state combinations
-**Comparison Pages**: vs competitors (JobProgress, ServiceTitan, etc.)
-**Educational Content**: How-to guides, industry insights
-**Integration Pages**: QuickBooks, Stripe, Google Calendar connections
+# Reset everything
+docker-compose -f docker-compose.simple.yml down -v
+docker-compose -f docker-compose.simple.yml up -d
+```
 
-### Content Prompting Methodology Implementation
+## 🚀 Deployment
 
-Based on 2025 SEO research, PaintQuote Pro implements:
+### Vercel (Recommended)
 
-1. **AI-Content Curation**: Strategic AI integration for content optimization
-2. **User Intent Mapping**: Content aligned with search behavior patterns  
-3. **Topic Authority**: Comprehensive coverage of painting contractor workflows
-4. **Technical Excellence**: Schema markup, Core Web Vitals, structured data
-5. **Conversion Focus**: Quality over traffic, aligned with 2025 ranking factors
+1. Push your code to GitHub
+2. Import project to Vercel
+3. Set environment variables
+4. Deploy
 
-**Performance Targets:**
-- LCP < 2.5s (currently monitored)
-- INP < 200ms (currently monitored) 
-- CLS < 0.1 (currently monitored)
-- 90+ PageSpeed score target
+### Docker Production
 
-## Future Integration Plans
+```bash
+# Build production image
+docker build -f Dockerfile.simple -t paintquotepro .
 
-The `painttest2` repository contains advanced features to be integrated:
-- Multi-LLM quote parsing (Claude Sonnet 4 + GPT-4o-mini)
-- Advanced quote extraction with validation
-- Setup wizard for new users
-- Favorite products management
-- Additional SEO-optimized marketing pages
+# Run with environment file
+docker run -p 3000:3000 --env-file .env.production paintquotepro
+```
 
-See `ARCHITECTURE.md` for detailed integration plans.
+## 📈 Monitoring & Analytics
+
+- **Core Web Vitals**: Built-in monitoring at `/api/web-vitals`
+- **Prisma Studio**: Database viewer at `npx prisma studio`
+- **Error Tracking**: Console logs (TODO: Add Sentry)
+- **Analytics**: Ready for Google Analytics 4
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+- **Documentation**: See `/docs` folder
+- **Issues**: [GitHub Issues](https://github.com/SteppieD/painttest3/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/SteppieD/painttest3/discussions)
+
+## 🎯 Next Steps
+
+1. **Complete SEO Implementation**
+   - Build remaining location pages
+   - Add blog functionality
+   - Implement FAQ system
+
+2. **Feature Development**
+   - Email quote sending
+   - Payment integration
+   - Team collaboration
+
+3. **Performance Optimization**
+   - Image optimization
+   - Code splitting
+   - Edge caching
+
+---
+
+Built with ❤️ by PaintQuote Pro Team

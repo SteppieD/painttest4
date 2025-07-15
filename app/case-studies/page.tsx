@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { TrendingUp, Clock, DollarSign, Users, Star, BarChart } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
   title: 'Painting Contractor Success Stories | Case Studies | PaintQuote Pro',
@@ -18,38 +19,7 @@ export default function CaseStudies() {
   return (
     <div className="min-h-screen bg-background">
       {/* SEO-Optimized Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container flex h-14 items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold">PaintQuote Pro</span>
-          </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link href="/painting-estimate-calculator-free" className="transition-colors hover:text-foreground/80">
-              Calculator
-            </Link>
-            <Link href="/how-to-quote-painting-jobs" className="transition-colors hover:text-foreground/80">
-              How to Quote
-            </Link>
-            <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-              Pricing
-            </Link>
-          </nav>
-          <div className="ml-auto flex items-center space-x-4">
-            <Link
-              href="/auth/signin"
-              className="text-sm font-medium transition-colors hover:text-foreground/80"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/signup"
-              className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-            >
-              Start Free Trial
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <SharedNavigation />
 
       <main>
         {/* Hero Section with H1 */}

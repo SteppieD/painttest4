@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import Link from 'next/link'
+import { MobileNav } from '@/components/mobile-nav'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -45,10 +46,11 @@ export default async function DashboardLayout({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
+              <MobileNav userEmail={user.email} />
               <Link href="/dashboard" className="text-xl font-semibold">
                 Paint Quote Pro
               </Link>
-              <div className="ml-10 flex items-baseline space-x-4">
+              <div className="ml-10 hidden md:flex items-baseline space-x-4">
                 <Link
                   href="/dashboard"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
@@ -87,7 +89,7 @@ export default async function DashboardLayout({
                 </Link>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <span className="text-sm text-muted-foreground">{user.email}</span>
               <form action="/api/auth/signout" method="POST">
                 <button
@@ -103,7 +105,7 @@ export default async function DashboardLayout({
       </nav>
 
       {/* Main content */}
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 pb-20 md:pb-6">
         {children}
       </main>
     </div>

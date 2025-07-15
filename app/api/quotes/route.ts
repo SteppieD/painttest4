@@ -24,13 +24,103 @@ interface QuoteInputV2 {
 
 class QuoteCalculatorV2 {
   static calculate(input: QuoteInputV2) {
-    const total = 0
-    // Simple calculation - can be enhanced later
+    let total = 0
+    let laborTotal = 0
+    let materialsTotal = 0
+    
+    // Calculate cost for each surface
+    const calculatedSurfaces = input.surfaces.map((surface: any) => {
+      let surfaceCost = 0
+      let surfaceLabor = 0
+      let surfaceMaterials = 0
+      
+      // Determine the charge rate based on surface type
+      const rateMap: Record<string, keyof ChargeRates> = {
+        'walls': 'walls',
+        'ceilings': 'ceilings',
+        'baseboards': 'baseboards',
+        'crown_molding': 'crownMolding',
+        'door': 'doorsWithJams',
+        'doors': 'doorsWithJams',
+        'window': 'windows',
+        'windows': 'windows',
+        'exterior_walls': 'exteriorWalls',
+        'exterior_wall': 'exteriorWalls',
+        'fascia': 'fasciaBoards',
+        'soffits': 'soffits',
+        'soffit': 'soffits',
+        'exterior_doors': 'exteriorDoors',
+        'exterior_door': 'exteriorDoors',
+        'exterior_windows': 'exteriorWindows',
+        'exterior_window': 'exteriorWindows'
+      }
+      
+      const rateKey = rateMap[surface.type] || surface.type
+      const rate = (input.chargeRates as any)[rateKey] || 0
+      
+      // Calculate based on measurement type
+      if (surface.area && surface.area > 0) {
+        // Square foot pricing
+        surfaceCost = surface.area * rate * (surface.coats || 2)
+      } else if (surface.linearFeet && surface.linearFeet > 0) {
+        // Linear foot pricing
+        surfaceCost = surface.linearFeet * rate * (surface.coats || 2)
+      } else if (surface.count && surface.count > 0) {
+        // Per unit pricing
+        surfaceCost = surface.count * rate
+      }
+      
+      // Apply condition multiplier
+      const conditionMultiplier = {
+        'excellent': 0.9,
+        'good': 1.0,
+        'fair': 1.2,
+        'poor': 1.5
+      }
+      surfaceCost *= conditionMultiplier[surface.condition] || 1.0
+      
+      // Apply prep work charges
+      const prepCharges = {
+        'patch_nail_holes': 0.10,
+        'patch_cracks': 0.15,
+        'patch_water_stains': 0.20,
+        'light_sanding': 0.15,
+        'heavy_sanding': 0.25,
+        'prime_patches': 0.20,
+        'prime_all': 0.40,
+        'remove_wallpaper': 0.50,
+        'repair_drywall': 0.75
+      }
+      
+      let prepMultiplier = 1.0
+      if (surface.prepWork && Array.isArray(surface.prepWork)) {
+        surface.prepWork.forEach((prep: string) => {
+          prepMultiplier += prepCharges[prep as keyof typeof prepCharges] || 0
+        })
+      }
+      surfaceCost *= prepMultiplier
+      
+      // Split into labor and materials (40% labor, 60% materials typically)
+      surfaceLabor = surfaceCost * 0.4
+      surfaceMaterials = surfaceCost * 0.6
+      
+      total += surfaceCost
+      laborTotal += surfaceLabor
+      materialsTotal += surfaceMaterials
+      
+      return {
+        ...surface,
+        calculatedCost: surfaceCost,
+        laborCost: surfaceLabor,
+        materialsCost: surfaceMaterials
+      }
+    })
+    
     return { 
       total,
-      labor: total * 0.3,
-      materials: total * 0.7,
-      surfaces: input.surfaces
+      labor: laborTotal,
+      materials: materialsTotal,
+      surfaces: calculatedSurfaces
     }
   }
   
@@ -104,7 +194,26 @@ export async function POST(request: NextRequest) {
 
     // Calculate quote
     const calculation = QuoteCalculatorV2.calculate(calculatorInput)
-    const formatted = QuoteCalculatorV2.formatOutput(calculation)
+    console.log('Calculation input:', JSON.stringify(calculatorInput, null, 2))
+    console.log('Calculation result:', JSON.stringify(calculation, null, 2))
+    
+    // Apply overhead, profit, and tax
+    const subtotal = calculation.total
+    const overheadPercent = data.settings?.overheadPercent || companySettings.overheadPercent || 15
+    const profitMargin = data.settings?.profitMargin || companySettings.profitMargin || 30
+    const taxRate = data.settings?.taxRate || companySettings.taxRate || 8.25
+    
+    const overhead = subtotal * (overheadPercent / 100)
+    const subtotalWithOverhead = subtotal + overhead
+    const profit = subtotalWithOverhead * (profitMargin / 100)
+    const subtotalWithProfit = subtotalWithOverhead + profit
+    const tax = subtotalWithProfit * (taxRate / 100)
+    const totalAmount = subtotalWithProfit + tax
+    
+    const formatted = QuoteCalculatorV2.formatOutput({
+      ...calculation,
+      total: totalAmount
+    })
 
     // Create or update customer
     let customer = data.customer.id ? 
@@ -150,17 +259,17 @@ export async function POST(request: NextRequest) {
         paintProducts: data.paintProducts || {},
         settings: JSON.parse(JSON.stringify(calculatorInput)),
         materials: {
-          surfaces: data.surfaces,
-          totalMaterials: formatted.formattedMaterials,
+          surfaces: calculation.surfaces,
+          totalMaterials: calculation.materials,
         },
         labor: {
-          totalLabor: formatted.formattedLabor,
+          totalLabor: calculation.labor,
         },
-        subtotal: parseFloat(formatted.formattedTotal.replace('$', '')),
-        overhead: 0,
-        profit: 0,
-        tax: 0,
-        totalAmount: parseFloat(formatted.formattedTotal.replace('$', '')),
+        subtotal: subtotal,
+        overhead: overhead,
+        profit: profit,
+        tax: tax,
+        totalAmount: totalAmount,
         description: data.description,
         notes: data.notes,
         terms: data.terms || companySettings.defaultTerms || 'Payment due within 30 days.',

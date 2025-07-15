@@ -84,9 +84,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  if (!ANTHROPIC_API_KEY) {
+  if (!ANTHROPIC_API_KEY && !OPENROUTER_API_KEY) {
     return NextResponse.json({ 
-      error: 'AI service not configured. Please set ANTHROPIC_API_KEY in environment variables.' 
+      error: 'AI service not configured. Please set ANTHROPIC_API_KEY or OPENROUTER_API_KEY in environment variables.' 
     }, { status: 500 })
   }
 
@@ -135,23 +135,54 @@ export async function POST(request: NextRequest) {
     }
     
     // Otherwise, continue conversation with Claude
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-3-sonnet-20240229',
-        max_tokens: 1000,
-        system: SYSTEM_PROMPT + '\n\nAdditional context from parsing:\n' + 
-          (parsingResult && parsingResult.needsClarification 
-            ? `Please ask about: ${parsingResult.clarificationQuestions.join(', ')}`
-            : ''),
-        messages: messages,
-      }),
-    })
+    let response: Response
+    
+    if (OPENROUTER_API_KEY && !ANTHROPIC_API_KEY) {
+      // Use OpenRouter for Claude access
+      response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'HTTP-Referer': 'https://paintquotepro.com',
+          'X-Title': 'PaintQuote Pro'
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3-sonnet:beta',
+          messages: [
+            {
+              role: 'system',
+              content: SYSTEM_PROMPT + '\n\nAdditional context from parsing:\n' + 
+                (parsingResult && parsingResult.needsClarification 
+                  ? `Please ask about: ${parsingResult.clarificationQuestions.join(', ')}`
+                  : '')
+            },
+            ...messages
+          ],
+          max_tokens: 1000,
+          temperature: 0.7
+        }),
+      })
+    } else {
+      // Use direct Anthropic API
+      response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+        },
+        body: JSON.stringify({
+          model: 'claude-3-sonnet-20240229',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT + '\n\nAdditional context from parsing:\n' + 
+            (parsingResult && parsingResult.needsClarification 
+              ? `Please ask about: ${parsingResult.clarificationQuestions.join(', ')}`
+              : ''),
+          messages: messages,
+        }),
+      })
+    }
 
     if (!response.ok) {
       const error = await response.text()
@@ -160,7 +191,9 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json()
-    const assistantMessage = data.content[0].text
+    const assistantMessage = OPENROUTER_API_KEY && !ANTHROPIC_API_KEY 
+      ? data.choices[0].message.content 
+      : data.content[0].text
 
     return NextResponse.json({ 
       message: assistantMessage,

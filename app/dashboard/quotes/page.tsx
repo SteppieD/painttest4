@@ -3,6 +3,7 @@ import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -76,7 +77,7 @@ export default async function QuotesPage() {
                     <td className="px-4 py-3 font-medium">{quote.quoteNumber}</td>
                     <td className="px-4 py-3">{quote.customer.name}</td>
                     <td className="px-4 py-3 capitalize">{quote.projectType}</td>
-                    <td className="px-4 py-3">${quote.totalAmount.toString()}</td>
+                    <td className="px-4 py-3">${quote.totalAmount.toFixed(2)}</td>
                     <td className="px-4 py-3">
                       <span className={cn(
                         "inline-flex items-center rounded-full px-2 py-1 text-xs font-medium",
@@ -108,8 +109,4 @@ export default async function QuotesPage() {
       </Card>
     </div>
   )
-}
-
-function cn(...classes: (string | undefined)[]) {
-  return classes.filter(Boolean).join(' ')
 }

@@ -1,45 +1,68 @@
+# Docker Compose configuration for PaintQuote Pro
+# This file sets up the development environment with PostgreSQL and the Next.js application
+# Usage: docker-compose -f docker-compose.simple.yml up -d
+
 version: '3.8'
 
 services:
-  # PostgreSQL Database
+  # PostgreSQL Database Service
+  # Provides persistent data storage for the application
   postgres:
     image: postgres:15-alpine
     container_name: paintquotepro-db
     environment:
+      # Database credentials - CHANGE IN PRODUCTION!
       POSTGRES_USER: paintquote
       POSTGRES_PASSWORD: paintquote123
       POSTGRES_DB: paintquotepro
     ports:
+      # Expose PostgreSQL on standard port
       - "5432:5432"
     volumes:
+      # Persist database data between container restarts
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
+      # Ensure database is ready before starting the web service
       test: ["CMD-SHELL", "pg_isready -U paintquote"]
       interval: 10s
       timeout: 5s
       retries: 5
 
-  # Web Application
+  # Next.js Web Application Service
+  # Runs the PaintQuote Pro application
   web:
     build:
       context: .
       dockerfile: Dockerfile.simple
     container_name: paintquotepro-web
     depends_on:
+      # Wait for PostgreSQL to be healthy before starting
       postgres:
         condition: service_healthy
     environment:
+      # Database connection string using internal Docker network
       DATABASE_URL: "postgresql://paintquote:paintquote123@postgres:5432/paintquotepro?schema=public"
+      
+      # Security keys - MUST CHANGE IN PRODUCTION!
       JWT_SECRET: "docker-dev-secret-key-change-in-production"
       NEXTAUTH_URL: "http://localhost:3001"
       NEXTAUTH_SECRET: "docker-dev-nextauth-secret"
+      
+      # AI Service Configuration
+      # Set ANTHROPIC_API_KEY in your shell or .env file for AI features
       ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-your-anthropic-api-key-here}"
+      
+      # Public site URL
       NEXT_PUBLIC_SITE_URL: "http://localhost:3001"
     ports:
+      # Map container port 3000 to host port 3001
       - "3001:3000"
     volumes:
+      # Mount prisma directory for database migrations
       - ./prisma:/app/prisma
     restart: unless-stopped
 
+# Named volumes for data persistence
 volumes:
   postgres_data:
+    # PostgreSQL data persists between container restarts
