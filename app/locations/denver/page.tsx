@@ -1,21 +1,22 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { MapPin, Phone, Clock, Star, CheckCircle, Snowflake, Mountain, CloudRain } from 'lucide-react'
+import { MapPin, Clock, Star, CheckCircle, Snowflake, Mountain, Home, Calculator, Zap, BarChart } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
-  title: 'Denver Painting Contractors | Professional Painters in Denver, CO',
-  description: 'Top-rated painting contractors in Denver, CO. Professional interior & exterior painting for Mile High homes. Free quotes, licensed & insured. Weather-resistant finishes.',
-  keywords: 'Denver painting contractors, painters Denver CO, Denver house painters, interior painting Denver, exterior painting Denver, commercial painting Denver',
+  title: 'Painting Quote Software for Denver Contractors | PaintQuote Pro',
+  description: 'AI-powered quoting software for Denver painting contractors. Create professional quotes in 10-15 minutes instead of hours. Win more jobs in the Mile High City. Free trial available.',
+  keywords: 'painting quote software Denver, Denver contractor software, painting estimator Denver CO, quote generator Denver painters, contractor business software Denver',
   openGraph: {
-    title: 'Denver Painting Contractors - #1 Painters in Mile High City',
-    description: 'Professional painting services in Denver, CO. Weather-resistant finishes for Colorado climate. Free quotes. Call (303) 555-0123.',
+    title: 'PaintQuote Pro - Painting Quote Software for Denver Contractors',
+    description: 'Transform your Denver painting business. Quote in minutes, not hours. Win 40-60% more jobs with professional estimates.',
     type: 'website',
     images: [{
-      url: '/og-denver-painters.jpg',
+      url: '/og-denver-software.jpg',
       width: 1200,
       height: 630,
-      alt: 'Denver Painting Contractors'
+      alt: 'PaintQuote Pro for Denver Contractors'
     }]
   },
   alternates: {
@@ -29,72 +30,65 @@ const serviceAreas = [
   'Commerce City', 'Greenwood Village', 'Cherry Hills', 'Highlands Ranch'
 ]
 
-const localProjects = [
+const localContractorStats = [
   {
-    type: 'Historic Home Restoration',
-    location: 'Capitol Hill',
-    description: 'Victorian home exterior, 3 colors',
-    duration: '7 days',
-    value: '$12,500'
+    metric: 'Average Quote Time',
+    traditional: '4-5 hours',
+    withPaintQuote: '10-15 minutes',
+    improvement: '95% faster'
   },
   {
-    type: 'Modern Condo Complex',
-    location: 'LoDo District',
-    description: '48-unit building, all balconies',
-    duration: '3 weeks',
-    value: '$67,000'
+    metric: 'Monthly Quotes',
+    traditional: '18-22',
+    withPaintQuote: '70-90',
+    improvement: '4x more'
   },
   {
-    type: 'Mountain View Estate',
-    location: 'Cherry Hills Village',
-    description: '7,200 sq ft luxury home',
-    duration: '10 days',
-    value: '$24,800'
+    metric: 'Win Rate',
+    traditional: '25-30%',
+    withPaintQuote: '45-60%',
+    improvement: '+100% improvement'
+  },
+  {
+    metric: 'Monthly Revenue',
+    traditional: '$22,000',
+    withPaintQuote: '$42,000',
+    improvement: '+$20,000/month'
   }
 ]
 
-export default function DenverPaintingContractors() {
+export default function DenverPaintingSoftware() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'SoftwareApplication',
     '@id': 'https://paintquotepro.com/locations/denver',
-    name: 'PaintQuote Pro Denver',
-    image: 'https://paintquotepro.com/images/denver-office.jpg',
-    telephone: '(303) 555-0123',
-    priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '1550 Larimer St',
-      addressLocality: 'Denver',
-      addressRegion: 'CO',
-      postalCode: '80202',
-      addressCountry: 'US'
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 39.7392,
-      longitude: -104.9903
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '18:00'
-    },
-    areaServed: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: 39.7392,
-        longitude: -104.9903
-      },
-      geoRadius: '40 miles'
+    name: 'PaintQuote Pro - Denver Edition',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web-based',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+      eligibleRegion: {
+        '@type': 'Place',
+        name: 'Denver, CO'
+      }
     },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '342'
-    }
+      reviewCount: '342',
+      bestRating: '5'
+    },
+    featureList: [
+      'AI-powered quote generation',
+      'Denver market pricing data',
+      'Professional templates',
+      'Mobile-friendly',
+      'Customer management',
+      'ROI tracking'
+    ]
   }
 
   return (
@@ -105,42 +99,9 @@ export default function DenverPaintingContractors() {
       />
 
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="/locations" className="transition-colors hover:text-foreground/80">
-                Locations
-              </Link>
-              <Link href="/services" className="transition-colors hover:text-foreground/80">
-                Services
-              </Link>
-              <Link href="/about" className="transition-colors hover:text-foreground/80">
-                About
-              </Link>
-              <Link href="/contact" className="transition-colors hover:text-foreground/80">
-                Contact
-              </Link>
-            </nav>
-            <div className="ml-auto flex items-center gap-4">
-              <a href="tel:3035550123" className="flex items-center gap-2 text-sm font-medium">
-                <Phone className="h-4 w-4" />
-                (303) 555-0123
-              </a>
-              <Link
-                href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Get Free Quote
-              </Link>
-            </div>
-          </nav>
-        </header>
+        <SharedNavigation />
 
-        <main>
+        <main className="pt-14">
           {/* Breadcrumbs */}
           <Breadcrumbs 
             items={[
@@ -157,55 +118,53 @@ export default function DenverPaintingContractors() {
               <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                 <div>
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                    Professional Painting Contractors in Denver, CO
+                    Painting Quote Software for Denver Contractors
                   </h1>
                   <p className="mt-6 text-xl text-muted-foreground">
-                    Mile High City's trusted painters since 2016. Expert interior and exterior 
-                    painting with weather-resistant finishes designed for Colorado's extreme 
-                    temperature swings and UV exposure.
+                    Join 180+ Mile High City painting contractors who've transformed their business 
+                    with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
+                    win 40-60% more projects.
                   </p>
                   
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                     <Link
-                      href="/quote"
+                      href="/auth/signup"
                       className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                     >
-                      Get Free Quote
+                      Start Free Trial
                     </Link>
-                    <a
-                      href="tel:3035550123"
+                    <Link
+                      href="/roi-calculator"
                       className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                     >
-                      <Phone className="mr-2 h-4 w-4" />
-                      (303) 555-0123
-                    </a>
+                      Calculate Your ROI
+                    </Link>
                   </div>
 
                   <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-primary">1,850+</div>
-                      <p className="text-sm text-muted-foreground">Denver Projects</p>
+                      <div className="text-2xl font-bold text-primary">180+</div>
+                      <p className="text-sm text-muted-foreground">Denver Contractors</p>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">$2.4M</div>
+                      <p className="text-sm text-muted-foreground">Quotes Generated</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">4.9/5</div>
-                      <p className="text-sm text-muted-foreground">Google Rating</p>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-primary">9 Years</div>
-                      <p className="text-sm text-muted-foreground">In Denver</p>
+                      <p className="text-sm text-muted-foreground">User Rating</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="relative">
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                    {/* Placeholder for Denver project image */}
                     <div className="flex h-full items-center justify-center">
-                      <Mountain className="h-12 w-12 text-muted-foreground" />
+                      <Calculator className="h-12 w-12 text-muted-foreground" />
                     </div>
                   </div>
                   <div className="absolute -bottom-4 -right-4 rounded-lg bg-primary p-4 text-primary-foreground shadow-lg">
-                    <p className="text-sm font-medium">Serving All of</p>
+                    <p className="text-sm font-medium">Trusted by contractors in</p>
                     <p className="text-xl font-bold">Metro Denver</p>
                   </div>
                 </div>
@@ -213,231 +172,261 @@ export default function DenverPaintingContractors() {
             </div>
           </section>
 
-          {/* Service Areas */}
+          {/* Denver Market Stats */}
           <section className="border-t py-16">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Painting Services Throughout Metro Denver</h2>
+                <h2 className="text-3xl font-bold">Denver Painting Contractors Are Winning More Jobs</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Professional painting contractors serving Denver and surrounding communities
+                  See how PaintQuote Pro transforms painting businesses in the Mile High City
                 </p>
               </div>
               
-              <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {serviceAreas.map((area) => (
-                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
-                    {area}
-                  </div>
-                ))}
+              <div className="mt-12 overflow-hidden rounded-lg border">
+                <table className="w-full">
+                  <thead className="bg-muted">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Metric</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Traditional Method</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">With PaintQuote Pro</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Improvement</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {localContractorStats.map((stat, index) => (
+                      <tr key={index}>
+                        <td className="px-6 py-4 font-medium">{stat.metric}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{stat.traditional}</td>
+                        <td className="px-6 py-4 font-semibold text-primary">{stat.withPaintQuote}</td>
+                        <td className="px-6 py-4 text-green-600 font-semibold">{stat.improvement}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>
 
-          {/* Denver-Specific Services */}
+          {/* Denver-Specific Features */}
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Painting Solutions for Denver's Unique Climate</h2>
+                <h2 className="text-3xl font-bold">Built for Denver's Unique Market</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Specialized techniques for Colorado's 300+ days of sun and dramatic weather changes
+                  Features designed specifically for Colorado painting contractors
                 </p>
               </div>
 
               <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-lg border bg-background p-6">
                   <Snowflake className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Weather-Resistant Finishes</h3>
+                  <h3 className="mt-4 text-xl font-semibold">Weather-Based Pricing</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Denver's 90°F summers to -10°F winters demand flexible paints. We use 
-                    premium elastomeric coatings that expand and contract without cracking.
+                    Built-in calculations for Denver's extreme weather. Automatically adjusts 
+                    for seasonal work, includes weather-resistant product options, and factors 
+                    in temperature-based drying times.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Temperature-flexible formulas
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Freeze-thaw resistant
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      15-year durability warranty
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="rounded-lg border bg-background p-6">
                   <Mountain className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">High-Altitude UV Protection</h3>
+                  <h3 className="mt-4 text-xl font-semibold">High-Altitude Adjustments</h3>
                   <p className="mt-2 text-muted-foreground">
-                    At 5,280 feet, UV rays are 25% stronger. Our high-altitude paints prevent 
-                    fading and chalking, keeping your home beautiful despite intense sun exposure.
+                    Accounts for Denver's 5,280-foot elevation. UV protection calculations, 
+                    adjusted drying times, and high-altitude product recommendations built 
+                    into every quote.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      UV-resistant pigments
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Fade-proof technology
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      High-altitude formulas
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="rounded-lg border bg-background p-6">
-                  <CloudRain className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Moisture & Hail Protection</h3>
+                  <Home className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Historic Home Templates</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Colorado's afternoon thunderstorms and hail require special preparation. 
-                    We prime and seal to protect against moisture infiltration and impact damage.
+                    Pre-built templates for Denver's historic neighborhoods like Capitol Hill 
+                    and Wash Park. Includes lead-safe work calculations and preservation 
+                    requirements.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Moisture-barrier primers
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Impact-resistant coatings
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Proper wood treatment
-                    </li>
-                  </ul>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <Zap className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Quote on-site from Cherry Creek to Highlands Ranch. Works offline and 
+                    syncs when connected. Perfect for Denver's sprawling metro area from 
+                    Aurora to Lakewood.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <BarChart className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Denver Market Analytics</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Track win rates by neighborhood, see seasonal trends, and optimize 
+                    pricing for different areas. Know exactly what works in LoDo 
+                    vs Cherry Hills.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <CheckCircle className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Stand out in Denver's competitive market with professional quotes 
+                    that build trust. Include your Colorado license, insurance details, 
+                    and customer testimonials automatically.
+                  </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Recent Projects */}
+          {/* Local Success Stories */}
           <section className="py-16 md:py-24">
             <div className="container">
-              <h2 className="text-center text-3xl font-bold">Recent Denver Area Projects</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-                From historic restorations to modern homes, see our work across Denver
-              </p>
-
-              <div className="mt-12 grid gap-8 md:grid-cols-3">
-                {localProjects.map((project, index) => (
-                  <div key={index} className="rounded-lg bg-muted/50 p-6">
-                    <h3 className="text-xl font-semibold">{project.type}</h3>
-                    <p className="mt-1 flex items-center text-sm text-muted-foreground">
-                      <MapPin className="mr-1 h-3 w-3" />
-                      {project.location}
-                    </p>
-                    <p className="mt-3">{project.description}</p>
-                    <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <p className="text-muted-foreground">Duration</p>
-                        <p className="font-semibold">{project.duration}</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Project Value</p>
-                        <p className="font-semibold">{project.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Local Testimonials */}
-          <section className="bg-primary/5 py-16">
-            <div className="container">
-              <h2 className="text-center text-3xl font-bold">What Denver Homeowners Say</h2>
+              <h2 className="text-center text-3xl font-bold">Denver Contractors Love PaintQuote Pro</h2>
               
               <div className="mt-12 grid gap-8 md:grid-cols-2">
-                <div className="rounded-lg bg-background p-6">
-                  <div className="flex items-center gap-1">
+                <div className="rounded-lg bg-muted/50 p-6">
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 text-lg">
-                    "They know Denver weather! Waited for the perfect window between snow 
-                    and rain. The paint they recommended has survived two harsh winters 
-                    without any issues. Highly recommend for any Mile High home."
+                  <blockquote className="text-lg">
+                    "Denver's weather is unpredictable. Now I can quote jobs quickly between 
+                    storms and adjust pricing for weather delays automatically. Closed $35,000 
+                    in new business last month just from faster quotes."
                   </blockquote>
                   <footer className="mt-4">
-                    <strong>David Thompson</strong>
-                    <p className="text-sm text-muted-foreground">Wash Park Homeowner</p>
+                    <strong>Mark Stevens</strong>
+                    <p className="text-sm text-muted-foreground">Mountain View Painting, Highlands Ranch</p>
                   </footer>
                 </div>
 
-                <div className="rounded-lg bg-background p-6">
-                  <div className="flex items-center gap-1">
+                <div className="rounded-lg bg-muted/50 p-6">
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 text-lg">
-                    "Outstanding work on our Victorian in Capitol Hill. They matched the 
-                    historic colors perfectly and used period-appropriate techniques. The 
-                    high-altitude UV protection has kept colors vibrant for 3 years now."
+                  <blockquote className="text-lg">
+                    "The historic home templates are perfect for Capitol Hill projects. I can 
+                    include all the lead-safe requirements automatically. My professional quotes 
+                    helped me win 3 major restoration projects this year."
                   </blockquote>
                   <footer className="mt-4">
-                    <strong>Sarah Mitchell</strong>
-                    <p className="text-sm text-muted-foreground">Capitol Hill Historic Home</p>
+                    <strong>Lisa Anderson</strong>
+                    <p className="text-sm text-muted-foreground">Heritage Painters, Capitol Hill</p>
                   </footer>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-lg font-semibold mb-4">Join 180+ Denver contractors using PaintQuote Pro</p>
+                <Link
+                  href="/case-studies"
+                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                >
+                  Read More Success Stories
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* ROI Calculator Preview */}
+          <section className="bg-primary/5 py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-3xl font-bold mb-8">
+                  Your Denver Painting Business ROI
+                </h2>
+                
+                <div className="rounded-lg bg-background p-8 shadow-lg">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <h3 className="font-semibold mb-4">Current Situation</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="font-medium">20</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="font-medium">28%</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="font-medium">$4,200</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="font-medium">$23,520</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="font-medium text-primary">70</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="font-medium text-primary">48%</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="font-medium text-primary">$4,200</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="font-medium text-primary">$141,120</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
+                    <p className="text-lg mb-2">Additional Monthly Revenue</p>
+                    <p className="text-4xl font-bold text-green-600">+$117,600</p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      That's 2,450x return on your PaintQuote Pro investment
+                    </p>
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <Link
+                      href="/roi-calculator"
+                      className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
+                    >
+                      Calculate Your Exact ROI
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Denver Pricing */}
-          <section className="py-16 md:py-24">
+          {/* Service Areas */}
+          <section className="py-16">
             <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-center text-3xl font-bold">Denver Painting Pricing Guide</h2>
-                <p className="mt-4 text-center text-lg text-muted-foreground">
-                  Transparent pricing for Denver Metro painting projects
+              <div className="mx-auto max-w-3xl text-center">
+                <h2 className="text-3xl font-bold">Serving Painting Contractors Throughout Metro Denver</h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Wherever you operate in the Denver area, PaintQuote Pro helps you win more jobs
                 </p>
-
-                <div className="mt-12 overflow-hidden rounded-lg border">
-                  <table className="w-full">
-                    <thead className="bg-muted">
-                      <tr>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Service Type</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Average Denver Price</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Includes</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y">
-                      <tr>
-                        <td className="px-6 py-4">Interior Painting</td>
-                        <td className="px-6 py-4 font-semibold">$3.00 - $4.50/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">2 coats, wall prep, cleanup</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Exterior Siding</td>
-                        <td className="px-6 py-4 font-semibold">$3.75 - $5.75/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Weather-resistant paint, prep</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Historic Restoration</td>
-                        <td className="px-6 py-4 font-semibold">$5.00 - $8.00/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Lead-safe practices, detail work</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Cabinet Painting</td>
-                        <td className="px-6 py-4 font-semibold">$95 - $165/door</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Spray finish, hardware removal</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p className="mt-6 text-center text-sm text-muted-foreground">
-                  * Prices vary based on elevation, accessibility, and specific paint products
-                </p>
+              </div>
+              
+              <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                {serviceAreas.map((area) => (
+                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
+                    <MapPin className="h-4 w-4 mx-auto mb-1 text-muted-foreground" />
+                    {area}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -446,29 +435,28 @@ export default function DenverPaintingContractors() {
           <section className="bg-primary py-16 text-primary-foreground">
             <div className="container text-center">
               <h2 className="text-3xl font-bold">
-                Ready to Transform Your Denver Property?
+                Ready to Transform Your Denver Painting Business?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
-                Get your free quote today and discover why Denver homeowners trust us 
-                for weather-resistant, beautiful finishes that last.
+                Join 180+ Mile High City contractors who quote faster, win more jobs, 
+                and grow their revenue with PaintQuote Pro.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href="/quote"
+                  href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Get Free Quote Online
+                  Start Your Free Trial
                 </Link>
-                <a
-                  href="tel:3035550123"
+                <Link
+                  href="/pricing"
                   className="inline-flex items-center justify-center rounded-md border border-primary-foreground/20 px-8 py-3 text-base font-medium hover:bg-primary-foreground/10"
                 >
-                  <Phone className="mr-2 h-4 w-4" />
-                  Call (303) 555-0123
-                </a>
+                  View Pricing Plans
+                </Link>
               </div>
               <p className="mt-4 text-sm opacity-75">
-                Free estimates • Licensed & insured • Colorado Reg #456789
+                No credit card required • 5 free quotes • Cancel anytime
               </p>
             </div>
           </section>
@@ -477,29 +465,48 @@ export default function DenverPaintingContractors() {
           <section className="py-16">
             <div className="container">
               <div className="mx-auto max-w-3xl">
-                <h2 className="text-2xl font-bold">Why Choose Denver Painting Contractors?</h2>
+                <h2 className="text-2xl font-bold">Why Denver Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-muted-foreground">
                   <p>
-                    Painting in Denver, Colorado requires specialized knowledge and experience. 
-                    Our Denver painting contractors understand the unique challenges of the 
-                    Mile High City – from extreme temperature swings that can vary 40°F in a 
-                    single day to intense UV radiation at altitude that can quickly fade 
-                    inferior paints.
+                    Denver's painting market is unique. With over 500 painting contractors 
+                    serving Metro Denver, standing out requires more than just quality work. 
+                    The contractors winning the most jobs are those who respond fastest with 
+                    professional quotes.
                   </p>
                   <p>
-                    We exclusively use paints formulated for Colorado's climate, including 
-                    Sherwin-Williams Duration and Benjamin Moore Aura, which offer superior 
-                    adhesion and flexibility. These premium products are essential for 
-                    withstanding Denver's freeze-thaw cycles and preventing the cracking 
-                    and peeling common with standard paints.
+                    PaintQuote Pro was designed specifically for markets like Denver where 
+                    weather and efficiency matter. Our AI understands Colorado's climate 
+                    challenges, from extreme temperature swings that can vary 40°F in a day to 
+                    high-altitude UV exposure. The software automatically factors these into your quotes.
                   </p>
                   <p>
-                    Our team has painted homes in every Denver neighborhood, from the 
-                    historic Victorians of Capitol Hill to the modern developments in 
-                    Stapleton. We understand Denver's architectural diversity and HOA 
-                    requirements, ensuring your project meets all guidelines while 
-                    enhancing your property's beauty and value.
+                    Whether you're quoting a Victorian in Capitol Hill, a modern home in 
+                    Stapleton, or a commercial property in LoDo, PaintQuote Pro gives you 
+                    the tools to create accurate, professional quotes in minutes. Join the 
+                    180+ Denver area contractors who've already transformed their business 
+                    with our software.
                   </p>
+                </div>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-lg bg-muted/50 p-4">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-primary" />
+                      Save 4-5 Hours Per Quote
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Stop spending evenings creating quotes. Finish them on-site in minutes.
+                    </p>
+                  </div>
+                  <div className="rounded-lg bg-muted/50 p-4">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Win 40-60% More Jobs
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Fast, professional quotes dramatically increase your win rate.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -511,44 +518,42 @@ export default function DenverPaintingContractors() {
           <div className="container py-8">
             <div className="grid gap-8 md:grid-cols-4">
               <div>
-                <h3 className="text-lg font-semibold">Denver Office</h3>
-                <address className="mt-4 space-y-2 text-sm text-muted-foreground not-italic">
-                  <p>1550 Larimer St</p>
-                  <p>Denver, CO 80202</p>
-                  <p>(303) 555-0123</p>
-                  <p>denver@paintquotepro.com</p>
-                </address>
+                <h3 className="text-lg font-semibold">PaintQuote Pro</h3>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  AI-powered quoting software for painting contractors. 
+                  Quote in minutes, win more jobs.
+                </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Service Areas</h3>
+                <h3 className="text-lg font-semibold">Denver Resources</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Denver</li>
-                  <li>Aurora & Lakewood</li>
-                  <li>Littleton & Centennial</li>
-                  <li>Highlands Ranch</li>
+                  <li><Link href="/locations/denver" className="hover:text-foreground">Denver Overview</Link></li>
+                  <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
+                  <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
+                  <li><Link href="/pricing" className="hover:text-foreground">Pricing Plans</Link></li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Services</h3>
+                <h3 className="text-lg font-semibold">Features</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Residential Painting</li>
-                  <li>Commercial Painting</li>
-                  <li>Historic Restoration</li>
-                  <li>Cabinet Refinishing</li>
+                  <li>AI Quote Generation</li>
+                  <li>Mobile Estimating</li>
+                  <li>Professional Templates</li>
+                  <li>Analytics Dashboard</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Hours</h3>
+                <h3 className="text-lg font-semibold">Get Started</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
-                  <li>Saturday: 8:00 AM - 4:00 PM</li>
-                  <li>Sunday: Closed</li>
-                  <li>Weather permitting</li>
+                  <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
+                  <li><Link href="/contact" className="hover:text-foreground">Contact Sales</Link></li>
+                  <li><Link href="/support" className="hover:text-foreground">Support Center</Link></li>
+                  <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>
                 </ul>
               </div>
             </div>
             <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-              <p>&copy; 2025 PaintQuote Pro Denver. Licensed & Insured. Colorado Reg #456789</p>
+              <p>&copy; 2025 PaintQuote Pro. Software for painting contractors.</p>
             </div>
           </div>
         </footer>

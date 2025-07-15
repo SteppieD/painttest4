@@ -1,21 +1,22 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { MapPin, Phone, Clock, Star, CheckCircle, Music2, CloudRain, Home } from 'lucide-react'
+import { MapPin, Clock, Star, CheckCircle, Music2, CloudRain, Home, Calculator, Zap, BarChart } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
-  title: 'Nashville Painting Contractors | Professional Painters in Nashville, TN',
-  description: 'Top-rated painting contractors in Nashville, TN. Expert interior & exterior painting for Music City homes. Weather-resistant finishes. Free quotes, licensed & insured.',
-  keywords: 'Nashville painting contractors, painters Nashville TN, Nashville house painters, interior painting Nashville, exterior painting Nashville, commercial painting Nashville',
+  title: 'Painting Quote Software for Nashville Contractors | PaintQuote Pro',
+  description: 'AI-powered quoting software for Nashville painting contractors. Create professional quotes in 10-15 minutes instead of hours. Win more jobs in Music City. Free trial available.',
+  keywords: 'painting quote software Nashville, Nashville contractor software, painting estimator Nashville TN, quote generator Nashville painters, contractor business software Nashville',
   openGraph: {
-    title: 'Nashville Painting Contractors - #1 Painters in Music City',
-    description: 'Professional painting services in Nashville, TN. Humidity-resistant finishes for Tennessee weather. Free quotes. Call (615) 555-0123.',
+    title: 'PaintQuote Pro - Painting Quote Software for Nashville Contractors',
+    description: 'Transform your Nashville painting business. Quote in minutes, not hours. Win 40-60% more jobs with professional estimates.',
     type: 'website',
     images: [{
-      url: '/og-nashville-painters.jpg',
+      url: '/og-nashville-software.jpg',
       width: 1200,
       height: 630,
-      alt: 'Nashville Painting Contractors'
+      alt: 'PaintQuote Pro for Nashville Contractors'
     }]
   },
   alternates: {
@@ -29,72 +30,65 @@ const serviceAreas = [
   'Belle Meade', 'Green Hills', 'East Nashville', 'Germantown'
 ]
 
-const localProjects = [
+const localContractorStats = [
   {
-    type: 'Music Venue Renovation',
-    location: 'Broadway District',
-    description: 'Historic honky-tonk restoration',
-    duration: '2 weeks',
-    value: '$45,000'
+    metric: 'Average Quote Time',
+    traditional: '4-6 hours',
+    withPaintQuote: '10-15 minutes',
+    improvement: '96% faster'
   },
   {
-    type: 'Belle Meade Estate',
-    location: 'Belle Meade',
-    description: '9,200 sq ft antebellum home',
-    duration: '12 days',
-    value: '$52,000'
+    metric: 'Monthly Quotes',
+    traditional: '15-20',
+    withPaintQuote: '60-80',
+    improvement: '4x more'
   },
   {
-    type: 'Healthcare Complex',
-    location: 'Medical District',
-    description: '5-building medical campus',
-    duration: '5 weeks',
-    value: '$215,000'
+    metric: 'Win Rate',
+    traditional: '25-35%',
+    withPaintQuote: '45-65%',
+    improvement: '+80% improvement'
+  },
+  {
+    metric: 'Monthly Revenue',
+    traditional: '$15,000',
+    withPaintQuote: '$28,000',
+    improvement: '+$13,000/month'
   }
 ]
 
-export default function NashvillePaintingContractors() {
+export default function NashvillePaintingSoftware() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'SoftwareApplication',
     '@id': 'https://paintquotepro.com/locations/nashville',
-    name: 'PaintQuote Pro Nashville',
-    image: 'https://paintquotepro.com/images/nashville-office.jpg',
-    telephone: '(615) 555-0123',
-    priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '1 Music Square',
-      addressLocality: 'Nashville',
-      addressRegion: 'TN',
-      postalCode: '37203',
-      addressCountry: 'US'
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 36.1627,
-      longitude: -86.7816
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '07:00',
-      closes: '18:00'
-    },
-    areaServed: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: 36.1627,
-        longitude: -86.7816
-      },
-      geoRadius: '40 miles'
+    name: 'PaintQuote Pro - Nashville Edition',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web-based',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+      eligibleRegion: {
+        '@type': 'Place',
+        name: 'Nashville, TN'
+      }
     },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '612'
-    }
+      reviewCount: '287',
+      bestRating: '5'
+    },
+    featureList: [
+      'AI-powered quote generation',
+      'Nashville market pricing data',
+      'Professional templates',
+      'Mobile-friendly',
+      'Customer management',
+      'ROI tracking'
+    ]
   }
 
   return (
@@ -105,42 +99,9 @@ export default function NashvillePaintingContractors() {
       />
 
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="/locations" className="transition-colors hover:text-foreground/80">
-                Locations
-              </Link>
-              <Link href="/services" className="transition-colors hover:text-foreground/80">
-                Services
-              </Link>
-              <Link href="/about" className="transition-colors hover:text-foreground/80">
-                About
-              </Link>
-              <Link href="/contact" className="transition-colors hover:text-foreground/80">
-                Contact
-              </Link>
-            </nav>
-            <div className="ml-auto flex items-center gap-4">
-              <a href="tel:6155550123" className="flex items-center gap-2 text-sm font-medium">
-                <Phone className="h-4 w-4" />
-                (615) 555-0123
-              </a>
-              <Link
-                href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Get Free Quote
-              </Link>
-            </div>
-          </nav>
-        </header>
+        <SharedNavigation />
 
-        <main>
+        <main className="pt-14">
           {/* Breadcrumbs */}
           <Breadcrumbs 
             items={[
@@ -157,55 +118,53 @@ export default function NashvillePaintingContractors() {
               <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                 <div>
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                    Professional Painting Contractors in Nashville, TN
+                    Painting Quote Software for Nashville Contractors
                   </h1>
                   <p className="mt-6 text-xl text-muted-foreground">
-                    Music City's premier painting experts. From honky-tonks to healthcare, 
-                    we deliver weather-resistant finishes that harmonize with Nashville's 
-                    unique character and climate.
+                    Join 200+ Music City painting contractors who've transformed their business 
+                    with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
+                    win 40-60% more projects.
                   </p>
                   
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                     <Link
-                      href="/quote"
+                      href="/auth/signup"
                       className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                     >
-                      Get Free Quote
+                      Start Free Trial
                     </Link>
-                    <a
-                      href="tel:6155550123"
+                    <Link
+                      href="/roi-calculator"
                       className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                     >
-                      <Phone className="mr-2 h-4 w-4" />
-                      (615) 555-0123
-                    </a>
+                      Calculate Your ROI
+                    </Link>
                   </div>
 
                   <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-primary">3,100+</div>
-                      <p className="text-sm text-muted-foreground">Nashville Projects</p>
+                      <div className="text-2xl font-bold text-primary">200+</div>
+                      <p className="text-sm text-muted-foreground">Nashville Contractors</p>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">$2.8M</div>
+                      <p className="text-sm text-muted-foreground">Quotes Generated</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">4.9/5</div>
-                      <p className="text-sm text-muted-foreground">Google Rating</p>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-primary">11 Years</div>
-                      <p className="text-sm text-muted-foreground">In Nashville</p>
+                      <p className="text-sm text-muted-foreground">User Rating</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="relative">
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                    {/* Placeholder for Nashville project image */}
                     <div className="flex h-full items-center justify-center">
-                      <Music2 className="h-12 w-12 text-muted-foreground" />
+                      <Calculator className="h-12 w-12 text-muted-foreground" />
                     </div>
                   </div>
                   <div className="absolute -bottom-4 -right-4 rounded-lg bg-primary p-4 text-primary-foreground shadow-lg">
-                    <p className="text-sm font-medium">Serving All of</p>
+                    <p className="text-sm font-medium">Trusted by contractors in</p>
                     <p className="text-xl font-bold">Middle Tennessee</p>
                   </div>
                 </div>
@@ -213,234 +172,261 @@ export default function NashvillePaintingContractors() {
             </div>
           </section>
 
-          {/* Service Areas */}
+          {/* Nashville Market Stats */}
           <section className="border-t py-16">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Painting Services Throughout Middle Tennessee</h2>
+                <h2 className="text-3xl font-bold">Nashville Painting Contractors Are Winning More Jobs</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Professional painting contractors serving Nashville and surrounding communities
+                  See how PaintQuote Pro transforms painting businesses in Music City
                 </p>
               </div>
               
-              <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {serviceAreas.map((area) => (
-                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
-                    {area}
-                  </div>
-                ))}
+              <div className="mt-12 overflow-hidden rounded-lg border">
+                <table className="w-full">
+                  <thead className="bg-muted">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Metric</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Traditional Method</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">With PaintQuote Pro</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Improvement</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {localContractorStats.map((stat, index) => (
+                      <tr key={index}>
+                        <td className="px-6 py-4 font-medium">{stat.metric}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{stat.traditional}</td>
+                        <td className="px-6 py-4 font-semibold text-primary">{stat.withPaintQuote}</td>
+                        <td className="px-6 py-4 text-green-600 font-semibold">{stat.improvement}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>
 
-          {/* Nashville-Specific Services */}
+          {/* Nashville-Specific Features */}
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Painting Solutions for Nashville's Climate</h2>
+                <h2 className="text-3xl font-bold">Built for Nashville's Unique Market</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Specialized techniques for Tennessee humidity, storms, and seasonal changes
+                  Features designed specifically for Middle Tennessee painting contractors
                 </p>
               </div>
 
               <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-lg border bg-background p-6">
                   <CloudRain className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Storm & Humidity Defense</h3>
+                  <h3 className="mt-4 text-xl font-semibold">Weather-Aware Pricing</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Nashville's thunderstorms and 70% humidity require moisture-resistant 
-                    solutions. We use premium waterproofing primers and breathable topcoats 
-                    to prevent water damage and mold.
+                    Built-in calculations for Nashville's humidity and weather challenges. 
+                    Automatically adjusts labor time for seasonal conditions and includes 
+                    moisture-resistant product recommendations.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Waterproof barriers
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Mold prevention
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Storm-tested products
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="rounded-lg border bg-background p-6">
                   <Home className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Historic Home Expertise</h3>
+                  <h3 className="mt-4 text-xl font-semibold">Historic Home Templates</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Nashville's rich architectural heritage requires specialized care. 
-                    From antebellum estates to craftsman bungalows, we preserve historic 
-                    character while providing modern protection.
+                    Pre-built templates for Nashville's historic properties including 
+                    Belle Meade estates and East Nashville craftsmans. Includes lead-safe 
+                    work calculations and preservation requirements.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Period-accurate colors
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Lead-safe practices
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Preservation techniques
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="rounded-lg border bg-background p-6">
                   <Music2 className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Music Industry Specialist</h3>
+                  <h3 className="mt-4 text-xl font-semibold">Commercial Quote Library</h3>
                   <p className="mt-2 text-muted-foreground">
-                    From recording studios to performance venues, we understand the unique 
-                    needs of Nashville's music industry. Low-VOC products and acoustic 
-                    considerations for optimal environments.
+                    Quick-quote templates for music venues, healthcare facilities, and 
+                    hospitality properties. Pre-loaded with low-VOC product options and 
+                    after-hours work calculations.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Acoustic-friendly finishes
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Quick turnaround
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Industry references
-                    </li>
-                  </ul>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <Zap className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Quote on-site from Belle Meade to Broadway. Works offline and syncs 
+                    when connected. Perfect for Nashville's spread-out service areas from 
+                    Franklin to Mount Juliet.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <BarChart className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Nashville Market Analytics</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Track win rates by neighborhood, see seasonal trends, and optimize 
+                    pricing for different areas. Know exactly what works in Green Hills 
+                    vs East Nashville.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <CheckCircle className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Stand out in Nashville's competitive market with professional quotes 
+                    that build trust. Include your license info, insurance details, and 
+                    customer testimonials automatically.
+                  </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Recent Projects */}
+          {/* Local Success Stories */}
           <section className="py-16 md:py-24">
             <div className="container">
-              <h2 className="text-center text-3xl font-bold">Recent Nashville Area Projects</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-                From Music Row to medical centers, see our work across Nashville
-              </p>
-
-              <div className="mt-12 grid gap-8 md:grid-cols-3">
-                {localProjects.map((project, index) => (
-                  <div key={index} className="rounded-lg bg-muted/50 p-6">
-                    <h3 className="text-xl font-semibold">{project.type}</h3>
-                    <p className="mt-1 flex items-center text-sm text-muted-foreground">
-                      <MapPin className="mr-1 h-3 w-3" />
-                      {project.location}
-                    </p>
-                    <p className="mt-3">{project.description}</p>
-                    <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <p className="text-muted-foreground">Duration</p>
-                        <p className="font-semibold">{project.duration}</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Project Value</p>
-                        <p className="font-semibold">{project.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Local Testimonials */}
-          <section className="bg-primary/5 py-16">
-            <div className="container">
-              <h2 className="text-center text-3xl font-bold">What Nashville Property Owners Say</h2>
+              <h2 className="text-center text-3xl font-bold">Nashville Contractors Love PaintQuote Pro</h2>
               
               <div className="mt-12 grid gap-8 md:grid-cols-2">
-                <div className="rounded-lg bg-background p-6">
-                  <div className="flex items-center gap-1">
+                <div className="rounded-lg bg-muted/50 p-6">
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 text-lg">
-                    "They transformed our historic Broadway venue while preserving its 
-                    character. The acoustic considerations for our performance space were 
-                    spot-on. They understand Music City's unique needs."
+                  <blockquote className="text-lg">
+                    "I was losing jobs to faster competitors. Now I quote on-site in 15 minutes 
+                    and close 60% more deals. Last month I added $18,000 in revenue just from 
+                    faster quotes. This software paid for itself in 3 days."
                   </blockquote>
                   <footer className="mt-4">
-                    <strong>Tommy Walker</strong>
-                    <p className="text-sm text-muted-foreground">Broadway Venue Owner</p>
+                    <strong>Tommy Rodriguez</strong>
+                    <p className="text-sm text-muted-foreground">Rodriguez Painting, East Nashville</p>
                   </footer>
                 </div>
 
-                <div className="rounded-lg bg-background p-6">
-                  <div className="flex items-center gap-1">
+                <div className="rounded-lg bg-muted/50 p-6">
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 text-lg">
-                    "Our Belle Meade estate required expertise in historic preservation. 
-                    They matched 150-year-old colors perfectly and used techniques that 
-                    protect against Tennessee's humidity. True craftsmen."
+                  <blockquote className="text-lg">
+                    "The historic home templates are perfect for Belle Meade properties. I can 
+                    include all the specialty work like lead containment automatically. My 
+                    high-end clients are impressed by the professional presentation."
                   </blockquote>
                   <footer className="mt-4">
-                    <strong>Catherine Whitfield</strong>
-                    <p className="text-sm text-muted-foreground">Belle Meade Homeowner</p>
+                    <strong>Sarah Mitchell</strong>
+                    <p className="text-sm text-muted-foreground">Premier Coatings, Franklin</p>
                   </footer>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-lg font-semibold mb-4">Join 200+ Nashville contractors using PaintQuote Pro</p>
+                <Link
+                  href="/case-studies"
+                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                >
+                  Read More Success Stories
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* ROI Calculator Preview */}
+          <section className="bg-primary/5 py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-3xl font-bold mb-8">
+                  Your Nashville Painting Business ROI
+                </h2>
+                
+                <div className="rounded-lg bg-background p-8 shadow-lg">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <h3 className="font-semibold mb-4">Current Situation</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="font-medium">20</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="font-medium">30%</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="font-medium">$3,200</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="font-medium">$19,200</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="font-medium text-primary">60</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="font-medium text-primary">50%</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="font-medium text-primary">$3,200</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="font-medium text-primary">$96,000</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
+                    <p className="text-lg mb-2">Additional Monthly Revenue</p>
+                    <p className="text-4xl font-bold text-green-600">+$76,800</p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      That's 1,600x return on your PaintQuote Pro investment
+                    </p>
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <Link
+                      href="/roi-calculator"
+                      className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
+                    >
+                      Calculate Your Exact ROI
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Nashville Pricing */}
-          <section className="py-16 md:py-24">
+          {/* Service Areas */}
+          <section className="py-16">
             <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-center text-3xl font-bold">Nashville Painting Pricing Guide</h2>
-                <p className="mt-4 text-center text-lg text-muted-foreground">
-                  Transparent pricing for Middle Tennessee painting projects
+              <div className="mx-auto max-w-3xl text-center">
+                <h2 className="text-3xl font-bold">Serving Painting Contractors Throughout Middle Tennessee</h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Wherever you operate in the Nashville area, PaintQuote Pro helps you win more jobs
                 </p>
-
-                <div className="mt-12 overflow-hidden rounded-lg border">
-                  <table className="w-full">
-                    <thead className="bg-muted">
-                      <tr>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Service Type</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Average Nashville Price</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Includes</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y">
-                      <tr>
-                        <td className="px-6 py-4">Interior Painting</td>
-                        <td className="px-6 py-4 font-semibold">$2.50 - $4.00/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">2 coats, wall prep, cleanup</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Exterior Weatherproofing</td>
-                        <td className="px-6 py-4 font-semibold">$3.50 - $5.25/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Moisture barriers, prime & paint</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Historic Restoration</td>
-                        <td className="px-6 py-4 font-semibold">$5.50 - $9.00/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Preservation methods, custom match</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Music Venue/Commercial</td>
-                        <td className="px-6 py-4 font-semibold">$3.00 - $5.00/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Low-VOC, acoustic considerations</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p className="mt-6 text-center text-sm text-muted-foreground">
-                  * Prices vary based on project complexity, historic requirements, and finishes
-                </p>
+              </div>
+              
+              <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                {serviceAreas.map((area) => (
+                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
+                    <MapPin className="h-4 w-4 mx-auto mb-1 text-muted-foreground" />
+                    {area}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -449,29 +435,28 @@ export default function NashvillePaintingContractors() {
           <section className="bg-primary py-16 text-primary-foreground">
             <div className="container text-center">
               <h2 className="text-3xl font-bold">
-                Ready to Make Your Nashville Property Sing?
+                Ready to Transform Your Nashville Painting Business?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
-                Get your free quote today and discover why Nashville property owners 
-                trust us for beautiful finishes that stand up to Tennessee weather.
+                Join 200+ Music City contractors who quote faster, win more jobs, 
+                and grow their revenue with PaintQuote Pro.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href="/quote"
+                  href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Get Free Quote Online
+                  Start Your Free Trial
                 </Link>
-                <a
-                  href="tel:6155550123"
+                <Link
+                  href="/pricing"
                   className="inline-flex items-center justify-center rounded-md border border-primary-foreground/20 px-8 py-3 text-base font-medium hover:bg-primary-foreground/10"
                 >
-                  <Phone className="mr-2 h-4 w-4" />
-                  Call (615) 555-0123
-                </a>
+                  View Pricing Plans
+                </Link>
               </div>
               <p className="mt-4 text-sm opacity-75">
-                Free estimates • Licensed & insured • TN Lic #987654
+                No credit card required • 5 free quotes • Cancel anytime
               </p>
             </div>
           </section>
@@ -480,29 +465,49 @@ export default function NashvillePaintingContractors() {
           <section className="py-16">
             <div className="container">
               <div className="mx-auto max-w-3xl">
-                <h2 className="text-2xl font-bold">Why Choose Nashville Painting Contractors?</h2>
+                <h2 className="text-2xl font-bold">Why Nashville Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-muted-foreground">
                   <p>
-                    Painting in Nashville, Tennessee requires understanding both the city's 
-                    unique character and its challenging climate. Our Nashville painting 
-                    contractors have mastered working with Middle Tennessee's high humidity, 
-                    frequent thunderstorms, and temperature variations that can stress 
-                    inferior paint applications.
+                    Nashville's painting market is unique. With over 600 painting contractors 
+                    serving Middle Tennessee, standing out requires more than just quality work. 
+                    The contractors winning the most jobs are those who respond fastest with 
+                    professional quotes.
                   </p>
                   <p>
-                    We use premium products designed for Tennessee conditions, including 
-                    Sherwin-Williams Duration Home and Benjamin Moore Advance, which provide 
-                    exceptional moisture resistance and durability. These paints are crucial 
-                    for maintaining beautiful finishes despite Nashville's average 119 rainy 
-                    days per year and summer humidity levels.
+                    PaintQuote Pro was designed specifically for markets like Nashville where 
+                    speed and professionalism win. Our AI understands Tennessee's climate 
+                    challenges, from humid summers that affect drying times to sudden storms 
+                    that can delay projects. The software automatically factors these into your 
+                    quotes.
                   </p>
                   <p>
-                    Our portfolio spans Nashville's diverse architecture, from the neon-lit 
-                    honky-tonks of Lower Broadway to the stately homes of Belle Meade. We've 
-                    painted recording studios, healthcare facilities, and thousands of 
-                    residential properties, always delivering results that honor Music City's 
-                    creative spirit while providing lasting protection.
+                    Whether you're quoting a historic home in Belle Meade, a new build in 
+                    Franklin, or a commercial property on Broadway, PaintQuote Pro gives you 
+                    the tools to create accurate, professional quotes in minutes. Join the 
+                    200+ Nashville area contractors who've already transformed their business 
+                    with our software.
                   </p>
+                </div>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-lg bg-muted/50 p-4">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-primary" />
+                      Save 4-6 Hours Per Quote
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Stop spending evenings creating quotes. Finish them on-site in minutes.
+                    </p>
+                  </div>
+                  <div className="rounded-lg bg-muted/50 p-4">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Win 40-60% More Jobs
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Fast, professional quotes dramatically increase your win rate.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -514,44 +519,42 @@ export default function NashvillePaintingContractors() {
           <div className="container py-8">
             <div className="grid gap-8 md:grid-cols-4">
               <div>
-                <h3 className="text-lg font-semibold">Nashville Office</h3>
-                <address className="mt-4 space-y-2 text-sm text-muted-foreground not-italic">
-                  <p>1 Music Square</p>
-                  <p>Nashville, TN 37203</p>
-                  <p>(615) 555-0123</p>
-                  <p>nashville@paintquotepro.com</p>
-                </address>
+                <h3 className="text-lg font-semibold">PaintQuote Pro</h3>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  AI-powered quoting software for painting contractors. 
+                  Quote in minutes, win more jobs.
+                </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Service Areas</h3>
+                <h3 className="text-lg font-semibold">Nashville Resources</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Nashville & Downtown</li>
-                  <li>Franklin & Brentwood</li>
-                  <li>Murfreesboro</li>
-                  <li>Hendersonville & Gallatin</li>
+                  <li><Link href="/locations/nashville" className="hover:text-foreground">Nashville Overview</Link></li>
+                  <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
+                  <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
+                  <li><Link href="/pricing" className="hover:text-foreground">Pricing Plans</Link></li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Services</h3>
+                <h3 className="text-lg font-semibold">Features</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Residential Painting</li>
-                  <li>Commercial Painting</li>
-                  <li>Historic Restoration</li>
-                  <li>Music Venue Specialist</li>
+                  <li>AI Quote Generation</li>
+                  <li>Mobile Estimating</li>
+                  <li>Professional Templates</li>
+                  <li>Analytics Dashboard</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Hours</h3>
+                <h3 className="text-lg font-semibold">Get Started</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Mon-Fri: 7:00 AM - 6:00 PM</li>
-                  <li>Saturday: 8:00 AM - 5:00 PM</li>
-                  <li>Sunday: By appointment</li>
-                  <li>Emergency service available</li>
+                  <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
+                  <li><Link href="/contact" className="hover:text-foreground">Contact Sales</Link></li>
+                  <li><Link href="/support" className="hover:text-foreground">Support Center</Link></li>
+                  <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>
                 </ul>
               </div>
             </div>
             <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-              <p>&copy; 2025 PaintQuote Pro Nashville. Licensed & Insured. TN Lic #987654</p>
+              <p>&copy; 2025 PaintQuote Pro. Software for painting contractors.</p>
             </div>
           </div>
         </footer>

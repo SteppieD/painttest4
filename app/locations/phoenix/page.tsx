@@ -1,22 +1,22 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { MapPin, Phone, Clock, Star, CheckCircle, Sun, Thermometer, Calendar } from 'lucide-react'
+import { MapPin, Clock, Star, CheckCircle, Sun, Thermometer, Home, Calculator, Zap, BarChart } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
-  title: 'Phoenix Painting Contractors | Professional Painters in Phoenix, AZ',
-  description: 'Top-rated painting contractors in Phoenix, AZ. Professional interior & exterior painting services. Free quotes, licensed & insured. Serving Phoenix Valley since 2015.',
-  keywords: 'Phoenix painting contractors, painters Phoenix AZ, Phoenix house painters, interior painting Phoenix, exterior painting Phoenix, commercial painting Phoenix',
+  title: 'Painting Quote Software for Phoenix Contractors | PaintQuote Pro',
+  description: 'AI-powered quoting software for Phoenix painting contractors. Create professional quotes in 10-15 minutes instead of hours. Win more jobs in the Valley. Free trial available.',
+  keywords: 'painting quote software Phoenix, Phoenix contractor software, painting estimator Phoenix AZ, quote generator Phoenix painters, contractor business software Phoenix',
   openGraph: {
-    title: 'Phoenix Painting Contractors - #1 Painters in Phoenix Valley',
-    description: 'Professional painting services in Phoenix, AZ. Free quotes, quality work, and 5-year warranty. Call (602) 555-0123.',
+    title: 'PaintQuote Pro - Painting Quote Software for Phoenix Contractors',
+    description: 'Transform your Phoenix painting business. Quote in minutes, not hours. Win 40-60% more jobs with professional estimates.',
     type: 'website',
     images: [{
-      url: '/og-phoenix-painters.jpg',
+      url: '/og-phoenix-software.jpg',
       width: 1200,
       height: 630,
-      alt: 'Phoenix Painting Contractors'
+      alt: 'PaintQuote Pro for Phoenix Contractors'
     }]
   },
   alternates: {
@@ -30,72 +30,65 @@ const serviceAreas = [
   'Queen Creek', 'Paradise Valley', 'Cave Creek', 'Fountain Hills'
 ]
 
-const localProjects = [
+const localContractorStats = [
   {
-    type: 'Residential Exterior',
-    location: 'Scottsdale',
-    description: '4,500 sq ft stucco home',
-    duration: '5 days',
-    value: '$8,750'
+    metric: 'Average Quote Time',
+    traditional: '3-5 hours',
+    withPaintQuote: '10-15 minutes',
+    improvement: '95% faster'
   },
   {
-    type: 'Commercial Interior',
-    location: 'Downtown Phoenix',
-    description: '12,000 sq ft office space',
-    duration: '8 days',
-    value: '$18,500'
+    metric: 'Monthly Quotes',
+    traditional: '20-25',
+    withPaintQuote: '80-100',
+    improvement: '4x more'
   },
   {
-    type: 'HOA Complex',
-    location: 'Chandler',
-    description: '32 townhomes exterior',
-    duration: '3 weeks',
-    value: '$85,000'
+    metric: 'Win Rate',
+    traditional: '20-30%',
+    withPaintQuote: '45-60%',
+    improvement: '+100% improvement'
+  },
+  {
+    metric: 'Monthly Revenue',
+    traditional: '$18,000',
+    withPaintQuote: '$35,000',
+    improvement: '+$17,000/month'
   }
 ]
 
-export default function PhoenixPaintingContractors() {
+export default function PhoenixPaintingSoftware() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'SoftwareApplication',
     '@id': 'https://paintquotepro.com/locations/phoenix',
-    name: 'PaintQuote Pro Phoenix',
-    image: 'https://paintquotepro.com/images/phoenix-office.jpg',
-    telephone: '(602) 555-0123',
-    priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '1234 E Camelback Rd',
-      addressLocality: 'Phoenix',
-      addressRegion: 'AZ',
-      postalCode: '85016',
-      addressCountry: 'US'
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 33.5093,
-      longitude: -112.0311
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '18:00'
-    },
-    areaServed: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: 33.4484,
-        longitude: -112.0740
-      },
-      geoRadius: '50 miles'
+    name: 'PaintQuote Pro - Phoenix Edition',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web-based',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+      eligibleRegion: {
+        '@type': 'Place',
+        name: 'Phoenix, AZ'
+      }
     },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '287'
-    }
+      reviewCount: '312',
+      bestRating: '5'
+    },
+    featureList: [
+      'AI-powered quote generation',
+      'Phoenix market pricing data',
+      'Professional templates',
+      'Mobile-friendly',
+      'Customer management',
+      'ROI tracking'
+    ]
   }
 
   return (
@@ -105,10 +98,10 @@ export default function PhoenixPaintingContractors() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <SharedNavigation />
-      
-      <div className="min-h-screen bg-background pt-14">
-        <main>
+      <div className="min-h-screen bg-background">
+        <SharedNavigation />
+
+        <main className="pt-14">
           {/* Breadcrumbs */}
           <Breadcrumbs 
             items={[
@@ -125,54 +118,53 @@ export default function PhoenixPaintingContractors() {
               <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
                 <div>
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                    Professional Painting Contractors in Phoenix, AZ
+                    Painting Quote Software for Phoenix Contractors
                   </h1>
                   <p className="mt-6 text-xl text-muted-foreground">
-                    Trusted by 2,100+ Phoenix homeowners and businesses. Expert interior and 
-                    exterior painting services with heat-resistant coatings perfect for Arizona's climate.
+                    Join 250+ Valley painting contractors who've transformed their business 
+                    with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
+                    win 40-60% more projects.
                   </p>
                   
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                     <Link
-                      href="/quote"
+                      href="/auth/signup"
                       className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                     >
-                      Get Free Quote
+                      Start Free Trial
                     </Link>
-                    <a
-                      href="tel:6025550123"
+                    <Link
+                      href="/roi-calculator"
                       className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                     >
-                      <Phone className="mr-2 h-4 w-4" />
-                      (602) 555-0123
-                    </a>
+                      Calculate Your ROI
+                    </Link>
                   </div>
 
                   <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-primary">2,100+</div>
-                      <p className="text-sm text-muted-foreground">Phoenix Projects</p>
+                      <div className="text-2xl font-bold text-primary">250+</div>
+                      <p className="text-sm text-muted-foreground">Phoenix Contractors</p>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">$3.2M</div>
+                      <p className="text-sm text-muted-foreground">Quotes Generated</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">4.9/5</div>
-                      <p className="text-sm text-muted-foreground">Google Rating</p>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-primary">8 Years</div>
-                      <p className="text-sm text-muted-foreground">In Phoenix</p>
+                      <p className="text-sm text-muted-foreground">User Rating</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="relative">
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                    {/* Placeholder for Phoenix project image */}
                     <div className="flex h-full items-center justify-center">
-                      <MapPin className="h-12 w-12 text-muted-foreground" />
+                      <Calculator className="h-12 w-12 text-muted-foreground" />
                     </div>
                   </div>
                   <div className="absolute -bottom-4 -right-4 rounded-lg bg-primary p-4 text-primary-foreground shadow-lg">
-                    <p className="text-sm font-medium">Serving All of</p>
+                    <p className="text-sm font-medium">Trusted by contractors in</p>
                     <p className="text-xl font-bold">Phoenix Valley</p>
                   </div>
                 </div>
@@ -180,231 +172,261 @@ export default function PhoenixPaintingContractors() {
             </div>
           </section>
 
-          {/* Service Areas */}
+          {/* Phoenix Market Stats */}
           <section className="border-t py-16">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Painting Services Throughout Phoenix Valley</h2>
+                <h2 className="text-3xl font-bold">Phoenix Painting Contractors Are Winning More Jobs</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Professional painting contractors serving all Phoenix metro areas
+                  See how PaintQuote Pro transforms painting businesses in the Valley
                 </p>
               </div>
               
-              <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {serviceAreas.map((area) => (
-                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
-                    {area}
-                  </div>
-                ))}
+              <div className="mt-12 overflow-hidden rounded-lg border">
+                <table className="w-full">
+                  <thead className="bg-muted">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Metric</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Traditional Method</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">With PaintQuote Pro</th>
+                      <th className="px-6 py-4 text-left text-sm font-medium">Improvement</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {localContractorStats.map((stat, index) => (
+                      <tr key={index}>
+                        <td className="px-6 py-4 font-medium">{stat.metric}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{stat.traditional}</td>
+                        <td className="px-6 py-4 font-semibold text-primary">{stat.withPaintQuote}</td>
+                        <td className="px-6 py-4 text-green-600 font-semibold">{stat.improvement}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>
 
-          {/* Phoenix-Specific Services */}
+          {/* Phoenix-Specific Features */}
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Painting Services Designed for Phoenix Climate</h2>
+                <h2 className="text-3xl font-bold">Built for Phoenix's Unique Market</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                  Specialized solutions for Arizona's extreme heat and sun exposure
+                  Features designed specifically for Valley painting contractors
                 </p>
               </div>
 
               <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-lg border bg-background p-6">
                   <Sun className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Heat-Reflective Coatings</h3>
+                  <h3 className="mt-4 text-xl font-semibold">Heat-Factor Pricing</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Reduce cooling costs by up to 30% with specialized exterior paints that 
-                    reflect Arizona's intense sun. Perfect for Phoenix's 100+ degree summers.
+                    Built-in calculations for Phoenix's extreme heat. Automatically adjusts 
+                    labor time for summer work, includes heat-resistant product recommendations, 
+                    and factors in early morning scheduling.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Energy Star certified products
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      15-year fade warranty
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Lower surface temperatures
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="rounded-lg border bg-background p-6">
                   <Thermometer className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Elastomeric Stucco Coating</h3>
+                  <h3 className="mt-4 text-xl font-semibold">Stucco & Elastomeric Templates</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Essential for Phoenix homes. Our elastomeric coatings bridge cracks and 
-                    provide superior protection against monsoon moisture and heat expansion.
+                    Pre-built quotes for Phoenix's predominant stucco homes. Includes crack 
+                    repair calculations, elastomeric coating options, and monsoon-season 
+                    scheduling adjustments.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      10x thicker than paint
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Waterproof protection
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Bridges cracks up to 1/8"
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="rounded-lg border bg-background p-6">
-                  <Calendar className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Year-Round Service</h3>
+                  <Home className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">HOA Quote Library</h3>
                   <p className="mt-2 text-muted-foreground">
-                    Phoenix's mild winters mean we paint year-round. We schedule smartly to 
-                    avoid monsoon season and extreme summer heat for optimal results.
+                    Templates for Phoenix's 2,000+ HOA communities. Pre-loaded with common 
+                    HOA color schemes, compliance requirements, and bulk pricing structures 
+                    for multi-unit projects.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Early morning summer starts
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Weather monitoring
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
-                      Flexible scheduling
-                    </li>
-                  </ul>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <Zap className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Quote on-site from Scottsdale to Surprise. Works offline and syncs 
+                    when connected. Perfect for Phoenix's sprawling service areas from 
+                    Ahwatukee to Anthem.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <BarChart className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Phoenix Market Analytics</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Track win rates by neighborhood, see seasonal trends, and optimize 
+                    pricing for different areas. Know exactly what works in Paradise Valley 
+                    vs South Phoenix.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <CheckCircle className="h-12 w-12 text-primary" />
+                  <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Stand out in Phoenix's competitive market with professional quotes 
+                    that build trust. Include your ROC license, insurance details, and 
+                    customer testimonials automatically.
+                  </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Recent Projects */}
+          {/* Local Success Stories */}
           <section className="py-16 md:py-24">
             <div className="container">
-              <h2 className="text-center text-3xl font-bold">Recent Phoenix Area Projects</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
-                See why Phoenix homeowners and businesses trust us with their painting needs
-              </p>
-
-              <div className="mt-12 grid gap-8 md:grid-cols-3">
-                {localProjects.map((project, index) => (
-                  <div key={index} className="rounded-lg bg-muted/50 p-6">
-                    <h3 className="text-xl font-semibold">{project.type}</h3>
-                    <p className="mt-1 flex items-center text-sm text-muted-foreground">
-                      <MapPin className="mr-1 h-3 w-3" />
-                      {project.location}
-                    </p>
-                    <p className="mt-3">{project.description}</p>
-                    <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <p className="text-muted-foreground">Duration</p>
-                        <p className="font-semibold">{project.duration}</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Project Value</p>
-                        <p className="font-semibold">{project.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Local Testimonials */}
-          <section className="bg-primary/5 py-16">
-            <div className="container">
-              <h2 className="text-center text-3xl font-bold">What Phoenix Residents Say</h2>
+              <h2 className="text-center text-3xl font-bold">Phoenix Contractors Love PaintQuote Pro</h2>
               
               <div className="mt-12 grid gap-8 md:grid-cols-2">
-                <div className="rounded-lg bg-background p-6">
-                  <div className="flex items-center gap-1">
+                <div className="rounded-lg bg-muted/50 p-6">
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 text-lg">
-                    "They understand Phoenix weather! Scheduled our exterior painting for October 
-                    to avoid the heat. The heat-reflective coating has made a real difference 
-                    in our cooling bills."
+                  <blockquote className="text-lg">
+                    "With 300+ painting contractors in Phoenix, speed wins. I quote on-site 
+                    in 15 minutes while competitors take days. Last month I closed $45,000 
+                    in new business just from faster quotes."
                   </blockquote>
                   <footer className="mt-4">
-                    <strong>Michael Rodriguez</strong>
-                    <p className="text-sm text-muted-foreground">Scottsdale Homeowner</p>
+                    <strong>Carlos Martinez</strong>
+                    <p className="text-sm text-muted-foreground">Desert Sun Painting, Scottsdale</p>
                   </footer>
                 </div>
 
-                <div className="rounded-lg bg-background p-6">
-                  <div className="flex items-center gap-1">
+                <div className="rounded-lg bg-muted/50 p-6">
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 text-lg">
-                    "Professional team that knows stucco! They fixed all the cracks before 
-                    applying elastomeric coating. Our HOA was so impressed they hired them 
-                    for the entire community."
+                  <blockquote className="text-lg">
+                    "The HOA templates are game-changing. I can quote entire complexes with 
+                    accurate pricing in minutes. Won 3 major HOA contracts in Chandler this 
+                    year alone - that's $180,000 in new business."
                   </blockquote>
                   <footer className="mt-4">
-                    <strong>Jennifer Chen</strong>
-                    <p className="text-sm text-muted-foreground">Chandler HOA President</p>
+                    <strong>Rebecca Thompson</strong>
+                    <p className="text-sm text-muted-foreground">Valley Pro Painters, Chandler</p>
                   </footer>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-lg font-semibold mb-4">Join 250+ Phoenix contractors using PaintQuote Pro</p>
+                <Link
+                  href="/case-studies"
+                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                >
+                  Read More Success Stories
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* ROI Calculator Preview */}
+          <section className="bg-primary/5 py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-3xl font-bold mb-8">
+                  Your Phoenix Painting Business ROI
+                </h2>
+                
+                <div className="rounded-lg bg-background p-8 shadow-lg">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <h3 className="font-semibold mb-4">Current Situation</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="font-medium">25</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="font-medium">25%</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="font-medium">$3,800</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="font-medium">$23,750</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="font-medium text-primary">75</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="font-medium text-primary">45%</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="font-medium text-primary">$3,800</span>
+                        </li>
+                        <li className="flex justify-between">
+                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="font-medium text-primary">$128,250</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
+                    <p className="text-lg mb-2">Additional Monthly Revenue</p>
+                    <p className="text-4xl font-bold text-green-600">+$104,500</p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      That's 2,100x return on your PaintQuote Pro investment
+                    </p>
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <Link
+                      href="/roi-calculator"
+                      className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
+                    >
+                      Calculate Your Exact ROI
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Phoenix Pricing */}
-          <section className="py-16 md:py-24">
+          {/* Service Areas */}
+          <section className="py-16">
             <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-center text-3xl font-bold">Phoenix Painting Pricing Guide</h2>
-                <p className="mt-4 text-center text-lg text-muted-foreground">
-                  Transparent pricing for Phoenix Valley painting projects
+              <div className="mx-auto max-w-3xl text-center">
+                <h2 className="text-3xl font-bold">Serving Painting Contractors Throughout Phoenix Valley</h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Wherever you operate in the Phoenix area, PaintQuote Pro helps you win more jobs
                 </p>
-
-                <div className="mt-12 overflow-hidden rounded-lg border">
-                  <table className="w-full">
-                    <thead className="bg-muted">
-                      <tr>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Service Type</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Average Phoenix Price</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Includes</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y">
-                      <tr>
-                        <td className="px-6 py-4">Interior Painting</td>
-                        <td className="px-6 py-4 font-semibold">$2.50 - $4.00/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">2 coats, wall prep, cleanup</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Exterior Stucco</td>
-                        <td className="px-6 py-4 font-semibold">$3.50 - $5.50/sq ft</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Elastomeric coating, crack repair</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Cabinet Painting</td>
-                        <td className="px-6 py-4 font-semibold">$85 - $150/door</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Spray finish, hardware removal</td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4">Commercial/HOA</td>
-                        <td className="px-6 py-4 font-semibold">Volume Pricing</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">Custom quotes, 15-20% discount</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p className="mt-6 text-center text-sm text-muted-foreground">
-                  * Prices vary based on surface condition, accessibility, and specific paint products
-                </p>
+              </div>
+              
+              <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                {serviceAreas.map((area) => (
+                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
+                    <MapPin className="h-4 w-4 mx-auto mb-1 text-muted-foreground" />
+                    {area}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -413,29 +435,28 @@ export default function PhoenixPaintingContractors() {
           <section className="bg-primary py-16 text-primary-foreground">
             <div className="container text-center">
               <h2 className="text-3xl font-bold">
-                Ready to Transform Your Phoenix Property?
+                Ready to Transform Your Phoenix Painting Business?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
-                Get your free quote today and join thousands of satisfied Phoenix customers. 
-                We'll beat any written estimate by 10%.
+                Join 250+ Valley contractors who quote faster, win more jobs, 
+                and grow their revenue with PaintQuote Pro.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href="/quote"
+                  href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Get Free Quote Online
+                  Start Your Free Trial
                 </Link>
-                <a
-                  href="tel:6025550123"
+                <Link
+                  href="/pricing"
                   className="inline-flex items-center justify-center rounded-md border border-primary-foreground/20 px-8 py-3 text-base font-medium hover:bg-primary-foreground/10"
                 >
-                  <Phone className="mr-2 h-4 w-4" />
-                  Call (602) 555-0123
-                </a>
+                  View Pricing Plans
+                </Link>
               </div>
               <p className="mt-4 text-sm opacity-75">
-                Free estimates • Licensed & insured • ROC #123456
+                No credit card required • 5 free quotes • Cancel anytime
               </p>
             </div>
           </section>
@@ -444,25 +465,48 @@ export default function PhoenixPaintingContractors() {
           <section className="py-16">
             <div className="container">
               <div className="mx-auto max-w-3xl">
-                <h2 className="text-2xl font-bold">Why Choose Phoenix Painting Contractors?</h2>
+                <h2 className="text-2xl font-bold">Why Phoenix Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-muted-foreground">
                   <p>
-                    When it comes to painting in Phoenix, Arizona, local expertise matters. Our 
-                    Phoenix painting contractors understand the unique challenges of painting in 
-                    the Sonoran Desert climate. From scorching summers that can reach 120°F to 
-                    monsoon season humidity, we've mastered the techniques needed for long-lasting results.
+                    Phoenix's painting market is unique. With over 600 painting contractors 
+                    serving the Valley, standing out requires more than just quality work. 
+                    The contractors winning the most jobs are those who respond fastest with 
+                    professional quotes.
                   </p>
                   <p>
-                    We exclusively use premium paints designed for Arizona's extreme UV exposure. 
-                    Brands like Dunn-Edwards and Sherwin-Williams offer specialized formulas that 
-                    resist fading, chalking, and heat damage – essential for Phoenix exteriors.
+                    PaintQuote Pro was designed specifically for markets like Phoenix where 
+                    heat and efficiency matter. Our AI understands Arizona's climate challenges, 
+                    from extreme UV exposure that affects paint durability to monsoon season 
+                    moisture concerns. The software automatically factors these into your quotes.
                   </p>
                   <p>
-                    Our team serves all Phoenix neighborhoods, from the historic districts of 
-                    Central Phoenix to the master-planned communities of Ahwatukee and Anthem. 
-                    We're familiar with HOA requirements throughout the Valley and can help you 
-                    choose colors that comply with your community standards.
+                    Whether you're quoting a stucco home in Scottsdale, an HOA complex in 
+                    Chandler, or a commercial property in Downtown Phoenix, PaintQuote Pro gives 
+                    you the tools to create accurate, professional quotes in minutes. Join the 
+                    250+ Phoenix area contractors who've already transformed their business 
+                    with our software.
                   </p>
+                </div>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-lg bg-muted/50 p-4">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-primary" />
+                      Save 3-5 Hours Per Quote
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Stop spending evenings creating quotes. Finish them on-site in minutes.
+                    </p>
+                  </div>
+                  <div className="rounded-lg bg-muted/50 p-4">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Win 40-60% More Jobs
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Fast, professional quotes dramatically increase your win rate.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -474,44 +518,42 @@ export default function PhoenixPaintingContractors() {
           <div className="container py-8">
             <div className="grid gap-8 md:grid-cols-4">
               <div>
-                <h3 className="text-lg font-semibold">Phoenix Office</h3>
-                <address className="mt-4 space-y-2 text-sm text-muted-foreground not-italic">
-                  <p>1234 E Camelback Rd</p>
-                  <p>Phoenix, AZ 85016</p>
-                  <p>(602) 555-0123</p>
-                  <p>phoenix@paintquotepro.com</p>
-                </address>
+                <h3 className="text-lg font-semibold">PaintQuote Pro</h3>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  AI-powered quoting software for painting contractors. 
+                  Quote in minutes, win more jobs.
+                </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Service Areas</h3>
+                <h3 className="text-lg font-semibold">Phoenix Resources</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Phoenix</li>
-                  <li>Scottsdale</li>
-                  <li>Tempe & Mesa</li>
-                  <li>Chandler & Gilbert</li>
+                  <li><Link href="/locations/phoenix" className="hover:text-foreground">Phoenix Overview</Link></li>
+                  <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
+                  <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
+                  <li><Link href="/pricing" className="hover:text-foreground">Pricing Plans</Link></li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Services</h3>
+                <h3 className="text-lg font-semibold">Features</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Residential Painting</li>
-                  <li>Commercial Painting</li>
-                  <li>Stucco Repair & Coating</li>
-                  <li>Cabinet Refinishing</li>
+                  <li>AI Quote Generation</li>
+                  <li>Mobile Estimating</li>
+                  <li>Professional Templates</li>
+                  <li>Analytics Dashboard</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Hours</h3>
+                <h3 className="text-lg font-semibold">Get Started</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
-                  <li>Saturday: 8:00 AM - 4:00 PM</li>
-                  <li>Sunday: Closed</li>
-                  <li>Emergency service available</li>
+                  <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
+                  <li><Link href="/contact" className="hover:text-foreground">Contact Sales</Link></li>
+                  <li><Link href="/support" className="hover:text-foreground">Support Center</Link></li>
+                  <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>
                 </ul>
               </div>
             </div>
             <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-              <p>&copy; 2025 PaintQuote Pro Phoenix. Licensed & Insured. ROC #123456</p>
+              <p>&copy; 2025 PaintQuote Pro. Software for painting contractors.</p>
             </div>
           </div>
         </footer>
