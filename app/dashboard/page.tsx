@@ -1,7 +1,8 @@
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
 import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock } from 'lucide-react'
 import Link from 'next/link'
@@ -85,13 +86,11 @@ async function getDashboardData(companyId: number) {
         where: {
           companyId,
           status: 'sent',
-          sentAt: {
-            not: null,
-          },
+          deletedAt: null,
         },
         select: {
           createdAt: true,
-          sentAt: true,
+          updatedAt: true,
         },
       }),
     ])
@@ -100,12 +99,11 @@ async function getDashboardData(companyId: number) {
     const totalQuotedAmount = allQuotes.reduce((sum, quote) => sum + quote.totalAmount.toNumber(), 0)
     const monthlyQuotedAmount = monthlyQuotes.reduce((sum, quote) => sum + quote.totalAmount.toNumber(), 0)
     
-    // Calculate average response time
+    // Calculate average response time (using updatedAt as proxy for when quote was sent)
     let avgResponseTime = null
     if (sentQuotes.length > 0) {
       const responseTimes = sentQuotes
-        .filter(q => q.sentAt)
-        .map(q => (q.sentAt!.getTime() - q.createdAt.getTime()) / (1000 * 60 * 60)) // hours
+        .map(q => (q.updatedAt.getTime() - q.createdAt.getTime()) / (1000 * 60 * 60)) // hours
       avgResponseTime = responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length
     }
 

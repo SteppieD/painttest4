@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import SharedNavigation from '@/components/shared-navigation'
 
 export default function SignIn() {
   const router = useRouter()
@@ -39,8 +40,10 @@ export default function SignIn() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8">
+    <>
+      <SharedNavigation />
+      <div className="flex min-h-screen flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 pt-14">
+        <div className="w-full max-w-md space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight">
             Sign in to your account
@@ -100,6 +103,6 @@ export default function SignIn() {
           </div>
         </form>
       </div>
-    </div>
+    </>
   )
 }

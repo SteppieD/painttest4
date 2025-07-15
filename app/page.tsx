@@ -1,47 +1,11 @@
 import Link from 'next/link'
 import { Check, Zap, Shield, BarChart, MessageSquare, Calculator } from 'lucide-react'
+import SharedNavigation from '@/components/shared-navigation'
 
 export default function Home() {
   return (
     <>
-      {/* Navigation Header */}
-      <header className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container flex h-14 items-center">
-          <div className="mr-4 flex">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="#features" className="transition-colors hover:text-foreground/80">
-                Features
-              </Link>
-              <Link href="/roi-calculator" className="transition-colors hover:text-foreground/80">
-                ROI Calculator
-              </Link>
-              <Link href="/case-studies" className="transition-colors hover:text-foreground/80">
-                Success Stories
-              </Link>
-              <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-                Pricing
-              </Link>
-            </nav>
-          </div>
-          <div className="flex flex-1 items-center justify-end space-x-2">
-            <Link
-              href="/auth/signin"
-              className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/signup"
-              className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-            >
-              Start Free Trial
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <SharedNavigation />
 
       {/* Hero Section */}
       <main className="flex-1">

@@ -441,6 +441,64 @@ debugger // Breakpoint when DevTools open
 npx prisma studio
 ```
 
+## 🐳 Docker Development
+
+### Common Docker Issues and Solutions
+
+1. **Schema Mismatch Errors**
+   ```bash
+   # Apply migrations in container
+   docker exec paintquotepro-web npx prisma migrate deploy
+   docker exec paintquotepro-web npx prisma generate
+   ```
+
+2. **Authentication 401 Errors**
+   ```bash
+   # Create test user with correct password
+   docker exec paintquotepro-web node -e "
+   const bcrypt = require('bcryptjs');
+   bcrypt.hash('test123', 10).then(hash => console.log(hash));"
+   
+   # Update user password in database
+   docker exec paintquotepro-db psql -U paintquote -d paintquotepro -c "
+   UPDATE \"User\" SET \"passwordHash\" = 'YOUR_HASH_HERE' 
+   WHERE email = 'test@paintquotepro.com';"
+   ```
+
+3. **Dashboard 500 Errors**
+   - Check for queries to non-existent fields (e.g., sentAt)
+   - Ensure all UI components are imported
+   - Verify schema matches between Prisma and database
+
+4. **Container Connection Issues**
+   - Use container names (postgres) not localhost
+   - Remove quotes from DATABASE_URL in docker-compose
+   - Ensure health checks pass before app starts
+
+### Docker Commands Reference
+
+```bash
+# View logs
+docker logs paintquotepro-web --tail 50
+
+# Access container shell
+docker exec -it paintquotepro-web sh
+
+# Run Prisma commands
+docker exec paintquotepro-web npx prisma studio
+docker exec paintquotepro-web npx prisma migrate status
+
+# Database access
+docker exec paintquotepro-db psql -U paintquote -d paintquotepro
+
+# Restart containers
+docker restart paintquotepro-web paintquotepro-db
+
+# Full reset
+docker-compose -f docker-compose.simple.yml down -v
+docker-compose -f docker-compose.simple.yml up -d
+```
+
 ## 📚 Learning Resources
 
 ### Project-Specific

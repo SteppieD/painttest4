@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { MapPin, Phone, Clock, Star, CheckCircle, Sun, Thermometer, Calendar } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
   title: 'Phoenix Painting Contractors | Professional Painters in Phoenix, AZ',
@@ -104,42 +105,9 @@ export default function PhoenixPaintingContractors() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="/locations" className="transition-colors hover:text-foreground/80">
-                Locations
-              </Link>
-              <Link href="/services" className="transition-colors hover:text-foreground/80">
-                Services
-              </Link>
-              <Link href="/about" className="transition-colors hover:text-foreground/80">
-                About
-              </Link>
-              <Link href="/contact" className="transition-colors hover:text-foreground/80">
-                Contact
-              </Link>
-            </nav>
-            <div className="ml-auto flex items-center gap-4">
-              <a href="tel:6025550123" className="flex items-center gap-2 text-sm font-medium">
-                <Phone className="h-4 w-4" />
-                (602) 555-0123
-              </a>
-              <Link
-                href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Get Free Quote
-              </Link>
-            </div>
-          </nav>
-        </header>
-
+      <SharedNavigation />
+      
+      <div className="min-h-screen bg-background pt-14">
         <main>
           {/* Breadcrumbs */}
           <Breadcrumbs 

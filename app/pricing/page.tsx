@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Check, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import SharedNavigation from '@/components/shared-navigation'
 
 const plans = {
   free: {
@@ -116,180 +117,183 @@ export default function PricingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Quote in Minutes, Not Hours
-          </h1>
-          <p className="mt-4 text-xl text-muted-foreground">
-            Join 2,000+ painting contractors winning more jobs with professional quotes delivered in under 24 hours
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-600" />
-              <span>Average quote time: 15 minutes</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-600" />
-              <span>40-60% higher win rates</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-600" />
-              <span>Professional templates included</span>
+    <>
+      <SharedNavigation />
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-14">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Quote in Minutes, Not Hours
+            </h1>
+            <p className="mt-4 text-xl text-muted-foreground">
+              Join 2,000+ painting contractors winning more jobs with professional quotes delivered in under 24 hours
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <Check className="h-5 w-5 text-green-600" />
+                <span>Average quote time: 15 minutes</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="h-5 w-5 text-green-600" />
+                <span>40-60% higher win rates</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="h-5 w-5 text-green-600" />
+                <span>Professional templates included</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-8 flex justify-center">
-          <Tabs value={billingPeriod} onValueChange={(v) => setBillingPeriod(v as 'monthly' | 'yearly')} className="w-fit">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="monthly">Monthly</TabsTrigger>
-              <TabsTrigger value="yearly">
-                Yearly
-                <span className="ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                  Save 17%
-                </span>
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-
-        <div className="mt-12 grid gap-8 lg:grid-cols-4">
-          {Object.entries(plans).map(([key, plan]) => (
-            <Card 
-              key={key} 
-              className={`relative flex flex-col ${
-                (plan as any).popular ? 'border-primary shadow-lg scale-105' : ''
-              }`}
-            >
-              {(plan as any).popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
-                  <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
-                    Most Popular
+          <div className="mt-8 flex justify-center">
+            <Tabs value={billingPeriod} onValueChange={(v) => setBillingPeriod(v as 'monthly' | 'yearly')} className="w-fit">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                <TabsTrigger value="yearly">
+                  Yearly
+                  <span className="ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                    Save 17%
                   </span>
-                </div>
-              )}
-              
-              <CardHeader>
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <CardDescription>{plan.description}</CardDescription>
-                {(plan as any).highlight && (
-                  <p className="mt-2 text-sm font-medium text-primary">
-                    {(plan as any).highlight}
-                  </p>
-                )}
-              </CardHeader>
-              
-              <CardContent className="flex-1">
-                <div className="mb-8">
-                  {plan.monthlyPrice !== null ? (
-                    <div>
-                      <span className="text-4xl font-bold">
-                        ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round(plan.yearlyPrice / 12)}
-                      </span>
-                      <span className="text-muted-foreground">/month</span>
-                      {billingPeriod === 'yearly' && plan.yearlyPrice > 0 && (
-                        <p className="mt-1 text-sm text-muted-foreground">
-                          ${plan.yearlyPrice} billed annually
-                        </p>
-                      )}
-                    </div>
-                  ) : (
-                    <div className="text-3xl font-bold">Custom Pricing</div>
-                  )}
-                </div>
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
 
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-sm font-medium text-muted-foreground mb-3">Features included:</h4>
-                    <ul className="space-y-2">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-start">
-                          <Check className="mr-2 h-4 w-4 shrink-0 text-green-600 mt-0.5" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+          <div className="mt-12 grid gap-8 lg:grid-cols-4">
+            {Object.entries(plans).map(([key, plan]) => (
+              <Card 
+                key={key} 
+                className={`relative flex flex-col ${
+                  (plan as any).popular ? 'border-primary shadow-lg scale-105' : ''
+                }`}
+              >
+                {(plan as any).popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
+                    <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                
+                <CardHeader>
+                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                  <CardDescription>{plan.description}</CardDescription>
+                  {(plan as any).highlight && (
+                    <p className="mt-2 text-sm font-medium text-primary">
+                      {(plan as any).highlight}
+                    </p>
+                  )}
+                </CardHeader>
+                
+                <CardContent className="flex-1">
+                  <div className="mb-8">
+                    {plan.monthlyPrice !== null ? (
+                      <div>
+                        <span className="text-4xl font-bold">
+                          ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round(plan.yearlyPrice / 12)}
+                        </span>
+                        <span className="text-muted-foreground">/month</span>
+                        {billingPeriod === 'yearly' && plan.yearlyPrice > 0 && (
+                          <p className="mt-1 text-sm text-muted-foreground">
+                            ${plan.yearlyPrice} billed annually
+                          </p>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-3xl font-bold">Custom Pricing</div>
+                    )}
                   </div>
 
-                  {plan.limitations.length > 0 && (
+                  <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-medium text-muted-foreground mb-3">Not included:</h4>
+                      <h4 className="text-sm font-medium text-muted-foreground mb-3">Features included:</h4>
                       <ul className="space-y-2">
-                        {plan.limitations.map((limitation, i) => (
+                        {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
-                            <X className="mr-2 h-4 w-4 shrink-0 text-muted-foreground/50 mt-0.5" />
-                            <span className="text-sm text-muted-foreground">{limitation}</span>
+                            <Check className="mr-2 h-4 w-4 shrink-0 text-green-600 mt-0.5" />
+                            <span className="text-sm">{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                  )}
-                </div>
-              </CardContent>
 
-              <CardFooter>
-                <Button 
-                  className="w-full" 
-                  variant={(plan as any).popular ? 'default' : 'outline'}
-                  onClick={() => handleSelectPlan(key)}
-                >
-                  {key === 'free' ? 'Start Free' : key === 'enterprise' ? 'Contact Sales' : 'Get Started'}
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+                    {plan.limitations.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-medium text-muted-foreground mb-3">Not included:</h4>
+                        <ul className="space-y-2">
+                          {plan.limitations.map((limitation, i) => (
+                            <li key={i} className="flex items-start">
+                              <X className="mr-2 h-4 w-4 shrink-0 text-muted-foreground/50 mt-0.5" />
+                              <span className="text-sm text-muted-foreground">{limitation}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
 
-        <div className="mt-16 border-t pt-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-          
-          <div className="mx-auto max-w-3xl space-y-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Can I change plans anytime?</h3>
-              <p className="text-muted-foreground">
-                Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll prorate any payments.
-              </p>
-            </div>
+                <CardFooter>
+                  <Button 
+                    className="w-full" 
+                    variant={(plan as any).popular ? 'default' : 'outline'}
+                    onClick={() => handleSelectPlan(key)}
+                  >
+                    {key === 'free' ? 'Start Free' : key === 'enterprise' ? 'Contact Sales' : 'Get Started'}
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-16 border-t pt-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
             
-            <div>
-              <h3 className="text-lg font-semibold mb-2">What payment methods do you accept?</h3>
-              <p className="text-muted-foreground">
-                We accept all major credit cards, debit cards, and ACH transfers for annual plans. Enterprise customers can also pay by invoice.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Is there a setup fee?</h3>
-              <p className="text-muted-foreground">
-                No setup fees! You can start using PaintQuote Pro immediately after signing up.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-2">What happens if I exceed my quote limit?</h3>
-              <p className="text-muted-foreground">
-                Free plan users will be prompted to upgrade when they reach their monthly limit. Paid plans have unlimited quotes.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Do you offer discounts for annual billing?</h3>
-              <p className="text-muted-foreground">
-                Yes! Annual billing saves you 17% compared to monthly billing - that's 2 months free every year.
-              </p>
+            <div className="mx-auto max-w-3xl space-y-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Can I change plans anytime?</h3>
+                <p className="text-muted-foreground">
+                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll prorate any payments.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-2">What payment methods do you accept?</h3>
+                <p className="text-muted-foreground">
+                  We accept all major credit cards, debit cards, and ACH transfers for annual plans. Enterprise customers can also pay by invoice.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Is there a setup fee?</h3>
+                <p className="text-muted-foreground">
+                  No setup fees! You can start using PaintQuote Pro immediately after signing up.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-2">What happens if I exceed my quote limit?</h3>
+                <p className="text-muted-foreground">
+                  Free plan users will be prompted to upgrade when they reach their monthly limit. Paid plans have unlimited quotes.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Do you offer discounts for annual billing?</h3>
+                <p className="text-muted-foreground">
+                  Yes! Annual billing saves you 17% compared to monthly billing - that's 2 months free every year.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-lg font-semibold mb-4">Still have questions?</p>
-          <Button variant="outline" onClick={() => router.push('/contact')}>
-            Contact Our Sales Team
-          </Button>
+          <div className="mt-16 text-center">
+            <p className="text-lg font-semibold mb-4">Still have questions?</p>
+            <Button variant="outline" onClick={() => router.push('/contact')}>
+              Contact Our Sales Team
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

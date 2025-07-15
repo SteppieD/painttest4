@@ -22,6 +22,7 @@ Based on market research with painting contractors:
 
 - Node.js 18+ and npm
 - PostgreSQL 15+ (or use Docker)
+- Docker and Docker Compose (for containerized deployment)
 - Git
 
 ### Option 1: Local Development
@@ -64,6 +65,16 @@ cd painttest3
 
 # Start with Docker Compose
 docker-compose -f docker-compose.simple.yml up -d
+
+# Wait for containers to be ready, then apply migrations
+docker exec paintquotepro-web npx prisma migrate deploy
+docker exec paintquotepro-web npx prisma generate
+
+# Create test user (if needed)
+docker exec paintquotepro-db psql -U paintquote -d paintquotepro -c "
+INSERT INTO \"Company\" (name, email, plan, \"quotesLimit\", \"createdAt\", \"updatedAt\")
+VALUES ('Test Painting Co', 'test@paintquotepro.com', 'free', 5, NOW(), NOW())
+ON CONFLICT (email) DO NOTHING;"
 
 # View logs
 docker-compose -f docker-compose.simple.yml logs -f web
@@ -146,9 +157,10 @@ npx prisma studio
 
 ### Test Credentials
 
-After seeding, you can log in with:
+Default test user:
 - Email: `test@paintquotepro.com`
 - Password: `test123`
+- Company: Test Painting Co (Free plan - 5 quotes/month)
 
 ## 🚀 Key Features Implemented
 
@@ -265,17 +277,27 @@ git push origin feature/your-feature-name
 ### Common Issues
 
 1. **Module not found errors**
-   - Solution: Ensure `npm install` completed successfully
-   - Check that prisma client is generated: `npx prisma generate`
+   - Solution: Run `npm install` and `npx prisma generate`
+   - For Docker: `docker exec paintquotepro-web npm install`
 
 2. **Database connection errors**
    - Solution: Verify PostgreSQL is running
-   - Check DATABASE_URL in `.env`
-   - For Docker: Ensure postgres container is healthy
+   - Check DATABASE_URL format (no quotes in Docker)
+   - For Docker: Use container names not localhost
 
-3. **TypeScript errors during build**
-   - Current workaround: `ignoreBuildErrors: true` in next.config.js
-   - TODO: Fix remaining type issues
+3. **Authentication failing (401 error)**
+   - Solution: Ensure test user exists in database
+   - Check password hash is correct
+   - Verify JWT_SECRET is set
+
+4. **Dashboard 500 errors**
+   - Solution: Check for schema mismatches
+   - Run migrations: `npx prisma migrate deploy`
+   - Regenerate client: `npx prisma generate`
+
+5. **Missing database fields**
+   - Solution: Apply migrations in container
+   - `docker exec paintquotepro-web npx prisma migrate deploy`
 
 ### Docker Troubleshooting
 

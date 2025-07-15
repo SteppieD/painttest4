@@ -185,7 +185,11 @@ Tell the AI: "Set up Docker deployment with:
 - Volume mounts for development
 - Network configuration for container communication
 - DATABASE_URL using container names (not localhost)
-- Remove quotes from environment variables in Docker"
+- Remove quotes from environment variables in Docker
+- Container names: paintquotepro-web and paintquotepro-db
+- Database user: paintquote (not postgres)
+- Run migrations after container startup
+- Generate Prisma client in container"
 ```
 
 ## 🚨 Critical Implementation Notes
@@ -268,6 +272,27 @@ Common issues in PaintQuote Pro:
 3. "JWT errors" - Verify JWT_SECRET is set
 4. "Chat not working" - Check OPENROUTER_API_KEY
 5. "Container connection failed" - Use container names, not localhost
+6. "Authentication 401" - Create test user with correct password hash
+7. "Dashboard 500 error" - Check for schema mismatches, run migrations
+8. "Missing fields error" - Apply migrations: npx prisma migrate deploy
+9. "CardDescription not defined" - Import missing UI components
+```
+
+### Docker-Specific Fixes
+```
+# Fix schema mismatches
+docker exec paintquotepro-web npx prisma migrate deploy
+docker exec paintquotepro-web npx prisma generate
+
+# Create test user if missing
+docker exec paintquotepro-db psql -U paintquote -d paintquotepro -c "
+INSERT INTO \"Company\" (name, email, plan, \"quotesLimit\", \"createdAt\", \"updatedAt\")
+VALUES ('Test Painting Co', 'test@paintquotepro.com', 'free', 5, NOW(), NOW());"
+
+# Fix password hash
+docker exec paintquotepro-web node -e "
+const bcrypt = require('bcryptjs');
+bcrypt.hash('test123', 10).then(hash => console.log(hash));"
 ```
 
 ## 🎯 Success Metrics
