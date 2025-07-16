@@ -205,6 +205,16 @@ export default function Footer() {
             <div>4.9/5 stars from 2,000+ reviews</div>
           </div>
         </div>
+
+        {/* Sitemap Link - Very Bottom */}
+        <div className="mt-8 pt-8 border-t border-gray-800 text-center">
+          <Link 
+            href="/sitemap.xml" 
+            className="text-sm text-muted-foreground hover:text-primary"
+          >
+            XML Sitemap
+          </Link>
+        </div>
       </div>
     </footer>
   )
