@@ -1,61 +1,194 @@
 import Link from 'next/link'
-import { BookOpen, ArrowRight, CheckCircle, TrendingUp, Users, FileText, Calculator } from 'lucide-react'
 import { Metadata } from 'next'
+import { BookOpen, ArrowRight, CheckCircle, TrendingUp, Users, FileText, Calculator, Clock, DollarSign, AlertTriangle, Ruler, PaintBucket, Zap } from 'lucide-react'
+import SharedNavigation from '@/components/shared-navigation'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'How to Quote Painting Jobs: Complete Guide for Contractors | PaintQuote Pro',
-  description: 'Learn how to quote painting jobs professionally. Step-by-step guide covering pricing, measurements, labor costs, and winning more contracts.',
+  title: 'How to Quote Painting Jobs: Complete 2025 Guide for Professional Contractors',
+  description: 'Learn how to quote painting jobs professionally. Complete step-by-step guide covering pricing, measurements, labor costs, and winning more contracts. Used by 3,000+ contractors.',
   keywords: 'how to quote painting jobs, painting estimate guide, painting contractor pricing, painting quote tutorial, how to price painting work, painting business quotes',
   openGraph: {
-    title: 'How to Quote Painting Jobs - Professional Guide',
+    title: 'How to Quote Painting Jobs - Complete Professional Guide',
     description: 'Master the art of quoting painting jobs. Learn professional techniques to price jobs accurately and win more contracts.',
     type: 'article',
+    images: [{
+      url: '/og-how-to-quote-painting-jobs.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'How to Quote Painting Jobs Guide'
+    }]
   },
+  alternates: {
+    canonical: '/how-to-quote-painting-jobs'
+  }
 }
 
-export default function HowToQuotePaintingJobs() {
-  return (
-    <div className="min-h-screen bg-background">
-      {/* SEO-Optimized Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container flex h-14 items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold">PaintQuote Pro</span>
-          </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link href="/painting-estimate-calculator-free" className="transition-colors hover:text-foreground/80">
-              Calculator
-            </Link>
-            <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-              Pricing
-            </Link>
-            <Link href="/painting-quote-templates" className="transition-colors hover:text-foreground/80">
-              Templates
-            </Link>
-          </nav>
-          <div className="ml-auto flex items-center space-x-4">
-            <Link
-              href="/auth/signin"
-              className="text-sm font-medium transition-colors hover:text-foreground/80"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/signup"
-              className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-            >
-              Start Free Trial
-            </Link>
-          </div>
-        </nav>
-      </header>
+const quoteSteps = [
+  {
+    step: 1,
+    title: 'Taking Accurate Measurements',
+    icon: Ruler,
+    description: 'Learn to measure interior and exterior surfaces correctly',
+    time: '15-30 min'
+  },
+  {
+    step: 2,
+    title: 'Understanding Charge Rates',
+    icon: DollarSign,
+    description: 'Master modern pricing with combined material and labor rates',
+    time: '10 min'
+  },
+  {
+    step: 3,
+    title: 'Calculating Labor Costs',
+    icon: Clock,
+    description: 'Estimate labor hours and apply appropriate hourly rates',
+    time: '15 min'
+  },
+  {
+    step: 4,
+    title: 'Material Requirements',
+    icon: PaintBucket,
+    description: 'Calculate paint, primer, and supplies needed accurately',
+    time: '10 min'
+  },
+  {
+    step: 5,
+    title: 'Adding Profit Margins',
+    icon: TrendingUp,
+    description: 'Build in proper markups for sustainable business growth',
+    time: '5 min'
+  },
+  {
+    step: 6,
+    title: 'Professional Presentation',
+    icon: FileText,
+    description: 'Present quotes that win jobs and build trust',
+    time: '10 min'
+  }
+]
 
-      <main>
-        {/* Hero Section with H1 */}
-        <section className="relative py-12 md:py-24">
+const chargRates = [
+  { surface: 'Interior Walls', unit: 'per sq ft', low: '$1.50', average: '$2.50', high: '$4.00' },
+  { surface: 'Ceilings', unit: 'per sq ft', low: '$1.75', average: '$3.00', high: '$5.00' },
+  { surface: 'Baseboards/Trim', unit: 'per linear ft', low: '$2.00', average: '$3.50', high: '$5.00' },
+  { surface: 'Exterior Siding', unit: 'per sq ft', low: '$2.00', average: '$3.50', high: '$6.00' },
+  { surface: 'Kitchen Cabinets', unit: 'per door', low: '$75', average: '$125', high: '$200' }
+]
+
+const commonMistakes = [
+  {
+    mistake: 'Underestimating prep work',
+    consequence: 'Jobs become unprofitable, timeline overruns',
+    solution: 'Always inspect surfaces carefully and price 30-50% of time for prep work',
+    icon: AlertTriangle
+  },
+  {
+    mistake: 'Forgetting overhead costs',
+    consequence: 'No money left for insurance, equipment, or business growth',
+    solution: 'Include 15-25% for overhead in every quote (insurance, vehicles, equipment)',
+    icon: Calculator
+  },
+  {
+    mistake: 'Racing to lowest price',
+    consequence: 'Attracts bad clients, kills industry standards',
+    solution: 'Compete on value, quality, and service - not just price',
+    icon: TrendingUp
+  },
+  {
+    mistake: 'Vague scope of work',
+    consequence: 'Disputes, change orders, unhappy customers',
+    solution: 'Be extremely specific about what is and isn\'t included',
+    icon: FileText
+  }
+]
+
+const faqData = [
+  {
+    question: 'How long should a painting quote be valid?',
+    answer: 'Most contractors make quotes valid for 30 days. This gives customers time to decide while protecting you from material price increases. Always include the expiration date clearly on your quote.'
+  },
+  {
+    question: 'Should I charge for estimates?',
+    answer: 'For basic residential jobs, most contractors provide free estimates. For large commercial projects or complex jobs requiring detailed specifications, charging $100-500 for estimates is common and professional.'
+  },
+  {
+    question: 'How do I handle change orders?',
+    answer: 'Always get change orders in writing before starting additional work. Price changes at your normal rates plus a 10-20% premium for disrupting workflow. Clear communication prevents disputes.'
+  },
+  {
+    question: 'What if my quote is much higher than competitors?',
+    answer: 'Don\'t automatically lower your price. Instead, emphasize your value: quality materials, insurance, warranties, and professional service. Some customers will pay more for peace of mind.'
+  },
+  {
+    question: 'How detailed should my quote breakdown be?',
+    answer: 'Provide enough detail to show professionalism but not so much that customers can shop your pricing to competitors. Room-by-room or surface-type breakdowns work well.'
+  },
+  {
+    question: 'When should I follow up on quotes?',
+    answer: 'Follow up within 3-5 days with a friendly check-in. If no response, try again after a week. After that, move on unless they contact you. Persistence pays, but don\'t be pushy.'
+  }
+]
+
+export default function HowToQuotePaintingJobs() {
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: '/guides' },
+    { label: 'How to Quote Painting Jobs' }
+  ]
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': 'https://paintquotepro.com/how-to-quote-painting-jobs',
+    headline: 'How to Quote Painting Jobs: Complete 2025 Guide for Professional Contractors',
+    description: 'Complete step-by-step guide to creating professional painting quotes that win more jobs and increase profits.',
+    author: {
+      '@type': 'Organization',
+      name: 'PaintQuote Pro'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'PaintQuote Pro',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://paintquotepro.com/logo.png'
+      }
+    },
+    articleSection: 'Business Guides',
+    wordCount: 3500,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://paintquotepro.com/how-to-quote-painting-jobs'
+    }
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <div className="min-h-screen bg-background">
+        <SharedNavigation />
+
+        <main className="pt-14">
           <div className="container">
-            <div className="mx-auto max-w-4xl">
-              <div className="text-center">
+            <Breadcrumbs items={breadcrumbItems} className="py-4" />
+          </div>
+
+          {/* Hero Section */}
+          <section className="py-16 md:py-24">
+            <div className="container">
+              <div className="mx-auto max-w-4xl text-center">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Complete Professional Guide
+                </div>
+                
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   How to Quote Painting Jobs Like a Pro
                 </h1>
@@ -63,473 +196,621 @@ export default function HowToQuotePaintingJobs() {
                   The complete guide to creating accurate, professional painting quotes that win more jobs 
                   and increase your profits. Learn the techniques successful contractors use.
                 </p>
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+                
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Link
-                    href="/auth/signup"
+                    href="/paint-quote-calculator"
                     className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                   >
-                    <BookOpen className="mr-2 h-5 w-5" />
+                    <Calculator className="mr-2 h-5 w-5" />
                     Try Our Quote Tool
                   </Link>
                   <Link
-                    href="#table-of-contents"
+                    href="#guide-overview"
                     className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                   >
                     Read the Guide
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </div>
+
+                <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-primary">6 Steps</div>
+                    <p className="text-sm text-muted-foreground">To Professional Quotes</p>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-primary">3,000+</div>
+                    <p className="text-sm text-muted-foreground">Contractors Trained</p>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-primary">85 min</div>
+                    <p className="text-sm text-muted-foreground">Complete Guide</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Table of Contents */}
-        <section id="table-of-contents" className="border-t py-12">
-          <div className="container">
-            <div className="mx-auto max-w-4xl">
-              <h2 className="text-2xl font-bold">In This Guide:</h2>
-              <nav className="mt-6 space-y-2">
-                <a href="#step-1-measurements" className="block text-primary hover:underline">
-                  1. Taking Accurate Measurements
-                </a>
-                <a href="#step-2-pricing" className="block text-primary hover:underline">
-                  2. Understanding Charge Rates and Pricing
-                </a>
-                <a href="#step-3-labor" className="block text-primary hover:underline">
-                  3. Calculating Labor Costs
-                </a>
-                <a href="#step-4-materials" className="block text-primary hover:underline">
-                  4. Estimating Material Requirements
-                </a>
-                <a href="#step-5-profit" className="block text-primary hover:underline">
-                  5. Adding Profit Margins
-                </a>
-                <a href="#step-6-presentation" className="block text-primary hover:underline">
-                  6. Presenting Your Quote Professionally
-                </a>
-                <a href="#common-mistakes" className="block text-primary hover:underline">
-                  7. Common Quoting Mistakes to Avoid
-                </a>
-              </nav>
-            </div>
-          </div>
-        </section>
-
-        {/* Content Sections */}
-        <article className="py-12">
-          <div className="container">
-            <div className="mx-auto max-w-4xl space-y-12">
-              {/* Step 1: Measurements */}
-              <section id="step-1-measurements">
-                <h2 className="text-3xl font-bold">1. Taking Accurate Measurements</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Accurate measurements are the foundation of profitable painting quotes. Here's how to measure 
-                  different surfaces correctly:
+          {/* Guide Overview */}
+          <section id="guide-overview" className="border-t py-16 bg-muted/50">
+            <div className="container">
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">6-Step Professional Quoting Process</h2>
+                <p className="text-lg text-muted-foreground">
+                  Follow this proven system used by successful painting contractors nationwide
                 </p>
+              </div>
+
+              <div className="mx-auto max-w-6xl">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {quoteSteps.map((step, index) => (
+                    <div key={index} className="rounded-lg border bg-background p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                          {step.step}
+                        </div>
+                        <span className="text-sm text-muted-foreground">{step.time}</span>
+                      </div>
+                      
+                      <step.icon className="h-8 w-8 text-primary mb-3" />
+                      <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
+                      <p className="text-sm text-muted-foreground">{step.description}</p>
+                      
+                      <Button variant="outline" size="sm" className="w-full mt-4">
+                        <Link href={`#step-${step.step}`} className="w-full">
+                          Learn Step {step.step}
+                        </Link>
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Content Sections */}
+          <article className="py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl space-y-16">
                 
-                <h3 className="mt-8 text-xl font-semibold">Interior Measurements</h3>
-                <ul className="mt-4 space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Walls:</strong> Measure height × width for each wall. Subtract doors and windows 
-                      over 15 sq ft. Don't forget closets and hallways.
+                {/* Step 1: Measurements */}
+                <section id="step-1">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                      1
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
                     <div>
-                      <strong>Ceilings:</strong> Length × width of the room. Add 10% for textured ceilings 
-                      that require more paint.
+                      <h2 className="text-3xl font-bold">Taking Accurate Measurements</h2>
+                      <p className="text-muted-foreground">Foundation of profitable quotes</p>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Trim & Baseboards:</strong> Measure linear feet. Include door frames, window 
-                      casings, and crown molding separately.
-                    </div>
-                  </li>
-                </ul>
-
-                <h3 className="mt-8 text-xl font-semibold">Exterior Measurements</h3>
-                <ul className="mt-4 space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Siding:</strong> Measure each side of the house. Height × width, accounting for 
-                      gables and architectural features.
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Fascia & Soffits:</strong> Linear feet for fascia boards, square feet for 
-                      soffits. Don't forget to check accessibility.
-                    </div>
-                  </li>
-                </ul>
-
-                <div className="mt-8 rounded-lg bg-muted p-6">
-                  <p className="font-semibold">Pro Tip:</p>
-                  <p className="mt-2">
-                    Always add a 10-15% waste factor to your measurements. This covers touch-ups, overspray, 
-                    and ensures you don't run short on materials.
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Accurate measurements are the foundation of profitable painting quotes. Here's how to measure 
+                    different surfaces correctly:
                   </p>
-                </div>
-              </section>
-
-              {/* Step 2: Pricing */}
-              <section id="step-2-pricing">
-                <h2 className="text-3xl font-bold">2. Understanding Charge Rates and Pricing</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Modern painting contractors use charge rates - a single price per unit that includes both 
-                  materials and labor. This simplifies quoting and improves accuracy.
-                </p>
-
-                <h3 className="mt-8 text-xl font-semibold">Typical Charge Rates (2025)</h3>
-                <div className="mt-4 overflow-x-auto">
-                  <table className="w-full border-collapse border">
-                    <thead>
-                      <tr className="bg-muted">
-                        <th className="border p-3 text-left">Surface Type</th>
-                        <th className="border p-3 text-left">Unit</th>
-                        <th className="border p-3 text-left">Low End</th>
-                        <th className="border p-3 text-left">Average</th>
-                        <th className="border p-3 text-left">High End</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border p-3">Interior Walls</td>
-                        <td className="border p-3">per sq ft</td>
-                        <td className="border p-3">$1.50</td>
-                        <td className="border p-3">$2.50</td>
-                        <td className="border p-3">$4.00</td>
-                      </tr>
-                      <tr>
-                        <td className="border p-3">Ceilings</td>
-                        <td className="border p-3">per sq ft</td>
-                        <td className="border p-3">$1.75</td>
-                        <td className="border p-3">$3.00</td>
-                        <td className="border p-3">$5.00</td>
-                      </tr>
-                      <tr>
-                        <td className="border p-3">Baseboards</td>
-                        <td className="border p-3">per linear ft</td>
-                        <td className="border p-3">$2.00</td>
-                        <td className="border p-3">$3.50</td>
-                        <td className="border p-3">$5.00</td>
-                      </tr>
-                      <tr>
-                        <td className="border p-3">Exterior Siding</td>
-                        <td className="border p-3">per sq ft</td>
-                        <td className="border p-3">$2.00</td>
-                        <td className="border p-3">$3.50</td>
-                        <td className="border p-3">$6.00</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p className="mt-6">
-                  Factors that affect your charge rates:
-                </p>
-                <ul className="mt-4 space-y-2">
-                  <li>• Geographic location and local market rates</li>
-                  <li>• Surface condition and prep work required</li>
-                  <li>• Paint quality and number of coats</li>
-                  <li>• Job complexity and accessibility</li>
-                  <li>• Your experience and reputation</li>
-                </ul>
-              </section>
-
-              {/* Step 3: Labor */}
-              <section id="step-3-labor">
-                <h2 className="text-3xl font-bold">3. Calculating Labor Costs</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Labor typically represents 25-35% of your total project cost. Here's how to calculate it accurately:
-                </p>
-
-                <h3 className="mt-8 text-xl font-semibold">The 30% Rule</h3>
-                <p className="mt-4">
-                  A simple approach many contractors use: Labor = 30% of total charge. For example:
-                </p>
-                <ul className="mt-4 space-y-2">
-                  <li>• Total project charge: $5,000</li>
-                  <li>• Labor cost (30%): $1,500</li>
-                  <li>• Materials and overhead (70%): $3,500</li>
-                </ul>
-
-                <h3 className="mt-8 text-xl font-semibold">Detailed Labor Calculation</h3>
-                <p className="mt-4">
-                  For more accuracy, calculate actual hours needed:
-                </p>
-                <ol className="mt-4 space-y-3">
-                  <li>
-                    <strong>1. Estimate hours per surface:</strong>
-                    <ul className="mt-2 ml-6 space-y-1">
-                      <li>• Walls: 150-200 sq ft per hour</li>
-                      <li>• Ceilings: 100-150 sq ft per hour</li>
-                      <li>• Trim: 50-75 linear ft per hour</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>2. Add prep time:</strong> Usually 20-40% of painting time
-                  </li>
-                  <li>
-                    <strong>3. Multiply by hourly rate:</strong> $25-$75/hour depending on location
-                  </li>
-                </ol>
-              </section>
-
-              {/* Step 4: Materials */}
-              <section id="step-4-materials">
-                <h2 className="text-3xl font-bold">4. Estimating Material Requirements</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Accurate material estimates prevent costly overruns and ensure profitability.
-                </p>
-
-                <h3 className="mt-8 text-xl font-semibold">Paint Coverage Guidelines</h3>
-                <ul className="mt-4 space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Standard paint:</strong> 350-400 sq ft per gallon
+                  
+                  <div className="grid gap-8 lg:grid-cols-2">
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4 flex items-center">
+                        <Ruler className="h-5 w-5 mr-2 text-primary" />
+                        Interior Measurements
+                      </h3>
+                      <ul className="space-y-3">
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div className="text-sm">
+                            <strong>Walls:</strong> Measure height × width for each wall. Subtract doors and windows 
+                            over 15 sq ft. Don't forget closets and hallways.
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div className="text-sm">
+                            <strong>Ceilings:</strong> Length × width of the room. Add 10% for textured ceilings 
+                            that require more paint.
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div className="text-sm">
+                            <strong>Trim & Baseboards:</strong> Measure linear feet. Include door frames, window 
+                            casings, and crown molding separately.
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Primer:</strong> 200-300 sq ft per gallon
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Textured surfaces:</strong> Reduce coverage by 25-30%
-                    </div>
-                  </li>
-                </ul>
 
-                <h3 className="mt-8 text-xl font-semibold">Additional Materials to Include</h3>
-                <ul className="mt-4 space-y-2">
-                  <li>• Primer (if needed)</li>
-                  <li>• Brushes and rollers</li>
-                  <li>• Drop cloths and plastic</li>
-                  <li>• Tape and masking supplies</li>
-                  <li>• Caulk and patching compounds</li>
-                  <li>• Cleaning supplies</li>
-                </ul>
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4 flex items-center">
+                        <Ruler className="h-5 w-5 mr-2 text-primary" />
+                        Exterior Measurements
+                      </h3>
+                      <ul className="space-y-3">
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div className="text-sm">
+                            <strong>Siding:</strong> Measure each side of the house. Height × width, accounting for 
+                            gables and architectural features.
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div className="text-sm">
+                            <strong>Fascia & Soffits:</strong> Linear feet for fascia boards, square feet for 
+                            soffits. Don't forget to check accessibility.
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div className="text-sm">
+                            <strong>Windows & Doors:</strong> Measure frames and shutters separately. 
+                            Note prep work needed for each.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
 
-                <div className="mt-8 rounded-lg bg-muted p-6">
-                  <p className="font-semibold">Material Cost Formula:</p>
-                  <p className="mt-2">
-                    (Total Square Feet ÷ Coverage per Gallon) × Cost per Gallon × Number of Coats = Paint Cost
+                  <div className="mt-8 rounded-lg bg-primary/5 p-6">
+                    <h4 className="font-semibold text-primary mb-2">Pro Tip: The 15% Rule</h4>
+                    <p className="text-sm">
+                      Always add a 10-15% waste factor to your measurements. This covers touch-ups, overspray, 
+                      and ensures you don't run short on materials. Better to have leftover paint than an angry customer.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Step 2: Pricing */}
+                <section id="step-2">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                      2
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold">Understanding Charge Rates and Pricing</h2>
+                      <p className="text-muted-foreground">Modern pricing that includes materials and labor</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Modern painting contractors use charge rates - a single price per unit that includes both 
+                    materials and labor. This simplifies quoting and improves accuracy.
                   </p>
-                </div>
-              </section>
 
-              {/* Step 5: Profit */}
-              <section id="step-5-profit">
-                <h2 className="text-3xl font-bold">5. Adding Profit Margins</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Your quote must include adequate profit to sustain and grow your business.
-                </p>
+                  <h3 className="text-xl font-semibold mb-6">2025 Industry Charge Rates</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse rounded-lg border bg-background">
+                      <thead>
+                        <tr className="bg-muted/50">
+                          <th className="border p-4 text-left font-semibold">Surface Type</th>
+                          <th className="border p-4 text-left font-semibold">Unit</th>
+                          <th className="border p-4 text-left font-semibold">Low End</th>
+                          <th className="border p-4 text-left font-semibold">Average</th>
+                          <th className="border p-4 text-left font-semibold">High End</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {chargRates.map((rate, index) => (
+                          <tr key={index}>
+                            <td className="border p-4 font-medium">{rate.surface}</td>
+                            <td className="border p-4 text-sm text-muted-foreground">{rate.unit}</td>
+                            <td className="border p-4">{rate.low}</td>
+                            <td className="border p-4 font-medium">{rate.average}</td>
+                            <td className="border p-4">{rate.high}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
 
-                <h3 className="mt-8 text-xl font-semibold">Industry Standard Markups</h3>
-                <ul className="mt-4 space-y-3">
-                  <li className="flex items-start">
-                    <TrendingUp className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Materials:</strong> Mark up 20-50% from wholesale cost
+                  <div className="mt-8 grid gap-6 md:grid-cols-2">
+                    <div className="rounded-lg border bg-background p-6">
+                      <h4 className="font-semibold mb-4">Factors That Increase Rates</h4>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Premium paint or specialty finishes</li>
+                        <li>• Extensive prep work needed</li>
+                        <li>• Difficult access (ladders, scaffolding)</li>
+                        <li>• Custom color matching</li>
+                        <li>• Tight deadlines or rush jobs</li>
+                      </ul>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <TrendingUp className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Labor:</strong> Include overhead (insurance, equipment, vehicles) plus 15-25% profit
+                    
+                    <div className="rounded-lg border bg-background p-6">
+                      <h4 className="font-semibold mb-4">Geographic Adjustments</h4>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Major cities: +25-50% higher rates</li>
+                        <li>• Rural areas: -15-25% lower rates</li>
+                        <li>• Coastal regions: +20-30% higher</li>
+                        <li>• Local competition level</li>
+                        <li>• Cost of living adjustments</li>
+                      </ul>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <TrendingUp className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Overall project:</strong> Aim for 20-40% net profit margin
-                    </div>
-                  </li>
-                </ul>
+                  </div>
+                </section>
 
-                <p className="mt-6">
-                  Remember: Charging too little hurts the entire industry. Price for value, not just to win jobs.
-                </p>
-              </section>
+                {/* Step 3: Labor */}
+                <section id="step-3">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                      3
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold">Calculating Labor Costs</h2>
+                      <p className="text-muted-foreground">Accurate time estimates and proper rates</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Labor typically represents 25-35% of your total project cost. Here's how to calculate it accurately:
+                  </p>
 
-              {/* Step 6: Presentation */}
-              <section id="step-6-presentation">
-                <h2 className="text-3xl font-bold">6. Presenting Your Quote Professionally</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  A professional presentation can be the difference between winning and losing a job.
-                </p>
+                  <div className="grid gap-8 lg:grid-cols-2">
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4">The 30% Rule (Simple Method)</h3>
+                      <p className="mb-4 text-sm">A quick approach many contractors use:</p>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Total project charge:</span>
+                          <span className="font-medium">$5,000</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Labor cost (30%):</span>
+                          <span className="font-medium">$1,500</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Materials & overhead (70%):</span>
+                          <span className="font-medium">$3,500</span>
+                        </div>
+                      </div>
+                    </div>
 
-                <h3 className="mt-8 text-xl font-semibold">Essential Quote Elements</h3>
-                <ul className="mt-4 space-y-3">
-                  <li className="flex items-start">
-                    <FileText className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Company information:</strong> Logo, license number, insurance details
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4">Detailed Calculation Method</h3>
+                      <div className="space-y-4 text-sm">
+                        <div>
+                          <p className="font-medium mb-2">1. Production Rates (per hour):</p>
+                          <ul className="space-y-1 ml-4">
+                            <li>• Walls: 150-200 sq ft</li>
+                            <li>• Ceilings: 100-150 sq ft</li>
+                            <li>• Trim: 50-75 linear ft</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-medium mb-2">2. Add prep time: 20-40% of painting time</p>
+                        </div>
+                        <div>
+                          <p className="font-medium mb-2">3. Hourly rates: $25-$75 (location dependent)</p>
+                        </div>
+                      </div>
                     </div>
-                  </li>
-                  <li className="flex items-start">
-                    <FileText className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Detailed scope:</strong> Exactly what's included (and what's not)
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <FileText className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Itemized pricing:</strong> Break down by room or surface type
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <FileText className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Timeline:</strong> Start date, duration, and completion date
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <FileText className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                    <div>
-                      <strong>Terms:</strong> Payment schedule, warranty, and conditions
-                    </div>
-                  </li>
-                </ul>
+                  </div>
+                </section>
 
-                <h3 className="mt-8 text-xl font-semibold">Professional Tips</h3>
-                <ul className="mt-4 space-y-2">
-                  <li>• Deliver quotes within 24-48 hours while interest is high</li>
-                  <li>• Use professional quote software or templates</li>
-                  <li>• Include photos from the site visit</li>
-                  <li>• Offer multiple options (good, better, best)</li>
-                  <li>• Follow up within 3-5 days</li>
-                </ul>
-              </section>
+                {/* Step 4: Materials */}
+                <section id="step-4">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                      4
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold">Estimating Material Requirements</h2>
+                      <p className="text-muted-foreground">Paint, primer, and supplies calculation</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Accurate material estimates prevent costly overruns and ensure profitability.
+                  </p>
 
-              {/* Common Mistakes */}
-              <section id="common-mistakes">
-                <h2 className="text-3xl font-bold">7. Common Quoting Mistakes to Avoid</h2>
-                <div className="mt-8 space-y-6">
-                  <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-6">
-                    <h3 className="text-xl font-semibold">❌ Underestimating prep work</h3>
-                    <p className="mt-2">
-                      Prep can take 30-50% of total job time. Always inspect surfaces carefully and price accordingly.
+                  <div className="grid gap-8 lg:grid-cols-2">
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4 flex items-center">
+                        <PaintBucket className="h-5 w-5 mr-2 text-primary" />
+                        Paint Coverage Guidelines
+                      </h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Standard paint:</strong> 350-400 sq ft per gallon
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Primer:</strong> 200-300 sq ft per gallon
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Textured surfaces:</strong> Reduce coverage by 25-30%
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4">Additional Materials Checklist</h3>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Primer (when needed)</li>
+                        <li>• Brushes and roller covers</li>
+                        <li>• Drop cloths and plastic sheeting</li>
+                        <li>• Painter's tape and masking supplies</li>
+                        <li>• Caulk and patching compounds</li>
+                        <li>• Sandpaper and prep materials</li>
+                        <li>• Cleaning supplies and rags</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 rounded-lg bg-primary/5 p-6">
+                    <h4 className="font-semibold text-primary mb-2">Material Cost Formula</h4>
+                    <p className="text-sm font-mono bg-background p-3 rounded border">
+                      (Total Square Feet ÷ Coverage per Gallon) × Cost per Gallon × Number of Coats = Paint Cost
                     </p>
                   </div>
-                  <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-6">
-                    <h3 className="text-xl font-semibold">❌ Forgetting overhead costs</h3>
-                    <p className="mt-2">
-                      Insurance, equipment, vehicles, and office expenses must be factored into every quote.
-                    </p>
-                  </div>
-                  <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-6">
-                    <h3 className="text-xl font-semibold">❌ Racing to the bottom on price</h3>
-                    <p className="mt-2">
-                      Competing on price alone attracts bad clients and kills profitability. Sell value instead.
-                    </p>
-                  </div>
-                  <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-6">
-                    <h3 className="text-xl font-semibold">❌ Vague scope of work</h3>
-                    <p className="mt-2">
-                      Unclear quotes lead to disputes. Be specific about what's included and excluded.
-                    </p>
-                  </div>
-                </div>
-              </section>
+                </section>
 
-              {/* Conclusion */}
-              <section className="rounded-lg bg-muted p-8">
-                <h2 className="text-2xl font-bold">Ready to Create Professional Quotes?</h2>
-                <p className="mt-4 text-lg">
-                  Mastering painting quotes takes practice, but with the right tools and knowledge, you can 
-                  create accurate, profitable quotes that win more jobs.
-                </p>
-                <p className="mt-4 text-lg">
-                  Our AI-powered quoting tool automates these calculations, ensuring accuracy and saving you 
-                  hours on every estimate.
-                </p>
-                <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-                  <Link
-                    href="/auth/signup"
-                    className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-                  >
-                    Try PaintQuote Pro Free
-                  </Link>
-                  <Link
-                    href="/painting-quote-templates"
-                    className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                  >
-                    View Quote Templates
-                  </Link>
-                </div>
-              </section>
+                {/* Step 5: Profit */}
+                <section id="step-5">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                      5
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold">Adding Profit Margins</h2>
+                      <p className="text-muted-foreground">Building sustainable business growth</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Your quote must include adequate profit to sustain and grow your business. Don't work for free!
+                  </p>
+
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Industry Standard Markups</h3>
+                    <div className="grid gap-6 md:grid-cols-3">
+                      <div className="rounded-lg border bg-background p-6 text-center">
+                        <TrendingUp className="h-12 w-12 text-primary mx-auto mb-4" />
+                        <h4 className="font-semibold mb-2">Materials</h4>
+                        <div className="text-2xl font-bold text-primary mb-2">20-50%</div>
+                        <p className="text-sm text-muted-foreground">Mark up from wholesale cost</p>
+                      </div>
+                      
+                      <div className="rounded-lg border bg-background p-6 text-center">
+                        <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
+                        <h4 className="font-semibold mb-2">Labor</h4>
+                        <div className="text-2xl font-bold text-primary mb-2">15-25%</div>
+                        <p className="text-sm text-muted-foreground">Profit after overhead costs</p>
+                      </div>
+                      
+                      <div className="rounded-lg border bg-background p-6 text-center">
+                        <DollarSign className="h-12 w-12 text-primary mx-auto mb-4" />
+                        <h4 className="font-semibold mb-2">Overall Project</h4>
+                        <div className="text-2xl font-bold text-primary mb-2">20-40%</div>
+                        <p className="text-sm text-muted-foreground">Net profit margin target</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 rounded-lg bg-orange-50 border border-orange-200 p-6">
+                    <h4 className="font-semibold text-orange-800 mb-2">⚠️ Don't Race to the Bottom</h4>
+                    <p className="text-sm text-orange-700">
+                      Charging too little hurts the entire industry and makes it impossible to provide quality service. 
+                      Price for value, not just to win jobs. Quality customers will pay for professional work.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Step 6: Presentation */}
+                <section id="step-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                      6
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold">Presenting Your Quote Professionally</h2>
+                      <p className="text-muted-foreground">Win more jobs with professional presentation</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-muted-foreground mb-8">
+                    A professional presentation can be the difference between winning and losing a job.
+                  </p>
+
+                  <div className="grid gap-8 lg:grid-cols-2">
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4">Essential Quote Elements</h3>
+                      <ul className="space-y-3 text-sm">
+                        <li className="flex items-start">
+                          <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Company branding:</strong> Logo, license number, insurance details
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Detailed scope:</strong> Exactly what's included (and what's not)
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Itemized pricing:</strong> Break down by room or surface type
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Timeline:</strong> Start date, duration, and completion date
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
+                          <div>
+                            <strong>Terms:</strong> Payment schedule, warranty, and conditions
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="rounded-lg border bg-background p-6">
+                      <h3 className="text-xl font-semibold mb-4">Professional Tips</h3>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Deliver quotes within 24-48 hours</li>
+                        <li>• Use professional quote software or templates</li>
+                        <li>• Include photos from the site visit</li>
+                        <li>• Offer multiple options (good, better, best)</li>
+                        <li>• Follow up within 3-5 days if no response</li>
+                        <li>• Include customer testimonials or references</li>
+                        <li>• Clearly state quote expiration date</li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Common Mistakes */}
+                <section id="common-mistakes">
+                  <h2 className="text-3xl font-bold mb-8">Common Quoting Mistakes to Avoid</h2>
+                  <div className="space-y-6">
+                    {commonMistakes.map((mistake, index) => (
+                      <div key={index} className="rounded-lg border border-destructive/20 bg-destructive/5 p-6">
+                        <div className="flex items-start gap-4">
+                          <mistake.icon className="h-8 w-8 text-destructive flex-shrink-0" />
+                          <div>
+                            <h3 className="text-lg font-semibold text-destructive mb-2">❌ {mistake.mistake}</h3>
+                            <p className="text-sm text-destructive/80 mb-3">
+                              <strong>Consequence:</strong> {mistake.consequence}
+                            </p>
+                            <p className="text-sm text-green-700">
+                              <strong>✅ Solution:</strong> {mistake.solution}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        {/* Related Resources */}
-        <section className="border-t py-12 md:py-24">
-          <div className="container">
-            <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
-              Related Resources
-            </h2>
-            <div className="mt-12 grid gap-8 md:grid-cols-3">
-              <Link href="/painting-estimate-calculator-free" className="group">
-                <div className="rounded-lg border p-6 transition-colors hover:bg-accent">
-                  <Calculator className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold group-hover:text-primary">
-                    Free Painting Calculator
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Calculate painting costs instantly with our professional estimation tool
-                  </p>
+          {/* FAQ Section */}
+          <section className="bg-muted/50 py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-3xl font-bold text-center mb-12">
+                  Frequently Asked Questions
+                </h2>
+
+                <div className="space-y-8">
+                  {faqData.map((faq, index) => (
+                    <div key={index} className="rounded-lg bg-background p-6">
+                      <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
+                      <p className="text-muted-foreground">{faq.answer}</p>
+                    </div>
+                  ))}
                 </div>
-              </Link>
-              <Link href="/painting-quote-templates" className="group">
-                <div className="rounded-lg border p-6 transition-colors hover:bg-accent">
-                  <FileText className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold group-hover:text-primary">
-                    Quote Templates
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Download professional painting quote templates to use in your business
-                  </p>
-                </div>
-              </Link>
-              <Link href="/case-studies" className="group">
-                <div className="rounded-lg border p-6 transition-colors hover:bg-accent">
-                  <Users className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold group-hover:text-primary">
-                    Success Stories
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    See how contractors increased profits with better quoting practices
-                  </p>
-                </div>
-              </Link>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
 
-      {/* Footer */}
-      <footer className="border-t bg-background">
-        <div className="container py-8">
-          <p className="text-center text-sm text-muted-foreground">
-            © 2025 PaintQuote Pro. The complete guide to quoting painting jobs professionally.
-          </p>
-        </div>
-      </footer>
-    </div>
+          {/* CTA Section */}
+          <section className="py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl">
+                <div className="rounded-lg bg-primary/5 p-8 text-center">
+                  <h2 className="text-3xl font-bold mb-4">Ready to Create Professional Quotes?</h2>
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Mastering painting quotes takes practice, but with the right tools and knowledge, you can 
+                    create accurate, profitable quotes that win more jobs and grow your business.
+                  </p>
+                  
+                  <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                    <Link
+                      href="/auth/signup"
+                      className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
+                    >
+                      <Zap className="mr-2 h-5 w-5" />
+                      Try PaintQuote Pro Free
+                    </Link>
+                    <Link
+                      href="/paint-estimate-templates"
+                      className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                    >
+                      Download Quote Templates
+                    </Link>
+                  </div>
+                  
+                  <p className="mt-4 text-sm text-muted-foreground">
+                    Join 3,000+ contractors creating professional quotes with our tools
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Related Resources */}
+          <section className="border-t py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Related Painting Business Resources</h2>
+                <p className="text-lg text-muted-foreground">
+                  More tools and guides to help grow your painting business
+                </p>
+              </div>
+
+              <div className="mx-auto max-w-6xl">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                  <Link href="/paint-quote-calculator" className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <Calculator className="h-12 w-12 text-primary mb-4" />
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
+                      Quote Calculator
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Calculate painting costs instantly with our professional tool
+                    </p>
+                  </Link>
+
+                  <Link href="/paint-estimate-templates" className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <FileText className="h-12 w-12 text-primary mb-4" />
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
+                      Quote Templates
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Professional templates to create winning quotes faster
+                    </p>
+                  </Link>
+
+                  <Link href="/how-to-estimate-interior-paint-jobs" className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <BookOpen className="h-12 w-12 text-primary mb-4" />
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
+                      Estimation Guide
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Learn professional estimation techniques with examples
+                    </p>
+                  </Link>
+
+                  <Link href="/painting-estimating-software" className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <Zap className="h-12 w-12 text-primary mb-4" />
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
+                      Software Reviews
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Compare the best painting estimate software options
+                    </p>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </>
   )
 }
