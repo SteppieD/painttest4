@@ -107,49 +107,18 @@ export default function ContactFreeTrial() {
     { label: 'Start Free Trial' }
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': 'https://paintquotepro.com/contact',
-    name: 'Start Your Free Trial - PaintQuote Pro',
-    description: 'Get started with PaintQuote Pro today! Start your free 14-day trial of professional painting estimating software.',
-    publisher: {
-      '@type': 'Organization',
-      name: 'PaintQuote Pro',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        telephone: '+1-800-PAINT-PRO',
-        contactType: 'customer support',
-        email: 'support@paintquotepro.com'
-      }
-    },
-    offers: {
-      '@type': 'Offer',
-      name: 'Free 14-Day Trial',
-      price: '0',
-      priceCurrency: 'USD',
-      description: 'Free trial of PaintQuote Pro painting estimating software'
-    }
-  }
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <div className="min-h-screen bg-background">
+      <SharedNavigation />
 
-      <div className="min-h-screen bg-background">
-        <SharedNavigation />
+      <main className="pt-14">
+        <div className="container">
+          <Breadcrumbs items={breadcrumbItems} className="py-4" />
+        </div>
 
-        <main className="pt-14">
+        {/* Hero Section */}
+        <section className="py-16 md:py-24">
           <div className="container">
-            <Breadcrumbs items={breadcrumbItems} className="py-4" />
-          </div>
-
-          {/* Hero Section */}
-          <section className="py-16 md:py-24">
-            <div className="container">
               <div className="mx-auto max-w-4xl text-center">
                 <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
                   <Zap className="mr-2 h-4 w-4" />
@@ -283,7 +252,7 @@ export default function ContactFreeTrial() {
                         <div className="rounded-md bg-background p-4">
                           <div className="flex justify-between items-center mb-2">
                             <span className="font-medium">Support Response Time</span>
-                            <span className="text-2xl font-bold text-primary">< 2 hrs</span>
+                            <span className="text-2xl font-bold text-primary">&lt; 2 hrs</span>
                           </div>
                           <div className="text-sm text-muted-foreground">
                             Fast help when you need it
@@ -418,12 +387,11 @@ export default function ContactFreeTrial() {
                 </Link>
               </div>
               <p className="mt-4 text-sm opacity-75">
-                14-day free trial " No credit card required " Cancel anytime
+                14-day free trial • No credit card required • Cancel anytime
               </p>
             </div>
-          </section>
-        </main>
-      </div>
-    </>
+        </section>
+      </main>
+    </div>
   )
 }
