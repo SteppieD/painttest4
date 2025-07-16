@@ -23,7 +23,7 @@ export default function SignIn() {
     const password = formData.get('password') as string
 
     try {
-      const response = await fetch('/api/auth/signin', {
+      const response = await fetch('/api/auth/signin-demo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -201,6 +201,7 @@ export default function SignIn() {
               <div className="mt-6 text-center text-xs text-muted-foreground">
                 <p>Test credentials for demo:</p>
                 <p className="font-mono mt-1">admin@acmepainting.com / admin123</p>
+                <p className="font-mono">test@test.com / test123</p>
               </div>
             </div>
           </div>
