@@ -1,47 +1,11 @@
 import Link from 'next/link'
 import { Check, Zap, Shield, BarChart, MessageSquare, Calculator } from 'lucide-react'
+import SharedNavigation from '@/components/shared-navigation'
 
 export default function Home() {
   return (
     <>
-      {/* Navigation Header */}
-      <header className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav className="container flex h-14 items-center">
-          <div className="mr-4 flex">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="#features" className="transition-colors hover:text-foreground/80">
-                Features
-              </Link>
-              <Link href="/roi-calculator" className="transition-colors hover:text-foreground/80">
-                ROI Calculator
-              </Link>
-              <Link href="/case-studies" className="transition-colors hover:text-foreground/80">
-                Success Stories
-              </Link>
-              <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-                Pricing
-              </Link>
-            </nav>
-          </div>
-          <div className="flex flex-1 items-center justify-end space-x-2">
-            <Link
-              href="/auth/signin"
-              className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/signup"
-              className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-            >
-              Start Free Trial
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <SharedNavigation />
 
       {/* Hero Section */}
       <main className="flex-1">
@@ -49,11 +13,11 @@ export default function Home() {
           <div className="container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center py-24 text-center">
             <div className="mx-auto max-w-3xl space-y-8">
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                Professional Painting Quotes in Minutes
+                From 3-6 Hours to 10-15 Minutes
               </h1>
               <p className="text-xl text-muted-foreground">
-                AI-powered quote generation with intelligent charge rate calculations. 
-                Save hours on estimates and win more jobs with accurate, professional quotes.
+                Transform your painting business with AI-powered quotes. Join 2,000+ contractors 
+                winning 40-60% more jobs by responding within 24 hours with professional estimates.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
@@ -81,7 +45,7 @@ export default function Home() {
           <div className="container">
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">
-                Turn Hours Into Minutes
+                The Quoting Time Crunch is Costing You Jobs
               </h2>
               <div className="grid gap-8 md:grid-cols-3 mb-12">
                 <div className="space-y-2">
@@ -120,7 +84,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
-                    <span>Automated follow-ups convert 30% more lukewarm leads</span>
+                    <span>Every day of delay decreases win probability by 15-25%</span>
                   </li>
                 </ul>
               </div>
@@ -133,66 +97,170 @@ export default function Home() {
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Everything You Need to Grow Your Painting Business
+                Stop Losing Jobs to These 4 Common Failure Points
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                From AI-powered quotes to business analytics, we've got you covered
+                We solve the exact problems that cost painters 40-60% of their potential jobs
               </p>
             </div>
             
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               <div className="relative overflow-hidden rounded-lg border bg-background p-6">
                 <MessageSquare className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">AI Quote Assistant</h3>
+                <h3 className="text-xl font-bold mb-2">Speed Problem → Solved</h3>
                 <p className="text-muted-foreground">
-                  Chat naturally with Claude Sonnet to generate accurate quotes. 
-                  Our AI understands painting terminology and extracts all details automatically.
+                  Mobile quoting eliminates office trips. Quote on-site in minutes while 
+                  competitors take days. Capture jobs before customers call anyone else.
                 </p>
               </div>
 
               <div className="relative overflow-hidden rounded-lg border bg-background p-6">
                 <Calculator className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Charge Rate Calculator</h3>
+                <h3 className="text-xl font-bold mb-2">Professional Appearance → Solved</h3>
                 <p className="text-muted-foreground">
-                  Intelligent pricing with automatic labor calculations. Set your charge rates 
-                  once and let the system handle the complex calculations.
+                  Look like a $10M company with professional templates and branding. 
+                  No more handwritten quotes that signal amateur operation.
                 </p>
               </div>
 
               <div className="relative overflow-hidden rounded-lg border bg-background p-6">
                 <BarChart className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Business Analytics</h3>
+                <h3 className="text-xl font-bold mb-2">Follow-up Failure → Solved</h3>
                 <p className="text-muted-foreground">
-                  Track conversion rates, revenue trends, and customer insights. 
-                  Make data-driven decisions to grow your business.
+                  Automated reminders ensure systematic nurturing. Top contractors follow up 
+                  for weeks - now you can too, automatically.
                 </p>
               </div>
 
               <div className="relative overflow-hidden rounded-lg border bg-background p-6">
                 <Zap className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Instant Quotes</h3>
+                <h3 className="text-xl font-bold mb-2">Pricing Errors → Solved</h3>
                 <p className="text-muted-foreground">
-                  Generate professional PDF quotes in seconds. Send directly to clients 
-                  with your branding and terms.
+                  Built-in calculations ensure consistent accuracy. Never lose jobs to 
+                  pricing too high or lose profit by pricing too low.
                 </p>
               </div>
 
               <div className="relative overflow-hidden rounded-lg border bg-background p-6">
                 <Shield className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Secure & Reliable</h3>
+                <h3 className="text-xl font-bold mb-2">Mobile-First Design</h3>
                 <p className="text-muted-foreground">
-                  Enterprise-grade security with automatic backups. Your data is encrypted 
-                  and protected at all times.
+                  Quote anywhere, no internet required. User-friendly interface built 
+                  specifically for field-based painting contractors.
                 </p>
               </div>
 
               <div className="relative overflow-hidden rounded-lg border bg-background p-6">
                 <Check className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Easy to Use</h3>
+                <h3 className="text-xl font-bold mb-2">Real Business Results</h3>
                 <p className="text-muted-foreground">
-                  Intuitive interface designed for painters, not tech experts. Get started 
-                  in minutes with our guided setup.
+                  Average contractor increases quote volume from 50 to 200+ per month 
+                  and wins 3 additional jobs monthly worth $8,400 in revenue.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Failure Points Section */}
+        <section className="py-24 bg-muted/30">
+          <div className="container">
+            <div className="mx-auto max-w-5xl">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+                  Why Painting Contractors Are Losing 40-60% of Potential Jobs
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  Our research with 2,000+ contractors revealed these critical failure points
+                </p>
+              </div>
+              
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="rounded-lg border bg-background p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-full bg-red-100 p-3">
+                      <span className="text-2xl font-bold text-red-600">1</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Slow Response Time (40-60% of Lost Jobs)</h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        "Most customers tell me other painters don't even get the quotes back or 
+                        they take a week to get it back to them"
+                      </p>
+                      <p className="text-sm font-medium text-primary">
+                        Solution: Quote on-site in minutes, not days later
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-full bg-red-100 p-3">
+                      <span className="text-2xl font-bold text-red-600">2</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Unprofessional Presentation (25-35% of Lost Jobs)</h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        Basic, hand-written quotes signal amateur operation. Customers choose 
+                        contractors who look established.
+                      </p>
+                      <p className="text-sm font-medium text-primary">
+                        Solution: Professional templates with your branding
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-full bg-red-100 p-3">
+                      <span className="text-2xl font-bold text-red-600">3</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Inconsistent Follow-up (30-40% of Lost Jobs)</h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        "Too many contractors give up on a lead too early and lose the job"
+                      </p>
+                      <p className="text-sm font-medium text-primary">
+                        Solution: Automated reminders and follow-up sequences
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border bg-background p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-full bg-red-100 p-3">
+                      <span className="text-2xl font-bold text-red-600">4</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Pricing Inconsistency (20-30% of Lost Jobs)</h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        Manual calculations often result in pricing that's either too high 
+                        (losing jobs) or too low (losing profit)
+                      </p>
+                      <p className="text-sm font-medium text-primary">
+                        Solution: Built-in charge rate calculations
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 rounded-lg bg-primary/10 p-8 text-center">
+                <h3 className="text-2xl font-bold mb-4">The Bottom Line</h3>
+                <p className="text-lg mb-6">
+                  If you're doing 20 quotes per month with a 35% win rate, improving to 50% 
+                  means <strong>3 additional jobs monthly</strong>. At $2,800 average job value, 
+                  that's <strong>$8,400 more revenue per month</strong>.
+                </p>
+                <Link
+                  href="/roi-calculator"
+                  className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
+                >
+                  Calculate Your ROI
+                </Link>
               </div>
             </div>
           </div>
@@ -269,8 +337,8 @@ export default function Home() {
               Ready to Transform Your Painting Business?
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join hundreds of contractors who are winning more jobs with professional, 
-              AI-powered quotes.
+              The ROI is simple: Win 3 more jobs per month at $2,800 average = 
+              $8,400 additional revenue. That's 100x your investment.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link

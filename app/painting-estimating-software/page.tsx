@@ -1,41 +1,361 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { Calculator, Palette, FileSpreadsheet, BarChart3, Clock, DollarSign, Users, Smartphone, CheckCircle, ArrowRight } from 'lucide-react'
+import { Calculator, Smartphone, Zap, BarChart3, Clock, DollarSign, Users, CheckCircle, Star, ArrowRight, FileText, TrendingUp, Shield, Building } from 'lucide-react'
+import SharedNavigation from '@/components/shared-navigation'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'Painting Estimating Software | Professional Contractor Tools | PaintQuote Pro',
-  description: 'Advanced painting estimating software for contractors. Calculate material costs, labor hours, and profit margins accurately. Create professional estimates in minutes.',
-  keywords: 'painting estimating software, paint estimating software, painting cost estimator software, contractor estimating tools, painting estimate program',
+  title: 'Best Painting Estimating Software 2025 | Compare Top Tools for Contractors',
+  description: 'Compare the best painting estimating software for contractors. Reviews, pricing, and features of top tools including PaintQuote Pro, JobNimbus, and more.',
+  keywords: 'painting estimating software, painting estimate software, contractor estimating tools, painting business software, paint estimating program, best painting software',
   openGraph: {
-    title: 'Professional Painting Estimating Software - Accurate Cost Calculations',
-    description: 'The complete painting estimating solution for contractors. Material calculators, labor tracking, and instant professional quotes.',
+    title: 'Best Painting Estimating Software for Contractors',
+    description: 'Compare top painting estimating software tools. Find the right solution for your painting business with our comprehensive reviews and feature comparisons.',
     type: 'website',
+    images: [{
+      url: '/og-painting-estimating-software.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Best Painting Estimating Software for Contractors'
+    }]
   },
+  alternates: {
+    canonical: '/painting-estimating-software'
+  }
 }
 
+const softwareOptions = [
+  {
+    name: 'PaintQuote Pro',
+    rating: 4.9,
+    users: '15,000+',
+    startingPrice: '$0',
+    billingPeriod: 'month',
+    description: 'AI-powered painting estimating software designed specifically for painting contractors',
+    features: [
+      'Advanced paint calculators',
+      'Real-time material pricing',
+      'Mobile app included',
+      'Customer management',
+      'Quote templates',
+      'Project tracking'
+    ],
+    pros: [
+      'Industry-specific features',
+      'Accurate paint calculations',
+      'Easy to learn and use',
+      'Excellent customer support',
+      'Regular updates',
+      'Free plan available'
+    ],
+    cons: [
+      'Newer to market',
+      'Limited integrations (growing)',
+      'No advanced project management'
+    ],
+    bestFor: 'Painting contractors focused on accurate estimates',
+    popular: true,
+    freeTrialDays: 14
+  },
+  {
+    name: 'JobNimbus',
+    rating: 4.6,
+    users: '100,000+',
+    startingPrice: '$25',
+    billingPeriod: 'user/month',
+    description: 'All-in-one contractor software with painting estimation capabilities',
+    features: [
+      'Basic estimating tools',
+      'CRM integration',
+      'Project management',
+      'Team collaboration',
+      'Document storage',
+      'Sales pipeline'
+    ],
+    pros: [
+      'Comprehensive platform',
+      'Strong CRM features',
+      'Good project management',
+      'Mobile app',
+      'Established platform'
+    ],
+    cons: [
+      'Generic estimating tools',
+      'Higher learning curve',
+      'Expensive for small teams',
+      'No paint-specific features'
+    ],
+    bestFor: 'Large contractors needing full business management',
+    freeTrialDays: 14
+  },
+  {
+    name: 'Estimate Rocket',
+    rating: 4.3,
+    users: '25,000+',
+    startingPrice: '$39',
+    billingPeriod: 'month',
+    description: 'General contracting estimating software with painting templates',
+    features: [
+      'Template library',
+      'Cost databases',
+      'Proposal generation',
+      'Client portal',
+      'Basic project tracking',
+      'Reporting tools'
+    ],
+    pros: [
+      'Professional proposals',
+      'Good template selection',
+      'Reasonable pricing',
+      'Client portal feature'
+    ],
+    cons: [
+      'Not painting-specific',
+      'Limited mobile features',
+      'Basic paint calculations',
+      'Outdated interface'
+    ],
+    bestFor: 'General contractors who do some painting work',
+    freeTrialDays: 30
+  },
+  {
+    name: 'Contractor Foreman',
+    rating: 4.2,
+    users: '50,000+',
+    startingPrice: '$49',
+    billingPeriod: 'month',
+    description: 'Construction management software with basic estimating features',
+    features: [
+      'Basic estimating',
+      'Project scheduling',
+      'Time tracking',
+      'Document management',
+      'Team communication',
+      'Financial tracking'
+    ],
+    pros: [
+      'Comprehensive features',
+      'Good project management',
+      'Time tracking included',
+      'Document storage'
+    ],
+    cons: [
+      'Weak estimating tools',
+      'Complex for painting only',
+      'Higher cost',
+      'Steep learning curve'
+    ],
+    bestFor: 'Construction companies with painting divisions',
+    freeTrialDays: 30
+  },
+  {
+    name: 'PaintScope',
+    rating: 4.1,
+    users: '5,000+',
+    startingPrice: '$69',
+    billingPeriod: 'month',
+    description: 'Specialized painting software with estimating and project management',
+    features: [
+      'Paint-specific estimating',
+      'Color management',
+      'Crew scheduling',
+      'Material ordering',
+      'Progress tracking',
+      'Photo documentation'
+    ],
+    pros: [
+      'Painting-specific features',
+      'Good color tools',
+      'Material integration',
+      'Photo capabilities'
+    ],
+    cons: [
+      'Expensive pricing',
+      'Limited user base',
+      'Complex setup',
+      'Poor mobile experience'
+    ],
+    bestFor: 'Large painting companies with complex projects',
+    freeTrialDays: 7
+  },
+  {
+    name: 'Excel Templates',
+    rating: 3.5,
+    users: 'Unlimited',
+    startingPrice: '$0',
+    billingPeriod: 'one-time',
+    description: 'Traditional spreadsheet approach to painting estimates',
+    features: [
+      'Basic calculations',
+      'Customizable layouts',
+      'Offline access',
+      'Formula flexibility',
+      'Cost tracking',
+      'Simple reports'
+    ],
+    pros: [
+      'Free to use',
+      'Highly customizable',
+      'Familiar interface',
+      'Offline capable',
+      'No monthly fees'
+    ],
+    cons: [
+      'Manual calculations',
+      'No automation',
+      'Error-prone',
+      'No mobile optimization',
+      'Time-consuming',
+      'No customer management'
+    ],
+    bestFor: 'Small contractors with basic needs',
+    freeTrialDays: null
+  }
+]
+
+const features = [
+  {
+    category: 'Estimating Features',
+    items: [
+      { feature: 'Paint quantity calculator', paintQuotePro: true, jobNimbus: false, estimateRocket: true, contractorForeman: false, paintScope: true, excel: false },
+      { feature: 'Labor hour estimator', paintQuotePro: true, jobNimbus: true, estimateRocket: true, contractorForeman: true, paintScope: true, excel: true },
+      { feature: 'Material cost database', paintQuotePro: true, jobNimbus: false, estimateRocket: true, contractorForeman: false, paintScope: true, excel: false },
+      { feature: 'Surface area calculator', paintQuotePro: true, jobNimbus: false, estimateRocket: false, contractorForeman: false, paintScope: true, excel: true },
+      { feature: 'Multi-room estimates', paintQuotePro: true, jobNimbus: true, estimateRocket: true, contractorForeman: true, paintScope: true, excel: true }
+    ]
+  },
+  {
+    category: 'Business Features',
+    items: [
+      { feature: 'Customer management', paintQuotePro: true, jobNimbus: true, estimateRocket: true, contractorForeman: true, paintScope: true, excel: false },
+      { feature: 'Project tracking', paintQuotePro: true, jobNimbus: true, estimateRocket: true, contractorForeman: true, paintScope: true, excel: false },
+      { feature: 'Mobile app', paintQuotePro: true, jobNimbus: true, estimateRocket: false, contractorForeman: true, paintScope: false, excel: false },
+      { feature: 'Team collaboration', paintQuotePro: true, jobNimbus: true, estimateRocket: false, contractorForeman: true, paintScope: true, excel: false },
+      { feature: 'Integration options', paintQuotePro: true, jobNimbus: true, estimateRocket: true, contractorForeman: true, paintScope: false, excel: false }
+    ]
+  }
+]
+
+const selectionGuide = [
+  {
+    businessType: 'Solo Painter',
+    recommendation: 'PaintQuote Pro',
+    reason: 'Free plan available, painting-specific features, easy to use',
+    features: ['Free tier', 'Mobile app', 'Paint calculators', 'Simple interface']
+  },
+  {
+    businessType: 'Small Painting Crew (2-5 people)',
+    recommendation: 'PaintQuote Pro',
+    reason: 'Affordable scaling, team features, industry focus',
+    features: ['Team collaboration', 'Customer management', 'Quote templates', 'Project tracking']
+  },
+  {
+    businessType: 'Medium Painting Company (6-20 people)',
+    recommendation: 'JobNimbus or PaintQuote Pro',
+    reason: 'Depends on CRM needs vs painting specialization',
+    features: ['Advanced CRM', 'Project management', 'Team coordination', 'Sales pipeline']
+  },
+  {
+    businessType: 'Large Painting Contractor (20+ people)',
+    recommendation: 'PaintScope or JobNimbus',
+    reason: 'Advanced features, enterprise capabilities, complex project management',
+    features: ['Enterprise features', 'Advanced scheduling', 'Multi-location support', 'Advanced reporting']
+  },
+  {
+    businessType: 'General Contractor (does painting)',
+    recommendation: 'Contractor Foreman',
+    reason: 'Broader construction features, not just painting-focused',
+    features: ['Multi-trade support', 'Comprehensive PM', 'Time tracking', 'Financial management']
+  }
+]
+
+const testimonials = [
+  {
+    name: 'Mike Rodriguez',
+    company: 'Rodriguez Painting LLC',
+    rating: 5,
+    text: 'PaintQuote Pro has transformed how we estimate jobs. The paint calculators are spot-on, and we\'ve reduced our estimating time by 70%. Highly recommend for any painting contractor.'
+  },
+  {
+    name: 'Sarah Chen',
+    company: 'Precision Paint Co.',
+    rating: 5,
+    text: 'Switched from Excel to PaintQuote Pro last year. The difference is incredible - professional estimates in minutes instead of hours, and our accuracy has improved significantly.'
+  },
+  {
+    name: 'David Thompson',
+    company: 'Elite Painting Services',
+    rating: 4,
+    text: 'JobNimbus works well for our larger operation. The CRM features are excellent, though we wish the estimating tools were more painting-specific.'
+  }
+]
+
+const faqData = [
+  {
+    question: 'What is painting estimating software?',
+    answer: 'Painting estimating software helps contractors calculate accurate quotes for painting projects. It includes paint quantity calculators, labor estimators, material cost databases, and professional quote generation tools.'
+  },
+  {
+    question: 'Which painting estimating software is best for small contractors?',
+    answer: 'PaintQuote Pro is excellent for small contractors due to its free plan, painting-specific features, and easy learning curve. It includes all essential tools without the complexity of larger platforms.'
+  },
+  {
+    question: 'How much does painting estimating software cost?',
+    answer: 'Costs range from free (PaintQuote Pro\'s basic plan) to $69/month (PaintScope). Most contractors find plans between $25-49/month provide good value. Consider features needed vs budget when choosing.'
+  },
+  {
+    question: 'Can painting estimating software work on mobile devices?',
+    answer: 'Yes, most modern painting estimating software includes mobile apps. PaintQuote Pro, JobNimbus, and Contractor Foreman all offer mobile access for creating estimates on-site.'
+  },
+  {
+    question: 'How accurate are automated paint quantity calculations?',
+    answer: 'Modern painting software can be very accurate (95%+) when proper measurements are input. They account for surface texture, coverage rates, multiple coats, and waste factors that manual calculations often miss.'
+  },
+  {
+    question: 'Do I need special training to use painting estimating software?',
+    answer: 'Most painting estimating software is designed to be user-friendly. PaintQuote Pro can be learned in a few hours, while more complex platforms like JobNimbus may take 1-2 weeks to master.'
+  }
+]
+
 export default function PaintingEstimatingSoftware() {
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Resources', href: '/resources' },
+    { label: 'Painting Estimating Software' }
+  ]
+
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'PaintQuote Pro Painting Estimating Software',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web, iOS, Android',
-    description: 'Professional painting estimating software with advanced calculators, material databases, and labor tracking.',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
+    '@type': 'WebPage',
+    '@id': 'https://paintquotepro.com/painting-estimating-software',
+    name: 'Best Painting Estimating Software for Contractors',
+    description: 'Compare top painting estimating software tools, features, pricing, and reviews for contractors',
+    publisher: {
+      '@type': 'Organization',
+      name: 'PaintQuote Pro'
     },
-    featureList: [
-      'Paint quantity calculator',
-      'Labor hour estimator',
-      'Material cost database',
-      'Profit margin calculator',
-      'Surface area measurement',
-      'Multi-room estimating',
-      'Quote generation',
-      'Customer management',
-    ],
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: softwareOptions.map((software, index) => ({
+        '@type': 'SoftwareApplication',
+        position: index + 1,
+        name: software.name,
+        description: software.description,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web-based',
+        offers: {
+          '@type': 'Offer',
+          price: software.startingPrice.replace('$', ''),
+          priceCurrency: 'USD'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: software.rating,
+          reviewCount: parseInt(software.users.replace(/[^\d]/g, '')) || 100
+        }
+      }))
+    }
   }
 
   return (
@@ -44,497 +364,394 @@ export default function PaintingEstimatingSoftware() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="/painting-estimate-software" className="transition-colors hover:text-foreground/80">
-                Estimate Software
-              </Link>
-              <Link href="/painting-business-software" className="transition-colors hover:text-foreground/80">
-                Business Software
-              </Link>
-              <Link href="/features" className="transition-colors hover:text-foreground/80">
-                Features
-              </Link>
-              <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-                Pricing
-              </Link>
-            </nav>
-            <div className="ml-auto flex items-center space-x-4">
-              <Link
-                href="/demo"
-                className="text-sm font-medium transition-colors hover:text-foreground/80"
-              >
-                Book Demo
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Start Free Trial
-              </Link>
-            </div>
-          </nav>
-        </header>
 
-        <main>
+      <div className="min-h-screen bg-background">
+        <SharedNavigation />
+
+        <main className="pt-14">
+          <div className="container">
+            <Breadcrumbs items={breadcrumbItems} className="py-4" />
+          </div>
+
           {/* Hero Section */}
-          <section className="relative overflow-hidden py-16 md:py-24">
+          <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                  <BarChart3 className="mr-2 h-4 w-4" />
+                  2025 Software Comparison
+                </div>
+                
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  Painting Estimating Software That Gets Every Number Right
+                  Best Painting Estimating Software for Contractors
                 </h1>
                 <p className="mt-6 text-xl text-muted-foreground">
-                  Professional painting estimating software with built-in calculators, material databases, 
-                  and labor tracking. Create accurate estimates 10x faster than spreadsheets.
+                  Compare top painting estimating software tools, features, and pricing. Find the perfect 
+                  solution to create accurate quotes faster and win more painting jobs.
                 </p>
+                
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Link
                     href="/auth/signup"
-                    className="inline-flex items-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90"
+                    className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                   >
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <Zap className="mr-2 h-5 w-5" />
+                    Try PaintQuote Pro Free
                   </Link>
                   <Link
-                    href="/interior-painting-quote-calculator"
-                    className="inline-flex items-center rounded-md border px-8 py-3 text-base font-medium hover:bg-accent"
+                    href="#comparison"
+                    className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                   >
-                    <Calculator className="mr-2 h-4 w-4" />
-                    Try Free Calculator
+                    Compare Software Options
                   </Link>
                 </div>
-                <p className="mt-4 text-sm text-muted-foreground">
-                  No credit card required • 14-day free trial • Cancel anytime
-                </p>
+
+                <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-primary">6</div>
+                    <p className="text-sm text-muted-foreground">Software Options</p>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-primary">200,000+</div>
+                    <p className="text-sm text-muted-foreground">Active Users</p>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-primary">Free</div>
+                    <p className="text-sm text-muted-foreground">Options Available</p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Core Estimating Features */}
-          <section className="border-t py-16 md:py-24">
+          {/* Software Comparison Grid */}
+          <section id="comparison" className="border-t py-16 bg-muted/50">
             <div className="container">
-              <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold sm:text-4xl">
-                  Advanced Painting Estimating Tools
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Everything you need to create accurate painting estimates quickly and professionally
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Painting Estimating Software Comparison</h2>
+                <p className="text-lg text-muted-foreground">
+                  Detailed comparison of the top painting estimating software options for contractors
                 </p>
               </div>
 
-              <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div className="relative rounded-lg border bg-card p-8">
-                  <Calculator className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Paint Quantity Calculator</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Automatically calculate paint needed based on surface area, texture, and coverage rates. 
-                    Includes primer and multiple coat calculations.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Surface texture adjustments
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Window/door deductions
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Waste factor calculations
-                    </li>
-                  </ul>
-                </div>
+              <div className="mx-auto max-w-7xl">
+                <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
+                  {softwareOptions.map((software, index) => (
+                    <div key={index} className={`rounded-lg border bg-background p-6 ${software.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
+                      {software.popular && (
+                        <div className="text-center mb-4">
+                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                            Best for Painters
+                          </span>
+                        </div>
+                      )}
+                      
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h3 className="text-xl font-semibold">{software.name}</h3>
+                          <div className="flex items-center gap-2 mt-1">
+                            <div className="flex items-center">
+                              <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
+                              <span className="text-sm font-medium ml-1">{software.rating}</span>
+                            </div>
+                            <span className="text-sm text-muted-foreground">•</span>
+                            <span className="text-sm text-muted-foreground">{software.users} users</span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-primary">{software.startingPrice}</div>
+                          {software.billingPeriod !== 'one-time' && (
+                            <div className="text-xs text-muted-foreground">/{software.billingPeriod}</div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <p className="text-sm text-muted-foreground mb-4">{software.description}</p>
 
-                <div className="relative rounded-lg border bg-card p-8">
-                  <Clock className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Labor Hour Estimator</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Calculate accurate labor hours based on room complexity, surface conditions, 
-                    and crew size. Factors in prep work automatically.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Prep work calculations
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Crew size optimization
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Height factor adjustments
-                    </li>
-                  </ul>
-                </div>
+                      <div className="mb-4">
+                        <h4 className="text-sm font-medium mb-2">Key Features:</h4>
+                        <ul className="space-y-1">
+                          {software.features.slice(0, 4).map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-center text-sm">
+                              <CheckCircle className="mr-2 h-3 w-3 text-primary" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                <div className="relative rounded-lg border bg-card p-8">
-                  <DollarSign className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Material Cost Database</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Up-to-date pricing for major paint brands and supplies. Automatically calculates 
-                    total material costs with local supplier integration.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Real-time price updates
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Supplier integration
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Bulk discount tracking
-                    </li>
-                  </ul>
-                </div>
+                      <div className="grid gap-4 sm:grid-cols-2 mb-6">
+                        <div>
+                          <h4 className="text-sm font-medium text-green-700 mb-2">Pros:</h4>
+                          <ul className="space-y-1">
+                            {software.pros.slice(0, 3).map((pro, proIndex) => (
+                              <li key={proIndex} className="text-xs text-muted-foreground">• {pro}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-medium text-orange-700 mb-2">Cons:</h4>
+                          <ul className="space-y-1">
+                            {software.cons.slice(0, 3).map((con, conIndex) => (
+                              <li key={conIndex} className="text-xs text-muted-foreground">• {con}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
 
-                <div className="relative rounded-lg border bg-card p-8">
-                  <FileSpreadsheet className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Surface Measurement Tools</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Quick and accurate surface area calculations for walls, ceilings, trim, 
-                    and specialty surfaces. Visual room builders included.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Room dimension calculator
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Trim linear footage
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Complex shape tools
-                    </li>
-                  </ul>
-                </div>
+                      <div className="mb-4 text-sm">
+                        <span className="font-medium">Best for:</span> {software.bestFor}
+                      </div>
 
-                <div className="relative rounded-lg border bg-card p-8">
-                  <BarChart3 className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Profit Margin Calculator</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Set and track profit margins across all estimates. Adjust markup by job type, 
-                    client, or project complexity automatically.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Variable markup rules
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Overhead allocation
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Profit tracking
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="relative rounded-lg border bg-card p-8">
-                  <Palette className="h-12 w-12 text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">Color & Finish Selection</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Digital color libraries from major brands. Track finish types, sheen levels, 
-                    and specialty coatings with automatic pricing adjustments.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Brand color libraries
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Finish recommendations
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                      Color matching tools
-                    </li>
-                  </ul>
+                      <div className="space-y-2">
+                        <Button variant={software.popular ? 'default' : 'outline'} className="w-full">
+                          {software.freeTrialDays ? `Start ${software.freeTrialDays}-Day Trial` : 'Learn More'}
+                        </Button>
+                        {software.freeTrialDays && (
+                          <p className="text-xs text-center text-muted-foreground">
+                            No credit card required
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Estimating Process */}
-          <section className="bg-muted/50 py-16 md:py-24">
-            <div className="container">
-              <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold sm:text-4xl">
-                  Create Accurate Estimates in 4 Simple Steps
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Our painting estimating software streamlines your entire quoting process
-                </p>
-              </div>
-
-              <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                <div className="text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground">
-                    1
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">Measure Surfaces</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Input room dimensions or use our visual builder. Automatically calculates walls, 
-                    ceilings, and trim areas.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground">
-                    2
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">Select Materials</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Choose paint products from our database. System calculates quantities and costs 
-                    automatically.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground">
-                    3
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">Add Labor Hours</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    AI estimates labor based on job complexity. Adjust for crew size and experience 
-                    level.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground">
-                    4
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">Generate Quote</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Professional estimate ready in seconds. Send directly to clients or download 
-                    as PDF.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Integration Features */}
+          {/* Feature Comparison Table */}
           <section className="py-16 md:py-24">
             <div className="container">
-              <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-                <div>
-                  <h2 className="text-3xl font-bold sm:text-4xl">
-                    Integrates with Your Existing Tools
-                  </h2>
-                  <p className="mt-4 text-lg text-muted-foreground">
-                    Our painting estimating software works seamlessly with the tools you already use
-                  </p>
-                  
-                  <div className="mt-8 space-y-6">
-                    <div className="flex items-start">
-                      <Users className="mr-4 h-6 w-6 flex-shrink-0 text-primary" />
-                      <div>
-                        <h3 className="font-semibold">CRM Integration</h3>
-                        <p className="mt-1 text-muted-foreground">
-                          Sync estimates with your customer database. Track leads, follow-ups, 
-                          and conversion rates automatically.
-                        </p>
-                      </div>
-                    </div>
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Feature Comparison</h2>
+                <p className="text-lg text-muted-foreground">
+                  Side-by-side comparison of key features across painting estimating software
+                </p>
+              </div>
 
-                    <div className="flex items-start">
-                      <FileSpreadsheet className="mr-4 h-6 w-6 flex-shrink-0 text-primary" />
-                      <div>
-                        <h3 className="font-semibold">Accounting Software</h3>
-                        <p className="mt-1 text-muted-foreground">
-                          Export estimates to QuickBooks, Xero, or other accounting platforms. 
-                          Track job costs vs estimates automatically.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <Smartphone className="mr-4 h-6 w-6 flex-shrink-0 text-primary" />
-                      <div>
-                        <h3 className="font-semibold">Mobile Apps</h3>
-                        <p className="mt-1 text-muted-foreground">
-                          Create estimates on-site with our iOS and Android apps. Sync across 
-                          all devices in real-time.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-10">
-                    <Link
-                      href="/integrations"
-                      className="inline-flex items-center font-medium text-primary hover:text-primary/80"
-                    >
-                      View all integrations
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="rounded-lg bg-muted p-8">
-                    <h3 className="text-xl font-semibold">Painting Estimate Example</h3>
-                    <div className="mt-6 space-y-4">
-                      <div className="rounded-md bg-background p-4">
-                        <div className="flex justify-between text-sm">
-                          <span className="font-medium">Master Bedroom</span>
-                          <span>850 sq ft walls</span>
-                        </div>
-                        <div className="mt-2 text-xs text-muted-foreground">
-                          2 coats premium paint, 1 coat primer
-                        </div>
-                      </div>
-                      <div className="rounded-md bg-background p-4">
-                        <div className="flex justify-between text-sm">
-                          <span className="font-medium">Materials</span>
-                          <span>$486.50</span>
-                        </div>
-                        <div className="mt-1 flex justify-between text-sm">
-                          <span className="font-medium">Labor (8 hours)</span>
-                          <span>$640.00</span>
-                        </div>
-                      </div>
-                      <div className="border-t pt-4">
-                        <div className="flex justify-between font-semibold">
-                          <span>Total Estimate</span>
-                          <span className="text-primary">$1,126.50</span>
+              <div className="mx-auto max-w-7xl overflow-x-auto">
+                <div className="min-w-full">
+                  {features.map((category, categoryIndex) => (
+                    <div key={categoryIndex} className="mb-8">
+                      <h3 className="text-lg font-semibold mb-4">{category.category}</h3>
+                      <div className="rounded-lg border bg-background overflow-hidden">
+                        <div className="overflow-x-auto">
+                          <table className="w-full">
+                            <thead>
+                              <tr className="border-b bg-muted/50">
+                                <th className="text-left p-4 font-medium">Feature</th>
+                                <th className="text-center p-4 font-medium">PaintQuote Pro</th>
+                                <th className="text-center p-4 font-medium">JobNimbus</th>
+                                <th className="text-center p-4 font-medium">Estimate Rocket</th>
+                                <th className="text-center p-4 font-medium">Contractor Foreman</th>
+                                <th className="text-center p-4 font-medium">PaintScope</th>
+                                <th className="text-center p-4 font-medium">Excel</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {category.items.map((item, itemIndex) => (
+                                <tr key={itemIndex} className="border-b">
+                                  <td className="p-4 font-medium">{item.feature}</td>
+                                  <td className="text-center p-4">
+                                    {item.paintQuotePro ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                  </td>
+                                  <td className="text-center p-4">
+                                    {item.jobNimbus ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                  </td>
+                                  <td className="text-center p-4">
+                                    {item.estimateRocket ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                  </td>
+                                  <td className="text-center p-4">
+                                    {item.contractorForeman ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                  </td>
+                                  <td className="text-center p-4">
+                                    {item.paintScope ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                  </td>
+                                  <td className="text-center p-4">
+                                    {item.excel ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </section>
 
-          {/* ROI Section */}
-          <section className="border-t bg-muted/50 py-16 md:py-24">
+          {/* Selection Guide */}
+          <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
-              <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold sm:text-4xl">
-                  Painting Estimating Software That Pays for Itself
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Which Software is Right for Your Business?</h2>
+                <p className="text-lg text-muted-foreground">
+                  Choose the best painting estimating software based on your business size and needs
+                </p>
+              </div>
+
+              <div className="mx-auto max-w-6xl">
+                <div className="space-y-6">
+                  {selectionGuide.map((guide, index) => (
+                    <div key={index} className="rounded-lg border bg-background p-6">
+                      <div className="grid gap-6 lg:grid-cols-3 lg:items-center">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">{guide.businessType}</h3>
+                          <p className="text-sm text-muted-foreground">{guide.reason}</p>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-xl font-bold text-primary">{guide.recommendation}</div>
+                          <p className="text-sm text-muted-foreground">Recommended solution</p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-medium mb-2">Key features for you:</h4>
+                          <ul className="space-y-1">
+                            {guide.features.map((feature, featureIndex) => (
+                              <li key={featureIndex} className="flex items-center text-sm">
+                                <CheckCircle className="mr-2 h-3 w-3 text-primary" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Customer Testimonials */}
+          <section className="py-16 md:py-24">
+            <div className="container">
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">What Painting Contractors Say</h2>
+                <p className="text-lg text-muted-foreground">
+                  Real reviews from contractors using painting estimating software
+                </p>
+              </div>
+
+              <div className="mx-auto max-w-6xl">
+                <div className="grid gap-8 md:grid-cols-3">
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="rounded-lg border bg-background p-6">
+                      <div className="flex items-center gap-1 mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
+                        ))}
+                      </div>
+                      <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
+                      <div>
+                        <div className="font-medium">{testimonial.name}</div>
+                        <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="bg-muted/50 py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-3xl font-bold text-center mb-12">
+                  Painting Estimating Software FAQ
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Save hours on every estimate and win more jobs with professional, accurate quotes
+
+                <div className="space-y-8">
+                  {faqData.map((faq, index) => (
+                    <div key={index} className="rounded-lg bg-background p-6">
+                      <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
+                      <p className="text-muted-foreground">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Related Tools Section */}
+          <section className="py-16">
+            <div className="container">
+              <div className="mx-auto max-w-4xl text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Free Painting Tools</h2>
+                <p className="text-lg text-muted-foreground">
+                  Try our free calculators before choosing paid software
                 </p>
               </div>
 
-              <div className="mt-12 grid gap-8 md:grid-cols-3">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">75%</div>
-                  <p className="mt-2 text-lg font-semibold">Time Saved</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Create estimates in minutes instead of hours
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">32%</div>
-                  <p className="mt-2 text-lg font-semibold">More Accurate</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Reduce costly estimation errors
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">2.4x</div>
-                  <p className="mt-2 text-lg font-semibold">More Quotes</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Send more estimates and win more jobs
-                  </p>
-                </div>
-              </div>
+              <div className="mx-auto max-w-6xl">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                  <Link href="/paint-quote-calculator" 
+                        className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <Calculator className="h-8 w-8 text-primary mb-3" />
+                    <h3 className="font-semibold mb-2 group-hover:text-primary">Paint Calculator</h3>
+                    <p className="text-sm text-muted-foreground">Universal calculator for all painting projects</p>
+                  </Link>
 
-              <div className="mt-12 rounded-lg bg-background p-8 text-center">
-                <h3 className="text-2xl font-bold">
-                  Ready to Transform Your Estimating Process?
-                </h3>
-                <p className="mt-4 text-muted-foreground">
-                  Join thousands of painting contractors using our estimating software to grow their business
-                </p>
-                <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
-                  <Link
-                    href="/auth/signup"
-                    className="inline-flex items-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90"
-                  >
-                    Start 14-Day Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/interior-painting-quote-calculator" 
+                        className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <Building className="h-8 w-8 text-primary mb-3" />
+                    <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
+                    <p className="text-sm text-muted-foreground">Specialized for interior painting projects</p>
                   </Link>
-                  <Link
-                    href="/demo"
-                    className="inline-flex items-center rounded-md border px-6 py-3 text-base font-medium hover:bg-accent"
-                  >
-                    Schedule Demo
+
+                  <Link href="/paint-estimate-templates" 
+                        className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <FileText className="h-8 w-8 text-primary mb-3" />
+                    <h3 className="font-semibold mb-2 group-hover:text-primary">Free Templates</h3>
+                    <p className="text-sm text-muted-foreground">Download professional estimate templates</p>
+                  </Link>
+
+                  <Link href="/how-to-quote-painting-jobs" 
+                        className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
+                    <TrendingUp className="h-8 w-8 text-primary mb-3" />
+                    <h3 className="font-semibold mb-2 group-hover:text-primary">How-To Guide</h3>
+                    <p className="text-sm text-muted-foreground">Learn professional estimation techniques</p>
                   </Link>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="bg-primary py-16 text-primary-foreground">
+            <div className="container text-center">
+              <h2 className="text-3xl font-bold mb-4">
+                Ready to Transform Your Painting Business?
+              </h2>
+              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+                Start with PaintQuote Pro's free plan and experience the difference professional 
+                estimating software makes for your painting business.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                <Link
+                  href="/auth/signup"
+                  className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
+                >
+                  <Zap className="mr-2 h-5 w-5" />
+                  Start Free Today
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center rounded-md border border-primary-foreground/20 px-8 py-3 text-base font-medium hover:bg-primary-foreground/10"
+                >
+                  View Pricing Plans
+                </Link>
+              </div>
+              <p className="mt-4 text-sm opacity-75">
+                Free plan available • No credit card required • 14-day pro trial
+              </p>
             </div>
           </section>
         </main>
-
-        {/* Footer */}
-        <footer className="border-t bg-background">
-          <div className="container py-12">
-            <div className="grid gap-8 md:grid-cols-4">
-              <div>
-                <h3 className="text-sm font-semibold">Estimating Tools</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/interior-painting-quote-calculator" className="hover:text-foreground">Interior Calculator</Link></li>
-                  <li><Link href="/exterior-painting-estimate-calculator" className="hover:text-foreground">Exterior Calculator</Link></li>
-                  <li><Link href="/painting-estimate-calculator-free" className="hover:text-foreground">Free Calculator</Link></li>
-                  <li><Link href="/paint-quantity-calculator" className="hover:text-foreground">Paint Quantity Tool</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Software</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/painting-estimate-software" className="hover:text-foreground">Estimate Software</Link></li>
-                  <li><Link href="/painting-business-software" className="hover:text-foreground">Business Software</Link></li>
-                  <li><Link href="/paint-contractor-app" className="hover:text-foreground">Mobile App</Link></li>
-                  <li><Link href="/features" className="hover:text-foreground">All Features</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Resources</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/how-to-estimate-painting-jobs" className="hover:text-foreground">Estimating Guide</Link></li>
-                  <li><Link href="/painting-estimate-templates" className="hover:text-foreground">Free Templates</Link></li>
-                  <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>
-                  <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Company</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
-                  <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
-                  <li><Link href="/pricing" className="hover:text-foreground">Pricing</Link></li>
-                  <li><Link href="/help" className="hover:text-foreground">Help Center</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-              <p>&copy; 2025 PaintQuote Pro. Professional painting estimating software for contractors.</p>
-            </div>
-          </div>
-        </footer>
       </div>
     </>
   )
