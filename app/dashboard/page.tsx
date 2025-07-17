@@ -87,13 +87,10 @@ async function getDashboardData(companyId: number) {
         where: {
           companyId,
           status: 'sent',
-          sentAt: {
-            not: null,
-          },
         },
         select: {
           createdAt: true,
-          sentAt: true,
+          updatedAt: true,
         },
       }),
     ])
@@ -106,8 +103,7 @@ async function getDashboardData(companyId: number) {
     let avgResponseTime = null
     if (sentQuotes.length > 0) {
       const responseTimes = sentQuotes
-        .filter(q => q.sentAt)
-        .map(q => (q.sentAt!.getTime() - q.createdAt.getTime()) / (1000 * 60 * 60)) // hours
+        .map(q => (q.updatedAt.getTime() - q.createdAt.getTime()) / (1000 * 60 * 60)) // hours
       avgResponseTime = responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length
     }
 

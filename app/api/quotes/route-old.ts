@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-import { QuoteNumberGenerator, QuoteRateLimiter } from '@/lib/quote-number-generator'
-
 // Simple calculator functions
 interface ChargeRates {
   walls: number
@@ -135,19 +133,7 @@ class QuoteCalculatorV2 {
   }
 }
 
-// Create singleton instances for scalability
-const prisma = new PrismaClient({
-  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-})
-
-const quoteGenerator = new QuoteNumberGenerator(prisma)
-const rateLimiter = new QuoteRateLimiter(20, 15) // 20 quotes per 15 minutes per user
-
-// Clean up rate limiter periodically
-setInterval(() => {
-  rateLimiter.cleanup()
-}, 60 * 60 * 1000) // Every hour
-
+const prisma = new PrismaClient()
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
 interface AuthPayload {
@@ -174,36 +160,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  // Apply rate limiting
-  const rateLimitKey = `quote:${auth.companyId}:${auth.userId}`
-  const rateLimitCheck = await rateLimiter.checkLimit(rateLimitKey)
-  
-  if (!rateLimitCheck.allowed) {
-    return NextResponse.json(
-      { 
-        error: 'Rate limit exceeded', 
-        message: `Too many quote requests. Please try again in ${rateLimitCheck.retryAfter} seconds.`,
-        retryAfter: rateLimitCheck.retryAfter
-      }, 
-      { status: 429 }
-    )
-  }
-
   try {
     const data = await request.json()
     
-    // Get company settings with optimized query
+    // Get company settings
     const company = await prisma.company.findUnique({
       where: { id: auth.companyId },
-      select: {
-        id: true,
-        name: true,
-        plan: true,
-        quotesUsed: true,
-        quotesLimit: true,
-        quotesResetAt: true,
-        settings: true
-      }
     })
     
     if (!company) {
@@ -260,6 +222,8 @@ export async function POST(request: NextRequest) {
 
     // Calculate quote
     const calculation = QuoteCalculatorV2.calculate(calculatorInput)
+    console.log('Calculation input:', JSON.stringify(calculatorInput, null, 2))
+    console.log('Calculation result:', JSON.stringify(calculation, null, 2))
     
     // Apply overhead, profit, and tax
     const subtotal = calculation.total
@@ -273,154 +237,94 @@ export async function POST(request: NextRequest) {
     const subtotalWithProfit = subtotalWithOverhead + profit
     const tax = subtotalWithProfit * (taxRate / 100)
     const totalAmount = subtotalWithProfit + tax
-
-    // Create or update customer - optimized to reduce queries
-    let customer = await prisma.customer.upsert({
-      where: {
-        companyId_email: {
-          companyId: auth.companyId,
-          email: data.customer.email
-        }
-      },
-      update: {
-        name: data.customer.name,
-        phone: data.customer.phone,
-        address: data.customer.address,
-      },
-      create: {
-        companyId: auth.companyId,
-        name: data.customer.name,
-        email: data.customer.email,
-        phone: data.customer.phone,
-        address: data.customer.address,
-      }
+    
+    const formatted = QuoteCalculatorV2.formatOutput({
+      ...calculation,
+      total: totalAmount
     })
 
-    // Generate unique quote number using atomic operation
-    const quoteNumber = await quoteGenerator.generateQuoteNumber(auth.companyId)
-
-    // Create quote and update quote usage in a transaction for consistency
-    const quote = await prisma.$transaction(async (tx) => {
-      // Create the quote
-      const newQuote = await tx.quote.create({
-        data: {
-          companyId: auth.companyId,
-          customerId: customer.id,
-          quoteNumber,
-          projectType: data.projectType,
-          status: 'draft',
-          surfaces: data.surfaces,
-          paintProducts: data.paintProducts || {},
-          settings: JSON.parse(JSON.stringify(calculatorInput)),
-          materials: {
-            surfaces: calculation.surfaces,
-            totalMaterials: calculation.materials,
-          },
-          labor: {
-            totalLabor: calculation.labor,
-          },
-          subtotal: subtotal,
-          overhead: overhead,
-          profit: profit,
-          tax: tax,
-          totalAmount: totalAmount,
-          description: data.description,
-          notes: data.notes,
-          terms: data.terms || companySettings.defaultTerms || 'Payment due within 30 days.',
-          createdById: auth.userId,
-        },
-        include: {
-          customer: true,
+    // Create or update customer
+    let customer = data.customer.id ? 
+      await prisma.customer.findUnique({
+        where: { id: data.customer.id }
+      }) :
+      await prisma.customer.findUnique({
+        where: {
+          companyId_email: {
+            companyId: auth.companyId,
+            email: data.customer.email
+          }
         }
       })
 
-      // Increment quote usage for free plan
-      if (company.plan === 'free' && company.quotesLimit > 0) {
-        await tx.company.update({
-          where: { id: auth.companyId },
-          data: {
-            quotesUsed: {
-              increment: 1
-            }
-          }
-        })
-      }
+    if (!customer) {
+      customer = await prisma.customer.create({
+        data: {
+          companyId: auth.companyId,
+          name: data.customer.name,
+          email: data.customer.email,
+          phone: data.customer.phone,
+          address: data.customer.address,
+        }
+      })
+    }
 
-      return newQuote
+    // Generate quote number
+    const quoteCount = await prisma.quote.count({
+      where: { companyId: auth.companyId }
     })
+    const quoteNumber = `Q-${new Date().getFullYear()}-${String(quoteCount + 1).padStart(5, '0')}`
+
+    // Create quote
+    const quote = await prisma.quote.create({
+      data: {
+        companyId: auth.companyId,
+        customerId: customer.id,
+        quoteNumber,
+        projectType: data.projectType,
+        status: 'draft',
+        surfaces: data.surfaces,
+        paintProducts: data.paintProducts || {},
+        settings: JSON.parse(JSON.stringify(calculatorInput)),
+        materials: {
+          surfaces: calculation.surfaces,
+          totalMaterials: calculation.materials,
+        },
+        labor: {
+          totalLabor: calculation.labor,
+        },
+        subtotal: subtotal,
+        overhead: overhead,
+        profit: profit,
+        tax: tax,
+        totalAmount: totalAmount,
+        description: data.description,
+        notes: data.notes,
+        terms: data.terms || companySettings.defaultTerms || 'Payment due within 30 days.',
+        createdById: auth.userId,
+      },
+      include: {
+        customer: true,
+      }
+    })
+
+    // Increment quote usage for free plan
+    if (company.plan === 'free' && company.quotesLimit > 0) {
+      await prisma.company.update({
+        where: { id: auth.companyId },
+        data: {
+          quotesUsed: {
+            increment: 1
+          }
+        }
+      })
+    }
 
     return NextResponse.json(quote)
   } catch (error) {
     console.error('Quote creation error:', error)
-    
-    // Return more specific error messages
-    if (error instanceof Error) {
-      if (error.message.includes('P2002')) {
-        return NextResponse.json(
-          { error: 'Quote number conflict. Please try again.' }, 
-          { status: 409 }
-        )
-      }
-    }
-    
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
-  }
-}
-
-// GET endpoint for retrieving quotes with pagination
-export async function GET(request: NextRequest) {
-  const auth = await getAuth()
-  if (!auth) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
-
-  const searchParams = request.nextUrl.searchParams
-  const page = parseInt(searchParams.get('page') || '1')
-  const limit = parseInt(searchParams.get('limit') || '20')
-  const status = searchParams.get('status')
-  const customerId = searchParams.get('customerId')
-  
-  const skip = (page - 1) * limit
-
-  try {
-    const where = {
-      companyId: auth.companyId,
-      deletedAt: null,
-      ...(status && { status }),
-      ...(customerId && { customerId: parseInt(customerId) })
-    }
-
-    const [quotes, totalCount] = await prisma.$transaction([
-      prisma.quote.findMany({
-        where,
-        include: {
-          customer: true,
-          createdBy: {
-            select: {
-              id: true,
-              name: true,
-              email: true
-            }
-          }
-        },
-        orderBy: { createdAt: 'desc' },
-        skip,
-        take: limit
-      }),
-      prisma.quote.count({ where })
-    ])
-
-    return NextResponse.json({
-      quotes,
-      pagination: {
-        page,
-        limit,
-        total: totalCount,
-        totalPages: Math.ceil(totalCount / limit)
-      }
-    })
-  } catch (error) {
-    console.error('Quote retrieval error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  } finally {
+    await prisma.$disconnect()
   }
 }

@@ -29,6 +29,7 @@ model Company {
   quotesUsed      Int              @default(0)
   quotesLimit     Int              @default(1) // 1 for free, -1 for unlimited
   quotesResetAt   DateTime         @default(now()) // Monthly reset for free plan
+  quotesGenerated Int              @default(0) // Total quotes generated (for numbering)
   
   // Timestamps
   createdAt       DateTime         @default(now())
