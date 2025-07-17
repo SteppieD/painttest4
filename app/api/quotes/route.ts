@@ -172,6 +172,34 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Company not found' }, { status: 404 })
     }
 
+    // Check quote limits for free plan
+    if (company.plan === 'free' && company.quotesLimit > 0) {
+      // Check if we need to reset the monthly quota
+      if (company.quotesResetAt && new Date() > company.quotesResetAt) {
+        await prisma.company.update({
+          where: { id: auth.companyId },
+          data: {
+            quotesUsed: 0,
+            quotesResetAt: new Date(new Date().setMonth(new Date().getMonth() + 1)),
+          },
+        })
+        company.quotesUsed = 0
+      }
+
+      // Check if quota exceeded
+      if (company.quotesUsed >= company.quotesLimit) {
+        return NextResponse.json(
+          { 
+            error: 'Monthly quote limit reached', 
+            message: 'You have reached your monthly quote limit. Please upgrade to Pro for unlimited quotes.',
+            quotesUsed: company.quotesUsed,
+            quotesLimit: company.quotesLimit
+          }, 
+          { status: 403 }
+        )
+      }
+    }
+
     const companySettings = (company.settings as Record<string, unknown>) || {}
     
     // Prepare input for calculator V2
@@ -279,6 +307,18 @@ export async function POST(request: NextRequest) {
         customer: true,
       }
     })
+
+    // Increment quote usage for free plan
+    if (company.plan === 'free' && company.quotesLimit > 0) {
+      await prisma.company.update({
+        where: { id: auth.companyId },
+        data: {
+          quotesUsed: {
+            increment: 1
+          }
+        }
+      })
+    }
 
     return NextResponse.json(quote)
   } catch (error) {

@@ -1,10 +1,12 @@
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
 import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock } from 'lucide-react'
 import Link from 'next/link'
+import { QuoteUsageIndicator } from '@/components/quote-usage-indicator'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -142,11 +144,18 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-sm md:text-base text-muted-foreground">
-          Welcome back! Here&apos;s an overview of your business.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
+          <p className="text-sm md:text-base text-muted-foreground">
+            Welcome back! Here&apos;s an overview of your business.
+          </p>
+        </div>
+        {!isPaidUser && (
+          <div className="w-full sm:w-72">
+            <QuoteUsageIndicator companyId={user.companyId} />
+          </div>
+        )}
       </div>
       
       <MobileQuoteButton />
