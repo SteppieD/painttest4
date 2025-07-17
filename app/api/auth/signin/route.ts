@@ -52,19 +52,29 @@ export async function POST(request: NextRequest) {
     }
 
     // Query the old schema structure
-    const result = await prisma.$queryRaw`
-      SELECT 
-        u.id as user_id,
-        u.email,
-        u.name,
-        u.role,
-        u.password_hash,
-        c.*
-      FROM company_users u
-      JOIN companies c ON u.company_id = c.id
-      WHERE u.email = ${email}
-      LIMIT 1
-    `
+    let result: any
+    try {
+      result = await prisma.$queryRaw`
+        SELECT 
+          u.id as user_id,
+          u.email,
+          u.name,
+          u.role,
+          u.password_hash,
+          c.*
+        FROM company_users u
+        JOIN companies c ON u.company_id = c.id
+        WHERE u.email = ${email}
+        LIMIT 1
+      `
+    } catch (queryError) {
+      console.error('Database query error:', queryError)
+      // If raw query fails, try to provide helpful error
+      return NextResponse.json(
+        { error: 'Database connection error. Please try again.' },
+        { status: 500 }
+      )
+    }
 
     const user = Array.isArray(result) && result.length > 0 ? result[0] : null
 
@@ -76,7 +86,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify password
-    const isValid = await bcrypt.compare(password, user.password_hash)
+    let isValid = false
+    try {
+      isValid = await bcrypt.compare(password, user.password_hash)
+    } catch (bcryptError) {
+      console.error('Password verification error:', bcryptError)
+      return NextResponse.json(
+        { error: 'Authentication error' },
+        { status: 500 }
+      )
+    }
+    
     if (!isValid) {
       return NextResponse.json(
         { error: 'Invalid credentials' },

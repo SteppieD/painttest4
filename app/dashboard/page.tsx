@@ -87,7 +87,13 @@ export default async function DashboardPage() {
     return <div>Please login</div>
   }
   
-  const user = jwt.verify(token!, JWT_SECRET) as AuthPayload
+  let user: AuthPayload
+  try {
+    user = jwt.verify(token!, JWT_SECRET) as AuthPayload
+  } catch (error) {
+    console.error('Invalid token:', error)
+    return <div>Session expired. Please login again.</div>
+  }
   
   const data = await getDashboardData(user.companyId)
   
