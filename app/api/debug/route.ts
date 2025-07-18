@@ -1,44 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 
 export async function GET(request: NextRequest) {
   try {
-    // Test database connection
-    await prisma.$connect()
+    const db = getDatabaseAdapter()
     
     // Count records
-    const companyCount = await prisma.company.count()
-    const userCount = await prisma.user.count()
+    const companies = await db.getAllCompanies()
+    const users = await db.getAllUsers()
     
     // Get first user (without sensitive data)
-    const firstUser = await prisma.user.findFirst({
-      select: {
-        id: true,
-        email: true,
-        name: true,
-        company: {
-          select: {
-            id: true,
-            name: true,
-            plan: true
-          }
-        }
-      }
-    })
+    const firstUser = users.length > 0 ? {
+      id: users[0].id,
+      email: users[0].email,
+      name: users[0].name,
+      company: companies.find(c => c.id === users[0].company_id)
+    } : null
 
     return NextResponse.json({
       status: 'connected',
       database: {
-        companies: companyCount,
-        users: userCount,
+        companies: companies.length,
+        users: users.length,
         sampleUser: firstUser
       },
       environment: {
         hasJwtSecret: !!process.env.JWT_SECRET,
         nodeEnv: process.env.NODE_ENV,
-        databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing'
+        databasePath: process.env.DATABASE_PATH || 'default'
       }
     })
   } catch (error) {
@@ -49,10 +38,8 @@ export async function GET(request: NextRequest) {
       environment: {
         hasJwtSecret: !!process.env.JWT_SECRET,
         nodeEnv: process.env.NODE_ENV,
-        databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing'
+        databasePath: process.env.DATABASE_PATH || 'default'
       }
     })
-  } finally {
-    await prisma.$disconnect()
   }
 }

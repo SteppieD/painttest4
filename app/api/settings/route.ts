@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-
-const prisma = new PrismaClient()
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
 interface AuthPayload {
@@ -31,18 +29,17 @@ export async function GET() {
   }
 
   try {
-    const company = await prisma.company.findUnique({
-      where: { id: auth.companyId },
-    })
+    const db = getDatabaseAdapter()
+    const company = await db.getCompany(auth.companyId)
 
     if (!company) {
       return NextResponse.json({ error: 'Company not found' }, { status: 404 })
     }
 
-    const settings = (company.settings as Record<string, unknown>) || {}
+    const settings = company.settings ? JSON.parse(company.settings) : {}
     
     return NextResponse.json({
-      companyName: company.name,
+      companyName: company.company_name,
       taxRate: settings.defaultTaxRate || 8.25,
       overheadPercent: settings.defaultOverheadPercent || 15,
       profitMargin: settings.defaultProfitMargin || 30,
@@ -65,8 +62,6 @@ export async function GET() {
   } catch (error) {
     console.error('Settings GET error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -78,25 +73,23 @@ export async function PUT(request: NextRequest) {
 
   try {
     const data = await request.json()
+    const db = getDatabaseAdapter()
     
-    await prisma.company.update({
-      where: { id: auth.companyId },
-      data: {
-        name: data.companyName,
-        settings: {
-          defaultTaxRate: data.taxRate,
-          defaultOverheadPercent: data.overheadPercent,
-          defaultProfitMargin: data.profitMargin,
-          chargeRates: data.chargeRates,
-        },
-      },
+    const settings = {
+      defaultTaxRate: data.taxRate,
+      defaultOverheadPercent: data.overheadPercent,
+      defaultProfitMargin: data.profitMargin,
+      chargeRates: data.chargeRates,
+    }
+
+    await db.updateCompany(auth.companyId, {
+      company_name: data.companyName,
+      settings: JSON.stringify(settings),
     })
 
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Settings PUT error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
-  } finally {
-    await prisma.$disconnect()
   }
 }

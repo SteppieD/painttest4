@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
-import { PrismaClient } from '@prisma/client'
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-
-const prisma = new PrismaClient()
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -36,13 +34,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Ensure fresh connection
-    await prisma.$connect()
+    const db = getDatabaseAdapter()
 
     // Check if user already exists
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    })
+    const existingUser = await db.getUserByEmail(email)
 
     if (existingUser) {
       return NextResponse.json(
@@ -51,82 +46,32 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if company email already exists
-    const existingCompany = await prisma.company.findUnique({
-      where: { email },
-    })
-
-    if (existingCompany) {
-      return NextResponse.json(
-        { error: 'Company with this email already exists' },
-        { status: 409 }
-      )
-    }
-
     // Hash password
     const passwordHash = await bcrypt.hash(password, 10)
 
-    // Create company and user in a transaction
-    const result = await prisma.$transaction(async (tx) => {
-      // Create company
-      const company = await tx.company.create({
-        data: {
-          name: companyName,
-          email: email,
-          plan: 'free',
-          quotesLimit: 5,
-          quotesResetAt: new Date(new Date().setMonth(new Date().getMonth() + 1)), // Reset in 1 month
-          settings: {
-            companyLogo: null,
-            defaultTaxRate: 8.25,
-            defaultOverheadPercent: 15,
-            defaultProfitMargin: 30,
-            laborRates: {
-              residential: 45,
-              commercial: 55,
-            },
-            defaultTerms: 'Payment due within 30 days. 50% deposit required to start work.',
-            chargeRates: {
-              walls: 3.50,
-              ceilings: 4.00,
-              baseboards: 2.50,
-              crownMolding: 5.00,
-              doorsWithJams: 125.00,
-              windows: 75.00,
-              exteriorWalls: 4.50,
-              fasciaBoards: 6.00,
-              soffits: 5.00,
-              exteriorDoors: 150.00,
-              exteriorWindows: 100.00
-            }
-          },
-        },
-      })
+    // Create company
+    const company = await db.createCompany({
+      company_name: companyName,
+      email: email,
+      phone: '',
+      access_code: Math.random().toString(36).substr(2, 9).toUpperCase(),
+      is_trial: true,
+      quote_limit: 5, // Free trial gets 5 quotes per month
+    })
 
-      // Create user
-      const user = await tx.user.create({
-        data: {
-          companyId: company.id,
-          email,
-          name,
-          role: 'admin',
-          passwordHash,
-        },
-        include: {
-          company: true,
-        },
-      })
-
-      return { user, company }
+    // Create user (simplified schema)
+    const user = await db.createUser({
+      email,
+      company_name: companyName,
     })
 
     // Create JWT token
     const token = jwt.sign(
       {
-        userId: result.user.id,
-        companyId: result.user.companyId,
-        email: result.user.email,
-        role: result.user.role,
+        userId: user.id,
+        companyId: company.id,
+        email: user.email,
+        role: user.role,
       },
       JWT_SECRET,
       { expiresIn: '7d' }
@@ -143,17 +88,18 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       user: {
-        id: result.user.id,
-        email: result.user.email,
-        name: result.user.name,
-        role: result.user.role,
+        id: user.id,
+        email: user.email,
+        name: name,
+        role: 'admin',
         company: {
-          id: result.company.id,
-          name: result.company.name,
-          plan: result.company.plan,
+          id: company.id,
+          name: company.company_name,
+          accessCode: company.access_code,
+          plan: 'free',
         },
       },
-      message: 'Account created successfully! Welcome to your free trial.',
+      message: `Account created successfully! Your access code is: ${company.access_code}. Please save this code to log in.`,
     })
   } catch (error) {
     console.error('Sign up error:', error)
@@ -161,7 +107,5 @@ export async function POST(request: NextRequest) {
       { error: 'Failed to create account. Please try again.' },
       { status: 500 }
     )
-  } finally {
-    await prisma.$disconnect()
   }
 }

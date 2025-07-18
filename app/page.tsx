@@ -21,7 +21,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href="/auth/signup"
+                  href="/trial-signup"
                   className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                 >
                   Start Free Trial

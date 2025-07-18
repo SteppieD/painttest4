@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import { IntelligentQuoteParser } from '@/lib/ai/intelligent-quote-parser'
-import { prisma } from '@/lib/prisma'
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
@@ -100,11 +100,10 @@ export async function POST(request: NextRequest) {
     const parsingResult = parser ? await parser.parseConversation(messages) : null
     
     // Get company settings for charge rates
-    const company = await prisma.company.findUnique({
-      where: { id: auth.companyId }
-    })
+    const db = getDatabaseAdapter()
+    const company = await db.getCompany(auth.companyId)
     
-    const companySettings = (company?.settings as Record<string, any>) || {}
+    const companySettings = company?.settings ? JSON.parse(company.settings) : {}
     const chargeRates = companySettings.chargeRates || {
       walls: 3.50,
       ceilings: 3.00,

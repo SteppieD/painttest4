@@ -1,42 +1,68 @@
-import { redirect } from 'next/navigation'
-import { cookies } from 'next/headers'
-import jwt from 'jsonwebtoken'
-import Link from 'next/link'
-import { MobileNav } from '@/components/mobile-nav'
+'use client';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { MobileNav } from '@/components/mobile-nav';
+import { useEffect, useState } from 'react';
 
-interface AuthPayload {
-  userId: number
-  companyId: number
-  email: string
-  role: string
+interface CompanyData {
+  id: number;
+  name: string;
+  email: string;
+  accessCode: string;
 }
 
-async function getUser() {
-  const token = cookies().get('auth-token')?.value
-
-  if (!token) {
-    return null
-  }
-
-  try {
-    const payload = jwt.verify(token, JWT_SECRET) as AuthPayload
-    return payload
-  } catch {
-    return null
-  }
-}
-
-export default async function DashboardLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const user = await getUser()
+  const router = useRouter();
+  const [company, setCompany] = useState<CompanyData | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!user) {
-    redirect('/auth/signin')
+  useEffect(() => {
+    // Check localStorage for company data
+    const storedData = localStorage.getItem('paintquote_company');
+    if (!storedData) {
+      router.push('/access-code');
+      return;
+    }
+
+    try {
+      const data = JSON.parse(storedData);
+      setCompany({
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        accessCode: data.accessCode
+      });
+    } catch (error) {
+      console.error('Error parsing company data:', error);
+      router.push('/access-code');
+    } finally {
+      setLoading(false);
+    }
+  }, [router]);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('paintquote_company');
+    router.push('/access-code');
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!company) {
+    return null;
   }
 
   return (
@@ -46,7 +72,7 @@ export default async function DashboardLayout({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <MobileNav userEmail={user.email} />
+              <MobileNav userEmail={company.email} />
               <Link href="/dashboard" className="text-xl font-semibold">
                 Paint Quote Pro
               </Link>
@@ -58,47 +84,39 @@ export default async function DashboardLayout({
                   Dashboard
                 </Link>
                 <Link
-                  href="/dashboard/chat"
+                  href="/create-quote"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
                 >
-                  New Quote Chat
+                  New Quote
                 </Link>
                 <Link
-                  href="/dashboard/quotes"
+                  href="/quotes"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
                 >
-                  Quotes
+                  All Quotes
                 </Link>
                 <Link
-                  href="/dashboard/customers"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Customers
-                </Link>
-                <Link
-                  href="/dashboard/products"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Products
-                </Link>
-                <Link
-                  href="/dashboard/settings"
+                  href="/settings"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
                 >
                   Settings
                 </Link>
+                <Link
+                  href="/billing"
+                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                >
+                  Billing
+                </Link>
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <span className="text-sm text-muted-foreground">{user.email}</span>
-              <form action="/api/auth/signout" method="POST">
-                <button
-                  type="submit"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Sign Out
-                </button>
-              </form>
+              <span className="text-sm text-muted-foreground">{company.name}</span>
+              <button
+                onClick={handleSignOut}
+                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+              >
+                Sign Out
+              </button>
             </div>
           </div>
         </div>
@@ -109,5 +127,5 @@ export default async function DashboardLayout({
         {children}
       </main>
     </div>
-  )
+  );
 }

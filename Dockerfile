@@ -1,58 +1,47 @@
 # Base stage
 FROM node:18-alpine AS base
 WORKDIR /app
-RUN apk add --no-cache libc6-compat openssl
+RUN apk add --no-cache libc6-compat openssl python3 make g++
 
 # Dependencies stage
 FROM base AS deps
-
-# First build calculator package
-WORKDIR /paintquotepro-calculator
-COPY paintquotepro-calculator/package*.json ./
-COPY paintquotepro-calculator/tsconfig.json ./
-COPY paintquotepro-calculator/src ./src
-RUN npm ci && npm run build
-
-# Then build API package
-WORKDIR /paintquotepro-api
-COPY paintquotepro-api/package*.json ./
-COPY paintquotepro-api/tsconfig.json ./
-COPY paintquotepro-api/src ./src
-COPY paintquotepro-api/prisma ./prisma
-RUN npm ci && npx prisma generate && npm run build
-
-# Finally install web dependencies
-WORKDIR /app
-COPY paintquotepro-web/package*.json ./
-RUN npm ci
-
-# Development stage
-FROM base AS dev
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /paintquotepro-calculator /paintquotepro-calculator
-COPY --from=deps /paintquotepro-api /paintquotepro-api
-COPY paintquotepro-web/. .
-RUN npx prisma generate
-EXPOSE 3000
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-CMD ["npm", "run", "dev"]
+COPY package*.json ./
+RUN npm ci --only=production
 
 # Builder stage
 FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
+COPY package*.json ./
+RUN npm ci
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED 1
+
+# Build environment variables
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+# Add dummy environment variables for build time
+ENV STRIPE_SECRET_KEY=sk_test_dummy
+ENV NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_dummy
+ENV STRIPE_WEBHOOK_SECRET=whsec_dummy
+ENV STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID=price_dummy
+ENV STRIPE_PROFESSIONAL_YEARLY_PRICE_ID=price_dummy
+ENV STRIPE_BUSINESS_MONTHLY_PRICE_ID=price_dummy
+ENV STRIPE_BUSINESS_YEARLY_PRICE_ID=price_dummy
+ENV JWT_SECRET=dummy-jwt-secret
+ENV OPENROUTER_API_KEY=dummy-openrouter-key
+
+# Build the application
 RUN npm run build
 
 # Production stage
 FROM base AS production
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
+# Create non-root user
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Copy built application
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
@@ -63,10 +52,13 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Copy database schema for SQLite initialization
+COPY --from=builder --chown=nextjs:nodejs /app/lib/database/unified-schema.sql ./lib/database/unified-schema.sql
+
 USER nextjs
 
-EXPOSE 3000
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+EXPOSE 3001
+ENV PORT=3001
+ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]

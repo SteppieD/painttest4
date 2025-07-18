@@ -1,35 +1,20 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 
 export async function GET() {
   try {
+    const db = getDatabaseAdapter()
+    
     // Test basic database connectivity
-    const dbTest = await prisma.$queryRaw`SELECT 1 as test`
-    
-    // Test if company_users table exists
-    let companyUsersExists = false
-    try {
-      await prisma.$queryRaw`SELECT COUNT(*) FROM company_users LIMIT 1`
-      companyUsersExists = true
-    } catch (e) {
-      console.error('company_users table check failed:', e)
-    }
-    
-    // Test if companies table exists
-    let companiesExists = false
-    try {
-      await prisma.$queryRaw`SELECT COUNT(*) FROM companies LIMIT 1`
-      companiesExists = true
-    } catch (e) {
-      console.error('companies table check failed:', e)
-    }
+    const companies = await db.getAllCompanies()
+    const users = await db.getAllUsers()
     
     return NextResponse.json({
       status: 'ok',
       database: 'connected',
       tables: {
-        company_users: companyUsersExists,
-        companies: companiesExists
+        companies: companies.length >= 0,
+        users: users.length >= 0
       },
       environment: process.env.NODE_ENV,
       timestamp: new Date().toISOString()

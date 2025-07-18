@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 import { Progress } from '@/components/ui/progress'
 import { AlertCircle, Zap } from 'lucide-react'
 import Link from 'next/link'
@@ -8,29 +8,22 @@ interface QuoteUsageIndicatorProps {
 }
 
 async function getQuoteUsage(companyId: number) {
-  const company = await prisma.company.findUnique({
-    where: { id: companyId },
-    select: {
-      plan: true,
-      quotesUsed: true,
-      quotesLimit: true,
-      quotesResetAt: true,
-    },
-  })
+  const db = getDatabaseAdapter()
+  const company = await db.getCompany(companyId)
 
   if (!company) {
     throw new Error('Company not found')
   }
 
   // Check if we need to reset the quotes
-  if (company.plan === 'free' && company.quotesResetAt && new Date() > company.quotesResetAt) {
+  if (company.plan === 'free' && company.quotesResetAt && new Date() > new Date(company.quotesResetAt)) {
     // Reset quotes for the new month
-    await prisma.company.update({
-      where: { id: companyId },
-      data: {
-        quotesUsed: 0,
-        quotesResetAt: new Date(new Date().setMonth(new Date().getMonth() + 1)),
-      },
+    const nextMonth = new Date()
+    nextMonth.setMonth(nextMonth.getMonth() + 1)
+    
+    await db.updateCompany(companyId, {
+      quotesUsed: 0,
+      quotesResetAt: nextMonth.toISOString(),
     })
     company.quotesUsed = 0
   }
@@ -49,7 +42,7 @@ export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProp
   const percentageUsed = (usage.quotesUsed / usage.quotesLimit) * 100
   const remainingQuotes = usage.quotesLimit - usage.quotesUsed
   const daysUntilReset = usage.quotesResetAt 
-    ? Math.ceil((usage.quotesResetAt.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
+    ? Math.ceil((new Date(usage.quotesResetAt).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
     : 30
 
   return (

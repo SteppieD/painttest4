@@ -77,7 +77,7 @@ export default function MobileQuotePage() {
     if (isValid && currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
       // Vibrate on step change if supported
-      if (navigator.vibrate) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
         navigator.vibrate(50)
       }
     }
@@ -86,7 +86,7 @@ export default function MobileQuotePage() {
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1)
-      if (navigator.vibrate) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
         navigator.vibrate(50)
       }
     }
@@ -137,6 +137,9 @@ export default function MobileQuotePage() {
   // Detect if user is on mobile
   useEffect(() => {
     const checkMobile = () => {
+      // Guard against SSR
+      if (typeof window === 'undefined') return
+      
       const isMobile = window.innerWidth < 768
       if (!isMobile) {
         router.push('/dashboard/quotes/new')

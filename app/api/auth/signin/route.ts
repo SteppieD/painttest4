@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
-import { PrismaClient } from '@prisma/client'
+import { getDatabaseAdapter } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-
-const prisma = new PrismaClient()
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -51,32 +49,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Query the old schema structure
-    let result: any
-    try {
-      result = await prisma.$queryRaw`
-        SELECT 
-          u.id as user_id,
-          u.email,
-          u.name,
-          u.role,
-          u.password_hash,
-          c.*
-        FROM company_users u
-        JOIN companies c ON u.company_id = c.id
-        WHERE u.email = ${email}
-        LIMIT 1
-      `
-    } catch (queryError) {
-      console.error('Database query error:', queryError)
-      // If raw query fails, try to provide helpful error
-      return NextResponse.json(
-        { error: 'Database connection error. Please try again.' },
-        { status: 500 }
-      )
-    }
-
-    const user = Array.isArray(result) && result.length > 0 ? result[0] : null
+    const db = getDatabaseAdapter()
+    
+    // Query the user by email
+    const user = await db.getUserByEmail(email)
 
     if (!user) {
       return NextResponse.json(
@@ -104,18 +80,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Update last login
-    await prisma.$executeRaw`
-      UPDATE company_users 
-      SET last_login_at = NOW() 
-      WHERE id = ${user.user_id}
-    `
+    // Get company data
+    const company = await db.getCompany(user.company_id)
 
     // Create JWT token
     const token = jwt.sign(
       {
-        userId: user.user_id,
-        companyId: user.id, // company id
+        userId: user.id,
+        companyId: user.company_id,
         email: user.email,
         role: user.role,
       },
@@ -135,11 +107,11 @@ export async function POST(request: NextRequest) {
     // Map the response to match expected format
     return NextResponse.json({
       user: {
-        id: user.user_id,
+        id: user.id,
         email: user.email,
         name: user.name,
         role: user.role,
-        company: mapCompanyData(user),
+        company: mapCompanyData(company),
       },
     })
   } catch (error) {
@@ -148,7 +120,5 @@ export async function POST(request: NextRequest) {
       { error: 'Internal server error' },
       { status: 500 }
     )
-  } finally {
-    await prisma.$disconnect()
   }
 }

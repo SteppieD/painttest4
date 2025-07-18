@@ -127,13 +127,13 @@ export default function SharedNavigation() {
         {/* Desktop Auth Links */}
         <div className="hidden md:flex items-center space-x-2">
           <Link
-            href="/auth/signin"
+            href="/access-code"
             className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             Sign In
           </Link>
           <Link
-            href="/auth/signup"
+            href="/trial-signup"
             className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
           >
             Start Free Trial
@@ -194,14 +194,14 @@ export default function SharedNavigation() {
             })}
             <div className="pt-4 border-t space-y-2">
               <Link
-                href="/auth/signin"
+                href="/access-code"
                 className="block py-2 text-sm font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Sign In
               </Link>
               <Link
-                href="/auth/signup"
+                href="/trial-signup"
                 className="block py-2 text-sm font-medium text-primary"
                 onClick={() => setMobileMenuOpen(false)}
               >

@@ -1,0 +1,165 @@
+# Docker Compose configuration for PaintQuote Pro Unified
+# This file sets up the complete development environment
+# Usage: docker-compose up -d
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database Service (Optional - for production-like setup)
+  postgres:
+    image: postgres:15-alpine
+    container_name: paintquotepro-db
+    environment:
+      POSTGRES_USER: paintquote
+      POSTGRES_PASSWORD: paintquote123
+      POSTGRES_DB: paintquotepro
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paintquote"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Service (Optional - for caching and session management)
+  redis:
+    image: redis:7-alpine
+    container_name: paintquotepro-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  # Next.js Web Application Service
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: paintquotepro-web
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Node environment
+      NODE_ENV: production
+      PORT: 3001
+      
+      # Database configuration (SQLite for development, PostgreSQL for production)
+      DATABASE_PATH: /app/data/painting_quotes_app.db
+      NEXT_PUBLIC_SUPABASE_URL: "${NEXT_PUBLIC_SUPABASE_URL:-}"
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: "${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}"
+      SUPABASE_SERVICE_ROLE_KEY: "${SUPABASE_SERVICE_ROLE_KEY:-}"
+      
+      # Authentication & Security
+      JWT_SECRET: "${JWT_SECRET:-docker-dev-secret-key-change-in-production}"
+      NEXTAUTH_URL: "http://localhost:3001"
+      NEXTAUTH_SECRET: "${NEXTAUTH_SECRET:-docker-dev-nextauth-secret}"
+      
+      # AI Service Configuration
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      OPENROUTER_API_KEY: "${OPENROUTER_API_KEY:-}"
+      GOOGLE_GENERATIVE_AI_API_KEY: "${GOOGLE_GENERATIVE_AI_API_KEY:-}"
+      
+      # Email Configuration
+      RESEND_API_KEY: "${RESEND_API_KEY:-}"
+      DEFAULT_FROM_EMAIL: "${DEFAULT_FROM_EMAIL:-noreply@paintquotepro.com}"
+      
+      # Payment Processing
+      STRIPE_SECRET_KEY: "${STRIPE_SECRET_KEY:-}"
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: "${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}"
+      STRIPE_WEBHOOK_SECRET: "${STRIPE_WEBHOOK_SECRET:-}"
+      
+      # Stripe Price IDs
+      STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID: "${STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID:-}"
+      STRIPE_PROFESSIONAL_YEARLY_PRICE_ID: "${STRIPE_PROFESSIONAL_YEARLY_PRICE_ID:-}"
+      STRIPE_BUSINESS_MONTHLY_PRICE_ID: "${STRIPE_BUSINESS_MONTHLY_PRICE_ID:-}"
+      STRIPE_BUSINESS_YEARLY_PRICE_ID: "${STRIPE_BUSINESS_YEARLY_PRICE_ID:-}"
+      
+      # Application Configuration
+      NEXT_PUBLIC_SITE_URL: "http://localhost:3001"
+      NEXT_PUBLIC_APP_NAME: "PaintQuote Pro"
+      NEXT_PUBLIC_SUPPORT_EMAIL: "support@paintquotepro.com"
+      
+      # Feature Flags
+      NEXT_PUBLIC_ENABLE_AI_CHAT: "true"
+      NEXT_PUBLIC_ENABLE_PAYMENTS: "true"
+      NEXT_PUBLIC_ENABLE_EMAIL: "true"
+      
+      # Development Tools
+      DEBUG: "false"
+      
+      # Rate Limiting
+      RATE_LIMIT_WINDOW: "60000"
+      RATE_LIMIT_MAX_REQUESTS: "100"
+      
+    ports:
+      - "3003:3001"
+    volumes:
+      # Mount data directory for SQLite database persistence
+      - ./data:/app/data
+      # Mount uploads directory for file uploads
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+
+  # Development service (alternative to production)
+  web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    container_name: paintquotepro-web-dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      
+      # Same environment variables as production
+      DATABASE_PATH: /app/data/painting_quotes_app.db
+      NEXT_PUBLIC_SUPABASE_URL: "${NEXT_PUBLIC_SUPABASE_URL:-}"
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: "${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}"
+      SUPABASE_SERVICE_ROLE_KEY: "${SUPABASE_SERVICE_ROLE_KEY:-}"
+      
+      JWT_SECRET: "${JWT_SECRET:-docker-dev-secret-key-change-in-production}"
+      NEXTAUTH_URL: "http://localhost:3001"
+      NEXTAUTH_SECRET: "${NEXTAUTH_SECRET:-docker-dev-nextauth-secret}"
+      
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      OPENROUTER_API_KEY: "${OPENROUTER_API_KEY:-}"
+      GOOGLE_GENERATIVE_AI_API_KEY: "${GOOGLE_GENERATIVE_AI_API_KEY:-}"
+      
+      NEXT_PUBLIC_SITE_URL: "http://localhost:3001"
+      NEXT_PUBLIC_ENABLE_AI_CHAT: "true"
+      
+      DEBUG: "true"
+      
+    ports:
+      - "3005:3001"
+    volumes:
+      # Mount source code for development
+      - .:/app
+      - /app/node_modules
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+    command: ["npm", "run", "dev"]
+    restart: unless-stopped
+    profiles:
+      - dev
+
+# Named volumes for data persistence
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+# Network configuration (optional)
+networks:
+  default:
+    name: paintquotepro-network

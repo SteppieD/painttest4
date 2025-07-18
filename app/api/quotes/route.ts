@@ -1,378 +1,379 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-import { cookies } from 'next/headers'
-import jwt from 'jsonwebtoken'
+import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/lib/database/adapter';
+import { getAuthContext } from '@/lib/auth/middleware';
+import { generateQuoteNumber } from '@/lib/quote-number-generator';
 
-// Simple calculator functions
-interface ChargeRates {
-  walls: number
-  ceilings: number
-  baseboards: number
-  crownMolding: number
-  doorsWithJams: number
-  windows: number
-  exteriorWalls: number
-  fasciaBoards: number
-  soffits: number
-  exteriorDoors: number
-  exteriorWindows: number
-}
-
-interface QuoteInputV2 {
-  surfaces: any[]
-  chargeRates: ChargeRates
-}
-
-class QuoteCalculatorV2 {
-  static calculate(input: QuoteInputV2) {
-    let total = 0
-    let laborTotal = 0
-    let materialsTotal = 0
-    
-    // Calculate cost for each surface
-    const calculatedSurfaces = input.surfaces.map((surface: any) => {
-      let surfaceCost = 0
-      let surfaceLabor = 0
-      let surfaceMaterials = 0
-      
-      // Determine the charge rate based on surface type
-      const rateMap: Record<string, keyof ChargeRates> = {
-        'walls': 'walls',
-        'ceilings': 'ceilings',
-        'baseboards': 'baseboards',
-        'crown_molding': 'crownMolding',
-        'door': 'doorsWithJams',
-        'doors': 'doorsWithJams',
-        'window': 'windows',
-        'windows': 'windows',
-        'exterior_walls': 'exteriorWalls',
-        'exterior_wall': 'exteriorWalls',
-        'fascia': 'fasciaBoards',
-        'soffits': 'soffits',
-        'soffit': 'soffits',
-        'exterior_doors': 'exteriorDoors',
-        'exterior_door': 'exteriorDoors',
-        'exterior_windows': 'exteriorWindows',
-        'exterior_window': 'exteriorWindows'
-      }
-      
-      const rateKey = rateMap[surface.type] || surface.type
-      const rate = (input.chargeRates as any)[rateKey] || 0
-      
-      // Calculate based on measurement type
-      if (surface.area && surface.area > 0) {
-        // Square foot pricing
-        surfaceCost = surface.area * rate * (surface.coats || 2)
-      } else if (surface.linearFeet && surface.linearFeet > 0) {
-        // Linear foot pricing
-        surfaceCost = surface.linearFeet * rate * (surface.coats || 2)
-      } else if (surface.count && surface.count > 0) {
-        // Per unit pricing
-        surfaceCost = surface.count * rate
-      }
-      
-      // Apply condition multiplier
-      const conditionMultiplier = {
-        'excellent': 0.9,
-        'good': 1.0,
-        'fair': 1.2,
-        'poor': 1.5
-      }
-      surfaceCost *= conditionMultiplier[surface.condition] || 1.0
-      
-      // Apply prep work charges
-      const prepCharges = {
-        'patch_nail_holes': 0.10,
-        'patch_cracks': 0.15,
-        'patch_water_stains': 0.20,
-        'light_sanding': 0.15,
-        'heavy_sanding': 0.25,
-        'prime_patches': 0.20,
-        'prime_all': 0.40,
-        'remove_wallpaper': 0.50,
-        'repair_drywall': 0.75
-      }
-      
-      let prepMultiplier = 1.0
-      if (surface.prepWork && Array.isArray(surface.prepWork)) {
-        surface.prepWork.forEach((prep: string) => {
-          prepMultiplier += prepCharges[prep as keyof typeof prepCharges] || 0
-        })
-      }
-      surfaceCost *= prepMultiplier
-      
-      // Split into labor and materials (40% labor, 60% materials typically)
-      surfaceLabor = surfaceCost * 0.4
-      surfaceMaterials = surfaceCost * 0.6
-      
-      total += surfaceCost
-      laborTotal += surfaceLabor
-      materialsTotal += surfaceMaterials
-      
-      return {
-        ...surface,
-        calculatedCost: surfaceCost,
-        laborCost: surfaceLabor,
-        materialsCost: surfaceMaterials
-      }
-    })
-    
-    return { 
-      total,
-      labor: laborTotal,
-      materials: materialsTotal,
-      surfaces: calculatedSurfaces
+// Helper function to clean customer names
+const cleanCustomerName = (name: string) => {
+  if (!name) return 'Customer';
+  
+  // Handle "It's for [Name]" pattern
+  const itsForMatch = name.match(/it'?s\s+for\s+([^.]+)/i);
+  if (itsForMatch) {
+    return itsForMatch[1].trim();
+  }
+  
+  // Handle "Customer: [Name]" pattern
+  const customerMatch = name.match(/customer:\s*([^,]+)/i);
+  if (customerMatch) {
+    return customerMatch[1].trim();
+  }
+  
+  // Handle various name patterns
+  const namePatterns = [
+    /(?:the\s+)?customers?\s+name\s+is\s+([A-Z][a-z]+)(?:\s+and|$)/i,
+    /name\s+is\s+([A-Z][a-z]+)/i,
+    /(?:for|customer|client)?\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/
+  ];
+  
+  for (const pattern of namePatterns) {
+    const match = name.match(pattern);
+    if (match) {
+      return match[1].trim();
     }
   }
   
-  static formatOutput(calculation: any) {
-    return {
-      formattedTotal: `$${calculation.total.toFixed(2)}`,
-      formattedLabor: `$${calculation.labor.toFixed(2)}`,
-      formattedMaterials: `$${calculation.materials.toFixed(2)}`
-    }
+  // If it's too long or contains sentences, return default
+  if (name.length > 50 || name.includes('.') || name.includes('painting')) {
+    return 'Customer';
   }
-}
-
-// Create Prisma client
-const prisma = new PrismaClient()
-
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
-
-interface AuthPayload {
-  userId: number
-  companyId: number
-  email: string
-  role: string
-}
-
-async function getAuth(): Promise<AuthPayload | null> {
-  const token = cookies().get('auth-token')?.value
-  if (!token) return null
   
-  try {
-    return jwt.verify(token, JWT_SECRET) as AuthPayload
-  } catch {
-    return null
-  }
-}
+  return name;
+};
 
-// Simple quote number generator without external dependencies
-async function generateQuoteNumber(companyId: number): Promise<string> {
-  const year = new Date().getFullYear()
-  
-  try {
-    // Use a transaction to ensure atomicity
-    const company = await prisma.company.update({
-      where: { id: companyId },
-      data: {
-        quotesGenerated: {
-          increment: 1
-        }
-      },
-      select: {
-        quotesGenerated: true
-      }
-    })
-
-    // Generate a unique suffix based on timestamp and random component
-    const timestamp = Date.now().toString(36).substring(4, 8).toUpperCase()
-    const random = Math.random().toString(36).substring(2, 4).toUpperCase()
-    
-    // Format: Q-YYYY-XXXXX-SUFFIX
-    const sequentialNumber = String(company.quotesGenerated).padStart(5, '0')
-    const quoteNumber = `Q-${year}-${sequentialNumber}-${timestamp}${random}`
-    
-    return quoteNumber
-  } catch (error) {
-    // Fallback to timestamp-based generation
-    const timestamp = Date.now().toString(36).toUpperCase()
-    return `Q-${year}-${timestamp}`
-  }
-}
-
+// POST - Create a new quote
 export async function POST(request: NextRequest) {
-  const auth = await getAuth()
-  if (!auth) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
-
   try {
-    const data = await request.json()
-    
-    // Get company settings with optimized query
-    const company = await prisma.company.findUnique({
-      where: { id: auth.companyId },
-      select: {
-        id: true,
-        name: true,
-        plan: true,
-        quotesUsed: true,
-        quotesLimit: true,
-        quotesResetAt: true,
-        settings: true
-      }
-    })
-    
-    if (!company) {
-      return NextResponse.json({ error: 'Company not found' }, { status: 404 })
+    // Verify authentication
+    const auth = await getAuthContext(request);
+    if (!auth) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Check quote limits for free plan
-    if (company.plan === 'free' && company.quotesLimit && company.quotesLimit > 0) {
-      // Check if we need to reset the monthly quota
-      if (company.quotesResetAt && new Date() > company.quotesResetAt) {
-        await prisma.company.update({
-          where: { id: auth.companyId },
-          data: {
-            quotesUsed: 0,
-            quotesResetAt: new Date(new Date().setMonth(new Date().getMonth() + 1)),
-          },
-        })
-        company.quotesUsed = 0
-      }
-
-      // Check if quota exceeded
-      if (company.quotesUsed >= company.quotesLimit) {
-        return NextResponse.json(
-          { 
-            error: 'Monthly quote limit reached', 
-            message: 'You have reached your monthly quote limit. Please upgrade to Pro for unlimited quotes.',
-            quotesUsed: company.quotesUsed,
-            quotesLimit: company.quotesLimit
-          }, 
-          { status: 403 }
-        )
-      }
-    }
-
-    const companySettings = (company.settings as Record<string, unknown>) || {}
+    const requestData = await request.json();
     
-    // Prepare input for calculator V2
-    const calculatorInput: QuoteInputV2 = {
-      surfaces: data.surfaces,
-      chargeRates: (companySettings.chargeRates as ChargeRates) || {
-        walls: 3.50,
-        ceilings: 4.00,
-        baseboards: 2.50,
-        crownMolding: 5.00,
-        doorsWithJams: 125.00,
-        windows: 75.00,
-        exteriorWalls: 4.50,
-        fasciaBoards: 6.00,
-        soffits: 5.00,
-        exteriorDoors: 150.00,
-        exteriorWindows: 100.00,
-      }
-    }
-
-    // Calculate quote
-    const calculation = QuoteCalculatorV2.calculate(calculatorInput)
+    // Extract data from request
+    let quoteData, companyId, conversationHistory;
     
-    // Apply overhead, profit, and tax
-    const subtotal = calculation.total
-    const overheadPercent = data.settings?.overheadPercent || companySettings.overheadPercent || 15
-    const profitMargin = data.settings?.profitMargin || companySettings.profitMargin || 30
-    const taxRate = data.settings?.taxRate || companySettings.taxRate || 8.25
-    
-    const overhead = subtotal * (overheadPercent / 100)
-    const subtotalWithOverhead = subtotal + overhead
-    const profit = subtotalWithOverhead * (profitMargin / 100)
-    const subtotalWithProfit = subtotalWithOverhead + profit
-    const tax = subtotalWithProfit * (taxRate / 100)
-    const totalAmount = subtotalWithProfit + tax
-
-    // Create or update customer - optimized to reduce queries
-    let customer = await prisma.customer.upsert({
-      where: {
-        companyId_email: {
-          companyId: auth.companyId,
-          email: data.customer.email
+    if (requestData.quoteData && requestData.companyId) {
+      // New nested format
+      ({ quoteData, companyId, conversationHistory } = requestData);
+    } else if (requestData.company_id || requestData.companyId) {
+      // Old flat format - map to new format
+      companyId = requestData.company_id || requestData.companyId;
+      conversationHistory = requestData.conversation_summary;
+      
+      quoteData = {
+        customerName: cleanCustomerName(requestData.customer_name),
+        customerEmail: requestData.customer_email,
+        customerPhone: requestData.customer_phone,
+        address: requestData.address,
+        projectType: requestData.project_type,
+        rooms: requestData.room_data,
+        roomCount: requestData.room_count,
+        paintQuality: requestData.paint_quality,
+        prepWork: requestData.prep_work,
+        timeEstimate: requestData.timeline,
+        specialRequests: requestData.special_requests,
+        totalCost: requestData.total_cost,
+        finalPrice: requestData.final_price || requestData.total_revenue,
+        markupPercentage: requestData.markup_percentage,
+        sqft: requestData.walls_sqft,
+        breakdown: {
+          materials: requestData.total_materials,
+          labor: requestData.total_labor || requestData.projected_labor,
+          markup: requestData.markup_amount
         }
-      },
-      update: {
-        name: data.customer.name,
-        phone: data.customer.phone,
-        address: data.customer.address,
-      },
-      create: {
-        companyId: auth.companyId,
-        name: data.customer.name,
-        email: data.customer.email,
-        phone: data.customer.phone,
-        address: data.customer.address,
+      };
+    } else {
+      return NextResponse.json(
+        { error: 'Quote data and company ID are required' },
+        { status: 400 }
+      );
+    }
+
+    // Verify company access
+    if (auth.type === 'company' && auth.company?.id !== parseInt(companyId)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
+    // TODO: Check subscription limits here
+    // const canCreate = await checkQuoteLimits(companyId);
+    // if (!canCreate) {
+    //   return NextResponse.json({ error: 'Quote limit reached' }, { status: 403 });
+    // }
+
+    // Generate unique quote ID
+    const quoteId = generateQuoteNumber();
+
+    // Prepare quote data for database
+    const quote = {
+      company_id: parseInt(companyId),
+      quote_id: quoteId,
+      customer_name: cleanCustomerName(quoteData.customerName) || 'Unknown Customer',
+      customer_email: quoteData.customerEmail || null,
+      customer_phone: quoteData.customerPhone || null,
+      address: quoteData.address || null,
+      project_type: quoteData.projectType || 'interior',
+      rooms: typeof quoteData.rooms === 'string' ? quoteData.rooms : JSON.stringify(quoteData.rooms || []),
+      room_count: quoteData.roomCount || (quoteData.rooms ? quoteData.rooms.length : 0),
+      paint_quality: quoteData.paintQuality || null,
+      prep_work: quoteData.prepWork || null,
+      timeline: quoteData.timeEstimate || quoteData.timeline || null,
+      special_requests: quoteData.specialRequests || null,
+      walls_sqft: quoteData.sqft || 0,
+      ceilings_sqft: quoteData.ceilings_sqft || 0,
+      trim_sqft: quoteData.trim_sqft || 0,
+      total_revenue: quoteData.finalPrice || quoteData.totalCost || 0,
+      total_materials: quoteData.breakdown?.materials || 0,
+      projected_labor: quoteData.breakdown?.labor || 0,
+      base_cost: quoteData.totalCost || 0,
+      markup_percentage: quoteData.markupPercentage || 0,
+      final_price: quoteData.finalPrice || quoteData.totalCost || 0,
+      conversation_summary: typeof conversationHistory === 'string' 
+        ? conversationHistory 
+        : JSON.stringify(conversationHistory || [{ quoteData }]),
+      status: 'pending'
+    };
+
+    // Save quote to database
+    const result = await db.createQuote(quote);
+
+    // TODO: Record quote usage for subscription tracking
+    // await recordQuoteUsage(companyId, quoteId);
+
+    return NextResponse.json({
+      success: true,
+      quoteId,
+      quote: {
+        ...quote,
+        id: result.id
       }
-    })
+    });
 
-    // Generate unique quote number
-    const quoteNumber = await generateQuoteNumber(auth.companyId)
-
-    // Create quote and update quote usage in a transaction for consistency
-    const quote = await prisma.$transaction(async (tx) => {
-      // Create the quote
-      const newQuote = await tx.quote.create({
-        data: {
-          companyId: auth.companyId,
-          customerId: customer.id,
-          quoteNumber,
-          projectType: data.projectType,
-          status: 'draft',
-          surfaces: data.surfaces,
-          paintProducts: data.paintProducts || {},
-          settings: JSON.parse(JSON.stringify(calculatorInput)),
-          materials: {
-            surfaces: calculation.surfaces,
-            totalMaterials: calculation.materials,
-          },
-          labor: {
-            totalLabor: calculation.labor,
-          },
-          subtotal: subtotal,
-          overhead: overhead,
-          profit: profit,
-          tax: tax,
-          totalAmount: totalAmount,
-          description: data.description,
-          notes: data.notes,
-          terms: data.terms || companySettings.defaultTerms || 'Payment due within 30 days.',
-          createdById: auth.userId,
-        },
-        include: {
-          customer: true,
-        }
-      })
-
-      // Increment quote usage for free plan
-      if (company.plan === 'free' && company.quotesLimit && company.quotesLimit > 0) {
-        await tx.company.update({
-          where: { id: auth.companyId },
-          data: {
-            quotesUsed: {
-              increment: 1
-            }
-          }
-        })
-      }
-
-      return newQuote
-    })
-
-    return NextResponse.json(quote)
   } catch (error) {
-    console.error('Quote creation error:', error)
-    
-    // Return more specific error messages
-    if (error instanceof Error) {
-      if (error.message.includes('P2002')) {
-        return NextResponse.json(
-          { error: 'Quote number conflict. Please try again.' }, 
-          { status: 409 }
-        )
+    console.error('Error creating quote:', error);
+    return NextResponse.json(
+      { error: 'Failed to create quote' },
+      { status: 500 }
+    );
+  }
+}
+
+// GET - Retrieve quotes
+export async function GET(request: NextRequest) {
+  try {
+    // Verify authentication
+    const auth = await getAuthContext(request);
+    if (!auth) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const searchParams = request.nextUrl.searchParams;
+    const companyId = searchParams.get('company_id');
+    const status = searchParams.get('status');
+    const limit = Math.min(parseInt(searchParams.get('limit') || '50'), 100);
+
+    // For company users, they can only see their own quotes
+    if (auth.type === 'company') {
+      const quotes = await db.getQuotesByCompanyId(auth.company!.id);
+      
+      // Filter by status if provided
+      let filteredQuotes = quotes;
+      if (status) {
+        filteredQuotes = quotes.filter((q: any) => q.status === status);
+      }
+      
+      // Limit results
+      if (filteredQuotes.length > limit) {
+        filteredQuotes = filteredQuotes.slice(0, limit);
+      }
+      
+      return NextResponse.json({ quotes: formatQuotes(filteredQuotes) });
+    }
+
+    // For admin users, they can see all quotes or filter by company
+    if (auth.type === 'admin') {
+      if (companyId) {
+        const quotes = await db.getQuotesByCompanyId(parseInt(companyId));
+        return NextResponse.json({ quotes: formatQuotes(quotes) });
+      } else {
+        // Get all quotes (admin only)
+        const quotes = await db.query('SELECT * FROM quotes ORDER BY created_at DESC LIMIT ?', [limit]);
+        return NextResponse.json({ quotes: formatQuotes(quotes) });
       }
     }
-    
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
-  } finally {
-    await prisma.$disconnect()
+
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  } catch (error) {
+    console.error('Error fetching quotes:', error);
+    return NextResponse.json(
+      { quotes: [], error: 'Failed to fetch quotes' },
+      { status: 200 } // Return 200 with empty array to prevent frontend crashes
+    );
   }
+}
+
+// PUT - Update a quote
+export async function PUT(request: NextRequest) {
+  try {
+    // Verify authentication
+    const auth = await getAuthContext(request);
+    if (!auth) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { id, updates } = await request.json();
+
+    if (!id || !updates) {
+      return NextResponse.json(
+        { error: 'Quote ID and updates are required' },
+        { status: 400 }
+      );
+    }
+
+    // Get the quote to check ownership
+    const quote = await db.getQuote(id);
+    if (!quote) {
+      return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
+    }
+
+    // Verify access
+    if (auth.type === 'company' && quote.company_id !== auth.company!.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
+    // Update the quote
+    const result = await db.updateQuote(id, updates);
+
+    return NextResponse.json({
+      success: true,
+      quote: result
+    });
+
+  } catch (error) {
+    console.error('Error updating quote:', error);
+    return NextResponse.json(
+      { error: 'Failed to update quote' },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE - Delete a quote
+export async function DELETE(request: NextRequest) {
+  try {
+    // Verify authentication
+    const auth = await getAuthContext(request);
+    if (!auth) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const searchParams = request.nextUrl.searchParams;
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Quote ID is required' },
+        { status: 400 }
+      );
+    }
+
+    // Get the quote to check ownership
+    const quote = await db.getQuote(id);
+    if (!quote) {
+      return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
+    }
+
+    // Verify access
+    if (auth.type === 'company' && quote.company_id !== auth.company!.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
+    // Delete the quote
+    await db.query('DELETE FROM quotes WHERE quote_id = ?', [id]);
+
+    return NextResponse.json({
+      success: true,
+      message: 'Quote deleted successfully'
+    });
+
+  } catch (error) {
+    console.error('Error deleting quote:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete quote' },
+      { status: 500 }
+    );
+  }
+}
+
+// Helper function to format quotes for response
+function formatQuotes(quotes: any[]): any[] {
+  return quotes.map((quote: any) => {
+    // Parse JSON fields
+    let rooms = [];
+    let breakdown = null;
+    let conversationSummary = null;
+
+    try {
+      if (quote.rooms) {
+        rooms = typeof quote.rooms === 'string' ? JSON.parse(quote.rooms) : quote.rooms;
+      }
+    } catch (e) {
+      console.error('Error parsing rooms:', e);
+    }
+
+    try {
+      if (quote.conversation_summary) {
+        conversationSummary = typeof quote.conversation_summary === 'string' 
+          ? JSON.parse(quote.conversation_summary) 
+          : quote.conversation_summary;
+          
+        // Try to extract breakdown from conversation
+        if (Array.isArray(conversationSummary) && conversationSummary.length > 0) {
+          const lastMessage = conversationSummary[conversationSummary.length - 1];
+          if (lastMessage?.quoteData?.breakdown) {
+            breakdown = lastMessage.quoteData.breakdown;
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error parsing conversation summary:', e);
+    }
+
+    // Create breakdown if not found
+    if (!breakdown) {
+      breakdown = {
+        labor: quote.projected_labor || Math.round((quote.total_revenue || 0) * 0.45),
+        materials: quote.total_materials || Math.round((quote.total_revenue || 0) * 0.35),
+        prepWork: Math.round((quote.total_revenue || 0) * 0.05),
+        markup: Math.round((quote.final_price || quote.total_revenue || 0) - (quote.base_cost || 0))
+      };
+    }
+
+    return {
+      id: quote.id,
+      quote_id: quote.quote_id,
+      customer_name: quote.customer_name || 'Unknown Customer',
+      customer_email: quote.customer_email || '',
+      customer_phone: quote.customer_phone || '',
+      address: quote.address || 'No address provided',
+      quote_amount: quote.final_price || quote.total_revenue || 0,
+      final_price: quote.final_price || quote.total_revenue || 0,
+      notes: quote.special_requests || '',
+      status: quote.status || 'pending',
+      created_at: quote.created_at,
+      updated_at: quote.updated_at,
+      company_id: quote.company_id,
+      project_type: quote.project_type || 'interior',
+      time_estimate: quote.timeline,
+      rooms,
+      room_count: quote.room_count || rooms.length,
+      breakdown,
+      total_cost: quote.final_price || quote.total_revenue || 0,
+      sqft: (quote.walls_sqft || 0) + (quote.ceilings_sqft || 0) + (quote.trim_sqft || 0),
+      conversation_summary: conversationSummary
+    };
+  });
 }
