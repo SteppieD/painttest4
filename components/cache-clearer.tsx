@@ -4,33 +4,29 @@ import { useEffect } from 'react'
 
 export function CacheClearer() {
   useEffect(() => {
-    // Clear service worker caches on mount
-    if ('serviceWorker' in navigator) {
-      caches.keys().then(names => {
-        names.forEach(name => {
-          caches.delete(name)
+    // Only clear caches if there's a known issue
+    const hasWebpackError = sessionStorage.getItem('webpack-error-detected')
+    
+    if (hasWebpackError) {
+      // Clear service worker caches
+      if ('serviceWorker' in navigator) {
+        caches.keys().then(names => {
+          names.forEach(name => {
+            caches.delete(name)
+          })
         })
-      })
+      }
       
-      // Unregister any service workers
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        registrations.forEach(registration => {
-          registration.unregister()
-        })
-      })
+      // Clear the flag
+      sessionStorage.removeItem('webpack-error-detected')
     }
 
-    // Force reload if we detect old cached content
-    const buildId = document.querySelector('meta[name="next-build-id"]')?.getAttribute('content')
-    const lastBuildId = localStorage.getItem('last-build-id')
-    
-    if (buildId && lastBuildId && buildId !== lastBuildId) {
-      localStorage.setItem('last-build-id', buildId)
-      // Force a hard reload to clear all caches
-      window.location.reload()
-    } else if (buildId) {
-      localStorage.setItem('last-build-id', buildId)
-    }
+    // Detect webpack errors for future visits
+    window.addEventListener('error', (event) => {
+      if (event.message?.includes("Cannot read properties of undefined (reading 'call')")) {
+        sessionStorage.setItem('webpack-error-detected', 'true')
+      }
+    })
   }, [])
 
   return null

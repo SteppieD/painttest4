@@ -18,9 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="next-build-id" content={`build-${Date.now()}`} />
-      </head>
       <body className={inter.className}>
         <CacheClearer />
         {children}

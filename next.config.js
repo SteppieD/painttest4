@@ -12,23 +12,26 @@ const nextConfig = {
   generateBuildId: async () => {
     return `build-${Date.now()}`;
   },
-  // Add cache headers to prevent aggressive caching
+  // Add balanced cache headers
   async headers() {
     return [
       {
-        source: '/:path*',
+        // Only disable cache for HTML pages, not assets
+        source: '/((?!_next/static|_next/image|favicon.ico).*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-cache, no-store, must-revalidate',
+            value: 'private, no-cache, no-store, max-age=0, must-revalidate',
           },
+        ],
+      },
+      {
+        // Allow caching for static assets
+        source: '/_next/static/:path*',
+        headers: [
           {
-            key: 'Pragma',
-            value: 'no-cache',
-          },
-          {
-            key: 'Expires',
-            value: '0',
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
