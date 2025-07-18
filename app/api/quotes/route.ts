@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
     // }
 
     // Generate unique quote ID
-    const quoteId = generateQuoteNumber();
+    const quoteId = await generateQuoteNumber(parseInt(companyId));
 
     // Prepare quote data for database
     const quote = {

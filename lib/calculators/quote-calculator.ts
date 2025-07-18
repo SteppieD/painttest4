@@ -180,4 +180,4 @@ export class QuoteCalculator {
 }
 
 // Export singleton instance for convenience
-export const calculator = QuoteCalculator;
+export const calculator = new QuoteCalculator();

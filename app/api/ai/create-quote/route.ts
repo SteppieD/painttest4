@@ -5,6 +5,8 @@ import { calculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     // Verify authentication
@@ -97,7 +99,7 @@ export async function POST(request: NextRequest) {
     );
 
     // Create the quote
-    const quoteId = generateQuoteNumber();
+    const quoteId = await generateQuoteNumber(auth.company!.id);
     
     const quote = {
       company_id: auth.company!.id,

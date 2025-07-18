@@ -22,8 +22,9 @@ export class OpenRouterClient {
 
   constructor(apiKey?: string) {
     this.apiKey = apiKey || process.env.OPENROUTER_API_KEY || '';
+    console.log('OpenRouter API key status:', this.apiKey ? 'Configured' : 'Not configured');
     if (!this.apiKey) {
-      console.warn('OpenRouter API key not configured');
+      console.warn('OpenRouter API key not configured - using mock responses');
     }
   }
 

@@ -20,7 +20,23 @@ export function QuoteUsageIndicator() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/api/quote-usage')
+    // Get company data from localStorage
+    const companyData = localStorage.getItem('paintquote_company')
+    if (!companyData) {
+      setLoading(false)
+      return
+    }
+
+    const company = JSON.parse(companyData)
+    
+    fetch('/api/quote-usage', {
+      headers: {
+        'x-company-data': JSON.stringify({
+          id: company.id,
+          access_code: company.accessCode
+        })
+      }
+    })
       .then(res => res.json())
       .then(setData)
       .catch(console.error)

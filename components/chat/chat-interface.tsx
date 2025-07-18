@@ -64,11 +64,18 @@ export function ChatInterface({
     setSuggestedReplies([]);
 
     try {
+      // Get company data from localStorage for access code
+      const companyData = localStorage.getItem('paintquote_company');
+      const company = companyData ? JSON.parse(companyData) : null;
+      
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-company-data': JSON.stringify({ id: companyId })
+          'x-company-data': JSON.stringify({ 
+            id: companyId,
+            access_code: company?.accessCode || ''
+          })
         },
         body: JSON.stringify({
           message: content,
@@ -117,11 +124,18 @@ export function ChatInterface({
 
     setIsLoading(true);
     try {
+      // Get company data from localStorage for access code
+      const companyData = localStorage.getItem('paintquote_company');
+      const company = companyData ? JSON.parse(companyData) : null;
+      
       const response = await fetch('/api/quotes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-company-data': JSON.stringify({ id: companyId })
+          'x-company-data': JSON.stringify({ 
+            id: companyId,
+            access_code: company?.accessCode || ''
+          })
         },
         body: JSON.stringify({
           companyId,

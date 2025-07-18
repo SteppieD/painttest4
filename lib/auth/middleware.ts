@@ -49,9 +49,13 @@ export async function getAuthContext(request: NextRequest): Promise<AuthContext 
   
   // Check localStorage data passed in header (for client-side)
   const companyHeader = request.headers.get('x-company-data');
+  console.log('Auth middleware - company header:', companyHeader);
+  
   if (companyHeader) {
     try {
       const companyData = JSON.parse(companyHeader);
+      console.log('Auth middleware - parsed company data:', companyData);
+      
       if (companyData.id && companyData.access_code) {
         return {
           type: 'company',

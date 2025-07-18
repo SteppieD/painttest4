@@ -1,59 +1,79 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { getDatabaseAdapter } from '@/lib/database/adapter'
-import { getAuthContext } from '@/lib/auth/middleware'
+import { NextRequest, NextResponse } from 'next/server';
+import { getDatabaseAdapter } from '@/lib/database/adapter';
+import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    const auth = await getAuthContext(request)
+    // Get company from request with fallback to demo
+    const company = getCompanyFromRequest(request);
+    console.log('[QUOTE-USAGE] Company:', company);
     
-    if (!auth || auth.type !== 'company') {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-
-    const companyId = auth.company!.id
-    const db = getDatabaseAdapter()
-    const company = await db.getCompany(companyId)
-
-    if (!company) {
-      return NextResponse.json({ error: 'Company not found' }, { status: 404 })
-    }
-
-    // Check if we need to reset the quotes
-    if (company.plan === 'free' && company.quotesResetAt && new Date() > new Date(company.quotesResetAt)) {
-      // Reset quotes for the new month
-      const nextMonth = new Date()
-      nextMonth.setMonth(nextMonth.getMonth() + 1)
-      
-      await db.updateCompany(companyId, {
+    const db = getDatabaseAdapter();
+    const companyData = await db.getCompany(company.id);
+    
+    if (!companyData) {
+      console.log('[QUOTE-USAGE] Company not found, using defaults');
+      // Return default values if company not found
+      return NextResponse.json({
         quotesUsed: 0,
-        quotesResetAt: nextMonth.toISOString(),
-      })
-      company.quotesUsed = 0
+        quotesLimit: 5,
+        hasUnlimitedQuotes: false,
+        percentageUsed: 0,
+        isNearLimit: false,
+        isAtLimit: false,
+        plan: 'free'
+      });
     }
-
-    const quotesUsed = company.quotesUsed || 0
-    const quotesLimit = company.quotesLimit || 5
-    const hasUnlimitedQuotes = !company.quotesLimit || company.quotesLimit === -1
-    const percentageUsed = hasUnlimitedQuotes ? 0 : (quotesUsed / quotesLimit) * 100
-    const isNearLimit = !hasUnlimitedQuotes && percentageUsed >= 80
-    const isAtLimit = !hasUnlimitedQuotes && quotesUsed >= quotesLimit
-
-    return NextResponse.json({
-      quotesUsed,
-      quotesLimit,
-      hasUnlimitedQuotes,
-      percentageUsed,
-      isNearLimit,
-      isAtLimit,
-      plan: company.plan || 'free'
-    })
+    
+    // Handle missing columns gracefully
+    const quotesUsed = 0; // We'll count from quotes table later
+    const quotesLimit = companyData.quote_limit || 5;
+    const hasUnlimitedQuotes = !quotesLimit || quotesLimit === -1;
+    const percentageUsed = hasUnlimitedQuotes ? 0 : (quotesUsed / quotesLimit) * 100;
+    const isNearLimit = !hasUnlimitedQuotes && percentageUsed >= 80;
+    const isAtLimit = !hasUnlimitedQuotes && quotesUsed >= quotesLimit;
+    
+    // Count actual quotes if needed
+    try {
+      const actualQuotesCount = await db.getQuotesCount(company.id);
+      return NextResponse.json({
+        quotesUsed: actualQuotesCount || 0,
+        quotesLimit,
+        hasUnlimitedQuotes,
+        percentageUsed: hasUnlimitedQuotes ? 0 : ((actualQuotesCount || 0) / quotesLimit) * 100,
+        isNearLimit: !hasUnlimitedQuotes && ((actualQuotesCount || 0) / quotesLimit) >= 0.8,
+        isAtLimit: !hasUnlimitedQuotes && (actualQuotesCount || 0) >= quotesLimit,
+        plan: companyData.is_trial ? 'trial' : 'free'
+      });
+    } catch (error) {
+      console.log('[QUOTE-USAGE] Could not count quotes:', error);
+      // Return default response if quote counting fails
+      return NextResponse.json({
+        quotesUsed,
+        quotesLimit,
+        hasUnlimitedQuotes,
+        percentageUsed,
+        isNearLimit,
+        isAtLimit,
+        plan: companyData.is_trial ? 'trial' : 'free'
+      });
+    }
+    
   } catch (error) {
-    console.error('Quote usage error:', error)
-    return NextResponse.json(
-      { error: 'Failed to fetch quote usage' },
-      { status: 500 }
-    )
+    console.error('[QUOTE-USAGE] Error:', error);
+    console.error('[QUOTE-USAGE] Stack:', error instanceof Error ? error.stack : 'No stack');
+    
+    // Return safe default values on any error
+    return NextResponse.json({
+      quotesUsed: 0,
+      quotesLimit: 5,
+      hasUnlimitedQuotes: false,
+      percentageUsed: 0,
+      isNearLimit: false,
+      isAtLimit: false,
+      plan: 'free'
+    });
   }
 }

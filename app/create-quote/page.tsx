@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, MessageSquare, List } from 'lucide-react';
 import Link from 'next/link';
-import { getClientCompanyData } from '@/lib/auth/client';
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 
 export default function CreateQuotePage() {
   const [companyData, setCompanyData] = useState<any>(null);
@@ -15,7 +15,7 @@ export default function CreateQuotePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const data = getClientCompanyData();
+    const data = getCompanyFromLocalStorage();
     if (!data) {
       router.push('/access-code');
       return;
