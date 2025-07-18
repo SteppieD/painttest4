@@ -95,13 +95,19 @@ export class QuoteAssistant {
         - projectType (interior/exterior)
         - surfaces (array of surfaces to paint)
         - rooms (array of room objects with name and dimensions)
-        - measurements (object with wallSqft, ceilingSqft, etc.)
+        - measurements (object with wallSqft, ceilingSqft, linearFeetWalls, ceilingHeight, doors, windows, etc.)
+        - paintProducts (object with walls/ceiling/trim paint details including name, costPerGallon, coverageRate)
         - paintQuality
-        - prepWork
+        - prepWork (good/minor/major)
         - timeline
         - specialRequests
         
-        Only include fields that are explicitly mentioned. Return valid JSON.`
+        IMPORTANT: Parse comprehensive messages that include all details at once. For example:
+        - "500 linear feet" with "9 feet tall" = measurements: { linearFeetWalls: 500, ceilingHeight: 9, wallSqft: 4500 }
+        - "$50 a gallon" with "350 square feet per gallon" = paintProducts: { walls: { costPerGallon: 50, coverageRate: 350 } }
+        - "not painting ceilings/doors/trim" = surfaces: ["walls"]
+        
+        Return valid JSON. Extract all information provided, even from complex messages.`
       },
       {
         role: 'user',
@@ -208,9 +214,11 @@ ${context.measurements.windows ? `- Windows: ${context.measurements.windows}` : 
 ## CONVERSATION STRATEGY:
 ALWAYS start with the biggest cost drivers first, then get progressively more specific. Keep questions simple and assume the contractor is standing in the space.
 
+IMPORTANT: If the user provides ALL information in one message (customer name, address, measurements, paint selection, etc.), acknowledge everything and proceed directly to quote calculation. Don't ask for information already provided.
+
 ## YOUR GOALS:
 1. Complete accurate quote in under 2 minutes
-2. Maximum 10-12 total questions
+2. Maximum 10-12 total questions (or less if info provided upfront)
 3. Use contractor's pre-set rates
 4. Offer preferred paint options first
 5. Calculate materials and labor automatically
@@ -232,6 +240,23 @@ For single rooms, ask for:
 For whole house, ask for:
 - Number of rooms
 - Approximate square footage
+
+## PARSING COMPREHENSIVE MESSAGES:
+When users provide detailed information like:
+"It's for Cici at 9090 Hillside Drive. We are not painting the ceilings. The project is a 500 linear feet of interior painting. $50 a gallon bucket eggshell shirwin williams. spread rate is 350 square feet per gallon. Ceilings are 9 feet tall. We are not painting doors, or trim or windows. No primer. labour is included in the cost per square foot at $1.50."
+
+Extract:
+- Customer: Cici
+- Address: 9090 Hillside Drive
+- Linear feet walls: 500
+- Ceiling height: 9 feet
+- Wall sqft: 500 × 9 = 4,500 sqft
+- Surfaces: walls only (no ceilings, doors, trim, windows)
+- Paint: Sherwin Williams eggshell at $50/gallon, 350 sqft coverage
+- Labor: $1.50/sqft (already included)
+- No primer needed
+
+Respond with: "Perfect! I have all the details for Cici's project at 9090 Hillside Drive. Let me calculate the quote for 4,500 sqft of wall painting using Sherwin Williams eggshell..."
 
 Keep responses under 2 sentences when possible. Be conversational but efficient.`
       }
@@ -332,6 +357,21 @@ ${breakdown.prepWork ? `- Prep work: ${breakdown.prepWork.hours} hours ($${break
 **Timeline:** ${timeline}
 
 Would you like me to adjust anything or send this quote to your client?`;
+  }
+
+  // Check if message contains comprehensive quote information
+  isComprehensiveMessage(message: string): boolean {
+    const indicators = [
+      /\d+\s*(linear\s*)?feet/i,
+      /\$\d+\s*(a|per)?\s*gallon/i,
+      /\d+\s*(ft|feet|foot)\s*(tall|high|ceiling)/i,
+      /spread\s*rate/i,
+      /not\s*painting/i,
+      /square\s*feet\s*per\s*gallon/i
+    ];
+    
+    const matchCount = indicators.filter(pattern => pattern.test(message)).length;
+    return matchCount >= 3; // If message contains 3+ indicators, it's comprehensive
   }
 }
 

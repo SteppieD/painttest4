@@ -155,11 +155,52 @@ export async function POST(request: NextRequest) {
           }
         } catch (aiError) {
           console.error('[CHAT] AI error, falling back to structured flow:', aiError);
-          // Fall back to structured conversation
-          const result = manager.processUserInput(message);
-          response = result.response;
-          isComplete = result.isComplete;
-          quoteData = result.quoteData;
+          
+          // Check if this is a comprehensive message that should be parsed
+          if (quoteAssistant.isComprehensiveMessage(message)) {
+            // Try to parse the comprehensive message manually
+            const parsedData = manager.parseQuickQuote(message);
+            if (parsedData) {
+              response = "Perfect! I have all the details. Let me calculate your quote...";
+              isComplete = true;
+              
+              // Calculate the quote
+              const calculatorInput = {
+                surfaces: {
+                  walls: parsedData.measurements?.wallSqft,
+                  ceilings: parsedData.measurements?.ceilingSqft,
+                  trim: parsedData.trimCount?.trim,
+                  doors: parsedData.trimCount?.doors,
+                  windows: parsedData.trimCount?.windows
+                },
+                paintProducts: parsedData.paintProducts,
+                companyRates,
+                prepCondition: 'good',
+                taxRate: company.taxRate || 0
+              };
+              
+              const calculation = calculator.calculate(calculatorInput);
+              quoteData = {
+                ...parsedData,
+                pricing: calculation,
+                sessionId: session
+              };
+              
+              response += '\n\n' + quoteAssistant.formatQuotePresentation(calculation);
+            } else {
+              // Fall back to structured conversation
+              const result = manager.processUserInput(message);
+              response = result.response;
+              isComplete = result.isComplete;
+              quoteData = result.quoteData;
+            }
+          } else {
+            // Fall back to structured conversation
+            const result = manager.processUserInput(message);
+            response = result.response;
+            isComplete = result.isComplete;
+            quoteData = result.quoteData;
+          }
         }
       } else {
         console.log('[CHAT] Using structured flow');

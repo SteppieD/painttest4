@@ -329,33 +329,86 @@ export class ConversationManager {
     };
   }
 
-  // Quick quote mode parser
+  // Quick quote mode parser - handles comprehensive messages
   parseQuickQuote(input: string): Record<string, any> | null {
-    // Format: [linear feet], [ceiling height], [sqft ceiling], [# doors], [# windows], [paint], [condition]
-    const parts = input.split(',').map(p => p.trim());
+    const data: any = {
+      measurements: {},
+      surfaces: [],
+      paintProducts: {}
+    };
     
-    if (parts.length < 6) return null;
+    // Extract customer name (look for "for [Name] at")
+    const customerMatch = input.match(/for\s+(\w+)\s+at/i);
+    if (customerMatch) data.customerName = customerMatch[1];
     
-    try {
-      return {
-        measurements: {
-          linearFeetWalls: parseFloat(parts[0]),
-          ceilingHeight: parseFloat(parts[1]),
-          ceilingSqft: parseFloat(parts[2]),
-          wallSqft: parseFloat(parts[0]) * parseFloat(parts[1])
-        },
-        trimCount: {
-          doors: parseInt(parts[3]),
-          windows: parseInt(parts[4])
-        },
-        paintProducts: parts[5],
-        prepCondition: parts[6] || 'good',
-        surfaces: ['walls', 'ceiling', 'trim'],
-        spaceType: 'custom',
-        timeline: 'flexible'
-      };
-    } catch {
+    // Extract address
+    const addressMatch = input.match(/at\s+([^.]+?)(?:\.|,|$)/i);
+    if (addressMatch) data.address = addressMatch[1].trim();
+    
+    // Extract linear feet
+    const linearMatch = input.match(/(\d+)\s*(linear\s*)?feet/i);
+    if (linearMatch) data.measurements.linearFeetWalls = parseFloat(linearMatch[1]);
+    
+    // Extract ceiling height
+    const ceilingMatch = input.match(/(\d+)\s*(feet|ft|')\s*(tall|high|ceiling)/i);
+    if (ceilingMatch) data.measurements.ceilingHeight = parseFloat(ceilingMatch[1]);
+    
+    // Calculate wall sqft
+    if (data.measurements.linearFeetWalls && data.measurements.ceilingHeight) {
+      data.measurements.wallSqft = data.measurements.linearFeetWalls * data.measurements.ceilingHeight;
+    }
+    
+    // Extract paint cost
+    const costMatch = input.match(/\$(\d+)\s*(a|per)?\s*gallon/i);
+    if (costMatch) {
+      data.paintProducts.walls = data.paintProducts.walls || {};
+      data.paintProducts.walls.costPerGallon = parseFloat(costMatch[1]);
+    }
+    
+    // Extract coverage rate
+    const coverageMatch = input.match(/(\d+)\s*square\s*feet\s*per\s*gallon/i);
+    if (coverageMatch) {
+      data.paintProducts.walls = data.paintProducts.walls || {};
+      data.paintProducts.walls.coverageRate = parseFloat(coverageMatch[1]);
+    }
+    
+    // Extract paint name (e.g., "eggshell sherwin williams")
+    const paintMatch = input.match(/(eggshell|flat|satin|semi-gloss|gloss)\s*([^.,]+)/i);
+    if (paintMatch) {
+      data.paintProducts.walls = data.paintProducts.walls || {};
+      data.paintProducts.walls.name = paintMatch[0].trim();
+    }
+    
+    // Determine surfaces
+    if (/not\s*painting.*ceiling/i.test(input)) {
+      data.surfaces.push('walls');
+    } else if (/walls?\s*and\s*ceiling/i.test(input)) {
+      data.surfaces.push('walls', 'ceiling');
+    } else if (/walls?\s*only/i.test(input) || /linear\s*feet.*interior/i.test(input)) {
+      data.surfaces.push('walls');
+    }
+    
+    // Check for trim/doors/windows
+    if (!/not\s*painting.*trim/i.test(input) && /trim/i.test(input)) {
+      data.surfaces.push('trim');
+    }
+    if (!/not\s*painting.*door/i.test(input) && /door/i.test(input)) {
+      const doorMatch = input.match(/(\d+)\s*doors?/i);
+      if (doorMatch) data.measurements.doors = parseInt(doorMatch[1]);
+    }
+    if (!/not\s*painting.*window/i.test(input) && /window/i.test(input)) {
+      const windowMatch = input.match(/(\d+)\s*windows?/i);
+      if (windowMatch) data.measurements.windows = parseInt(windowMatch[1]);
+    }
+    
+    // Default to interior if not specified
+    data.projectType = 'interior';
+    
+    // Return null if we don't have minimum required data
+    if (!data.measurements.wallSqft && !data.measurements.linearFeetWalls) {
       return null;
     }
+    
+    return data;
   }
 }
