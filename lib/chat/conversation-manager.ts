@@ -184,14 +184,21 @@ export class ConversationManager {
       }
     } else if (currentStep.type === 'select') {
       const normalizedInput = input.toLowerCase().trim();
-      if (currentStep.options && !currentStep.options.includes(normalizedInput)) {
+      // Find a match (case-insensitive)
+      const matchedOption = currentStep.options?.find(opt => 
+        opt.toLowerCase() === normalizedInput || 
+        normalizedInput.includes(opt.toLowerCase()) ||
+        opt.toLowerCase().includes(normalizedInput)
+      );
+      
+      if (currentStep.options && !matchedOption) {
         return {
           response: `Please choose one of: ${currentStep.options.join(', ')}`,
           isComplete: false,
           collectedData: this.state.collectedData
         };
       }
-      processedValue = normalizedInput;
+      processedValue = matchedOption || normalizedInput;
     } else if (currentStep.type === 'multiselect') {
       // Parse comma-separated values or detect from text
       const items = input.toLowerCase().split(/[,\s]+/).filter(Boolean);

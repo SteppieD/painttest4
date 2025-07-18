@@ -133,7 +133,25 @@ export class OpenRouterClient {
   // Mock responses for development/testing
   private getMockResponse(messages: Message[]): string {
     const lastMessage = messages[messages.length - 1];
+    const content = lastMessage.content.toLowerCase();
     
+    // Check if it's a comprehensive message with all details
+    if (content.includes('linear feet') && content.includes('gallon') && content.includes('at')) {
+      return "Perfect! I have all the details. Let me calculate the quote for this project...";
+    }
+    
+    // Handle space type selection
+    if (content === 'kitchen' || content === 'bedroom' || content === 'living room' || 
+        content === 'bathroom' || content === 'office' || content === 'whole house') {
+      return "Great! I need the basic measurements. Can you give me:\n- Linear feet of walls around the perimeter?\n- Ceiling height? (standard 8ft, 9ft, 10ft+, or vaulted)\n- Room length and width for ceiling area?";
+    }
+    
+    // Handle measurements
+    if (content.includes('feet') || content.includes('ft')) {
+      return "What surfaces are we painting?\n- Walls only?\n- Walls + ceiling?\n- Include trim and doors?\n- Any special features? (accent walls, textured surfaces, high ceilings)";
+    }
+    
+    // Default structured response
     if (lastMessage.content.toLowerCase().includes('quote')) {
       return "I'd be happy to help you create a painting quote. To get started, could you tell me:\n\n1. What type of project is this? (interior/exterior)\n2. What's the customer's name and address?\n3. What surfaces need to be painted?\n\nOnce I have this information, I can help you generate a professional quote.";
     }

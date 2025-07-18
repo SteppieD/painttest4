@@ -75,9 +75,14 @@ export class QuoteAssistant {
       });
       
       return response;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Quote assistant error:', error);
-      return "I apologize, but I'm having trouble processing your request. Could you please try again?";
+      console.error('Error details:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
+      throw error; // Re-throw to let the chat route handle it
     }
   }
 
