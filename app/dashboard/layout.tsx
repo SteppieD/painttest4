@@ -96,7 +96,7 @@ export default function DashboardLayout({
                   All Quotes
                 </Link>
                 <Link
-                  href="/settings"
+                  href="/dashboard/settings"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
                 >
                   Settings

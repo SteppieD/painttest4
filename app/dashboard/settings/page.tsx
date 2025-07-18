@@ -7,7 +7,8 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useToast } from '@/components/ui/use-toast'
-import { Plus, Trash2, Palette } from 'lucide-react'
+import { Plus, Trash2, Palette, Upload, Building2, Phone, Mail, Globe } from 'lucide-react'
+import { Switch } from '@/components/ui/switch'
 import {
   Select,
   SelectContent,
@@ -56,20 +57,54 @@ interface LaborSettings {
 }
 
 interface CompanySettings {
+  // Company info
   companyName: string
+  email: string
+  phone: string
+  address: string
+  logoUrl: string
+  website: string
+  license: string
+  
+  // Financial settings
   taxRate: number
+  taxLabel: string
+  taxOnMaterialsOnly: boolean
   overheadPercent: number
   profitMargin: number
+  
+  // Default rates and settings
+  defaultPaintCoverage: number
+  defaultLaborPercentage: number
+  defaultSundriesPercentage: number
+  
+  // Detailed rates
   chargeRates: ChargeRates
   laborSettings: LaborSettings
   paintProducts: PaintProduct[]
 }
 
 const defaultSettings: CompanySettings = {
-  companyName: 'Test Painting Company',
+  // Company info
+  companyName: 'Demo Painting Company',
+  email: 'demo@paintingcompany.com',
+  phone: '(555) 123-4567',
+  address: '',
+  logoUrl: '',
+  website: '',
+  license: '',
+  
+  // Financial settings
   taxRate: 8.25,
+  taxLabel: 'Sales Tax',
+  taxOnMaterialsOnly: false,
   overheadPercent: 15,
   profitMargin: 30,
+  
+  // Default rates and settings
+  defaultPaintCoverage: 350,
+  defaultLaborPercentage: 30,
+  defaultSundriesPercentage: 12,
   chargeRates: {
     // Interior (per sq ft unless noted)
     walls: 3.50,
@@ -275,40 +310,129 @@ export default function SettingsPage() {
         </p>
       </div>
 
-      <Tabs defaultValue="general" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="general">General</TabsTrigger>
+      <Tabs defaultValue="company" className="space-y-4">
+        <TabsList className="grid w-full grid-cols-6">
+          <TabsTrigger value="company">Company</TabsTrigger>
+          <TabsTrigger value="financial">Financial</TabsTrigger>
           <TabsTrigger value="labor">Labor</TabsTrigger>
           <TabsTrigger value="interior">Interior</TabsTrigger>
           <TabsTrigger value="exterior">Exterior</TabsTrigger>
           <TabsTrigger value="paints">Paints</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="general" className="space-y-4">
+        <TabsContent value="company" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Company Information</CardTitle>
-              <CardDescription>Basic company settings</CardDescription>
+              <CardTitle>Company Profile</CardTitle>
+              <CardDescription>Your company information and branding</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
+              {/* Logo Upload */}
               <div>
-                <Label htmlFor="companyName">Company Name</Label>
-                <Input
-                  id="companyName"
-                  value={settings.companyName}
-                  onChange={(e) => setSettings({ ...settings, companyName: e.target.value })}
-                />
+                <Label>Company Logo</Label>
+                <div className="mt-2 flex items-center gap-4">
+                  {settings.logoUrl ? (
+                    <img src={settings.logoUrl} alt="Company logo" className="h-20 w-20 rounded-lg object-cover" />
+                  ) : (
+                    <div className="h-20 w-20 rounded-lg bg-muted flex items-center justify-center">
+                      <Building2 className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                  )}
+                  <Button variant="outline" size="sm">
+                    <Upload className="h-4 w-4 mr-2" />
+                    Upload Logo
+                  </Button>
+                </div>
+              </div>
+
+              {/* Company Details */}
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <Label htmlFor="companyName">Company Name</Label>
+                  <Input
+                    id="companyName"
+                    value={settings.companyName}
+                    onChange={(e) => setSettings({ ...settings, companyName: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="license">License Number</Label>
+                  <Input
+                    id="license"
+                    placeholder="e.g., CA-123456"
+                    value={settings.license}
+                    onChange={(e) => setSettings({ ...settings, license: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* Contact Information */}
+              <div>
+                <h4 className="font-medium mb-3">Contact Information</h4>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="email"
+                        type="email"
+                        className="pl-10"
+                        value={settings.email}
+                        onChange={(e) => setSettings({ ...settings, email: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="phone">Phone</Label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="phone"
+                        type="tel"
+                        className="pl-10"
+                        value={settings.phone}
+                        onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="website">Website</Label>
+                    <div className="relative">
+                      <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="website"
+                        type="url"
+                        className="pl-10"
+                        placeholder="https://www.example.com"
+                        value={settings.website}
+                        onChange={(e) => setSettings({ ...settings, website: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="address">Business Address</Label>
+                    <Input
+                      id="address"
+                      placeholder="123 Main St, City, State 12345"
+                      value={settings.address}
+                      onChange={(e) => setSettings({ ...settings, address: e.target.value })}
+                    />
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
 
+        <TabsContent value="financial" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Financial Settings</CardTitle>
-              <CardDescription>Tax, overhead, and profit margins</CardDescription>
+              <CardTitle>Tax Settings</CardTitle>
+              <CardDescription>Configure tax calculations for quotes</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <Label htmlFor="taxRate">Tax Rate (%)</Label>
                   <Input
@@ -320,6 +444,34 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
+                  <Label htmlFor="taxLabel">Tax Label</Label>
+                  <Input
+                    id="taxLabel"
+                    placeholder="e.g., Sales Tax, GST, VAT"
+                    value={settings.taxLabel}
+                    onChange={(e) => setSettings({ ...settings, taxLabel: e.target.value })}
+                  />
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Switch
+                  id="taxOnMaterials"
+                  checked={settings.taxOnMaterialsOnly}
+                  onCheckedChange={(checked) => setSettings({ ...settings, taxOnMaterialsOnly: checked })}
+                />
+                <Label htmlFor="taxOnMaterials">Apply tax to materials only (not labor)</Label>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Profit & Overhead</CardTitle>
+              <CardDescription>Default margins and markups</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
                   <Label htmlFor="overhead">Overhead (%)</Label>
                   <Input
                     id="overhead"
@@ -328,6 +480,7 @@ export default function SettingsPage() {
                     value={settings.overheadPercent}
                     onChange={(e) => setSettings({ ...settings, overheadPercent: parseFloat(e.target.value) || 0 })}
                   />
+                  <p className="text-xs text-muted-foreground mt-1">Covers business operating expenses</p>
                 </div>
                 <div>
                   <Label htmlFor="profit">Profit Margin (%)</Label>
@@ -337,6 +490,45 @@ export default function SettingsPage() {
                     step="0.01"
                     value={settings.profitMargin}
                     onChange={(e) => setSettings({ ...settings, profitMargin: parseFloat(e.target.value) || 0 })}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">Your target profit on each job</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Default Calculation Settings</CardTitle>
+              <CardDescription>Standard values used in quotes</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-3">
+                <div>
+                  <Label htmlFor="paintCoverage">Paint Coverage (sq ft/gallon)</Label>
+                  <Input
+                    id="paintCoverage"
+                    type="number"
+                    value={settings.defaultPaintCoverage}
+                    onChange={(e) => setSettings({ ...settings, defaultPaintCoverage: parseInt(e.target.value) || 350 })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="laborPercentage">Labor % of Total</Label>
+                  <Input
+                    id="laborPercentage"
+                    type="number"
+                    value={settings.defaultLaborPercentage}
+                    onChange={(e) => setSettings({ ...settings, defaultLaborPercentage: parseInt(e.target.value) || 30 })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="sundriesPercentage">Sundries/Supplies %</Label>
+                  <Input
+                    id="sundriesPercentage"
+                    type="number"
+                    value={settings.defaultSundriesPercentage}
+                    onChange={(e) => setSettings({ ...settings, defaultSundriesPercentage: parseInt(e.target.value) || 12 })}
                   />
                 </div>
               </div>

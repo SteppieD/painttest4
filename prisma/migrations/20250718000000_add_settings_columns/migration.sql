@@ -1,0 +1,21 @@
+-- AlterTable - Add settings columns to companies table
+ALTER TABLE "companies" 
+ADD COLUMN IF NOT EXISTS "address" TEXT,
+ADD COLUMN IF NOT EXISTS "website" TEXT,
+ADD COLUMN IF NOT EXISTS "license" TEXT,
+ADD COLUMN IF NOT EXISTS "overhead_percent" DECIMAL(10,2) DEFAULT 15,
+ADD COLUMN IF NOT EXISTS "profit_margin" DECIMAL(10,2) DEFAULT 30,
+ADD COLUMN IF NOT EXISTS "default_baseboard_rate" DECIMAL(10,2) DEFAULT 2.50,
+ADD COLUMN IF NOT EXISTS "default_crown_rate" DECIMAL(10,2) DEFAULT 5.00,
+ADD COLUMN IF NOT EXISTS "default_exterior_walls_rate" DECIMAL(10,2) DEFAULT 4.50,
+ADD COLUMN IF NOT EXISTS "default_fascia_rate" DECIMAL(10,2) DEFAULT 6.00,
+ADD COLUMN IF NOT EXISTS "default_soffits_rate" DECIMAL(10,2) DEFAULT 5.00,
+ADD COLUMN IF NOT EXISTS "default_exterior_door_rate" DECIMAL(10,2) DEFAULT 150.00,
+ADD COLUMN IF NOT EXISTS "default_exterior_window_rate" DECIMAL(10,2) DEFAULT 100.00,
+ADD COLUMN IF NOT EXISTS "default_hourly_rate" DECIMAL(10,2) DEFAULT 45.00,
+ADD COLUMN IF NOT EXISTS "default_overhead_multiplier" DECIMAL(10,2) DEFAULT 1.35,
+ADD COLUMN IF NOT EXISTS "productivity_walls" DECIMAL(10,2) DEFAULT 150,
+ADD COLUMN IF NOT EXISTS "productivity_ceilings" DECIMAL(10,2) DEFAULT 100,
+ADD COLUMN IF NOT EXISTS "productivity_baseboards" DECIMAL(10,2) DEFAULT 60,
+ADD COLUMN IF NOT EXISTS "productivity_doors" DECIMAL(10,2) DEFAULT 2,
+ADD COLUMN IF NOT EXISTS "productivity_windows" DECIMAL(10,2) DEFAULT 3;

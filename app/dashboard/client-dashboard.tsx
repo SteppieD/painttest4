@@ -92,7 +92,7 @@ export function ClientDashboard() {
           <p className="text-gray-600">Track your painting quotes and business metrics</p>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/settings">
+          <Link href="/dashboard/settings">
             <Button variant="outline">Settings</Button>
           </Link>
           <MobileQuoteButton />

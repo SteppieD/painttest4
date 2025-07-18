@@ -1,7 +1,7 @@
 # Base stage
 FROM node:18-alpine AS base
 WORKDIR /app
-RUN apk add --no-cache libc6-compat openssl python3 make g++
+RUN apk add --no-cache libc6-compat openssl python3 make g++ sqlite
 
 # Dependencies stage
 FROM base AS deps
@@ -37,6 +37,9 @@ FROM base AS production
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Install sqlite for database initialization
+RUN apk add --no-cache sqlite
+
 # Create non-root user
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -52,13 +55,22 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Copy database schema for SQLite initialization
-COPY --from=builder --chown=nextjs:nodejs /app/lib/database/unified-schema.sql ./lib/database/unified-schema.sql
+# Copy database schema and initialization files
+COPY --from=builder --chown=nextjs:nodejs /app/lib/database ./lib/database
+
+# Create data directory for SQLite database
+RUN mkdir -p /app/data && chown -R nextjs:nodejs /app/data
+
+# Create a startup script
+COPY --from=builder --chown=nextjs:nodejs /app/docker-entrypoint.sh ./docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
 
 USER nextjs
 
 EXPOSE 3001
 ENV PORT=3001
 ENV HOSTNAME="0.0.0.0"
+ENV DATABASE_PATH="/app/data/painting_quotes_app.db"
 
+ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["node", "server.js"]
