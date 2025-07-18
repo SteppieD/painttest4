@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import Link from 'next/link'
@@ -17,14 +17,15 @@ interface AuthPayload {
 }
 
 async function getProducts(companyId: number) {
-  const products = await prisma.paintProduct.findMany({
-    where: {
-      companyId,
-    },
-    orderBy: { createdAt: 'desc' },
-  })
+  const products = await db.getAll(
+    `SELECT * FROM paint_products 
+     WHERE user_id = (SELECT id FROM users WHERE company_name = 
+       (SELECT company_name FROM companies WHERE id = ?))
+     ORDER BY created_at DESC`,
+    [companyId]
+  )
 
-  return products
+  return products || []
 }
 
 export default async function ProductsPage() {

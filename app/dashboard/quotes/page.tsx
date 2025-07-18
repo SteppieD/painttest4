@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import Link from 'next/link'
@@ -15,19 +15,29 @@ interface AuthPayload {
 }
 
 async function getQuotes(companyId: number) {
-    const quotes = await prisma.quote.findMany({
-      where: {
-        companyId,
-        deletedAt: null,
-      },
-      orderBy: { createdAt: 'desc' },
-      include: {
-        customer: true,
-      },
-      take: 20,
-    })
+    const quotes = await db.getAll(
+      `SELECT q.*, 
+              c.name as customer_name, 
+              c.email as customer_email,
+              c.phone as customer_phone
+       FROM quotes q
+       LEFT JOIN customers c ON q.customer_id = c.id
+       WHERE q.company_id = ? AND q.deleted_at IS NULL
+       ORDER BY q.created_at DESC
+       LIMIT 20`,
+      [companyId]
+    )
 
-    return quotes
+    // Transform the flat results to include nested customer object
+    return quotes?.map(quote => ({
+      ...quote,
+      customer: quote.customer_name ? {
+        id: quote.customer_id,
+        name: quote.customer_name,
+        email: quote.customer_email,
+        phone: quote.customer_phone
+      } : null
+    })) || []
 }
 
 export default async function QuotesPage() {

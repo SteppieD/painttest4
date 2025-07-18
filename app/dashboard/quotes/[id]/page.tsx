@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -28,24 +28,46 @@ async function getAuth(): Promise<AuthPayload | null> {
 }
 
 async function getQuote(id: string, companyId: number) {
-  const quote = await prisma.quote.findFirst({
-    where: {
-      id,
-      companyId
-    },
-    include: {
-      customer: true,
-      company: true,
-      createdBy: {
-        select: {
-          name: true,
-          email: true
-        }
-      }
-    }
-  })
+  const quote = await db.get(
+    `SELECT q.*, 
+            c.name as customer_name, 
+            c.email as customer_email,
+            c.phone as customer_phone,
+            c.address as customer_address,
+            comp.company_name,
+            comp.phone as company_phone,
+            comp.email as company_email,
+            u.email as created_by_email
+     FROM quotes q
+     LEFT JOIN customers c ON q.customer_id = c.id
+     LEFT JOIN companies comp ON q.company_id = comp.id
+     LEFT JOIN users u ON q.created_by = u.id
+     WHERE q.id = ? AND q.company_id = ?`,
+    [id, companyId]
+  )
   
-  return quote
+  if (!quote) return null
+  
+  // Transform the flat result to include nested objects
+  return {
+    ...quote,
+    customer: quote.customer_name ? {
+      id: quote.customer_id,
+      name: quote.customer_name,
+      email: quote.customer_email,
+      phone: quote.customer_phone,
+      address: quote.customer_address
+    } : null,
+    company: {
+      id: quote.company_id,
+      company_name: quote.company_name,
+      phone: quote.company_phone,
+      email: quote.company_email
+    },
+    createdBy: quote.created_by_email ? {
+      email: quote.created_by_email
+    } : null
+  }
 }
 
 export default async function QuoteDetailPage({ params }: { params: { id: string } }) {
