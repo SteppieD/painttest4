@@ -3,6 +3,7 @@ import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
 import { calculator } from '@/lib/calculators/quote-calculator';
+import { db } from '@/lib/database/adapter';
 
 // Store conversation managers per session
 const sessions = new Map<string, ConversationManager>();
@@ -53,22 +54,63 @@ export async function POST(request: NextRequest) {
     
     try {
       if (useAI) {
-        console.log('[CHAT] Using AI assistant');
+        console.log('[CHAT] Using AI assistant with enhanced context');
+        
+        // Get company rates and preferred paints
+        const companyRates = {
+          paintingRate: company.defaultPaintingRate || 2.50,
+          primingRate: company.defaultPrimingRate || 0.40,
+          trimRate: company.defaultTrimRate || 1.92,
+          doorRate: company.defaultDoorRate || 100,
+          windowRate: company.defaultWindowRate || 25,
+          overheadPercent: company.overheadPercent || 15,
+          profitMargin: company.profitMargin || 30,
+          hourlyRate: company.defaultHourlyRate || 45
+        };
+        
+        // Get preferred paint products
+        const paintProducts = await db.getAll(
+          `SELECT * FROM paint_products 
+           WHERE user_id = (SELECT id FROM users WHERE company_name = ?) 
+           AND is_preferred = TRUE AND is_active = TRUE
+           LIMIT 3`,
+          [company.name]
+        );
+        
+        const preferredPaints = paintProducts?.map(p => ({
+          id: p.id,
+          name: p.product_name,
+          coverageRate: p.coverage_rate || 350,
+          costPerGallon: p.cost_per_gallon
+        })) || [];
+        
         // Get all messages for context
         const allMessages = [
           ...manager.getMessages(),
-          { role: 'user' as const, content: message }
+          { role: 'user' as const, content: message, timestamp: new Date() }
         ];
         
         const conversationText = allMessages
           .map(msg => `${msg.role}: ${msg.content}`)
           .join('\n');
         
+        // Build enhanced context
+        const context = {
+          companyId: company.id,
+          companyRates,
+          preferredPaints,
+          projectType: company.projectType || 'interior'
+        };
+        
+        // Detect conversation stage
+        const stage = await quoteAssistant.detectConversationStage(allMessages, context);
+        suggestedReplies = quoteAssistant.getSuggestedReplies(stage, context);
+        
         // Try to use AI, fall back to structured flow on error
         try {
           response = await quoteAssistant.processMessage(
             message,
-            { companyId: company.id },
+            context,
             allMessages
           );
           
@@ -80,21 +122,30 @@ export async function POST(request: NextRequest) {
               (parsedInfo.measurements?.wallSqft || parsedInfo.rooms?.length)) {
             isComplete = true;
             
-            // Calculate quote
-            const calculatorInput = parsedInfo.rooms?.length 
-              ? calculator.estimateFromRooms(parsedInfo.rooms, parsedInfo.paintQuality as any)
-              : {
-                  surfaces: {
-                    walls: parsedInfo.measurements?.wallSqft,
-                    ceilings: parsedInfo.measurements?.ceilingSqft,
-                    trim: parsedInfo.measurements?.trimLinearFt,
-                    doors: parsedInfo.measurements?.doors,
-                    windows: parsedInfo.measurements?.windows
-                  },
-                  paintQuality: parsedInfo.paintQuality || 'better'
-                };
+            // Parse measurements if in text form
+            const measurements = manager.parseMeasurements(conversationText);
             
-            const calculation = calculator.calculate(calculatorInput as any);
+            // Calculate quote with enhanced data
+            const calculatorInput = {
+              surfaces: {
+                walls: measurements.wallSqft || parsedInfo.measurements?.wallSqft,
+                ceilings: measurements.ceilingSqft || parsedInfo.measurements?.ceilingSqft,
+                trim: parsedInfo.measurements?.trimLinearFt,
+                doors: parsedInfo.measurements?.doors,
+                windows: parsedInfo.measurements?.windows,
+                priming: parsedInfo.prepWork === 'major' ? measurements.wallSqft : 0
+              },
+              paintProducts: parsedInfo.paintProducts,
+              companyRates,
+              prepCondition: parsedInfo.prepWork as any || 'good',
+              rushJob: parsedInfo.timeline === 'this week',
+              taxRate: company.taxRate || 0
+            };
+            
+            const calculation = calculator.calculate(calculatorInput);
+            
+            // Format the quote presentation
+            response += '\n\n' + quoteAssistant.formatQuotePresentation(calculation);
             
             quoteData = {
               ...parsedInfo,
@@ -116,6 +167,12 @@ export async function POST(request: NextRequest) {
         const result = manager.processUserInput(message);
         response = result.response;
         isComplete = result.isComplete;
+        
+        // Get suggested replies based on current step
+        const currentStep = manager.getCurrentStep();
+        if (currentStep?.options) {
+          suggestedReplies = currentStep.options;
+        }
         
         if (result.surfaces) {
           // Process step-by-step data collection

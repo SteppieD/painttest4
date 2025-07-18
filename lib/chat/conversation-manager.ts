@@ -31,109 +31,94 @@ export class ConversationManager {
   }
 
   private initializeSteps() {
-    // Define conversation flow
+    // Define conversation flow based on research: 2-minute professional quote
     const steps: ConversationStep[] = [
       {
         id: 'start',
-        question: "Hello! I'm here to help you create a professional painting quote. What's the customer's name?",
-        field: 'customerName',
-        type: 'text',
-        required: true,
-        next: () => 'address'
-      },
-      {
-        id: 'address',
-        question: "Great! What's the address for this painting project?",
-        field: 'address',
-        type: 'text',
-        required: true,
-        next: () => 'projectType'
-      },
-      {
-        id: 'projectType',
-        question: "Is this an interior or exterior painting project?",
-        field: 'projectType',
+        question: "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?",
+        field: 'spaceType',
         type: 'select',
-        options: ['interior', 'exterior'],
+        options: ['living room', 'bedroom', 'kitchen', 'bathroom', 'whole house', 'office', 'other'],
         required: true,
-        next: (value) => value === 'interior' ? 'interiorSurfaces' : 'exteriorSurfaces'
+        next: (value) => value === 'whole house' ? 'houseSize' : 'roomDimensions'
       },
+      // Step 1: Room Dimensions (30 seconds)
       {
-        id: 'interiorSurfaces',
-        question: "Which surfaces need to be painted? (Select all that apply)",
-        field: 'surfaces',
-        type: 'multiselect',
-        options: ['walls', 'ceilings', 'trim', 'doors', 'windows'],
-        required: true,
-        next: () => 'roomCount'
-      },
-      {
-        id: 'exteriorSurfaces',
-        question: "Which exterior surfaces need to be painted? (Select all that apply)",
-        field: 'surfaces',
-        type: 'multiselect',
-        options: ['siding', 'trim', 'doors', 'windows', 'deck', 'fence'],
-        required: true,
-        next: () => 'measurements'
-      },
-      {
-        id: 'roomCount',
-        question: "How many rooms need painting?",
-        field: 'roomCount',
-        type: 'number',
-        required: true,
-        validation: (value) => value > 0 && value <= 50,
-        next: () => 'roomDetails'
-      },
-      {
-        id: 'roomDetails',
-        question: "Can you provide the dimensions for each room? (or I can estimate based on room types)",
-        field: 'roomDetails',
+        id: 'roomDimensions',
+        question: "Great! I need the basic measurements. Can you give me:\n- Linear feet of walls around the perimeter?\n- Ceiling height? (standard 8ft, 9ft, 10ft+, or vaulted)\n- Room length and width for ceiling area?",
+        field: 'measurements',
         type: 'text',
-        required: false,
-        next: () => 'paintQuality'
-      },
-      {
-        id: 'measurements',
-        question: "What's the approximate square footage of the area to be painted?",
-        field: 'sqft',
-        type: 'number',
         required: true,
-        validation: (value) => value > 0,
-        next: () => 'paintQuality'
+        next: () => 'surfaces'
       },
       {
-        id: 'paintQuality',
-        question: "What quality of paint would you prefer?\n- Good: Budget-friendly option\n- Better: Mid-range quality\n- Best: Premium paint",
-        field: 'paintQuality',
+        id: 'houseSize',
+        question: "Perfect! How many total rooms are we painting? And what's the approximate square footage of the house? (or tell me: small house under 1500sqft, medium 1500-2500sqft, large 2500sqft+)",
+        field: 'houseDetails',
+        type: 'text',
+        required: true,
+        next: () => 'surfaces'
+      },
+      // Step 2: Surfaces & Scope (45 seconds)
+      {
+        id: 'surfaces',
+        question: "What surfaces are we painting?\n- Walls only?\n- Walls + ceiling?\n- Include trim and doors?\n- Any special features? (accent walls, textured surfaces, high ceilings)",
+        field: 'surfaces',
+        type: 'text',
+        required: true,
+        next: (value) => {
+          const lower = value.toLowerCase();
+          if (lower.includes('trim') || lower.includes('door')) {
+            return 'trimDetails';
+          }
+          return 'paintSelection';
+        }
+      },
+      {
+        id: 'trimDetails',
+        question: "How many doors and windows need trim work?",
+        field: 'trimCount',
+        type: 'text',
+        required: true,
+        next: () => 'paintSelection'
+      },
+      // Step 3: Paint Selection (20 seconds)
+      {
+        id: 'paintSelection',
+        question: "Which paint are you planning to use?\n- One of your preferred paints?\n- Different paint for walls vs ceiling vs trim?\n- Client has a specific brand request?",
+        field: 'paintProducts',
+        type: 'text',
+        required: true,
+        next: () => 'condition'
+      },
+      // Step 4: Condition Assessment (15 seconds)
+      {
+        id: 'condition',
+        question: "Quick condition check:\n- Walls in good shape or need prep work? (good/minor touch-ups/major prep)\n- Any repairs needed before painting?",
+        field: 'prepCondition',
         type: 'select',
-        options: ['good', 'better', 'best'],
+        options: ['good', 'minor touch-ups', 'major prep'],
         required: true,
         next: () => 'timeline'
       },
+      // Step 5: Timeline & Preferences (10 seconds)
       {
         id: 'timeline',
-        question: "When would you like this project completed?",
+        question: "When does this need to be completed? (affects scheduling/urgency pricing)\n- This week, next week, within a month, flexible?",
         field: 'timeline',
-        type: 'text',
-        required: false,
-        next: () => 'specialRequests'
+        type: 'select',
+        options: ['this week', 'next week', 'within a month', 'flexible'],
+        required: true,
+        next: () => 'customerInfo'
       },
+      // Quick customer info capture
       {
-        id: 'specialRequests',
-        question: "Are there any special requirements or notes for this project?",
-        field: 'specialRequests',
+        id: 'customerInfo',
+        question: "Last quick details - customer name and address for the quote?",
+        field: 'customerDetails',
         type: 'text',
-        required: false,
-        next: () => 'contact'
-      },
-      {
-        id: 'contact',
-        question: "Finally, what's the best phone number or email to reach the customer?",
-        field: 'contactInfo',
-        type: 'text',
-        required: false,
-        next: () => null // End of conversation
+        required: true,
+        next: () => null // End of conversation - ready to generate quote
       }
     ];
 
@@ -293,5 +278,84 @@ export class ConversationManager {
       email: emailMatch ? emailMatch[0] : undefined,
       phone: phoneMatch ? phoneMatch[0].trim() : undefined
     };
+  }
+
+  // Parse measurements from text input
+  parseMeasurements(input: string): {
+    linearFeetWalls?: number;
+    ceilingHeight?: number;
+    roomLength?: number;
+    roomWidth?: number;
+    wallSqft?: number;
+    ceilingSqft?: number;
+  } {
+    const measurements: any = {};
+    
+    // Look for linear feet
+    const linearMatch = input.match(/(\d+)\s*(?:linear\s*)?(?:feet|ft)/i);
+    if (linearMatch) measurements.linearFeetWalls = parseFloat(linearMatch[1]);
+    
+    // Look for ceiling height
+    const ceilingMatch = input.match(/(\d+)\s*(?:foot|ft|')?\s*(?:ceiling|height)/i);
+    if (ceilingMatch) measurements.ceilingHeight = parseFloat(ceilingMatch[1]);
+    
+    // Look for room dimensions
+    const dimensionMatch = input.match(/(\d+)\s*(?:x|by)\s*(\d+)/i);
+    if (dimensionMatch) {
+      measurements.roomLength = parseFloat(dimensionMatch[1]);
+      measurements.roomWidth = parseFloat(dimensionMatch[2]);
+    }
+    
+    // Calculate sqft if we have the measurements
+    if (measurements.linearFeetWalls && measurements.ceilingHeight) {
+      measurements.wallSqft = measurements.linearFeetWalls * measurements.ceilingHeight;
+    }
+    if (measurements.roomLength && measurements.roomWidth) {
+      measurements.ceilingSqft = measurements.roomLength * measurements.roomWidth;
+    }
+    
+    return measurements;
+  }
+
+  // Parse customer details from combined input
+  parseCustomerDetails(input: string): {
+    customerName?: string;
+    address?: string;
+  } {
+    const lines = input.split(/[,\n]/);
+    return {
+      customerName: lines[0]?.trim(),
+      address: lines.slice(1).join(', ').trim() || undefined
+    };
+  }
+
+  // Quick quote mode parser
+  parseQuickQuote(input: string): Record<string, any> | null {
+    // Format: [linear feet], [ceiling height], [sqft ceiling], [# doors], [# windows], [paint], [condition]
+    const parts = input.split(',').map(p => p.trim());
+    
+    if (parts.length < 6) return null;
+    
+    try {
+      return {
+        measurements: {
+          linearFeetWalls: parseFloat(parts[0]),
+          ceilingHeight: parseFloat(parts[1]),
+          ceilingSqft: parseFloat(parts[2]),
+          wallSqft: parseFloat(parts[0]) * parseFloat(parts[1])
+        },
+        trimCount: {
+          doors: parseInt(parts[3]),
+          windows: parseInt(parts[4])
+        },
+        paintProducts: parts[5],
+        prepCondition: parts[6] || 'good',
+        surfaces: ['walls', 'ceiling', 'trim'],
+        spaceType: 'custom',
+        timeline: 'flexible'
+      };
+    } catch {
+      return null;
+    }
   }
 }

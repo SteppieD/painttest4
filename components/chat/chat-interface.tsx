@@ -45,11 +45,13 @@ export function ChatInterface({
       {
         role: 'assistant',
         content: useAI 
-          ? "Hello! I'm here to help you create a professional painting quote. Just tell me about your project - like the customer's name, address, and what needs to be painted."
-          : "Hello! I'm here to help you create a professional painting quote. What's the customer's name?",
+          ? "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?"
+          : "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?",
         timestamp: new Date()
       }
     ]);
+    // Set initial suggested replies
+    setSuggestedReplies(['Living room', 'Bedroom', 'Kitchen', 'Bathroom', 'Whole house', 'Office']);
   }, [useAI]);
 
   const sendMessage = async (content: string) => {
@@ -215,26 +217,73 @@ export function ChatInterface({
 
       {/* Quote preview */}
       {quoteData && (
-        <Card className="mx-4 mb-4 p-4 bg-green-50 dark:bg-green-900/20">
+        <Card className="mx-4 mb-4 p-6 bg-green-50 dark:bg-green-900/20">
           <div className="flex items-start gap-3">
             <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-green-900 dark:text-green-100">
+              <h3 className="font-semibold text-green-900 dark:text-green-100 text-lg">
                 Quote Ready!
               </h3>
               <p className="text-sm text-green-700 dark:text-green-300 mt-1">
                 {quoteData.customerName} - {quoteData.address}
               </p>
-              <p className="text-lg font-bold text-green-900 dark:text-green-100 mt-2">
-                Total: ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
-              </p>
-              <Button
-                onClick={createQuote}
-                disabled={isLoading}
-                className="mt-3"
-              >
-                Create Quote
-              </Button>
+              
+              {/* Quote Breakdown */}
+              {quoteData.pricing?.breakdown && (
+                <div className="mt-4 space-y-3">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h4 className="font-semibold text-sm mb-2">MATERIALS: ${quoteData.pricing.materials?.total?.toFixed(2)}</h4>
+                    <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                      {quoteData.pricing.breakdown.primer && (
+                        <div>• Primer: {quoteData.pricing.breakdown.primer.gallons} gallons - ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}</div>
+                      )}
+                      {quoteData.pricing.breakdown.wallPaint && (
+                        <div>• Wall Paint: {quoteData.pricing.breakdown.wallPaint.gallons} gallons - ${quoteData.pricing.breakdown.wallPaint.cost.toFixed(2)}</div>
+                      )}
+                      {quoteData.pricing.breakdown.ceilingPaint && (
+                        <div>• Ceiling Paint: {quoteData.pricing.breakdown.ceilingPaint.gallons} gallons - ${quoteData.pricing.breakdown.ceilingPaint.cost.toFixed(2)}</div>
+                      )}
+                      {quoteData.pricing.breakdown.supplies && (
+                        <div>• Supplies: ${quoteData.pricing.breakdown.supplies.toFixed(2)}</div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h4 className="font-semibold text-sm mb-2">LABOR: ${quoteData.pricing.labor?.total?.toFixed(2)}</h4>
+                    <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                      {quoteData.pricing.breakdown.prepWork && (
+                        <div>• Prep work: {quoteData.pricing.breakdown.prepWork.hours} hours - ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}</div>
+                      )}
+                      {quoteData.pricing.breakdown.painting && (
+                        <div>• Painting: {quoteData.pricing.breakdown.painting.hours} hours - ${quoteData.pricing.breakdown.painting.cost.toFixed(2)}</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-700">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-2xl font-bold text-green-900 dark:text-green-100">
+                      Total: ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
+                    </p>
+                    {quoteData.pricing?.timeline && (
+                      <p className="text-sm text-green-700 dark:text-green-300">
+                        Timeline: {quoteData.pricing.timeline}
+                      </p>
+                    )}
+                  </div>
+                  <Button
+                    onClick={createQuote}
+                    disabled={isLoading}
+                    size="lg"
+                  >
+                    Create Quote
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </Card>
