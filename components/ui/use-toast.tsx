@@ -125,13 +125,15 @@ export const reducer = (state: State, action: Action): State => {
 
 const listeners: Array<(state: State) => void> = []
 
-let memoryState: State = { toasts: [] }
-
-function dispatch(action: Action) {
-  memoryState = reducer(memoryState, action)
-  listeners.forEach((listener) => {
-    listener(memoryState)
-  })
+// Store for managing state - initialized per module load
+const store = {
+  state: { toasts: [] } as State,
+  dispatch(action: Action) {
+    this.state = reducer(this.state, action)
+    listeners.forEach((listener) => {
+      listener(this.state)
+    })
+  }
 }
 
 type Toast = Omit<ToasterToast, "id">
@@ -140,13 +142,13 @@ function toast({ ...props }: Toast) {
   const id = genId()
 
   const update = (props: ToasterToast) =>
-    dispatch({
+    store.dispatch({
       type: "UPDATE_TOAST",
       toast: { ...props, id },
     })
-  const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id })
+  const dismiss = () => store.dispatch({ type: "DISMISS_TOAST", toastId: id })
 
-  dispatch({
+  store.dispatch({
     type: "ADD_TOAST",
     toast: {
       ...props,
@@ -166,10 +168,13 @@ function toast({ ...props }: Toast) {
 }
 
 function useToast() {
-  const [state, setState] = React.useState<State>(memoryState)
+  const [state, setState] = React.useState<State>(store.state)
 
   React.useEffect(() => {
     listeners.push(setState)
+    // Set initial state from store
+    setState(store.state)
+    
     return () => {
       const index = listeners.indexOf(setState)
       if (index > -1) {
@@ -181,7 +186,7 @@ function useToast() {
   return {
     ...state,
     toast,
-    dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
+    dismiss: (toastId?: string) => store.dispatch({ type: "DISMISS_TOAST", toastId }),
   }
 }
 

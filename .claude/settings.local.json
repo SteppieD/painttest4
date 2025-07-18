@@ -3,7 +3,10 @@
     "allow": [
       "WebFetch(domain:github.com)",
       "WebFetch(domain:github.com)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(pkill:*)",
+      "Bash(node:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
