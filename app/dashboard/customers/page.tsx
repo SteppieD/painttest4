@@ -52,14 +52,14 @@ async function getCustomers(companyId: number) {
   return customers?.map((customer) => {
     const quotes = quotesByCustomer[customer.id] || []
     const acceptedQuotes = quotes.filter((q: any) => q.status === 'accepted')
-    const totalRevenue = acceptedQuotes.reduce((sum, q) => sum + q.totalAmount.toNumber(), 0)
+    const totalRevenue = Number(customer.total_revenue) || 0
     
     return {
       ...customer,
-      totalQuotes: customer.quotes.length,
-      acceptedQuotes: acceptedQuotes.length,
+      totalQuotes: Number(customer.total_quotes) || 0,
+      acceptedQuotes: Number(customer.accepted_quotes) || 0,
       totalRevenue,
-      lastQuoteDate: customer.quotes[0]?.createdAt || customer.createdAt,
+      lastQuoteDate: quotes[0]?.created_at || customer.created_at,
     }
   })
 }

@@ -59,9 +59,6 @@ async function getCustomer(id: string, companyId: number) {
     quotes: transformedQuotes
   }
 }
-  
-  return customer
-}
 
 export default async function CustomerDetailPage({ params }: { params: { id: string } }) {
   const auth = await getAuth()
@@ -76,9 +73,9 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
 
   // Calculate customer stats
   const acceptedQuotes = customer.quotes.filter(q => q.status === 'accepted')
-  const totalRevenue = acceptedQuotes.reduce((sum, q) => sum + q.totalAmount.toNumber(), 0)
+  const totalRevenue = acceptedQuotes.reduce((sum, q) => sum + Number(q.total_amount || 0), 0)
   const avgQuoteValue = customer.quotes.length > 0 
-    ? customer.quotes.reduce((sum, q) => sum + q.totalAmount.toNumber(), 0) / customer.quotes.length 
+    ? customer.quotes.reduce((sum, q) => sum + Number(q.total_amount || 0), 0) / customer.quotes.length 
     : 0
   const winRate = customer.quotes.length > 0 
     ? (acceptedQuotes.length / customer.quotes.length) * 100 
