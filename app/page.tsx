@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { Check, Zap, Shield, BarChart, MessageSquare, Calculator } from 'lucide-react'
-import SharedNavigation from '@/components/shared-navigation'
+import SharedNavigationSimple from '@/components/shared-navigation-simple'
 
 export default function Home() {
   return (
     <>
-      <SharedNavigation />
+      <SharedNavigationSimple />
 
       {/* Hero Section */}
       <main className="flex-1">
