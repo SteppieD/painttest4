@@ -18,13 +18,11 @@ interface Message {
 interface ChatInterfaceProps {
   companyId: number;
   onQuoteCreated?: (quoteId: string) => void;
-  useAI?: boolean;
 }
 
 export function ChatInterface({ 
   companyId, 
-  onQuoteCreated,
-  useAI = true 
+  onQuoteCreated
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,15 +42,13 @@ export function ChatInterface({
     setMessages([
       {
         role: 'assistant',
-        content: useAI 
-          ? "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?"
-          : "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?",
+        content: "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?",
         timestamp: new Date()
       }
     ]);
     // Set initial suggested replies
     setSuggestedReplies(['Living room', 'Bedroom', 'Kitchen', 'Bathroom', 'Whole house', 'Office']);
-  }, [useAI]);
+  }, []);
 
   const sendMessage = async (content: string) => {
     // Add user message
@@ -81,8 +77,7 @@ export function ChatInterface({
         },
         body: JSON.stringify({
           message: content,
-          sessionId,
-          useAI
+          sessionId
         })
       });
 

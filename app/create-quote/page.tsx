@@ -11,7 +11,6 @@ import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 
 export default function CreateQuotePage() {
   const [companyData, setCompanyData] = useState<any>(null);
-  const [useAI, setUseAI] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -46,22 +45,9 @@ export default function CreateQuotePage() {
               <h1 className="text-xl font-semibold">Create New Quote</h1>
             </div>
             <div className="flex items-center gap-2">
-              <Button
-                variant={useAI ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setUseAI(true)}
-              >
-                <MessageSquare className="h-4 w-4 mr-2" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">
                 AI Assistant
-              </Button>
-              <Button
-                variant={!useAI ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setUseAI(false)}
-              >
-                <List className="h-4 w-4 mr-2" />
-                Step by Step
-              </Button>
+              </span>
             </div>
           </div>
         </div>
@@ -73,22 +59,15 @@ export default function CreateQuotePage() {
           <Card className="h-[calc(100vh-200px)]">
             <CardHeader>
               <CardTitle>
-                {useAI 
-                  ? 'Chat with AI Assistant' 
-                  : 'Step-by-Step Quote Creation'
-                }
+                Chat with AI Assistant
               </CardTitle>
               <p className="text-sm text-gray-500">
-                {useAI
-                  ? 'Tell me about your painting project in natural language.'
-                  : "I'll guide you through each step to create your quote."
-                }
+                Tell me about your painting project in natural language.
               </p>
             </CardHeader>
             <CardContent className="h-[calc(100%-120px)] p-0">
               <ChatInterface
                 companyId={companyData.id}
-                useAI={useAI}
                 onQuoteCreated={(quoteId) => {
                   router.push(`/quotes/${quoteId}`);
                 }}

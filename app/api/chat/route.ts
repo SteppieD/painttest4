@@ -28,8 +28,9 @@ export async function POST(request: NextRequest) {
     const company = getCompanyFromRequest(request);
     console.log('[CHAT] Processing for company:', company);
     
-    // Parse request body
-    const { message, sessionId, useAI = true } = await request.json();
+    // Parse request body - always use AI
+    const { message, sessionId } = await request.json();
+    const useAI = true; // Always use AI mode
     
     if (!message) {
       return NextResponse.json(
@@ -154,53 +155,8 @@ export async function POST(request: NextRequest) {
             };
           }
         } catch (aiError) {
-          console.error('[CHAT] AI error, falling back to structured flow:', aiError);
-          
-          // Check if this is a comprehensive message that should be parsed
-          if (quoteAssistant.isComprehensiveMessage(message)) {
-            // Try to parse the comprehensive message manually
-            const parsedData = manager.parseQuickQuote(message);
-            if (parsedData) {
-              response = "Perfect! I have all the details. Let me calculate your quote...";
-              isComplete = true;
-              
-              // Calculate the quote
-              const calculatorInput = {
-                surfaces: {
-                  walls: parsedData.measurements?.wallSqft,
-                  ceilings: parsedData.measurements?.ceilingSqft,
-                  trim: parsedData.trimCount?.trim,
-                  doors: parsedData.trimCount?.doors,
-                  windows: parsedData.trimCount?.windows
-                },
-                paintProducts: parsedData.paintProducts,
-                companyRates,
-                prepCondition: 'good',
-                taxRate: company.taxRate || 0
-              };
-              
-              const calculation = calculator.calculate(calculatorInput);
-              quoteData = {
-                ...parsedData,
-                pricing: calculation,
-                sessionId: session
-              };
-              
-              response += '\n\n' + quoteAssistant.formatQuotePresentation(calculation);
-            } else {
-              // Fall back to structured conversation
-              const result = manager.processUserInput(message);
-              response = result.response;
-              isComplete = result.isComplete;
-              quoteData = result.quoteData;
-            }
-          } else {
-            // Fall back to structured conversation
-            const result = manager.processUserInput(message);
-            response = result.response;
-            isComplete = result.isComplete;
-            quoteData = result.quoteData;
-          }
+          console.error('[CHAT] AI error:', aiError);
+          throw aiError; // Let the error propagate to show proper error message
         }
       } else {
         console.log('[CHAT] Using structured flow');
@@ -298,16 +254,32 @@ export async function POST(request: NextRequest) {
       stack: error instanceof Error ? error.stack : undefined
     });
     
+    // Check if it's an API key error
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes('OpenRouter API key is required')) {
+      return NextResponse.json({
+        response: "OpenRouter API key is not configured. Please set OPENROUTER_API_KEY in your environment variables.",
+        sessionId: `error-${Date.now()}`,
+        suggestedReplies: [],
+        isComplete: false,
+        quoteData: null,
+        error: {
+          message: 'OpenRouter API key required',
+          details: errorMessage
+        }
+      }, { status: 200 });
+    }
+    
     // Return user-friendly error with fallback response
     return NextResponse.json({
-      response: "I apologize, but I'm experiencing technical difficulties. Please try again in a moment, or contact support if the issue persists.",
+      response: "I apologize, but I'm experiencing issues with the AI service. Please ensure your OpenRouter API key is valid and has credits.",
       sessionId: `error-${Date.now()}`,
-      suggestedReplies: ['Try again', 'Contact support'],
+      suggestedReplies: ['Try again'],
       isComplete: false,
       quoteData: null,
       error: {
-        message: 'Chat service temporarily unavailable',
-        details: process.env.NODE_ENV === 'development' ? error instanceof Error ? error.message : 'Unknown error' : undefined
+        message: 'AI service error',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
       }
     }, { status: 200 }); // Return 200 with error in body to prevent UI errors
   }
