@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import Link from 'next/link'
@@ -16,28 +16,42 @@ interface AuthPayload {
 }
 
 async function getCustomers(companyId: number) {
-  const customers = await prisma.customer.findMany({
-    where: {
-      companyId,
-    },
-    orderBy: { createdAt: 'desc' },
-    include: {
-      quotes: {
-        select: {
-          id: true,
-          quoteNumber: true,
-          status: true,
-          totalAmount: true,
-          createdAt: true,
-        },
-        orderBy: { createdAt: 'desc' },
-      },
-    },
-  })
+  // Get customers with their quote statistics
+  const customers = await db.getAll(
+    `SELECT 
+      c.*,
+      COUNT(q.id) as total_quotes,
+      SUM(CASE WHEN q.status = 'accepted' THEN 1 ELSE 0 END) as accepted_quotes,
+      SUM(CASE WHEN q.status = 'accepted' THEN q.total_amount ELSE 0 END) as total_revenue
+    FROM customers c
+    LEFT JOIN quotes q ON c.id = q.customer_id
+    WHERE c.company_id = ?
+    GROUP BY c.id
+    ORDER BY c.created_at DESC`,
+    [companyId]
+  )
+
+  // Get recent quotes for each customer
+  const customerIds = customers?.map(c => c.id) || []
+  const recentQuotes = customerIds.length > 0 ? await db.getAll(
+    `SELECT id, quote_number, status, total_amount, created_at, customer_id
+     FROM quotes
+     WHERE customer_id IN (${customerIds.map(() => '?').join(',')})
+     ORDER BY created_at DESC`,
+    customerIds
+  ) : []
+
+  // Group quotes by customer
+  const quotesByCustomer = recentQuotes?.reduce((acc: any, quote: any) => {
+    if (!acc[quote.customer_id]) acc[quote.customer_id] = []
+    acc[quote.customer_id].push(quote)
+    return acc
+  }, {}) || {}
 
   // Calculate stats for each customer
-  return customers.map((customer) => {
-    const acceptedQuotes = customer.quotes.filter(q => q.status === 'accepted')
+  return customers?.map((customer) => {
+    const quotes = quotesByCustomer[customer.id] || []
+    const acceptedQuotes = quotes.filter((q: any) => q.status === 'accepted')
     const totalRevenue = acceptedQuotes.reduce((sum, q) => sum + q.totalAmount.toNumber(), 0)
     
     return {

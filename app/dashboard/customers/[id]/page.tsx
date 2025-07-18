@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -29,25 +29,36 @@ async function getAuth(): Promise<AuthPayload | null> {
 }
 
 async function getCustomer(id: string, companyId: number) {
-  const customer = await prisma.customer.findFirst({
-    where: {
-      id,
-      companyId
-    },
-    include: {
-      quotes: {
-        orderBy: { createdAt: 'desc' },
-        include: {
-          createdBy: {
-            select: {
-              name: true,
-              email: true
-            }
-          }
-        }
-      }
-    }
-  })
+  const customer = await db.get(
+    `SELECT * FROM customers WHERE id = ? AND company_id = ?`,
+    [id, companyId]
+  )
+  
+  if (!customer) return null
+  
+  // Get quotes for this customer
+  const quotes = await db.getAll(
+    `SELECT q.*, u.email as created_by_email
+     FROM quotes q
+     LEFT JOIN users u ON q.created_by = u.id
+     WHERE q.customer_id = ?
+     ORDER BY q.created_at DESC`,
+    [id]
+  )
+  
+  // Transform quotes to include nested createdBy object
+  const transformedQuotes = quotes?.map(quote => ({
+    ...quote,
+    createdBy: quote.created_by_email ? {
+      email: quote.created_by_email
+    } : null
+  })) || []
+  
+  return {
+    ...customer,
+    quotes: transformedQuotes
+  }
+}
   
   return customer
 }
