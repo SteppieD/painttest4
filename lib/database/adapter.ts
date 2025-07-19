@@ -81,12 +81,23 @@ export class SQLiteAdapter implements DatabaseAdapter {
     const values = Object.values(data);
     const placeholders = keys.map(() => '?').join(', ');
     
-    const stmt = this.db.prepare(
-      `INSERT INTO quotes (${keys.join(', ')}) VALUES (${placeholders})`
-    );
-    const result = stmt.run(...values);
+    console.log('[SQLiteAdapter] Creating quote with', keys.length, 'fields');
+    console.log('[SQLiteAdapter] SQL:', `INSERT INTO quotes (${keys.join(', ')}) VALUES (${placeholders})`);
+    console.log('[SQLiteAdapter] Values count:', values.length);
     
-    return this.db.prepare('SELECT * FROM quotes WHERE id = ?').get(result.lastInsertRowid);
+    try {
+      const stmt = this.db.prepare(
+        `INSERT INTO quotes (${keys.join(', ')}) VALUES (${placeholders})`
+      );
+      const result = stmt.run(...values);
+      
+      return this.db.prepare('SELECT * FROM quotes WHERE id = ?').get(result.lastInsertRowid);
+    } catch (error) {
+      console.error('[SQLiteAdapter] Error creating quote:', error);
+      console.error('[SQLiteAdapter] Keys:', keys);
+      console.error('[SQLiteAdapter] Values:', values);
+      throw error;
+    }
   }
 
   async getQuote(quoteId: string): Promise<any> {
@@ -114,6 +125,16 @@ export class SQLiteAdapter implements DatabaseAdapter {
   async getAll(query: string, params: any[] = []): Promise<any[]> {
     const stmt = this.db.prepare(query);
     return stmt.all(...params);
+  }
+
+  async get(query: string, params: any[] = []): Promise<any> {
+    const stmt = this.db.prepare(query);
+    return stmt.get(...params);
+  }
+
+  async run(query: string, params: any[] = []): Promise<any> {
+    const stmt = this.db.prepare(query);
+    return stmt.run(...params);
   }
 
   async updateQuote(id: number, data: any): Promise<any> {
