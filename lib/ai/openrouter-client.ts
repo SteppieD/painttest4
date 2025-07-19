@@ -23,15 +23,16 @@ export class OpenRouterClient {
   constructor(apiKey?: string) {
     this.apiKey = apiKey || process.env.OPENROUTER_API_KEY || '';
     console.log('OpenRouter API key status:', this.apiKey ? 'Configured' : 'Not configured');
-    if (!this.apiKey) {
-      throw new Error('OpenRouter API key is required. Please set OPENROUTER_API_KEY in your environment variables.');
-    }
+    // Don't throw during build time - only throw when actually trying to use the API
   }
 
   async createChatCompletion(
     messages: Message[],
     options: CompletionOptions = {}
   ): Promise<string> {
+    if (!this.apiKey) {
+      throw new Error('OpenRouter API key is required. Please set OPENROUTER_API_KEY in your environment variables.');
+    }
     try {
       const response = await fetch(`${this.baseUrl}/chat/completions`, {
         method: 'POST',
@@ -71,6 +72,9 @@ export class OpenRouterClient {
     messages: Message[],
     options: CompletionOptions = {}
   ): Promise<ReadableStream> {
+    if (!this.apiKey) {
+      throw new Error('OpenRouter API key is required. Please set OPENROUTER_API_KEY in your environment variables.');
+    }
     const response = await fetch(`${this.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
