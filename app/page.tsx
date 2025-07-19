@@ -9,8 +9,9 @@ export default function Home() {
     <>
       <SharedNavigationSimple />
 
-      {/* Enhanced Hero Section */}
-      <EnhancedHero />
+      <main className="flex-1">
+        {/* Enhanced Hero Section */}
+        <EnhancedHero />
 
         {/* Time Savings Hero Section */}
         <section className="py-16 bg-muted/30">
