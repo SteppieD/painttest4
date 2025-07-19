@@ -29,6 +29,12 @@ interface Quote {
   timeline?: string
   special_requests?: string
   conversation_summary?: string
+  paint_cost?: number
+  paint_coverage?: number
+  labor_percentage?: number
+  sundries_cost?: number
+  tax_rate?: number
+  tax_amount?: number
 }
 
 export default function QuoteDetailPage({ params }: { params: { id: string } }) {
@@ -108,6 +114,20 @@ Valid for 30 days from quote date.
   const sendEmail = () => {
     if (!quote) return
 
+    if (!quote.customer_email) {
+      // Show options when no email
+      toast({
+        title: 'No Email Address',
+        description: 'Copy the quote to send via text or print it out',
+        action: (
+          <Button size="sm" onClick={copyToClipboard}>
+            Copy Quote
+          </Button>
+        )
+      })
+      return
+    }
+
     const subject = `Painting Quote #${quote.quote_id}`
     const body = `
 Dear ${quote.customer_name},
@@ -132,7 +152,7 @@ Best regards,
 Your Painting Company
     `.trim()
 
-    window.location.href = `mailto:${quote.customer_email || ''}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${quote.customer_email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   if (loading) {
@@ -190,20 +210,18 @@ Your Painting Company
         </div>
         <div className="flex gap-2">
           <Link href={`/dashboard/quotes/${params.id}/preview`}>
-            <Button variant="outline">
-              Edit & Preview
+            <Button variant="primary">
+              View Customer Quote
             </Button>
           </Link>
           <Button variant="outline" onClick={copyToClipboard}>
             {copied ? <CheckCircle className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
             {copied ? 'Copied!' : 'Copy'}
           </Button>
-          {quote.customer_email && (
-            <Button onClick={sendEmail}>
-              <Mail className="h-4 w-4 mr-2" />
-              Send to Customer
-            </Button>
-          )}
+          <Button onClick={sendEmail} variant="outline">
+            <Mail className="h-4 w-4 mr-2" />
+            {quote.customer_email ? 'Email' : 'Send Options'}
+          </Button>
         </div>
       </div>
 
@@ -275,6 +293,54 @@ Your Painting Company
         </CardContent>
       </Card>
 
+      {/* Contractor Metrics */}
+      <Card className="border-l-4 border-l-green-500">
+        <CardHeader>
+          <CardTitle>Contractor Metrics</CardTitle>
+          <CardDescription>Key numbers for your crew</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <p className="text-sm text-muted-foreground">Profit Margin</p>
+              <p className="text-2xl font-bold text-green-600">
+                ${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(0)}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {(((quote.final_price || 0) - (quote.base_cost || 0)) / (quote.final_price || 1) * 100).toFixed(0)}% of total
+              </p>
+            </div>
+            <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <p className="text-sm text-muted-foreground">Est. Labor Hours</p>
+              <p className="text-2xl font-bold">
+                {Math.ceil((quote.walls_sqft || 0) / 150)} hrs
+              </p>
+              <p className="text-xs text-muted-foreground">
+                ~{Math.ceil((quote.walls_sqft || 0) / 150 / 8)} days
+              </p>
+            </div>
+            <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <p className="text-sm text-muted-foreground">Paint Needed</p>
+              <p className="text-2xl font-bold">
+                {Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gal
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {quote.paint_coverage || 350} sqft/gal coverage
+              </p>
+            </div>
+          </div>
+          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+            <p className="text-sm font-medium mb-2">Quick Reference:</p>
+            <div className="grid grid-cols-2 gap-2 text-sm">
+              <div>• Crew Size: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</div>
+              <div>• Productivity: ~150 sqft/hour per painter</div>
+              <div>• {quote.timeline || 'Standard timeline'}</div>
+              <div>• {quote.paint_quality || 'Standard'} grade paint</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Cost Breakdown */}
       <Card>
         <CardHeader>
@@ -312,6 +378,34 @@ Your Painting Company
         </CardContent>
       </Card>
 
+      {/* Materials List */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Materials Shopping List</CardTitle>
+          <CardDescription>What to buy for this job</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
+              <span>🎨 {quote.paint_quality || 'Standard'} Paint</span>
+              <span className="font-medium">{Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gallons</span>
+            </div>
+            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
+              <span>🖌️ Brushes & Rollers</span>
+              <span className="font-medium">Standard set</span>
+            </div>
+            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
+              <span>📦 Drop Cloths & Tape</span>
+              <span className="font-medium">{Math.ceil((quote.walls_sqft || 0) / 500)} rolls tape</span>
+            </div>
+            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
+              <span>🧹 Sundries & Supplies</span>
+              <span className="font-medium">${quote.sundries_cost?.toFixed(2) || '0.00'}</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Quick Actions for Contractors */}
       <Card className="bg-blue-50 dark:bg-blue-900/20">
         <CardHeader>
@@ -326,14 +420,18 @@ Your Painting Company
         <CardContent className="flex flex-wrap gap-3">
           {quote.status === 'pending' && (
             <>
-              <Button onClick={sendEmail} disabled={!quote.customer_email}>
+              <Button onClick={sendEmail}>
                 <Mail className="h-4 w-4 mr-2" />
                 Send Quote Now
               </Button>
-              <Button variant="outline">
-                <Copy className="h-4 w-4 mr-2" />
-                Copy & Text to Customer
+              <Button variant="outline" onClick={copyToClipboard}>
+                📱 Copy for Text/WhatsApp
               </Button>
+              <Link href={`/dashboard/quotes/${params.id}/preview`}>
+                <Button variant="outline">
+                  👁️ Preview Customer View
+                </Button>
+              </Link>
             </>
           )}
           {quote.status === 'sent' && (
