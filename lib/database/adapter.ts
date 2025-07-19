@@ -111,6 +111,11 @@ export class SQLiteAdapter implements DatabaseAdapter {
     }
   }
 
+  async getAll(query: string, params: any[] = []): Promise<any[]> {
+    const stmt = this.db.prepare(query);
+    return stmt.all(...params);
+  }
+
   async updateQuote(id: number, data: any): Promise<any> {
     const keys = Object.keys(data);
     const values = Object.values(data);

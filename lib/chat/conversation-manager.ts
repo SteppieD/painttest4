@@ -271,6 +271,14 @@ export class ConversationManager {
     return this.state.isComplete;
   }
 
+  getState(): any {
+    return {
+      currentStep: this.state.currentStep,
+      isComplete: this.state.isComplete,
+      collectedData: this.state.collectedData
+    };
+  }
+
   isQuoteReady(): boolean {
     return this.state.quoteReady;
   }

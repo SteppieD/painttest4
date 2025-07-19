@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
-import { calculator } from '@/lib/calculators/quote-calculator';
+import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 
 // Store conversation managers per session
@@ -70,13 +70,19 @@ export async function POST(request: NextRequest) {
         };
         
         // Get preferred paint products
-        const paintProducts = await db.getAll(
-          `SELECT * FROM paint_products 
-           WHERE user_id = (SELECT id FROM users WHERE company_name = ?) 
-           AND is_preferred = TRUE AND is_active = TRUE
-           LIMIT 3`,
-          [company.name]
-        );
+        let paintProducts = [];
+        try {
+          paintProducts = await db.getAll(
+            `SELECT * FROM paint_products 
+             WHERE user_id = (SELECT id FROM users WHERE company_name = ?) 
+             AND is_active = TRUE
+             LIMIT 3`,
+            [company.name]
+          );
+        } catch (err) {
+          console.log('[CHAT] Paint products query failed:', err);
+          // Continue without paint products
+        }
         
         const preferredPaints = paintProducts?.map(p => ({
           id: p.id,
@@ -143,7 +149,7 @@ export async function POST(request: NextRequest) {
               taxRate: company.taxRate || 0
             };
             
-            const calculation = calculator.calculate(calculatorInput);
+            const calculation = QuoteCalculator.calculate(calculatorInput);
             
             // Format the quote presentation
             response += '\n\n' + quoteAssistant.formatQuotePresentation(calculation);
