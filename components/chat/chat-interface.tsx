@@ -119,6 +119,9 @@ export function ChatInterface({
   const createQuote = async () => {
     if (!quoteData) return;
 
+    console.log('[CHAT] Quote data from AI:', quoteData);
+    console.log('[CHAT] Pricing structure:', quoteData.pricing);
+
     setIsLoading(true);
     try {
       // Get company data from localStorage for access code
@@ -148,14 +151,14 @@ export function ChatInterface({
             prepWork: quoteData.prepWork,
             timeEstimate: quoteData.timeline,
             specialRequests: quoteData.specialRequests,
-            totalCost: quoteData.pricing?.subtotal,
-            finalPrice: quoteData.pricing?.total,
+            totalCost: quoteData.pricing?.subtotal || 0,
+            finalPrice: quoteData.pricing?.total || 0,
             markupPercentage: 30,
-            sqft: quoteData.surfaces?.walls || 0,
+            sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || 0,
             breakdown: {
-              materials: quoteData.pricing?.materials?.total,
-              labor: quoteData.pricing?.labor?.total,
-              markup: quoteData.pricing?.markup
+              materials: quoteData.pricing?.materials?.total || 0,
+              labor: quoteData.pricing?.labor?.total || 0,
+              markup: quoteData.pricing?.markup || 0
             }
           },
           conversationHistory: messages
@@ -163,7 +166,9 @@ export function ChatInterface({
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create quote');
+        const errorData = await response.json();
+        console.error('Quote creation error response:', errorData);
+        throw new Error(errorData.details || 'Failed to create quote');
       }
 
       const result = await response.json();

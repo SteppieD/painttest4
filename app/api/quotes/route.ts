@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
     }
 
     const { companyId, quoteData, conversationHistory } = await request.json();
+    
+    console.log('[QUOTES API] Request data:', { companyId, quoteData });
 
     // Generate unique quote ID
     const quoteId = await generateQuoteNumber(parseInt(companyId));
@@ -60,6 +62,8 @@ export async function POST(request: NextRequest) {
     };
 
     // Save quote to database
+    console.log('[QUOTES API] Quote data to save:', quote);
+    console.log('[QUOTES API] Quote data keys:', Object.keys(quote));
     const result = await db.createQuote(quote);
 
     return NextResponse.json({
@@ -73,8 +77,13 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error creating quote:', error);
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack');
     return NextResponse.json(
-      { error: 'Failed to create quote', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        error: 'Failed to create quote', 
+        details: error instanceof Error ? error.message : 'Unknown error',
+        stack: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.stack : undefined) : undefined
+      },
       { status: 500 }
     );
   }
