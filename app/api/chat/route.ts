@@ -211,7 +211,25 @@ export async function POST(request: NextRequest) {
       
     } catch (processError) {
       console.error('[CHAT] Process error:', processError);
-      response = "I apologize, but I'm having trouble processing your request. Let me help you create a quote step by step. What's the customer's name?";
+      console.error('[CHAT] Process error details:', {
+        message: processError instanceof Error ? processError.message : 'Unknown error',
+        stack: processError instanceof Error ? processError.stack : undefined,
+        type: processError?.constructor?.name
+      });
+      
+      // Include error details in response for debugging
+      const errorDetails = processError instanceof Error ? processError.message : String(processError);
+      
+      // Check for specific OpenRouter errors
+      if (errorDetails.includes('401') || errorDetails.includes('Unauthorized')) {
+        response = "OpenRouter API key is invalid or not configured properly. Please check your API key in environment variables.";
+      } else if (errorDetails.includes('402') || errorDetails.includes('insufficient_quota')) {
+        response = "OpenRouter API quota exceeded. Please check your OpenRouter account credits.";
+      } else if (errorDetails.includes('OpenRouter API key is required')) {
+        response = "OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in environment variables.";
+      } else {
+        response = `I apologize, but I'm having trouble processing your request. Error: ${errorDetails}. Let me help you create a quote step by step. What's the customer's name?`;
+      }
       
       // Reset conversation on error
       manager = new ConversationManager();
