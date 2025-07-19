@@ -1,44 +1,16 @@
 import Link from 'next/link'
 import { Check, Zap, Shield, BarChart, MessageSquare, Calculator } from 'lucide-react'
 import SharedNavigationSimple from '@/components/shared-navigation-simple'
+import { EnhancedHero } from '@/components/enhanced-hero'
+import { ModernFeatures } from '@/components/modern-features'
 
 export default function Home() {
   return (
     <>
       <SharedNavigationSimple />
 
-      {/* Hero Section */}
-      <main className="flex-1">
-        <section className="relative pt-14">
-          <div className="container relative z-10 flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center py-24 text-center">
-            <div className="mx-auto max-w-3xl space-y-8">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                From 3-6 Hours to 10-15 Minutes
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                Transform your painting business with AI-powered quotes. Join 2,000+ contractors 
-                winning 40-60% more jobs by responding within 24 hours with professional estimates.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-                <Link
-                  href="/trial-signup"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
-                >
-                  Start Free Trial
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  View Pricing
-                </Link>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                No credit card required • 5 free quotes per month • Cancel anytime
-              </p>
-            </div>
-          </div>
-        </section>
+      {/* Enhanced Hero Section */}
+      <EnhancedHero />
 
         {/* Time Savings Hero Section */}
         <section className="py-16 bg-muted/30">
@@ -92,75 +64,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="py-24 bg-background">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Stop Losing Jobs to These 4 Common Failure Points
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                We solve the exact problems that cost painters 40-60% of their potential jobs
-              </p>
-            </div>
-            
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <div className="relative overflow-hidden rounded-lg border bg-background p-6">
-                <MessageSquare className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Speed Problem → Solved</h3>
-                <p className="text-muted-foreground">
-                  Mobile quoting eliminates office trips. Quote on-site in minutes while 
-                  competitors take days. Capture jobs before customers call anyone else.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-lg border bg-background p-6">
-                <Calculator className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Professional Appearance → Solved</h3>
-                <p className="text-muted-foreground">
-                  Look like a $10M company with professional templates and branding. 
-                  No more handwritten quotes that signal amateur operation.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-lg border bg-background p-6">
-                <BarChart className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Follow-up Failure → Solved</h3>
-                <p className="text-muted-foreground">
-                  Automated reminders ensure systematic nurturing. Top contractors follow up 
-                  for weeks - now you can too, automatically.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-lg border bg-background p-6">
-                <Zap className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Pricing Errors → Solved</h3>
-                <p className="text-muted-foreground">
-                  Built-in calculations ensure consistent accuracy. Never lose jobs to 
-                  pricing too high or lose profit by pricing too low.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-lg border bg-background p-6">
-                <Shield className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Mobile-First Design</h3>
-                <p className="text-muted-foreground">
-                  Quote anywhere, no internet required. User-friendly interface built 
-                  specifically for field-based painting contractors.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-lg border bg-background p-6">
-                <Check className="h-12 w-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Real Business Results</h3>
-                <p className="text-muted-foreground">
-                  Average contractor increases quote volume from 50 to 200+ per month 
-                  and wins 3 additional jobs monthly worth $8,400 in revenue.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Modern Features Section */}
+        <ModernFeatures />
 
         {/* Common Failure Points Section */}
         <section className="py-24 bg-muted/30">

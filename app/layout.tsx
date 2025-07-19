@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import '../styles/contractor-theme.css'
 import { Toaster } from '@/components/ui/toaster-fixed'
 import { CacheClearer } from '@/components/cache-clearer'
 
