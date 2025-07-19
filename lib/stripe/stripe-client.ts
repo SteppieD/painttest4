@@ -6,20 +6,38 @@ export const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-// Server-side Stripe instance
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-06-20',
+// Server-side Stripe instance - lazy loaded to avoid build errors
+let stripeInstance: Stripe | null = null;
+
+export const getStripe = () => {
+  if (!stripeInstance) {
+    const secretKey = process.env.STRIPE_SECRET_KEY;
+    if (!secretKey) {
+      throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+    }
+    stripeInstance = new Stripe(secretKey, {
+      apiVersion: '2024-06-20',
+    });
+  }
+  return stripeInstance;
+};
+
+// For backwards compatibility
+export const stripe = new Proxy({} as Stripe, {
+  get(target, prop, receiver) {
+    return Reflect.get(getStripe(), prop, receiver);
+  }
 });
 
-// Subscription price IDs
+// Subscription price IDs - use fallbacks to avoid build errors
 export const STRIPE_PRICE_IDS = {
   professional: {
-    monthly: process.env.STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID!,
-    yearly: process.env.STRIPE_PROFESSIONAL_YEARLY_PRICE_ID!
+    monthly: process.env.STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID || '',
+    yearly: process.env.STRIPE_PROFESSIONAL_YEARLY_PRICE_ID || ''
   },
   business: {
-    monthly: process.env.STRIPE_BUSINESS_MONTHLY_PRICE_ID!,
-    yearly: process.env.STRIPE_BUSINESS_YEARLY_PRICE_ID!
+    monthly: process.env.STRIPE_BUSINESS_MONTHLY_PRICE_ID || '',
+    yearly: process.env.STRIPE_BUSINESS_YEARLY_PRICE_ID || ''
   }
 };
 
