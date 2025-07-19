@@ -69,7 +69,7 @@ export default function CreateQuotePage() {
               <ChatInterface
                 companyId={companyData.id}
                 onQuoteCreated={(quoteId) => {
-                  router.push(`/quotes/${quoteId}`);
+                  router.push(`/dashboard/quotes/${quoteId}`);
                 }}
               />
             </CardContent>
