@@ -18,7 +18,7 @@ export interface CompletionOptions {
 export class OpenRouterClient {
   private apiKey: string;
   private baseUrl = 'https://openrouter.ai/api/v1';
-  private defaultModel = 'anthropic/claude-sonnet-4';
+  private defaultModel = 'anthropic/claude-3.5-sonnet';
 
   constructor(apiKey?: string) {
     this.apiKey = apiKey || process.env.OPENROUTER_API_KEY || '';

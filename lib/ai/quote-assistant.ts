@@ -58,7 +58,7 @@ export interface ConversationMessage {
 }
 
 export class QuoteAssistant {
-  private model = 'anthropic/claude-sonnet-4';
+  private model = 'anthropic/claude-3.5-sonnet';
   
   async processMessage(
     userMessage: string,
