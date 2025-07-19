@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     // Generate unique quote ID
     const quoteId = await generateQuoteNumber(parseInt(companyId));
 
-    // Prepare quote data for database
+    // Prepare quote data for database with all required fields
     const quote = {
       company_id: parseInt(companyId),
       quote_id: quoteId,
@@ -41,7 +41,6 @@ export async function POST(request: NextRequest) {
       address: quoteData.address || null,
       project_type: quoteData.projectType || 'interior',
       rooms: typeof quoteData.rooms === 'string' ? quoteData.rooms : JSON.stringify(quoteData.rooms || []),
-      room_count: quoteData.roomCount || (quoteData.rooms ? quoteData.rooms.length : 0),
       paint_quality: quoteData.paintQuality || null,
       prep_work: quoteData.prepWork || null,
       timeline: quoteData.timeEstimate || quoteData.timeline || null,
@@ -49,16 +48,41 @@ export async function POST(request: NextRequest) {
       walls_sqft: quoteData.sqft || 0,
       ceilings_sqft: quoteData.ceilings_sqft || 0,
       trim_sqft: quoteData.trim_sqft || 0,
+      doors_count: 0,
+      windows_count: 0,
+      priming_sqft: 0,
+      painting_rate: 0,
+      priming_rate: 0,
+      trim_rate: 0,
+      door_rate: 0,
+      window_rate: 0,
+      walls_rate: 0,
+      ceilings_rate: 0,
+      walls_paint_cost: 0,
+      ceilings_paint_cost: 0,
+      trim_paint_cost: 0,
       total_revenue: quoteData.finalPrice || quoteData.totalCost || 0,
       total_materials: quoteData.breakdown?.materials || 0,
+      paint_cost: quoteData.breakdown?.materials || 0,
+      sundries_cost: 0,
+      sundries_percentage: 12,
       projected_labor: quoteData.breakdown?.labor || 0,
+      labor_percentage: 0,
+      projected_profit: quoteData.breakdown?.markup || 0,
+      paint_coverage: 350,
+      tax_rate: 0,
+      tax_amount: 0,
+      subtotal: quoteData.totalCost || 0,
       base_cost: quoteData.totalCost || 0,
-      markup_percentage: quoteData.markupPercentage || 0,
+      markup_percentage: quoteData.markupPercentage || 30,
       final_price: quoteData.finalPrice || quoteData.totalCost || 0,
+      room_data: JSON.stringify(quoteData.rooms || []),
+      room_count: quoteData.roomCount || 0,
+      confirmed_rates: JSON.stringify({}),
+      status: 'pending',
       conversation_summary: typeof conversationHistory === 'string' 
         ? conversationHistory 
-        : JSON.stringify(conversationHistory || [{ quoteData }]),
-      status: 'pending'
+        : JSON.stringify(conversationHistory || [{ quoteData }])
     };
 
     // Save quote to database

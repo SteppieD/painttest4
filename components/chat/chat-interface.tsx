@@ -128,6 +128,35 @@ export function ChatInterface({
       const companyData = localStorage.getItem('paintquote_company');
       const company = companyData ? JSON.parse(companyData) : null;
       
+      const requestBody = {
+        companyId,
+        quoteData: {
+          customerName: quoteData.customerName,
+          customerEmail: quoteData.customerEmail,
+          customerPhone: quoteData.customerPhone,
+          address: quoteData.address,
+          projectType: quoteData.projectType,
+          rooms: quoteData.rooms,
+          roomCount: quoteData.roomCount,
+          paintQuality: quoteData.paintQuality,
+          prepWork: quoteData.prepWork,
+          timeEstimate: quoteData.timeline,
+          specialRequests: quoteData.specialRequests,
+          totalCost: quoteData.pricing?.subtotal || 0,
+          finalPrice: quoteData.pricing?.total || 0,
+          markupPercentage: 30,
+          sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || 0,
+          breakdown: {
+            materials: quoteData.pricing?.materials?.total || 0,
+            labor: quoteData.pricing?.labor?.total || 0,
+            markup: quoteData.pricing?.markup || 0
+          }
+        },
+        conversationHistory: messages
+      };
+
+      console.log('[CHAT] Request body to quotes API:', requestBody);
+
       const response = await fetch('/api/quotes', {
         method: 'POST',
         headers: {
@@ -137,32 +166,7 @@ export function ChatInterface({
             access_code: company?.accessCode || ''
           })
         },
-        body: JSON.stringify({
-          companyId,
-          quoteData: {
-            customerName: quoteData.customerName,
-            customerEmail: quoteData.customerEmail,
-            customerPhone: quoteData.customerPhone,
-            address: quoteData.address,
-            projectType: quoteData.projectType,
-            rooms: quoteData.rooms,
-            roomCount: quoteData.roomCount,
-            paintQuality: quoteData.paintQuality,
-            prepWork: quoteData.prepWork,
-            timeEstimate: quoteData.timeline,
-            specialRequests: quoteData.specialRequests,
-            totalCost: quoteData.pricing?.subtotal || 0,
-            finalPrice: quoteData.pricing?.total || 0,
-            markupPercentage: 30,
-            sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || 0,
-            breakdown: {
-              materials: quoteData.pricing?.materials?.total || 0,
-              labor: quoteData.pricing?.labor?.total || 0,
-              markup: quoteData.pricing?.markup || 0
-            }
-          },
-          conversationHistory: messages
-        })
+        body: JSON.stringify(requestBody)
       });
 
       if (!response.ok) {
