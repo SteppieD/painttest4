@@ -42,11 +42,11 @@ export default function CreateQuotePage() {
                   <ArrowLeft className="h-5 w-5" />
                 </Button>
               </Link>
-              <h1 className="text-xl font-semibold">Create New Quote</h1>
+              <h1 className="text-xl font-semibold">Create Professional Quote</h1>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-600 dark:text-gray-400">
-                AI Assistant
+                ⚡ 2-minute quotes with AI
               </span>
             </div>
           </div>
@@ -59,10 +59,10 @@ export default function CreateQuotePage() {
           <Card className="h-[calc(100vh-200px)]">
             <CardHeader>
               <CardTitle>
-                Chat with AI Assistant
+                Quick Quote Builder
               </CardTitle>
               <p className="text-sm text-gray-500">
-                Tell me about your painting project in natural language.
+                Just describe the project - get a professional quote in under 2 minutes
               </p>
             </CardHeader>
             <CardContent className="h-[calc(100%-120px)] p-0">

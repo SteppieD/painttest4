@@ -89,7 +89,7 @@ export function ClientDashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold">{dashboardData.companyName} Dashboard</h1>
-          <p className="text-gray-600">Track your painting quotes and business metrics</p>
+          <p className="text-gray-600">Send professional quotes in under 2 minutes</p>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/dashboard/settings">
@@ -112,31 +112,31 @@ export function ClientDashboard() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Quotes</CardTitle>
+            <CardTitle className="text-sm font-medium">Quotes Sent</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{dashboardData.totalQuotes}</div>
             <p className="text-xs text-muted-foreground">
-              {dashboardData.monthlyQuotes} this month
+              {dashboardData.monthlyQuotes} this month • Avg 2 min each
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Customers</CardTitle>
+            <CardTitle className="text-sm font-medium">Active Leads</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{dashboardData.uniqueCustomers}</div>
-            <p className="text-xs text-muted-foreground">Unique customers served</p>
+            <p className="text-xs text-muted-foreground">Potential customers quoted</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Quoted</CardTitle>
+            <CardTitle className="text-sm font-medium">Revenue Potential</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -151,13 +151,13 @@ export function ClientDashboard() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Acceptance Rate</CardTitle>
+            <CardTitle className="text-sm font-medium">Win Rate</CardTitle>
             <Percent className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{dashboardData.acceptanceRate}%</div>
             <p className="text-xs text-muted-foreground">
-              {dashboardData.acceptedQuotes} accepted quotes
+              {dashboardData.acceptedQuotes} jobs won
             </p>
           </CardContent>
         </Card>
@@ -167,13 +167,14 @@ export function ClientDashboard() {
       <Card>
         <CardHeader>
           <CardTitle>Recent Quotes</CardTitle>
-          <CardDescription>Your latest painting quote activities</CardDescription>
+          <CardDescription>Track quote status and follow up with leads</CardDescription>
         </CardHeader>
         <CardContent>
           {dashboardData.recentQuotes.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p className="mb-4">No quotes created yet</p>
+              <p className="text-sm mb-4">Start winning more jobs with professional quotes</p>
               <Link href="/create-quote">
                 <Button>Create Your First Quote</Button>
               </Link>
@@ -218,7 +219,7 @@ export function ClientDashboard() {
             <CardTitle className="text-base">Quick Quote</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-4">Create a new painting quote in minutes</p>
+            <p className="text-sm text-gray-600 mb-4">AI-powered quotes in under 2 minutes</p>
             <Link href="/create-quote">
               <Button className="w-full">
                 <FileText className="mr-2 h-4 w-4" />
@@ -230,10 +231,10 @@ export function ClientDashboard() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">View Quotes</CardTitle>
+            <CardTitle className="text-base">Quote Pipeline</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-4">Manage and track all your quotes</p>
+            <p className="text-sm text-gray-600 mb-4">Follow up and close more deals</p>
             <Link href="/quotes">
               <Button variant="outline" className="w-full">
                 <Clock className="mr-2 h-4 w-4" />
@@ -245,10 +246,10 @@ export function ClientDashboard() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Upgrade Plan</CardTitle>
+            <CardTitle className="text-base">Go Unlimited</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-4">Get unlimited quotes and features</p>
+            <p className="text-sm text-gray-600 mb-4">Quote more, win more, grow faster</p>
             <Link href="/pricing">
               <Button variant="default" className="w-full bg-green-600 hover:bg-green-700">
                 <Lock className="mr-2 h-4 w-4" />

@@ -87,13 +87,13 @@ export default function DashboardLayout({
                   href="/create-quote"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
                 >
-                  New Quote
+                  Quick Quote
                 </Link>
                 <Link
                   href="/quotes"
                   className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
                 >
-                  All Quotes
+                  Quote Pipeline
                 </Link>
                 <Link
                   href="/dashboard/settings"
@@ -110,7 +110,7 @@ export default function DashboardLayout({
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <span className="text-sm text-muted-foreground">{company.name}</span>
+              <span className="text-sm text-muted-foreground">⚡ {company.name}</span>
               <button
                 onClick={handleSignOut}
                 className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"

@@ -170,26 +170,40 @@ Your Painting Company
           </Link>
           <div>
             <h1 className="text-2xl font-bold">Quote #{quote.quote_id}</h1>
-            <p className="text-sm text-muted-foreground">
-              Created on {new Date(quote.created_at).toLocaleDateString()}
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-sm text-muted-foreground">
+                Created on {new Date(quote.created_at).toLocaleDateString()}
+              </p>
+              <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
+                quote.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                quote.status === 'sent' ? 'bg-blue-100 text-blue-700' :
+                quote.status === 'accepted' ? 'bg-green-100 text-green-700' :
+                'bg-gray-100 text-gray-700'
+              }`}>
+                {quote.status === 'pending' ? '⏱️ Ready to Send' :
+                 quote.status === 'sent' ? '✉️ Sent to Customer' :
+                 quote.status === 'accepted' ? '✅ Job Won!' :
+                 quote.status}
+              </span>
+            </div>
           </div>
         </div>
         <div className="flex gap-2">
+          <Link href={`/dashboard/quotes/${params.id}/preview`}>
+            <Button variant="outline">
+              Edit & Preview
+            </Button>
+          </Link>
           <Button variant="outline" onClick={copyToClipboard}>
             {copied ? <CheckCircle className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
             {copied ? 'Copied!' : 'Copy'}
           </Button>
           {quote.customer_email && (
-            <Button variant="outline" onClick={sendEmail}>
+            <Button onClick={sendEmail}>
               <Mail className="h-4 w-4 mr-2" />
-              Email
+              Send to Customer
             </Button>
           )}
-          <Button>
-            <Download className="h-4 w-4 mr-2" />
-            Download PDF
-          </Button>
         </div>
       </div>
 
@@ -295,6 +309,51 @@ Your Painting Company
               </div>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Quick Actions for Contractors */}
+      <Card className="bg-blue-50 dark:bg-blue-900/20">
+        <CardHeader>
+          <CardTitle className="text-lg">Next Steps</CardTitle>
+          <CardDescription>
+            {quote.status === 'pending' ? 'Quote is ready to send to your customer' :
+             quote.status === 'sent' ? 'Follow up to close the deal' :
+             quote.status === 'accepted' ? 'Congratulations on winning the job!' :
+             'Manage this quote'}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-wrap gap-3">
+          {quote.status === 'pending' && (
+            <>
+              <Button onClick={sendEmail} disabled={!quote.customer_email}>
+                <Mail className="h-4 w-4 mr-2" />
+                Send Quote Now
+              </Button>
+              <Button variant="outline">
+                <Copy className="h-4 w-4 mr-2" />
+                Copy & Text to Customer
+              </Button>
+            </>
+          )}
+          {quote.status === 'sent' && (
+            <>
+              <Button variant="outline">
+                📞 Call Customer
+              </Button>
+              <Button variant="outline">
+                📱 Send Follow-up Text
+              </Button>
+              <Button variant="outline">
+                ✅ Mark as Won
+              </Button>
+            </>
+          )}
+          <Link href="/create-quote">
+            <Button variant="ghost">
+              + New Quote
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     </div>
