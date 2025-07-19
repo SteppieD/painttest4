@@ -176,7 +176,7 @@ export function ChatInterface({
       if (onQuoteCreated) {
         onQuoteCreated(result.quoteId);
       } else {
-        router.push(`/quotes/${result.quoteId}`);
+        router.push(`/dashboard/quotes/${result.quoteId}`);
       }
 
     } catch (error) {

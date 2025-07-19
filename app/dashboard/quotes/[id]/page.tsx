@@ -1,138 +1,196 @@
-import { notFound } from 'next/navigation'
-import { db } from '@/lib/database/adapter'
-import { cookies } from 'next/headers'
-import jwt from 'jsonwebtoken'
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Download, Send, Edit } from 'lucide-react'
+import { ArrowLeft, Copy, Mail, Download, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
+import { toast } from '@/components/ui/use-toast'
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
-
-interface AuthPayload {
-  userId: number
-  companyId: number
-  email: string
-  role: string
+interface Quote {
+  quote_id: string
+  customer_name: string
+  customer_email?: string
+  customer_phone?: string
+  address?: string
+  project_type: string
+  rooms?: string
+  total_revenue: number
+  final_price: number
+  base_cost: number
+  total_materials: number
+  projected_labor: number
+  markup_percentage: number
+  created_at: string
+  status: string
+  walls_sqft?: number
+  paint_quality?: string
+  timeline?: string
+  special_requests?: string
+  conversation_summary?: string
 }
 
-async function getAuth(): Promise<AuthPayload | null> {
-  const token = cookies().get('auth-token')?.value
-  if (!token) return null
-  
-  try {
-    return jwt.verify(token, JWT_SECRET) as AuthPayload
-  } catch {
-    return null
-  }
-}
+export default function QuoteDetailPage({ params }: { params: { id: string } }) {
+  const [quote, setQuote] = useState<Quote | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [copied, setCopied] = useState(false)
+  const router = useRouter()
 
-async function getQuote(id: string, companyId: number) {
-  const quote = await db.get(
-    `SELECT q.*, 
-            c.name as customer_name, 
-            c.email as customer_email,
-            c.phone as customer_phone,
-            c.address as customer_address,
-            comp.company_name,
-            comp.phone as company_phone,
-            comp.email as company_email,
-            u.email as created_by_email
-     FROM quotes q
-     LEFT JOIN customers c ON q.customer_id = c.id
-     LEFT JOIN companies comp ON q.company_id = comp.id
-     LEFT JOIN users u ON q.created_by = u.id
-     WHERE q.id = ? AND q.company_id = ?`,
-    [id, companyId]
-  )
-  
-  if (!quote) return null
-  
-  // Transform the flat result to include nested objects
-  return {
-    ...quote,
-    customer: quote.customer_name ? {
-      id: quote.customer_id,
-      name: quote.customer_name,
-      email: quote.customer_email,
-      phone: quote.customer_phone,
-      address: quote.customer_address
-    } : null,
-    company: {
-      id: quote.company_id,
-      company_name: quote.company_name,
-      phone: quote.company_phone,
-      email: quote.company_email
-    },
-    createdBy: quote.created_by_email ? {
-      email: quote.created_by_email
-    } : null
-  }
-}
+  useEffect(() => {
+    fetchQuote()
+  }, [params.id])
 
-export default async function QuoteDetailPage({ params }: { params: { id: string } }) {
-  const auth = await getAuth()
-  if (!auth) {
-    return notFound()
+  const fetchQuote = async () => {
+    try {
+      const response = await fetch(`/api/quotes/${params.id}`)
+      if (!response.ok) {
+        if (response.status === 404) {
+          router.push('/dashboard/quotes')
+          return
+        }
+        throw new Error('Failed to fetch quote')
+      }
+      const data = await response.json()
+      setQuote(data.quote)
+    } catch (error) {
+      console.error('Error fetching quote:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to load quote details',
+        variant: 'destructive'
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const quote = await getQuote(params.id, auth.companyId)
+  const copyToClipboard = () => {
+    if (!quote) return
+
+    const quoteText = `
+PAINTING QUOTE #${quote.quote_id}
+Date: ${new Date(quote.created_at).toLocaleDateString()}
+
+CUSTOMER INFORMATION:
+Name: ${quote.customer_name}
+Email: ${quote.customer_email || 'Not provided'}
+Phone: ${quote.customer_phone || 'Not provided'}
+Address: ${quote.address || 'Not provided'}
+
+PROJECT DETAILS:
+Type: ${quote.project_type} painting
+Walls: ${quote.walls_sqft || 0} sq ft
+Paint Quality: ${quote.paint_quality || 'Standard'}
+Timeline: ${quote.timeline || 'Standard'}
+${quote.special_requests ? `Special Requests: ${quote.special_requests}` : ''}
+
+COST BREAKDOWN:
+Materials: $${quote.total_materials?.toFixed(2) || '0.00'}
+Labor: $${quote.projected_labor?.toFixed(2) || '0.00'}
+Subtotal: $${quote.base_cost?.toFixed(2) || '0.00'}
+Markup (${quote.markup_percentage || 30}%): $${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(2)}
+
+TOTAL: $${quote.final_price?.toFixed(2) || quote.total_revenue?.toFixed(2) || '0.00'}
+
+Valid for 30 days from quote date.
+    `.trim()
+
+    navigator.clipboard.writeText(quoteText)
+    setCopied(true)
+    toast({
+      title: 'Copied!',
+      description: 'Quote details copied to clipboard'
+    })
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  const sendEmail = () => {
+    if (!quote) return
+
+    const subject = `Painting Quote #${quote.quote_id}`
+    const body = `
+Dear ${quote.customer_name},
+
+Thank you for considering us for your painting project. Please find your quote details below:
+
+QUOTE #${quote.quote_id}
+Date: ${new Date(quote.created_at).toLocaleDateString()}
+
+PROJECT DETAILS:
+- ${quote.project_type} painting
+- Total area: ${quote.walls_sqft || 0} sq ft
+- Timeline: ${quote.timeline || 'Standard'}
+
+TOTAL COST: $${quote.final_price?.toFixed(2) || quote.total_revenue?.toFixed(2) || '0.00'}
+
+This quote is valid for 30 days from the date above.
+
+Please let us know if you have any questions or would like to proceed with the project.
+
+Best regards,
+Your Painting Company
+    `.trim()
+
+    window.location.href = `mailto:${quote.customer_email || ''}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }
+
+  if (loading) {
+    return (
+      <div className="flex h-[50vh] items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      </div>
+    )
+  }
+
   if (!quote) {
-    return notFound()
+    return (
+      <div className="mx-auto max-w-4xl">
+        <Card>
+          <CardContent className="p-8 text-center">
+            <p>Quote not found</p>
+            <Link href="/dashboard/quotes">
+              <Button className="mt-4">Back to Quotes</Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    )
   }
-
-  const surfaces = quote.surfaces as any[]
-  const materials = quote.materials as any
-  const labor = quote.labor as any
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8">
+    <div className="mx-auto max-w-4xl space-y-6">
+      {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/dashboard/quotes">
-            <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Quotes
+            <Button variant="ghost" size="icon">
+              <ArrowLeft className="h-4 w-4" />
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">
-              Quote {quote.quoteNumber}
-            </h1>
-            <p className="text-muted-foreground">
-              Created on {new Date(quote.createdAt).toLocaleDateString()}
+            <h1 className="text-2xl font-bold">Quote #{quote.quote_id}</h1>
+            <p className="text-sm text-muted-foreground">
+              Created on {new Date(quote.created_at).toLocaleDateString()}
             </p>
           </div>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline">
-            <Edit className="h-4 w-4 mr-2" />
-            Edit
+          <Button variant="outline" onClick={copyToClipboard}>
+            {copied ? <CheckCircle className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
+            {copied ? 'Copied!' : 'Copy'}
           </Button>
-          <Button variant="outline">
+          {quote.customer_email && (
+            <Button variant="outline" onClick={sendEmail}>
+              <Mail className="h-4 w-4 mr-2" />
+              Email
+            </Button>
+          )}
+          <Button>
             <Download className="h-4 w-4 mr-2" />
             Download PDF
           </Button>
-          <Button>
-            <Send className="h-4 w-4 mr-2" />
-            Send to Customer
-          </Button>
         </div>
-      </div>
-
-      {/* Status Badge */}
-      <div className="flex items-center gap-4">
-        <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-          quote.status === 'draft' ? 'bg-gray-100 text-gray-700' :
-          quote.status === 'sent' ? 'bg-blue-100 text-blue-700' :
-          quote.status === 'accepted' ? 'bg-green-100 text-green-700' :
-          'bg-red-100 text-red-700'
-        }`}>
-          {quote.status.charAt(0).toUpperCase() + quote.status.slice(1)}
-        </span>
-        <span className="text-sm text-muted-foreground">
-          Valid until {new Date(quote.validUntil || Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}
-        </span>
       </div>
 
       {/* Customer Information */}
@@ -143,19 +201,19 @@ export default async function QuoteDetailPage({ params }: { params: { id: string
         <CardContent className="grid gap-4 md:grid-cols-2">
           <div>
             <p className="text-sm font-medium text-muted-foreground">Name</p>
-            <p className="font-medium">{quote.customer.name}</p>
+            <p>{quote.customer_name}</p>
           </div>
           <div>
             <p className="text-sm font-medium text-muted-foreground">Email</p>
-            <p className="font-medium">{quote.customer.email}</p>
+            <p>{quote.customer_email || 'Not provided'}</p>
           </div>
           <div>
             <p className="text-sm font-medium text-muted-foreground">Phone</p>
-            <p className="font-medium">{quote.customer.phone || 'N/A'}</p>
+            <p>{quote.customer_phone || 'Not provided'}</p>
           </div>
           <div>
             <p className="text-sm font-medium text-muted-foreground">Address</p>
-            <p className="font-medium">{quote.customer.address || 'N/A'}</p>
+            <p>{quote.address || 'Not provided'}</p>
           </div>
         </CardContent>
       </Card>
@@ -165,47 +223,41 @@ export default async function QuoteDetailPage({ params }: { params: { id: string
         <CardHeader>
           <CardTitle>Project Details</CardTitle>
           <CardDescription>
-            {quote.projectType.charAt(0).toUpperCase() + quote.projectType.slice(1)} painting project
+            {quote.project_type} painting project
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          {quote.description && (
-            <p className="text-sm text-muted-foreground mb-4">{quote.description}</p>
-          )}
-          
-          <div className="space-y-4">
-            <h4 className="font-medium">Surfaces to Paint</h4>
-            <div className="rounded-lg border">
-              <table className="w-full">
-                <thead className="border-b bg-muted/50">
-                  <tr>
-                    <th className="p-2 text-left text-sm font-medium">Surface</th>
-                    <th className="p-2 text-left text-sm font-medium">Measurement</th>
-                    <th className="p-2 text-left text-sm font-medium">Coats</th>
-                    <th className="p-2 text-left text-sm font-medium">Condition</th>
-                    <th className="p-2 text-right text-sm font-medium">Cost</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {surfaces.map((surface: any, index: number) => (
-                    <tr key={index} className="border-b">
-                      <td className="p-2 text-sm">{surface.name}</td>
-                      <td className="p-2 text-sm">
-                        {surface.area ? `${surface.area} sq ft` :
-                         surface.linearFeet ? `${surface.linearFeet} linear ft` :
-                         surface.count ? `${surface.count} units` : 'N/A'}
-                      </td>
-                      <td className="p-2 text-sm">{surface.coats}</td>
-                      <td className="p-2 text-sm capitalize">{surface.condition}</td>
-                      <td className="p-2 text-sm text-right font-medium">
-                        ${materials?.surfaces?.[index]?.calculatedCost?.toFixed(2) || '0.00'}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">Wall Area</p>
+              <p>{quote.walls_sqft || 0} sq ft</p>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">Paint Quality</p>
+              <p>{quote.paint_quality || 'Standard'}</p>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">Timeline</p>
+              <p>{quote.timeline || 'Standard'}</p>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">Status</p>
+              <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
+                quote.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                quote.status === 'sent' ? 'bg-blue-100 text-blue-700' :
+                quote.status === 'accepted' ? 'bg-green-100 text-green-700' :
+                'bg-gray-100 text-gray-700'
+              }`}>
+                {quote.status}
+              </span>
             </div>
           </div>
+          {quote.special_requests && (
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">Special Requests</p>
+              <p className="mt-1">{quote.special_requests}</p>
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -218,62 +270,33 @@ export default async function QuoteDetailPage({ params }: { params: { id: string
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Materials</span>
-              <span className="font-medium">${materials?.totalMaterials?.toFixed(2) || '0.00'}</span>
+              <span className="font-medium">${quote.total_materials?.toFixed(2) || '0.00'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Labor</span>
-              <span className="font-medium">${labor?.totalLabor?.toFixed(2) || '0.00'}</span>
+              <span className="font-medium">${quote.projected_labor?.toFixed(2) || '0.00'}</span>
             </div>
             <div className="border-t pt-3">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span className="font-medium">${quote.subtotal.toFixed(2)}</span>
+                <span className="font-medium">${quote.base_cost?.toFixed(2) || '0.00'}</span>
               </div>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Overhead (15%)</span>
-              <span className="font-medium">${quote.overhead.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Profit (30%)</span>
-              <span className="font-medium">${quote.profit.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Tax (8.25%)</span>
-              <span className="font-medium">${quote.tax.toFixed(2)}</span>
+              <span className="text-muted-foreground">Markup ({quote.markup_percentage || 30}%)</span>
+              <span className="font-medium">
+                ${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(2)}
+              </span>
             </div>
             <div className="border-t pt-3">
               <div className="flex justify-between text-lg font-bold">
                 <span>Total</span>
-                <span>${quote.totalAmount.toFixed(2)}</span>
+                <span>${quote.final_price?.toFixed(2) || quote.total_revenue?.toFixed(2) || '0.00'}</span>
               </div>
             </div>
           </div>
         </CardContent>
       </Card>
-
-      {/* Terms and Notes */}
-      {(quote.notes || quote.terms) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Additional Information</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {quote.notes && (
-              <div>
-                <h4 className="font-medium mb-2">Notes</h4>
-                <p className="text-sm text-muted-foreground">{quote.notes}</p>
-              </div>
-            )}
-            {quote.terms && (
-              <div>
-                <h4 className="font-medium mb-2">Terms & Conditions</h4>
-                <p className="text-sm text-muted-foreground">{quote.terms}</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
     </div>
   )
 }
