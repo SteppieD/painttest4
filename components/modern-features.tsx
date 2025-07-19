@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { MessageSquare, Calculator, BarChart, Zap, Shield, Check, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { MessageSquare, Calculator, BarChart, Zap, Shield, Check, ArrowRight, Sparkles, TrendingUp, Target } from 'lucide-react'
 
 const features = [
   {
@@ -9,57 +10,61 @@ const features = [
     title: 'Speed Problem → Solved',
     description: 'Mobile quoting eliminates office trips. Quote on-site in minutes while competitors take days.',
     highlight: 'Quote anywhere, anytime',
-    color: 'orange'
+    color: 'from-blue-400 to-cyan-400',
+    metric: '95%',
+    metricLabel: 'Faster'
   },
   {
     icon: Calculator,
     title: 'Professional Appearance → Solved', 
     description: 'Look like a $10M company with professional templates and branding.',
     highlight: 'Premium presentation',
-    color: 'blue'
+    color: 'from-purple-400 to-pink-400',
+    metric: '3x',
+    metricLabel: 'More Trust'
   },
   {
     icon: BarChart,
     title: 'Follow-up Failure → Solved',
     description: 'Automated reminders ensure systematic nurturing. Follow up for weeks automatically.',
     highlight: 'Never lose a lead',
-    color: 'green'
+    color: 'from-emerald-400 to-green-400',
+    metric: '60%',
+    metricLabel: 'More Closes'
   },
   {
     icon: Zap,
     title: 'Pricing Errors → Solved',
     description: 'Built-in calculations ensure consistent accuracy. Never lose profit by pricing wrong.',
     highlight: 'Accurate every time',
-    color: 'purple'
+    color: 'from-amber-400 to-orange-400',
+    metric: '100%',
+    metricLabel: 'Accurate'
   },
   {
     icon: Shield,
     title: 'Mobile-First Design',
     description: 'Quote anywhere, no internet required. Built specifically for field contractors.',
     highlight: 'Works offline',
-    color: 'cyan'
+    color: 'from-cyan-400 to-blue-400',
+    metric: '24/7',
+    metricLabel: 'Available'
   },
   {
     icon: Check,
     title: 'Real Business Results',
     description: 'Average contractor increases from 50 to 200+ quotes monthly, wins 3 additional jobs.',
     highlight: '+$8,400 revenue/month',
-    color: 'emerald'
+    color: 'from-rose-400 to-pink-400',
+    metric: '4x',
+    metricLabel: 'ROI'
   }
 ]
-
-const colorMap = {
-  orange: 'from-orange-500 to-red-500',
-  blue: 'from-blue-500 to-indigo-500', 
-  green: 'from-green-500 to-emerald-500',
-  purple: 'from-purple-500 to-pink-500',
-  cyan: 'from-cyan-500 to-blue-500',
-  emerald: 'from-emerald-500 to-green-500'
-}
 
 export function ModernFeatures() {
   const [activeFeature, setActiveFeature] = useState(0)
   const [inView, setInView] = useState(false)
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -79,42 +84,31 @@ export function ModernFeatures() {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % features.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
+      className="relative py-32 overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20"></div>
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#grid)" className="text-white/10" />
-        </svg>
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900"></div>
+      
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 rounded-full border border-orange-500/30 backdrop-blur-sm mb-6 ${inView ? 'animate-in' : 'opacity-0'}`}>
-            <Zap className="h-4 w-4 text-orange-400" />
-            <span className="text-orange-300 text-sm font-medium">Stop Losing Jobs</span>
+        <div className="text-center mb-20">
+          <div className={`inline-flex items-center badge-modern text-slate-300 mb-8 ${inView ? 'animate-in' : 'opacity-0'}`}>
+            <Target className="h-4 w-4 text-purple-400" />
+            <span>Stop Losing Jobs to Competition</span>
           </div>
           
-          <h2 className={`text-4xl lg:text-6xl font-black text-white mb-6 ${inView ? 'animate-in animate-delay-100' : 'opacity-0'}`}>
-            Fix The <span className="text-gradient">4 Critical</span><br />
-            Failure Points
+          <h2 className={`text-5xl lg:text-6xl font-black text-white mb-6 ${inView ? 'animate-in animate-delay-100' : 'opacity-0'}`}>
+            Fix The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">4 Critical</span>
+            <br />Failure Points
           </h2>
           
           <p className={`text-xl text-gray-300 max-w-3xl mx-auto ${inView ? 'animate-in animate-delay-200' : 'opacity-0'}`}>
@@ -122,144 +116,128 @@ export function ModernFeatures() {
           </p>
         </div>
 
-        {/* Interactive Features Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Column - Feature List */}
-          <div className="space-y-4">
-            {features.map((feature, index) => {
-              const Icon = feature.icon
-              const isActive = index === activeFeature
-              const gradientClass = colorMap[feature.color as keyof typeof colorMap]
-              
-              return (
-                <div
-                  key={index}
-                  className={`group cursor-pointer transition-all duration-500 ${
-                    inView ? 'animate-in' : 'opacity-0'
-                  }`}
-                  style={{ animationDelay: `${index * 100 + 300}ms` }}
-                  onClick={() => setActiveFeature(index)}
-                  onMouseEnter={() => setActiveFeature(index)}
-                >
-                  <div className={`relative overflow-hidden rounded-2xl border transition-all duration-500 ${
-                    isActive 
-                      ? 'bg-white/10 border-white/30 shadow-2xl scale-105' 
-                      : 'bg-white/5 border-white/10 hover:bg-white/8 hover:border-white/20'
-                  }`}>
+        {/* Features Grid */}
+        <div className="grid lg:grid-cols-3 gap-6 mb-20">
+          {features.map((feature, index) => {
+            const Icon = feature.icon
+            const isHovered = hoveredCard === index
+            
+            return (
+              <div
+                key={index}
+                className={`group relative ${inView ? 'animate-in' : 'opacity-0'}`}
+                style={{ animationDelay: `${index * 100 + 300}ms` }}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                {/* Glow Effect */}
+                {isHovered && (
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-2xl blur-xl opacity-30`}></div>
+                )}
+                
+                <div className="relative glass-card p-8 h-full card-hover-modern">
+                  {/* Icon */}
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform`}>
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 mb-6 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Highlight Badge */}
+                  <div className="flex items-center justify-between">
+                    <span className={`inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r ${feature.color} bg-clip-text text-transparent`}>
+                      <Sparkles className="h-4 w-4" style={{ color: 'currentColor' }} />
+                      {feature.highlight}
+                    </span>
                     
-                    {/* Active Indicator */}
-                    <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${gradientClass} transition-all duration-500 ${
-                      isActive ? 'opacity-100' : 'opacity-0'
-                    }`}></div>
-                    
-                    <div className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className={`relative flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br ${gradientClass} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                          <Icon className="h-6 w-6 text-white" />
-                          {isActive && (
-                            <div className={`absolute inset-0 rounded-lg bg-gradient-to-br ${gradientClass} opacity-50 animate-pulse`}></div>
-                          )}
-                        </div>
-                        
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-gradient transition-colors">
-                            {feature.title}
-                          </h3>
-                          <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                            {feature.description}
-                          </p>
-                          <div className={`inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent`}>
-                            <span>{feature.highlight}</span>
-                            <ArrowRight className={`h-4 w-4 transition-transform ${isActive ? 'translate-x-1' : ''}`} style={{color: 'inherit'}} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <ArrowRight className={`h-5 w-5 text-gray-500 transition-all ${isHovered ? 'translate-x-2 text-white' : ''}`} />
+                  </div>
+                  
+                  {/* Metric Display */}
+                  <div className="absolute top-8 right-8 text-right opacity-20 group-hover:opacity-40 transition-opacity">
+                    <div className="text-4xl font-black text-white">{feature.metric}</div>
+                    <div className="text-xs text-gray-400 uppercase tracking-wider">{feature.metricLabel}</div>
                   </div>
                 </div>
-              )
-            })}
-          </div>
+              </div>
+            )
+          })}
+        </div>
 
-          {/* Right Column - Visual Demo */}
-          <div className="relative">
-            <div className={`card-dark p-8 hover-lift ${inView ? 'animate-in animate-delay-400' : 'opacity-0'}`}>
-              {/* Demo Header */}
-              <div className="flex items-center gap-3 mb-6">
+        {/* Interactive Demo Section */}
+        <div className="glass-card p-2 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8">
+            {/* Demo Header */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-4">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <span className="text-gray-400 text-sm">PaintQuote Pro Dashboard</span>
+                <span className="text-gray-400 text-sm font-medium">PaintQuote Pro Dashboard</span>
               </div>
+              <TrendingUp className="h-5 w-5 text-emerald-400" />
+            </div>
 
-              {/* Active Feature Demo */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  {(() => {
-                    const Icon = features[activeFeature].icon
-                    const gradientClass = colorMap[features[activeFeature].color as keyof typeof colorMap]
-                    return (
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradientClass} flex items-center justify-center`}>
-                        <Icon className="h-5 w-5 text-white" />
-                      </div>
-                    )
-                  })()}
-                  <div>
-                    <div className="font-semibold text-white">{features[activeFeature].title}</div>
-                    <div className="text-sm text-gray-400">Active Solution</div>
-                  </div>
-                </div>
-
-                {/* Progress Visualization */}
-                <div className="space-y-3">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Implementation Progress</span>
-                    <span className="text-green-400">98% Complete</span>
-                  </div>
-                  <div className="progress-modern">
-                    <div 
-                      className="progress-fill" 
-                      style={{ width: '98%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-gray-800/50 rounded-lg">
-                    <div className="text-2xl font-bold text-green-400">+65%</div>
-                    <div className="text-xs text-gray-400">Win Rate</div>
-                  </div>
-                  <div className="text-center p-4 bg-gray-800/50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-400">2m</div>
-                    <div className="text-xs text-gray-400">Quote Time</div>
-                  </div>
-                </div>
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <div className="glass-card p-4 text-center">
+                <div className="text-3xl font-bold text-blue-400">2.5m</div>
+                <div className="text-sm text-gray-400">Avg Quote Time</div>
+              </div>
+              <div className="glass-card p-4 text-center">
+                <div className="text-3xl font-bold text-purple-400">65%</div>
+                <div className="text-sm text-gray-400">Win Rate</div>
+              </div>
+              <div className="glass-card p-4 text-center">
+                <div className="text-3xl font-bold text-emerald-400">$8.4k</div>
+                <div className="text-sm text-gray-400">Added Revenue</div>
+              </div>
+              <div className="glass-card p-4 text-center">
+                <div className="text-3xl font-bold text-amber-400">4.9★</div>
+                <div className="text-sm text-gray-400">Customer Rating</div>
               </div>
             </div>
 
-            {/* Floating Stats */}
-            <div className="absolute -top-4 -right-4 glass p-4 rounded-lg hover-scale">
-              <div className="text-sm text-white mb-1">Problems Solved</div>
-              <div className="text-2xl font-bold text-gradient">{activeFeature + 1}/6</div>
+            {/* Progress Bar */}
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Implementation Progress</span>
+                <span className="text-emerald-400 font-medium">98% Complete</span>
+              </div>
+              <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full transition-all duration-1000"
+                  style={{ width: '98%' }}
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom CTA */}
-        <div className={`text-center mt-16 ${inView ? 'animate-in animate-delay-600' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-4 p-6 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-2xl border border-white/20 backdrop-blur-sm">
+        <div className={`text-center mt-20 ${inView ? 'animate-in animate-delay-600' : 'opacity-0'}`}>
+          <div className="inline-flex flex-col lg:flex-row items-center gap-8 p-8 glass-card container-glass">
             <div className="text-left">
-              <div className="text-lg font-bold text-white">Ready to solve all 6 problems?</div>
-              <div className="text-sm text-gray-300">Start your free trial today</div>
+              <div className="text-2xl font-bold text-white mb-2">Ready to solve all 6 problems?</div>
+              <div className="text-gray-400">Join 2,000+ contractors winning more jobs</div>
             </div>
-            <button className="btn-primary-enhanced">
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </button>
+            <Link href="/trial-signup" className="group relative flex-shrink-0">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative btn-primary-modern inline-flex items-center gap-2 px-8 py-4">
+                <Sparkles className="h-5 w-5" />
+                Start Your Free Trial
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

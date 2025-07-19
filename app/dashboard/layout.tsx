@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { MobileNav } from '@/components/mobile-nav';
-import { useEffect, useState } from 'react';
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { LayoutGrid, FileText, Users, Settings, BarChart3, Calculator, LogOut, Sparkles, CreditCard, Zap } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 interface CompanyData {
-  id: number;
-  name: string;
-  email: string;
-  accessCode: string;
+  id: number
+  name: string
+  email: string
+  accessCode: string
 }
 
 export default function DashboardLayout({
@@ -17,115 +17,202 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-  const router = useRouter();
-  const [company, setCompany] = useState<CompanyData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const pathname = usePathname()
+  const router = useRouter()
+  const [company, setCompany] = useState<CompanyData | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check localStorage for company data
-    const storedData = localStorage.getItem('paintquote_company');
+    const storedData = localStorage.getItem('paintquote_company')
     if (!storedData) {
-      router.push('/access-code');
-      return;
+      router.push('/access-code')
+      return
     }
 
     try {
-      const data = JSON.parse(storedData);
+      const data = JSON.parse(storedData)
       setCompany({
         id: data.id,
         name: data.name,
         email: data.email,
         accessCode: data.accessCode
-      });
+      })
     } catch (error) {
-      console.error('Error parsing company data:', error);
-      router.push('/access-code');
+      console.error('Error parsing company data:', error)
+      router.push('/access-code')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [router]);
-
+  }, [router])
+  
   const handleSignOut = () => {
-    localStorage.removeItem('paintquote_company');
-    router.push('/access-code');
-  };
+    localStorage.removeItem('paintquote_company')
+    router.push('/access-code')
+  }
+
+  const navItems = [
+    { href: '/dashboard', label: 'Overview', icon: LayoutGrid, color: 'from-blue-400 to-cyan-400' },
+    { href: '/create-quote', label: 'Quick Quote', icon: Zap, color: 'from-purple-400 to-pink-400' },
+    { href: '/dashboard/quotes', label: 'Quote Pipeline', icon: FileText, color: 'from-emerald-400 to-green-400' },
+    { href: '/dashboard/customers', label: 'Customers', icon: Users, color: 'from-amber-400 to-orange-400' },
+    { href: '/billing', label: 'Billing', icon: CreditCard, color: 'from-rose-400 to-pink-400' },
+    { href: '/dashboard/settings', label: 'Settings', icon: Settings, color: 'from-slate-400 to-gray-400' },
+  ]
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-slate-900">
+        <div className="text-center glass-card p-8">
+          <div className="relative w-16 h-16 mx-auto mb-4">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-75 animate-pulse"></div>
+            <div className="relative w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full animate-spin"></div>
+          </div>
+          <p className="text-white font-medium">Loading dashboard...</p>
         </div>
       </div>
-    );
+    )
   }
 
   if (!company) {
-    return null;
+    return null
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b bg-card">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
-              <MobileNav userEmail={company.email} />
-              <Link href="/dashboard" className="text-xl font-semibold">
-                Paint Quote Pro
-              </Link>
-              <div className="ml-10 hidden md:flex items-baseline space-x-4">
-                <Link
-                  href="/dashboard"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Dashboard
-                </Link>
-                <Link
-                  href="/create-quote"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Quick Quote
-                </Link>
-                <Link
-                  href="/quotes"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Quote Pipeline
-                </Link>
-                <Link
-                  href="/dashboard/settings"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Settings
-                </Link>
-                <Link
-                  href="/billing"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-                >
-                  Billing
-                </Link>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+      {/* Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 flex">
+        {/* Sidebar */}
+        <aside className="w-64 min-h-screen hidden lg:block">
+          <div className="fixed w-64 h-full glass-card rounded-none border-r border-white/10">
+            {/* Logo */}
+            <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-600 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                <div className="relative w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-black text-xl">P</span>
+                </div>
               </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <span className="text-sm text-muted-foreground">⚡ {company.name}</span>
+              <div>
+                <div className="font-bold text-white">PaintQuote Pro</div>
+                <div className="text-xs text-gray-400">{company.name}</div>
+              </div>
+            </Link>
+
+            {/* Navigation */}
+            <nav className="p-4 space-y-2">
+              {navItems.map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`
+                      relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group
+                      ${isActive 
+                        ? 'bg-white/10 text-white' 
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      }
+                    `}
+                  >
+                    {isActive && (
+                      <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-20 rounded-xl blur-md`}></div>
+                    )}
+                    <div className={`relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br ${item.color} ${isActive ? '' : 'opacity-60 group-hover:opacity-100'} transition-opacity`}>
+                      <Icon className="h-5 w-5 text-white" />
+                    </div>
+                    <span className="relative font-medium">{item.label}</span>
+                    {isActive && (
+                      <div className="absolute right-4 w-1.5 h-1.5 bg-white rounded-full"></div>
+                    )}
+                  </Link>
+                )
+              })}
+            </nav>
+
+            {/* Bottom Section */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+              <div className="glass-card p-4 mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="h-4 w-4 text-purple-400" />
+                  <span className="text-sm font-medium text-white">Pro Tip</span>
+                </div>
+                <p className="text-xs text-gray-400">Create quotes 95% faster with our AI assistant</p>
+              </div>
+              
               <button
                 onClick={handleSignOut}
-                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                className="flex items-center gap-3 w-full px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300"
               >
-                Sign Out
+                <LogOut className="h-5 w-5" />
+                <span className="font-medium">Sign Out</span>
               </button>
             </div>
           </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 lg:ml-64">
+          {/* Top Bar */}
+          <div className="sticky top-0 z-20 glass-card rounded-none border-b border-white/10 px-8 py-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-white">
+                {navItems.find(item => item.href === pathname)?.label || 'Dashboard'}
+              </h2>
+              <div className="flex items-center gap-4">
+                <span className="text-sm text-gray-400 hidden md:block">⚡ {company.email}</span>
+                <Link href="/create-quote" className="group relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                  <div className="relative btn-primary-modern inline-flex items-center gap-2">
+                    <Sparkles className="h-4 w-4" />
+                    New Quote
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+          
+          {/* Page Content */}
+          <div className="p-4 lg:p-8">
+            {children}
+          </div>
+        </main>
+      </div>
+
+      {/* Mobile Navigation */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 glass-card rounded-t-2xl border-t border-white/10">
+        <div className="grid grid-cols-4 gap-1 p-2">
+          {navItems.slice(0, 4).map((item) => {
+            const Icon = item.icon
+            const isActive = pathname === item.href
+            
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`
+                  flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition-all
+                  ${isActive 
+                    ? 'bg-white/10 text-white' 
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }
+                `}
+              >
+                <div className={`relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} ${isActive ? '' : 'opacity-60'} transition-opacity`}>
+                  <Icon className="h-4 w-4 text-white" />
+                </div>
+                <span className="text-xs font-medium">{item.label}</span>
+              </Link>
+            )
+          })}
         </div>
       </nav>
-
-      {/* Main content */}
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 pb-20 md:pb-6">
-        {children}
-      </main>
     </div>
-  );
+  )
 }
