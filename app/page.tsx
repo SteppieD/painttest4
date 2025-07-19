@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Check, Zap, Shield, BarChart, MessageSquare, Calculator } from 'lucide-react'
+import { Check, Zap, Shield, BarChart, MessageSquare, Calculator, ArrowRight } from 'lucide-react'
 import SharedNavigationSimple from '@/components/shared-navigation-simple'
 import { EnhancedHero } from '@/components/enhanced-hero'
 import { ModernFeatures } from '@/components/modern-features'
