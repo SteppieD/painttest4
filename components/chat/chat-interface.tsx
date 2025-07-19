@@ -42,12 +42,12 @@ export function ChatInterface({
     setMessages([
       {
         role: 'assistant',
-        content: "Hi! I'll help you build a quote in under 2 minutes. I see you're set up for painting with your standard rates. Let's start - what type of space are we quoting today?",
+        content: "Hi! I'll help you create a professional quote for your customer. What type of painting project are you quoting today?",
         timestamp: new Date()
       }
     ]);
     // Set initial suggested replies
-    setSuggestedReplies(['Living room', 'Bedroom', 'Kitchen', 'Bathroom', 'Whole house', 'Office']);
+    setSuggestedReplies(['Interior residential', 'Exterior residential', 'Commercial space', 'Single room', 'Whole house', 'Office space']);
   }, []);
 
   const sendMessage = async (content: string) => {
