@@ -44,7 +44,9 @@ export async function POST(request: NextRequest) {
       paint_quality: quoteData.paintQuality || null,
       prep_work: quoteData.prepWork || null,
       timeline: quoteData.timeEstimate || quoteData.timeline || null,
-      special_requests: quoteData.specialRequests || null,
+      special_requests: Array.isArray(quoteData.specialRequests) 
+        ? quoteData.specialRequests.join(', ') 
+        : quoteData.specialRequests || null,
       walls_sqft: quoteData.sqft || 0,
       ceilings_sqft: quoteData.ceilings_sqft || 0,
       trim_sqft: quoteData.trim_sqft || 0,
