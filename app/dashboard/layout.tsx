@@ -88,7 +88,8 @@ export default function DashboardLayout({
       {/* Layout Container */}
       <div className="relative z-10 min-h-screen">
         {/* Sidebar */}
-        <aside className="hidden lg:block fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30">
+        <aside className="hidden lg:block">
+          <div className="fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30">
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
