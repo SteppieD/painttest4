@@ -86,10 +86,9 @@ export default function DashboardLayout({
       </div>
 
       {/* Layout Container */}
-      <div className="relative z-10 min-h-screen">
+      <div className="relative z-10 min-h-screen flex">
         {/* Sidebar */}
-        <aside className="hidden lg:block">
-          <div className="fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30 flex flex-col">
+        <div className="hidden lg:block fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30 flex flex-col">
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
@@ -155,14 +154,13 @@ export default function DashboardLayout({
                 <span className="font-medium">Sign Out</span>
               </button>
             </div>
-          </div>
-        </aside>
+        </div>
 
         {/* Main Content */}
-        <main className="lg:ml-64 min-h-screen flex flex-col">
+        <main className="w-full lg:pl-64 min-h-screen flex flex-col">
           {/* Top Bar */}
           <div className="h-20 glass-card rounded-none border-b border-white/10 px-8 flex items-center">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between w-full">
               <h2 className="text-2xl font-bold text-white">
                 {navItems.find(item => item.href === pathname)?.label || 'Dashboard'}
               </h2>
