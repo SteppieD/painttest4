@@ -89,7 +89,7 @@ export default function DashboardLayout({
       <div className="relative z-10 min-h-screen">
         {/* Sidebar */}
         <aside className="hidden lg:block">
-          <div className="fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30">
+          <div className="fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30 flex flex-col">
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
@@ -105,7 +105,7 @@ export default function DashboardLayout({
             </Link>
 
             {/* Navigation */}
-            <nav className="p-4 space-y-2">
+            <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
               {navItems.map((item) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href
@@ -138,7 +138,7 @@ export default function DashboardLayout({
             </nav>
 
             {/* Bottom Section */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+            <div className="p-4 border-t border-white/10">
               <div className="glass-card p-4 mb-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="h-4 w-4 text-purple-400" />
@@ -159,7 +159,7 @@ export default function DashboardLayout({
         </aside>
 
         {/* Main Content */}
-        <main className="lg:ml-64">
+        <main className="lg:ml-64 min-h-screen">
           {/* Top Bar */}
           <div className="sticky top-0 z-20 glass-card rounded-none border-b border-white/10 px-8 py-4">
             <div className="flex items-center justify-between">
