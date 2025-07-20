@@ -336,30 +336,29 @@ Your Painting Company
             <p className="text-3xl md:text-2xl font-bold text-purple-400">
               {Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gal
             </p>
-              <p className="text-sm md:text-xs text-gray-400">
-                {quote.paint_coverage || 350} sqft/gal coverage
-              </p>
-            </div>
+            <p className="text-sm md:text-xs text-gray-400">
+              {quote.paint_coverage || 350} sqft/gal coverage
+            </p>
           </div>
-          <div className="mt-4 p-4 bg-gradient-to-br from-yellow-500/10 to-amber-500/10 rounded-xl border border-yellow-500/20">
-            <p className="text-sm font-medium mb-3 text-white">📋 Quick Reference:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
-                <span>👥</span>
-                <span className="text-gray-300">Crew: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</span>
-              </div>
-              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
-                <span>⚡</span>
-                <span className="text-gray-300">Productivity: ~150 sqft/hr</span>
-              </div>
-              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
-                <span>📅</span>
-                <span className="text-gray-300">{quote.timeline || 'Standard timeline'}</span>
-              </div>
-              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
-                <span>🎨</span>
-                <span className="text-gray-300">{quote.paint_quality || 'Standard'} grade</span>
-              </div>
+        </div>
+        <div className="mt-4 p-4 bg-gradient-to-br from-yellow-500/10 to-amber-500/10 rounded-xl border border-yellow-500/20">
+          <p className="text-sm font-medium mb-3 text-white">📋 Quick Reference:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+            <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
+              <span>👥</span>
+              <span className="text-gray-300">Crew: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</span>
+            </div>
+            <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
+              <span>⚡</span>
+              <span className="text-gray-300">Productivity: ~150 sqft/hr</span>
+            </div>
+            <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
+              <span>📅</span>
+              <span className="text-gray-300">{quote.timeline || 'Standard timeline'}</span>
+            </div>
+            <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
+              <span>🎨</span>
+              <span className="text-gray-300">{quote.paint_quality || 'Standard'} grade</span>
             </div>
           </div>
         </div>
