@@ -85,10 +85,10 @@ export default function DashboardLayout({
         <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 flex">
+      <div className="relative z-10 flex min-h-screen">
         {/* Sidebar */}
-        <aside className="w-64 min-h-screen hidden lg:block">
-          <div className="fixed w-64 h-full glass-card rounded-none border-r border-white/10">
+        <aside className="hidden lg:block">
+          <div className="fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10">
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
@@ -157,8 +157,11 @@ export default function DashboardLayout({
           </div>
         </aside>
 
+        {/* Spacer for sidebar */}
+        <div className="hidden lg:block w-64 flex-shrink-0"></div>
+        
         {/* Main Content */}
-        <main className="flex-1 lg:ml-64">
+        <main className="flex-1 min-w-0">
           {/* Top Bar */}
           <div className="sticky top-0 z-20 glass-card rounded-none border-b border-white/10 px-8 py-4">
             <div className="flex items-center justify-between">
