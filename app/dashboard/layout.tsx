@@ -81,14 +81,14 @@ export default function DashboardLayout({
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-64 h-64 lg:w-96 lg:h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-64 h-64 lg:w-96 lg:h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
       </div>
 
       {/* Layout Container */}
       <div className="relative z-10 min-h-screen flex">
         {/* Sidebar */}
-        <div className="hidden lg:block fixed top-0 left-0 w-64 h-full glass-card rounded-none border-r border-white/10 z-30 flex flex-col">
+        <div className="hidden lg:flex top-0 left-0 h-full glass-card rounded-none border-r border-white/10 z-30 flex-col" style={{ position: 'fixed', width: '256px' }}>
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">

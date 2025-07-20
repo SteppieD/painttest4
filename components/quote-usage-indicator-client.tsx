@@ -64,26 +64,38 @@ export function QuoteUsageIndicator() {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="glass-card p-6 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium">Quote Usage</span>
+          <span className="text-sm font-medium text-white">Quote Usage</span>
           {isNearLimit && (
-            <AlertCircle className="h-4 w-4 text-yellow-500" />
+            <AlertCircle className="h-4 w-4 text-yellow-400" />
           )}
         </div>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-sm text-gray-300">
           {quotesUsed} / {quotesLimit} quotes
         </span>
       </div>
       
-      <Progress value={percentageUsed} className="h-2" />
+      <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-700">
+        <div 
+          className="h-full w-full flex-1 transition-all rounded-full"
+          style={{ 
+            transform: `translateX(-${100 - percentageUsed}%)`,
+            background: percentageUsed >= 80 
+              ? 'linear-gradient(to right, #ef4444, #dc2626)' 
+              : percentageUsed >= 60 
+              ? 'linear-gradient(to right, #f59e0b, #d97706)'
+              : 'linear-gradient(to right, #10b981, #059669)'
+          }}
+        />
+      </div>
       
       {isAtLimit && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-          <p className="text-sm text-red-800">
+        <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 backdrop-blur-sm">
+          <p className="text-sm text-red-400">
             You've reached your monthly quote limit.{' '}
-            <Link href="/billing" className="font-medium underline hover:no-underline">
+            <Link href="/billing" className="font-medium text-red-300 underline hover:no-underline">
               Upgrade to Pro
             </Link>{' '}
             for unlimited quotes.
@@ -92,10 +104,10 @@ export function QuoteUsageIndicator() {
       )}
       
       {isNearLimit && !isAtLimit && (
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-          <p className="text-sm text-yellow-800">
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3 backdrop-blur-sm">
+          <p className="text-sm text-yellow-400">
             You're approaching your quote limit.{' '}
-            <Link href="/billing" className="font-medium underline hover:no-underline">
+            <Link href="/billing" className="font-medium text-yellow-300 underline hover:no-underline">
               Upgrade now
             </Link>{' '}
             to avoid interruptions.
