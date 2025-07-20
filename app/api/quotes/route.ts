@@ -18,13 +18,19 @@ const cleanCustomerName = (name: string) => {
 
 // POST - Create a new quote
 export async function POST(request: NextRequest) {
+  let companyId: any;
+  let quoteData: any;
+  
   try {
     const company = getCompanyFromRequest(request);
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { companyId, quoteData, conversationHistory } = await request.json();
+    const requestBody = await request.json();
+    companyId = requestBody.companyId;
+    quoteData = requestBody.quoteData;
+    const conversationHistory = requestBody.conversationHistory;
     
     console.log('[QUOTES API] Request data:', { companyId, quoteData });
 

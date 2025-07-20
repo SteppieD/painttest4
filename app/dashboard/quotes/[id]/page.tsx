@@ -158,7 +158,10 @@ Your Painting Company
   if (loading) {
     return (
       <div className="flex h-[50vh] items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        <div className="relative w-16 h-16">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-75 animate-pulse"></div>
+          <div className="relative w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full animate-spin"></div>
+        </div>
       </div>
     )
   }
@@ -166,14 +169,12 @@ Your Painting Company
   if (!quote) {
     return (
       <div className="mx-auto max-w-4xl">
-        <Card>
-          <CardContent className="p-8 text-center">
-            <p>Quote not found</p>
-            <Link href="/dashboard/quotes">
-              <Button className="mt-4">Back to Quotes</Button>
-            </Link>
-          </CardContent>
-        </Card>
+        <div className="glass-card p-8 text-center">
+          <p className="text-white mb-4">Quote not found</p>
+          <Link href="/dashboard/quotes">
+            <Button className="btn-primary-modern">Back to Quotes</Button>
+          </Link>
+        </div>
       </div>
     )
   }
@@ -181,104 +182,116 @@ Your Painting Company
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-20 md:pb-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard/quotes">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-          </Link>
-          <div>
-            <h1 className="text-2xl font-bold">Quote #{quote.quote_id}</h1>
-            <div className="flex items-center gap-4">
-              <p className="text-sm text-muted-foreground">
-                Created on {new Date(quote.created_at).toLocaleDateString()}
-              </p>
-              <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
-                quote.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                quote.status === 'sent' ? 'bg-blue-100 text-blue-700' :
-                quote.status === 'accepted' ? 'bg-green-100 text-green-700' :
-                'bg-gray-100 text-gray-700'
-              }`}>
-                {quote.status === 'pending' ? '⏱️ Ready to Send' :
-                 quote.status === 'sent' ? '✉️ Sent to Customer' :
-                 quote.status === 'accepted' ? '✅ Job Won!' :
-                 quote.status}
-              </span>
+      <div className="glass-card p-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Link href="/dashboard/quotes">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-white/10">
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+            </Link>
+            <div>
+              <h1 className="text-2xl font-bold text-white">Quote #{quote.quote_id}</h1>
+              <div className="flex items-center gap-4 mt-1">
+                <p className="text-sm text-gray-400">
+                  Created on {new Date(quote.created_at).toLocaleDateString()}
+                </p>
+                <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+                  quote.status === 'pending' ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30' :
+                  quote.status === 'sent' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
+                  quote.status === 'accepted' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
+                  'bg-gray-500/20 text-gray-300 border border-gray-500/30'
+                }`}>
+                  {quote.status === 'pending' ? '⏱️ Ready to Send' :
+                   quote.status === 'sent' ? '✉️ Sent to Customer' :
+                   quote.status === 'accepted' ? '✅ Job Won!' :
+                   quote.status}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Link href={`/dashboard/quotes/${params.id}/preview`} className="flex-1 md:flex-none">
-            <Button className="w-full md:w-auto">
-              👁️ Customer View
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href={`/dashboard/quotes/${params.id}/preview`} className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <Button className="relative w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
+                👁️ Customer View
+              </Button>
+            </Link>
+            <Button 
+              onClick={copyToClipboard} 
+              className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+            >
+              {copied ? <CheckCircle className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
+              {copied ? 'Copied!' : 'Copy Quote'}
             </Button>
-          </Link>
-          <Button variant="outline" onClick={copyToClipboard} className="flex-1 md:flex-none">
-            {copied ? <CheckCircle className="h-4 w-4 mr-2" /> : <Copy className="h-4 w-4 mr-2" />}
-            {copied ? 'Copied!' : 'Copy'}
-          </Button>
-          <Button onClick={sendEmail} variant="outline" className="flex-1 md:flex-none">
-            <Mail className="h-4 w-4 mr-2" />
-            {quote.customer_email ? 'Email' : 'Send'}
-          </Button>
+            <div className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <Button 
+                onClick={sendEmail} 
+                className="relative w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+              >
+                <Mail className="h-4 w-4 mr-2" />
+                Send to Client
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Customer Information */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Customer Information</CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-4 md:grid-cols-2">
+      <div className="glass-card p-6">
+        <div className="border-b border-white/10 pb-4 mb-4">
+          <h2 className="text-lg font-semibold text-white">Customer Information</h2>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <p className="text-sm font-medium text-muted-foreground">Name</p>
-            <p>{quote.customer_name}</p>
+            <p className="text-sm font-medium text-gray-400">Name</p>
+            <p className="text-white">{quote.customer_name}</p>
           </div>
           <div>
-            <p className="text-sm font-medium text-muted-foreground">Email</p>
-            <p>{quote.customer_email || 'Not provided'}</p>
+            <p className="text-sm font-medium text-gray-400">Email</p>
+            <p className="text-white">{quote.customer_email || 'Not provided'}</p>
           </div>
           <div>
-            <p className="text-sm font-medium text-muted-foreground">Phone</p>
-            <p>{quote.customer_phone || 'Not provided'}</p>
+            <p className="text-sm font-medium text-gray-400">Phone</p>
+            <p className="text-white">{quote.customer_phone || 'Not provided'}</p>
           </div>
           <div>
-            <p className="text-sm font-medium text-muted-foreground">Address</p>
-            <p>{quote.address || 'Not provided'}</p>
+            <p className="text-sm font-medium text-gray-400">Address</p>
+            <p className="text-white">{quote.address || 'Not provided'}</p>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Project Details */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Project Details</CardTitle>
-          <CardDescription>
+      <div className="glass-card p-6">
+        <div className="border-b border-white/10 pb-4 mb-4">
+          <h2 className="text-lg font-semibold text-white">Project Details</h2>
+          <p className="text-sm text-gray-400 mt-1">
             {quote.project_type} painting project
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+          </p>
+        </div>
+        <div className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Wall Area</p>
-              <p>{quote.walls_sqft || 0} sq ft</p>
+              <p className="text-sm font-medium text-gray-400">Wall Area</p>
+              <p className="text-white">{quote.walls_sqft || 0} sq ft</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Paint Quality</p>
-              <p>{quote.paint_quality || 'Standard'}</p>
+              <p className="text-sm font-medium text-gray-400">Paint Quality</p>
+              <p className="text-white">{quote.paint_quality || 'Standard'}</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Timeline</p>
-              <p>{quote.timeline || 'Standard'}</p>
+              <p className="text-sm font-medium text-gray-400">Timeline</p>
+              <p className="text-white">{quote.timeline || 'Standard'}</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Status</p>
-              <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
-                quote.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                quote.status === 'sent' ? 'bg-blue-100 text-blue-700' :
-                quote.status === 'accepted' ? 'bg-green-100 text-green-700' :
-                'bg-gray-100 text-gray-700'
+              <p className="text-sm font-medium text-gray-400">Status</p>
+              <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+                quote.status === 'pending' ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30' :
+                quote.status === 'sent' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
+                quote.status === 'accepted' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
+                'bg-gray-500/20 text-gray-300 border border-gray-500/30'
               }`}>
                 {quote.status}
               </span>
@@ -286,161 +299,167 @@ Your Painting Company
           </div>
           {quote.special_requests && (
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Special Requests</p>
-              <p className="mt-1">{quote.special_requests}</p>
+              <p className="text-sm font-medium text-gray-400">Special Requests</p>
+              <p className="mt-1 text-white">{quote.special_requests}</p>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Contractor Metrics */}
-      <Card className="border-l-4 border-l-green-500">
-        <CardHeader>
-          <CardTitle>Contractor Metrics</CardTitle>
-          <CardDescription>Key numbers for your crew</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-3 grid-cols-1 md:grid-cols-3">
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg touch-manipulation">
-              <p className="text-sm text-muted-foreground">💰 Profit Margin</p>
-              <p className="text-3xl md:text-2xl font-bold text-green-600">
-                ${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(0)}
-              </p>
-              <p className="text-sm md:text-xs text-muted-foreground">
-                {(((quote.final_price || 0) - (quote.base_cost || 0)) / (quote.final_price || 1) * 100).toFixed(0)}% of total
-              </p>
-            </div>
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg touch-manipulation">
-              <p className="text-sm text-muted-foreground">⏱️ Est. Labor Hours</p>
-              <p className="text-3xl md:text-2xl font-bold">
-                {Math.ceil((quote.walls_sqft || 0) / 150)} hrs
-              </p>
-              <p className="text-sm md:text-xs text-muted-foreground">
-                ~{Math.ceil((quote.walls_sqft || 0) / 150 / 8)} days
-              </p>
-            </div>
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg touch-manipulation">
-              <p className="text-sm text-muted-foreground">🎨 Paint Needed</p>
-              <p className="text-3xl md:text-2xl font-bold">
-                {Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gal
-              </p>
-              <p className="text-sm md:text-xs text-muted-foreground">
+      <div className="glass-card p-6 border-l-4 border-l-green-500">
+        <div className="border-b border-white/10 pb-4 mb-4">
+          <h2 className="text-lg font-semibold text-white">Contractor Metrics</h2>
+          <p className="text-sm text-gray-400 mt-1">Key numbers for your crew</p>
+        </div>
+        <div className="grid gap-3 grid-cols-1 md:grid-cols-3">
+          <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20">
+            <p className="text-sm text-gray-300">💰 Profit Margin</p>
+            <p className="text-3xl md:text-2xl font-bold text-green-400">
+              ${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(0)}
+            </p>
+            <p className="text-sm md:text-xs text-gray-400">
+              {(((quote.final_price || 0) - (quote.base_cost || 0)) / (quote.final_price || 1) * 100).toFixed(0)}% of total
+            </p>
+          </div>
+          <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
+            <p className="text-sm text-gray-300">⏱️ Est. Labor Hours</p>
+            <p className="text-3xl md:text-2xl font-bold text-blue-400">
+              {Math.ceil((quote.walls_sqft || 0) / 150)} hrs
+            </p>
+            <p className="text-sm md:text-xs text-gray-400">
+              ~{Math.ceil((quote.walls_sqft || 0) / 150 / 8)} days
+            </p>
+          </div>
+          <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/20">
+            <p className="text-sm text-gray-300">🎨 Paint Needed</p>
+            <p className="text-3xl md:text-2xl font-bold text-purple-400">
+              {Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gal
+            </p>
+              <p className="text-sm md:text-xs text-gray-400">
                 {quote.paint_coverage || 350} sqft/gal coverage
               </p>
             </div>
           </div>
-          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-            <p className="text-sm font-medium mb-3">📋 Quick Reference:</p>
+          <div className="mt-4 p-4 bg-gradient-to-br from-yellow-500/10 to-amber-500/10 rounded-xl border border-yellow-500/20">
+            <p className="text-sm font-medium mb-3 text-white">📋 Quick Reference:</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-              <div className="flex items-center gap-2 p-2 bg-white dark:bg-gray-700 rounded">
+              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
                 <span>👥</span>
-                <span>Crew: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</span>
+                <span className="text-gray-300">Crew: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</span>
               </div>
-              <div className="flex items-center gap-2 p-2 bg-white dark:bg-gray-700 rounded">
+              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
                 <span>⚡</span>
-                <span>Productivity: ~150 sqft/hr</span>
+                <span className="text-gray-300">Productivity: ~150 sqft/hr</span>
               </div>
-              <div className="flex items-center gap-2 p-2 bg-white dark:bg-gray-700 rounded">
+              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
                 <span>📅</span>
-                <span>{quote.timeline || 'Standard timeline'}</span>
+                <span className="text-gray-300">{quote.timeline || 'Standard timeline'}</span>
               </div>
-              <div className="flex items-center gap-2 p-2 bg-white dark:bg-gray-700 rounded">
+              <div className="flex items-center gap-2 p-2 bg-white/10 rounded-lg">
                 <span>🎨</span>
-                <span>{quote.paint_quality || 'Standard'} grade</span>
+                <span className="text-gray-300">{quote.paint_quality || 'Standard'} grade</span>
               </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Cost Breakdown */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Cost Breakdown</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-3">
+      <div className="glass-card p-6">
+        <div className="border-b border-white/10 pb-4 mb-4">
+          <h2 className="text-lg font-semibold text-white">Cost Breakdown</h2>
+        </div>
+        <div className="space-y-3">
+          <div className="flex justify-between">
+            <span className="text-gray-400">Materials</span>
+            <span className="font-medium text-white">${quote.total_materials?.toFixed(2) || '0.00'}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-400">Labor</span>
+            <span className="font-medium text-white">${quote.projected_labor?.toFixed(2) || '0.00'}</span>
+          </div>
+          <div className="border-t border-white/20 pt-3">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Materials</span>
-              <span className="font-medium">${quote.total_materials?.toFixed(2) || '0.00'}</span>
+              <span className="text-gray-400">Subtotal</span>
+              <span className="font-medium text-white">${quote.base_cost?.toFixed(2) || '0.00'}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Labor</span>
-              <span className="font-medium">${quote.projected_labor?.toFixed(2) || '0.00'}</span>
-            </div>
-            <div className="border-t pt-3">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Subtotal</span>
-                <span className="font-medium">${quote.base_cost?.toFixed(2) || '0.00'}</span>
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Markup ({quote.markup_percentage || 30}%)</span>
-              <span className="font-medium">
-                ${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(2)}
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-400">Markup ({quote.markup_percentage || 30}%)</span>
+            <span className="font-medium text-white">
+              ${((quote.final_price || 0) - (quote.base_cost || 0)).toFixed(2)}
+            </span>
+          </div>
+          <div className="border-t border-white/20 pt-3">
+            <div className="flex justify-between text-lg font-bold">
+              <span className="text-white">Total</span>
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                ${quote.final_price?.toFixed(2) || quote.total_revenue?.toFixed(2) || '0.00'}
               </span>
             </div>
-            <div className="border-t pt-3">
-              <div className="flex justify-between text-lg font-bold">
-                <span>Total</span>
-                <span>${quote.final_price?.toFixed(2) || quote.total_revenue?.toFixed(2) || '0.00'}</span>
-              </div>
-            </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Materials List */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Materials Shopping List</CardTitle>
-          <CardDescription>What to buy for this job</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <span>🎨 {quote.paint_quality || 'Standard'} Paint</span>
-              <span className="font-medium">{Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gallons</span>
-            </div>
-            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <span>🖌️ Brushes & Rollers</span>
-              <span className="font-medium">Standard set</span>
-            </div>
-            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <span>📦 Drop Cloths & Tape</span>
-              <span className="font-medium">{Math.ceil((quote.walls_sqft || 0) / 500)} rolls tape</span>
-            </div>
-            <div className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <span>🧹 Sundries & Supplies</span>
-              <span className="font-medium">${quote.sundries_cost?.toFixed(2) || '0.00'}</span>
-            </div>
+      <div className="glass-card p-6">
+        <div className="border-b border-white/10 pb-4 mb-4">
+          <h2 className="text-lg font-semibold text-white">Materials Shopping List</h2>
+          <p className="text-sm text-gray-400 mt-1">What to buy for this job</p>
+        </div>
+        <div className="space-y-2 text-sm">
+          <div className="flex justify-between items-center p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+            <span className="text-gray-300">🎨 {quote.paint_quality || 'Standard'} Paint</span>
+            <span className="font-medium text-white">{Math.ceil((quote.walls_sqft || 0) / (quote.paint_coverage || 350))} gallons</span>
           </div>
-        </CardContent>
-      </Card>
+          <div className="flex justify-between items-center p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+            <span className="text-gray-300">🖌️ Brushes & Rollers</span>
+            <span className="font-medium text-white">Standard set</span>
+          </div>
+          <div className="flex justify-between items-center p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+            <span className="text-gray-300">📦 Drop Cloths & Tape</span>
+            <span className="font-medium text-white">{Math.ceil((quote.walls_sqft || 0) / 500)} rolls tape</span>
+          </div>
+          <div className="flex justify-between items-center p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+            <span className="text-gray-300">🧹 Sundries & Supplies</span>
+            <span className="font-medium text-white">${quote.sundries_cost?.toFixed(2) || '0.00'}</span>
+          </div>
+        </div>
+      </div>
 
       {/* Quick Actions for Contractors */}
-      <Card className="bg-blue-50 dark:bg-blue-900/20">
-        <CardHeader>
-          <CardTitle className="text-lg">Next Steps</CardTitle>
-          <CardDescription>
+      <div className="glass-card p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
+        <div className="border-b border-white/10 pb-4 mb-4">
+          <h2 className="text-lg font-semibold text-white">Next Steps</h2>
+          <p className="text-sm text-gray-400 mt-1">
             {quote.status === 'pending' ? 'Quote is ready to send to your customer' :
              quote.status === 'sent' ? 'Follow up to close the deal' :
              quote.status === 'accepted' ? 'Congratulations on winning the job!' :
              'Manage this quote'}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
           {quote.status === 'pending' && (
             <>
-              <Button onClick={sendEmail}>
-                <Mail className="h-4 w-4 mr-2" />
-                Send Quote Now
-              </Button>
-              <Button variant="outline" onClick={copyToClipboard}>
+              <div className="group relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                <Button 
+                  onClick={sendEmail}
+                  className="relative bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  Send Quote Now
+                </Button>
+              </div>
+              <Button 
+                onClick={copyToClipboard}
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+              >
                 📱 Copy for Text/WhatsApp
               </Button>
               <Link href={`/dashboard/quotes/${params.id}/preview`}>
-                <Button variant="outline">
+                <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20">
                   👁️ Preview Customer View
                 </Button>
               </Link>
@@ -448,32 +467,32 @@ Your Painting Company
           )}
           {quote.status === 'sent' && (
             <>
-              <Button variant="outline">
+              <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20">
                 📞 Call Customer
               </Button>
-              <Button variant="outline">
+              <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20">
                 📱 Send Follow-up Text
               </Button>
-              <Button variant="outline">
+              <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20">
                 ✅ Mark as Won
               </Button>
             </>
           )}
           <Link href="/create-quote">
-            <Button variant="ghost">
+            <Button className="bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white">
               + New Quote
             </Button>
           </Link>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Mobile Quick Actions Floating Button */}
-      <div className="fixed bottom-4 right-4 z-50 md:hidden">
+      <div className="fixed bottom-20 right-4 z-50 md:hidden">
         <div className="flex flex-col gap-2">
           {quote.customer_phone && (
             <Button
               size="icon"
-              className="h-14 w-14 rounded-full shadow-lg"
+              className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
               onClick={() => window.location.href = `tel:${quote.customer_phone}`}
             >
               📞
@@ -481,8 +500,7 @@ Your Painting Company
           )}
           <Button
             size="icon"
-            variant="secondary"
-            className="h-14 w-14 rounded-full shadow-lg"
+            className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
             onClick={() => {
               const message = `Hi ${quote.customer_name}, here's your painting quote #${quote.quote_id}: $${quote.final_price?.toFixed(2)}. Let me know if you have any questions!`
               if (quote.customer_phone) {

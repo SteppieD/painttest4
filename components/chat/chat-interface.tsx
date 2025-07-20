@@ -178,23 +178,43 @@ export function ChatInterface({
         body: JSON.stringify(requestBody)
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Quote creation error response:', errorData);
-        throw new Error(errorData.details || 'Failed to create quote');
+      let result;
+      try {
+        const text = await response.text();
+        console.log('[CHAT] Quote API response text:', text);
+        result = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Failed to parse quote response:', parseError);
+        console.error('Response status:', response.status);
+        throw new Error(`Failed to parse quote response: ${response.status}`);
       }
 
-      const result = await response.json();
+      if (!response.ok) {
+        console.error('Quote creation error response:', result);
+        throw new Error(result.details || result.error || 'Failed to create quote');
+      }
       
       toast({
         title: 'Quote Created!',
-        description: `Quote ${result.quoteId} has been created successfully.`
+        description: `Quote ${result.quoteId} has been created successfully.`,
+        action: (
+          <Button 
+            size="sm" 
+            onClick={() => router.push(`/dashboard/quotes/${result.quoteId}`)}
+          >
+            View Quote
+          </Button>
+        )
       });
 
+      // Navigate to the quote using the quote_id (like Q-2025-00001-1NWTY8)
       if (onQuoteCreated) {
         onQuoteCreated(result.quoteId);
       } else {
-        router.push(`/dashboard/quotes/${result.quoteId}`);
+        // Small delay to show the toast
+        setTimeout(() => {
+          router.push(`/dashboard/quotes/${result.quoteId}`);
+        }, 1000);
       }
 
     } catch (error) {
@@ -210,9 +230,9 @@ export function ChatInterface({
   };
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col bg-gray-900/50">
       {/* Messages area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-transparent to-gray-900/30">
         {messages.map((message, index) => (
           <MessageBubble
             key={index}
@@ -230,23 +250,23 @@ export function ChatInterface({
 
       {/* Quote preview */}
       {quoteData && (
-        <Card className="mx-4 mb-4 p-6 bg-green-50 dark:bg-green-900/20">
+        <div className="mx-4 mb-4 p-6 bg-gradient-to-r from-green-500/10 to-emerald-500/10 backdrop-blur-sm rounded-xl border border-green-500/20">
           <div className="flex items-start gap-3">
-            <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+            <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-green-900 dark:text-green-100 text-lg">
+              <h3 className="font-semibold text-green-300 text-lg">
                 Quote Ready!
               </h3>
-              <p className="text-sm text-green-700 dark:text-green-300 mt-1">
+              <p className="text-sm text-green-400/80 mt-1">
                 {quoteData.customerName} - {quoteData.address}
               </p>
               
               {/* Quote Breakdown */}
               {quoteData.pricing?.breakdown && (
                 <div className="mt-4 space-y-3">
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                    <h4 className="font-semibold text-sm mb-2">MATERIALS: ${quoteData.pricing.materials?.total?.toFixed(2)}</h4>
-                    <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <h4 className="font-semibold text-sm mb-2 text-white">MATERIALS: ${quoteData.pricing.materials?.total?.toFixed(2)}</h4>
+                    <div className="space-y-1 text-sm text-gray-300">
                       {quoteData.pricing.breakdown.primer && (
                         <div>• Primer: {quoteData.pricing.breakdown.primer.gallons} gallons - ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}</div>
                       )}
@@ -262,9 +282,9 @@ export function ChatInterface({
                     </div>
                   </div>
                   
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                    <h4 className="font-semibold text-sm mb-2">LABOR: ${quoteData.pricing.labor?.total?.toFixed(2)}</h4>
-                    <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <h4 className="font-semibold text-sm mb-2 text-white">LABOR: ${quoteData.pricing.labor?.total?.toFixed(2)}</h4>
+                    <div className="space-y-1 text-sm text-gray-300">
                       {quoteData.pricing.breakdown.prepWork && (
                         <div>• Prep work: {quoteData.pricing.breakdown.prepWork.hours} hours - ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}</div>
                       )}
@@ -276,14 +296,14 @@ export function ChatInterface({
                 </div>
               )}
               
-              <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-700">
+              <div className="mt-4 pt-4 border-t border-green-500/30">
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-2xl font-bold text-green-900 dark:text-green-100">
+                    <p className="text-2xl font-bold text-white">
                       Total: ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
                     </p>
                     {quoteData.pricing?.timeline && (
-                      <p className="text-sm text-green-700 dark:text-green-300">
+                      <p className="text-sm text-green-400">
                         Timeline: {quoteData.pricing.timeline}
                       </p>
                     )}
@@ -292,6 +312,7 @@ export function ChatInterface({
                     onClick={createQuote}
                     disabled={isLoading}
                     size="lg"
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg shadow-green-500/25"
                   >
                     Create Quote
                   </Button>
@@ -299,7 +320,7 @@ export function ChatInterface({
               </div>
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
       {/* Input area */}

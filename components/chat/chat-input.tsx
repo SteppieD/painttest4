@@ -36,10 +36,10 @@ export function ChatInput({
   };
 
   return (
-    <div className="border-t bg-white dark:bg-gray-900">
+    <div className="border-t border-white/10 bg-gray-900/50 backdrop-blur-sm">
       {/* Suggested replies */}
       {suggestedReplies.length > 0 && (
-        <div className="flex flex-wrap gap-2 border-b p-3">
+        <div className="flex flex-wrap gap-2 border-b border-white/10 p-3">
           {suggestedReplies.map((reply, index) => (
             <Button
               key={index}
@@ -47,7 +47,7 @@ export function ChatInput({
               size="sm"
               onClick={() => handleSuggestedReply(reply)}
               disabled={isLoading}
-              className="text-sm"
+              className="text-sm bg-white/5 border-white/20 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/30"
             >
               {reply}
             </Button>
@@ -61,7 +61,7 @@ export function ChatInput({
           type="button"
           variant="ghost"
           size="icon"
-          className="shrink-0"
+          className="shrink-0 text-gray-400 hover:text-gray-200 hover:bg-white/10"
           disabled
           title="Voice input coming soon"
         >
@@ -72,19 +72,19 @@ export function ChatInput({
           type="button"
           variant="ghost"
           size="icon"
-          className="shrink-0"
+          className="shrink-0 text-gray-400 hover:text-gray-200 hover:bg-white/10"
           disabled
           title="Image upload coming soon"
         >
           <Image className="h-5 w-5" />
         </Button>
 
-        <Input
+        <input
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder={placeholder}
           disabled={isLoading}
-          className="flex-1"
+          className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
           autoFocus
         />
 
@@ -93,10 +93,10 @@ export function ChatInput({
           size="icon"
           disabled={!message.trim() || isLoading}
           className={cn(
-            'shrink-0',
+            'shrink-0 transition-all',
             message.trim() && !isLoading
-              ? 'bg-blue-600 hover:bg-blue-700'
-              : ''
+              ? 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg shadow-blue-500/25'
+              : 'bg-white/10 text-gray-400'
           )}
         >
           <Send className="h-5 w-5" />

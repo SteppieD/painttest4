@@ -23,10 +23,10 @@ export function MessageBubble({ message, isTyping }: MessageBubbleProps) {
     >
       <div
         className={cn(
-          'max-w-[80%] rounded-2xl px-4 py-2 shadow-sm',
+          'max-w-[80%] rounded-2xl px-4 py-3 shadow-lg backdrop-blur-sm',
           isUser
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100'
+            ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-blue-500/20'
+            : 'bg-white/10 text-gray-100 border border-white/10'
         )}
       >
         {isTyping ? (
