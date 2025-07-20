@@ -37,9 +37,11 @@ const testimonials = [
 
 export function EnhancedHero() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 })
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
     }, 4000)
@@ -47,6 +49,7 @@ export function EnhancedHero() {
   }, [])
 
   useEffect(() => {
+    if (!mounted) return
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth) * 100
       const y = (e.clientY / window.innerHeight) * 100
@@ -54,7 +57,7 @@ export function EnhancedHero() {
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+  }, [mounted])
 
   return (
     <section className="relative min-h-screen overflow-hidden gradient-animate">

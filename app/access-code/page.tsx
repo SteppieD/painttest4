@@ -76,7 +76,7 @@ export default function AccessCodePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen gradient-animate">
       <div className="container max-w-lg mx-auto px-4 py-16">
         <div className="mb-8">
           <Link 
@@ -88,13 +88,13 @@ export default function AccessCodePage() {
           </Link>
         </div>
 
-        <Card className="shadow-xl border-0">
+        <Card className="glass-card bg-surface border-white/20">
           <CardHeader className="text-center pb-8">
-            <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-              <LogIn className="h-8 w-8 text-blue-600" />
+            <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-blue-500/30">
+              <LogIn className="h-8 w-8 text-white" />
             </div>
-            <CardTitle className="text-3xl font-bold">Welcome Back</CardTitle>
-            <CardDescription className="text-base mt-2">
+            <CardTitle className="text-3xl font-bold text-gradient-modern">Welcome Back</CardTitle>
+            <CardDescription className="text-base mt-2 text-medium-contrast">
               Sign in with your company access code
             </CardDescription>
           </CardHeader>
@@ -102,7 +102,7 @@ export default function AccessCodePage() {
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="accessCode" className="text-base font-medium">
+                <Label htmlFor="accessCode" className="text-base font-medium text-high-contrast">
                   Access Code
                 </Label>
                 <Input
@@ -111,7 +111,7 @@ export default function AccessCodePage() {
                   placeholder="Enter your access code"
                   value={accessCode}
                   onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
-                  className="h-12 text-base font-mono uppercase"
+                  className="h-12 text-base font-mono uppercase input-modern"
                   disabled={isLoading}
                   required
                 />
@@ -128,7 +128,7 @@ export default function AccessCodePage() {
 
               <Button
                 type="submit"
-                className="w-full h-12 text-base font-medium"
+                className="w-full h-12 text-base font-medium btn-primary-modern"
                 disabled={isLoading || !accessCode.trim()}
               >
                 {isLoading ? (
@@ -147,7 +147,7 @@ export default function AccessCodePage() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-gray-500">Or</span>
+                <span className="bg-gray-900 px-2 text-gray-400">Or</span>
               </div>
             </div>
 
@@ -168,7 +168,7 @@ export default function AccessCodePage() {
                     <button
                       key={demo.code}
                       onClick={() => handleDemoAccess(demo.code)}
-                      className="w-full p-4 text-left rounded-lg border hover:border-blue-300 hover:bg-blue-50 transition-all"
+                      className="w-full p-4 text-left rounded-lg glass-card hover:bg-white/10 transition-all"
                     >
                       <div className="font-mono font-bold text-blue-600">{demo.code}</div>
                       <div className="text-sm font-medium mt-1">{demo.name}</div>
@@ -193,22 +193,22 @@ export default function AccessCodePage() {
         {/* Features reminder */}
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
           <div className="space-y-2">
-            <div className="mx-auto w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-              <Shield className="h-5 w-5 text-gray-600" />
+            <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
+              <Shield className="h-5 w-5 text-blue-400" />
             </div>
-            <p className="text-xs text-gray-600">Secure Access</p>
+            <p className="text-xs text-medium-contrast">Secure Access</p>
           </div>
           <div className="space-y-2">
-            <div className="mx-auto w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-              <Clock className="h-5 w-5 text-gray-600" />
+            <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
+              <Clock className="h-5 w-5 text-emerald-400" />
             </div>
-            <p className="text-xs text-gray-600">Quick Login</p>
+            <p className="text-xs text-medium-contrast">Quick Login</p>
           </div>
           <div className="space-y-2">
-            <div className="mx-auto w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-              <Building2 className="h-5 w-5 text-gray-600" />
+            <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
+              <Building2 className="h-5 w-5 text-purple-400" />
             </div>
-            <p className="text-xs text-gray-600">Multi-Company</p>
+            <p className="text-xs text-medium-contrast">Multi-Company</p>
           </div>
         </div>
       </div>

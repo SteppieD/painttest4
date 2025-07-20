@@ -7,8 +7,10 @@ import { useEffect, useState } from 'react'
 
 export function MobileQuoteButton() {
   const [isMobile, setIsMobile] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
@@ -18,7 +20,7 @@ export function MobileQuoteButton() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  if (!isMobile) return null
+  if (!mounted || !isMobile) return null
 
   return (
     <div className="fixed bottom-20 right-4 z-40 flex flex-col gap-2">

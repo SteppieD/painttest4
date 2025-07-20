@@ -8,11 +8,14 @@ export default function SharedNavigationSimple() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
+    handleScroll() // Check initial scroll position
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -26,7 +29,7 @@ export default function SharedNavigationSimple() {
 
   return (
     <header className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-      isScrolled 
+      mounted && isScrolled 
         ? 'bg-gray-900/80 backdrop-blur-2xl shadow-2xl shadow-black/20 border-b border-white/10' 
         : 'bg-gradient-to-b from-gray-900/60 to-transparent backdrop-blur-sm'
     }`}>

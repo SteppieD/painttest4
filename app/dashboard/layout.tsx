@@ -158,9 +158,9 @@ export default function DashboardLayout({
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 lg:ml-64">
+        <main className="flex-1">
           {/* Top Bar */}
-          <div className="sticky top-0 z-20 glass-card rounded-none border-b border-white/10 px-8 py-4">
+          <div className="sticky top-0 z-20 glass-card rounded-none border-b border-white/10 px-8 py-4 lg:ml-64">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">
                 {navItems.find(item => item.href === pathname)?.label || 'Dashboard'}
@@ -179,7 +179,7 @@ export default function DashboardLayout({
           </div>
           
           {/* Page Content */}
-          <div className="p-4 lg:p-8">
+          <div className="p-4 lg:p-8 lg:ml-64 min-h-[calc(100vh-5rem)] pb-20 lg:pb-8">
             {children}
           </div>
         </main>
