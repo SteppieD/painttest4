@@ -323,7 +323,7 @@ function getSuggestedReplies(manager: ConversationManager): string[] {
   // Add contextual suggestions based on current step
   switch (currentStep) {
     case 'start':
-      suggestions.push('John Smith', 'Jane Doe');
+      // Don't suggest specific names
       break;
     case 'address':
       suggestions.push('123 Main St, City, ST 12345');

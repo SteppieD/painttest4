@@ -81,11 +81,20 @@ export function ChatInterface({
         })
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
+      let data;
+      try {
+        const text = await response.text();
+        data = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Failed to parse response:', parseError);
+        console.error('Response status:', response.status);
+        console.error('Response headers:', response.headers);
+        throw new Error(`Server error: ${response.status} - Unable to parse response`);
       }
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
 
       // Add assistant response
       const assistantMessage: Message = {

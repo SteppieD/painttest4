@@ -31,21 +31,27 @@ export default function CreateQuotePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+      {/* Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-64 h-64 lg:w-96 lg:h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-64 h-64 lg:w-96 lg:h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+      </div>
+
       {/* Header */}
-      <header className="border-b bg-white dark:bg-gray-800">
+      <header className="glass-card rounded-none border-b border-white/10 relative z-20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/dashboard">
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                   <ArrowLeft className="h-5 w-5" />
                 </Button>
               </Link>
-              <h1 className="text-xl font-semibold">Create Professional Quote</h1>
+              <h1 className="text-xl font-semibold text-white">Create Professional Quote</h1>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-sm text-gray-300">
                 ⚡ 2-minute quotes with AI
               </span>
             </div>
@@ -54,26 +60,26 @@ export default function CreateQuotePage() {
       </header>
 
       {/* Main content */}
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-6 relative z-10">
         <div className="mx-auto max-w-4xl">
-          <Card className="h-[calc(100vh-200px)]">
-            <CardHeader>
-              <CardTitle>
+          <div className="glass-card h-[calc(100vh-200px)] flex flex-col">
+            <div className="p-6 border-b border-white/10">
+              <h2 className="text-2xl font-bold text-white">
                 Quick Quote Builder
-              </CardTitle>
-              <p className="text-sm text-gray-500">
+              </h2>
+              <p className="text-sm text-gray-300 mt-1">
                 Just describe the project - get a professional quote in under 2 minutes
               </p>
-            </CardHeader>
-            <CardContent className="h-[calc(100%-120px)] p-0">
+            </div>
+            <div className="flex-1 overflow-hidden">
               <ChatInterface
                 companyId={companyData.id}
                 onQuoteCreated={(quoteId) => {
                   router.push(`/dashboard/quotes/${quoteId}`);
                 }}
               />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </main>
     </div>
