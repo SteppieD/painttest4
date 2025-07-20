@@ -357,11 +357,11 @@ export class SupabaseAdapter implements DatabaseAdapter {
 
 // Factory function to get the appropriate adapter
 export function getDatabaseAdapter(): DatabaseAdapter {
-  const isProduction = process.env.NODE_ENV === 'production';
+  const useSupabase = process.env.USE_SUPABASE === 'true';
   const hasSupabase = process.env.NEXT_PUBLIC_SUPABASE_URL && 
                       (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
-  if (isProduction && hasSupabase) {
+  if (useSupabase && hasSupabase) {
     console.log('Using Supabase database adapter');
     return new SupabaseAdapter();
   } else {

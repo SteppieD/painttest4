@@ -129,22 +129,22 @@ export function ChatInterface({
       const company = companyData ? JSON.parse(companyData) : null;
       
       const requestBody = {
-        companyId,
+        companyId: Number(companyId), // Ensure it's a number
         quoteData: {
-          customerName: quoteData.customerName,
-          customerEmail: quoteData.customerEmail,
-          customerPhone: quoteData.customerPhone,
-          address: quoteData.address,
-          projectType: quoteData.projectType,
-          rooms: quoteData.rooms,
-          roomCount: quoteData.roomCount,
-          paintQuality: quoteData.paintQuality,
-          prepWork: quoteData.prepWork,
-          timeEstimate: quoteData.timeline,
-          specialRequests: quoteData.specialRequests,
+          customerName: quoteData.customerName || 'Unknown Customer',
+          customerEmail: quoteData.customerEmail || null,
+          customerPhone: quoteData.customerPhone || null,
+          address: quoteData.address || null,
+          projectType: quoteData.projectType || 'interior',
+          rooms: quoteData.rooms || [],
+          roomCount: quoteData.roomCount || 0,
+          paintQuality: quoteData.paintQuality || 'better',
+          prepWork: quoteData.prepWork || null,
+          timeEstimate: quoteData.timeline || null,
+          specialRequests: quoteData.specialRequests || null,
           totalCost: quoteData.pricing?.subtotal || 0,
           finalPrice: quoteData.pricing?.total || 0,
-          markupPercentage: 30,
+          markupPercentage: quoteData.markupPercentage || 30,
           sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || 0,
           breakdown: {
             materials: quoteData.pricing?.materials?.total || 0,

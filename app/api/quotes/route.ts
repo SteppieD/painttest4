@@ -28,12 +28,15 @@ export async function POST(request: NextRequest) {
     
     console.log('[QUOTES API] Request data:', { companyId, quoteData });
 
+    // Ensure companyId is a number
+    const numericCompanyId = typeof companyId === 'string' ? parseInt(companyId) : companyId;
+    
     // Generate unique quote ID
-    const quoteId = await generateQuoteNumber(parseInt(companyId));
+    const quoteId = await generateQuoteNumber(numericCompanyId);
 
     // Prepare quote data for database with all required fields
     const quote = {
-      company_id: parseInt(companyId),
+      company_id: numericCompanyId,
       quote_id: quoteId,
       customer_name: cleanCustomerName(quoteData.customerName) || 'Unknown Customer',
       customer_email: quoteData.customerEmail || null,
@@ -104,6 +107,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error creating quote:', error);
     console.error('Error stack:', error instanceof Error ? error.stack : 'No stack');
+    console.error('Request data that caused error:', { companyId, quoteData });
     return NextResponse.json(
       { 
         error: 'Failed to create quote', 

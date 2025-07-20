@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
-import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
+import { QuoteCalculator, calculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 
 // Store conversation managers per session
