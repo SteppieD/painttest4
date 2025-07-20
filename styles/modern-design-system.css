@@ -1,10 +1,15 @@
 /* Modern Glassmorphic Design System */
 
 :root {
-  /* Glass Effects */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  /* Glass Effects - Improved readability */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  
+  /* Dark mode glass for better contrast */
+  --glass-dark-bg: rgba(0, 0, 0, 0.4);
+  --glass-dark-border: rgba(255, 255, 255, 0.2);
   
   /* Blur Values */
   --blur-sm: blur(4px);
@@ -26,20 +31,31 @@
 
 /* Glass Card Component */
 .glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--blur-md);
-  -webkit-backdrop-filter: var(--blur-md);
-  border: 1px solid var(--glass-border);
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--blur-md) saturate(150%);
+  -webkit-backdrop-filter: var(--blur-md) saturate(150%);
+  border: 1px solid var(--glass-dark-border);
   border-radius: 24px;
   box-shadow: var(--glass-shadow);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Add subtle gradient overlay for better readability */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+  border-radius: 24px;
+  pointer-events: none;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
 }
 
 /* Modern Button Base */
@@ -71,18 +87,20 @@
 
 /* Primary Button with Glow */
 .btn-primary-modern {
-  background: linear-gradient(135deg, #64748b, #475569);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
-  box-shadow: 0 4px 15px 0 rgba(100, 116, 139, 0.4);
+  box-shadow: 0 4px 15px 0 rgba(59, 130, 246, 0.5);
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary-modern::after {
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, #64748b, #475569);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   border-radius: 12px;
   opacity: 0;
   z-index: -2;
@@ -92,7 +110,8 @@
 
 .btn-primary-modern:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px 0 rgba(100, 116, 139, 0.6);
+  box-shadow: 0 8px 30px 0 rgba(59, 130, 246, 0.7);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
 .btn-primary-modern:hover::after {
@@ -144,12 +163,13 @@
   }
 }
 
-/* Gradient Text */
+/* Gradient Text - Improved for readability */
 .text-gradient-modern {
-  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  background: linear-gradient(135deg, #ffffff, #e2e8f0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 600;
 }
 
 /* Glow Effects */
@@ -284,4 +304,47 @@
   inset: 0;
   background: var(--gradient-radial);
   pointer-events: none;
+}
+
+/* Enhanced Readability Utilities */
+.text-high-contrast {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.text-medium-contrast {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.bg-surface {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bg-surface-light {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Better Input Contrast */
+.input-modern {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.input-modern:focus {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(59, 130, 246, 0.6);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.input-modern::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
