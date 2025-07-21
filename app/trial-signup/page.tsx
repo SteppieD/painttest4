@@ -38,9 +38,25 @@ export default function TrialSignupPage() {
       setSuccess(true);
       setAccessCode(data.accessCode);
       
+      // Store company data in localStorage for authentication
+      localStorage.setItem(
+        'paintquote_company',
+        JSON.stringify({
+          id: data.company.id,
+          accessCode: data.accessCode,
+          name: data.company.name,
+          phone: '',
+          email: '',
+          logoUrl: null,
+          loginTime: Date.now(),
+          isNewCompany: true,
+          quotesRemaining: data.company.quotesRemaining || 5
+        })
+      );
+      
       // Redirect to dashboard after 3 seconds
       setTimeout(() => {
-        router.push('/dashboard');
+        window.location.href = '/dashboard';
       }, 3000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
