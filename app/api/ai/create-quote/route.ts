@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuthContext } from '@/lib/auth/middleware';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
-import { calculator } from '@/lib/calculators/quote-calculator';
+import { calculator, QuoteCalculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator';
 
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
       };
     } else if (quoteContext.rooms && quoteContext.rooms.length > 0) {
       // Estimate from rooms
-      calculatorInput = calculator.estimateFromRooms(
+      calculatorInput = QuoteCalculator.estimateFromRooms(
         quoteContext.rooms,
         quoteContext.paintQuality
       );
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Calculate the quote
-    const calculation = calculator.calculate(calculatorInput);
+    const calculation = QuoteCalculator.calculate(calculatorInput);
 
     // Generate quote summary
     const summary = await quoteAssistant.generateQuoteSummary(

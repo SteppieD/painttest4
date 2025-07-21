@@ -2,13 +2,14 @@
 const nextConfig = {
   output: 'standalone',
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   typescript: {
+    // Temporarily keeping this true until we fix all TS errors
     ignoreBuildErrors: true,
   },
-  reactStrictMode: false,
-  swcMinify: false,
+  reactStrictMode: true,
+  swcMinify: true,
   // Generate unique build IDs based on timestamp to force cache refresh
   generateBuildId: async () => {
     return `build-${Date.now()}`;

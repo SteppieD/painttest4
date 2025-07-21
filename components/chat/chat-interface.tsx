@@ -130,12 +130,31 @@ export function ChatInterface({
 
     console.log('[CHAT] Quote data from AI:', quoteData);
     console.log('[CHAT] Pricing structure:', quoteData.pricing);
+    
+    // Debug: Show what we're about to send
+    console.log('[CHAT DEBUG] Creating quote with data:', {
+      customerName: quoteData.customerName,
+      hasPricing: !!quoteData.pricing,
+      pricingKeys: quoteData.pricing ? Object.keys(quoteData.pricing) : 'no pricing',
+      pricingStructure: quoteData.pricing
+    });
 
     setIsLoading(true);
     try {
       // Get company data from localStorage for access code
       const companyData = localStorage.getItem('paintquote_company');
       const company = companyData ? JSON.parse(companyData) : null;
+      
+      // Check if pricing data exists
+      if (!quoteData.pricing) {
+        console.error('[CHAT] No pricing data in quote:', quoteData);
+        toast({
+          title: 'Incomplete Quote',
+          description: 'The quote is missing pricing information. Please try again.',
+          variant: 'destructive'
+        });
+        return;
+      }
       
       const requestBody = {
         companyId: Number(companyId), // Ensure it's a number
@@ -151,13 +170,13 @@ export function ChatInterface({
           prepWork: quoteData.prepWork || null,
           timeEstimate: quoteData.timeline || null,
           specialRequests: quoteData.specialRequests || null,
-          totalCost: quoteData.pricing?.subtotal || 0,
-          finalPrice: quoteData.pricing?.total || 0,
+          totalCost: quoteData.pricing?.subtotal || quoteData.pricing?.total || 0,
+          finalPrice: quoteData.pricing?.total || quoteData.pricing?.subtotal || 0,
           markupPercentage: quoteData.markupPercentage || 30,
-          sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || 0,
+          sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || quoteData.sqft || 0,
           breakdown: {
-            materials: quoteData.pricing?.materials?.total || 0,
-            labor: quoteData.pricing?.labor?.total || 0,
+            materials: quoteData.pricing?.materials?.total || quoteData.pricing?.materials || 0,
+            labor: quoteData.pricing?.labor?.total || quoteData.pricing?.labor || 0,
             markup: quoteData.pricing?.markup || 0
           }
         },
@@ -165,6 +184,15 @@ export function ChatInterface({
       };
 
       console.log('[CHAT] Request body to quotes API:', requestBody);
+      console.log('[CHAT] Conversation history length:', messages.length);
+      console.log('[CHAT] Request body size:', new Blob([JSON.stringify(requestBody)]).size, 'bytes');
+      
+      // Limit conversation history to prevent oversized requests
+      const limitedMessages = messages.slice(-10); // Keep only last 10 messages
+      const finalRequestBody = {
+        ...requestBody,
+        conversationHistory: limitedMessages
+      };
 
       const response = await fetch('/api/quotes', {
         method: 'POST',
@@ -175,7 +203,7 @@ export function ChatInterface({
             access_code: company?.accessCode || ''
           })
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify(finalRequestBody)
       });
 
       let result;

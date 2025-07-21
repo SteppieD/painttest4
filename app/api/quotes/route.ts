@@ -27,12 +27,38 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const requestBody = await request.json();
+    let requestBody;
+    try {
+      requestBody = await request.json();
+    } catch (parseError) {
+      console.error('[QUOTES API] Failed to parse request body:', parseError);
+      return NextResponse.json(
+        { error: 'Invalid request body', details: 'Failed to parse JSON' },
+        { status: 400 }
+      );
+    }
+    
     companyId = requestBody.companyId;
     quoteData = requestBody.quoteData;
     const conversationHistory = requestBody.conversationHistory;
     
     console.log('[QUOTES API] Request data:', { companyId, quoteData });
+    console.log('[QUOTES API] Company from auth:', company);
+    
+    // Validate required fields
+    if (!companyId) {
+      return NextResponse.json(
+        { error: 'Missing companyId' },
+        { status: 400 }
+      );
+    }
+    
+    if (!quoteData) {
+      return NextResponse.json(
+        { error: 'Missing quoteData' },
+        { status: 400 }
+      );
+    }
 
     // Ensure companyId is a number
     const numericCompanyId = typeof companyId === 'string' ? parseInt(companyId) : companyId;
@@ -99,7 +125,29 @@ export async function POST(request: NextRequest) {
     // Save quote to database
     console.log('[QUOTES API] Quote data to save:', quote);
     console.log('[QUOTES API] Quote data keys:', Object.keys(quote));
-    const result = await db.createQuote(quote);
+    console.log('[QUOTES API] Sample values:', {
+      company_id: quote.company_id,
+      quote_id: quote.quote_id,
+      customer_name: quote.customer_name,
+      final_price: quote.final_price,
+      rooms: quote.rooms?.substring(0, 100) + '...'
+    });
+    
+    let result;
+    try {
+      result = await db.createQuote(quote);
+      console.log('[QUOTES API] Quote created successfully:', result);
+    } catch (dbError) {
+      console.error('[QUOTES API] Database error:', dbError);
+      console.error('[QUOTES API] Error message:', dbError instanceof Error ? dbError.message : 'Unknown error');
+      console.error('[QUOTES API] Error stack:', dbError instanceof Error ? dbError.stack : 'No stack');
+      throw dbError;
+    }
+
+    if (!result) {
+      console.error('[QUOTES API] No result returned from createQuote');
+      throw new Error('Failed to create quote - no result returned');
+    }
 
     return NextResponse.json({
       success: true,
@@ -111,9 +159,22 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error creating quote:', error);
-    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack');
-    console.error('Request data that caused error:', { companyId, quoteData });
+    console.error('[QUOTES API] Error creating quote:', error);
+    console.error('[QUOTES API] Error type:', typeof error);
+    console.error('[QUOTES API] Error constructor:', error?.constructor?.name);
+    console.error('[QUOTES API] Error stack:', error instanceof Error ? error.stack : 'No stack');
+    console.error('[QUOTES API] Request data that caused error:', { 
+      companyId, 
+      quoteDataKeys: quoteData ? Object.keys(quoteData) : 'no quoteData',
+      hasConversationHistory: !!requestBody?.conversationHistory
+    });
+    
+    // More detailed error info
+    if (error instanceof Error) {
+      console.error('[QUOTES API] Error name:', error.name);
+      console.error('[QUOTES API] Error message:', error.message);
+    }
+    
     return NextResponse.json(
       { 
         error: 'Failed to create quote', 
