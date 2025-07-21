@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
       access_code: accessCode,
       email: `${accessCode.toLowerCase()}@paintquote.com`,
       phone: '',
-      is_trial: 0, // Use 0 instead of false for SQLite
+      is_trial: process.env.USE_SUPABASE === 'true' ? false : 0, // Handle boolean/integer difference
       quote_limit: 5
     })
 
@@ -38,19 +38,9 @@ export async function POST(request: NextRequest) {
       path: '/',
     })
 
-    // Also create an entry in access_codes table for tracking
-    await db.query(
-      `INSERT INTO access_codes (code, company_name, is_active, uses_count) 
-       VALUES (?, ?, 1, 1)`,
-      [accessCode, companyName]
-    )
-
-    // Create session in database
-    await db.query(
-      `INSERT INTO access_code_sessions (id, session_data) 
-       VALUES (?, ?)`,
-      [sessionId, JSON.stringify({ company_id: company.id })]
-    )
+    // For now, we'll skip the access_codes and sessions tables
+    // The company table with access_code is sufficient for authentication
+    // TODO: Implement proper session management with Supabase-compatible approach
 
     return NextResponse.json({
       success: true,
@@ -63,8 +53,29 @@ export async function POST(request: NextRequest) {
       message: `Welcome to PaintQuote Pro! Your access code is: ${accessCode}`
     })
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Simple signup error:', error)
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    })
+    
+    // Provide more specific error messages
+    if (error.message?.includes('duplicate') || error.message?.includes('unique')) {
+      return NextResponse.json(
+        { error: 'This company name may already be taken. Please try another name.' },
+        { status: 400 }
+      )
+    }
+    
+    if (error.message?.includes('Supabase')) {
+      return NextResponse.json(
+        { error: 'Database connection error. Please try again later.' },
+        { status: 503 }
+      )
+    }
+    
     return NextResponse.json(
       { error: 'Failed to create account. Please try again.' },
       { status: 500 }
