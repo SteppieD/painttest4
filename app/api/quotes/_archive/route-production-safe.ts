@@ -283,7 +283,7 @@ export async function POST(request: NextRequest) {
     const totalAmount = subtotalWithProfit + tax
 
     // Create or update customer - optimized to reduce queries
-    let customer = await prisma.customer.upsert({
+    const customer = await prisma.customer.upsert({
       where: {
         companyId_email: {
           companyId: auth.companyId,

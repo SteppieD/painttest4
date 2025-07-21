@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     ];
     
     let workingModel = null;
-    let testResults = {};
+    const testResults = {};
     
     for (const model of modelTests) {
       try {
