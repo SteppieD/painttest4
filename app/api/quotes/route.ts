@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
-import { generateQuoteNumber } from '@/lib/quote-number-generator';
+import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 
 // Helper function to clean customer names
 const cleanCustomerName = (name: string) => {
@@ -18,10 +18,11 @@ const cleanCustomerName = (name: string) => {
 
 // POST - Create a new quote
 export async function POST(request: NextRequest) {
-  let companyId: any;
-  let quoteData: any;
-  
   try {
+    let companyId: any;
+    let quoteData: any;
+    
+    try {
     const company = getCompanyFromRequest(request);
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -206,6 +207,15 @@ export async function POST(request: NextRequest) {
     }
     
     return NextResponse.json(errorResponse, { status: 500 });
+  }
+  } catch (outerError) {
+    // Catch any unhandled errors
+    console.error('[QUOTES API] Unhandled error in POST handler:', outerError);
+    return NextResponse.json({
+      error: 'Internal server error',
+      details: 'An unexpected error occurred',
+      timestamp: new Date().toISOString()
+    }, { status: 500 });
   }
 }
 

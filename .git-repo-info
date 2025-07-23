@@ -1,0 +1,11 @@
+This directory is now connected to: https://github.com/SteppieD/painttest4
+
+The directory name is still "painttest3" but it's actually working with the painttest4 repository.
+Origin remote now points to painttest4.
+
+To avoid confusion:
+- This is the ACTIVE repository that Vercel deploys from
+- All changes should be pushed to painttest4
+- The painttest3 repository is no longer in use
+
+Current branch: main (not master)
