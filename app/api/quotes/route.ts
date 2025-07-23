@@ -218,9 +218,18 @@ export async function POST(request: NextRequest) {
       stack: outerError.stack?.split('\n').slice(0, 5).join('\n')
     } : outerError);
     
+    // In production, log the full error but return a generic message
+    const isProduction = process.env.NODE_ENV === 'production';
+    const errorMessage = outerError instanceof Error ? outerError.message : 'An unexpected error occurred';
+    
     return NextResponse.json({
       error: 'Internal server error',
-      details: outerError instanceof Error ? outerError.message : 'An unexpected error occurred',
+      details: isProduction ? 'An error occurred while creating the quote' : errorMessage,
+      debugInfo: isProduction ? undefined : {
+        errorType: outerError?.constructor?.name,
+        message: errorMessage,
+        stack: outerError instanceof Error ? outerError.stack?.split('\n').slice(0, 10) : undefined
+      },
       timestamp: new Date().toISOString(),
       hint: 'Check Vercel function logs for detailed error information'
     }, { status: 500 });
