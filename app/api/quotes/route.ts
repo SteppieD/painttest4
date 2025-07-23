@@ -18,6 +18,7 @@ const cleanCustomerName = (name: string) => {
 
 // POST - Create a new quote
 export async function POST(request: NextRequest) {
+  let requestBody: any;
   try {
     let companyId: any;
     let quoteData: any;
@@ -28,7 +29,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    let requestBody;
     try {
       requestBody = await request.json();
     } catch (parseError) {
