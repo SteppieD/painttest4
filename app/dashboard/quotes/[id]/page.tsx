@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Copy, Mail, Download, CheckCircle } from 'lucide-react'
+import { ArrowLeft, Copy, Mail, Download, CheckCircle, Edit } from 'lucide-react'
 import Link from 'next/link'
 import { toast } from '@/components/ui/use-toast'
 
@@ -211,6 +211,13 @@ Your Painting Company
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
+            <Link href={`/dashboard/quotes/${params.id}/edit`} className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <Button className="relative w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white">
+                <Edit className="h-4 w-4 mr-2" />
+                Edit Quote
+              </Button>
+            </Link>
             <Link href={`/dashboard/quotes/${params.id}/preview`} className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
               <Button className="relative w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
