@@ -378,89 +378,46 @@ Your Painting Company`
         </CardContent>
       </Card>
 
-      {/* Cost Breakdown */}
+      {/* Cost Breakdown - Customer Facing (No Markup Shown) */}
       <Card>
         <CardHeader>
-          <CardTitle>Cost Breakdown</CardTitle>
+          <CardTitle>Project Investment</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
+            {/* Show bundled cost (materials + labor + markup) as single line */}
             <div className="flex justify-between items-center">
-              <span className="text-muted-foreground">Materials</span>
-              {editing ? (
-                <Input
-                  type="number"
-                  step="0.01"
-                  className="w-32 text-right"
-                  value={editedQuote.total_materials || 0}
-                  onChange={(e) => setEditedQuote({...editedQuote, total_materials: parseFloat(e.target.value) || 0})}
-                />
-              ) : (
-                <span className="font-medium">${quote.total_materials?.toFixed(2) || '0.00'}</span>
-              )}
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-muted-foreground">Labor</span>
-              {editing ? (
-                <Input
-                  type="number"
-                  step="0.01"
-                  className="w-32 text-right"
-                  value={editedQuote.projected_labor || 0}
-                  onChange={(e) => setEditedQuote({...editedQuote, projected_labor: parseFloat(e.target.value) || 0})}
-                />
-              ) : (
-                <span className="font-medium">${quote.projected_labor?.toFixed(2) || '0.00'}</span>
-              )}
-            </div>
-            <div className="border-t pt-3">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Subtotal</span>
-                <span className="font-medium">
-                  ${((editedQuote.total_materials || 0) + (editedQuote.projected_labor || 0)).toFixed(2)}
-                </span>
-              </div>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-muted-foreground">
-                Markup ({editing ? (
-                  <Input
-                    type="number"
-                    className="w-16 inline mx-1"
-                    value={editedQuote.markup_percentage}
-                    onChange={(e) => setEditedQuote({...editedQuote, markup_percentage: parseInt(e.target.value) || 0})}
-                  />
-                ) : (
-                  quote.markup_percentage
-                )}%)
-              </span>
+              <span className="text-muted-foreground">Professional Painting Services</span>
               <span className="font-medium">
-                ${(((editedQuote.total_materials || 0) + (editedQuote.projected_labor || 0)) * (editedQuote.markup_percentage / 100)).toFixed(2)}
+                ${(((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)).toFixed(2)}
               </span>
             </div>
-            {editing && (
-              <div className="flex justify-between items-center">
-                <span className="text-muted-foreground">
-                  Tax (
-                  <Input
-                    type="number"
-                    step="0.01"
-                    className="w-16 inline mx-1"
-                    value={editedQuote.tax_rate || 0}
-                    onChange={(e) => setEditedQuote({...editedQuote, tax_rate: parseFloat(e.target.value) || 0})}
-                  />
-                  %)
-                </span>
-                <span className="font-medium">
-                  ${((((editedQuote.total_materials || 0) + (editedQuote.projected_labor || 0)) * (1 + editedQuote.markup_percentage / 100)) * ((editedQuote.tax_rate || 0) / 100)).toFixed(2)}
-                </span>
-              </div>
+            
+            {/* Show tax if applicable */}
+            {(quote.tax_rate || 0) > 0 && (
+              <>
+                <div className="border-t pt-3">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="font-medium">
+                      ${(((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)).toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-muted-foreground">Sales Tax ({quote.tax_rate}%)</span>
+                  <span className="font-medium">
+                    ${((((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)) * (quote.tax_rate / 100)).toFixed(2)}
+                  </span>
+                </div>
+              </>
             )}
+            
             <div className="border-t pt-3">
               <div className="flex justify-between text-lg font-bold">
-                <span>Total</span>
+                <span>Total Investment</span>
                 <span>
-                  ${(((editedQuote.total_materials || 0) + (editedQuote.projected_labor || 0)) * (1 + editedQuote.markup_percentage / 100) * (1 + (editedQuote.tax_rate || 0) / 100)).toFixed(2)}
+                  ${(((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100) * (1 + (quote.tax_rate || 0) / 100)).toFixed(2)}
                 </span>
               </div>
             </div>

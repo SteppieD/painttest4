@@ -64,6 +64,10 @@ export async function POST(request: NextRequest) {
     // Ensure companyId is a number
     const numericCompanyId = typeof companyId === 'string' ? parseInt(companyId) : companyId;
     
+    // Get company data to fetch tax rate
+    const companyData = await db.getCompany(numericCompanyId);
+    const companyTaxRate = companyData?.tax_rate || 0;
+    
     // Generate unique quote ID
     const quoteId = await generateQuoteNumber(numericCompanyId);
 
@@ -108,8 +112,8 @@ export async function POST(request: NextRequest) {
       labor_percentage: 0,
       projected_profit: quoteData.breakdown?.markup || 0,
       paint_coverage: 350,
-      tax_rate: 0,
-      tax_amount: 0,
+      tax_rate: companyTaxRate,
+      tax_amount: 0, // Will be calculated below
       subtotal: quoteData.totalCost || 0,
       base_cost: quoteData.totalCost || 0,
       markup_percentage: quoteData.markupPercentage || 30,
@@ -122,6 +126,15 @@ export async function POST(request: NextRequest) {
         ? conversationHistory 
         : JSON.stringify(conversationHistory || [{ quoteData }])
     };
+
+    // Calculate tax amount if tax rate is set
+    if (companyTaxRate > 0) {
+      // Tax is applied to the subtotal (base cost + markup)
+      const beforeTax = quote.base_cost * (1 + quote.markup_percentage / 100);
+      quote.tax_amount = beforeTax * (companyTaxRate / 100);
+      quote.final_price = beforeTax + quote.tax_amount;
+      quote.total_revenue = quote.final_price;
+    }
 
     // Save quote to database
     console.log('[QUOTES API] Quote data to save:', quote);
