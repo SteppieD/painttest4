@@ -10,6 +10,7 @@ interface CompanyData {
   name: string
   email: string
   accessCode: string
+  onboarding_completed?: boolean
 }
 
 export default function DashboardLayout({
@@ -35,8 +36,15 @@ export default function DashboardLayout({
         id: data.id,
         name: data.name,
         email: data.email,
-        accessCode: data.accessCode
+        accessCode: data.accessCode,
+        onboarding_completed: data.onboarding_completed
       })
+      
+      // Check if onboarding is needed
+      if (!data.onboarding_completed && pathname !== '/onboarding') {
+        router.push('/onboarding')
+        return
+      }
     } catch (error) {
       console.error('Error parsing company data:', error)
       router.push('/access-code')
