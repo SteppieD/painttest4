@@ -211,10 +211,18 @@ export async function POST(request: NextRequest) {
   } catch (outerError) {
     // Catch any unhandled errors
     console.error('[QUOTES API] Unhandled error in POST handler:', outerError);
+    console.error('[QUOTES API] Error type:', typeof outerError);
+    console.error('[QUOTES API] Error details:', outerError instanceof Error ? {
+      name: outerError.name,
+      message: outerError.message,
+      stack: outerError.stack?.split('\n').slice(0, 5).join('\n')
+    } : outerError);
+    
     return NextResponse.json({
       error: 'Internal server error',
-      details: 'An unexpected error occurred',
-      timestamp: new Date().toISOString()
+      details: outerError instanceof Error ? outerError.message : 'An unexpected error occurred',
+      timestamp: new Date().toISOString(),
+      hint: 'Check Vercel function logs for detailed error information'
     }, { status: 500 });
   }
 }
