@@ -424,5 +424,9 @@ export function getDb(): DatabaseAdapter {
   return dbInstance;
 }
 
-// Export the database instance getter
-export const db = getDb();
+// Export the database instance
+export const db = (() => {
+  const instance = getDb();
+  console.log('[DATABASE] Initialized adapter:', instance.constructor.name);
+  return instance;
+})();

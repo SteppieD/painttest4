@@ -114,14 +114,42 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  return NextResponse.json({
-    message: 'Test endpoint ready',
-    databaseType: db?.constructor?.name,
-    environment: {
-      hasSupabase: !!(process.env.NEXT_PUBLIC_SUPABASE_URL),
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Configured' : 'Not configured',
-      isVercel: process.env.VERCEL === '1',
-      nodeEnv: process.env.NODE_ENV
-    }
-  });
+  try {
+    // Test database connection
+    const testCompanies = await db.getAllCompanies();
+    
+    return NextResponse.json({
+      message: 'Test endpoint ready',
+      databaseType: db?.constructor?.name || 'Unknown',
+      databaseCheck: {
+        canConnect: true,
+        companiesCount: testCompanies?.length || 0
+      },
+      environment: {
+        hasSupabase: !!(process.env.NEXT_PUBLIC_SUPABASE_URL),
+        supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Configured' : 'Not configured',
+        hasServiceKey: !!(process.env.SUPABASE_SERVICE_ROLE_KEY),
+        hasAnonKey: !!(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+        isVercel: process.env.VERCEL === '1',
+        nodeEnv: process.env.NODE_ENV
+      }
+    });
+  } catch (error) {
+    return NextResponse.json({
+      message: 'Test endpoint error',
+      databaseType: db?.constructor?.name || 'Unknown',
+      databaseCheck: {
+        canConnect: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      },
+      environment: {
+        hasSupabase: !!(process.env.NEXT_PUBLIC_SUPABASE_URL),
+        supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Configured' : 'Not configured',
+        hasServiceKey: !!(process.env.SUPABASE_SERVICE_ROLE_KEY),
+        hasAnonKey: !!(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+        isVercel: process.env.VERCEL === '1',
+        nodeEnv: process.env.NODE_ENV
+      }
+    });
+  }
 }
