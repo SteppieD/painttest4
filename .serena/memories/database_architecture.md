@@ -1,55 +1,32 @@
 # Database Architecture
 
 ## Database System
-PaintQuote Pro uses Supabase (PostgreSQL) as the primary database with SQLite as a fallback option.
+- **Supabase**: PostgreSQL-based backend-as-a-service
+- **No ORM**: Direct Supabase client usage (no Prisma)
+- **Authentication**: Supabase Auth integrated
 
-## Main Tables
+## Migration Files
+Located in `supabase/migrations/`:
+- `000_cleanup.sql`: Initial cleanup
+- `001_create_tables.sql`: Core table creation
+- `002_safe_migration.sql`: Safe migration procedures
+- `003_step_by_step.sql`: Step-by-step migrations
 
-### Companies Table
-```sql
-- id: SERIAL PRIMARY KEY
-- access_code: VARCHAR(50) UNIQUE NOT NULL
-- company_name: VARCHAR(255) NOT NULL
-- name: VARCHAR(255) (alias for company_name)
-- phone: VARCHAR(50)
-- email: VARCHAR(255)
-- logo_url: VARCHAR(500)
-- created_at: TIMESTAMPTZ
-- updated_at: TIMESTAMPTZ
-```
+## Key Tables (inferred from code)
+- **companies**: Multi-tenant company data
+- **users**: User accounts and authentication
+- **quotes**: Quote documents and metadata
+- **customers**: Customer information
+- **settings**: User and company preferences
 
-### Quotes Table
-```sql
-- id: SERIAL PRIMARY KEY
-- company_id: INTEGER (FK to companies)
-- quote_id: VARCHAR(50) UNIQUE NOT NULL
-- customer_name: VARCHAR(255) NOT NULL
-- customer_email: VARCHAR(255)
-- customer_phone: VARCHAR(50)
-- address: TEXT
-- project_type: VARCHAR(100)
-- rooms: TEXT
-- paint_quality: VARCHAR(100)
-- prep_work: TEXT
-- timeline: VARCHAR(100)
-- special_requests: TEXT
-- Surface measurements (sqft/counts)
-- Rate fields (per sqft/unit)
-- Cost calculations
-- Status: VARCHAR(50)
-- created_at/updated_at: TIMESTAMPTZ
-```
+## Database Access Pattern
+- Uses Supabase JavaScript client (`@supabase/supabase-js`)
+- Real-time subscriptions available
+- Row-level security (RLS) policies
+- Connection via environment variable NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-### Users Table (Authentication)
-- Basic user authentication data
-- Linked to companies via company_id
-
-## Key Relationships
-- Companies have many Quotes (1:N)
-- Companies have many Users (1:N)
-- Quotes belong to one Company
-
-## Database Access
-- Direct SQL queries (no ORM currently)
-- Connection via Supabase client
-- Environment variable: DATABASE_URL
+## Important Notes
+- This project does NOT use Prisma ORM
+- Database schema managed through SQL migration files
+- Supabase provides built-in authentication
+- All database operations go through Supabase client

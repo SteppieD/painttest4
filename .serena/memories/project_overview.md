@@ -1,25 +1,22 @@
-# PaintQuote Pro Project Overview
+# PaintQuote Pro - Project Overview
 
-## Purpose
-PaintQuote Pro is an AI-powered painting quote generation platform designed to help painting contractors create professional quotes in minutes instead of hours. The platform significantly reduces quote creation time from 3-6 hours to 10-15 minutes.
-
-## Business Impact
-- Average revenue increase: +$8,400/month
-- Win rate improvement: 40-60% higher  
-- Critical stat: 73% of customers choose contractors who respond within 24 hours
-
-## Target Users
-- Painting contractors
-- Paint businesses of all sizes
-- Free tier: 5 quotes/month
-- Pro tier ($47/month): Unlimited quotes with advanced features
+PaintQuote Pro is an AI-powered painting quote generation SaaS platform built with Next.js 14, TypeScript, and Supabase. It helps painting contractors create professional quotes in 10-15 minutes instead of 3-6 hours.
 
 ## Key Features
-- AI Quote Assistant (Claude via OpenRouter)
+- AI Quote Assistant using Claude via OpenRouter
+- Multi-step quote form with professional templates
+- Customer management and quote history tracking
 - Mobile-optimized interface with swipe navigation
-- Customer management system
-- Professional quote templates
-- Multi-step quote form
-- Paint product management
-- Analytics dashboard
-- SEO-optimized marketing pages
+- Freemium pricing model (Free: 5 quotes/month, Pro: $47/month unlimited)
+- SEO-optimized marketing pages for organic growth
+
+## Target Audience
+- Primary: Small to medium painting contractors (1-50 employees)
+- Secondary: Large painting companies (50+ employees)
+- Tertiary: Independent painters and handymen
+
+## Current Status
+- 9 SEO pages completed out of ~50 planned
+- Core application features implemented
+- Docker deployment ready
+- Database using Supabase (PostgreSQL)

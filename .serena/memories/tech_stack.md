@@ -1,32 +1,31 @@
-# PaintQuote Pro Tech Stack
+# Tech Stack
 
 ## Frontend
-- **Framework**: Next.js 14.2.5 (App Router)
-- **Language**: TypeScript 5.8.3
-- **UI Framework**: React 18.2.0
-- **Styling**: Tailwind CSS 3.3.6
-- **UI Components**: Radix UI (dialogs, dropdowns, forms, etc.)
-- **Form Handling**: React Hook Form 7.52.1 with Zod validation
-- **Animations**: Framer Motion 11.18.2
-- **Icons**: Lucide React & React Icons
+- **Next.js 14.2.5**: React framework with App Router
+- **React 18.2.0**: UI library
+- **TypeScript 5.8.3**: Type safety (strict mode enabled)
+- **Tailwind CSS 3.3.6**: Utility-first CSS framework
+- **Radix UI**: Headless UI components
+- **Framer Motion**: Animation library
+- **React Hook Form**: Form management
 
 ## Backend & Database
-- **Database**: Supabase (PostgreSQL) with fallback to SQLite (better-sqlite3)
-- **ORM**: Direct SQL queries (no Prisma in current setup)
-- **Authentication**: JWT-based with bcryptjs
-- **API**: Next.js API routes
+- **Supabase**: PostgreSQL database with auth
+- **Next.js API Routes**: Backend endpoints
+- **JWT Authentication**: Secure authentication
+- **bcryptjs**: Password hashing
 
 ## AI Integration
-- **Anthropic SDK**: 0.54.0
-- **Google Generative AI**: 0.21.0
-- **OpenRouter**: For Claude access
+- **Anthropic SDK**: Claude integration
+- **Google Generative AI**: Gemini integration
+- **OpenRouter**: AI model routing
 
 ## Payment & Email
-- **Stripe**: React Stripe.js for payments
-- **Resend**: Email service (4.6.0)
+- **Stripe**: Payment processing (planned)
+- **Resend**: Email service (planned)
 
 ## Development Tools
-- **Linting**: ESLint with TypeScript plugin
-- **Type Checking**: TypeScript strict mode
-- **Testing**: Playwright (devDependency)
-- **Build Tool**: Next.js built-in webpack
+- **ESLint**: Code linting
+- **TypeScript**: Type checking
+- **Docker**: Containerization
+- **Playwright**: E2E testing (planned)

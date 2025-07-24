@@ -1,46 +1,36 @@
-# Code Style and Conventions
+# Code Style Conventions
 
-## TypeScript Configuration
-- **Strict Mode**: Enabled
-- **Target**: ES5 with modern lib support
-- **Module Resolution**: Bundler
-- **Path Aliases**: `@/*` maps to root directory
+## TypeScript
+- **Strict mode enabled** in tsconfig.json
+- Target: ES2015
+- Module resolution: bundler
+- Path alias: `@/*` maps to root directory
 
 ## ESLint Rules
-- TypeScript recommended rules enabled
-- Warnings for:
-  - Unused variables
-  - Explicit any types
-  - Ban types
-  - Unescaped entities
-  - var usage
-- Disabled/Off:
-  - Explicit module boundary types
-  - Non-null assertions
+- Extends: `next/core-web-vitals` and `@typescript-eslint/recommended`
+- `@typescript-eslint/no-unused-vars`: warn
+- `@typescript-eslint/no-explicit-any`: warn
+- `@typescript-eslint/no-non-null-assertion`: off
+- `react/no-unescaped-entities`: warn
 
-## Code Organization
-- **App Router Pattern**: All routes in `/app` directory
-- **Component Structure**: 
-  - Reusable UI components in `/components/ui`
-  - Feature-specific components in feature folders
-  - Form components in `/components/quote-form`
-- **API Routes**: In `/app/api`
-- **Utilities**: In `/lib` directory
+## React Patterns
+- **Functional components** with hooks (no class components)
+- **Named exports** for components
+- **React.forwardRef** for components that need ref forwarding
+- **TypeScript interfaces** for props (not type aliases)
 
-## Naming Conventions
-- **Files**: kebab-case (e.g., `quote-form.tsx`)
-- **Components**: PascalCase (e.g., `QuoteForm`)
-- **Functions**: camelCase (e.g., `calculateQuote`)
-- **Types/Interfaces**: PascalCase with descriptive names
+## Styling
+- **Tailwind CSS utilities** for styling
+- **cn() utility** from `@/lib/utils` for conditional classes
+- **Component variants** using class-variance-authority (cva)
+- **No inline styles** unless absolutely necessary
 
-## Component Patterns
-- Functional components with TypeScript interfaces for props
-- React Hook Form for form handling
-- Zod schemas for validation
-- Radix UI for accessible components
+## File Naming
+- **Components**: PascalCase (e.g., `QuoteForm.tsx`)
+- **Utilities**: camelCase (e.g., `seoUtils.ts`)
+- **Pages**: lowercase with hyphens (e.g., `painting-contractors`)
 
-## Git Workflow
-- Feature branches: `feature/`, `fix/`, `chore/`, `docs/`
-- Conventional commits format
-- Never push directly to main
-- Local development first policy
+## Git Conventions
+- **Conventional commits**: feat, fix, docs, chore, style, refactor, test, perf
+- **Branch naming**: feature/, fix/, chore/, docs/
+- **No direct pushes to main**
