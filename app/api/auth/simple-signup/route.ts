@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getDatabaseAdapter } from '@/lib/database/adapter'
+import { getDatabaseAdapter, db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 
 export async function POST(request: NextRequest) {
@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
         name: company.company_name,
         email: company.email,
         quotesRemaining: 5,
-        onboarding_completed: true
+        onboarding_completed: false
       },
       message: `Welcome to PaintQuote Pro! Your access code is: ${accessCode}`
     })

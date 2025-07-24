@@ -386,6 +386,12 @@ export class SupabaseAdapter implements DatabaseAdapter {
     if (error) throw error;
     return data;
   }
+
+  async getAll(query: string, params: any[] = []): Promise<any[]> {
+    // This method is required by the interface but not typically used with Supabase
+    // For Supabase, use the specific table methods instead
+    return this.query(query, params);
+  }
 }
 
 // Factory function to get the appropriate adapter

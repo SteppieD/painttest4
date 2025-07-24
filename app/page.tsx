@@ -53,7 +53,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href="/access-code">
+              <Link href="/trial-signup">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg">
                   Start Free Trial
                   <Sparkles className="ml-2 h-5 w-5" />
@@ -387,7 +387,7 @@ export default function Home() {
                     <span>Mobile access</span>
                   </li>
                 </ul>
-                <Link href="/access-code" className="block">
+                <Link href="/trial-signup" className="block">
                   <Button className="w-full" variant="outline">
                     Start Free
                   </Button>
@@ -428,7 +428,7 @@ export default function Home() {
                     <span>Priority support</span>
                   </li>
                 </ul>
-                <Link href="/access-code" className="block">
+                <Link href="/trial-signup" className="block">
                   <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                     Start 14-Day Trial
                   </Button>
@@ -483,7 +483,7 @@ export default function Home() {
                 Join 500+ painting contractors who are closing more deals with professional quotes delivered in minutes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/access-code">
+                <Link href="/trial-signup">
                   <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8">
                     Start Your Free Trial
                     <ArrowRight className="ml-2 h-5 w-5" />
