@@ -105,6 +105,15 @@ export default function OnboardingPage() {
 
     setSaving(true)
     try {
+      // Log the data being sent
+      console.log('[ONBOARDING PAGE] Sending company data:', {
+        id: companyData.id,
+        accessCode: companyData.accessCode,
+        name: companyData.name || data.companyName,
+        email: companyData.email || data.email
+      })
+      console.log('[ONBOARDING PAGE] Sending form data:', data)
+      
       // Save all settings
       const response = await fetch('/api/companies/onboarding', {
         method: 'POST',
@@ -125,7 +134,9 @@ export default function OnboardingPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to complete onboarding')
+        const errorData = await response.json()
+        console.error('[ONBOARDING PAGE] Server error:', errorData)
+        throw new Error(errorData.error || 'Failed to complete onboarding')
       }
 
       // Update local storage

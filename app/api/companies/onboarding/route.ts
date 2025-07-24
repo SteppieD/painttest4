@@ -19,22 +19,40 @@ export async function POST(request: NextRequest) {
     console.log('[ONBOARDING] Updating company:', company.id);
     
     // Verify company exists in database
-    const existingCompany = await db.getCompany(company.id);
+    let existingCompany;
+    try {
+      existingCompany = await db.getCompany(company.id);
+    } catch (dbError) {
+      console.error('[ONBOARDING] Database error when getting company:', dbError);
+      existingCompany = null;
+    }
+    
     if (!existingCompany) {
       console.error('[ONBOARDING] Company not found in database:', company.id);
-      // For memory adapter, create the company if it doesn't exist
-      if (process.env.NODE_ENV === 'development' || process.env.VERCEL) {
-        console.log('[ONBOARDING] Creating company in memory store');
-        await db.createCompany({
+      // Always create the company if it doesn't exist (for ephemeral companies)
+      console.log('[ONBOARDING] Creating company in memory store');
+      try {
+        const newCompany = await db.createCompany({
           id: company.id,
           access_code: company.accessCode,
           company_name: data.companyName || company.name || 'Unknown Company',
           name: data.companyName || company.name || 'Unknown Company',
           email: data.email || company.email || '',
-          phone: data.phone || ''
+          phone: data.phone || '',
+          onboarding_completed: false,
+          onboarding_step: 0,
+          tax_rate: 0,
+          subscription_tier: 'free',
+          monthly_quote_count: 0,
+          monthly_quote_limit: 5
         });
-      } else {
-        return NextResponse.json({ error: 'Company not found' }, { status: 404 });
+        console.log('[ONBOARDING] Company created successfully:', newCompany);
+      } catch (createError) {
+        console.error('[ONBOARDING] Failed to create company:', createError);
+        return NextResponse.json({ 
+          error: 'Failed to create company', 
+          details: createError instanceof Error ? createError.message : 'Unknown error' 
+        }, { status: 500 });
       }
     }
     
