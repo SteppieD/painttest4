@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import ModernNavigation from '@/components/modern-navigation'
 import { 
   Sparkles, 
   Clock, 
@@ -24,9 +25,11 @@ import {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
+    <>
+      <ModernNavigation />
+      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+        {/* Hero Section */}
+      <section className="relative overflow-hidden pt-16">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
@@ -530,6 +533,7 @@ export default function Home() {
           </Card>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }
