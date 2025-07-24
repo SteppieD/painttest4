@@ -148,4 +148,5 @@ prisma/migrations/dev/
 
 # Local git hooks (if not shared)
 .git/hooks/*
-!.git/hooks/*.sample
+!.git/hooks/*.sample# Add .env.local to gitignore
+.env.local
