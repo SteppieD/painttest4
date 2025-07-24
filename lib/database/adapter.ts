@@ -9,6 +9,7 @@ export interface DatabaseAdapter {
   getCompanyByAccessCode(accessCode: string): Promise<any>;
   getCompany(id: number): Promise<any>;
   getAllCompanies(): Promise<any[]>;
+  getCompanies?(): Promise<any[]>; // Alias for getAllCompanies
   createCompany(data: any): Promise<any>;
   updateCompany(id: number, data: any): Promise<any>;
   

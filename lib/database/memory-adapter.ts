@@ -58,6 +58,11 @@ export class MemoryAdapter implements DatabaseAdapter {
     return Array.from(memoryStore.companies.values());
   }
 
+  // Alias for compatibility
+  async getCompanies(): Promise<any[]> {
+    return this.getAllCompanies();
+  }
+
   async createCompany(data: any): Promise<any> {
     // Use provided ID if it exists, otherwise generate new one
     const id = data.id || Math.max(...Array.from(memoryStore.companies.keys()), 0) + 1;

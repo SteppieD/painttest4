@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     // Check if email already exists
     try {
-      const existingCompanies = await db.getCompanies()
+      const existingCompanies = await db.getAllCompanies()
       const emailExists = existingCompanies.some(
         company => company.email?.toLowerCase() === email.trim().toLowerCase()
       )
