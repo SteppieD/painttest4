@@ -108,6 +108,18 @@ export default function TrialSignupPage() {
 
   return (
     <>
+      <style jsx global>{`
+        #company,
+        #email,
+        #company:hover,
+        #email:hover {
+          background-color: rgba(31, 41, 55, 0.8) !important;
+        }
+        #company:focus,
+        #email:focus {
+          background-color: rgba(31, 41, 55, 0.9) !important;
+        }
+      `}</style>
       <ModernNavigation />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 pt-16">
         {/* Background effects */}
@@ -139,7 +151,11 @@ export default function TrialSignupPage() {
                   onChange={(e) => setCompanyName(e.target.value)}
                   required
                   disabled={loading}
-                  className="w-full bg-gray-800/80 border-gray-600 text-white placeholder-gray-400 focus:bg-gray-800/90 focus:border-gray-500 hover:bg-gray-800/80"
+                  className="!bg-gray-800/80 !border-gray-600 !text-white !placeholder-gray-400 focus:!bg-gray-800/90 focus:!border-gray-500 hover:!bg-gray-800/80"
+                  style={{ 
+                    backgroundColor: 'rgba(31, 41, 55, 0.8) !important',
+                    '--tw-ring-offset-color': 'transparent'
+                  }}
                 />
               </div>
 
@@ -153,7 +169,11 @@ export default function TrialSignupPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={loading}
-                  className="w-full bg-gray-800/80 border-gray-600 text-white placeholder-gray-400 focus:bg-gray-800/90 focus:border-gray-500 hover:bg-gray-800/80"
+                  className="!bg-gray-800/80 !border-gray-600 !text-white !placeholder-gray-400 focus:!bg-gray-800/90 focus:!border-gray-500 hover:!bg-gray-800/80"
+                  style={{ 
+                    backgroundColor: 'rgba(31, 41, 55, 0.8) !important',
+                    '--tw-ring-offset-color': 'transparent'
+                  }}
                 />
                 <p className="text-xs text-gray-400">
                   We&apos;ll send your access code and important updates here
