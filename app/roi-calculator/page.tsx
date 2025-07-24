@@ -220,27 +220,27 @@ export default function ROICalculator() {
                         </div>
 
                         {/* Before/After Comparison */}
-                        <div className="rounded-lg border bg-card p-6">
-                          <h3 className="text-lg font-semibold">Monthly Business Impact</h3>
+                        <div className="glass-card p-6">
+                          <h3 className="text-lg font-semibold text-white">Monthly Business Impact</h3>
                           
                           <div className="mt-6 space-y-6">
                             {/* Quotes Created */}
                             <div>
                               <div className="flex items-center justify-between text-sm">
-                                <span>Quotes Created</span>
-                                <span className="text-primary">
+                                <span className="text-gray-300">Quotes Created</span>
+                                <span className="text-emerald-400">
                                   +{results.withApp.quotesPerMonth - results.current.quotesPerMonth} more
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">Now:</span>
+                                  <span className="text-gray-400">Now:</span>
                                   <span>{results.current.quotesPerMonth}</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">With Pro:</span>
-                                  <span className="font-semibold text-primary">
+                                  <span className="text-gray-400">With Pro:</span>
+                                  <span className="font-semibold text-emerald-400">
                                     {results.withApp.quotesPerMonth}
                                   </span>
                                 </div>
@@ -250,20 +250,20 @@ export default function ROICalculator() {
                             {/* Time Spent */}
                             <div>
                               <div className="flex items-center justify-between text-sm">
-                                <span>Time on Quotes</span>
-                                <span className="text-primary">
+                                <span className="text-gray-300">Time on Quotes</span>
+                                <span className="text-emerald-400">
                                   -{results.roi.timeSaved.toFixed(0)} hours saved
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">Now:</span>
+                                  <span className="text-gray-400">Now:</span>
                                   <span>{results.current.timeSpentQuoting}h</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">With Pro:</span>
-                                  <span className="font-semibold text-primary">
+                                  <span className="text-gray-400">With Pro:</span>
+                                  <span className="font-semibold text-emerald-400">
                                     {results.withApp.timeSpentQuoting.toFixed(1)}h
                                   </span>
                                 </div>
@@ -273,20 +273,20 @@ export default function ROICalculator() {
                             {/* Closed Jobs */}
                             <div>
                               <div className="flex items-center justify-between text-sm">
-                                <span>Jobs Won</span>
-                                <span className="text-primary">
+                                <span className="text-gray-300">Jobs Won</span>
+                                <span className="text-emerald-400">
                                   +{(results.withApp.closedJobs - results.current.closedJobs).toFixed(0)} more
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">Now:</span>
+                                  <span className="text-gray-400">Now:</span>
                                   <span>{results.current.closedJobs.toFixed(0)}</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">With Pro:</span>
-                                  <span className="font-semibold text-primary">
+                                  <span className="text-gray-400">With Pro:</span>
+                                  <span className="font-semibold text-emerald-400">
                                     {results.withApp.closedJobs.toFixed(0)}
                                   </span>
                                 </div>
@@ -296,20 +296,20 @@ export default function ROICalculator() {
                             {/* Revenue */}
                             <div className="border-t pt-4">
                               <div className="flex items-center justify-between text-sm font-semibold">
-                                <span>Monthly Revenue</span>
-                                <span className="text-primary">
+                                <span className="text-gray-300">Monthly Revenue</span>
+                                <span className="text-emerald-400">
                                   +${results.roi.additionalRevenue.toLocaleString()}
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">Now:</span>
+                                  <span className="text-gray-400">Now:</span>
                                   <span>${results.current.revenue.toLocaleString()}</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
-                                  <span className="text-muted-foreground">With Pro:</span>
-                                  <span className="font-semibold text-primary">
+                                  <span className="text-gray-400">With Pro:</span>
+                                  <span className="font-semibold text-emerald-400">
                                     ${results.withApp.revenue.toLocaleString()}
                                   </span>
                                 </div>
@@ -318,20 +318,61 @@ export default function ROICalculator() {
                           </div>
                         </div>
 
+                        {/* Visual Chart */}
+                        <div className="glass-card p-6">
+                          <h3 className="text-lg font-semibold text-white mb-4">Revenue Growth Projection</h3>
+                          <div className="relative h-48">
+                            <div className="absolute bottom-0 left-0 w-full h-full flex items-end justify-between gap-2">
+                              {/* Current Revenue Bar */}
+                              <div className="flex-1 flex flex-col items-center gap-2">
+                                <div 
+                                  className="w-full bg-gray-600 rounded-t-lg relative"
+                                  style={{ height: '40%' }}
+                                >
+                                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm text-gray-400">
+                                    ${(results.current.revenue / 1000).toFixed(0)}k
+                                  </span>
+                                </div>
+                                <span className="text-xs text-gray-400">Current</span>
+                              </div>
+                              
+                              {/* With PaintQuote Bar */}
+                              <div className="flex-1 flex flex-col items-center gap-2">
+                                <div 
+                                  className="w-full bg-gradient-to-t from-emerald-500 to-emerald-400 rounded-t-lg relative"
+                                  style={{ height: `${Math.min((results.withApp.revenue / results.current.revenue) * 40, 90)}%` }}
+                                >
+                                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm text-emerald-400 font-bold">
+                                    ${(results.withApp.revenue / 1000).toFixed(0)}k
+                                  </span>
+                                </div>
+                                <span className="text-xs text-gray-400">With Pro</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-center mt-4">
+                            <span className="text-2xl font-bold text-emerald-400">
+                              +{((results.withApp.revenue - results.current.revenue) / results.current.revenue * 100).toFixed(0)}%
+                            </span>
+                            <span className="text-gray-400 ml-2">Revenue Increase</span>
+                          </div>
+                        </div>
+
                         {/* CTA */}
-                        <div className="rounded-lg bg-primary p-6 text-center text-primary-foreground">
-                          <TrendingUp className="mx-auto h-8 w-8" />
-                          <h3 className="mt-2 text-lg font-semibold">
+                        <div className="glass-card border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-6 text-center">
+                          <TrendingUp className="mx-auto h-8 w-8 text-purple-400" />
+                          <h3 className="mt-2 text-lg font-semibold text-white">
                             Ready to Grow Your Business?
                           </h3>
-                          <p className="mt-2 text-sm opacity-90">
+                          <p className="mt-2 text-sm text-gray-300">
                             Start your free trial today and see these results for yourself
                           </p>
                           <Link
-                            href="/auth/signup"
-                            className="mt-4 inline-flex items-center rounded-md bg-background px-6 py-2 text-sm font-medium text-foreground hover:bg-background/90"
+                            href="/trial-signup"
+                            className="mt-4 inline-flex items-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-6 py-2 text-sm font-medium text-white"
                           >
                             Start Free Trial
+                            <ArrowRight className="ml-2 h-4 w-4" />
                           </Link>
                         </div>
                       </>

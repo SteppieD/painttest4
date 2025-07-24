@@ -11,6 +11,7 @@ import { useCompanyAuth } from '@/components/auth-wrapper'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AchievementDisplay } from '@/components/achievements/achievement-display'
+import { ROIWidget } from '@/components/roi-widget'
 
 interface DashboardData {
   companyName: string
@@ -300,6 +301,15 @@ export function ClientDashboard() {
           </CardContent>
         </Card>
       )}
+      
+      {/* ROI Widget - Show for all users */}
+      <ROIWidget 
+        companyName={dashboardData.companyName}
+        avgQuoteValue={dashboardData.totalQuotedAmount && dashboardData.totalQuotes > 0 ? 
+          Math.round(dashboardData.totalQuotedAmount / dashboardData.totalQuotes) : 2500
+        }
+        quotesPerMonth={dashboardData.monthlyQuotes || 10}
+      />
 
       {/* Quote Usage */}
       <QuoteUsageIndicator />
