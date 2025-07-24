@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { ArrowLeft, Save, Send, Mail, Copy, Edit3, Check, X } from 'lucide-react'
+import { ArrowLeft, Save, Send, Mail, Copy, Edit3, Check, X, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import { toast } from '@/components/ui/use-toast'
 
@@ -135,8 +135,19 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
     }
   }
 
-  const handleSendEmail = () => {
+  const handleSendEmail = async () => {
     if (!quote) return
+
+    // Track that the quote was sent
+    try {
+      await fetch(`/api/quotes/${params.id}/track`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'sent' })
+      })
+    } catch (error) {
+      console.error('Error tracking quote sent:', error)
+    }
 
     const subject = `Painting Quote #${quote.quote_id}`
     const body = formatEmailBody(quote)
@@ -144,7 +155,25 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
     window.location.href = `mailto:${quote.customer_email || ''}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
+  const copyPublicLink = async () => {
+    const publicUrl = `${window.location.origin}/quote/${params.id}`
+    try {
+      await navigator.clipboard.writeText(publicUrl)
+      toast({
+        title: 'Link Copied!',
+        description: 'The quote link has been copied to your clipboard.'
+      })
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to copy link',
+        variant: 'destructive'
+      })
+    }
+  }
+
   const formatEmailBody = (quote: Quote) => {
+    const publicUrl = `${window.location.origin}/quote/${params.id}`
     return `Dear ${quote.customer_name},
 
 Thank you for considering us for your painting project. Please find your quote details below:
@@ -169,6 +198,8 @@ ${quote.tax_rate ? `- Tax (${quote.tax_rate}%): $${quote.tax_amount?.toFixed(2) 
 TOTAL: $${quote.final_price?.toFixed(2) || '0.00'}
 
 This quote is valid for 30 days from the date above.
+
+View your quote online: ${publicUrl}
 
 Please let us know if you have any questions or would like to proceed with the project.
 
@@ -237,6 +268,10 @@ Your Painting Company`
               <Button onClick={handleSendEmail} disabled={!quote.customer_email}>
                 <Mail className="h-4 w-4 mr-2" />
                 Send Email
+              </Button>
+              <Button onClick={copyPublicLink} variant="outline">
+                <Copy className="h-4 w-4 mr-2" />
+                Copy Link
               </Button>
             </>
           )}
@@ -442,6 +477,34 @@ Your Painting Company`
                 <Send className="h-4 w-4 mr-2" />
                 Send to Customer
               </Button>
+              <Button onClick={copyPublicLink} variant="outline">
+                <Copy className="h-4 w-4 mr-2" />
+                Copy Public Link
+              </Button>
+            </div>
+            
+            {/* Public Link Display */}
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <Label className="text-sm text-gray-600">Share this link with your customer:</Label>
+              <div className="flex items-center gap-2 mt-2">
+                <Input 
+                  readOnly 
+                  value={`${window.location.origin}/quote/${params.id}`}
+                  className="font-mono text-sm"
+                />
+                <Button 
+                  size="sm" 
+                  onClick={copyPublicLink}
+                  variant="ghost"
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+                <Link href={`/quote/${params.id}`} target="_blank">
+                  <Button size="sm" variant="ghost">
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </CardContent>

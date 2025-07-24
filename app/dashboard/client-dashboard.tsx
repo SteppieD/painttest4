@@ -51,27 +51,70 @@ export function ClientDashboard() {
       return
     }
 
-    // Mock data for now
-    setDashboardData({
-      companyName: companyData.name || 'Unknown Company',
-      totalQuotes: 127,
-      uniqueCustomers: 89,
-      totalQuotedAmount: 342500,
-      acceptedQuotes: 76,
-      acceptanceRate: 59.8,
-      monthlyQuotes: 24,
-      monthlyQuotedAmount: 67200,
-      recentQuotes: [
-        { id: 1, customer: 'John Smith', amount: 3200, status: 'pending', date: new Date() },
-        { id: 2, customer: 'Sarah Johnson', amount: 4500, status: 'accepted', date: new Date() },
-        { id: 3, customer: 'Mike Davis', amount: 2800, status: 'pending', date: new Date() },
-      ],
-      quotesUsed: 1,
-      quotesLimit: 5,
-      hasUnlimitedQuotes: false
-    })
-    setLoading(false)
+    // Fetch real usage data
+    fetchDashboardData()
   }, [companyData, router, authChecked])
+
+  const fetchDashboardData = async () => {
+    try {
+      // Fetch usage data
+      const response = await fetch('/api/companies/usage', {
+        headers: {
+          'x-company-data': JSON.stringify({ 
+            id: companyData?.id,
+            access_code: companyData?.accessCode 
+          })
+        }
+      });
+      
+      if (response.ok) {
+        const usage = await response.json();
+        
+        // Mock data combined with real usage data
+        setDashboardData({
+          companyName: companyData.name || 'Unknown Company',
+          totalQuotes: 127,
+          uniqueCustomers: 89,
+          totalQuotedAmount: 342500,
+          acceptedQuotes: 76,
+          acceptanceRate: 59.8,
+          monthlyQuotes: usage.currentMonth.quotesCreated,
+          monthlyQuotedAmount: 67200,
+          recentQuotes: [
+            { id: 1, customer: 'John Smith', amount: 3200, status: 'pending', date: new Date() },
+            { id: 2, customer: 'Sarah Johnson', amount: 4500, status: 'accepted', date: new Date() },
+            { id: 3, customer: 'Mike Davis', amount: 2800, status: 'pending', date: new Date() },
+          ],
+          quotesUsed: usage.currentMonth.quotesCreated,
+          quotesLimit: usage.currentMonth.limit,
+          hasUnlimitedQuotes: usage.currentMonth.limit === -1
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching dashboard data:', error);
+      // Fallback to mock data
+      setDashboardData({
+        companyName: companyData.name || 'Unknown Company',
+        totalQuotes: 127,
+        uniqueCustomers: 89,
+        totalQuotedAmount: 342500,
+        acceptedQuotes: 76,
+        acceptanceRate: 59.8,
+        monthlyQuotes: 24,
+        monthlyQuotedAmount: 67200,
+        recentQuotes: [
+          { id: 1, customer: 'John Smith', amount: 3200, status: 'pending', date: new Date() },
+          { id: 2, customer: 'Sarah Johnson', amount: 4500, status: 'accepted', date: new Date() },
+          { id: 3, customer: 'Mike Davis', amount: 2800, status: 'pending', date: new Date() },
+        ],
+        quotesUsed: 1,
+        quotesLimit: 5,
+        hasUnlimitedQuotes: false
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
 
   if (loading || !dashboardData) {
     return (

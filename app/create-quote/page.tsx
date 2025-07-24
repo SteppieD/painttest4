@@ -5,12 +5,20 @@ import { useRouter } from 'next/navigation';
 import { ChatInterface } from '@/components/chat/chat-interface';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, MessageSquare, List } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { ArrowLeft, MessageSquare, List, AlertCircle, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 
 export default function CreateQuotePage() {
   const [companyData, setCompanyData] = useState<any>(null);
+  const [quotaInfo, setQuotaInfo] = useState<{
+    used: number;
+    limit: number;
+    remaining: number;
+    isUnlimited: boolean;
+  } | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -20,7 +28,33 @@ export default function CreateQuotePage() {
       return;
     }
     setCompanyData(data);
+    fetchQuotaInfo(data);
   }, [router]);
+
+  const fetchQuotaInfo = async (company: any) => {
+    try {
+      const response = await fetch('/api/companies/usage', {
+        headers: {
+          'x-company-data': JSON.stringify({ 
+            id: company.id,
+            access_code: company.accessCode 
+          })
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setQuotaInfo({
+          used: data.currentMonth.quotesCreated,
+          limit: data.currentMonth.limit,
+          remaining: data.currentMonth.quotesRemaining,
+          isUnlimited: data.currentMonth.limit === -1
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching quota:', error);
+    }
+  };
 
   if (!companyData) {
     return (
@@ -59,6 +93,74 @@ export default function CreateQuotePage() {
         </div>
       </header>
 
+      {/* Quota Display */}
+      {quotaInfo && !quotaInfo.isUnlimited && (
+        <div className="container mx-auto px-4 py-4 relative z-20">
+          <Card className="glass-card border-white/10">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div>
+                    <p className="text-sm text-gray-400">Monthly Quote Usage</p>
+                    <p className="text-lg font-medium text-white">
+                      {quotaInfo.used} / {quotaInfo.limit} quotes used
+                    </p>
+                  </div>
+                  <Progress 
+                    value={(quotaInfo.used / quotaInfo.limit) * 100} 
+                    className="w-32 h-2"
+                  />
+                </div>
+                
+                {quotaInfo.remaining <= 2 && quotaInfo.remaining > 0 && (
+                  <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/50">
+                    <AlertCircle className="h-3 w-3 mr-1" />
+                    {quotaInfo.remaining} quotes left
+                  </Badge>
+                )}
+                
+                {quotaInfo.remaining === 0 && (
+                  <Link href="/dashboard/settings/billing">
+                    <Button 
+                      size="sm" 
+                      className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+                    >
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Upgrade to Pro
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Limit Reached Alert */}
+      {quotaInfo && quotaInfo.remaining === 0 && (
+        <div className="container mx-auto px-4 pb-4 relative z-20">
+          <Card className="glass-card border-red-500/50 bg-red-500/10">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-red-400 mt-0.5" />
+                <div className="flex-1">
+                  <h3 className="font-medium text-white mb-1">Monthly Quote Limit Reached</h3>
+                  <p className="text-sm text-gray-300 mb-3">
+                    You've used all {quotaInfo.limit} quotes in your free plan this month. 
+                    Upgrade to Pro for unlimited quotes and advanced features.
+                  </p>
+                  <Link href="/dashboard/settings/billing">
+                    <Button size="sm" variant="outline" className="border-white/20 text-white">
+                      View Upgrade Options
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
       {/* Main content */}
       <main className="container mx-auto px-4 py-6 relative z-10">
         <div className="mx-auto max-w-4xl">
@@ -72,12 +174,33 @@ export default function CreateQuotePage() {
               </p>
             </div>
             <div className="flex-1 overflow-hidden">
-              <ChatInterface
-                companyId={companyData.id}
-                onQuoteCreated={(quoteId) => {
-                  router.push(`/dashboard/quotes/${quoteId}`);
-                }}
-              />
+              {quotaInfo && quotaInfo.remaining === 0 ? (
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-center p-8">
+                    <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <AlertCircle className="h-8 w-8 text-red-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-2">Quote Limit Reached</h3>
+                    <p className="text-gray-400 mb-6 max-w-md">
+                      You've reached your monthly limit of {quotaInfo.limit} quotes. 
+                      Upgrade to Pro for unlimited quotes and continue growing your business.
+                    </p>
+                    <Link href="/dashboard/settings/billing">
+                      <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                        <Sparkles className="h-4 w-4 mr-2" />
+                        Upgrade to Pro
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <ChatInterface
+                  companyId={companyData.id}
+                  onQuoteCreated={(quoteId) => {
+                    router.push(`/dashboard/quotes/${quoteId}`);
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>

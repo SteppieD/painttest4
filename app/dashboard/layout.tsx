@@ -41,8 +41,8 @@ export default function DashboardLayout({
       })
       
       // Check if onboarding is needed
-      if (!data.onboarding_completed && pathname !== '/onboarding') {
-        router.push('/onboarding')
+      if (!data.onboarding_completed && pathname !== '/onboarding' && pathname !== '/onboarding/chat') {
+        router.push('/onboarding/chat')
         return
       }
     } catch (error) {

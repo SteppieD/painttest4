@@ -57,6 +57,20 @@ CREATE TABLE IF NOT EXISTS companies (
   productivity_baseboards DECIMAL(10,2) DEFAULT 60,
   productivity_doors DECIMAL(10,2) DEFAULT 2,
   productivity_windows DECIMAL(10,2) DEFAULT 3,
+  -- Subscription fields
+  subscription_tier VARCHAR(50) DEFAULT 'free',
+  subscription_status VARCHAR(50) DEFAULT 'active',
+  monthly_quote_count INTEGER DEFAULT 0,
+  monthly_quote_limit INTEGER DEFAULT 5,
+  last_quote_reset DATETIME DEFAULT CURRENT_TIMESTAMP,
+  subscription_started_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  trial_ends_at DATETIME,
+  stripe_customer_id VARCHAR(255),
+  stripe_subscription_id VARCHAR(255),
+  -- Onboarding fields
+  onboarding_completed BOOLEAN DEFAULT FALSE,
+  onboarding_step INTEGER DEFAULT 0,
+  setup_completed_at DATETIME,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -207,7 +221,14 @@ CREATE TABLE IF NOT EXISTS quotes (
   confirmed_rates TEXT, -- JSON storing rate confirmation details
   status VARCHAR(50) DEFAULT 'pending',
   conversation_summary TEXT,
+  -- Response time tracking fields
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  sent_at DATETIME,
+  viewed_at DATETIME,
+  accepted_at DATETIME,
+  response_time_hours INTEGER,
+  follow_up_count INTEGER DEFAULT 0,
+  last_follow_up_at DATETIME,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE CASCADE
 );

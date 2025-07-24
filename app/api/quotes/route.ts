@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
+import { SubscriptionService } from '@/lib/services/subscription';
 
 // Helper function to clean customer names
 const cleanCustomerName = (name: string) => {
@@ -63,6 +64,21 @@ export async function POST(request: NextRequest) {
 
     // Ensure companyId is a number
     const numericCompanyId = typeof companyId === 'string' ? parseInt(companyId) : companyId;
+    
+    // Check subscription limits before creating quote
+    const quoteLimitCheck = await SubscriptionService.checkQuoteLimit(numericCompanyId);
+    if (!quoteLimitCheck.allowed) {
+      return NextResponse.json(
+        { 
+          error: 'Quote limit reached',
+          message: `You've reached your monthly limit of ${quoteLimitCheck.limit} quotes. Upgrade to Pro for unlimited quotes.`,
+          limit: quoteLimitCheck.limit,
+          remaining: 0,
+          upgradeUrl: '/dashboard/settings/billing'
+        },
+        { status: 403 }
+      );
+    }
     
     // Get company data to fetch tax rate
     const companyData = await db.getCompany(numericCompanyId);
@@ -151,6 +167,9 @@ export async function POST(request: NextRequest) {
     try {
       result = await db.createQuote(quote);
       console.log('[QUOTES API] Quote created successfully:', result);
+      
+      // Increment quote count for subscription tracking
+      await SubscriptionService.incrementQuoteCount(numericCompanyId);
     } catch (dbError) {
       console.error('[QUOTES API] Database error:', dbError);
       console.error('[QUOTES API] Error message:', dbError instanceof Error ? dbError.message : 'Unknown error');

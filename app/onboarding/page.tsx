@@ -51,6 +51,7 @@ export default function OnboardingPage() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(1)
   const [saving, setSaving] = useState(false)
+  const [showChatOption, setShowChatOption] = useState(true)
   const [data, setData] = useState<OnboardingData>({
     companyName: company?.name || '',
     email: company?.email || '',
@@ -144,6 +145,42 @@ export default function OnboardingPage() {
           <h1 className="text-3xl font-bold text-white mb-2">Welcome to PaintQuote Pro! 🎨</h1>
           <p className="text-gray-400">Let's get your account set up in just a few minutes</p>
         </div>
+
+        {/* Chat Option Banner */}
+        {showChatOption && currentStep === 1 && (
+          <Card className="glass-card mb-6 border-purple-500/20">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                    <Sparkles className="h-5 w-5 text-purple-400" />
+                  </div>
+                  <div>
+                    <p className="text-white font-medium">Try our AI-powered setup!</p>
+                    <p className="text-sm text-gray-400">Chat with our assistant to set up your business</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={() => router.push('/onboarding/chat')}
+                    size="sm"
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                  >
+                    Try Chat Setup
+                  </Button>
+                  <Button
+                    onClick={() => setShowChatOption(false)}
+                    size="sm"
+                    variant="ghost"
+                    className="text-gray-400"
+                  >
+                    Dismiss
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Progress */}
         <div className="mb-8">
