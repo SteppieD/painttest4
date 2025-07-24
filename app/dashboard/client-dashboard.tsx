@@ -10,6 +10,7 @@ import { ClientDate } from '@/components/client-date'
 import { useCompanyAuth } from '@/components/auth-wrapper'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { AchievementDisplay } from '@/components/achievements/achievement-display'
 
 interface DashboardData {
   companyName: string
@@ -250,6 +251,42 @@ export function ClientDashboard() {
         </Card>
       )}
 
+      {/* Demo Quote Card - Show for new users */}
+      {dashboardData.totalQuotes === 0 && (
+        <Card className="glass-card border-purple-500/50 bg-gradient-to-br from-purple-500/10 to-blue-500/10">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                <Target className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-white mb-2">
+                  See PaintQuote Pro in Action - 60 Second Demo!
+                </h3>
+                <p className="text-sm text-gray-300 mb-4">
+                  Watch how fast you can create professional quotes. We&apos;ll show you with a real example.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/create-quote?demo=true">
+                    <Button 
+                      size="sm" 
+                      className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white"
+                    >
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Try Demo Quote (60 seconds)
+                    </Button>
+                  </Link>
+                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                    <Clock className="h-4 w-4" />
+                    <span>Save 6 hours per quote</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Quote Usage */}
       <QuoteUsageIndicator />
 
@@ -395,6 +432,11 @@ export function ClientDashboard() {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Achievement Display */}
+      <div className="mt-6">
+        <AchievementDisplay />
       </div>
 
       {/* Performance Metrics - Free users see basic version */}

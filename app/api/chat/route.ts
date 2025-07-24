@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     console.log('[CHAT] Processing for company:', company);
     
     // Parse request body - always use AI
-    const { message, sessionId } = await request.json();
+    const { message, sessionId, isDemo = false } = await request.json();
     const useAI = true; // Always use AI mode
     
     if (!message) {
@@ -54,7 +54,68 @@ export async function POST(request: NextRequest) {
     let suggestedReplies: string[] = [];
     
     try {
-      if (useAI) {
+      // Handle demo mode with pre-filled responses
+      if (isDemo) {
+        console.log('[CHAT] Demo mode active');
+        
+        // Demo responses based on message content
+        if (message.toLowerCase().includes('2,000 sq ft')) {
+          response = "Perfect! A 2,000 sq ft home with 8-foot ceilings. What paint finish would Sarah prefer? Most customers choose eggshell for living areas and semi-gloss for trim.";
+          suggestedReplies = ['Eggshell walls, semi-gloss trim', 'Flat walls, satin trim', 'Satin throughout'];
+          
+          // Store demo data
+          manager.updateQuoteData({
+            customerName: 'Sarah Johnson',
+            address: '123 Maple Street',
+            measurements: { wallSqft: 2000, ceilingSqft: 2000 },
+            rooms: ['Living Room', 'Kitchen', 'Master Bedroom', 'Bedroom 2', 'Bedroom 3', 'Bathrooms']
+          });
+        } else if (message.toLowerCase().includes('eggshell')) {
+          response = "Excellent choice! Eggshell for walls and semi-gloss for trim is our most popular combination. \n\n✅ **Quote Summary:**\n- Customer: Sarah Johnson\n- Address: 123 Maple Street\n- Interior: 2,000 sq ft\n- Finish: Eggshell walls, semi-gloss trim\n\n**Estimated Total: $4,850**\n\nShall I create the professional quote document now?";
+          isComplete = true;
+          quoteData = {
+            customerName: 'Sarah Johnson',
+            address: '123 Maple Street',
+            phoneNumber: '(555) 123-4567',
+            emailAddress: 'sarah.johnson@email.com',
+            projectType: 'interior',
+            measurements: {
+              wallSqft: 2000,
+              ceilingSqft: 2000,
+              trimLinearFt: 480,
+              doors: 15,
+              windows: 12
+            },
+            paintProducts: [{
+              name: 'Premium Interior Paint',
+              finish: 'Eggshell',
+              coverage: 350,
+              quantity: 6
+            }],
+            pricing: {
+              paintingCost: 3500,
+              primingCost: 0,
+              trimCost: 650,
+              prepWorkCost: 350,
+              materialsCost: 350,
+              subtotal: 4850,
+              taxAmount: 0,
+              total: 4850
+            },
+            timeline: '3-4 days',
+            prepWork: 'light'
+          };
+          suggestedReplies = [];
+        } else {
+          // Default demo response
+          response = "I'm processing your request...";
+        }
+        
+        // Add a time saved indicator for demo
+        if (isComplete) {
+          response += "\n\n⏱️ **Time saved: 5 hours 45 minutes** compared to manual quoting!";
+        }
+      } else if (useAI) {
         console.log('[CHAT] Using AI assistant with enhanced context');
         
         // Get company rates from database

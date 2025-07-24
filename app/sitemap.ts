@@ -32,6 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9
     },
     {
+      url: `${baseUrl}/painting-contractor-software`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.95
+    },
+    {
+      url: `${baseUrl}/painting-quote-software`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.95
+    },
+    {
       url: `${baseUrl}/interior-painting-quote-calculator`,
       lastModified: now,
       changeFrequency: 'monthly',

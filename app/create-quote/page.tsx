@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ChatInterface } from '@/components/chat/chat-interface';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,6 +12,8 @@ import Link from 'next/link';
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 
 export default function CreateQuotePage() {
+  const searchParams = useSearchParams();
+  const isDemo = searchParams.get('demo') === 'true';
   const [companyData, setCompanyData] = useState<any>(null);
   const [quotaInfo, setQuotaInfo] = useState<{
     used: number;
@@ -196,6 +198,7 @@ export default function CreateQuotePage() {
               ) : (
                 <ChatInterface
                   companyId={companyData.id}
+                  isDemo={isDemo}
                   onQuoteCreated={(quoteId) => {
                     router.push(`/dashboard/quotes/${quoteId}`);
                   }}

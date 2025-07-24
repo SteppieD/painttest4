@@ -11,6 +11,7 @@ import Link from 'next/link';
 
 export default function TrialSignupPage() {
   const [companyName, setCompanyName] = useState('');
+  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -26,7 +27,7 @@ export default function TrialSignupPage() {
       const response = await fetch('/api/auth/simple-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ companyName }),
+        body: JSON.stringify({ companyName, email }),
       });
 
       const data = await response.json();
@@ -46,7 +47,7 @@ export default function TrialSignupPage() {
           accessCode: data.accessCode,
           name: data.company.name,
           phone: '',
-          email: '',
+          email: data.company.email || email,
           logoUrl: null,
           loginTime: Date.now(),
           isNewCompany: true,
@@ -79,6 +80,11 @@ export default function TrialSignupPage() {
               <p className="text-sm text-blue-800 mb-2">Your access code is:</p>
               <p className="text-2xl font-mono font-bold text-blue-900">{accessCode}</p>
               <p className="text-xs text-blue-700 mt-2">Save this code to log in later</p>
+            </div>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <p className="text-sm text-green-800">
+                📧 We&apos;ve sent a welcome email to <strong>{email}</strong> with your access code
+              </p>
             </div>
             <p className="text-sm text-gray-600 text-center">
               Redirecting to your dashboard...
@@ -117,6 +123,22 @@ export default function TrialSignupPage() {
               />
             </div>
 
+            <div className="space-y-2">
+              <Label htmlFor="email">Email Address</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={loading}
+              />
+              <p className="text-xs text-gray-500">
+                We&apos;ll send your access code and important updates here
+              </p>
+            </div>
+
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg p-3 text-sm">
                 {error}
@@ -126,7 +148,7 @@ export default function TrialSignupPage() {
             <Button
               type="submit"
               className="w-full"
-              disabled={loading || !companyName.trim()}
+              disabled={loading || !companyName.trim() || !email.trim()}
             >
               {loading ? 'Creating Account...' : 'Start Free Trial'}
             </Button>

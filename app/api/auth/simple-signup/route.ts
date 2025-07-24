@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 
 export async function POST(request: NextRequest) {
   try {
-    const { companyName } = await request.json()
+    const { companyName, email } = await request.json()
 
     if (!companyName || companyName.trim() === '') {
       return NextResponse.json(
@@ -13,7 +13,41 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    if (!email || email.trim() === '') {
+      return NextResponse.json(
+        { error: 'Email is required' },
+        { status: 400 }
+      )
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Please enter a valid email address' },
+        { status: 400 }
+      )
+    }
+
     const db = getDatabaseAdapter()
+
+    // Check if email already exists
+    try {
+      const existingCompanies = await db.getCompanies()
+      const emailExists = existingCompanies.some(
+        company => company.email?.toLowerCase() === email.trim().toLowerCase()
+      )
+      
+      if (emailExists) {
+        return NextResponse.json(
+          { error: 'An account with this email already exists. Please sign in with your access code.' },
+          { status: 400 }
+        )
+      }
+    } catch (checkError) {
+      console.error('Error checking existing email:', checkError)
+      // Continue with signup if check fails
+    }
 
     // Generate a unique access code
     const accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase()
@@ -22,7 +56,7 @@ export async function POST(request: NextRequest) {
     const company = await db.createCompany({
       company_name: companyName.trim(),
       access_code: accessCode,
-      email: `${accessCode.toLowerCase()}@paintquote.com`,
+      email: email.trim().toLowerCase(),
       phone: '',
       is_trial: process.env.USE_SUPABASE === 'true' ? false : 0, // Handle boolean/integer difference
       quote_limit: 5
@@ -42,12 +76,26 @@ export async function POST(request: NextRequest) {
     // The company table with access_code is sufficient for authentication
     // TODO: Implement proper session management with Supabase-compatible approach
 
+    // Send welcome email (non-blocking)
+    fetch(`${request.nextUrl.origin}/api/email/send-welcome`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: company.email,
+        companyName: company.company_name,
+        accessCode: accessCode
+      })
+    }).catch(error => {
+      console.error('Failed to send welcome email:', error)
+    })
+
     return NextResponse.json({
       success: true,
       accessCode: accessCode,
       company: {
         id: company.id,
         name: company.company_name,
+        email: company.email,
         quotesRemaining: 5
       },
       message: `Welcome to PaintQuote Pro! Your access code is: ${accessCode}`

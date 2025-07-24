@@ -129,15 +129,20 @@ Important: You must respond with a JSON object containing:
       aiResponse = generateFallbackResponse(currentStep, message, collectedData);
     }
 
-    // Update collected data
+    // Update collected data - merge the extracted data properly
     const updatedData = {
       ...collectedData,
       ...aiResponse.extractedData
     };
 
+    // Log the updated data for debugging
+    console.log('[CHAT ONBOARDING] Updated data:', updatedData);
+    console.log('[CHAT ONBOARDING] Next step:', aiResponse.nextStep);
+    console.log('[CHAT ONBOARDING] Is complete:', aiResponse.isComplete);
+
     return NextResponse.json({
       response: aiResponse.response,
-      collectedData: updatedData,
+      collectedData: aiResponse.extractedData,  // Only send the new extracted data
       nextStep: aiResponse.nextStep,
       isComplete: aiResponse.isComplete
     });
@@ -152,6 +157,9 @@ Important: You must respond with a JSON object containing:
 }
 
 function generateFallbackResponse(currentStep: number, message: string, collectedData: any) {
+  // Log for debugging
+  console.log('[FALLBACK] Step:', currentStep, 'Message:', message, 'CollectedData:', collectedData);
+  
   const responses = {
     0: {
       response: "Great! I'll use that as your company name. What's your business email address?",
@@ -192,11 +200,11 @@ You can tell me all three at once, like: "$50/hour, 35% markup, $600 minimum"`,
       response: `Excellent! I've set up your pricing preferences. 
 
 Here's a summary of your business setup:
-✅ Company: ${collectedData.companyName}
-✅ Email: ${collectedData.email}
-✅ Phone: ${collectedData.phone}
-✅ Location: ${collectedData.city}, ${collectedData.state}
-✅ Tax Rate: ${collectedData.taxRate}%
+✅ Company: ${collectedData.companyName || 'Your Company'}
+✅ Email: ${collectedData.email || 'Not provided'}
+✅ Phone: ${collectedData.phone || 'Not provided'}
+✅ Location: ${collectedData.city || 'City'}, ${collectedData.state || 'State'}
+✅ Tax Rate: ${collectedData.taxRate || 0}%
 ✅ Pricing: Set up and ready!
 
 You're all set! Let me save these settings and get you started with PaintQuote Pro! 🎉`,

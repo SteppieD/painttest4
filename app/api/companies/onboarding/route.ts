@@ -8,11 +8,13 @@ export async function POST(request: NextRequest) {
     const company = getCompanyFromRequest(request);
     
     if (!company) {
+      console.error('[ONBOARDING] No company in request');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const data = await request.json();
     
+    console.log('[ONBOARDING] Company from request:', company);
     console.log('[ONBOARDING] Received data:', data);
     console.log('[ONBOARDING] Updating company:', company.id);
     
@@ -26,22 +28,22 @@ export async function POST(request: NextRequest) {
         await db.createCompany({
           id: company.id,
           access_code: company.accessCode,
-          company_name: company.name,
-          name: company.name,
-          email: company.email || '',
-          phone: ''
+          company_name: data.companyName || company.name || 'Unknown Company',
+          name: data.companyName || company.name || 'Unknown Company',
+          email: data.email || company.email || '',
+          phone: data.phone || ''
         });
       } else {
         return NextResponse.json({ error: 'Company not found' }, { status: 404 });
       }
     }
     
-    // Prepare update data
+    // Prepare update data - ensure we use the provided data first, then fall back to company data
     const updateData: any = {
-      company_name: data.companyName || company.name,
-      email: data.email || company.email,
+      company_name: data.companyName || company.name || 'Unknown Company',
+      email: data.email || company.email || '',
       phone: data.phone || '',
-      tax_rate: data.taxRate || 0,
+      tax_rate: data.taxRate !== undefined ? data.taxRate : 0,
       onboarding_completed: true,
       onboarding_step: 4,
       setup_completed_at: new Date().toISOString()

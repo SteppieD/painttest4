@@ -101,7 +101,9 @@ Let's start with the basics - what's the name of your painting company?`,
           'Content-Type': 'application/json',
           'x-company-data': JSON.stringify({ 
             id: company?.id,
-            access_code: company?.accessCode 
+            accessCode: company?.accessCode,
+            name: company?.name || collectedData.companyName || 'Unknown Company',
+            email: company?.email || collectedData.email
           })
         },
         body: JSON.stringify({
@@ -156,6 +158,10 @@ Let's start with the basics - what's the name of your painting company?`,
 
   const completeOnboarding = async () => {
     setIsSaving(true)
+    
+    // Log the collected data to debug
+    console.log('[CHAT ONBOARDING] Completing with data:', collectedData)
+    
     try {
       const response = await fetch('/api/companies/onboarding', {
         method: 'POST',
@@ -163,7 +169,9 @@ Let's start with the basics - what's the name of your painting company?`,
           'Content-Type': 'application/json',
           'x-company-data': JSON.stringify({ 
             id: company?.id,
-            access_code: company?.accessCode 
+            accessCode: company?.accessCode,
+            name: company?.name || collectedData.companyName || 'Unknown Company',
+            email: company?.email || collectedData.email
           })
         },
         body: JSON.stringify({
