@@ -59,13 +59,16 @@ export async function POST(request: NextRequest) {
       }
     }
     
+    // Determine which adapter we're using
+    const isMemoryAdapter = !process.env.SUPABASE_URL && (process.env.NODE_ENV === 'production' || process.env.VERCEL);
+    
     // Prepare update data - ensure we use the provided data first, then fall back to company data
     updateData = {
       company_name: data.companyName || company.name || 'Unknown Company',
       email: data.email || company.email || '',
       phone: data.phone || '',
       tax_rate: data.taxRate !== undefined ? data.taxRate : 0,
-      onboarding_completed: 1, // SQLite uses 1 for true
+      onboarding_completed: isMemoryAdapter ? true : 1, // Memory adapter uses boolean, SQLite uses 1
       onboarding_step: 4,
       setup_completed_at: new Date().toISOString()
     };
@@ -83,10 +86,35 @@ export async function POST(request: NextRequest) {
     
     console.log('[ONBOARDING] Update data:', updateData);
     
-    // Update the company
-    const updatedCompany = await db.updateCompany(company.id, updateData);
-    
-    console.log('[ONBOARDING] Company updated successfully');
+    // Update the company with additional error handling
+    let updatedCompany;
+    try {
+      updatedCompany = await db.updateCompany(company.id, updateData);
+      console.log('[ONBOARDING] Company updated successfully:', updatedCompany);
+    } catch (updateError) {
+      console.error('[ONBOARDING] Failed to update company:', updateError);
+      console.error('[ONBOARDING] Update error details:', {
+        companyId: company.id,
+        updateData,
+        errorMessage: updateError instanceof Error ? updateError.message : 'Unknown error',
+        errorStack: updateError instanceof Error ? updateError.stack : 'No stack'
+      });
+      
+      // Try to recover by creating the company if update failed
+      try {
+        console.log('[ONBOARDING] Attempting to create company after update failure');
+        const createData = {
+          id: company.id,
+          access_code: company.accessCode,
+          ...updateData
+        };
+        updatedCompany = await db.createCompany(createData);
+        console.log('[ONBOARDING] Company created as fallback:', updatedCompany);
+      } catch (createError) {
+        console.error('[ONBOARDING] Failed to create company as fallback:', createError);
+        throw updateError; // Throw the original error
+      }
+    }
 
     return NextResponse.json({ 
       success: true,

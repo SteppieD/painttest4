@@ -133,8 +133,14 @@ export default function OnboardingPage() {
       })
 
       if (!response.ok) {
-        const errorData = await response.json()
-        console.error('[ONBOARDING PAGE] Server error:', errorData)
+        let errorData;
+        try {
+          errorData = await response.json()
+          console.error('[ONBOARDING PAGE] Server error:', errorData)
+        } catch (jsonError) {
+          console.error('[ONBOARDING PAGE] Failed to parse error response:', jsonError)
+          errorData = { error: `Server error: ${response.status} ${response.statusText}` }
+        }
         throw new Error(errorData.error || 'Failed to complete onboarding')
       }
 
