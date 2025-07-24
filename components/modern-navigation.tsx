@@ -40,6 +40,12 @@ function ModernNavigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             <Link 
+              href="/painting-contractor-software" 
+              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+            >
+              Software
+            </Link>
+            <Link 
               href="/#features" 
               className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
             >
@@ -56,12 +62,6 @@ function ModernNavigation() {
               className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
             >
               ROI Calculator
-            </Link>
-            <Link 
-              href="/#testimonials" 
-              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
-            >
-              Testimonials
             </Link>
             <Link 
               href="/contact" 
@@ -107,6 +107,13 @@ function ModernNavigation() {
         }`}>
           <div className="py-4 space-y-1">
             <Link 
+              href="/painting-contractor-software" 
+              className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Software
+            </Link>
+            <Link 
               href="/#features" 
               className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -126,13 +133,6 @@ function ModernNavigation() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ROI Calculator
-            </Link>
-            <Link 
-              href="/#testimonials" 
-              className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Testimonials
             </Link>
             <Link 
               href="/contact" 
