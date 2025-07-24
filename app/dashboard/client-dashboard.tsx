@@ -221,7 +221,7 @@ export function ClientDashboard() {
       </div>
 
       {/* Setup Reminder - Show if onboarding not completed and not skipped */}
-      {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && !companyData.isNewCompany && (
+      {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && (
         <Card className="glass-card border-amber-500/50 bg-amber-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">

@@ -53,7 +53,7 @@ export default function TrialSignupPage() {
           loginTime: Date.now(),
           isNewCompany: true,
           quotesRemaining: data.company.quotesRemaining || 5,
-          onboarding_completed: true // Skip onboarding for trial signups
+          onboarding_completed: false // Show setup prompt
         })
       );
       
@@ -108,18 +108,6 @@ export default function TrialSignupPage() {
 
   return (
     <>
-      <style jsx global>{`
-        #company,
-        #email,
-        #company:hover,
-        #email:hover {
-          background-color: rgba(31, 41, 55, 0.8) !important;
-        }
-        #company:focus,
-        #email:focus {
-          background-color: rgba(31, 41, 55, 0.9) !important;
-        }
-      `}</style>
       <ModernNavigation />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 pt-16">
         {/* Background effects */}

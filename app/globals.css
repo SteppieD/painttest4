@@ -77,3 +77,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Trial Signup Input Overrides */
+#company,
+#email {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+}
+
+#company:hover,
+#email:hover {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+}
+
+#company:focus,
+#email:focus {
+  background-color: rgba(31, 41, 55, 0.9) !important;
+  outline: none !important;
+}
