@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ChatInterface } from '@/components/chat/chat-interface';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +11,7 @@ import { ArrowLeft, MessageSquare, List, AlertCircle, Sparkles } from 'lucide-re
 import Link from 'next/link';
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 
-export default function CreateQuotePage() {
+function CreateQuoteContent() {
   const searchParams = useSearchParams();
   const isDemo = searchParams.get('demo') === 'true';
   const [companyData, setCompanyData] = useState<any>(null);
@@ -209,5 +209,20 @@ export default function CreateQuotePage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function CreateQuotePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading quote builder...</p>
+        </div>
+      </div>
+    }>
+      <CreateQuoteContent />
+    </Suspense>
   );
 }
