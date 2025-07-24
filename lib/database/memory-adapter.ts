@@ -21,6 +21,12 @@ function initializeMemoryStore() {
     name: 'Demo Painting Company',
     phone: '(555) 123-4567',
     email: 'demo@paintingcompany.com',
+    tax_rate: 0,
+    onboarding_completed: false,
+    onboarding_step: 0,
+    subscription_tier: 'free',
+    monthly_quote_count: 0,
+    monthly_quote_limit: 5,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
   });
