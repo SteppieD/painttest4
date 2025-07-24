@@ -439,11 +439,11 @@ export default function OnboardingPage() {
         </Card>
 
         {/* Skip Option */}
-        <div className="text-center mt-4">
+        <div className="text-center mt-6">
           <Button
-            variant="ghost"
+            variant="outline"
             onClick={() => router.push('/dashboard')}
-            className="text-gray-300 hover:text-white underline"
+            className="bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700 hover:border-gray-500 transition-colors"
           >
             Skip Setup (Complete Later)
           </Button>
