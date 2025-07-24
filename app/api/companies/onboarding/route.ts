@@ -94,11 +94,24 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[ONBOARDING] Error completing onboarding:', error);
     console.error('[ONBOARDING] Error stack:', error instanceof Error ? error.stack : 'No stack');
+    console.error('[ONBOARDING] Error details:', {
+      errorName: error instanceof Error ? error.name : 'Unknown',
+      errorMessage: error instanceof Error ? error.message : 'Unknown error',
+      companyId: company?.id,
+      updateData: updateData
+    });
+    
+    // Return more detailed error info for debugging
     return NextResponse.json(
       { 
         error: 'Failed to complete onboarding',
         details: error instanceof Error ? error.message : 'Unknown error',
-        type: error instanceof Error ? error.name : 'Unknown'
+        type: error instanceof Error ? error.name : 'Unknown',
+        // Include debugging info in development/Vercel
+        debug: process.env.NODE_ENV !== 'production' || process.env.VERCEL ? {
+          companyId: company?.id,
+          errorStack: error instanceof Error ? error.stack?.split('\n').slice(0, 3).join('\n') : 'No stack'
+        } : undefined
       },
       { status: 500 }
     );

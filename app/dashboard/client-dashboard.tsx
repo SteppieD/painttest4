@@ -219,8 +219,8 @@ export function ClientDashboard() {
         </div>
       </div>
 
-      {/* Setup Reminder - Show if onboarding not completed */}
-      {companyData && !companyData.onboarding_completed && (
+      {/* Setup Reminder - Show if onboarding not completed and not skipped */}
+      {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && (
         <Card className="glass-card border-amber-500/50 bg-amber-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
@@ -232,12 +232,33 @@ export function ClientDashboard() {
                 <p className="text-sm text-gray-300 mb-3">
                   Finish setting up your business profile to unlock all features and start creating professional quotes.
                 </p>
-                <Link href="/onboarding">
-                  <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
-                    <Sparkles className="h-4 w-4 mr-2" />
-                    Complete Setup
+                <div className="flex gap-3">
+                  <Link href="/onboarding">
+                    <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Complete Setup
+                    </Button>
+                  </Link>
+                  <Button 
+                    size="sm"
+                    variant="outline" 
+                    className="bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700"
+                    onClick={() => {
+                      // Update local storage to hide reminder
+                      const stored = localStorage.getItem('paintquote_company');
+                      if (stored) {
+                        const data = JSON.parse(stored);
+                        localStorage.setItem('paintquote_company', JSON.stringify({
+                          ...data,
+                          skipOnboarding: true
+                        }));
+                        window.location.reload();
+                      }
+                    }}
+                  >
+                    Skip for Now
                   </Button>
-                </Link>
+                </div>
               </div>
             </div>
           </CardContent>
