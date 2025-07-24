@@ -1,41 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
+import { DebugLogger } from '@/lib/debug-logger';
 
 // POST - Complete onboarding
 export async function POST(request: NextRequest) {
+  const logger = new DebugLogger('ONBOARDING_API');
   let updateData: any = {};
   let company: any = null;
   
   try {
+    logger.checkpoint('Starting onboarding process');
     company = getCompanyFromRequest(request);
+    logger.info('Retrieved company from request', { companyId: company?.id, hasCompany: !!company });
     
     if (!company) {
-      console.error('[ONBOARDING] No company in request');
+      logger.error('No company in request');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    logger.checkpoint('Parsing request body');
     const data = await request.json();
-    
-    console.log('[ONBOARDING] Company from request:', company);
-    console.log('[ONBOARDING] Received data:', data);
-    console.log('[ONBOARDING] Updating company:', company.id);
+    logger.info('Received form data', { 
+      fields: Object.keys(data),
+      hasCompanyName: !!data.companyName,
+      hasEmail: !!data.email,
+      taxRate: data.taxRate 
+    });
     
     // Verify company exists in database
+    logger.checkpoint('Checking if company exists in database');
     let existingCompany;
     try {
       existingCompany = await db.getCompany(company.id);
+      logger.info('Company lookup result', { 
+        found: !!existingCompany,
+        companyId: company.id 
+      });
     } catch (dbError) {
-      console.error('[ONBOARDING] Database error when getting company:', dbError);
+      logger.error('Database error when getting company', dbError);
       existingCompany = null;
     }
     
     if (!existingCompany) {
-      console.error('[ONBOARDING] Company not found in database:', company.id);
-      // Always create the company if it doesn't exist (for ephemeral companies)
-      console.log('[ONBOARDING] Creating company in memory store');
+      logger.warn('Company not found in database, creating new one', { companyId: company.id });
       try {
-        const newCompany = await db.createCompany({
+        const createData = {
           id: company.id,
           access_code: company.accessCode,
           company_name: data.companyName || company.name || 'Unknown Company',
@@ -48,21 +58,32 @@ export async function POST(request: NextRequest) {
           subscription_tier: 'free',
           monthly_quote_count: 0,
           monthly_quote_limit: 5
-        });
-        console.log('[ONBOARDING] Company created successfully:', newCompany);
+        };
+        logger.info('Creating company with data', createData);
+        const newCompany = await db.createCompany(createData);
+        logger.success('Company created successfully', { companyId: newCompany.id });
       } catch (createError) {
-        console.error('[ONBOARDING] Failed to create company:', createError);
+        logger.error('Failed to create company', createError);
+        logger.printSummary();
         return NextResponse.json({ 
           error: 'Failed to create company', 
-          details: createError instanceof Error ? createError.message : 'Unknown error' 
+          details: createError instanceof Error ? createError.message : 'Unknown error',
+          debugSummary: logger.getSummary()
         }, { status: 500 });
       }
     }
     
     // Determine which adapter we're using
     const isMemoryAdapter = !process.env.SUPABASE_URL && (process.env.NODE_ENV === 'production' || process.env.VERCEL);
+    logger.info('Database adapter type', { 
+      isMemoryAdapter, 
+      hasSupabaseUrl: !!process.env.SUPABASE_URL,
+      nodeEnv: process.env.NODE_ENV,
+      isVercel: !!process.env.VERCEL
+    });
     
     // Prepare update data - ensure we use the provided data first, then fall back to company data
+    logger.checkpoint('Preparing update data');
     updateData = {
       company_name: data.companyName || company.name || 'Unknown Company',
       email: data.email || company.email || '',
@@ -84,53 +105,51 @@ export async function POST(request: NextRequest) {
     if (data.markupPercentage) updateData.default_labor_percentage = data.markupPercentage;
     // Note: minimum_job_size column doesn't exist in current schema, skip it
     
-    console.log('[ONBOARDING] Update data:', updateData);
+    logger.info('Prepared update data', updateData);
     
     // Update the company with additional error handling
+    logger.checkpoint('Updating company');
     let updatedCompany;
     try {
       updatedCompany = await db.updateCompany(company.id, updateData);
-      console.log('[ONBOARDING] Company updated successfully:', updatedCompany);
-    } catch (updateError) {
-      console.error('[ONBOARDING] Failed to update company:', updateError);
-      console.error('[ONBOARDING] Update error details:', {
-        companyId: company.id,
-        updateData,
-        errorMessage: updateError instanceof Error ? updateError.message : 'Unknown error',
-        errorStack: updateError instanceof Error ? updateError.stack : 'No stack'
+      logger.success('Company updated successfully', { 
+        companyId: updatedCompany.id,
+        onboardingCompleted: updatedCompany.onboarding_completed 
       });
+    } catch (updateError) {
+      logger.error('Failed to update company', updateError);
       
       // Try to recover by creating the company if update failed
+      logger.warn('Attempting to create company after update failure');
       try {
-        console.log('[ONBOARDING] Attempting to create company after update failure');
         const createData = {
           id: company.id,
           access_code: company.accessCode,
           ...updateData
         };
+        logger.info('Fallback create data', createData);
         updatedCompany = await db.createCompany(createData);
-        console.log('[ONBOARDING] Company created as fallback:', updatedCompany);
+        logger.success('Company created as fallback', { companyId: updatedCompany.id });
       } catch (createError) {
-        console.error('[ONBOARDING] Failed to create company as fallback:', createError);
+        logger.error('Failed to create company as fallback', createError);
+        logger.printSummary();
         throw updateError; // Throw the original error
       }
     }
 
+    logger.checkpoint('Onboarding completed successfully');
+    logger.printSummary();
+    
     return NextResponse.json({ 
       success: true,
       company: updatedCompany,
-      message: 'Onboarding completed successfully'
+      message: 'Onboarding completed successfully',
+      debugSummary: logger.getSummary()
     });
 
   } catch (error) {
-    console.error('[ONBOARDING] Error completing onboarding:', error);
-    console.error('[ONBOARDING] Error stack:', error instanceof Error ? error.stack : 'No stack');
-    console.error('[ONBOARDING] Error details:', {
-      errorName: error instanceof Error ? error.name : 'Unknown',
-      errorMessage: error instanceof Error ? error.message : 'Unknown error',
-      companyId: company?.id,
-      updateData: updateData
-    });
+    logger.error('Error completing onboarding', error);
+    logger.printSummary();
     
     // Return more detailed error info for debugging
     return NextResponse.json(
@@ -138,9 +157,11 @@ export async function POST(request: NextRequest) {
         error: 'Failed to complete onboarding',
         details: error instanceof Error ? error.message : 'Unknown error',
         type: error instanceof Error ? error.name : 'Unknown',
+        debugSummary: logger.getSummary(),
         // Include debugging info in development/Vercel
         debug: process.env.NODE_ENV !== 'production' || process.env.VERCEL ? {
           companyId: company?.id,
+          updateData: updateData,
           errorStack: error instanceof Error ? error.stack?.split('\n').slice(0, 3).join('\n') : 'No stack'
         } : undefined
       },

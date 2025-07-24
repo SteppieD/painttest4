@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
 import { useCompanyAuth } from '@/components/auth-wrapper'
+import { DebugLogger } from '@/lib/debug-logger'
 import { 
   Building2, 
   Calculator, 
@@ -92,7 +93,16 @@ export default function OnboardingPage() {
   }
 
   const handleComplete = async () => {
+    const logger = new DebugLogger('ONBOARDING_CLIENT');
+    
+    logger.checkpoint('Starting onboarding completion');
+    logger.info('Company data check', { 
+      hasCompanyData: !!companyData,
+      companyId: companyData?.id 
+    });
+    
     if (!companyData) {
+      logger.error('No company data found');
       toast({
         title: 'Error',
         description: 'No company data found. Please log in again.',
@@ -103,48 +113,69 @@ export default function OnboardingPage() {
     }
 
     setSaving(true)
+    logger.checkpoint('Preparing request');
+    
     try {
       // Log the data being sent
-      console.log('[ONBOARDING PAGE] Sending company data:', {
-        id: companyData.id,
-        accessCode: companyData.accessCode,
-        name: companyData.name || data.companyName,
-        email: companyData.email || data.email
-      })
-      console.log('[ONBOARDING PAGE] Sending form data:', data)
+      const requestHeaders = {
+        'Content-Type': 'application/json',
+        'x-company-data': JSON.stringify({ 
+          id: companyData.id,
+          accessCode: companyData.accessCode,
+          access_code: companyData.accessCode,
+          name: companyData.name || data.companyName,
+          email: companyData.email || data.email
+        })
+      };
+      
+      const requestBody = {
+        ...data,
+        onboarding_completed: true
+      };
+      
+      logger.info('Request details', {
+        url: '/api/companies/onboarding',
+        method: 'POST',
+        headerKeys: Object.keys(requestHeaders),
+        bodyKeys: Object.keys(requestBody)
+      });
       
       // Save all settings
+      logger.checkpoint('Sending request to server');
       const response = await fetch('/api/companies/onboarding', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-company-data': JSON.stringify({ 
-            id: companyData.id,
-            accessCode: companyData.accessCode,
-            access_code: companyData.accessCode, // Include both formats for compatibility
-            name: companyData.name || data.companyName,
-            email: companyData.email || data.email
-          })
-        },
-        body: JSON.stringify({
-          ...data,
-          onboarding_completed: true
-        })
+        headers: requestHeaders,
+        body: JSON.stringify(requestBody)
       })
+
+      logger.info('Response received', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
 
       if (!response.ok) {
         let errorData;
         try {
           errorData = await response.json()
-          console.error('[ONBOARDING PAGE] Server error:', errorData)
+          logger.error('Server error response', errorData);
         } catch (jsonError) {
-          console.error('[ONBOARDING PAGE] Failed to parse error response:', jsonError)
+          logger.error('Failed to parse error response', jsonError);
           errorData = { error: `Server error: ${response.status} ${response.statusText}` }
         }
+        logger.printSummary();
         throw new Error(errorData.error || 'Failed to complete onboarding')
       }
 
+      // Parse success response
+      const successData = await response.json();
+      logger.success('Onboarding API succeeded', { 
+        hasCompany: !!successData.company,
+        hasDebugSummary: !!successData.debugSummary 
+      });
+
       // Update local storage
+      logger.checkpoint('Updating local storage');
       const existingData = localStorage.getItem('paintquote_company')
       if (existingData) {
         const parsedData = JSON.parse(existingData)
@@ -155,6 +186,9 @@ export default function OnboardingPage() {
         }))
       }
 
+      logger.success('Onboarding completed successfully');
+      logger.printSummary();
+
       toast({
         title: 'Welcome to PaintQuote Pro!',
         description: 'Your account is all set up and ready to go.'
@@ -162,7 +196,8 @@ export default function OnboardingPage() {
 
       router.push('/dashboard')
     } catch (error) {
-      console.error('Error completing onboarding:', error)
+      logger.error('Error completing onboarding', error);
+      logger.printSummary();
       toast({
         title: 'Error',
         description: 'Failed to complete setup. Please try again.',
