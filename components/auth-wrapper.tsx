@@ -14,6 +14,7 @@ interface CompanyData {
   isNewCompany?: boolean;
   subscription_tier?: 'free' | 'pro' | 'enterprise';
   onboarding_completed?: boolean;
+  skipOnboarding?: boolean;
 }
 
 export function AuthWrapper({ children }: { children: React.ReactNode }) {

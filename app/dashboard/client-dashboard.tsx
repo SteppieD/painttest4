@@ -221,7 +221,7 @@ export function ClientDashboard() {
       </div>
 
       {/* Setup Reminder - Show if onboarding not completed and not skipped */}
-      {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && (
+      {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && !companyData.isNewCompany && (
         <Card className="glass-card border-amber-500/50 bg-amber-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
@@ -267,7 +267,7 @@ export function ClientDashboard() {
       )}
 
       {/* Demo Quote Card - Show for new users */}
-      {dashboardData.totalQuotes === 0 && (
+      {(dashboardData.totalQuotes === 0 || companyData?.isNewCompany) && (
         <Card className="glass-card border-purple-500/50 bg-gradient-to-br from-purple-500/10 to-blue-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">

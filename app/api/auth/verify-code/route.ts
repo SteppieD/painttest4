@@ -38,7 +38,8 @@ export async function POST(request: NextRequest) {
         logoUrl: company.logo_url,
         isTrial: company.is_trial,
         quoteLimit: company.quote_limit,
-        needsOnboarding: false
+        needsOnboarding: false,
+        onboarding_completed: company.onboarding_completed || false
       }
     });
 

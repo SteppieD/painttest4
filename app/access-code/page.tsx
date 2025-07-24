@@ -48,7 +48,8 @@ export default function AccessCodePage() {
             email: data.company.email || '',
             logoUrl: data.company.logoUrl || null,
             loginTime: Date.now(),
-            isNewCompany: data.company.needsOnboarding || false
+            isNewCompany: data.company.needsOnboarding || false,
+            onboarding_completed: data.company.onboarding_completed || false
           })
         );
         // Use window.location for a hard redirect to ensure proper loading

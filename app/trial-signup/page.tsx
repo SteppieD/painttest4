@@ -52,7 +52,8 @@ export default function TrialSignupPage() {
           logoUrl: null,
           loginTime: Date.now(),
           isNewCompany: true,
-          quotesRemaining: data.company.quotesRemaining || 5
+          quotesRemaining: data.company.quotesRemaining || 5,
+          onboarding_completed: true // Skip onboarding for trial signups
         })
       );
       

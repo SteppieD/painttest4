@@ -59,7 +59,8 @@ export async function POST(request: NextRequest) {
       email: email.trim().toLowerCase(),
       phone: '',
       is_trial: process.env.USE_SUPABASE === 'true' ? false : 0, // Handle boolean/integer difference
-      quote_limit: 5
+      quote_limit: 5,
+      onboarding_completed: process.env.USE_SUPABASE === 'true' ? true : 1 // Mark as completed to skip onboarding
     })
 
     // Create session cookie
@@ -96,7 +97,8 @@ export async function POST(request: NextRequest) {
         id: company.id,
         name: company.company_name,
         email: company.email,
-        quotesRemaining: 5
+        quotesRemaining: 5,
+        onboarding_completed: true
       },
       message: `Welcome to PaintQuote Pro! Your access code is: ${accessCode}`
     })
