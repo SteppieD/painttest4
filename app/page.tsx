@@ -58,7 +58,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="#roi">
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg">
+                <Button size="lg" variant="ghost" className="border border-white/20 text-white hover:bg-white/10 bg-transparent px-8 py-6 text-lg">
                   See ROI Calculator
                   <DollarSign className="ml-2 h-5 w-5" />
                 </Button>

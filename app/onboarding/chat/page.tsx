@@ -241,20 +241,20 @@ Let's start with the basics - what's the name of your painting company?`,
                     className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                       message.role === 'user'
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                        : 'glass-card'
+                        : 'bg-gray-800/90 text-white border border-gray-700'
                     }`}
                   >
-                    <p className="whitespace-pre-wrap">{message.content}</p>
+                    <p className="whitespace-pre-wrap text-base leading-relaxed">{message.content}</p>
                   </div>
                 </div>
               ))}
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="glass-card rounded-2xl px-4 py-3">
+                  <div className="bg-gray-800/90 border border-gray-700 rounded-2xl px-4 py-3">
                     <div className="flex items-center gap-2">
                       <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
-                      <span className="text-gray-400">Setting up your business...</span>
+                      <span className="text-gray-300">Setting up your business...</span>
                     </div>
                   </div>
                 </div>
@@ -273,7 +273,7 @@ Let's start with the basics - what's the name of your painting company?`,
                   <Badge
                     key={index}
                     variant="outline"
-                    className="cursor-pointer hover:bg-white/10 transition-colors"
+                    className="cursor-pointer bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700 hover:border-gray-500 transition-colors"
                     onClick={() => handleSuggestedResponse(response)}
                   >
                     {response}
@@ -289,7 +289,7 @@ Let's start with the basics - what's the name of your painting company?`,
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Type your response..."
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                className="bg-gray-800/90 border-gray-600 text-white placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-500/20"
                 disabled={isTyping || isSaving}
               />
               <Button
@@ -308,7 +308,7 @@ Let's start with the basics - what's the name of your painting company?`,
           <Button
             variant="ghost"
             onClick={() => router.push('/onboarding')}
-            className="text-gray-400 hover:text-white"
+            className="text-gray-300 hover:text-white underline decoration-gray-600 hover:decoration-gray-400"
           >
             Prefer a traditional form? Switch to classic setup
           </Button>
