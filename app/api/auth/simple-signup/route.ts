@@ -53,14 +53,14 @@ export async function POST(request: NextRequest) {
     const accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase()
 
     // Create company with simple data
+    const isSupabase = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
     const company = await db.createCompany({
       company_name: companyName.trim(),
       access_code: accessCode,
       email: email.trim().toLowerCase(),
       phone: '',
-      is_trial: process.env.USE_SUPABASE === 'true' ? false : 0, // Handle boolean/integer difference
-      quote_limit: 5,
-      onboarding_completed: process.env.USE_SUPABASE === 'true' ? true : 1 // Mark as completed to skip onboarding
+      is_trial: isSupabase ? false : 0, // Handle boolean/integer difference
+      quote_limit: 5
     })
 
     // Create session cookie
@@ -108,7 +108,18 @@ export async function POST(request: NextRequest) {
     console.error('Error details:', {
       message: error.message,
       stack: error.stack,
-      name: error.name
+      name: error.name,
+      code: error.code,
+      details: error.details,
+      hint: error.hint
+    })
+    
+    // Log which database adapter we're using
+    console.error('Database adapter:', db.constructor.name)
+    console.error('Environment:', {
+      NODE_ENV: process.env.NODE_ENV,
+      VERCEL: process.env.VERCEL,
+      HAS_SUPABASE_URL: !!process.env.NEXT_PUBLIC_SUPABASE_URL
     })
     
     // Provide more specific error messages
@@ -116,6 +127,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'This company name may already be taken. Please try another name.' },
         { status: 400 }
+      )
+    }
+    
+    if (error.message?.includes('column') || error.message?.includes('field')) {
+      console.error('Database schema mismatch error - likely missing column in production database')
+      return NextResponse.json(
+        { error: 'Database configuration error. Our team has been notified.' },
+        { status: 500 }
       )
     }
     
