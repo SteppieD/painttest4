@@ -139,7 +139,7 @@ export default function TrialSignupPage() {
                   onChange={(e) => setCompanyName(e.target.value)}
                   required
                   disabled={loading}
-                  className="input-glass"
+                  className="w-full bg-gray-800/80 border-gray-600 text-white placeholder-gray-400 focus:bg-gray-800/90 focus:border-gray-500 hover:bg-gray-800/80"
                 />
               </div>
 
@@ -153,7 +153,7 @@ export default function TrialSignupPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={loading}
-                  className="input-glass"
+                  className="w-full bg-gray-800/80 border-gray-600 text-white placeholder-gray-400 focus:bg-gray-800/90 focus:border-gray-500 hover:bg-gray-800/80"
                 />
                 <p className="text-xs text-gray-400">
                   We&apos;ll send your access code and important updates here
