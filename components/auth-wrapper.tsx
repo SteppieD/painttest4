@@ -13,6 +13,7 @@ interface CompanyData {
   loginTime: number;
   isNewCompany?: boolean;
   subscription_tier?: 'free' | 'pro' | 'enterprise';
+  onboarding_completed?: boolean;
 }
 
 export function AuthWrapper({ children }: { children: React.ReactNode }) {

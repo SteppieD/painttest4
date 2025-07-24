@@ -1,9 +1,10 @@
 "use client"
 
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
-import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart } from 'lucide-react'
+import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { QuoteUsageIndicator } from '@/components/quote-usage-indicator-client'
 import { ClientDate } from '@/components/client-date'
 import { useCompanyAuth } from '@/components/auth-wrapper'
@@ -216,6 +217,38 @@ export function ClientDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Setup Reminder - Show if onboarding not completed */}
+      {companyData && !companyData.onboarding_completed && (
+        <Card className="glass-card border-amber-500/50 bg-amber-500/10">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                <AlertCircle className="h-5 w-5 text-amber-400" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-white mb-1">Complete Your Business Setup</h3>
+                <p className="text-sm text-gray-300 mb-3">
+                  Finish setting up your business profile to unlock all features and start creating professional quotes.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/onboarding/chat">
+                    <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Complete Setup with AI
+                    </Button>
+                  </Link>
+                  <Link href="/onboarding">
+                    <Button size="sm" variant="outline" className="border-amber-500/50 text-white hover:bg-amber-500/10">
+                      Use Classic Form
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Quote Usage */}
       <QuoteUsageIndicator />

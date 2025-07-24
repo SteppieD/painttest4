@@ -304,13 +304,21 @@ Let's start with the basics - what's the name of your painting company?`,
         </Card>
 
         {/* Skip Option */}
-        <div className="text-center mt-4">
+        {/* Alternative Options */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
+          <Button
+            variant="outline"
+            onClick={() => router.push('/onboarding')}
+            className="bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700 hover:border-gray-500"
+          >
+            Switch to Classic Form
+          </Button>
           <Button
             variant="ghost"
-            onClick={() => router.push('/onboarding')}
-            className="text-gray-300 hover:text-white underline decoration-gray-600 hover:decoration-gray-400"
+            onClick={() => router.push('/dashboard')}
+            className="text-gray-300 hover:text-white underline"
           >
-            Prefer a traditional form? Switch to classic setup
+            Skip Setup (Complete Later)
           </Button>
         </div>
       </div>
