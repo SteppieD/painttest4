@@ -62,17 +62,21 @@ export async function POST(request: NextRequest) {
       email: data.email || company.email || '',
       phone: data.phone || '',
       tax_rate: data.taxRate !== undefined ? data.taxRate : 0,
-      onboarding_completed: true,
+      onboarding_completed: 1, // SQLite uses 1 for true
       onboarding_step: 4,
       setup_completed_at: new Date().toISOString()
     };
     
     // Also update additional fields if provided
-    if (data.city) updateData.city = data.city;
-    if (data.state) updateData.state = data.state;
+    // Note: city and state columns don't exist in the current schema
+    // Store them in the address field as a workaround
+    if (data.city || data.state) {
+      const cityState = [data.city, data.state].filter(Boolean).join(', ');
+      if (cityState) updateData.address = cityState;
+    }
     if (data.laborRate) updateData.default_hourly_rate = data.laborRate;
     if (data.markupPercentage) updateData.default_labor_percentage = data.markupPercentage;
-    if (data.minimumJobSize) updateData.minimum_job_size = data.minimumJobSize;
+    // Note: minimum_job_size column doesn't exist in current schema, skip it
     
     console.log('[ONBOARDING] Update data:', updateData);
     
