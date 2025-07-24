@@ -4,8 +4,11 @@ import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 
 // POST - Complete onboarding
 export async function POST(request: NextRequest) {
+  let updateData: any = {};
+  let company: any = null;
+  
   try {
-    const company = getCompanyFromRequest(request);
+    company = getCompanyFromRequest(request);
     
     if (!company) {
       console.error('[ONBOARDING] No company in request');
@@ -57,7 +60,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Prepare update data - ensure we use the provided data first, then fall back to company data
-    const updateData: any = {
+    updateData = {
       company_name: data.companyName || company.name || 'Unknown Company',
       email: data.email || company.email || '',
       phone: data.phone || '',

@@ -77,8 +77,27 @@ export class MemoryAdapter implements DatabaseAdapter {
   }
 
   async updateCompany(id: number, data: any): Promise<any> {
-    const existing = memoryStore.companies.get(id);
-    if (!existing) throw new Error('Company not found');
+    let existing = memoryStore.companies.get(id);
+    
+    // If company doesn't exist, create it first (for onboarding flow)
+    if (!existing) {
+      console.log(`[MemoryAdapter] Company ${id} not found, creating it with provided data`);
+      existing = {
+        id,
+        access_code: `TEMP_${id}`,
+        company_name: data.company_name || 'Unknown Company',
+        email: data.email || '',
+        phone: data.phone || '',
+        created_at: new Date().toISOString(),
+        onboarding_completed: false,
+        onboarding_step: 0,
+        tax_rate: 0,
+        subscription_tier: 'free',
+        monthly_quote_count: 0,
+        monthly_quote_limit: 5
+      };
+      memoryStore.companies.set(id, existing);
+    }
     
     const updated = {
       ...existing,

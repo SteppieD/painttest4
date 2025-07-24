@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -213,16 +212,16 @@ export default function OnboardingPage() {
         </div>
 
         {/* Content */}
-        <Card className="glass-card">
+        <div className="glass-card p-6">
           {currentStep === 1 && (
             <>
-              <CardHeader>
-                <CardTitle className="text-white">Company Information</CardTitle>
-                <CardDescription className="text-gray-400">
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Company Information</h3>
+                <p className="text-sm text-gray-400 mt-1.5">
                   Tell us about your painting business
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
+                </p>
+              </div>
+              <div className="space-y-4">
                 <div>
                   <Label htmlFor="companyName" className="text-gray-300">Company Name</Label>
                   <Input
@@ -254,19 +253,19 @@ export default function OnboardingPage() {
                     placeholder="(555) 123-4567"
                   />
                 </div>
-              </CardContent>
+              </div>
             </>
           )}
 
           {currentStep === 2 && (
             <>
-              <CardHeader>
-                <CardTitle className="text-white">Tax & Location</CardTitle>
-                <CardDescription className="text-gray-400">
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Tax & Location</h3>
+                <p className="text-sm text-gray-400 mt-1.5">
                   Set up your local tax rate and service area
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
+                </p>
+              </div>
+              <div className="space-y-4">
                 <div>
                   <Label htmlFor="taxRate" className="text-gray-300">Sales Tax Rate (%)</Label>
                   <Input
@@ -305,19 +304,19 @@ export default function OnboardingPage() {
                     />
                   </div>
                 </div>
-              </CardContent>
+              </div>
             </>
           )}
 
           {currentStep === 3 && (
             <>
-              <CardHeader>
-                <CardTitle className="text-white">Pricing Preferences</CardTitle>
-                <CardDescription className="text-gray-400">
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Pricing Preferences</h3>
+                <p className="text-sm text-gray-400 mt-1.5">
                   Set your default rates and markups
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
+                </p>
+              </div>
+              <div className="space-y-4">
                 <div>
                   <Label htmlFor="laborRate" className="text-gray-300">Hourly Labor Rate ($)</Label>
                   <Input
@@ -363,19 +362,19 @@ export default function OnboardingPage() {
                     Smallest job you'll accept
                   </p>
                 </div>
-              </CardContent>
+              </div>
             </>
           )}
 
           {currentStep === 4 && (
             <>
-              <CardHeader>
-                <CardTitle className="text-white">You're All Set! 🎉</CardTitle>
-                <CardDescription className="text-gray-400">
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">You're All Set! 🎉</h3>
+                <p className="text-sm text-gray-400 mt-1.5">
                   Here's what you can do with PaintQuote Pro
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
+                </p>
+              </div>
+              <div className="space-y-6">
                 <div className="grid gap-4">
                   <div className="flex gap-3">
                     <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
@@ -412,7 +411,7 @@ export default function OnboardingPage() {
                     Start by creating your first quote using the AI assistant. It will guide you through the entire process!
                   </p>
                 </div>
-              </CardContent>
+              </div>
             </>
           )}
 
@@ -447,7 +446,7 @@ export default function OnboardingPage() {
               </Button>
             )}
           </div>
-        </Card>
+        </div>
 
         {/* Skip Option */}
         <div className="text-center mt-6">

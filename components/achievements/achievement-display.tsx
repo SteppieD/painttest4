@@ -2,7 +2,6 @@
 
 import { useAchievements } from '@/hooks/use-achievements'
 import { achievements } from './achievement-notification'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Trophy, Lock, Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -16,13 +15,13 @@ export function AchievementDisplay() {
   const pointsForNextLevel = 500
   
   return (
-    <Card className="glass-card">
-      <CardHeader>
+    <div className="glass-card p-6">
+      <div className="mb-6">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold text-white flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-white flex items-center gap-2">
             <Trophy className="h-5 w-5 text-yellow-400" />
             Achievements
-          </CardTitle>
+          </h3>
           <div className="flex items-center gap-3">
             <div className="text-right">
               <p className="text-xs text-gray-400">Level</p>
@@ -34,8 +33,8 @@ export function AchievementDisplay() {
             </div>
           </div>
         </div>
-      </CardHeader>
-      <CardContent>
+      </div>
+      <div>
         {/* Level Progress */}
         <div className="mb-6">
           <div className="flex justify-between text-xs text-gray-400 mb-2">
@@ -129,7 +128,7 @@ export function AchievementDisplay() {
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -79,13 +78,13 @@ export default function TrialSignupPage() {
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
           </div>
           
-          <Card className="w-full max-w-md glass-card border-emerald-500/20 relative z-10">
-            <CardHeader className="text-center">
+          <div className="w-full max-w-md glass-card border-emerald-500/20 relative z-10 p-6">
+            <div className="text-center mb-6">
               <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-              <CardTitle className="text-2xl text-white">Welcome to PaintQuote Pro!</CardTitle>
-              <CardDescription className="text-gray-300">Your account has been created successfully</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
+              <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Welcome to PaintQuote Pro!</h1>
+              <p className="text-sm text-gray-300 mt-1.5">Your account has been created successfully</p>
+            </div>
+            <div className="space-y-4">
               <div className="glass-card border-blue-500/20 p-4">
                 <p className="text-sm text-gray-300 mb-2">Your access code is:</p>
                 <p className="text-2xl font-mono font-bold text-blue-400">{accessCode}</p>
@@ -99,8 +98,8 @@ export default function TrialSignupPage() {
               <p className="text-sm text-gray-400 text-center">
                 Redirecting to your dashboard...
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -116,18 +115,18 @@ export default function TrialSignupPage() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
         </div>
         
-        <Card className="w-full max-w-md glass-card relative z-10">
-          <CardHeader>
+        <div className="w-full max-w-md glass-card relative z-10 p-6">
+          <div className="mb-6">
             <Link href="/" className="inline-flex items-center text-sm text-gray-300 hover:text-white mb-4 transition-colors">
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to home
             </Link>
-            <CardTitle className="text-2xl text-white">Start Your Free Trial</CardTitle>
-            <CardDescription className="text-gray-300">
+            <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Start Your Free Trial</h1>
+            <p className="text-sm text-gray-300 mt-1.5">
               Get 5 free quotes per month • No credit card required
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+            </p>
+          </div>
+          <div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="company" className="text-gray-300">Company Name</Label>
@@ -218,8 +217,8 @@ export default function TrialSignupPage() {
                 </li>
               </ul>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </>
   );
