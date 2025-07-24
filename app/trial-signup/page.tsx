@@ -6,8 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import ModernNavigation from '@/components/modern-navigation';
 
 export default function TrialSignupPage() {
   const [companyName, setCompanyName] = useState('');
@@ -68,122 +69,149 @@ export default function TrialSignupPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center">
-            <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-            <CardTitle className="text-2xl">Welcome to PaintQuote Pro!</CardTitle>
-            <CardDescription>Your account has been created successfully</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-blue-800 mb-2">Your access code is:</p>
-              <p className="text-2xl font-mono font-bold text-blue-900">{accessCode}</p>
-              <p className="text-xs text-blue-700 mt-2">Save this code to log in later</p>
-            </div>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <p className="text-sm text-green-800">
-                📧 We&apos;ve sent a welcome email to <strong>{email}</strong> with your access code
+      <>
+        <ModernNavigation />
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 pt-16">
+          {/* Background effects */}
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500 rounded-full opacity-10 blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
+          </div>
+          
+          <Card className="w-full max-w-md glass-card border-emerald-500/20 relative z-10">
+            <CardHeader className="text-center">
+              <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+              <CardTitle className="text-2xl text-white">Welcome to PaintQuote Pro!</CardTitle>
+              <CardDescription className="text-gray-300">Your account has been created successfully</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="glass-card border-blue-500/20 p-4">
+                <p className="text-sm text-gray-300 mb-2">Your access code is:</p>
+                <p className="text-2xl font-mono font-bold text-blue-400">{accessCode}</p>
+                <p className="text-xs text-gray-400 mt-2">Save this code to log in later</p>
+              </div>
+              <div className="glass-card border-emerald-500/20 p-4">
+                <p className="text-sm text-gray-300">
+                  We&apos;ve sent a welcome email to <strong className="text-white">{email}</strong> with your access code
+                </p>
+              </div>
+              <p className="text-sm text-gray-400 text-center">
+                Redirecting to your dashboard...
               </p>
-            </div>
-            <p className="text-sm text-gray-600 text-center">
-              Redirecting to your dashboard...
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+            </CardContent>
+          </Card>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <Link href="/" className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 mb-4">
-            <ArrowLeft className="h-4 w-4 mr-1" />
-            Back to home
-          </Link>
-          <CardTitle className="text-2xl">Start Your Free Trial</CardTitle>
-          <CardDescription>
-            Get 5 free quotes per month • No credit card required
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="company">Company Name</Label>
-              <Input
-                id="company"
-                type="text"
-                placeholder="Your Painting Company"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                required
-                disabled={loading}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Email Address</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@company.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={loading}
-              />
-              <p className="text-xs text-gray-500">
-                We&apos;ll send your access code and important updates here
-              </p>
-            </div>
-
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg p-3 text-sm">
-                {error}
+    <>
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 pt-16">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+        </div>
+        
+        <Card className="w-full max-w-md glass-card relative z-10">
+          <CardHeader>
+            <Link href="/" className="inline-flex items-center text-sm text-gray-300 hover:text-white mb-4 transition-colors">
+              <ArrowLeft className="h-4 w-4 mr-1" />
+              Back to home
+            </Link>
+            <CardTitle className="text-2xl text-white">Start Your Free Trial</CardTitle>
+            <CardDescription className="text-gray-300">
+              Get 5 free quotes per month • No credit card required
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="company" className="text-gray-300">Company Name</Label>
+                <Input
+                  id="company"
+                  type="text"
+                  placeholder="Your Painting Company"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  required
+                  disabled={loading}
+                  className="input-glass"
+                />
               </div>
-            )}
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={loading || !companyName.trim() || !email.trim()}
-            >
-              {loading ? 'Creating Account...' : 'Start Free Trial'}
-            </Button>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-gray-300">Email Address</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="you@company.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={loading}
+                  className="input-glass"
+                />
+                <p className="text-xs text-gray-400">
+                  We&apos;ll send your access code and important updates here
+                </p>
+              </div>
 
-            <div className="text-center text-sm text-gray-600">
-              Already have an account?{' '}
-              <Link href="/access-code" className="text-blue-600 hover:underline">
-                Sign in with access code
-              </Link>
+              {error && (
+                <div className="glass-card border-red-500/20 bg-red-500/10 p-3 text-sm">
+                  <p className="text-red-400">{error}</p>
+                </div>
+              )}
+
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium py-3"
+                disabled={loading || !companyName.trim() || !email.trim()}
+              >
+                {loading ? (
+                  <span>Creating Account...</span>
+                ) : (
+                  <span className="flex items-center justify-center">
+                    Start Free Trial
+                    <Sparkles className="ml-2 h-4 w-4" />
+                  </span>
+                )}
+              </Button>
+
+              <div className="text-center text-sm text-gray-400">
+                Already have an account?{' '}
+                <Link href="/access-code" className="text-blue-400 hover:text-blue-300 hover:underline transition-colors">
+                  Sign in with access code
+                </Link>
+              </div>
+            </form>
+
+            <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
+              <p className="text-sm font-medium text-white">What&apos;s included:</p>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />
+                  5 professional quotes per month
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />
+                  AI-powered quote assistance
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />
+                  Customer management
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />
+                  Mobile-friendly interface
+                </li>
+              </ul>
             </div>
-          </form>
-
-          <div className="mt-6 space-y-3 border-t pt-6">
-            <p className="text-sm font-medium text-gray-700">What&apos;s included:</p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                5 professional quotes per month
-              </li>
-              <li className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                AI-powered quote assistance
-              </li>
-              <li className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                Customer management
-              </li>
-              <li className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                Mobile-friendly interface
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 }

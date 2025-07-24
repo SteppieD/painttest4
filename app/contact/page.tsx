@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { CheckCircle, Zap, Clock, Calculator, Users, Shield, ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react'
-import SharedNavigation from '@/components/shared-navigation'
+import ModernNavigation from '@/components/modern-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { Button } from '@/components/ui/button'
 
@@ -108,42 +108,44 @@ export default function ContactFreeTrial() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
-      <SharedNavigation />
-
-      <main className="pt-14">
-        <div className="container">
-          <Breadcrumbs items={breadcrumbItems} className="py-4" />
+    <>
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
         </div>
 
-        {/* Hero Section */}
-        <section className="py-16 md:py-24">
-          <div className="container">
+        <main className="pt-24 relative z-10">
+          {/* Hero Section */}
+          <section className="py-16 md:py-24">
+            <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full glass-card border-blue-500/20 px-4 py-2 text-sm font-medium text-blue-400">
                   <Zap className="mr-2 h-4 w-4" />
                   No Credit Card Required
                 </div>
                 
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
                   Start Your Free 14-Day Trial
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-300">
                   Transform your painting business with professional estimating software. 
                   Try PaintQuote Pro completely free for 14 days - no credit card required.
                 </p>
                 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Link
-                    href="/auth/signup"
-                    className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
+                    href="/trial-signup"
+                    className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-8 py-3 text-base font-medium text-white shadow-lg"
                   >
                     <Zap className="mr-2 h-5 w-5" />
                     Start Free Trial Now
                   </Link>
                   <Link
                     href="/paint-quote-calculator"
-                    className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                    className="inline-flex items-center justify-center rounded-md glass-card border-white/20 px-8 py-3 text-base font-medium text-white hover:bg-white/10"
                   >
                     Try Free Calculator
                   </Link>

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Calculator, TrendingUp, Clock, DollarSign, Users, ChevronRight } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import SharedNavigation from '@/components/shared-navigation'
+import ModernNavigation from '@/components/modern-navigation'
 
 export default function ROICalculator() {
   const [formData, setFormData] = useState({
@@ -70,33 +70,27 @@ export default function ROICalculator() {
 
   return (
     <>
-      {/* SEO Metadata would be in metadata export */}
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <SharedNavigation />
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+        </div>
 
-        <main>
-          {/* Breadcrumbs */}
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'ROI Calculator' }
-            ]}
-            className="container"
-          />
-
+        <main className="pt-24 relative z-10">
           {/* Hero Section */}
           <section className="relative py-16 md:py-24">
-            <div className="container">
+            <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full glass-card border-emerald-500/20 px-4 py-2 text-sm font-medium text-emerald-400">
                   <Calculator className="mr-2 h-4 w-4" />
                   Free ROI Calculator
                 </div>
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
                   Calculate Your Painting Business ROI
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-300">
                   See how much time and money PaintQuote Pro can save your painting business. 
                   Get personalized projections based on your actual business metrics.
                 </p>
@@ -106,46 +100,46 @@ export default function ROICalculator() {
 
           {/* Calculator Section */}
           <section className="py-16">
-            <div className="container">
+            <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl">
                 <div className="grid gap-8 md:grid-cols-2">
                   {/* Input Form */}
-                  <div className="rounded-lg border bg-card p-6 md:p-8">
-                    <h2 className="text-2xl font-bold">Your Current Business Metrics</h2>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                  <div className="glass-card p-6 md:p-8">
+                    <h2 className="text-2xl font-bold text-white">Your Current Business Metrics</h2>
+                    <p className="mt-2 text-sm text-gray-400">
                       Enter your current numbers to see your potential growth
                     </p>
 
                     <div className="mt-6 space-y-6">
                       <div>
-                        <label className="text-sm font-medium">
+                        <label className="text-sm font-medium text-gray-300">
                           Current Monthly Revenue
                         </label>
-                        <div className="mt-2 flex items-center">
-                          <DollarSign className="absolute ml-3 h-4 w-4 text-muted-foreground" />
+                        <div className="mt-2 flex items-center relative">
+                          <DollarSign className="absolute ml-3 h-4 w-4 text-gray-400 z-10" />
                           <input
                             type="number"
                             value={formData.monthlyRevenue}
                             onChange={(e) => setFormData({ ...formData, monthlyRevenue: Number(e.target.value) })}
-                            className="w-full rounded-md border bg-background px-3 py-2 pl-10 text-sm"
+                            className="w-full input-glass pl-10 text-sm"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium">
+                        <label className="text-sm font-medium text-gray-300">
                           Quotes Created Per Month
                         </label>
                         <input
                           type="number"
                           value={formData.quotesPerMonth}
                           onChange={(e) => setFormData({ ...formData, quotesPerMonth: Number(e.target.value) })}
-                          className="mt-2 w-full rounded-md border bg-background px-3 py-2 text-sm"
+                          className="mt-2 w-full input-glass text-sm"
                         />
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium">
+                        <label className="text-sm font-medium text-gray-300">
                           Average Time Per Quote (hours)
                         </label>
                         <input
@@ -153,40 +147,40 @@ export default function ROICalculator() {
                           step="0.5"
                           value={formData.averageQuoteTime}
                           onChange={(e) => setFormData({ ...formData, averageQuoteTime: Number(e.target.value) })}
-                          className="mt-2 w-full rounded-md border bg-background px-3 py-2 text-sm"
+                          className="mt-2 w-full input-glass text-sm"
                         />
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium">
+                        <label className="text-sm font-medium text-gray-300">
                           Current Close Rate (%)
                         </label>
                         <input
                           type="number"
                           value={formData.closeRate}
                           onChange={(e) => setFormData({ ...formData, closeRate: Number(e.target.value) })}
-                          className="mt-2 w-full rounded-md border bg-background px-3 py-2 text-sm"
+                          className="mt-2 w-full input-glass text-sm"
                         />
                       </div>
 
                       <div>
-                        <label className="text-sm font-medium">
+                        <label className="text-sm font-medium text-gray-300">
                           Average Job Value
                         </label>
-                        <div className="mt-2 flex items-center">
-                          <DollarSign className="absolute ml-3 h-4 w-4 text-muted-foreground" />
+                        <div className="mt-2 flex items-center relative">
+                          <DollarSign className="absolute ml-3 h-4 w-4 text-gray-400 z-10" />
                           <input
                             type="number"
                             value={formData.averageJobValue}
                             onChange={(e) => setFormData({ ...formData, averageJobValue: Number(e.target.value) })}
-                            className="w-full rounded-md border bg-background px-3 py-2 pl-10 text-sm"
+                            className="w-full input-glass pl-10 text-sm"
                           />
                         </div>
                       </div>
 
                       <button
                         onClick={() => setShowResults(true)}
-                        className="w-full rounded-md bg-primary px-4 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                        className="w-full rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-4 py-3 text-sm font-medium text-white"
                       >
                         Calculate My ROI
                       </button>
@@ -196,10 +190,10 @@ export default function ROICalculator() {
                   {/* Results */}
                   <div className="space-y-6">
                     {!showResults ? (
-                      <div className="rounded-lg border border-dashed bg-muted/50 p-8 text-center">
-                        <Calculator className="mx-auto h-12 w-12 text-muted-foreground" />
-                        <h3 className="mt-4 text-lg font-semibold">Your Results Will Appear Here</h3>
-                        <p className="mt-2 text-sm text-muted-foreground">
+                      <div className="glass-card border-dashed border-white/20 p-8 text-center">
+                        <Calculator className="mx-auto h-12 w-12 text-gray-400" />
+                        <h3 className="mt-4 text-lg font-semibold text-white">Your Results Will Appear Here</h3>
+                        <p className="mt-2 text-sm text-gray-400">
                           Enter your business metrics and click "Calculate My ROI" to see your 
                           personalized growth projections with PaintQuote Pro.
                         </p>
@@ -207,20 +201,20 @@ export default function ROICalculator() {
                     ) : (
                       <>
                         {/* ROI Summary */}
-                        <div className="rounded-lg bg-primary/5 p-6">
-                          <h3 className="text-lg font-semibold">Your ROI with PaintQuote Pro</h3>
+                        <div className="glass-card border-emerald-500/20 p-6">
+                          <h3 className="text-lg font-semibold text-white">Your ROI with PaintQuote Pro</h3>
                           <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             <div>
-                              <p className="text-3xl font-bold text-primary">
+                              <p className="text-3xl font-bold text-emerald-400">
                                 {results.roi.roiPercentage.toFixed(0)}%
                               </p>
-                              <p className="text-sm text-muted-foreground">Return on Investment</p>
+                              <p className="text-sm text-gray-400">Return on Investment</p>
                             </div>
                             <div>
-                              <p className="text-3xl font-bold text-primary">
+                              <p className="text-3xl font-bold text-emerald-400">
                                 ${results.roi.netROI.toLocaleString()}
                               </p>
-                              <p className="text-sm text-muted-foreground">Net Annual Gain</p>
+                              <p className="text-sm text-gray-400">Net Annual Gain</p>
                             </div>
                           </div>
                         </div>

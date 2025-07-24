@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { Zap, Calculator, FileText, TrendingUp, Shield, Clock, CheckCircle, BarChart, Star } from 'lucide-react'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import ModernNavigation from '@/components/modern-navigation'
 
 export const metadata: Metadata = {
   title: 'Painting Estimate Software | Fast & Accurate Quotes | PaintQuote Pro',
@@ -57,78 +58,40 @@ export default function PaintingEstimateSoftware() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="/painting-contractors" className="transition-colors hover:text-foreground/80">
-                For Contractors
-              </Link>
-              <Link href="/features" className="transition-colors hover:text-foreground/80">
-                Features
-              </Link>
-              <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-                Pricing
-              </Link>
-              <Link href="/roi-calculator" className="transition-colors hover:text-foreground/80">
-                ROI Calculator
-              </Link>
-            </nav>
-            <div className="ml-auto flex items-center space-x-4">
-              <Link
-                href="/demo"
-                className="text-sm font-medium transition-colors hover:text-foreground/80"
-              >
-                Book Demo
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Start Free Trial
-              </Link>
-            </div>
-          </nav>
-        </header>
-
-        <main>
-          {/* Breadcrumbs */}
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Software', href: '/painting-contractors' },
-              { label: 'Painting Estimate Software' }
-            ]}
-            className="container"
-          />
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+        </div>
+        
+        <main className="pt-24 relative z-10">
+          {/* Hero Section */}
           
           {/* Hero Section */}
           <section className="relative overflow-hidden py-16 md:py-24">
-            <div className="container">
+            <div className="container mx-auto px-4">
               <div className="grid gap-12 md:grid-cols-2 md:items-center">
                 <div>
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
                     Painting Estimate Software That Wins More Jobs
                   </h1>
-                  <p className="mt-6 text-xl text-muted-foreground">
+                  <p className="mt-6 text-xl text-gray-300">
                     Create professional painting estimates in minutes with AI-powered accuracy. 
                     Track costs, manage quotes, and grow your painting business faster.
                   </p>
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                     <Link
-                      href="/auth/signup"
-                      className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
+                      href="/trial-signup"
+                      className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-6 py-3 text-base font-medium text-white shadow-lg"
                     >
                       <Zap className="mr-2 h-5 w-5" />
                       Start Free Trial
                     </Link>
                     <Link
                       href="/painting-estimate-calculator-free"
-                      className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                      className="inline-flex items-center justify-center rounded-md glass-card border-white/20 px-6 py-3 text-base font-medium text-white hover:bg-white/10"
                     >
                       <Calculator className="mr-2 h-5 w-5" />
                       Try Free Calculator
@@ -147,7 +110,7 @@ export default function PaintingEstimateSoftware() {
                             <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                           ))}
                         </div>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-gray-400">
                           Trusted by 2,847+ painting contractors
                         </p>
                       </div>
@@ -155,31 +118,31 @@ export default function PaintingEstimateSoftware() {
                   </div>
                 </div>
                 <div className="relative">
-                  <div className="rounded-lg border bg-card p-8 shadow-xl">
+                  <div className="glass-card p-8">
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between border-b pb-4">
-                        <h3 className="text-lg font-semibold">Quick Estimate Preview</h3>
-                        <span className="text-sm text-muted-foreground">Generated in 15 min</span>
+                      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                        <h3 className="text-lg font-semibold text-white">Quick Estimate Preview</h3>
+                        <span className="text-sm text-gray-400">Generated in 15 min</span>
                       </div>
                       <div className="space-y-3">
-                        <div className="flex justify-between">
+                        <div className="flex justify-between text-gray-300">
                           <span>Interior Walls (2,400 sq ft)</span>
-                          <span className="font-medium">$6,000</span>
+                          <span className="font-medium text-white">$6,000</span>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between text-gray-300">
                           <span>Ceilings (800 sq ft)</span>
-                          <span className="font-medium">$2,400</span>
+                          <span className="font-medium text-white">$2,400</span>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between text-gray-300">
                           <span>Trim & Baseboards (320 ln ft)</span>
-                          <span className="font-medium">$1,120</span>
+                          <span className="font-medium text-white">$1,120</span>
                         </div>
-                        <div className="border-t pt-3">
+                        <div className="border-t border-white/10 pt-3">
                           <div className="flex justify-between text-lg font-semibold">
-                            <span>Total Estimate</span>
-                            <span className="text-primary">$9,520</span>
+                            <span className="text-white">Total Estimate</span>
+                            <span className="text-blue-400">$9,520</span>
                           </div>
-                          <p className="mt-1 text-sm text-muted-foreground">
+                          <p className="mt-1 text-sm text-gray-400">
                             Includes materials (70%) and labor (30%)
                           </p>
                         </div>
@@ -192,11 +155,11 @@ export default function PaintingEstimateSoftware() {
           </section>
 
           {/* Trust Indicators */}
-          <section className="border-y bg-muted/50 py-8">
-            <div className="container">
+          <section className="border-y border-white/10 bg-white/5 py-8">
+            <div className="container mx-auto px-4">
               <div className="flex flex-wrap items-center justify-center gap-8 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-primary">87%</div>
+                  <div className="text-2xl font-bold text-blue-400">87%</div>
                   <p className="text-sm text-muted-foreground">Faster Quotes</p>
                 </div>
                 <div className="hidden md:block">•</div>

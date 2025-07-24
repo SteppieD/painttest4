@@ -39,12 +39,29 @@ function ModernNavigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            <Link 
-              href="/painting-contractor-software" 
-              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
-            >
-              Software
-            </Link>
+            {/* Software Dropdown */}
+            <div className="relative group">
+              <button className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center gap-1">
+                Software
+                <ChevronRight className="h-3 w-3 rotate-90" />
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="glass-card p-2 space-y-1">
+                  <Link href="/painting-contractor-software" className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">
+                    Painting Contractor Software
+                  </Link>
+                  <Link href="/painting-quote-software" className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">
+                    Quote Software
+                  </Link>
+                  <Link href="/painting-estimate-software" className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">
+                    Estimate Software
+                  </Link>
+                  <Link href="/painting-business-software" className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors">
+                    Business Software
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link 
               href="/#features" 
               className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"

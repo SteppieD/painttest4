@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { CheckCircle, TrendingUp, Clock, Calculator, Shield, Users, BarChart, MessageSquare } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import ModernNavigation from '@/components/modern-navigation'
 
 export const metadata: Metadata = {
   title: 'Painting Contractors Software | #1 Quote & Estimate Tool | PaintQuote Pro',
@@ -45,45 +46,15 @@ export default function PaintingContractors() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="/painting-estimate-software" className="transition-colors hover:text-foreground/80">
-                Estimate Software
-              </Link>
-              <Link href="/features" className="transition-colors hover:text-foreground/80">
-                Features
-              </Link>
-              <Link href="/pricing" className="transition-colors hover:text-foreground/80">
-                Pricing
-              </Link>
-              <Link href="/case-studies" className="transition-colors hover:text-foreground/80">
-                Success Stories
-              </Link>
-            </nav>
-            <div className="ml-auto flex items-center space-x-4">
-              <Link
-                href="/demo"
-                className="text-sm font-medium transition-colors hover:text-foreground/80"
-              >
-                Book Demo
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Start Free Trial
-              </Link>
-            </div>
-          </nav>
-        </header>
-
-        <main>
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+        </div>
+        
+        <main className="pt-24 relative z-10">
           {/* Breadcrumbs */}
           <Breadcrumbs 
             items={[
@@ -95,55 +66,55 @@ export default function PaintingContractors() {
           
           {/* Hero Section */}
           <section className="relative py-16 md:py-24">
-            <div className="container">
+            <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl text-center">
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
                   Painting Contractors Software That Grows Your Business
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-300">
                   Join 2,847+ painting contractors using PaintQuote Pro to create professional quotes 
                   in minutes, win more jobs, and increase profits by 40%.
                 </p>
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Link
-                    href="/auth/signup"
-                    className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
+                    href="/trial-signup"
+                    className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-8 py-3 text-base font-medium text-white shadow-lg"
                   >
                     Start Free Trial
                   </Link>
                   <Link
                     href="/demo"
-                    className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                    className="inline-flex items-center justify-center rounded-md glass-card border-white/20 px-8 py-3 text-base font-medium text-white hover:bg-white/10"
                   >
                     Watch Demo
                   </Link>
                 </div>
-                <p className="mt-4 text-sm text-muted-foreground">
-                  No credit card required • 1 free quote per month • Setup in 5 minutes
+                <p className="mt-4 text-sm text-gray-400">
+                  No credit card required • 5 free quotes per month • Setup in 5 minutes
                 </p>
               </div>
             </div>
           </section>
 
           {/* Social Proof Bar */}
-          <section className="border-y bg-muted/50 py-8">
-            <div className="container">
+          <section className="border-y border-white/10 bg-white/5 py-8">
+            <div className="container mx-auto px-4">
               <div className="grid gap-8 text-center md:grid-cols-4">
                 <div>
-                  <div className="text-3xl font-bold text-primary">2,847+</div>
-                  <p className="text-sm text-muted-foreground">Active Contractors</p>
+                  <div className="text-3xl font-bold text-blue-400">2,847+</div>
+                  <p className="text-sm text-gray-400">Active Contractors</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary">186K</div>
-                  <p className="text-sm text-muted-foreground">Quotes Created</p>
+                  <div className="text-3xl font-bold text-blue-400">186K</div>
+                  <p className="text-sm text-gray-400">Quotes Created</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary">87%</div>
-                  <p className="text-sm text-muted-foreground">Time Saved</p>
+                  <div className="text-3xl font-bold text-blue-400">87%</div>
+                  <p className="text-sm text-gray-400">Time Saved</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary">4.8/5</div>
-                  <p className="text-sm text-muted-foreground">Average Rating</p>
+                  <div className="text-3xl font-bold text-blue-400">4.8/5</div>
+                  <p className="text-sm text-gray-400">Average Rating</p>
                 </div>
               </div>
             </div>

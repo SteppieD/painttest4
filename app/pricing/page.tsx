@@ -6,7 +6,7 @@ import { Check, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import SharedNavigation from '@/components/shared-navigation'
+import ModernNavigation from '@/components/modern-navigation'
 
 const plans = {
   free: {
@@ -118,40 +118,46 @@ export default function PricingPage() {
 
   return (
     <>
-      <SharedNavigation />
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-14">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-24">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl text-white">
               Your $8,400/Month Revenue Opportunity
             </h1>
-            <p className="mt-4 text-xl text-muted-foreground">
+            <p className="mt-4 text-xl text-gray-300">
               Based on our research: Win 3 more jobs per month (from 7 to 10 out of 20 quotes) 
               at $2,800 average = $8,400 additional revenue monthly
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-green-600" />
-                <span>Quote in 10-15 minutes vs 3-6 hours</span>
+                <Check className="h-5 w-5 text-emerald-400" />
+                <span className="text-gray-300">Quote in 10-15 minutes vs 3-6 hours</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-green-600" />
-                <span>Respond within 24 hours (73% win rate)</span>
+                <Check className="h-5 w-5 text-emerald-400" />
+                <span className="text-gray-300">Respond within 24 hours (73% win rate)</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-green-600" />
-                <span>Professional quotes = 40-60% higher close rate</span>
+                <Check className="h-5 w-5 text-emerald-400" />
+                <span className="text-gray-300">Professional quotes = 40-60% higher close rate</span>
               </div>
             </div>
           </div>
 
           <div className="mt-8 flex justify-center">
             <Tabs value={billingPeriod} onValueChange={(v) => setBillingPeriod(v as 'monthly' | 'yearly')} className="w-fit">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                <TabsTrigger value="yearly">
+              <TabsList className="grid w-full grid-cols-2 glass-card p-1">
+                <TabsTrigger value="monthly" className="text-white data-[state=active]:bg-white/20">Monthly</TabsTrigger>
+                <TabsTrigger value="yearly" className="text-white data-[state=active]:bg-white/20">
                   Yearly
-                  <span className="ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                  <span className="ml-2 rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs font-medium text-emerald-400">
                     Save 17%
                   </span>
                 </TabsTrigger>
@@ -163,23 +169,23 @@ export default function PricingPage() {
             {Object.entries(plans).map(([key, plan]) => (
               <Card 
                 key={key} 
-                className={`relative flex flex-col ${
-                  (plan as any).popular ? 'border-primary shadow-lg scale-105' : ''
+                className={`relative flex flex-col glass-card ${
+                  (plan as any).popular ? 'border-blue-500/50 shadow-lg scale-105' : 'border-white/10'
                 }`}
               >
                 {(plan as any).popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
-                    <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
+                    <span className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-1 text-sm font-medium text-white">
                       Most Popular
                     </span>
                   </div>
                 )}
                 
                 <CardHeader>
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription>{plan.description}</CardDescription>
+                  <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
+                  <CardDescription className="text-gray-300">{plan.description}</CardDescription>
                   {(plan as any).highlight && (
-                    <p className="mt-2 text-sm font-medium text-primary">
+                    <p className="mt-2 text-sm font-medium text-blue-400">
                       {(plan as any).highlight}
                     </p>
                   )}
@@ -189,29 +195,29 @@ export default function PricingPage() {
                   <div className="mb-8">
                     {plan.monthlyPrice !== null ? (
                       <div>
-                        <span className="text-4xl font-bold">
+                        <span className="text-4xl font-bold text-white">
                           ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round(plan.yearlyPrice / 12)}
                         </span>
-                        <span className="text-muted-foreground">/month</span>
+                        <span className="text-gray-400">/month</span>
                         {billingPeriod === 'yearly' && plan.yearlyPrice > 0 && (
-                          <p className="mt-1 text-sm text-muted-foreground">
+                          <p className="mt-1 text-sm text-gray-400">
                             ${plan.yearlyPrice} billed annually
                           </p>
                         )}
                       </div>
                     ) : (
-                      <div className="text-3xl font-bold">Custom Pricing</div>
+                      <div className="text-3xl font-bold text-white">Custom Pricing</div>
                     )}
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-medium text-muted-foreground mb-3">Features included:</h4>
+                      <h4 className="text-sm font-medium text-gray-400 mb-3">Features included:</h4>
                       <ul className="space-y-2">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
-                            <Check className="mr-2 h-4 w-4 shrink-0 text-green-600 mt-0.5" />
-                            <span className="text-sm">{feature}</span>
+                            <Check className="mr-2 h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
+                            <span className="text-sm text-gray-300">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -219,12 +225,12 @@ export default function PricingPage() {
 
                     {plan.limitations.length > 0 && (
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground mb-3">Not included:</h4>
+                        <h4 className="text-sm font-medium text-gray-400 mb-3">Not included:</h4>
                         <ul className="space-y-2">
                           {plan.limitations.map((limitation, i) => (
                             <li key={i} className="flex items-start">
-                              <X className="mr-2 h-4 w-4 shrink-0 text-muted-foreground/50 mt-0.5" />
-                              <span className="text-sm text-muted-foreground">{limitation}</span>
+                              <X className="mr-2 h-4 w-4 shrink-0 text-gray-500 mt-0.5" />
+                              <span className="text-sm text-gray-500">{limitation}</span>
                             </li>
                           ))}
                         </ul>
@@ -235,8 +241,11 @@ export default function PricingPage() {
 
                 <CardFooter>
                   <Button 
-                    className="w-full" 
-                    variant={(plan as any).popular ? 'default' : 'outline'}
+                    className={`w-full ${
+                      (plan as any).popular 
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white' 
+                        : 'glass-card border-white/20 text-white hover:bg-white/10'
+                    }`}
                     onClick={() => handleSelectPlan(key)}
                   >
                     {key === 'free' ? 'Start Free' : key === 'enterprise' ? 'Contact Sales' : 'Get Started'}
