@@ -196,4 +196,9 @@ export class MemoryAdapter implements DatabaseAdapter {
     console.warn('[MemoryAdapter] Raw SQL queries not supported in memory mode');
     return [];
   }
+
+  async getAll(query: string, params?: any[]): Promise<any[]> {
+    console.warn('[MemoryAdapter] Raw SQL queries not supported in memory mode');
+    return [];
+  }
 }

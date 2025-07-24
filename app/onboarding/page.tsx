@@ -171,7 +171,8 @@ export default function OnboardingPage() {
       const successData = await response.json();
       logger.success('Onboarding API succeeded', { 
         hasCompany: !!successData.company,
-        hasDebugSummary: !!successData.debugSummary 
+        hasDebugSummary: !!successData.debugSummary,
+        hasWarning: !!successData.warning
       });
 
       // Update local storage
@@ -189,10 +190,18 @@ export default function OnboardingPage() {
       logger.success('Onboarding completed successfully');
       logger.printSummary();
 
-      toast({
-        title: 'Welcome to PaintQuote Pro!',
-        description: 'Your account is all set up and ready to go.'
-      })
+      // Show warning if there was one, but still continue
+      if (successData.warning) {
+        toast({
+          title: 'Setup Complete',
+          description: 'Your settings have been saved locally. You can start using the app now.',
+        })
+      } else {
+        toast({
+          title: 'Welcome to PaintQuote Pro!',
+          description: 'Your account is all set up and ready to go.'
+        })
+      }
 
       router.push('/dashboard')
     } catch (error) {
