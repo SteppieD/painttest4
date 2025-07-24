@@ -17,10 +17,13 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth {
   if (header) {
     try {
       const data = JSON.parse(header);
-      if (data.id && data.accessCode) {
+      // Handle both formats: accessCode and access_code
+      const accessCode = data.accessCode || data.access_code;
+      
+      if (data.id && accessCode) {
         return {
           id: data.id,
-          accessCode: data.accessCode,
+          accessCode: accessCode,
           name: data.name || 'Unknown Company',
           email: data.email
         };

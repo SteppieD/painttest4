@@ -232,19 +232,12 @@ export function ClientDashboard() {
                 <p className="text-sm text-gray-300 mb-3">
                   Finish setting up your business profile to unlock all features and start creating professional quotes.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/onboarding/chat">
-                    <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
-                      <Sparkles className="h-4 w-4 mr-2" />
-                      Complete Setup with AI
-                    </Button>
-                  </Link>
-                  <Link href="/onboarding">
-                    <Button size="sm" variant="outline" className="border-amber-500/50 text-white hover:bg-amber-500/10">
-                      Use Classic Form
-                    </Button>
-                  </Link>
-                </div>
+                <Link href="/onboarding">
+                  <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Complete Setup
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>

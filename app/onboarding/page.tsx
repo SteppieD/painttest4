@@ -47,16 +47,14 @@ const steps = [
 ]
 
 export default function OnboardingPage() {
-  const companyAuth = useCompanyAuth()
-  const company = companyAuth?.company
+  const companyData = useCompanyAuth()
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(1)
   const [saving, setSaving] = useState(false)
-  const [showChatOption, setShowChatOption] = useState(true)
   const [data, setData] = useState<OnboardingData>({
-    companyName: company?.name || '',
-    email: company?.email || '',
-    phone: company?.phone || '',
+    companyName: '',
+    email: '',
+    phone: '',
     taxRate: 0,
     city: '',
     state: '',
@@ -66,11 +64,21 @@ export default function OnboardingPage() {
   })
 
   useEffect(() => {
-    // Check if already completed onboarding
-    if (company?.onboarding_completed) {
-      router.push('/dashboard')
+    // Populate company data if available
+    if (companyData) {
+      setData(prev => ({
+        ...prev,
+        companyName: companyData.name || '',
+        email: companyData.email || '',
+        phone: companyData.phone || ''
+      }))
+      
+      // Check if already completed onboarding
+      if (companyData.onboarding_completed) {
+        router.push('/dashboard')
+      }
     }
-  }, [company, router])
+  }, [companyData, router])
 
   const handleNext = () => {
     if (currentStep < 4) {
@@ -85,6 +93,16 @@ export default function OnboardingPage() {
   }
 
   const handleComplete = async () => {
+    if (!companyData) {
+      toast({
+        title: 'Error',
+        description: 'No company data found. Please log in again.',
+        variant: 'destructive'
+      })
+      router.push('/access-code')
+      return
+    }
+
     setSaving(true)
     try {
       // Save all settings
@@ -93,8 +111,11 @@ export default function OnboardingPage() {
         headers: {
           'Content-Type': 'application/json',
           'x-company-data': JSON.stringify({ 
-            id: company?.id,
-            access_code: company?.accessCode 
+            id: companyData.id,
+            accessCode: companyData.accessCode,
+            access_code: companyData.accessCode, // Include both formats for compatibility
+            name: companyData.name || data.companyName,
+            email: companyData.email || data.email
           })
         },
         body: JSON.stringify({
@@ -147,41 +168,6 @@ export default function OnboardingPage() {
           <p className="text-gray-400">Let's get your account set up in just a few minutes</p>
         </div>
 
-        {/* Chat Option Banner */}
-        {showChatOption && currentStep === 1 && (
-          <Card className="glass-card mb-6 border-purple-500/20">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-                    <Sparkles className="h-5 w-5 text-purple-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Try our AI-powered setup!</p>
-                    <p className="text-sm text-gray-400">Chat with our assistant to set up your business</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    onClick={() => router.push('/onboarding/chat')}
-                    size="sm"
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                  >
-                    Try Chat Setup
-                  </Button>
-                  <Button
-                    onClick={() => setShowChatOption(false)}
-                    size="sm"
-                    variant="ghost"
-                    className="text-gray-400"
-                  >
-                    Dismiss
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
 
         {/* Progress */}
         <div className="mb-8">
