@@ -16,6 +16,26 @@ export async function POST(request: NextRequest) {
     console.log('[ONBOARDING] Received data:', data);
     console.log('[ONBOARDING] Updating company:', company.id);
     
+    // Verify company exists in database
+    const existingCompany = await db.getCompany(company.id);
+    if (!existingCompany) {
+      console.error('[ONBOARDING] Company not found in database:', company.id);
+      // For memory adapter, create the company if it doesn't exist
+      if (process.env.NODE_ENV === 'development' || process.env.VERCEL) {
+        console.log('[ONBOARDING] Creating company in memory store');
+        await db.createCompany({
+          id: company.id,
+          access_code: company.accessCode,
+          company_name: company.name,
+          name: company.name,
+          email: company.email || '',
+          phone: ''
+        });
+      } else {
+        return NextResponse.json({ error: 'Company not found' }, { status: 404 });
+      }
+    }
+    
     // Prepare update data
     const updateData: any = {
       company_name: data.companyName || company.name,
