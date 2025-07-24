@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
-import { useCompanyAuth } from '@/lib/hooks/use-company-auth'
+import { useCompanyAuth } from '@/components/auth-wrapper'
 import { 
   Send, 
   Sparkles, 
@@ -48,7 +48,8 @@ const SUGGESTED_RESPONSES = [
 ]
 
 export default function ChatOnboardingPage() {
-  const { company } = useCompanyAuth()
+  const companyAuth = useCompanyAuth()
+  const company = companyAuth?.company
   const router = useRouter()
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')

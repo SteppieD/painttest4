@@ -26,6 +26,7 @@ export interface DatabaseAdapter {
   
   // Generic query method
   query(sql: string, params?: any[]): Promise<any>;
+  getAll(query: string, params?: any[]): Promise<any[]>;
 }
 
 // SQLite adapter for local development

@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       [auth.company!.id]
     );
     
-    if (company.length > 0) {
+    if (company.length > 0 && 'markupPercentage' in calculatorInput) {
       calculatorInput.markupPercentage = company[0].default_labor_percentage || 30;
       calculatorInput.taxRate = company[0].tax_rate || 0;
     }

@@ -16,7 +16,7 @@ export const getStripe = () => {
       throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
     }
     stripeInstance = new Stripe(secretKey, {
-      apiVersion: '2024-06-20',
+      // Use default API version from Stripe SDK
     });
   }
   return stripeInstance;

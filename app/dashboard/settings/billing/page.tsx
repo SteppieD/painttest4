@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
-import { useCompanyAuth } from '@/lib/hooks/use-company-auth'
+import { useCompanyAuth } from '@/components/auth-wrapper'
 import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription'
 import { 
   CreditCard, 
@@ -35,7 +35,8 @@ interface UsageStats {
 }
 
 export default function BillingPage() {
-  const { company } = useCompanyAuth()
+  const companyAuth = useCompanyAuth()
+  const company = companyAuth?.company
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [usage, setUsage] = useState<UsageStats | null>(null)

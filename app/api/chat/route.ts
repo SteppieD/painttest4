@@ -57,16 +57,17 @@ export async function POST(request: NextRequest) {
       if (useAI) {
         console.log('[CHAT] Using AI assistant with enhanced context');
         
-        // Get company rates and preferred paints
+        // Get company rates from database
+        const companyData = await db.getCompany(company.id);
         const companyRates = {
-          paintingRate: company.defaultPaintingRate || 2.50,
-          primingRate: company.defaultPrimingRate || 0.40,
-          trimRate: company.defaultTrimRate || 1.92,
-          doorRate: company.defaultDoorRate || 100,
-          windowRate: company.defaultWindowRate || 25,
-          overheadPercent: company.overheadPercent || 15,
-          profitMargin: company.profitMargin || 30,
-          hourlyRate: company.defaultHourlyRate || 45
+          paintingRate: companyData?.default_painting_rate || 2.50,
+          primingRate: companyData?.default_priming_rate || 0.40,
+          trimRate: companyData?.default_trim_rate || 1.92,
+          doorRate: companyData?.default_door_rate || 100,
+          windowRate: companyData?.default_window_rate || 25,
+          overheadPercent: companyData?.overhead_percent || 15,
+          profitMargin: companyData?.profit_margin || 30,
+          hourlyRate: companyData?.default_hourly_rate || 45
         };
         
         // Get preferred paint products
@@ -106,7 +107,7 @@ export async function POST(request: NextRequest) {
           companyId: company.id,
           companyRates,
           preferredPaints,
-          projectType: company.projectType || 'interior'
+          projectType: 'interior' // Default project type
         };
         
         // Detect conversation stage
@@ -146,7 +147,7 @@ export async function POST(request: NextRequest) {
               companyRates,
               prepCondition: parsedInfo.prepWork as any || 'good',
               rushJob: parsedInfo.timeline === 'this week',
-              taxRate: company.taxRate || 0
+              taxRate: companyData?.tax_rate || 0
             };
             
             const calculation = QuoteCalculator.calculate(calculatorInput);
@@ -177,7 +178,7 @@ export async function POST(request: NextRequest) {
           suggestedReplies = currentStep.options;
         }
         
-        if (result.surfaces) {
+        if (result.isComplete) {
           // Process step-by-step data collection
           const data = manager.getCollectedData();
           const contactInfo = {
@@ -185,15 +186,21 @@ export async function POST(request: NextRequest) {
             phone: data.customerPhone || ''
           };
           
-          // Only calculate if we have surfaces
-          const surfaces = result.surfaces || {};
+          // Get surfaces from collected data
+          const surfaces = {
+            walls: data.wallSqft || 0,
+            ceilings: data.ceilingSqft || 0,
+            trim: data.trimLinearFt || 0,
+            doors: data.doors || 0,
+            windows: data.windows || 0
+          };
           
           const calculatorInput = {
             surfaces,
             paintQuality: data.paintQuality as any || 'better'
           };
           
-          const calculation = calculator.calculate(calculatorInput);
+          const calculation = QuoteCalculator.calculate(calculatorInput);
           
           quoteData = {
             customerName: data.customerName,
@@ -201,7 +208,7 @@ export async function POST(request: NextRequest) {
             customerPhone: contactInfo.phone,
             address: data.address,
             projectType: data.projectType,
-            surfaces: data.surfaces,
+            surfaces,
             roomCount: data.roomCount,
             paintQuality: data.paintQuality,
             timeline: data.timeline,

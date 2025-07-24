@@ -373,7 +373,7 @@ export function ClientDashboard() {
               Performance This Month
             </h2>
             <span className="text-sm text-gray-400">
-              <ClientDate date={new Date()} format="MMMM yyyy" />
+              <ClientDate date={new Date()} options={{ year: 'numeric', month: 'long' }} />
             </span>
           </div>
           

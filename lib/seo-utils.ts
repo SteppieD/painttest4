@@ -23,6 +23,10 @@ export interface PageData {
   state?: string
   content?: string
   year?: number
+  description?: string
+  ogImage?: string
+  noindex?: boolean
+  canonical?: string
 }
 
 export class SEOGenerator {
@@ -83,7 +87,9 @@ export class SEOGenerator {
         images: data.ogImage ? [data.ogImage] : undefined
       },
       robots: data.noindex ? 'noindex,nofollow' : 'index,follow',
-      canonical: data.canonical ? `${this.baseUrl}${data.canonical}` : undefined
+      alternates: {
+        canonical: data.canonical ? `${this.baseUrl}${data.canonical}` : undefined
+      }
     }
   }
 

@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
-import { useCompanyAuth } from '@/lib/hooks/use-company-auth'
+import { useCompanyAuth } from '@/components/auth-wrapper'
 import { 
   Building2, 
   Calculator, 
@@ -47,7 +47,8 @@ const steps = [
 ]
 
 export default function OnboardingPage() {
-  const { company } = useCompanyAuth()
+  const companyAuth = useCompanyAuth()
+  const company = companyAuth?.company
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(1)
   const [saving, setSaving] = useState(false)
