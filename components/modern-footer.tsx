@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Youtube, Instagram, Mail, Phone, MapPin, Sparkles, Shield, Star, Zap, Clock, CheckCircle, Award, BarChart3, Paintbrush, Calculator, FileText, Users } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Youtube, Instagram, Mail, MapPin, Sparkles, Shield, Star, Zap, Clock, CheckCircle, Award, BarChart3, Paintbrush, Calculator, FileText, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const footerLinks = {
@@ -112,10 +112,6 @@ export default function ModernFooter() {
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <a href="tel:1-800-PAINT-PRO" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                <Phone className="h-4 w-4" />
-                <span>1-800-PAINT-PRO</span>
-              </a>
               <a href="mailto:support@paintquotepro.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Mail className="h-4 w-4" />
                 <span>support@paintquotepro.com</span>

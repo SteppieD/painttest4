@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Twitter, Linkedin, Youtube, Mail, MapPin } from 'lucide-react'
 
 const footerLinks = {
   product: {
@@ -81,10 +81,6 @@ export default function Footer() {
             
             {/* Contact Info */}
             <div className="mt-6 space-y-3">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4" />
-                <span>1-800-PAINT-PRO</span>
-              </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
                 <span>support@paintquotepro.com</span>
