@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { ArrowLeft, Loader2, LogIn, Building2, Shield, Clock } from 'lucide-react';
+import { ArrowLeft, Loader2, LogIn, Shield, Clock, User } from 'lucide-react';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +18,7 @@ export default function AccessCodePage() {
   const [accessCode, setAccessCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [showDemoCodes, setShowDemoCodes] = useState(false);
+
   const [showForgotCode, setShowForgotCode] = useState(false);
   const [forgotCodeEmail, setForgotCodeEmail] = useState('');
   const [forgotCodeLoading, setForgotCodeLoading] = useState(false);
@@ -74,11 +74,6 @@ export default function AccessCodePage() {
     }
   };
 
-  const handleDemoAccess = (code: string, name: string) => {
-    setCompanyName(name);
-    setAccessCode(code);
-    setShowDemoCodes(false);
-  };
 
   const handleForgotCode = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,11 +103,7 @@ export default function AccessCodePage() {
     }
   };
 
-  const demoCodes = [
-    { code: 'DEMO2024', name: 'Demo Painting Company', description: 'Full-featured demo' },
-    { code: 'PAINTER001', name: 'Smith Painting LLC', description: 'Sample contractor' },
-    { code: 'CONTRACTOR123', name: 'Elite Contractors', description: 'Premium features' },
-  ];
+
 
   return (
     <div className="min-h-screen gradient-animate">
@@ -206,42 +197,7 @@ export default function AccessCodePage() {
               </Button>
             </form>
 
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-gray-900 px-2 text-gray-400">Or</span>
-              </div>
-            </div>
 
-            <div className="space-y-3">
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full h-12"
-                onClick={() => setShowDemoCodes(!showDemoCodes)}
-              >
-                <Building2 className="mr-2 h-4 w-4" />
-                Try Demo Access
-              </Button>
-
-              {showDemoCodes && (
-                <div className="mt-4 space-y-2">
-                  {demoCodes.map((demo) => (
-                    <button
-                      key={demo.code}
-                      onClick={() => handleDemoAccess(demo.code, demo.name)}
-                      className="w-full p-4 text-left rounded-lg glass-card hover:bg-white/10 transition-all"
-                    >
-                      <div className="font-mono font-bold text-blue-600">{demo.code}</div>
-                      <div className="text-sm font-medium mt-1">{demo.name}</div>
-                      <div className="text-xs text-gray-500">{demo.description}</div>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
 
             <div className="text-center pt-4 border-t">
               <p className="text-sm text-gray-600">
@@ -270,7 +226,7 @@ export default function AccessCodePage() {
           </div>
           <div className="space-y-2">
             <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
-              <Building2 className="h-5 w-5 text-purple-400" />
+              <User className="h-5 w-5 text-purple-400" />
             </div>
             <p className="text-xs text-medium-contrast">Multi-Company</p>
           </div>
