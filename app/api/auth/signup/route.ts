@@ -4,6 +4,8 @@ import { getDatabaseAdapter } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 
+export const dynamic = 'force-dynamic';
+
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
 export async function POST(request: NextRequest) {

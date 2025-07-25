@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { getAuthContext } from '@/lib/auth/middleware';
 
+export const dynamic = 'force-dynamic';
+
 // Default paint products for new companies
 const DEFAULT_PAINT_PRODUCTS = [
   // Sherwin Williams

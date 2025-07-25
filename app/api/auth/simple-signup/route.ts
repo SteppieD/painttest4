@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getDatabaseAdapter, db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const { companyName, email } = await request.json()

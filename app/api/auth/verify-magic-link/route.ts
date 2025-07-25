@@ -3,6 +3,8 @@ import { verifyMagicLink, invalidateMagicLink } from '@/lib/auth/magic-link';
 import { getDatabaseAdapter } from '@/lib/database/adapter';
 import { cookies } from 'next/headers';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const { token } = await request.json();

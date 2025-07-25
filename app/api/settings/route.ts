@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getDatabaseAdapter } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const company = cookies().get('company')?.value

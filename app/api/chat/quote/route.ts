@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken'
 import { IntelligentQuoteParser } from '@/lib/ai/intelligent-quote-parser'
 import { getDatabaseAdapter } from '@/lib/database/adapter'
 
+export const dynamic = 'force-dynamic';
+
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
