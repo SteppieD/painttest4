@@ -80,62 +80,46 @@ export function ClientDashboard() {
       if (response.ok) {
         const usage = await response.json();
         
-        // Mock data combined with real usage data
+        // Use real data for new companies - no demo data
         setDashboardData({
           companyName: companyData.name || 'Unknown Company',
-          totalQuotes: 127,
-          uniqueCustomers: 89,
-          totalQuotedAmount: 342500,
-          acceptedQuotes: 76,
-          acceptanceRate: 59.8,
+          totalQuotes: 0, // Start fresh
+          uniqueCustomers: 0,
+          totalQuotedAmount: 0,
+          acceptedQuotes: 0,
+          acceptanceRate: 0,
           monthlyQuotes: usage.currentMonth.quotesCreated,
-          monthlyQuotedAmount: 67200,
-          recentQuotes: [
-            { id: 1, customer: 'John Smith', amount: 3200, status: 'pending', date: new Date() },
-            { id: 2, customer: 'Sarah Johnson', amount: 4500, status: 'accepted', date: new Date() },
-            { id: 3, customer: 'Mike Davis', amount: 2800, status: 'pending', date: new Date() },
-          ],
+          monthlyQuotedAmount: 0,
+          recentQuotes: [], // No demo quotes
           quotesUsed: usage.currentMonth.quotesCreated,
           quotesLimit: usage.currentMonth.limit,
           hasUnlimitedQuotes: usage.currentMonth.limit === -1,
           subscriptionTier: companyData.subscription_tier || 'free',
-          avgQuoteValue: 2833,
-          conversionTrend: [45, 52, 48, 65, 58, 72],
-          topCustomers: [
-            { name: 'Johnson Properties', value: 45200, jobs: 12 },
-            { name: 'Smith Real Estate', value: 38500, jobs: 8 },
-            { name: 'Davis Construction', value: 28900, jobs: 6 }
-          ]
+          avgQuoteValue: 0,
+          conversionTrend: [],
+          topCustomers: []
         });
       }
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
-      // Fallback to mock data
+      // Fallback to empty data for new companies
       setDashboardData({
         companyName: companyData.name || 'Unknown Company',
-        totalQuotes: 127,
-        uniqueCustomers: 89,
-        totalQuotedAmount: 342500,
-        acceptedQuotes: 76,
-        acceptanceRate: 59.8,
-        monthlyQuotes: 24,
-        monthlyQuotedAmount: 67200,
-        recentQuotes: [
-          { id: 1, customer: 'John Smith', amount: 3200, status: 'pending', date: new Date() },
-          { id: 2, customer: 'Sarah Johnson', amount: 4500, status: 'accepted', date: new Date() },
-          { id: 3, customer: 'Mike Davis', amount: 2800, status: 'pending', date: new Date() },
-        ],
-        quotesUsed: 1,
+        totalQuotes: 0,
+        uniqueCustomers: 0,
+        totalQuotedAmount: 0,
+        acceptedQuotes: 0,
+        acceptanceRate: 0,
+        monthlyQuotes: 0,
+        monthlyQuotedAmount: 0,
+        recentQuotes: [],
+        quotesUsed: 0,
         quotesLimit: 5,
         hasUnlimitedQuotes: false,
         subscriptionTier: companyData?.subscription_tier || 'free',
-        avgQuoteValue: 2833,
-        conversionTrend: [45, 52, 48, 65, 58, 72],
-        topCustomers: [
-          { name: 'Johnson Properties', value: 45200, jobs: 12 },
-          { name: 'Smith Real Estate', value: 38500, jobs: 8 },
-          { name: 'Davis Construction', value: 28900, jobs: 6 }
-        ]
+        avgQuoteValue: 0,
+        conversionTrend: [],
+        topCustomers: []
       });
     } finally {
       setLoading(false);
@@ -161,16 +145,17 @@ export function ClientDashboard() {
   const stats = [
     {
       title: 'Total Quotes',
-      value: dashboardData.totalQuotes,
-      change: '+12%',
+      value: dashboardData.totalQuotes > 0 ? dashboardData.totalQuotes : 'Start Creating',
+      change: dashboardData.totalQuotes > 0 ? '+12%' : '',
       icon: FileText,
       color: 'from-blue-400 to-cyan-400',
-      locked: false
+      locked: false,
+      emptyMessage: 'Create your first quote!'
     },
     {
       title: 'Win Rate',
-      value: `${dashboardData.acceptanceRate}%`,
-      change: '+5%',
+      value: dashboardData.totalQuotes > 0 ? `${dashboardData.acceptanceRate}%` : 'Coming Soon',
+      change: dashboardData.totalQuotes > 0 ? '+5%' : '',
       icon: Percent,
       color: 'from-emerald-400 to-green-400',
       locked: !isPro,
@@ -178,8 +163,8 @@ export function ClientDashboard() {
     },
     {
       title: 'Total Revenue',
-      value: `$${dashboardData.totalQuotedAmount.toLocaleString()}`,
-      change: '+18%',
+      value: dashboardData.totalQuotedAmount > 0 ? `$${dashboardData.totalQuotedAmount.toLocaleString()}` : 'Track Sales',
+      change: dashboardData.totalQuotedAmount > 0 ? '+18%' : '',
       icon: DollarSign,
       color: 'from-purple-400 to-pink-400',
       locked: !isPro,
@@ -187,8 +172,8 @@ export function ClientDashboard() {
     },
     {
       title: 'Active Customers',
-      value: dashboardData.uniqueCustomers,
-      change: '+8%',
+      value: dashboardData.uniqueCustomers > 0 ? dashboardData.uniqueCustomers : 'Build Your Base',
+      change: dashboardData.uniqueCustomers > 0 ? '+8%' : '',
       icon: Users,
       color: 'from-amber-400 to-orange-400',
       locked: false
@@ -355,15 +340,22 @@ export function ClientDashboard() {
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} group-hover:scale-110 transition-transform`}>
                   <Icon className="h-6 w-6 text-white" />
                 </div>
-                <span className={`text-sm font-medium ${
-                  stat.change.startsWith('+') ? 'text-emerald-400' : 'text-red-400'
-                }`}>
-                  {stat.change}
-                </span>
+                {stat.change && (
+                  <span className={`text-sm font-medium ${
+                    stat.change.startsWith('+') ? 'text-emerald-400' : 'text-red-400'
+                  }`}>
+                    {stat.change}
+                  </span>
+                )}
               </div>
               <div className="space-y-1">
                 <p className="text-sm text-gray-400">{stat.title}</p>
-                <p className="text-2xl font-bold text-white">{stat.value}</p>
+                <p className={`text-2xl font-bold ${typeof stat.value === 'string' && stat.value.includes('Start') || stat.value.includes('Coming') || stat.value.includes('Track') || stat.value.includes('Build') ? 'text-gray-500' : 'text-white'}`}>
+                  {stat.value}
+                </p>
+                {stat.emptyMessage && dashboardData.totalQuotes === 0 && (
+                  <p className="text-xs text-blue-400 mt-1">{stat.emptyMessage}</p>
+                )}
               </div>
             </div>
           )
@@ -385,36 +377,54 @@ export function ClientDashboard() {
           </div>
           
           <div className="space-y-3">
-            {dashboardData.recentQuotes.map((quote) => (
-              <Link
-                key={quote.id}
-                href={`/dashboard/quotes/${quote.id}`}
-                className="block p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-300 group"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium text-white group-hover:text-blue-400 transition-colors">
-                      {quote.customer}
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      <ClientDate date={quote.date} />
-                    </p>
+            {dashboardData.recentQuotes.length > 0 ? (
+              dashboardData.recentQuotes.map((quote) => (
+                <Link
+                  key={quote.id}
+                  href={`/dashboard/quotes/${quote.id}`}
+                  className="block p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium text-white group-hover:text-blue-400 transition-colors">
+                        {quote.customer}
+                      </p>
+                      <p className="text-sm text-gray-400">
+                        <ClientDate date={quote.date} />
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-bold text-white">
+                        ${quote.amount.toLocaleString()}
+                      </p>
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                        quote.status === 'accepted' 
+                          ? 'bg-emerald-500/20 text-emerald-400'
+                          : 'bg-amber-500/20 text-amber-400'
+                      }`}>
+                        {quote.status}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-lg font-bold text-white">
-                      ${quote.amount.toLocaleString()}
-                    </p>
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                      quote.status === 'accepted' 
-                        ? 'bg-emerald-500/20 text-emerald-400'
-                        : 'bg-amber-500/20 text-amber-400'
-                    }`}>
-                      {quote.status}
-                    </span>
-                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className="text-center py-12">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                  <FileText className="h-8 w-8 text-blue-400" />
                 </div>
-              </Link>
-            ))}
+                <h3 className="text-lg font-semibold text-white mb-2">Your First Quote Awaits!</h3>
+                <p className="text-sm text-gray-400 mb-4">
+                  Create your first professional quote in under 2 minutes
+                </p>
+                <Link href="/create-quote">
+                  <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Create Your First Quote
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
@@ -548,16 +558,21 @@ export function ClientDashboard() {
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-32 h-32 bg-gray-800 rounded-full mx-auto mb-4"></div>
+                <div className="w-32 h-32 bg-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Target className="h-16 w-16 text-gray-700" />
+                </div>
                 <p className="text-sm text-gray-400">Quote Acceptance Rate</p>
+                <p className="text-xs text-blue-400 mt-1">Create quotes to track</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-gray-600 mb-2">--</p>
                 <p className="text-sm text-gray-400">Quotes This Month</p>
+                <p className="text-xs text-blue-400 mt-1">Start with your first</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-gray-600 mb-2">$--</p>
                 <p className="text-sm text-gray-400">Monthly Revenue</p>
+                <p className="text-xs text-blue-400 mt-1">Revenue tracking ready</p>
               </div>
             </div>
           </div>
@@ -573,25 +588,35 @@ export function ClientDashboard() {
               <BarChart className="h-5 w-5 text-blue-400" />
               Conversion Trends
             </h3>
-            <div className="h-48 flex items-end justify-between gap-2">
-              {dashboardData.conversionTrend.map((value, index) => (
-                <div key={index} className="flex-1 flex flex-col items-center gap-2">
-                  <div 
-                    className="w-full bg-gradient-to-t from-blue-500 to-purple-500 rounded-t"
-                    style={{ height: `${(value / 100) * 100}%` }}
-                  />
-                  <span className="text-xs text-gray-400">
-                    {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'][index]}
-                  </span>
+            {dashboardData.conversionTrend.length > 0 ? (
+              <>
+                <div className="h-48 flex items-end justify-between gap-2">
+                  {dashboardData.conversionTrend.map((value, index) => (
+                    <div key={index} className="flex-1 flex flex-col items-center gap-2">
+                      <div 
+                        className="w-full bg-gradient-to-t from-blue-500 to-purple-500 rounded-t"
+                        style={{ height: `${(value / 100) * 100}%` }}
+                      />
+                      <span className="text-xs text-gray-400">
+                        {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'][index]}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="mt-4 flex items-center justify-between">
-              <p className="text-sm text-gray-400">6-month average</p>
-              <p className="text-lg font-semibold text-white">
-                {Math.round(dashboardData.conversionTrend.reduce((a, b) => a + b) / dashboardData.conversionTrend.length)}%
-              </p>
-            </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="text-sm text-gray-400">6-month average</p>
+                  <p className="text-lg font-semibold text-white">
+                    {Math.round(dashboardData.conversionTrend.reduce((a, b) => a + b) / dashboardData.conversionTrend.length)}%
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-16">
+                <BarChart className="h-12 w-12 text-gray-700 mx-auto mb-3" />
+                <p className="text-gray-400">No data yet</p>
+                <p className="text-sm text-blue-400 mt-1">Create quotes to see trends</p>
+              </div>
+            )}
           </div>
         ) : (
           <Link href="/dashboard/settings/billing">
@@ -618,23 +643,33 @@ export function ClientDashboard() {
               <Users className="h-5 w-5 text-purple-400" />
               Top Customers
             </h3>
-            <div className="space-y-3">
-              {dashboardData.topCustomers.map((customer, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                  <div>
-                    <p className="font-medium text-white">{customer.name}</p>
-                    <p className="text-xs text-gray-400">{customer.jobs} jobs completed</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-semibold text-white">${customer.value.toLocaleString()}</p>
-                    <p className="text-xs text-emerald-400">+15%</p>
-                  </div>
+            {dashboardData.topCustomers.length > 0 ? (
+              <>
+                <div className="space-y-3">
+                  {dashboardData.topCustomers.map((customer, index) => (
+                    <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                      <div>
+                        <p className="font-medium text-white">{customer.name}</p>
+                        <p className="text-xs text-gray-400">{customer.jobs} jobs completed</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-semibold text-white">${customer.value.toLocaleString()}</p>
+                        <p className="text-xs text-emerald-400">+15%</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <Link href="/dashboard/customers" className="block mt-4 text-center text-sm text-blue-400 hover:text-blue-300">
-              View all customers →
-            </Link>
+                <Link href="/dashboard/customers" className="block mt-4 text-center text-sm text-blue-400 hover:text-blue-300">
+                  View all customers →
+                </Link>
+              </>
+            ) : (
+              <div className="text-center py-16">
+                <Users className="h-12 w-12 text-gray-700 mx-auto mb-3" />
+                <p className="text-gray-400">No customers yet</p>
+                <p className="text-sm text-blue-400 mt-1">Your best clients will appear here</p>
+              </div>
+            )}
           </div>
         ) : (
           <Link href="/dashboard/settings/billing">

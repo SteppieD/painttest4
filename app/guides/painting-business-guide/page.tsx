@@ -1296,6 +1296,265 @@ export default function PaintingBusinessGuide() {
             </div>
           </div>
         </section>
+
+        {/* Comprehensive FAQ Section with Schema Markup */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-white mb-6">Painting Business FAQs</h2>
+              
+              {/* FAQ Schema.org structured data */}
+              <script 
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                      {
+                        "@type": "Question",
+                        "name": "How much money do I need to start a painting business?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "You can start a painting business with $3,000-$10,000. Essential startup costs include: basic equipment ($1,500-3,000), insurance ($1,200-2,500/year), business license ($200-800), marketing ($500-1,500), and working capital ($2,000-5,000). Many successful painters started with less by focusing on residential work first."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How much can painting business owners make?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Painting business owner income varies by scale: Solo painters earn $40,000-$80,000/year, small crews (2-5 painters) generate $80,000-$150,000, established businesses (5-10 painters) make $150,000-$300,000, and large operations (10+ painters) can exceed $300,000-$1M+. Profit margins typically range from 15-35%."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Do I need a license to start a painting business?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Licensing requirements vary by location. Most states require a business license ($50-400) and contractor's license for jobs over $500-5,000. Some states require specific painting contractor licenses. Always check your state and local requirements. Insurance is essential regardless of licensing - general liability ($1M minimum) and workers' comp if you have employees."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How do I get painting customers when starting out?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Start with: 1) Friends and family referrals, 2) Door hangers in target neighborhoods ($200/1000), 3) Google My Business listing (free), 4) Facebook community groups, 5) Partner with real estate agents, 6) Yard signs at job sites, 7) Before/after photos on social media. Focus on residential first - easier to land and builds portfolio quickly."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What's the best business structure for a painting company?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "LLC (Limited Liability Company) is best for most painting businesses - provides personal asset protection, tax flexibility, and professional credibility. Sole proprietorship works for starting out but offers no liability protection. S-Corp becomes beneficial around $60,000+ net profit for tax savings. Consult a business attorney for your specific situation."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How do I price painting jobs to make profit?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Use this formula: Labor (hours × rate) + Materials (paint, supplies) + Overhead (30% of labor+materials) + Profit margin (20-35%) = Total price. Example: 40 hours × $30 = $1,200 labor, $400 materials, $480 overhead (30%), $520 profit (25%) = $2,600 total. Track actual costs to refine pricing over time."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Should I hire employees or use subcontractors?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Start with subcontractors (1099) for flexibility and lower costs. Switch to employees (W2) when you need consistent quality and availability. Employees cost 20-30% more but provide better control, training retention, and customer consistency. Many successful painters use a hybrid model with core employees and overflow subs."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What insurance does a painting business need?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Essential insurance includes: General Liability ($1-2M minimum, costs $800-2,000/year), Commercial Auto ($1,500-3,000/year per vehicle), Workers' Compensation (required with employees, 3-8% of payroll), and Tools/Equipment coverage ($500-1,000/year). Many commercial clients require $2M+ liability. Bundle policies for savings."
+                        }
+                      }
+                    ]
+                  })
+                }}
+              />
+              
+              <div className="space-y-4">
+                {/* Startup costs - most searched */}
+                <Card className="bg-gradient-to-r from-gray-800/40 to-gray-800/20 border-green-500/30 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <DollarSign className="h-5 w-5 text-green-400 mr-2" />
+                    How much money do I need to start a painting business?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    You can start a painting business with $3,000-$10,000:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-3 text-gray-300">
+                    <div className="space-y-2">
+                      <div><strong>Equipment:</strong> $1,500-3,000</div>
+                      <div><strong>Insurance:</strong> $1,200-2,500/year</div>
+                      <div><strong>License/Permits:</strong> $200-800</div>
+                      <div><strong>Marketing:</strong> $500-1,500</div>
+                    </div>
+                    <div className="space-y-2">
+                      <div><strong>Vehicle/Gas:</strong> $500-2,000</div>
+                      <div><strong>Software:</strong> $50-150/month</div>
+                      <div><strong>Working Capital:</strong> $2,000-5,000</div>
+                      <div><strong>Total Minimum:</strong> ~$3,000</div>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Income potential */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <TrendingUp className="h-5 w-5 text-blue-400 mr-2" />
+                    How much can painting business owners make?
+                  </h3>
+                  <div className="space-y-3 text-gray-300">
+                    <div><strong>Solo painter:</strong> $40,000-$80,000/year</div>
+                    <div><strong>Small crew (2-5):</strong> $80,000-$150,000/year</div>
+                    <div><strong>Established (5-10):</strong> $150,000-$300,000/year</div>
+                    <div><strong>Large operation (10+):</strong> $300,000-$1M+/year</div>
+                    <p className="text-gray-400 text-sm mt-3">
+                      Profit margins typically 15-35% after all expenses.
+                    </p>
+                  </div>
+                </Card>
+
+                {/* Licensing requirements */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Shield className="h-5 w-5 text-purple-400 mr-2" />
+                    Do I need a license to start a painting business?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    Licensing varies by location but typically includes:
+                  </p>
+                  <ul className="space-y-2 text-gray-300 ml-4">
+                    <li>• Business license ($50-400)</li>
+                    <li>• Contractor's license (jobs over $500-5,000)</li>
+                    <li>• Some states require painting-specific licenses</li>
+                    <li>• General liability insurance (always required)</li>
+                    <li>• Workers' comp (if you have employees)</li>
+                  </ul>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Check your state and local requirements before starting.
+                  </p>
+                </Card>
+
+                {/* Getting customers */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Users className="h-5 w-5 text-green-400 mr-2" />
+                    How do I get painting customers when starting out?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    Proven methods for new painting businesses:
+                  </p>
+                  <ol className="space-y-2 text-gray-300 ml-4">
+                    <li><strong>1.</strong> Friends/family referrals (quickest start)</li>
+                    <li><strong>2.</strong> Door hangers in target areas ($200/1000)</li>
+                    <li><strong>3.</strong> Google My Business (free, essential)</li>
+                    <li><strong>4.</strong> Facebook community groups</li>
+                    <li><strong>5.</strong> Partner with realtors/property managers</li>
+                    <li><strong>6.</strong> Yard signs at every job</li>
+                    <li><strong>7.</strong> Before/after photos on social media</li>
+                  </ol>
+                </Card>
+
+                {/* Business structure */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Building className="h-5 w-5 text-blue-400 mr-2" />
+                    What's the best business structure for a painting company?
+                  </h3>
+                  <div className="space-y-3 text-gray-300">
+                    <div><strong>LLC (Recommended):</strong> Personal asset protection + tax flexibility</div>
+                    <div><strong>Sole Proprietorship:</strong> Simple but no liability protection</div>
+                    <div><strong>S-Corp:</strong> Tax savings at $60k+ profit</div>
+                    <div><strong>Corporation:</strong> Only for large operations</div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Most painters choose LLC for protection and simplicity.
+                  </p>
+                </Card>
+
+                {/* Pricing formula */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Calculator className="h-5 w-5 text-purple-400 mr-2" />
+                    How do I price painting jobs to make profit?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    <strong>Profitable pricing formula:</strong>
+                  </p>
+                  <div className="bg-gray-900/50 p-4 rounded text-gray-300 space-y-1">
+                    <div>Labor: 40 hours × $30/hr = $1,200</div>
+                    <div>Materials: Paint + supplies = $400</div>
+                    <div>Overhead: 30% × $1,600 = $480</div>
+                    <div>Profit: 25% markup = $520</div>
+                    <div className="border-t border-gray-700 pt-2">
+                      <strong>Total Quote: $2,600</strong>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Employees vs subs */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Users className="h-5 w-5 text-green-400 mr-2" />
+                    Should I hire employees or use subcontractors?
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+                    <div>
+                      <strong className="text-white">Subcontractors (1099):</strong>
+                      <ul className="mt-1 space-y-1 text-sm">
+                        <li>✓ Lower costs</li>
+                        <li>✓ Flexibility</li>
+                        <li>✓ No payroll taxes</li>
+                        <li>✗ Less control</li>
+                        <li>✗ Quality varies</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong className="text-white">Employees (W2):</strong>
+                      <ul className="mt-1 space-y-1 text-sm">
+                        <li>✓ Better control</li>
+                        <li>✓ Consistent quality</li>
+                        <li>✓ Build company culture</li>
+                        <li>✗ 20-30% more cost</li>
+                        <li>✗ More paperwork</li>
+                      </ul>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Insurance needs */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Shield className="h-5 w-5 text-amber-400 mr-2" />
+                    What insurance does a painting business need?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    Essential painting business insurance:
+                  </p>
+                  <div className="space-y-2 text-gray-300">
+                    <div><strong>General Liability:</strong> $1-2M minimum ($800-2,000/year)</div>
+                    <div><strong>Commercial Auto:</strong> Per vehicle ($1,500-3,000/year)</div>
+                    <div><strong>Workers' Comp:</strong> If employees (3-8% of payroll)</div>
+                    <div><strong>Tools/Equipment:</strong> Theft/damage ($500-1,000/year)</div>
+                    <div><strong>Umbrella Policy:</strong> Extra protection ($500-1,500/year)</div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Many commercial clients require $2M+ liability coverage.
+                  </p>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <ModernFooter />
     </>

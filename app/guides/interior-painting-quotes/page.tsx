@@ -15,7 +15,10 @@ import {
   FileText,
   ArrowRight,
   Ruler,
-  Sparkles
+  Sparkles,
+  Layers,
+  Package,
+  TrendingUp
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -526,6 +529,266 @@ export default function InteriorPaintingQuotesGuide() {
                     </p>
                   </Card>
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comprehensive FAQ Section with Schema Markup */}
+        <section className="py-12 bg-black/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-white mb-6">Interior Painting FAQs</h2>
+              
+              {/* FAQ Schema.org structured data */}
+              <script 
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                      {
+                        "@type": "Question",
+                        "name": "How much does interior painting cost per room?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Interior painting costs typically range from $300-$750 for bedrooms, $400-$1,000 for living rooms, and $350-$850 for kitchens. Prices depend on room size, ceiling height, wall condition, paint quality, and number of colors."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What's included in an interior painting estimate?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "A complete interior painting estimate includes: wall preparation (patching, sanding, priming), paint costs (brand, type, sheen), labor hours, protection of floors/furniture, number of coats, trim/ceiling work if applicable, cleanup, and warranty terms."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How long does it take to paint a room?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Professional painters typically complete a standard bedroom in 4-6 hours, including prep work and two coats. Larger rooms take 6-8 hours. Add 2-4 hours for extensive prep work, multiple colors, or detailed trim work."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Should I paint ceilings when painting walls?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Yes, painting ceilings when doing walls is recommended because: 1) It's more cost-effective when painters are already set up, 2) Ensures color coordination, 3) Fresh ceiling paint brightens the entire room, 4) Typically adds only 20-30% to room cost."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What's the best paint sheen for interior walls?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Eggshell or satin finish is best for most interior walls - durable and washable with subtle sheen. Use flat/matte for ceilings and low-traffic areas, semi-gloss for trim and high-moisture areas, and high-gloss for cabinets and doors."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How many coats of paint do interior walls need?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Most interior walls need two coats of paint for proper coverage and color uniformity. Dark colors over light may need 3 coats. New drywall requires primer plus 2 coats. High-quality paint may achieve full coverage in one coat for touch-ups only."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Do I need to move furniture for interior painting?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Professional painters typically move furniture to room center and cover it. Full room clearing costs extra ($50-$200). Homeowners can save money by moving small items and valuables themselves. Large furniture stays but gets professional protection."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What's the cost difference between DIY and professional interior painting?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "DIY painting saves 50-75% on labor but consider: professionals complete work 3-4x faster, achieve better finishes, include warranty, handle repairs properly, and have commercial-grade equipment. DIY materials alone cost $150-$400 per room."
+                        }
+                      }
+                    ]
+                  })
+                }}
+              />
+              
+              <div className="space-y-4">
+                {/* Room pricing - most searched */}
+                <Card className="bg-gradient-to-r from-gray-800/40 to-gray-800/20 border-blue-500/30 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <DollarSign className="h-5 w-5 text-blue-400 mr-2" />
+                    How much does interior painting cost per room?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    Interior painting costs vary by room type and size:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-3 text-gray-300">
+                    <div className="space-y-2">
+                      <div><strong>Bedroom (10x12):</strong> $300-$750</div>
+                      <div><strong>Living Room (15x20):</strong> $400-$1,000</div>
+                      <div><strong>Kitchen (12x15):</strong> $350-$850</div>
+                      <div><strong>Bathroom (8x10):</strong> $250-$500</div>
+                    </div>
+                    <div className="space-y-2">
+                      <div><strong>Dining Room (12x14):</strong> $350-$800</div>
+                      <div><strong>Hallway (4x20):</strong> $200-$400</div>
+                      <div><strong>Stairwell:</strong> $400-$800</div>
+                      <div><strong>Whole House:</strong> $3-$7/sq ft</div>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* What's included */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <FileText className="h-5 w-5 text-purple-400 mr-2" />
+                    What's included in an interior painting estimate?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    A complete interior painting estimate includes:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-2 text-gray-300">
+                    <div>✓ Wall preparation & repairs</div>
+                    <div>✓ Priming if needed</div>
+                    <div>✓ Paint materials (specified brand)</div>
+                    <div>✓ Labor for 2 coats</div>
+                    <div>✓ Floor/furniture protection</div>
+                    <div>✓ Edge cutting & detail work</div>
+                    <div>✓ Clean-up & disposal</div>
+                    <div>✓ Touch-up paint & warranty</div>
+                  </div>
+                </Card>
+
+                {/* Time estimates */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Clock className="h-5 w-5 text-blue-400 mr-2" />
+                    How long does it take to paint a room?
+                  </h3>
+                  <p className="text-gray-300">
+                    Professional painting timeframes:
+                  </p>
+                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                    <li>• <strong>Small bedroom:</strong> 4-6 hours</li>
+                    <li>• <strong>Master bedroom:</strong> 6-8 hours</li>
+                    <li>• <strong>Living room:</strong> 6-8 hours</li>
+                    <li>• <strong>Kitchen:</strong> 5-7 hours</li>
+                    <li>• <strong>Bathroom:</strong> 3-5 hours</li>
+                  </ul>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Add 2-4 hours for extensive repairs or multiple colors.
+                  </p>
+                </Card>
+
+                {/* Ceiling painting */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Home className="h-5 w-5 text-green-400 mr-2" />
+                    Should I paint ceilings when painting walls?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    <strong>Yes, paint ceilings with walls because:</strong>
+                  </p>
+                  <div className="space-y-2 text-gray-300">
+                    <div>✓ More cost-effective (adds only 20-30%)</div>
+                    <div>✓ Ensures perfect color coordination</div>
+                    <div>✓ Brightens entire room dramatically</div>
+                    <div>✓ Painters already have equipment set up</div>
+                    <div>✓ Hides imperfections and water stains</div>
+                  </div>
+                </Card>
+
+                {/* Paint sheen guide */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Paintbrush className="h-5 w-5 text-purple-400 mr-2" />
+                    What's the best paint sheen for interior walls?
+                  </h3>
+                  <div className="space-y-2 text-gray-300">
+                    <div><strong>Flat/Matte:</strong> Ceilings, low-traffic areas</div>
+                    <div><strong>Eggshell:</strong> Living rooms, bedrooms (most popular)</div>
+                    <div><strong>Satin:</strong> Kids rooms, hallways (washable)</div>
+                    <div><strong>Semi-gloss:</strong> Kitchens, bathrooms, trim</div>
+                    <div><strong>High-gloss:</strong> Cabinets, doors, accent walls</div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Higher sheen = more durable but shows more imperfections.
+                  </p>
+                </Card>
+
+                {/* Number of coats */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Layers className="h-5 w-5 text-blue-400 mr-2" />
+                    How many coats of paint do interior walls need?
+                  </h3>
+                  <p className="text-gray-300">
+                    Standard coating requirements:
+                  </p>
+                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                    <li>• <strong>Most walls:</strong> 2 coats for full coverage</li>
+                    <li>• <strong>Dark over light:</strong> 2-3 coats</li>
+                    <li>• <strong>New drywall:</strong> 1 primer + 2 paint coats</li>
+                    <li>• <strong>Color change:</strong> Often needs 3 coats</li>
+                    <li>• <strong>Touch-ups only:</strong> 1 coat if matching</li>
+                  </ul>
+                </Card>
+
+                {/* Furniture moving */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Package className="h-5 w-5 text-green-400 mr-2" />
+                    Do I need to move furniture for interior painting?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    Furniture handling options:
+                  </p>
+                  <div className="space-y-2 text-gray-300">
+                    <div><strong>Standard service:</strong> Painters move to center & cover</div>
+                    <div><strong>Full clearing:</strong> $50-$200 extra per room</div>
+                    <div><strong>DIY prep:</strong> Move small items yourself to save</div>
+                    <div><strong>Large furniture:</strong> Stays in place with protection</div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Always remove valuables and wall decorations yourself.
+                  </p>
+                </Card>
+
+                {/* DIY vs Professional */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <TrendingUp className="h-5 w-5 text-amber-400 mr-2" />
+                    What's the cost difference between DIY and professional interior painting?
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+                    <div>
+                      <strong className="text-white">DIY Costs:</strong>
+                      <ul className="mt-1 space-y-1 text-sm">
+                        <li>• Materials: $150-$400/room</li>
+                        <li>• Time: 16-24 hours/room</li>
+                        <li>• Tools: $100-$300 initial</li>
+                        <li>• No warranty coverage</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong className="text-white">Professional:</strong>
+                      <ul className="mt-1 space-y-1 text-sm">
+                        <li>• Total: $300-$1,000/room</li>
+                        <li>• Time: 4-8 hours/room</li>
+                        <li>• Tools included</li>
+                        <li>• 2-5 year warranty</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Professionals save 75% time with better results and warranty protection.
+                  </p>
+                </Card>
               </div>
             </div>
           </div>

@@ -22,7 +22,9 @@ import {
   Sparkles,
   BarChart3,
   Shield,
-  Award
+  Award,
+  AlertCircle,
+  Palette
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -1074,37 +1076,238 @@ export default function HowToQuotePaintingJobsGuide() {
               </div>
             </section>
 
-            {/* Schema.org FAQ Section */}
+            {/* Comprehensive FAQ Section with Schema Markup */}
             <section className="mt-16">
               <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+              
+              {/* FAQ Schema.org structured data */}
+              <script 
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                      {
+                        "@type": "Question",
+                        "name": "How much should I charge for painting per square foot?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Professional painters typically charge $1.50-$3.50 per square foot for interior walls, $1.00-$2.50 for ceilings, and $1.50-$4.00 for exterior siding. Prices vary based on paint quality, surface preparation needs, and local market rates."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How do I calculate a painting quote?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "To calculate a painting quote: 1) Measure the area (length × height - openings), 2) Calculate paint needed (area ÷ 350 sq ft per gallon), 3) Estimate labor hours (area ÷ 200-300 sq ft per hour), 4) Add material costs, 5) Include overhead and profit margin (20-50%)."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What should be included in a painting estimate?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "A professional painting estimate should include: scope of work, surface preparation details, paint specifications (brand, type, sheen), number of coats, labor costs, material costs, timeline, payment terms, warranty information, and total project cost with any applicable taxes."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How long does it take to create a painting quote?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "With modern quoting software like PaintQuote Pro, professional painting quotes can be created in 2-15 minutes. Traditional manual methods typically take 2-3 hours per quote including measurements, calculations, and document preparation."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What's the average profit margin for painting contractors?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Successful painting contractors typically maintain profit margins between 20-50%. Residential repaint projects average 35-50% margins, while new construction and commercial projects often range from 20-35% due to increased competition and scale."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How much paint do I need for a 2000 square foot house?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "For a 2,000 square foot house interior, you'll typically need 10-15 gallons of paint (assuming 8-foot ceilings and two coats). This includes 8-10 gallons for walls and 2-5 gallons for ceilings, trim, and doors. Always add 10-15% extra for touch-ups."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Should I charge by the hour or by the job for painting?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Most professional painters charge by the job (fixed price) rather than hourly. Fixed pricing protects your profit margins, is easier for customers to understand, and rewards efficiency. Use hourly rates ($50-$150/hour) only for time-and-materials contracts or small repair work."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What factors affect painting quote prices?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Key factors affecting painting prices include: surface condition and prep work needed, number of colors, paint quality, ceiling height, accessibility, furniture moving requirements, timeline urgency, season/weather, and local market rates. Premium finishes and repairs add 20-50% to base costs."
+                        }
+                      }
+                    ]
+                  })
+                }}
+              />
+              
               <div className="space-y-4">
-                <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    How long should it take to create a painting quote?
+                {/* Main pricing question - most searched */}
+                <Card className="bg-gradient-to-r from-gray-800/40 to-gray-800/20 border-blue-500/30 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <DollarSign className="h-5 w-5 text-blue-400 mr-2" />
+                    How much should I charge for painting per square foot?
                   </h3>
                   <p className="text-gray-300">
-                    With modern quoting software, professional painting quotes can be created in 10-15 minutes. 
-                    Traditional methods typically take 2-3 hours per quote.
+                    Professional painters typically charge:
+                  </p>
+                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                    <li>• <strong>Interior walls:</strong> $1.50-$3.50 per sq ft</li>
+                    <li>• <strong>Ceilings:</strong> $1.00-$2.50 per sq ft</li>
+                    <li>• <strong>Exterior siding:</strong> $1.50-$4.00 per sq ft</li>
+                    <li>• <strong>Trim & detail:</strong> $2.00-$6.00 per linear ft</li>
+                  </ul>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Prices vary based on paint quality, surface preparation needs, and local market rates.
                   </p>
                 </Card>
 
+                {/* Calculation method */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    What's the average cost to paint a house interior?
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Calculator className="h-5 w-5 text-green-400 mr-2" />
+                    How do I calculate a painting quote?
                   </h3>
                   <p className="text-gray-300">
-                    Interior painting typically costs $2-6 per square foot, or $2,000-6,000 for a 2,000 sq ft home. 
-                    Factors include paint quality, wall condition, and regional labor rates.
+                    Follow this 5-step formula for accurate painting quotes:
+                  </p>
+                  <ol className="mt-2 space-y-2 text-gray-300 ml-4">
+                    <li><strong>1.</strong> Measure the area (length × height - openings)</li>
+                    <li><strong>2.</strong> Calculate paint needed (area ÷ 350 sq ft per gallon)</li>
+                    <li><strong>3.</strong> Estimate labor hours (area ÷ 200-300 sq ft per hour)</li>
+                    <li><strong>4.</strong> Add material costs (paint, supplies, equipment)</li>
+                    <li><strong>5.</strong> Include overhead and profit margin (20-50%)</li>
+                  </ol>
+                </Card>
+
+                {/* What to include */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <FileText className="h-5 w-5 text-purple-400 mr-2" />
+                    What should be included in a painting estimate?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    A professional painting estimate should include:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-2 text-gray-300">
+                    <div>✓ Detailed scope of work</div>
+                    <div>✓ Surface preparation details</div>
+                    <div>✓ Paint specifications</div>
+                    <div>✓ Number of coats</div>
+                    <div>✓ Labor & material costs</div>
+                    <div>✓ Project timeline</div>
+                    <div>✓ Payment terms</div>
+                    <div>✓ Warranty information</div>
+                  </div>
+                </Card>
+
+                {/* Time to create quote */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Clock className="h-5 w-5 text-blue-400 mr-2" />
+                    How long does it take to create a painting quote?
+                  </h3>
+                  <p className="text-gray-300">
+                    <strong>With quoting software:</strong> 2-15 minutes<br/>
+                    <strong>Traditional methods:</strong> 2-3 hours<br/><br/>
+                    Modern tools like PaintQuote Pro automate calculations, include templates, and generate professional PDFs instantly, saving 90% of quoting time.
                   </p>
                 </Card>
 
+                {/* Profit margins */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    How do I calculate paint quantities needed?
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <TrendingUp className="h-5 w-5 text-green-400 mr-2" />
+                    What's the average profit margin for painting contractors?
                   </h3>
                   <p className="text-gray-300">
-                    Divide total square footage by the coverage rate (typically 350-400 sq ft per gallon), 
-                    then add 10-15% for touch-ups and waste. Our free calculator automates this process.
+                    Successful painting contractors maintain these profit margins:
+                  </p>
+                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                    <li>• <strong>Residential repaint:</strong> 35-50%</li>
+                    <li>• <strong>New construction:</strong> 20-35%</li>
+                    <li>• <strong>Commercial projects:</strong> 20-35%</li>
+                    <li>• <strong>High-end/specialty:</strong> 40-60%</li>
+                  </ul>
+                </Card>
+
+                {/* Paint calculation */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <Palette className="h-5 w-5 text-purple-400 mr-2" />
+                    How much paint do I need for a 2000 square foot house?
+                  </h3>
+                  <p className="text-gray-300">
+                    For a typical 2,000 sq ft house interior (8-foot ceilings):
+                  </p>
+                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                    <li>• <strong>Walls:</strong> 8-10 gallons (two coats)</li>
+                    <li>• <strong>Ceilings:</strong> 2-3 gallons</li>
+                    <li>• <strong>Trim & doors:</strong> 2-3 gallons</li>
+                    <li>• <strong>Total:</strong> 12-16 gallons (add 10-15% extra)</li>
+                  </ul>
+                  <p className="text-gray-400 text-sm mt-3">
+                    One gallon typically covers 350-400 sq ft with one coat.
+                  </p>
+                </Card>
+
+                {/* Hourly vs fixed */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <DollarSign className="h-5 w-5 text-blue-400 mr-2" />
+                    Should I charge by the hour or by the job for painting?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    <strong>Charge by the job (fixed price)</strong> for most projects:
+                  </p>
+                  <div className="space-y-2 text-gray-300">
+                    <div>✓ Protects profit margins</div>
+                    <div>✓ Easier for customers</div>
+                    <div>✓ Rewards efficiency</div>
+                    <div>✓ No disputes over hours</div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Use hourly rates ($50-$150/hour) only for repairs or T&M contracts.
+                  </p>
+                </Card>
+
+                {/* Factors affecting price */}
+                <Card className="bg-gray-800/30 border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
+                    <AlertCircle className="h-5 w-5 text-amber-400 mr-2" />
+                    What factors affect painting quote prices?
+                  </h3>
+                  <p className="text-gray-300 mb-3">
+                    Key factors that impact painting prices:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-2 text-gray-300">
+                    <div>• Surface condition</div>
+                    <div>• Prep work required</div>
+                    <div>• Number of colors</div>
+                    <div>• Paint quality/type</div>
+                    <div>• Ceiling height</div>
+                    <div>• Accessibility issues</div>
+                    <div>• Timeline urgency</div>
+                    <div>• Season/weather</div>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Premium finishes and extensive repairs can add 20-50% to base costs.
                   </p>
                 </Card>
               </div>
