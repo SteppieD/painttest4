@@ -85,8 +85,9 @@ export async function sendMagicLinkEmail({
             </div>
           </body>
           </html>
-        `,
-        text: `
+        `;
+        
+    const text = `
 ${greeting}
 
 Click this link to ${action}:
