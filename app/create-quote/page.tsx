@@ -67,7 +67,7 @@ function CreateQuoteContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex flex-col">
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-64 h-64 lg:w-96 lg:h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
@@ -110,7 +110,7 @@ function CreateQuoteContent() {
                   </div>
                   <Progress 
                     value={(quotaInfo.used / quotaInfo.limit) * 100} 
-                    className="w-32 h-2"
+                    className="w-32 h-2 bg-white/10 [&>div]:bg-gradient-to-r [&>div]:from-blue-400 [&>div]:to-purple-400"
                   />
                 </div>
                 
@@ -164,9 +164,9 @@ function CreateQuoteContent() {
       )}
 
       {/* Main content */}
-      <main className="container mx-auto px-4 py-6 relative z-10">
-        <div className="mx-auto max-w-4xl">
-          <div className="glass-card h-[calc(100vh-200px)] flex flex-col">
+      <main className="container mx-auto px-4 py-4 relative z-10 flex-1">
+        <div className="mx-auto max-w-4xl h-full">
+          <div className="glass-card h-full flex flex-col">
             <div className="p-6 border-b border-white/10">
               <h2 className="text-2xl font-bold text-white">
                 Quick Quote Builder

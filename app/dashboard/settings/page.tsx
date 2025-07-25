@@ -304,14 +304,14 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-bold text-gradient-modern">Settings</h1>
+        <p className="text-medium-contrast">
           Manage your company settings, rates, and paint products
         </p>
       </div>
 
       <Tabs defaultValue="company" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-6">
+        <TabsList className="glass-card bg-surface/50 border-white/20 grid w-full grid-cols-6">
           <TabsTrigger value="company">Company</TabsTrigger>
           <TabsTrigger value="financial">Financial</TabsTrigger>
           <TabsTrigger value="labor">Labor</TabsTrigger>
@@ -321,7 +321,7 @@ export default function SettingsPage() {
         </TabsList>
 
         <TabsContent value="company" className="space-y-4">
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Company Profile</CardTitle>
               <CardDescription>Your company information and branding</CardDescription>
@@ -426,7 +426,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="financial" className="space-y-4">
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Tax Settings</CardTitle>
               <CardDescription>Configure tax calculations for quotes</CardDescription>
@@ -464,7 +464,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Profit & Overhead</CardTitle>
               <CardDescription>Default margins and markups</CardDescription>
@@ -497,7 +497,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Default Calculation Settings</CardTitle>
               <CardDescription>Standard values used in quotes</CardDescription>
@@ -537,7 +537,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="labor" className="space-y-4">
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Labor Rates & Productivity</CardTitle>
               <CardDescription>Configure your labor costs and productivity standards</CardDescription>
@@ -629,7 +629,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="interior" className="space-y-4">
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Interior Charge Rates</CardTitle>
               <CardDescription>
@@ -728,7 +728,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="exterior" className="space-y-4">
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Exterior Charge Rates</CardTitle>
               <CardDescription>
@@ -813,7 +813,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="paints" className="space-y-4">
-          <Card>
+          <Card className="glass-card bg-surface border-white/20">
             <CardHeader>
               <CardTitle>Paint Products Library</CardTitle>
               <CardDescription>
@@ -957,7 +957,7 @@ export default function SettingsPage() {
       </Tabs>
 
       <div className="flex justify-end">
-        <Button onClick={saveSettings} disabled={isLoading} size="lg">
+        <Button onClick={saveSettings} disabled={isLoading} size="lg" className="btn-primary-modern">
           {isLoading ? 'Saving...' : 'Save All Settings'}
         </Button>
       </div>

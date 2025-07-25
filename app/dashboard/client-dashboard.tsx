@@ -1,7 +1,7 @@
 "use client"
 
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
-import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
+import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle, Key } from 'lucide-react'
 import { redirectToStripePayment } from '@/lib/config/stripe-links'
 import { UpgradeModal } from '@/components/stripe/upgrade-modal'
 import Link from 'next/link'
@@ -206,6 +206,29 @@ export function ClientDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Access Code Display - Show for new companies or if not Pro */}
+      {companyData && companyData.accessCode && (companyData.isNewCompany || dashboardData.subscriptionTier === 'free') && (
+        <Card className="glass-card border-blue-500/50 bg-blue-500/10">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                  <Key className="h-5 w-5 text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-300">Your Access Code</p>
+                  <p className="text-lg font-mono font-bold text-white">{companyData.accessCode}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-400 mb-1">Keep this code safe!</p>
+                <p className="text-xs text-blue-400">Use it to log in on any device</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Setup Reminder - Show if onboarding not completed and not skipped */}
       {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && (

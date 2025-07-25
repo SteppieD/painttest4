@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { LayoutGrid, FileText, Users, Settings, BarChart3, Calculator, LogOut, Sparkles, CreditCard, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { OnboardingModal } from '@/components/onboarding-modal'
 
 interface CompanyData {
   id: number
@@ -22,6 +23,7 @@ export default function DashboardLayout({
   const router = useRouter()
   const [company, setCompany] = useState<CompanyData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [showOnboarding, setShowOnboarding] = useState(false)
 
   useEffect(() => {
     const storedData = localStorage.getItem('paintquote_company')
@@ -41,9 +43,8 @@ export default function DashboardLayout({
       })
       
       // Check if onboarding is needed
-      if (!data.onboarding_completed && pathname !== '/onboarding' && pathname !== '/onboarding/chat') {
-        router.push('/onboarding/chat')
-        return
+      if (!data.onboarding_completed && !data.skipOnboarding && pathname !== '/onboarding' && pathname !== '/onboarding/chat') {
+        setShowOnboarding(true)
       }
     } catch (error) {
       console.error('Error parsing company data:', error)
@@ -220,6 +221,13 @@ export default function DashboardLayout({
           })}
         </div>
       </nav>
+
+      {/* Onboarding Modal */}
+      <OnboardingModal 
+        isOpen={showOnboarding} 
+        onClose={() => setShowOnboarding(false)}
+        companyData={company}
+      />
     </div>
   )
 }

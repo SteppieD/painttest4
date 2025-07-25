@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,15 +14,20 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 
 export default function AccessCodePage() {
+  const [companyName, setCompanyName] = useState('');
   const [accessCode, setAccessCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showDemoCodes, setShowDemoCodes] = useState(false);
+  const [showForgotCode, setShowForgotCode] = useState(false);
+  const [forgotCodeEmail, setForgotCodeEmail] = useState('');
+  const [forgotCodeLoading, setForgotCodeLoading] = useState(false);
+  const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!accessCode.trim()) return;
+    if (!companyName.trim() || !accessCode.trim()) return;
 
     setIsLoading(true);
     setError('');
@@ -32,7 +38,10 @@ export default function AccessCodePage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ accessCode: accessCode.trim().toUpperCase() }),
+        body: JSON.stringify({ 
+          companyName: companyName.trim(), 
+          accessCode: accessCode.trim().toUpperCase() 
+        }),
       });
 
       const data = await response.json();
@@ -65,9 +74,38 @@ export default function AccessCodePage() {
     }
   };
 
-  const handleDemoAccess = (code: string) => {
+  const handleDemoAccess = (code: string, name: string) => {
+    setCompanyName(name);
     setAccessCode(code);
     setShowDemoCodes(false);
+  };
+
+  const handleForgotCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!forgotCodeEmail.trim()) return;
+
+    setForgotCodeLoading(true);
+    try {
+      const response = await fetch('/api/auth/resend-code', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: forgotCodeEmail.trim() }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        setForgotCodeSuccess(true);
+      } else {
+        setError(data.error || 'Failed to send code. Please try again.');
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setForgotCodeLoading(false);
+    }
   };
 
   const demoCodes = [
@@ -103,6 +141,22 @@ export default function AccessCodePage() {
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
+                <Label htmlFor="companyName" className="text-base font-medium text-high-contrast">
+                  Company Name
+                </Label>
+                <Input
+                  id="companyName"
+                  type="text"
+                  placeholder="Enter your company name"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  className="h-12 text-base input-modern"
+                  disabled={isLoading}
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="accessCode" className="text-base font-medium text-high-contrast">
                   Access Code
                 </Label>
@@ -116,9 +170,18 @@ export default function AccessCodePage() {
                   disabled={isLoading}
                   required
                 />
-                <p className="text-sm text-gray-500">
-                  Your unique code provided during registration
-                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-gray-500">
+                    Your unique code provided during registration
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setShowForgotCode(true)}
+                    className="text-sm text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                  >
+                    Forgot your code?
+                  </button>
+                </div>
               </div>
 
               {error && (
@@ -130,7 +193,7 @@ export default function AccessCodePage() {
               <Button
                 type="submit"
                 className="w-full h-12 text-base font-medium btn-primary-modern"
-                disabled={isLoading || !accessCode.trim()}
+                disabled={isLoading || !companyName.trim() || !accessCode.trim()}
               >
                 {isLoading ? (
                   <>
@@ -168,7 +231,7 @@ export default function AccessCodePage() {
                   {demoCodes.map((demo) => (
                     <button
                       key={demo.code}
-                      onClick={() => handleDemoAccess(demo.code)}
+                      onClick={() => handleDemoAccess(demo.code, demo.name)}
                       className="w-full p-4 text-left rounded-lg glass-card hover:bg-white/10 transition-all"
                     >
                       <div className="font-mono font-bold text-blue-600">{demo.code}</div>
@@ -212,6 +275,88 @@ export default function AccessCodePage() {
             <p className="text-xs text-medium-contrast">Multi-Company</p>
           </div>
         </div>
+
+        {/* Forgot Code Modal */}
+        <Dialog open={showForgotCode} onOpenChange={setShowForgotCode}>
+          <DialogContent className="glass-card bg-surface border-white/20">
+            <DialogHeader>
+              <DialogTitle className="text-xl font-bold text-gradient-modern">
+                Forgot Your Code?
+              </DialogTitle>
+              <DialogDescription className="text-medium-contrast">
+                Enter your email address and we'll send your access code
+              </DialogDescription>
+            </DialogHeader>
+            
+            {forgotCodeSuccess ? (
+              <div className="space-y-4">
+                <Alert className="border-green-500/50 bg-green-500/10">
+                  <AlertDescription className="text-green-400">
+                    Access code sent! Check your email for your code.
+                  </AlertDescription>
+                </Alert>
+                <Button
+                  onClick={() => {
+                    setShowForgotCode(false);
+                    setForgotCodeSuccess(false);
+                    setForgotCodeEmail('');
+                  }}
+                  className="w-full btn-primary-modern"
+                >
+                  Close
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleForgotCode} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="forgotEmail" className="text-base font-medium text-high-contrast">
+                    Email Address
+                  </Label>
+                  <Input
+                    id="forgotEmail"
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={forgotCodeEmail}
+                    onChange={(e) => setForgotCodeEmail(e.target.value)}
+                    className="h-12 text-base input-modern"
+                    disabled={forgotCodeLoading}
+                    required
+                  />
+                </div>
+                
+                <div className="flex gap-3">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      setShowForgotCode(false);
+                      setForgotCodeEmail('');
+                      setError('');
+                    }}
+                    className="flex-1"
+                    disabled={forgotCodeLoading}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    className="flex-1 btn-primary-modern"
+                    disabled={forgotCodeLoading || !forgotCodeEmail.trim()}
+                  >
+                    {forgotCodeLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Code'
+                    )}
+                  </Button>
+                </div>
+              </form>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

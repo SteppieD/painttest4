@@ -4,11 +4,11 @@ import { createSimpleSession } from '@/lib/auth/simple-session';
 
 export async function POST(request: NextRequest) {
   try {
-    const { accessCode } = await request.json();
+    const { companyName, accessCode } = await request.json();
 
-    if (!accessCode) {
+    if (!companyName || !accessCode) {
       return NextResponse.json(
-        { error: 'Access code is required' },
+        { error: 'Company name and access code are required' },
         { status: 400 }
       );
     }
@@ -19,6 +19,14 @@ export async function POST(request: NextRequest) {
     if (!company) {
       return NextResponse.json(
         { error: 'Invalid access code' },
+        { status: 401 }
+      );
+    }
+
+    // Verify company name matches
+    if (company.company_name.toLowerCase() !== companyName.trim().toLowerCase()) {
+      return NextResponse.json(
+        { error: 'Company name does not match access code' },
         { status: 401 }
       );
     }

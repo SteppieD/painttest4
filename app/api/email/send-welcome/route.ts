@@ -99,7 +99,7 @@ The PaintQuote Pro Team`
       const resend = new Resend(process.env.RESEND_API_KEY)
       
       const { data, error } = await resend.emails.send({
-        from: process.env.DEFAULT_FROM_EMAIL || 'PaintQuote Pro <onboarding@resend.dev>',
+        from: process.env.DEFAULT_FROM_EMAIL || process.env.RESEND_FROM_EMAIL || 'PaintQuote Pro <onboarding@resend.dev>',
         to: email,
         subject: 'Welcome to PaintQuote Pro - Your Access Code',
         html: htmlTemplate,
