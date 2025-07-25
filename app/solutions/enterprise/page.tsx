@@ -25,7 +25,8 @@ import {
   Layers,
   HeadphonesIcon,
   Award,
-  LineChart
+  LineChart,
+  Star
 } from 'lucide-react'
 
 export const metadata: Metadata = {
