@@ -3,6 +3,8 @@ import { db } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { DebugLogger } from '@/lib/debug-logger';
 
+export const dynamic = 'force-dynamic';
+
 // POST - Complete onboarding
 export async function POST(request: NextRequest) {
   const logger = new DebugLogger('ONBOARDING_API');

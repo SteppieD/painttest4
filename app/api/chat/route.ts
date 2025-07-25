@@ -5,6 +5,8 @@ import { ConversationManager } from '@/lib/chat/conversation-manager';
 import { QuoteCalculator, calculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 
+export const dynamic = 'force-dynamic';
+
 // Store conversation managers per session
 const sessions = new Map<string, ConversationManager>();
 

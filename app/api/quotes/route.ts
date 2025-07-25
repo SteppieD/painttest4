@@ -4,6 +4,8 @@ import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 import { SubscriptionService } from '@/lib/services/subscription';
 
+export const dynamic = 'force-dynamic';
+
 // Helper function to clean customer names
 const cleanCustomerName = (name: string) => {
   if (!name) return 'Customer';

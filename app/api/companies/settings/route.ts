@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 
+export const dynamic = 'force-dynamic';
+
 // GET company settings
 export async function GET(request: NextRequest) {
   try {

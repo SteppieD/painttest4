@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { SubscriptionService } from '@/lib/services/subscription';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const company = getCompanyFromRequest(request);
