@@ -9,6 +9,7 @@ import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
 import { useCompanyAuth } from '@/components/auth-wrapper'
 import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription'
+import { redirectToStripePayment } from '@/lib/config/stripe-links'
 import { 
   CreditCard, 
   Check, 
@@ -71,27 +72,25 @@ export default function BillingPage() {
   const handleUpgrade = async (tier: string) => {
     setProcessingUpgrade(true)
     try {
-      // In production, this would integrate with Stripe
       toast({
-        title: 'Upgrade Started',
-        description: 'Redirecting to payment...'
+        title: 'Redirecting to Stripe',
+        description: 'You will be redirected to complete your purchase...'
       })
       
-      // For demo, just show success
+      // Redirect to Stripe payment link
       setTimeout(() => {
-        toast({
-          title: 'Welcome to Pro!',
-          description: 'Your account has been upgraded successfully.'
-        })
-        router.refresh()
-      }, 2000)
+        if (tier === 'pro') {
+          redirectToStripePayment('professional', 'monthly')
+        } else if (tier === 'business') {
+          redirectToStripePayment('business', 'monthly')
+        }
+      }, 1000)
     } catch (error) {
       toast({
         title: 'Error',
-        description: 'Failed to process upgrade. Please try again.',
+        description: 'Failed to redirect to payment. Please try again.',
         variant: 'destructive'
       })
-    } finally {
       setProcessingUpgrade(false)
     }
   }

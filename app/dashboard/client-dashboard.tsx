@@ -2,6 +2,8 @@
 
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
 import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
+import { redirectToStripePayment } from '@/lib/config/stripe-links'
+import { UpgradeModal } from '@/components/stripe/upgrade-modal'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -321,27 +323,29 @@ export function ClientDashboard() {
           
           if (stat.locked) {
             return (
-              <Link key={index} href="/dashboard/settings/billing">
-                <div className="glass-card p-6 group card-hover-modern relative overflow-hidden cursor-pointer">
-                  <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
-                    <div className="text-center">
-                      <Lock className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                      <p className="text-xs text-gray-400 font-medium">{stat.lockedText}</p>
-                      <p className="text-xs text-blue-400 mt-1">Upgrade to Pro</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start justify-between mb-4 opacity-50">
-                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color}`}>
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <span className="text-sm font-medium text-gray-500">--</span>
-                  </div>
-                  <div className="space-y-1 opacity-50">
-                    <p className="text-sm text-gray-400">{stat.title}</p>
-                    <p className="text-2xl font-bold text-gray-500">---</p>
+              <div 
+                key={index} 
+                onClick={() => redirectToStripePayment('professional', 'monthly')}
+                className="glass-card p-6 group card-hover-modern relative overflow-hidden cursor-pointer"
+              >
+                <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
+                  <div className="text-center">
+                    <Lock className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+                    <p className="text-xs text-gray-400 font-medium">{stat.lockedText}</p>
+                    <p className="text-xs text-blue-400 mt-1">Upgrade to Pro</p>
                   </div>
                 </div>
-              </Link>
+                <div className="flex items-start justify-between mb-4 opacity-50">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color}`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-500">--</span>
+                </div>
+                <div className="space-y-1 opacity-50">
+                  <p className="text-sm text-gray-400">{stat.title}</p>
+                  <p className="text-2xl font-bold text-gray-500">---</p>
+                </div>
+              </div>
             )
           }
           

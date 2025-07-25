@@ -32,6 +32,28 @@ export async function POST(request: NextRequest) {
     const { message, sessionId, isDemo = false } = await request.json();
     const useAI = true; // Always use AI mode
     
+    // Check subscription for AI features (skip for demo)
+    if (!isDemo && company.id !== 1) { // Don't check for demo company
+      const companyData = await db.query(
+        'SELECT subscription_tier, monthly_quote_count, monthly_quote_limit FROM companies WHERE id = ?',
+        [company.id]
+      );
+      
+      if (companyData.length > 0) {
+        const tier = companyData[0];
+        if (tier.subscription_tier === 'free' && 
+            tier.monthly_quote_limit > 0 && 
+            tier.monthly_quote_count >= tier.monthly_quote_limit) {
+          return NextResponse.json({
+            error: 'AI quote limit reached',
+            requiresUpgrade: true,
+            upgradeUrl: process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK || '/dashboard/settings/billing',
+            message: 'You\'ve reached your monthly AI quote limit. Upgrade to Pro for unlimited AI-powered quotes!'
+          }, { status: 403 });
+        }
+      }
+    }
+    
     if (!message) {
       return NextResponse.json(
         { error: 'Message is required' },

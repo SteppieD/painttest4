@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import ModernNavigation from '@/components/modern-navigation'
+import ModernFooter from '@/components/modern-footer'
 import { 
   Sparkles, 
   Clock, 
@@ -497,6 +498,7 @@ export default function Home() {
         </div>
       </section>
       </main>
+      <ModernFooter />
     </>
   )
 }

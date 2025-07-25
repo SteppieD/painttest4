@@ -78,11 +78,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get company settings for markup and tax
+    // Get company settings for markup and tax, and check subscription
     const company = await db.query(
-      'SELECT default_labor_percentage, tax_rate FROM companies WHERE id = ?',
+      'SELECT default_labor_percentage, tax_rate, subscription_tier, monthly_quote_count, monthly_quote_limit FROM companies WHERE id = ?',
       [auth.company!.id]
     );
+    
+    // Check if company has reached their quote limit (for free tier)
+    if (company.length > 0) {
+      const companyData = company[0];
+      if (companyData.subscription_tier === 'free' && 
+          companyData.monthly_quote_limit > 0 && 
+          companyData.monthly_quote_count >= companyData.monthly_quote_limit) {
+        return NextResponse.json({
+          error: 'Quote limit reached',
+          requiresUpgrade: true,
+          upgradeUrl: process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK || '/dashboard/settings/billing'
+        }, { status: 403 });
+      }
+    }
     
     if (company.length > 0 && 'markupPercentage' in calculatorInput) {
       calculatorInput.markupPercentage = company[0].default_labor_percentage || 30;

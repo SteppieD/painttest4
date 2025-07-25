@@ -10,6 +10,7 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { useAchievements } from '@/hooks/use-achievements';
 import { AchievementNotification } from '@/components/achievements/achievement-notification';
+import { redirectToStripePayment } from '@/lib/config/stripe-links';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -149,6 +150,30 @@ export function ChatInterface({
       }
 
       if (!response.ok) {
+        // Check if it's a subscription upgrade required error
+        if (response.status === 403 && data.requiresUpgrade) {
+          toast({
+            title: 'Upgrade Required',
+            description: data.message || 'You\'ve reached your monthly quote limit.',
+            action: (
+              <Button 
+                size="sm" 
+                onClick={() => redirectToStripePayment('professional', 'monthly')}
+              >
+                Upgrade Now
+              </Button>
+            )
+          });
+          
+          // Add a message to the chat
+          const upgradeMessage: Message = {
+            role: 'assistant',
+            content: '🔒 ' + (data.message || 'You\'ve reached your monthly AI quote limit. Please upgrade to Pro for unlimited quotes!'),
+            timestamp: new Date()
+          };
+          setMessages(prev => [...prev, upgradeMessage]);
+          return;
+        }
         throw new Error(data.error || 'Failed to send message');
       }
 
