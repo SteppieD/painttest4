@@ -429,7 +429,7 @@ export default function LaborCostEstimationGuide() {
                     <div>
                       <h4 className="text-lg font-semibold text-emerald-400 mb-3">Residential Projects</h4>
                       <ul className="space-y-2 text-gray-300">
-                        <li>• <strong>1 Painter:</strong> Small rooms, touch-ups (< 500 sq ft)</li>
+                        <li>• <strong>1 Painter:</strong> Small rooms, touch-ups (&lt; 500 sq ft)</li>
                         <li>• <strong>2 Painters:</strong> Standard rooms, efficiency sweet spot</li>
                         <li>• <strong>3-4 Painters:</strong> Whole house, tight deadlines</li>
                         <li>• <strong>Lead + Helper:</strong> Quality focus, training</li>
@@ -438,7 +438,7 @@ export default function LaborCostEstimationGuide() {
                     <div>
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Commercial Projects</h4>
                       <ul className="space-y-2 text-gray-300">
-                        <li>• <strong>2-3 Painters:</strong> Small offices (< 5,000 sq ft)</li>
+                        <li>• <strong>2-3 Painters:</strong> Small offices (&lt; 5,000 sq ft)</li>
                         <li>• <strong>4-6 Painters:</strong> Medium buildings</li>
                         <li>• <strong>8+ Painters:</strong> Large projects, phases</li>
                         <li>• <strong>Spray + Back-roll:</strong> Maximum efficiency</li>

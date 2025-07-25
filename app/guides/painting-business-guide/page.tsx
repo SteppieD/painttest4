@@ -858,10 +858,10 @@ export default function PaintingBusinessGuide() {
                   <BarChart3 className="h-12 w-12 text-green-400 mb-4" />
                   <h3 className="text-xl font-semibold text-white mb-3">Key Metrics to Track</h3>
                   <ul className="space-y-2 text-sm text-gray-300">
-                    <li>• Lead cost: <$100</li>
-                    <li>• Close rate: >40%</li>
-                    <li>• Avg job: >$5,000</li>
-                    <li>• Gross margin: >50%</li>
+                    <li>• Lead cost: &lt;$100</li>
+                    <li>• Close rate: &gt;40%</li>
+                    <li>• Avg job: &gt;$5,000</li>
+                    <li>• Gross margin: &gt;50%</li>
                     <li>• Customer acquisition cost</li>
                     <li>• Employee retention rate</li>
                   </ul>
