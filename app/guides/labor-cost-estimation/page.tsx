@@ -328,7 +328,7 @@ export default function LaborCostEstimationGuide() {
           </div>
         </section>
 
-        {/* Hourly Rates by Region -->}
+        {/* Hourly Rates by Region */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -416,7 +416,7 @@ export default function LaborCostEstimationGuide() {
           </div>
         </section>
 
-        {/* Crew Optimization -->}
+        {/* Crew Optimization */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -475,7 +475,7 @@ export default function LaborCostEstimationGuide() {
           </div>
         </section>
 
-        {/* Labor Calculation Examples -->}
+        {/* Labor Calculation Examples */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -542,7 +542,7 @@ export default function LaborCostEstimationGuide() {
           </div>
         </section>
 
-        {/* Best Practices -->}
+        {/* Best Practices */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -605,7 +605,7 @@ export default function LaborCostEstimationGuide() {
           </div>
         </section>
 
-        {/* CTA Section -->}
+        {/* CTA Section */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -636,7 +636,7 @@ export default function LaborCostEstimationGuide() {
           </div>
         </section>
 
-        {/* Related Resources -->}
+        {/* Related Resources */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

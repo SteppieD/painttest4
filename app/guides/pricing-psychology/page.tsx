@@ -164,7 +164,7 @@ export default function PricingPsychologyGuide() {
               <h2 className="text-3xl font-bold text-white mb-8">Core Psychological Principles</h2>
               
               <div className="space-y-6">
-                {/* Anchoring -->}
+                {/* Anchoring */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="flex items-start gap-4">
                     <Target className="h-8 w-8 text-purple-400 flex-shrink-0" />
@@ -197,7 +197,7 @@ export default function PricingPsychologyGuide() {
                   </div>
                 </Card>
 
-                {/* Loss Aversion -->}
+                {/* Loss Aversion */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="flex items-start gap-4">
                     <AlertCircle className="h-8 w-8 text-yellow-400 flex-shrink-0" />
@@ -219,7 +219,7 @@ export default function PricingPsychologyGuide() {
                   </div>
                 </Card>
 
-                {/* Social Proof -->}
+                {/* Social Proof */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="flex items-start gap-4">
                     <Heart className="h-8 w-8 text-pink-400 flex-shrink-0" />
@@ -256,7 +256,7 @@ export default function PricingPsychologyGuide() {
           </div>
         </section>
 
-        {/* 3-Option Strategy -->}
+        {/* 3-Option Strategy */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -322,7 +322,7 @@ export default function PricingPsychologyGuide() {
           </div>
         </section>
 
-        {/* Value Framing -->}
+        {/* Value Framing */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -378,7 +378,7 @@ export default function PricingPsychologyGuide() {
           </div>
         </section>
 
-        {/* Presentation Tips -->}
+        {/* Presentation Tips */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -441,7 +441,7 @@ export default function PricingPsychologyGuide() {
           </div>
         </section>
 
-        {/* Common Mistakes -->}
+        {/* Common Mistakes */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -504,7 +504,7 @@ export default function PricingPsychologyGuide() {
           </div>
         </section>
 
-        {/* CTA Section -->}
+        {/* CTA Section */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -535,7 +535,7 @@ export default function PricingPsychologyGuide() {
           </div>
         </section>
 
-        {/* Related Resources -->}
+        {/* Related Resources */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

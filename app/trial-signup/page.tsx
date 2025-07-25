@@ -281,13 +281,12 @@ export default function TrialSignupPage() {
               </form>
             </Tabs>
 
-              <div className="text-center text-sm text-gray-400">
-                Already have an account?{' '}
-                <Link href="/access-code" className="text-blue-400 hover:text-blue-300 hover:underline transition-colors">
-                  Sign in with access code
-                </Link>
-              </div>
-            </form>
+            <div className="mt-6 text-center text-sm text-gray-400">
+              Already have an account?{' '}
+              <Link href="/access-code" className="text-blue-400 hover:text-blue-300 hover:underline transition-colors">
+                Sign in with access code
+              </Link>
+            </div>
 
             <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
               <p className="text-sm font-medium text-white">What&apos;s included:</p>

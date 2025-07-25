@@ -164,7 +164,7 @@ export default function QuotePresentationTipsGuide() {
               <h2 className="text-3xl font-bold text-white mb-8">Quote Presentation Methods</h2>
               
               <div className="space-y-6">
-                {/* In-Person -->}
+                {/* In-Person */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="flex items-start gap-4">
                     <Users className="h-8 w-8 text-green-400 flex-shrink-0" />
@@ -196,7 +196,7 @@ export default function QuotePresentationTipsGuide() {
                   </div>
                 </Card>
 
-                {/* Video Call -->}
+                {/* Video Call */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="flex items-start gap-4">
                     <Video className="h-8 w-8 text-blue-400 flex-shrink-0" />
@@ -228,7 +228,7 @@ export default function QuotePresentationTipsGuide() {
                   </div>
                 </Card>
 
-                {/* Email/Digital -->}
+                {/* Email/Digital */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="flex items-start gap-4">
                     <Smartphone className="h-8 w-8 text-purple-400 flex-shrink-0" />
@@ -264,7 +264,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* Perfect Presentation Structure -->}
+        {/* Perfect Presentation Structure */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -360,7 +360,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* Professional Materials -->}
+        {/* Professional Materials */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -456,7 +456,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* Body Language & Communication -->}
+        {/* Body Language & Communication */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -532,7 +532,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* Handling Objections -->}
+        {/* Handling Objections */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -573,7 +573,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* Closing Techniques -->}
+        {/* Closing Techniques */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -628,7 +628,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* CTA Section -->}
+        {/* CTA Section */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -659,7 +659,7 @@ export default function QuotePresentationTipsGuide() {
           </div>
         </section>
 
-        {/* Related Resources -->}
+        {/* Related Resources */}
         <section className="py-12 bg-black/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
