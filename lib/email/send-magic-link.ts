@@ -1,3 +1,5 @@
+import { Resend } from 'resend';
+
 interface SendMagicLinkParams {
   email: string;
   magicLink: string;
@@ -24,15 +26,7 @@ export async function sendMagicLinkEmail({
       ? 'complete your signup'
       : 'log in to your account';
 
-    // In production, this would use a real email service
-    // For now, we'll use the existing email endpoint
-    const response = await fetch('/api/email/send-magic-link', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: email,
-        subject,
-        html: `
+    const html = `
           <!DOCTYPE html>
           <html>
           <head>
@@ -110,11 +104,41 @@ If you didn't request this email, you can safely ignore it.
 Need help? Reply to this email or visit our help center.
 
 © PaintQuote Pro
-        `
-      })
-    });
+        `;
 
-    return response.ok;
+    // Log in development for testing
+    if (process.env.NODE_ENV === 'development') {
+      console.log('📧 Magic link email:', {
+        to: email,
+        subject,
+        preview: 'Magic link: ' + magicLink
+      });
+    }
+
+    // Send email with Resend if API key is configured
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      const { data, error } = await resend.emails.send({
+        from: process.env.DEFAULT_FROM_EMAIL || process.env.RESEND_FROM_EMAIL || 'PaintQuote Pro <onboarding@resend.dev>',
+        to: email,
+        subject,
+        html,
+        text
+      });
+
+      if (error) {
+        console.error('Resend error:', error);
+        return false;
+      }
+
+      console.log('Email sent successfully:', data?.id);
+      return true;
+    } else {
+      console.warn('RESEND_API_KEY not configured - email not sent');
+      console.log('🔗 Magic link (for testing):', magicLink);
+      return false;
+    }
   } catch (error) {
     console.error('Error sending magic link email:', error);
     return false;
