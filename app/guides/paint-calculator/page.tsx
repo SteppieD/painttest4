@@ -21,7 +21,8 @@ import {
   Ruler,
   Package,
   Info,
-  Zap
+  Zap,
+  FileText
 } from 'lucide-react'
 
 export const metadata: Metadata = {
