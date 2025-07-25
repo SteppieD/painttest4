@@ -17,9 +17,19 @@ Disallow: /api/
 Disallow: /auth/
 Disallow: /_next/
 Disallow: /static/
+Disallow: /onboarding
+Disallow: /access-code
+Disallow: /trial-signup/success
 
 # Allow specific API endpoints for structured data
 Allow: /api/web-vitals
+
+# Allow important pages
+Allow: /guides/
+Allow: /features
+Allow: /pricing
+Allow: /about
+Allow: /trial-signup
 
 # Popular search engine crawlers
 User-agent: Googlebot

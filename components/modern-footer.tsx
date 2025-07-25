@@ -28,11 +28,11 @@ const footerLinks = {
     title: 'Free Tools & Guides',
     links: [
       { label: 'Painting ROI Calculator', href: '/roi-calculator', description: 'Calculate your savings' },
-      { label: 'How to Quote Paint Jobs', href: '/guides/how-to-quote-painting-jobs', description: 'Step-by-step guide' },
-      { label: 'Interior Painting Guide', href: '/guides/interior-painting-estimator', description: 'Room-by-room pricing' },
-      { label: 'Exterior Paint Guide', href: '/guides/exterior-painting-calculator', description: 'Siding & trim costs' },
-      { label: 'Contractor Blog', href: '/blog', description: 'Tips & strategies' },
-      { label: 'Video Tutorials', href: '/tutorials', description: 'Learn PaintQuote Pro' },
+      { label: 'How to Quote Paint Jobs', href: '/guides/how-to-quote-painting-jobs', description: 'Complete guide' },
+      { label: 'Paint Calculator', href: '/guides/paint-calculator', description: 'Accurate measurements' },
+      { label: 'Painting Business Guide', href: '/guides/painting-business-guide', description: 'Start & grow' },
+      { label: 'Interior Painting Quotes', href: '/guides/interior-painting-quotes', description: 'Room pricing' },
+      { label: 'All Guides', href: '/guides', description: 'View all resources' },
     ]
   },
   support: {

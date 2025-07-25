@@ -20,220 +20,147 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0
     },
     {
-      url: `${baseUrl}/painting-contractors`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.9
-    },
-    {
-      url: `${baseUrl}/painting-estimate-software`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.9
-    },
-    {
-      url: `${baseUrl}/painting-contractor-software`,
+      url: `${baseUrl}/trial-signup`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.95
     },
     {
-      url: `${baseUrl}/painting-quote-software`,
+      url: `${baseUrl}/guides`,
       lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.95
-    },
-    {
-      url: `${baseUrl}/interior-painting-quote-calculator`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.85
-    },
-    {
-      url: `${baseUrl}/exterior-painting-estimate-calculator`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.85
+      priority: 0.9
     }
   ]
 
-  // Software category pages
-  const softwarePages: SitemapEntry[] = [
+  // Pillar pages - highest priority content
+  const pillarPages: SitemapEntry[] = [
     {
-      url: `${baseUrl}/painting-estimating-software`,
+      url: `${baseUrl}/guides/how-to-quote-painting-jobs`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.75
+      priority: 1.0
     },
     {
-      url: `${baseUrl}/painting-business-software`,
+      url: `${baseUrl}/guides/painting-estimate-software`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.7
+      priority: 1.0
     },
     {
-      url: `${baseUrl}/paint-contractor-app`,
+      url: `${baseUrl}/guides/paint-calculator`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.75
+      priority: 1.0
     },
     {
-      url: `${baseUrl}/commercial-painting-estimating-software`,
+      url: `${baseUrl}/guides/painting-business-guide`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.7
-    },
-    {
-      url: `${baseUrl}/mobile-painting-estimate-app`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.65
+      priority: 1.0
     }
   ]
 
-  // Calculator and tool pages
-  const calculatorPages: SitemapEntry[] = [
+  // Cluster pages for SEO pyramid
+  const clusterPages: SitemapEntry[] = [
+    // How to Quote cluster
     {
-      url: `${baseUrl}/painting-estimate-calculator-free`,
+      url: `${baseUrl}/guides/interior-painting-quotes`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8
     },
     {
-      url: `${baseUrl}/house-painting-cost-calculator`,
+      url: `${baseUrl}/guides/exterior-painting-quotes`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.75
+      priority: 0.8
     },
     {
-      url: `${baseUrl}/painting-estimate-calculator`,
+      url: `${baseUrl}/guides/commercial-painting-quotes`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.7
+      priority: 0.8
     },
     {
-      url: `${baseUrl}/house-painting-estimate-calculator`,
+      url: `${baseUrl}/guides/cabinet-painting-quotes`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.65
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/paint-quantity-calculations`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/labor-cost-estimation`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/pricing-psychology`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/quote-presentation-tips`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/follow-up-strategies`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/common-quoting-mistakes`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    // Paint Calculator cluster
+    {
+      url: `${baseUrl}/guides/paint-coverage-rates`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/guides/measurement-techniques`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
     }
   ]
 
-  // Standard business pages
-  const businessPages: SitemapEntry[] = [
+  // Marketing pages
+  const marketingPages: SitemapEntry[] = [
     {
       url: `${baseUrl}/features`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.8
+      priority: 0.9
     },
     {
       url: `${baseUrl}/pricing`,
       lastModified: now,
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 0.9
-    },
-    {
-      url: `${baseUrl}/testimonials`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6
-    },
-    {
-      url: `${baseUrl}/case-studies`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7
     },
     {
       url: `${baseUrl}/about`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.5
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6
-    },
-    {
-      url: `${baseUrl}/help`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5
-    }
-  ]
-
-  // Resource and content pages
-  const resourcePages: SitemapEntry[] = [
-    {
-      url: `${baseUrl}/how-to-quote-painting-jobs`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6
-    },
-    {
-      url: `${baseUrl}/painting-quote-templates`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.55
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: now,
-      changeFrequency: 'weekly',
       priority: 0.7
-    },
-    {
-      url: `${baseUrl}/tutorials`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6
     }
   ]
 
-  // Location-based pages (to be expanded)
-  const locationPages: SitemapEntry[] = [
-    {
-      url: `${baseUrl}/locations`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6
-    }
-  ]
-
-  // Integration and API pages
-  const integrationPages: SitemapEntry[] = [
-    {
-      url: `${baseUrl}/integrations`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5
-    },
-    {
-      url: `${baseUrl}/api`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.4
-    }
-  ]
-
-  // Authentication and user pages (lower priority)
-  const userPages: SitemapEntry[] = [
-    {
-      url: `${baseUrl}/auth/signup`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3
-    },
-    {
-      url: `${baseUrl}/auth/login`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3
-    }
-  ]
 
   // Legal pages
   const legalPages: SitemapEntry[] = [
@@ -254,13 +181,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Combine all pages
   const allPages = [
     ...staticPages,
-    ...softwarePages,
-    ...calculatorPages,
-    ...businessPages,
-    ...resourcePages,
-    ...locationPages,
-    ...integrationPages,
-    ...userPages,
+    ...pillarPages,
+    ...clusterPages,
+    ...marketingPages,
     ...legalPages
   ]
 
