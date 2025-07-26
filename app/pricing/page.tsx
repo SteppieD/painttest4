@@ -256,63 +256,63 @@ export default function PricingPage() {
           </div>
 
           {/* ROI Calculator Section */}
-          <div className="mt-16 rounded-lg bg-muted/50 p-8">
-            <h2 className="text-3xl font-bold text-center mb-8">Your ROI Calculator</h2>
+          <div className="mt-16 rounded-lg glass-card p-8">
+            <h2 className="text-3xl font-bold text-center mb-8 text-white">Your ROI Calculator</h2>
             
             <div className="mx-auto max-w-3xl">
               <div className="grid gap-6 md:grid-cols-2 mb-8">
-                <div className="rounded-lg bg-background p-6 border">
-                  <h3 className="font-semibold mb-4">Current Situation</h3>
+                <div className="rounded-lg glass-card p-6">
+                  <h3 className="font-semibold mb-4 text-white">Current Situation</h3>
                   <ul className="space-y-3 text-sm">
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Quotes per month:</span>
-                      <span className="font-medium">20</span>
+                      <span className="text-gray-400">Quotes per month:</span>
+                      <span className="font-medium text-white">20</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Current win rate:</span>
-                      <span className="font-medium">35% (7 jobs)</span>
+                      <span className="text-gray-400">Current win rate:</span>
+                      <span className="font-medium text-white">35% (7 jobs)</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Average job value:</span>
-                      <span className="font-medium">$2,800</span>
+                      <span className="text-gray-400">Average job value:</span>
+                      <span className="font-medium text-white">$2,800</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Monthly revenue:</span>
-                      <span className="font-medium">$19,600</span>
+                      <span className="text-gray-400">Monthly revenue:</span>
+                      <span className="font-medium text-white">$19,600</span>
                     </li>
                   </ul>
                 </div>
                 
-                <div className="rounded-lg bg-primary/10 p-6 border border-primary/20">
-                  <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
+                <div className="rounded-lg glass-card border border-blue-500/30 p-6">
+                  <h3 className="font-semibold mb-4 text-white">With PaintQuote Pro</h3>
                   <ul className="space-y-3 text-sm">
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Quotes per month:</span>
-                      <span className="font-medium text-primary">20</span>
+                      <span className="text-gray-400">Quotes per month:</span>
+                      <span className="font-medium text-blue-400">20</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Improved win rate:</span>
-                      <span className="font-medium text-primary">50% (10 jobs)</span>
+                      <span className="text-gray-400">Improved win rate:</span>
+                      <span className="font-medium text-blue-400">50% (10 jobs)</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Average job value:</span>
-                      <span className="font-medium text-primary">$2,800</span>
+                      <span className="text-gray-400">Average job value:</span>
+                      <span className="font-medium text-blue-400">$2,800</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-muted-foreground">Monthly revenue:</span>
-                      <span className="font-medium text-primary">$28,000</span>
+                      <span className="text-gray-400">Monthly revenue:</span>
+                      <span className="font-medium text-blue-400">$28,000</span>
                     </li>
                   </ul>
                 </div>
               </div>
               
-              <div className="rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
-                <p className="text-lg mb-2">Your Additional Monthly Revenue</p>
-                <p className="text-4xl font-bold text-green-600 mb-4">+$8,400</p>
-                <p className="text-sm text-muted-foreground mb-4">
-                  That's a <strong>100x return</strong> on your PaintQuote Pro investment
+              <div className="rounded-lg bg-emerald-500/10 backdrop-blur-sm border border-emerald-500/20 p-6 text-center">
+                <p className="text-lg mb-2 text-gray-300">Your Additional Monthly Revenue</p>
+                <p className="text-4xl font-bold text-emerald-400 mb-4">+$8,400</p>
+                <p className="text-sm text-gray-300 mb-4">
+                  That's a <strong className="text-white">100x return</strong> on your PaintQuote Pro investment
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-gray-400">
                   Based on research showing 40-60% win rate improvement from faster response times 
                   and professional presentation
                 </p>
@@ -320,41 +320,41 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <div className="mt-16 border-t pt-16">
-            <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+          <div className="mt-16 border-t border-white/10 pt-16">
+            <h2 className="text-3xl font-bold text-center mb-8 text-white">Frequently Asked Questions</h2>
             
             <div className="mx-auto max-w-3xl space-y-8">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Can I change plans anytime?</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-white">Can I change plans anytime?</h3>
+                <p className="text-gray-300">
                   Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll prorate any payments.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold mb-2">What payment methods do you accept?</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-white">What payment methods do you accept?</h3>
+                <p className="text-gray-300">
                   We accept all major credit cards, debit cards, and ACH transfers for annual plans. Enterprise customers can also pay by invoice.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold mb-2">Is there a setup fee?</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-white">Is there a setup fee?</h3>
+                <p className="text-gray-300">
                   No setup fees! You can start using PaintQuote Pro immediately after signing up.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold mb-2">What happens if I exceed my quote limit?</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-white">What happens if I exceed my quote limit?</h3>
+                <p className="text-gray-300">
                   Free plan users will be prompted to upgrade when they reach their monthly limit. Paid plans have unlimited quotes.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold mb-2">Do you offer discounts for annual billing?</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-white">Do you offer discounts for annual billing?</h3>
+                <p className="text-gray-300">
                   Yes! Annual billing saves you 17% compared to monthly billing - that's 2 months free every year.
                 </p>
               </div>
@@ -362,8 +362,8 @@ export default function PricingPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <p className="text-lg font-semibold mb-4">Still have questions?</p>
-            <Button variant="outline" onClick={() => router.push('/contact')}>
+            <p className="text-lg font-semibold mb-4 text-white">Still have questions?</p>
+            <Button className="btn-secondary-modern" onClick={() => router.push('/contact')}>
               Contact Our Sales Team
             </Button>
           </div>
