@@ -94,3 +94,63 @@
   background-color: rgba(31, 41, 55, 0.9) !important;
   outline: none !important;
 }
+
+/* Glass Card Styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Override default card styles when glass-card is used */
+.glass-card.bg-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Button fixes for white-on-white issues */
+.btn-primary-modern {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+  color: white !important;
+}
+
+.btn-secondary-modern {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-secondary-modern:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Fix for Card components with glass-card class */
+.glass-card[class*="bg-card"] {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+.glass-card[class*="text-card-foreground"] {
+  color: #ffffff !important;
+}
+
+/* Ensure all text inside glass cards is visible */
+.glass-card * {
+  color: inherit;
+}
+
+/* Fix for CardTitle and other card components */
+.glass-card .text-2xl,
+.glass-card .font-semibold,
+.glass-card h3 {
+  color: #ffffff !important;
+}
+
+.glass-card p {
+  color: #e5e7eb !important; /* gray-200 */
+}
