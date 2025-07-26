@@ -128,29 +128,3 @@
 .btn-secondary-modern:hover {
   background: rgba(255, 255, 255, 0.15) !important;
 }
-
-/* Fix for Card components with glass-card class */
-.glass-card[class*="bg-card"] {
-  background: rgba(255, 255, 255, 0.05) !important;
-  color: #ffffff !important;
-}
-
-.glass-card[class*="text-card-foreground"] {
-  color: #ffffff !important;
-}
-
-/* Ensure all text inside glass cards is visible */
-.glass-card * {
-  color: inherit;
-}
-
-/* Fix for CardTitle and other card components */
-.glass-card .text-2xl,
-.glass-card .font-semibold,
-.glass-card h3 {
-  color: #ffffff !important;
-}
-
-.glass-card p {
-  color: #e5e7eb !important; /* gray-200 */
-}
