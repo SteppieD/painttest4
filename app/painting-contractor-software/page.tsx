@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import ModernNavigation from '@/components/modern-navigation'
+import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
+import { ROICalculator } from '@/components/calculators/roi-calculator'
 import { 
   Clock, 
   TrendingUp, 
@@ -624,8 +626,41 @@ export default function PaintingContractorSoftwarePage() {
           </div>
         </section>
 
+        {/* Interactive Calculators Section */}
+        <section className="py-20 bg-gray-900/50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Try Our Free Tools
+                </h2>
+                <p className="text-xl text-gray-300">
+                  See how much time and money you could save with better quoting software
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
+                <PaintEstimateCalculator />
+                <ROICalculator />
+              </div>
+              
+              <div className="mt-12 text-center">
+                <p className="text-gray-300 mb-6">
+                  Ready to create quotes this fast for your actual jobs?
+                </p>
+                <Link href="/trial-signup">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Demo Video Section */}
-        <section className="py-20 bg-gray-900/50" id="demo-video">
+        <section className="py-20" id="demo-video">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">

@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
+import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
+import { ROICalculator } from '@/components/calculators/roi-calculator'
 import { 
   Clock, 
   TrendingUp, 
@@ -740,43 +742,35 @@ export default function PaintingQuoteSoftwarePage() {
           </div>
         </section>
 
-        {/* ROI Section */}
+        {/* Interactive Calculators */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <Card className="glass-card bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-8 md:p-12">
-                <div className="text-center">
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Your ROI with Our Painting Quote Generator
-                  </h2>
-                  
-                  <div className="grid md:grid-cols-3 gap-8 mb-8">
-                    <div>
-                      <div className="text-3xl font-bold text-blue-400 mb-2">40 hrs</div>
-                      <p className="text-gray-300">Saved per month</p>
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-emerald-400 mb-2">$8,400</div>
-                      <p className="text-gray-300">Extra revenue/month</p>
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-purple-400 mb-2">283x</div>
-                      <p className="text-gray-300">ROI on software cost</p>
-                    </div>
-                  </div>
-
-                  <p className="text-lg text-gray-300 mb-8">
-                    Based on average contractor data: 40% higher win rate, 10 extra quotes per week
-                  </p>
-
-                  <Link href="/roi-calculator">
-                    <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
-                      Calculate Your ROI
-                      <Calculator className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                </div>
-              </Card>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Try Our Free Painting Calculators
+                </h2>
+                <p className="text-xl text-gray-300">
+                  See how our quote software can save you time and increase your revenue
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
+                <PaintEstimateCalculator />
+                <ROICalculator />
+              </div>
+              
+              <div className="mt-12 text-center">
+                <p className="text-gray-300 mb-6">
+                  Ready to create quotes this fast for all your painting jobs?
+                </p>
+                <Link href="/trial-signup">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
+                    Start 14-Day Free Trial
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

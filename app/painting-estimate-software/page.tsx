@@ -4,6 +4,8 @@ import { Zap, Calculator, FileText, TrendingUp, Shield, Clock, CheckCircle, BarC
 import Image from 'next/image'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ModernNavigation from '@/components/modern-navigation'
+import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
+import { ROICalculator } from '@/components/calculators/roi-calculator'
 
 export const metadata: Metadata = {
   title: 'Painting Estimate Software | Fast & Accurate Quotes | PaintQuote Pro',
@@ -599,51 +601,32 @@ export default function PaintingEstimateSoftware() {
             </div>
           </section>
 
-          {/* ROI Calculator Preview */}
-          <section className="py-16 md:py-24">
+          {/* Interactive Calculators */}
+          <section className="py-16 md:py-24 bg-gray-900/50">
             <div className="container">
-              <div className="mx-auto max-w-4xl rounded-lg bg-primary/5 p-8 md:p-12">
-                <div className="grid gap-8 md:grid-cols-2 md:items-center">
-                  <div>
-                    <h2 className="text-3xl font-bold">
-                      Calculate Your ROI with Painting Estimate Software
-                    </h2>
-                    <p className="mt-4 text-lg text-muted-foreground">
-                      Most contractors see positive ROI within 30 days. Calculate your potential 
-                      savings and revenue increase.
-                    </p>
-                    <div className="mt-6 space-y-4">
-                      <div className="flex items-center gap-4">
-                        <TrendingUp className="h-8 w-8 text-primary" />
-                        <div>
-                          <p className="font-semibold">Average time saved</p>
-                          <p className="text-sm text-muted-foreground">35 hours per month</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <TrendingUp className="h-8 w-8 text-primary" />
-                        <div>
-                          <p className="font-semibold">Additional revenue</p>
-                          <p className="text-sm text-muted-foreground">$15,000 per month</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="inline-block rounded-lg bg-background p-8 shadow-lg">
-                      <p className="text-sm text-muted-foreground">Your estimated annual savings</p>
-                      <p className="mt-2 text-4xl font-bold text-primary">$42,000</p>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Based on 20 quotes per month
-                      </p>
-                    </div>
-                    <Link
-                      href="/roi-calculator"
-                      className="mt-6 inline-flex items-center text-primary hover:underline"
-                    >
-                      Try the full ROI calculator →
-                    </Link>
-                  </div>
+              <div className="mx-auto max-w-6xl">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-bold md:text-4xl text-white mb-4">
+                    Free Estimation Tools
+                  </h2>
+                  <p className="text-lg text-gray-300">
+                    Try our calculators to see how painting estimate software can transform your business
+                  </p>
+                </div>
+                
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <PaintEstimateCalculator variant="glass" />
+                  <ROICalculator variant="glass" />
+                </div>
+                
+                <div className="mt-12 text-center">
+                  <p className="text-gray-300 mb-6">
+                    Ready to create professional estimates for your actual painting jobs?
+                  </p>
+                  <Link href="/trial-signup" className="btn-primary inline-flex items-center gap-2">
+                    Start Your Free Trial
+                    <Zap className="h-4 w-4" />
+                  </Link>
                 </div>
               </div>
             </div>
