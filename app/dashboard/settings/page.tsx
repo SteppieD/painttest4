@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { LogoUploadWithExtraction } from '@/components/logo-upload-with-extraction'
 
 interface ChargeRates {
   // Interior
@@ -65,6 +66,16 @@ interface CompanySettings {
   logoUrl: string
   website: string
   license: string
+  
+  // Theme colors extracted from logo
+  themeColors?: {
+    primary: string
+    secondary: string
+    accent: string
+    dark: string
+    light: string
+  }
+  selectedTheme?: string
   
   // Financial settings
   taxRate: number
@@ -327,23 +338,18 @@ export default function SettingsPage() {
               <CardDescription>Your company information and branding</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* Logo Upload */}
-              <div>
-                <Label>Company Logo</Label>
-                <div className="mt-2 flex items-center gap-4">
-                  {settings.logoUrl ? (
-                    <img src={settings.logoUrl} alt="Company logo" className="h-20 w-20 rounded-lg object-cover" />
-                  ) : (
-                    <div className="h-20 w-20 rounded-lg bg-muted flex items-center justify-center">
-                      <Building2 className="h-10 w-10 text-muted-foreground" />
-                    </div>
-                  )}
-                  <Button variant="outline" size="sm">
-                    <Upload className="h-4 w-4 mr-2" />
-                    Upload Logo
-                  </Button>
-                </div>
-              </div>
+              {/* Logo Upload with Color Extraction */}
+              <LogoUploadWithExtraction
+                currentLogoUrl={settings.logoUrl}
+                companyName={settings.companyName}
+                onLogoChange={(logoUrl, colors) => {
+                  setSettings({
+                    ...settings,
+                    logoUrl,
+                    themeColors: colors
+                  })
+                }}
+              />
 
               {/* Company Details */}
               <div className="grid gap-4 md:grid-cols-2">

@@ -13,7 +13,8 @@ import {
   FileText,
   Calendar,
   DollarSign,
-  Sparkles
+  Sparkles,
+  Globe
 } from 'lucide-react'
 
 interface Quote {
@@ -47,6 +48,15 @@ interface Quote {
     name: string
     email: string
     phone: string
+    logo_url?: string
+    subscription_status?: string
+    theme_colors?: {
+      primary: string
+      secondary: string
+      accent: string
+      dark: string
+      light: string
+    }
   }
 }
 
@@ -157,10 +167,34 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
         {/* Company Info */}
         <Card className="glass-card mb-6">
           <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-purple-400" />
-              {quote.company?.name || 'Professional Painting Services'}
-            </CardTitle>
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-4">
+                {quote.company?.logo_url && (
+                  <img 
+                    src={quote.company.logo_url} 
+                    alt={quote.company.name}
+                    className="h-16 w-16 object-contain bg-white rounded-lg p-2"
+                  />
+                )}
+                <div>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    {!quote.company?.logo_url && (
+                      <Sparkles className="h-5 w-5 text-purple-400" />
+                    )}
+                    {quote.company?.name || 'Professional Painting Services'}
+                  </CardTitle>
+                  {quote.company?.subscription_status !== 'active' && (
+                    <p className="text-xs text-gray-400 mt-1">Powered by PaintQuote Pro</p>
+                  )}
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm text-gray-400">Quote #{quote.quote_id}</p>
+                <p className="text-sm text-gray-400">
+                  {new Date(quote.created_at).toLocaleDateString()}
+                </p>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-4">
@@ -176,12 +210,12 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
                   <span className="text-sm">{quote.company.phone}</span>
                 </div>
               )}
-              <div className="flex items-center gap-2 text-gray-300">
-                <Calendar className="h-4 w-4 text-gray-400" />
-                <span className="text-sm">
-                  {new Date(quote.created_at).toLocaleDateString()}
-                </span>
-              </div>
+              {quote.company?.website && (
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Globe className="h-4 w-4 text-gray-400" />
+                  <span className="text-sm">{quote.company.website}</span>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -343,6 +377,26 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
           <p className="text-xs text-gray-500 mt-2">
             This quote is valid for 30 days from the date of issue
           </p>
+          
+          {/* PaintQuote Branding for Free Users */}
+          {quote.company?.subscription_status !== 'active' && (
+            <div className="mt-8 pt-8 border-t border-white/10">
+              <a 
+                href="https://www.paintquoteapp.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4" />
+                  <span className="text-sm">Created with PaintQuote Pro</span>
+                </div>
+              </a>
+              <p className="text-xs text-gray-500 mt-1">
+                Professional painting quotes made easy
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
