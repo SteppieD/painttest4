@@ -1,12 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Calculator, TrendingUp, Clock, DollarSign, Users, ChevronRight } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ModernNavigation from '@/components/modern-navigation'
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 
 export default function ROICalculator() {
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true)
   const [formData, setFormData] = useState({
     monthlyRevenue: 50000,
     quotesPerMonth: 20,
@@ -16,6 +20,15 @@ export default function ROICalculator() {
   })
 
   const [showResults, setShowResults] = useState(false)
+
+  useEffect(() => {
+    const company = getCompanyFromLocalStorage()
+    if (!company) {
+      router.push('/access-code')
+    } else {
+      setIsLoading(false)
+    }
+  }, [router])
 
   const calculateROI = () => {
     // Current state calculations
@@ -67,6 +80,17 @@ export default function ROICalculator() {
   }
 
   const results = showResults ? calculateROI() : null
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading calculator...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>

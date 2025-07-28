@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -18,12 +18,31 @@ export default function AccessCodePage() {
   const [accessCode, setAccessCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isReturningUser, setIsReturningUser] = useState(false);
+  const [storedCompanyName, setStoredCompanyName] = useState('');
 
   const [showForgotCode, setShowForgotCode] = useState(false);
   const [forgotCodeEmail, setForgotCodeEmail] = useState('');
   const [forgotCodeLoading, setForgotCodeLoading] = useState(false);
   const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
   const router = useRouter();
+
+  // Check if returning user
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('paintquote_company');
+      if (stored) {
+        const data = JSON.parse(stored);
+        if (data.name) {
+          setIsReturningUser(true);
+          setStoredCompanyName(data.name);
+          setCompanyName(data.name);
+        }
+      }
+    } catch (error) {
+      console.error('Error checking returning user:', error);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,29 +142,35 @@ export default function AccessCodePage() {
             <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-blue-500/30">
               <LogIn className="h-8 w-8 text-white" />
             </div>
-            <CardTitle className="text-3xl font-bold text-gradient-modern">Welcome Back</CardTitle>
+            <CardTitle className="text-3xl font-bold text-gradient-modern">
+              {isReturningUser ? `Welcome back, ${storedCompanyName}` : 'Welcome Back'}
+            </CardTitle>
             <CardDescription className="text-base mt-2 text-medium-contrast">
-              Sign in with your company access code
+              {isReturningUser 
+                ? 'Enter your access code to continue' 
+                : 'Sign in with your company access code'}
             </CardDescription>
           </CardHeader>
           
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="companyName" className="text-base font-medium text-high-contrast">
-                  Company Name
-                </Label>
-                <Input
-                  id="companyName"
-                  type="text"
-                  placeholder="Enter your company name"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  className="h-12 text-base input-modern"
-                  disabled={isLoading}
-                  required
-                />
-              </div>
+              {!isReturningUser && (
+                <div className="space-y-2">
+                  <Label htmlFor="companyName" className="text-base font-medium text-high-contrast">
+                    Company Name
+                  </Label>
+                  <Input
+                    id="companyName"
+                    type="text"
+                    placeholder="Enter your company name"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    className="h-12 text-base input-modern"
+                    disabled={isLoading}
+                    required
+                  />
+                </div>
+              )}
 
               <div className="space-y-2">
                 <Label htmlFor="accessCode" className="text-base font-medium text-high-contrast">
@@ -200,12 +225,30 @@ export default function AccessCodePage() {
 
 
             <div className="text-center pt-4 border-t">
-              <p className="text-sm text-gray-600">
-                Don't have an account?{' '}
-                <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
-                  Start free trial
-                </Link>
-              </p>
+              {isReturningUser ? (
+                <p className="text-sm text-gray-600">
+                  Not {storedCompanyName}?{' '}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      localStorage.removeItem('paintquote_company');
+                      setIsReturningUser(false);
+                      setCompanyName('');
+                      setStoredCompanyName('');
+                    }}
+                    className="font-medium text-blue-600 hover:underline"
+                  >
+                    Sign in as different company
+                  </button>
+                </p>
+              ) : (
+                <p className="text-sm text-gray-600">
+                  Don't have an account?{' '}
+                  <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
+                    Start free trial
+                  </Link>
+                </p>
+              )}
             </div>
           </CardContent>
         </Card>
