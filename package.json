@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "setup-db": "node -e \"console.log('Database auto-initialized on first run')\""
+    "setup-db": "node -e \"console.log('Database auto-initialized on first run')\"",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",

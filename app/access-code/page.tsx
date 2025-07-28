@@ -14,12 +14,9 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 
 export default function AccessCodePage() {
-  const [companyName, setCompanyName] = useState('');
   const [accessCode, setAccessCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [isReturningUser, setIsReturningUser] = useState(false);
-  const [storedCompanyName, setStoredCompanyName] = useState('');
 
   const [showForgotCode, setShowForgotCode] = useState(false);
   const [forgotCodeEmail, setForgotCodeEmail] = useState('');
@@ -27,26 +24,9 @@ export default function AccessCodePage() {
   const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
   const router = useRouter();
 
-  // Check if returning user
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('paintquote_company');
-      if (stored) {
-        const data = JSON.parse(stored);
-        if (data.name) {
-          setIsReturningUser(true);
-          setStoredCompanyName(data.name);
-          setCompanyName(data.name);
-        }
-      }
-    } catch (error) {
-      console.error('Error checking returning user:', error);
-    }
-  }, []);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!companyName.trim() || !accessCode.trim()) return;
+    if (!accessCode.trim()) return;
 
     setIsLoading(true);
     setError('');
@@ -58,7 +38,6 @@ export default function AccessCodePage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          companyName: companyName.trim(), 
           accessCode: accessCode.trim().toUpperCase() 
         }),
       });
@@ -143,35 +122,15 @@ export default function AccessCodePage() {
               <LogIn className="h-8 w-8 text-white" />
             </div>
             <CardTitle className="text-3xl font-bold text-gradient-modern">
-              {isReturningUser ? `Welcome back, ${storedCompanyName}` : 'Welcome Back'}
+              Welcome Back
             </CardTitle>
             <CardDescription className="text-base mt-2 text-medium-contrast">
-              {isReturningUser 
-                ? 'Enter your access code to continue' 
-                : 'Sign in with your company access code'}
+              Sign in with your company access code
             </CardDescription>
           </CardHeader>
           
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
-              {!isReturningUser && (
-                <div className="space-y-2">
-                  <Label htmlFor="companyName" className="text-base font-medium text-high-contrast">
-                    Company Name
-                  </Label>
-                  <Input
-                    id="companyName"
-                    type="text"
-                    placeholder="Enter your company name"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    className="h-12 text-base input-modern"
-                    disabled={isLoading}
-                    required
-                  />
-                </div>
-              )}
-
               <div className="space-y-2">
                 <Label htmlFor="accessCode" className="text-base font-medium text-high-contrast">
                   Access Code
@@ -209,7 +168,7 @@ export default function AccessCodePage() {
               <Button
                 type="submit"
                 className="w-full h-12 text-base font-medium btn-primary-modern"
-                disabled={isLoading || !companyName.trim() || !accessCode.trim()}
+                disabled={isLoading || !accessCode.trim()}
               >
                 {isLoading ? (
                   <>
@@ -225,30 +184,12 @@ export default function AccessCodePage() {
 
 
             <div className="text-center pt-4 border-t">
-              {isReturningUser ? (
-                <p className="text-sm text-gray-600">
-                  Not {storedCompanyName}?{' '}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      localStorage.removeItem('paintquote_company');
-                      setIsReturningUser(false);
-                      setCompanyName('');
-                      setStoredCompanyName('');
-                    }}
-                    className="font-medium text-blue-600 hover:underline"
-                  >
-                    Sign in as different company
-                  </button>
-                </p>
-              ) : (
-                <p className="text-sm text-gray-600">
-                  Don't have an account?{' '}
-                  <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
-                    Start free trial
-                  </Link>
-                </p>
-              )}
+              <p className="text-sm text-gray-600">
+                Don't have an account?{' '}
+                <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
+                  Start free trial
+                </Link>
+              </p>
             </div>
           </CardContent>
         </Card>
