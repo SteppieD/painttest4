@@ -168,7 +168,7 @@ export default function AccessCodePage() {
               <Button
                 type="submit"
                 className="w-full h-12 text-base font-medium btn-primary-modern"
-                disabled={isLoading || !accessCode.trim()}
+                disabled={isLoading || accessCode.length === 0}
               >
                 {isLoading ? (
                   <>
