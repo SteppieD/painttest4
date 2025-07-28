@@ -35,8 +35,8 @@ const plans = {
   professional: {
     name: 'Professional',
     description: 'Win 40-60% more jobs with speed',
-    monthlyPrice: 47,
-    yearlyPrice: 470, // 2 months free
+    monthlyPrice: 79,
+    yearlyPrice: 790, // 2 months free
     features: [
       'Unlimited quotes',
       'AI-powered instant quoting',
@@ -61,8 +61,8 @@ const plans = {
   business: {
     name: 'Business',
     description: 'Scale your painting empire',
-    monthlyPrice: 97,
-    yearlyPrice: 970, // 2 months free
+    monthlyPrice: 149,
+    yearlyPrice: 1490, // 2 months free
     features: [
       'Everything in Professional',
       'Unlimited team members',

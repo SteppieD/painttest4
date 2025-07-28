@@ -68,14 +68,14 @@ export default function TestPaymentPage() {
                   onClick={() => setPlan('professional')}
                   className={plan === 'professional' ? '' : 'text-white border-white/20'}
                 >
-                  Professional ($47/mo)
+                  Professional ($79/mo)
                 </Button>
                 <Button
                   variant={plan === 'business' ? 'default' : 'outline'}
                   onClick={() => setPlan('business')}
                   className={plan === 'business' ? '' : 'text-white border-white/20'}
                 >
-                  Business ($97/mo)
+                  Business ($149/mo)
                 </Button>
               </div>
             </div>

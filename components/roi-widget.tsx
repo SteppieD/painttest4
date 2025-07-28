@@ -30,7 +30,7 @@ export function ROIWidget({
   const potentialExtraRevenue = additionalQuotes * avgQuoteValue * 0.3 // Assuming 30% close rate
   
   const yearlyExtraRevenue = potentialExtraRevenue * 12
-  const softwareCost = 49 * 12 // Professional plan
+  const softwareCost = 79 * 12 // Professional plan
   const netROI = yearlyExtraRevenue - softwareCost
   const roiPercentage = (netROI / softwareCost) * 100
 
@@ -106,7 +106,7 @@ export function ROIWidget({
                     </div>
                     <div className="flex justify-between items-center pt-2 border-t border-white/10">
                       <span className="text-gray-300">Software Investment</span>
-                      <span className="text-gray-400">$49/month</span>
+                      <span className="text-gray-400">$79/month</span>
                     </div>
                   </div>
                   

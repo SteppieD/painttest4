@@ -54,8 +54,8 @@ export const SUBSCRIPTION_PLANS = {
       'Priority support'
     ],
     pricing: {
-      monthly: 29.99,
-      yearly: 299.99
+      monthly: 79,
+      yearly: 790
     }
   },
   business: {
@@ -71,8 +71,8 @@ export const SUBSCRIPTION_PLANS = {
       'Custom integrations'
     ],
     pricing: {
-      monthly: 79.99,
-      yearly: 799.99
+      monthly: 149,
+      yearly: 1490
     }
   }
 };

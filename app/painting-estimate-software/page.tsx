@@ -434,7 +434,7 @@ export default function PaintingEstimateSoftware() {
                       <th className="px-4 py-3 text-left">Feature</th>
                       <th className="px-4 py-3 text-center">
                         <div className="font-semibold">PaintQuote Pro</div>
-                        <div className="text-sm font-normal text-muted-foreground">$49/mo</div>
+                        <div className="text-sm font-normal text-muted-foreground">$79/mo</div>
                       </th>
                       <th className="px-4 py-3 text-center">
                         <div className="font-semibold">Competitor A</div>

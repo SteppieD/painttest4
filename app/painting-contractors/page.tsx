@@ -370,7 +370,7 @@ export default function PaintingContractors() {
                     Most Popular
                   </div>
                   <h3 className="text-xl font-semibold">Professional</h3>
-                  <p className="mt-2 text-3xl font-bold">$49<span className="text-base font-normal">/mo</span></p>
+                  <p className="mt-2 text-3xl font-bold">$79<span className="text-base font-normal">/mo</span></p>
                   <p className="mt-2 text-sm text-muted-foreground">For growing contractors</p>
                   <ul className="mt-6 space-y-2 text-sm">
                     <li>Unlimited quotes</li>

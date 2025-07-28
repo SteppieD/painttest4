@@ -188,7 +188,7 @@ const softwareComparison = [
     name: 'Jobber',
     logo: '📱',
     rating: 4.5,
-    pricing: 'From $49/mo',
+    pricing: 'From $79/mo',
     bestFor: 'Service businesses',
     features: {
       aiPowered: false,

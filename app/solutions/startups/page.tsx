@@ -155,21 +155,21 @@ export default function StartupsPage() {
   const pricingOptions = [
     {
       name: 'Startup Monthly',
-      price: '$49/month',
+      price: '$79/month',
       description: 'Perfect for testing the waters',
       features: ['5 quotes/month', 'All templates', 'Email support', 'Cancel anytime']
     },
     {
       name: 'Growth Monthly',
-      price: '$79/month',
+      price: '$149/month',
       description: 'For serious new contractors',
       features: ['Unlimited quotes', 'Priority support', 'Advanced features', 'Training videos'],
       popular: true
     },
     {
       name: 'Annual Saver',
-      price: '$790/year',
-      description: 'Best value - save $158',
+      price: '$1490/year',
+      description: 'Best value - save $298',
       features: ['Everything in Growth', '2 months free', 'Success coaching call', 'Exclusive resources']
     }
   ]

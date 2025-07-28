@@ -123,7 +123,7 @@ const softwareOptions = [
     name: 'Contractor Foreman',
     rating: 4.2,
     users: '50,000+',
-    startingPrice: '$49',
+    startingPrice: '$79',
     billingPeriod: 'month',
     description: 'Construction management software with basic estimating features',
     features: [

@@ -208,7 +208,7 @@ export default function PaintingEstimateCalculator() {
                 <h3 className="text-xl font-semibold">How much does it cost to use the painting calculator?</h3>
                 <p className="mt-2 text-muted-foreground">
                   The basic calculator is completely free. Create a free account to save quotes and access 
-                  advanced features. Professional plans start at $49/month for unlimited quotes.
+                  advanced features. Professional plans start at $79/month for unlimited quotes.
                 </p>
               </div>
               <div>

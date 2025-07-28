@@ -48,7 +48,7 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
     const additionalRevenue = improvedRevenue - currentRevenue
     
     // Software cost (Professional plan)
-    const monthlyCost = 47
+    const monthlyCost = 79
     const yearlyROI = (additionalRevenue + timeSavingsValue - monthlyCost) * 12
     const paybackDays = monthlyCost / (additionalRevenue / 30)
 
@@ -234,7 +234,7 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
                 </div>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-400">PaintQuote Pro Cost:</span>
-                  <span className="text-white">-$47</span>
+                  <span className="text-white">-$79</span>
                 </div>
                 <div className="flex justify-between items-center pt-2 border-t border-white/10">
                   <span className="text-white font-semibold">Net Monthly ROI:</span>

@@ -27,8 +27,8 @@ const STRIPE_PUBLISHABLE_KEY = 'pk_test_51R6x3QGbblInKQeXVASILRMWJxtv1tnOKECGEnZ
 
 export function UpgradeModal({ isOpen, onClose, plan }: UpgradeModalProps) {
   const planName = plan === 'professional' ? 'Professional' : 'Business';
-  const planPrice = plan === 'professional' ? '$29.99' : '$79.99';
-  const yearlyPrice = plan === 'professional' ? '$299.99' : '$799.99';
+  const planPrice = plan === 'professional' ? '$79' : '$149';
+  const yearlyPrice = plan === 'professional' ? '$790' : '$1490';
   
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -69,7 +69,7 @@ export function UpgradeModal({ isOpen, onClose, plan }: UpgradeModalProps) {
                 <p className="text-3xl font-bold text-white">{yearlyPrice}</p>
                 <p className="text-gray-400">per year</p>
                 <p className="text-green-400 text-sm mt-1">
-                  Save {plan === 'professional' ? '$60' : '$160'} per year!
+                  Save {plan === 'professional' ? '$158' : '$298'} per year!
                 </p>
               </div>
               

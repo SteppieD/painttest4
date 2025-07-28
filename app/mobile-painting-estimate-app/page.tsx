@@ -548,7 +548,7 @@ export default function MobilePaintingEstimateApp() {
               <div className="mt-12 grid gap-8 md:grid-cols-3">
                 <div className="rounded-lg border bg-background p-8">
                   <h3 className="text-xl font-semibold">Starter</h3>
-                  <p className="mt-2 text-3xl font-bold">$49<span className="text-lg font-normal">/mo</span></p>
+                  <p className="mt-2 text-3xl font-bold">$79<span className="text-lg font-normal">/mo</span></p>
                   <ul className="mt-6 space-y-3 text-sm">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
