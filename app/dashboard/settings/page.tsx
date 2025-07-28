@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -17,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { LogoUploadWithExtraction } from '@/components/logo-upload-with-extraction'
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 
 interface ChargeRates {
   // Interior
@@ -177,6 +179,7 @@ const defaultSettings: CompanySettings = {
 }
 
 export default function SettingsPage() {
+  const router = useRouter()
   const { toast } = useToast()
   const [settings, setSettings] = useState<CompanySettings>(defaultSettings)
   const [isLoading, setIsLoading] = useState(false)
@@ -184,11 +187,19 @@ export default function SettingsPage() {
     type: 'wall',
     coveragePerGallon: 350
   })
+  const [authChecked, setAuthChecked] = useState(false)
 
   useEffect(() => {
+    // Check authentication
+    const company = getCompanyFromLocalStorage()
+    if (!company) {
+      router.push('/access-code')
+      return
+    }
+    setAuthChecked(true)
     // Load settings from API
     loadSettings()
-  }, [])
+  }, [router])
 
   const loadSettings = async () => {
     try {
@@ -310,6 +321,17 @@ export default function SettingsPage() {
         p.id === id ? { ...p, isPreferred: !p.isPreferred } : p
       )
     }))
+  }
+
+  if (!authChecked) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading settings...</p>
+        </div>
+      </div>
+    )
   }
 
   return (

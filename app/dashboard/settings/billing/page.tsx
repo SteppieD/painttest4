@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
-import { useCompanyAuth } from '@/components/auth-wrapper'
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription'
 import { redirectToStripePayment } from '@/lib/config/stripe-links'
 import { 
@@ -36,16 +36,21 @@ interface UsageStats {
 }
 
 export default function BillingPage() {
-  const companyAuth = useCompanyAuth()
-  const company = companyAuth?.company
   const router = useRouter()
+  const [company, setCompany] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [usage, setUsage] = useState<UsageStats | null>(null)
   const [processingUpgrade, setProcessingUpgrade] = useState(false)
 
   useEffect(() => {
+    const companyData = getCompanyFromLocalStorage()
+    if (!companyData) {
+      router.push('/access-code')
+      return
+    }
+    setCompany(companyData)
     fetchUsageStats()
-  }, [company])
+  }, [router])
 
   const fetchUsageStats = async () => {
     try {

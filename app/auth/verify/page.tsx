@@ -50,7 +50,8 @@ function VerifyContent() {
               name: data.company.name || data.company.company_name,
               email: data.company.email,
               phone: data.company.phone || '',
-              onboarding_completed: data.company.onboarding_completed || false
+              onboarding_completed: data.company.onboarding_completed || false,
+              loginTime: Date.now() // Critical: This field is required for auth to work!
             })
           );
         }
