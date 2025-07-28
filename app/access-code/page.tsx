@@ -24,6 +24,28 @@ export default function AccessCodePage() {
   const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
   const router = useRouter();
 
+  // Handle autofill detection
+  useEffect(() => {
+    const checkAutofill = () => {
+      const input = document.getElementById('accessCode') as HTMLInputElement;
+      if (input && input.value && !accessCode) {
+        setAccessCode(input.value);
+      }
+    };
+
+    // Check immediately and after a short delay for autofill
+    checkAutofill();
+    const timeoutId = setTimeout(checkAutofill, 100);
+
+    // Also check on animation frame for better detection
+    const rafId = requestAnimationFrame(checkAutofill);
+
+    return () => {
+      clearTimeout(timeoutId);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!accessCode.trim()) return;
@@ -137,11 +159,24 @@ export default function AccessCodePage() {
                 </Label>
                 <Input
                   id="accessCode"
+                  name="accessCode"
                   type="text"
                   placeholder="Enter your access code"
                   value={accessCode}
-                  onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    setAccessCode(newValue);
+                  }}
+                  onInput={(e) => {
+                    // Fallback for cases where onChange doesn't fire
+                    const target = e.target as HTMLInputElement;
+                    setAccessCode(target.value);
+                  }}
+                  autoComplete="one-time-code"
+                  autoCapitalize="characters"
+                  spellCheck={false}
                   className="h-12 text-base font-mono uppercase input-modern"
+                  style={{ textTransform: 'uppercase' }}
                   disabled={isLoading}
                   required
                 />
@@ -168,7 +203,7 @@ export default function AccessCodePage() {
               <Button
                 type="submit"
                 className="w-full h-12 text-base font-medium btn-primary-modern"
-                disabled={isLoading || accessCode.length === 0}
+                disabled={isLoading || !accessCode || accessCode.trim().length === 0}
               >
                 {isLoading ? (
                   <>
