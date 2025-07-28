@@ -2,7 +2,6 @@
 
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
 import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
-import { redirectToStripePayment } from '@/lib/config/stripe-links'
 import { UpgradeModal } from '@/components/stripe/upgrade-modal'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -309,11 +308,12 @@ export function ClientDashboard() {
           
           if (stat.locked) {
             return (
-              <div 
+              <Link
                 key={index} 
-                onClick={() => redirectToStripePayment('professional', 'monthly')}
-                className="glass-card p-6 group card-hover-modern relative overflow-hidden cursor-pointer"
+                href="/unlock-analytics"
+                className="block"
               >
+                <div className="glass-card p-6 group card-hover-modern relative overflow-hidden cursor-pointer">
                 <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                   <div className="text-center">
                     <Lock className="h-8 w-8 text-gray-400 mx-auto mb-2" />
@@ -332,6 +332,7 @@ export function ClientDashboard() {
                   <p className="text-2xl font-bold text-gray-500">---</p>
                 </div>
               </div>
+              </Link>
             )
           }
           
@@ -545,7 +546,7 @@ export function ClientDashboard() {
               <p className="text-gray-400 mb-4 max-w-sm">
                 Track your acceptance rates, revenue trends, and business growth with Pro analytics
               </p>
-              <Link href="/dashboard/settings/billing">
+              <Link href="/unlock-analytics">
                 <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                   <Sparkles className="h-4 w-4 mr-2" />
                   Upgrade to Pro
@@ -620,7 +621,7 @@ export function ClientDashboard() {
             )}
           </div>
         ) : (
-          <Link href="/dashboard/settings/billing">
+          <Link href="/unlock-analytics">
             <div className="glass-card p-6 relative overflow-hidden cursor-pointer group">
               <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                 <div className="text-center">
@@ -673,7 +674,7 @@ export function ClientDashboard() {
             )}
           </div>
         ) : (
-          <Link href="/dashboard/settings/billing">
+          <Link href="/unlock-analytics">
             <div className="glass-card p-6 relative overflow-hidden cursor-pointer group">
               <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                 <div className="text-center">
@@ -725,7 +726,7 @@ export function ClientDashboard() {
                 <p className="text-xs text-gray-400">ROI on Pro</p>
               </div>
             </div>
-            <Link href="/dashboard/settings/billing">
+            <Link href="/unlock-analytics">
               <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                 <Sparkles className="h-5 w-5 mr-2" />
                 Start 14-Day Free Trial
