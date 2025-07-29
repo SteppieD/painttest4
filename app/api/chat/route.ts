@@ -18,6 +18,7 @@ setInterval(() => {
     const lastMessage = messages[messages.length - 1];
     if (lastMessage && lastMessage.timestamp.getTime() < oneHourAgo) {
       sessions.delete(sessionId);
+      console.log(`[CHAT] Cleaned up old session: ${sessionId}`);
     }
   }
 }, 10 * 60 * 1000); // Check every 10 minutes
@@ -70,6 +71,9 @@ export async function POST(request: NextRequest) {
     if (!manager) {
       manager = new ConversationManager();
       sessions.set(session, manager);
+      console.log(`[CHAT] Created new session: ${session}`);
+    } else {
+      console.log(`[CHAT] Using existing session: ${session} with ${manager.getMessages().length} messages`);
     }
     
     let response: string;
@@ -173,11 +177,15 @@ export async function POST(request: NextRequest) {
           costPerGallon: p.cost_per_gallon
         })) || [];
         
+        // Add user message to conversation first
+        manager.addMessage({
+          role: 'user',
+          content: message,
+          timestamp: new Date()
+        });
+        
         // Get all messages for context
-        const allMessages = [
-          ...manager.getMessages(),
-          { role: 'user' as const, content: message, timestamp: new Date() }
-        ];
+        const allMessages = manager.getMessages();
         
         const conversationText = allMessages
           .map(msg => `${msg.role}: ${msg.content}`)
@@ -341,20 +349,22 @@ export async function POST(request: NextRequest) {
       sessions.set(session, manager);
     }
     
-    // Track message
-    if ((manager as any).addMessage) {
-      (manager as any).addMessage({
+    // Track assistant response (user message already added above for AI mode)
+    if (!useAI || isDemo) {
+      // For non-AI mode, we need to add the user message
+      manager.addMessage({
         role: 'user',
         content: message,
         timestamp: new Date()
       });
-      
-      (manager as any).addMessage({
-        role: 'assistant',
-        content: response,
-        timestamp: new Date()
-      });
     }
+    
+    // Always add assistant response
+    manager.addMessage({
+      role: 'assistant',
+      content: response,
+      timestamp: new Date()
+    });
     
     // Return response with metrics
     return NextResponse.json({

@@ -283,6 +283,11 @@ export class ConversationManager {
     return this.state.quoteReady;
   }
 
+  // Add message to conversation history
+  addMessage(message: { role: 'user' | 'assistant'; content: string; timestamp: Date }) {
+    this.state.messages.push(message);
+  }
+
   // Helper to parse contact info
   parseContactInfo(data: Record<string, any>): { email?: string; phone?: string } {
     const contact = data.contactInfo || '';
