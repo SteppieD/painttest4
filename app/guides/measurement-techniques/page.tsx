@@ -383,12 +383,12 @@ export default function MeasurementTechniquesGuide() {
                   <Home className="h-8 w-8 text-blue-400 mb-4" />
                   <h3 className="text-xl font-semibold text-white mb-4">Standard Rooms</h3>
                   <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
-                    <p className="text-green-400">{"// Basic Formula"}</p>
+                    <p className="text-green-400">// Basic Formula</p>
                     <p className="text-yellow-400">Wall Area = 2(L+W) × H</p>
-                    <p className="text-gray-400 mt-2">{"// Example: 12×15 room, 9ft ceiling"}</p>
+                    <p className="text-gray-400 mt-2">// Example: 12×15 room, 9ft ceiling</p>
                     <p className="text-cyan-400">= 2(12+15) × 9</p>
                     <p className="text-cyan-400">= 54 × 9 = 486 sq ft</p>
-                    <p className="text-gray-400 mt-2">{"// Subtract openings"}</p>
+                    <p className="text-gray-400 mt-2">// Subtract openings</p>
                     <p className="text-cyan-400">- 2 windows (30 sq ft)</p>
                     <p className="text-cyan-400">- 1 door (21 sq ft)</p>
                     <p className="text-green-400 font-bold">= 435 sq ft paintable</p>

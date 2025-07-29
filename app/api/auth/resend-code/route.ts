@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,6 +31,15 @@ export async function POST(request: NextRequest) {
 
     // Send the access code email
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@paintquote.app';
+    
+    if (!resend) {
+      console.log('Resend API key not configured. Would send email to:', email);
+      console.log('Access code:', company.access_code);
+      return NextResponse.json({
+        success: true,
+        message: 'Access code email functionality not configured. Check server logs for access code.'
+      });
+    }
     
     await resend.emails.send({
       from: fromEmail,
