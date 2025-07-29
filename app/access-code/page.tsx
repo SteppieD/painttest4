@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -22,7 +21,6 @@ export default function AccessCodePage() {
   const [forgotCodeEmail, setForgotCodeEmail] = useState('');
   const [forgotCodeLoading, setForgotCodeLoading] = useState(false);
   const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
-  const router = useRouter();
 
   // Handle autofill detection
   useEffect(() => {
@@ -220,7 +218,7 @@ export default function AccessCodePage() {
 
             <div className="text-center pt-4 border-t">
               <p className="text-sm text-gray-600">
-                Don't have an account?{' '}
+                Don{'\''t have an account?{' '}
                 <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
                   Start free trial
                 </Link>
@@ -259,7 +257,7 @@ export default function AccessCodePage() {
                 Forgot Your Code?
               </DialogTitle>
               <DialogDescription className="text-medium-contrast">
-                Enter your email address and we'll send your access code
+                Enter your email address and we{'\''ll send your access code
               </DialogDescription>
             </DialogHeader>
             

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuthContext } from '@/lib/auth/middleware';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
-import { calculator, QuoteCalculator } from '@/lib/calculators/quote-calculator';
+import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator';
 

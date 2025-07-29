@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { Building, Calculator, Clock, DollarSign, CheckCircle, Home, Users, Zap, FileText, AlertTriangle, TrendingUp } from 'lucide-react'
+import { Building, Calculator, Clock, CheckCircle, Home, Users, Zap, FileText, TrendingUp } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { Button } from '@/components/ui/button'

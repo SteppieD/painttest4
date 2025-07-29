@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
-import { QuoteCalculator, calculator } from '@/lib/calculators/quote-calculator';
+import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
 import { db } from '@/lib/database/adapter';
 
 export const dynamic = 'force-dynamic';
@@ -216,7 +216,7 @@ export async function POST(request: NextRequest) {
             
             // Calculate quote with enhanced data
             // Transform paintProducts to match CalculatorInput structure
-            const paintProducts: any = {};
+            const paintProducts: Record<string, string> = {};
             if (preferredPaints.length > 0) {
               // Use the first preferred paint as default for walls
               paintProducts.walls = {
@@ -446,7 +446,6 @@ function getSuggestedReplies(manager: ConversationManager): string[] {
 // GET endpoint to retrieve conversation history
 export async function GET(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
     const { searchParams } = new URL(request.url);
     const sessionId = searchParams.get('sessionId');
     

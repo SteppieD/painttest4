@@ -55,7 +55,6 @@ export async function POST(request: NextRequest) {
 
     // Calculate confidence score based on completeness
     const requiredFields = ['customerName', 'address', 'projectType'];
-    const importantFields = ['surfaces', 'measurements.wallSqft'];
     
     let score = 0;
     let maxScore = 0;

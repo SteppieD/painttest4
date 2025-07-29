@@ -48,9 +48,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Hash password
-    const passwordHash = await bcrypt.hash(password, 10)
-
     // Create company
     const company = await db.createCompany({
       company_name: companyName,

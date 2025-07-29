@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import { CheckCircle, Zap, Clock, Calculator, Users, Shield, ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react'
 import ModernNavigation from '@/components/modern-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'Start Your Free Trial | PaintQuote Pro - Professional Painting Estimating Software',

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuthContext } from '@/lib/auth/middleware';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
-import { db } from '@/lib/database/adapter';
 
 export async function POST(request: NextRequest) {
   try {

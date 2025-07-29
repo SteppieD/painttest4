@@ -8,8 +8,20 @@ export const dynamic = 'force-dynamic';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
+interface CompanyRecord {
+  id: number;
+  company_name: string;
+  email: string;
+  phone: string;
+  plan?: string;
+  quotes_used?: number;
+  quote_limit?: number;
+  quotes_reset_at?: string;
+  onboarding_completed?: boolean;
+}
+
 // Map old schema to new schema format
-const mapCompanyData = (company: any) => ({
+const mapCompanyData = (company: CompanyRecord) => ({
   id: company.id,
   name: company.company_name,
   email: company.email,

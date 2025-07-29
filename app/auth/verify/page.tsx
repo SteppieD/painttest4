@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -23,9 +23,9 @@ function VerifyContent() {
     }
 
     verifyToken(token);
-  }, [searchParams]);
+  }, [searchParams, verifyToken]);
 
-  const verifyToken = async (token: string) => {
+  const verifyToken = useCallback(async (token: string) => {
     try {
       const response = await fetch('/api/auth/verify-magic-link', {
         method: 'POST',
@@ -69,7 +69,7 @@ function VerifyContent() {
       setMessage('An error occurred during verification');
       console.error('Verification error:', error);
     }
-  };
+  }, [router]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center p-4">
