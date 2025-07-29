@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
+import { BreadcrumbSchema } from '@/components/seo/breadcrumb-schema'
 import { 
   Home,
   Calculator,
@@ -67,12 +68,19 @@ const structuredData = {
 }
 
 export default function InteriorPaintingQuotesGuide() {
+  const breadcrumbItems = [
+    { name: 'Home', url: '/' },
+    { name: 'Guides', url: '/guides' },
+    { name: 'Interior Painting Quotes', url: '/guides/interior-painting-quotes' }
+  ]
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <BreadcrumbSchema items={breadcrumbItems} />
       <ModernNavigation />
       <main className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
         {/* Hero Section */}

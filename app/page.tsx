@@ -1,5 +1,4 @@
-'use client'
-
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -23,9 +22,77 @@ import {
   BarChart3
 } from 'lucide-react'
 
+export const metadata: Metadata = {
+  title: 'Professional Painting Quotes in Minutes - Paint Quote Pro',
+  description: 'Create winning painting quotes in 10-15 minutes. Join 500+ contractors who win 40-60% more jobs with our AI-powered quoting software. Start free today.',
+  openGraph: {
+    title: 'Paint Quote Pro - Professional Painting Quotes in Minutes',
+    description: 'Create winning painting quotes in 10-15 minutes. Join 500+ contractors who win 40-60% more jobs with our AI-powered quoting software.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Paint Quote Pro - Professional Painting Quotes in Minutes',
+    description: 'Create winning painting quotes in 10-15 minutes. Win 40-60% more jobs with our AI-powered quoting software.',
+  },
+  alternates: {
+    canonical: '/',
+  }
+}
+
+// Organization structured data
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Paint Quote Pro",
+  "url": "https://paintquotepro.com",
+  "logo": "https://paintquotepro.com/logo.png",
+  "description": "Professional painting quote software that helps contractors create winning estimates in minutes.",
+  "sameAs": [
+    "https://twitter.com/paintquotepro",
+    "https://www.facebook.com/paintquotepro",
+    "https://www.linkedin.com/company/paintquotepro"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-555-123-4567",
+    "contactType": "Customer Service",
+    "areaServed": "US",
+    "availableLanguage": ["English"]
+  }
+}
+
+// Software Application structured data
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Paint Quote Pro",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free plan with 5 quotes per month"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "500"
+  }
+}
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
       <ModernNavigation />
       <main className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
         {/* Hero Section */}

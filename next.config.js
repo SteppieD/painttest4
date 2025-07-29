@@ -1,66 +1,89 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  eslint: {
-    // Temporarily ignore ESLint during builds until we fix all errors
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    // Temporarily keeping this true until we fix all TS errors
-    ignoreBuildErrors: true,
-  },
   reactStrictMode: true,
   swcMinify: true,
-  // Generate unique build IDs based on timestamp to force cache refresh
-  generateBuildId: async () => {
-    return `build-${Date.now()}`;
-  },
-  // Add balanced cache headers
-  async headers() {
-    return [
-      {
-        // Only disable cache for HTML pages, not assets
-        source: '/((?!_next/static|_next/image|favicon.ico).*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'private, no-cache, no-store, max-age=0, must-revalidate',
-          },
-        ],
-      },
-      {
-        // Allow caching for static assets
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
+  
+  // Handle webpack configuration for server-only modules
   webpack: (config, { isServer }) => {
-    // Disable module concatenation to fix webpack issues
-    config.optimization.concatenateModules = false;
-    
-    // Handle server-only modules
     if (!isServer) {
+      // Don't resolve these modules on the client side
       config.resolve.fallback = {
-        ...config.resolve.fallback,
         fs: false,
         path: false,
-        crypto: false
+        crypto: false,
+        buffer: false,
+        util: false,
+        stream: false,
+        events: false,
+        child_process: false,
+        worker_threads: false,
+        perf_hooks: false,
       };
     }
     
-    // Ensure proper module resolution
-    config.resolve.alias = {
-      ...config.resolve.alias,
-    };
+    // Ignore better-sqlite3 on client side
+    config.externals.push({
+      'better-sqlite3': 'commonjs better-sqlite3',
+    });
     
     return config;
-  }
-}
+  },
+  
+  // Tell Next.js which packages to transpile
+  transpilePackages: ['@supabase/supabase-js'],
+  
+  // Experimental features
+  experimental: {
+    serverComponentsExternalPackages: ['better-sqlite3', 'bcryptjs']
+  },
+  
+  // Image configuration
+  images: {
+    domains: ['localhost', 'paintquotepro.com'],
+    formats: ['image/avif', 'image/webp'],
+  },
+  
+  // Headers for security and performance
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin'
+          }
+        ]
+      }
+    ];
+  },
+  
+  // Redirects
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

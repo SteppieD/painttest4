@@ -56,6 +56,31 @@ const tableOfContents = [
 ]
 
 export default function HowToQuotePaintingJobsGuide() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://paintquotepro.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://paintquotepro.com/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Quote Painting Jobs",
+        "item": "https://paintquotepro.com/guides/how-to-quote-painting-jobs"
+      }
+    ]
+  }
+
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -156,6 +181,10 @@ export default function HowToQuotePaintingJobsGuide() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <ModernNavigation />
       <main className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
