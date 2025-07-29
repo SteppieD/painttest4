@@ -14,17 +14,6 @@ function VerifyContent() {
   const [message, setMessage] = useState('');
   const [accessCode, setAccessCode] = useState('');
 
-  useEffect(() => {
-    const token = searchParams.get('token');
-    if (!token) {
-      setStatus('error');
-      setMessage('Invalid verification link');
-      return;
-    }
-
-    verifyToken(token);
-  }, [searchParams, verifyToken]);
-
   const verifyToken = useCallback(async (token: string) => {
     try {
       const response = await fetch('/api/auth/verify-magic-link', {
@@ -71,6 +60,17 @@ function VerifyContent() {
     }
   }, [router]);
 
+  useEffect(() => {
+    const token = searchParams.get('token');
+    if (!token) {
+      setStatus('error');
+      setMessage('Invalid verification link');
+      return;
+    }
+
+    verifyToken(token);
+  }, [searchParams, verifyToken]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center p-4">
       <Card className="glass-card max-w-md w-full">
@@ -98,7 +98,7 @@ function VerifyContent() {
                   <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                     <p className="text-sm text-gray-400 mb-2">Your access code:</p>
                     <p className="text-2xl font-mono font-bold text-white">{accessCode}</p>
-                    <p className="text-xs text-gray-400 mt-2">Save this code - you'll need it to log in</p>
+                    <p className="text-xs text-gray-400 mt-2">Save this code - you{'\''}ll need it to log in</p>
                   </div>
                 )}
                 

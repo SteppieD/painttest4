@@ -17,7 +17,11 @@ interface CompanyRecord {
   quotes_used?: number;
   quote_limit?: number;
   quotes_reset_at?: string;
+  quotes_generated?: number;
   onboarding_completed?: boolean;
+  default_walls_rate?: string;
+  default_ceilings_rate?: string;
+  tax_rate?: string;
 }
 
 // Map old schema to new schema format

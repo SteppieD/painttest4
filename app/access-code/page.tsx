@@ -218,7 +218,7 @@ export default function AccessCodePage() {
 
             <div className="text-center pt-4 border-t">
               <p className="text-sm text-gray-600">
-                Don{'\''t have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
                   Start free trial
                 </Link>
@@ -257,7 +257,7 @@ export default function AccessCodePage() {
                 Forgot Your Code?
               </DialogTitle>
               <DialogDescription className="text-medium-contrast">
-                Enter your email address and we{'\''ll send your access code
+                Enter your email address and we&apos;ll send your access code
               </DialogDescription>
             </DialogHeader>
             

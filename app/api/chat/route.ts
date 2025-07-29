@@ -216,7 +216,7 @@ export async function POST(request: NextRequest) {
             
             // Calculate quote with enhanced data
             // Transform paintProducts to match CalculatorInput structure
-            const paintProducts: Record<string, string> = {};
+            const paintProducts: Record<string, any> = {};
             if (preferredPaints.length > 0) {
               // Use the first preferred paint as default for walls
               paintProducts.walls = {
