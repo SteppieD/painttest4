@@ -256,12 +256,12 @@ export default function PricingPage() {
           </div>
 
           {/* ROI Calculator Section */}
-          <div className="mt-16 rounded-lg glass-card p-8">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md mt-16 rounded-lg p-8">
             <h2 className="text-3xl font-bold text-center mb-8 text-white">Your ROI Calculator</h2>
             
             <div className="mx-auto max-w-3xl">
               <div className="grid gap-6 md:grid-cols-2 mb-8">
-                <div className="rounded-lg glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md rounded-lg p-6">
                   <h3 className="font-semibold mb-4 text-white">Current Situation</h3>
                   <ul className="space-y-3 text-base">
                     <li className="flex justify-between">
@@ -283,7 +283,7 @@ export default function PricingPage() {
                   </ul>
                 </div>
                 
-                <div className="rounded-lg glass-card border border-blue-500/30 p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md rounded-lg border border-blue-500/30 p-6">
                   <h3 className="font-semibold mb-4 text-white">With PaintQuote Pro</h3>
                   <ul className="space-y-3 text-base">
                     <li className="flex justify-between">

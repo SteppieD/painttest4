@@ -139,7 +139,7 @@ export default function CustomerDetailPage() {
       </div>
 
       {/* Contact Info */}
-      <Card className="glass-card">
+      <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
         <CardHeader>
           <CardTitle className="text-white">Contact Information</CardTitle>
         </CardHeader>
@@ -177,7 +177,7 @@ export default function CustomerDetailPage() {
 
       {/* Stats */}
       <div className="grid gap-4 md:grid-cols-4">
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Total Quotes</CardTitle>
             <FileText className="h-4 w-4 text-blue-400" />
@@ -187,7 +187,7 @@ export default function CustomerDetailPage() {
           </CardContent>
         </Card>
         
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Acceptance Rate</CardTitle>
             <TrendingUp className="h-4 w-4 text-emerald-400" />
@@ -197,7 +197,7 @@ export default function CustomerDetailPage() {
           </CardContent>
         </Card>
         
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-emerald-400" />
@@ -209,7 +209,7 @@ export default function CustomerDetailPage() {
           </CardContent>
         </Card>
         
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Avg Quote Value</CardTitle>
             <DollarSign className="h-4 w-4 text-purple-400" />
@@ -223,7 +223,7 @@ export default function CustomerDetailPage() {
       </div>
 
       {/* Quote History */}
-      <Card className="glass-card">
+      <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
         <CardHeader>
           <CardTitle className="text-white">Quote History</CardTitle>
           <CardDescription className="text-gray-200">

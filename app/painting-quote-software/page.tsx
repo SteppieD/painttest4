@@ -122,19 +122,19 @@ export default function PaintingQuoteSoftwarePage() {
 
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
-                  <div className="glass-card p-4 text-center">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4 text-center">
                     <div className="text-2xl font-bold text-white">10 min</div>
                     <div className="text-base text-gray-200">Average quote time</div>
                   </div>
-                  <div className="glass-card p-4 text-center">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4 text-center">
                     <div className="text-2xl font-bold text-white">40%</div>
                     <div className="text-base text-gray-200">Higher win rate</div>
                   </div>
-                  <div className="glass-card p-4 text-center">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4 text-center">
                     <div className="text-2xl font-bold text-white">50k+</div>
                     <div className="text-base text-gray-200">Quotes created</div>
                   </div>
-                  <div className="glass-card p-4 text-center">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4 text-center">
                     <div className="text-2xl font-bold text-white">4.9/5</div>
                     <div className="text-base text-gray-200">User rating</div>
                   </div>
@@ -240,7 +240,7 @@ export default function PaintingQuoteSoftwarePage() {
 
                 <TabsContent value="create" className="mt-8">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="glass-card border-blue-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-blue-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
@@ -267,7 +267,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="glass-card border-emerald-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-emerald-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
@@ -294,7 +294,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="glass-card border-purple-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-purple-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
@@ -321,7 +321,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="glass-card border-amber-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-amber-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
@@ -352,7 +352,7 @@ export default function PaintingQuoteSoftwarePage() {
 
                 <TabsContent value="manage" className="mt-8">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="glass-card border-cyan-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-cyan-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
@@ -379,7 +379,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="glass-card border-rose-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-rose-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center">
@@ -410,7 +410,7 @@ export default function PaintingQuoteSoftwarePage() {
 
                 <TabsContent value="grow" className="mt-8">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="glass-card border-indigo-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-indigo-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center">
@@ -437,7 +437,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="glass-card border-teal-500/20">
+                    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-teal-500/20">
                       <CardHeader>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center">
@@ -480,7 +480,7 @@ export default function PaintingQuoteSoftwarePage() {
 
               <div className="grid lg:grid-cols-3 gap-8">
                 {/* Interior Painting */}
-                <div className="glass-card p-6 hover:scale-105 transition-transform">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 hover:scale-105 transition-transform">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                       <Home className="h-6 w-6 text-blue-400" />
@@ -501,7 +501,7 @@ export default function PaintingQuoteSoftwarePage() {
                 </div>
 
                 {/* Exterior Painting */}
-                <div className="glass-card p-6 hover:scale-105 transition-transform">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 hover:scale-105 transition-transform">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center">
                       <Building2 className="h-6 w-6 text-emerald-400" />
@@ -522,7 +522,7 @@ export default function PaintingQuoteSoftwarePage() {
                 </div>
 
                 {/* Commercial Painting */}
-                <div className="glass-card p-6 hover:scale-105 transition-transform">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 hover:scale-105 transition-transform">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
                       <Layers className="h-6 w-6 text-purple-400" />
@@ -668,7 +668,7 @@ export default function PaintingQuoteSoftwarePage() {
               </h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <Card className="glass-card hover:scale-105 transition-transform">
+                <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md hover:scale-105 transition-transform">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-1 mb-4">
                       {[...Array(5)].map((_, i) => (
@@ -688,7 +688,7 @@ export default function PaintingQuoteSoftwarePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card hover:scale-105 transition-transform">
+                <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md hover:scale-105 transition-transform">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-1 mb-4">
                       {[...Array(5)].map((_, i) => (
@@ -708,7 +708,7 @@ export default function PaintingQuoteSoftwarePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card hover:scale-105 transition-transform">
+                <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md hover:scale-105 transition-transform">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-1 mb-4">
                       {[...Array(5)].map((_, i) => (
@@ -784,7 +784,7 @@ export default function PaintingQuoteSoftwarePage() {
               </h2>
 
               <div className="space-y-6">
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <button className="w-full text-left flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-white">
                       How fast can I really create painting quotes?
@@ -796,7 +796,7 @@ export default function PaintingQuoteSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <button className="w-full text-left flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-white">
                       Does the painting quote calculator handle complex jobs?
@@ -808,7 +808,7 @@ export default function PaintingQuoteSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <button className="w-full text-left flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-white">
                       Can I use the paint quote app on my phone?
@@ -820,7 +820,7 @@ export default function PaintingQuoteSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <button className="w-full text-left flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-white">
                       How accurate are the paint quantity calculations?
@@ -832,7 +832,7 @@ export default function PaintingQuoteSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <button className="w-full text-left flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-white">
                       Can I customize the quote templates?
@@ -863,7 +863,7 @@ export default function PaintingQuoteSoftwarePage() {
                 Join 1,000+ painting contractors who quote faster, look more professional, and win more jobs with PaintQuote Pro.
               </p>
               
-              <div className="glass-card p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8  from-blue-500/10 to-purple-500/10">
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                   <Link href="/trial-signup">
                     <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg group">

@@ -182,7 +182,7 @@ export function ClientDashboard() {
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
-      <div className="glass-card p-8">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div>
             <h1 className="text-3xl font-bold text-white mb-2">
@@ -209,7 +209,7 @@ export function ClientDashboard() {
 
       {/* Setup Reminder - Show if onboarding not completed and not skipped */}
       {companyData && !companyData.onboarding_completed && !companyData.skipOnboarding && (
-        <Card className="glass-card border-amber-500/50 bg-amber-500/10">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-amber-500/50">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
@@ -255,7 +255,7 @@ export function ClientDashboard() {
 
       {/* Demo Quote Card - Show for new users */}
       {(dashboardData.totalQuotes === 0 || companyData?.isNewCompany) && (
-        <Card className="glass-card border-purple-500/50 bg-gradient-to-br from-purple-500/10 to-blue-500/10">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-purple-500/50  from-purple-500/10 to-blue-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
@@ -313,7 +313,7 @@ export function ClientDashboard() {
                 href="/unlock-analytics"
                 className="block"
               >
-                <div className="glass-card p-6 group card-hover-modern relative overflow-hidden cursor-pointer">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 group card-hover-modern relative overflow-hidden cursor-pointer">
                 <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                   <div className="text-center">
                     <Lock className="h-8 w-8 text-gray-200 mx-auto mb-2" />
@@ -367,7 +367,7 @@ export function ClientDashboard() {
       {/* Main Content Grid */}
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Recent Quotes */}
-        <div className="lg:col-span-2 glass-card p-6">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md lg:col-span-2 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
               <Activity className="h-5 w-5 text-blue-400" />
@@ -431,7 +431,7 @@ export function ClientDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="glass-card p-6">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
           <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
             <Target className="h-5 w-5 text-purple-400" />
             Quick Actions
@@ -481,7 +481,7 @@ export function ClientDashboard() {
 
       {/* Performance Metrics - Free users see basic version */}
       {isPro ? (
-        <div className="glass-card p-8">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-emerald-400" />
@@ -538,7 +538,7 @@ export function ClientDashboard() {
           </div>
         </div>
       ) : (
-        <div className="glass-card p-8 relative overflow-hidden">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8 relative overflow-hidden">
           <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/70 z-10 flex items-center justify-center">
             <div className="text-center">
               <Lock className="h-12 w-12 text-gray-200 mx-auto mb-4" />
@@ -585,7 +585,7 @@ export function ClientDashboard() {
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Conversion Trends */}
         {isPro ? (
-          <div className="glass-card p-6">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
             <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
               <BarChart className="h-5 w-5 text-blue-400" />
               Conversion Trends
@@ -622,7 +622,7 @@ export function ClientDashboard() {
           </div>
         ) : (
           <Link href="/unlock-analytics">
-            <div className="glass-card p-6 relative overflow-hidden cursor-pointer group">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 relative overflow-hidden cursor-pointer group">
               <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                 <div className="text-center">
                   <Lock className="h-8 w-8 text-gray-200 mx-auto mb-2" />
@@ -640,7 +640,7 @@ export function ClientDashboard() {
 
         {/* Top Customers */}
         {isPro ? (
-          <div className="glass-card p-6">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
             <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
               <Users className="h-5 w-5 text-purple-400" />
               Top Customers
@@ -675,7 +675,7 @@ export function ClientDashboard() {
           </div>
         ) : (
           <Link href="/unlock-analytics">
-            <div className="glass-card p-6 relative overflow-hidden cursor-pointer group">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 relative overflow-hidden cursor-pointer group">
               <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                 <div className="text-center">
                   <Lock className="h-8 w-8 text-gray-200 mx-auto mb-2" />
@@ -698,7 +698,7 @@ export function ClientDashboard() {
 
       {/* Additional Premium Insights */}
       {!isPro && (
-        <div className="glass-card p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8  from-blue-500/10 to-purple-500/10 border-blue-500/20">
           <div className="text-center max-w-2xl mx-auto">
             <Sparkles className="h-12 w-12 text-purple-400 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-white mb-3">

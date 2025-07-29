@@ -354,7 +354,7 @@ export default function SettingsPage() {
         </TabsList>
 
         <TabsContent value="company" className="space-y-4">
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Company Profile</CardTitle>
               <CardDescription>Your company information and branding</CardDescription>
@@ -454,7 +454,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="financial" className="space-y-4">
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Tax Settings</CardTitle>
               <CardDescription>Configure tax calculations for quotes</CardDescription>
@@ -492,7 +492,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Profit & Overhead</CardTitle>
               <CardDescription>Default margins and markups</CardDescription>
@@ -525,7 +525,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Default Calculation Settings</CardTitle>
               <CardDescription>Standard values used in quotes</CardDescription>
@@ -565,7 +565,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="labor" className="space-y-4">
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Labor Rates & Productivity</CardTitle>
               <CardDescription>Configure your labor costs and productivity standards</CardDescription>
@@ -657,7 +657,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="interior" className="space-y-4">
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Interior Charge Rates</CardTitle>
               <CardDescription>
@@ -756,7 +756,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="exterior" className="space-y-4">
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Exterior Charge Rates</CardTitle>
               <CardDescription>
@@ -841,7 +841,7 @@ export default function SettingsPage() {
         </TabsContent>
 
         <TabsContent value="paints" className="space-y-4">
-          <Card className="glass-card bg-surface border-white/20">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
               <CardTitle>Paint Products Library</CardTitle>
               <CardDescription>

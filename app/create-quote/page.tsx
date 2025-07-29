@@ -98,7 +98,7 @@ function CreateQuoteContent() {
       {/* Quota Display */}
       {quotaInfo && !quotaInfo.isUnlimited && (
         <div className="container mx-auto px-4 py-4 relative z-20">
-          <Card className="glass-card border-white/10">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -141,7 +141,7 @@ function CreateQuoteContent() {
       {/* Limit Reached Alert */}
       {quotaInfo && quotaInfo.remaining === 0 && (
         <div className="container mx-auto px-4 pb-4 relative z-20">
-          <Card className="glass-card border-red-500/50 bg-red-500/10">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-red-500/50">
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
                 <AlertCircle className="h-5 w-5 text-red-400 mt-0.5" />

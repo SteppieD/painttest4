@@ -185,18 +185,18 @@ export default function ResidentialPage() {
             </div>
 
             <div>
-              <Card className="glass-card p-8">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="text-center mb-6">
                   <Paintbrush className="h-16 w-16 text-blue-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Try It Now</h3>
                   <p className="text-gray-200">Describe a room to see instant pricing</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="glass-card p-4 cursor-pointer hover:border-blue-500 transition-colors">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4 cursor-pointer hover:border-blue-500 transition-colors">
                     <p className="text-white font-medium">Master bedroom, 12x14, walls only</p>
                     <p className="text-base text-gray-200">Click to generate quote →</p>
                   </div>
-                  <div className="glass-card p-4 cursor-pointer hover:border-blue-500 transition-colors">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4 cursor-pointer hover:border-blue-500 transition-colors">
                     <p className="text-white font-medium">Full house exterior, vinyl siding</p>
                     <p className="text-base text-gray-200">Click to generate quote →</p>
                   </div>
@@ -323,7 +323,7 @@ export default function ResidentialPage() {
       {/* CTA Section */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Transform Your Residential Painting Business?
             </h2>

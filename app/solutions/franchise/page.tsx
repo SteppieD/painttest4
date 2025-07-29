@@ -201,7 +201,7 @@ export default function FranchisePage() {
             </div>
 
             <div>
-              <Card className="glass-card p-8">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="text-center mb-6">
                   <Target className="h-16 w-16 text-blue-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Franchise Success Dashboard</h3>
@@ -209,19 +209,19 @@ export default function FranchisePage() {
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Avg. Quote Time</span>
                     <span className="text-green-400 font-semibold">2 minutes</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Close Rate Increase</span>
                     <span className="text-green-400 font-semibold">+45%</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Franchisee Satisfaction</span>
                     <span className="text-green-400 font-semibold">4.9/5</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Training Time Saved</span>
                     <span className="text-green-400 font-semibold">75%</span>
                   </div>
@@ -289,7 +289,7 @@ export default function FranchisePage() {
       {/* Success Metrics */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">
                 Proven Franchise Performance
@@ -384,7 +384,7 @@ export default function FranchisePage() {
       {/* CTA */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Empower Your Franchise Network?
             </h2>

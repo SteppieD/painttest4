@@ -105,7 +105,7 @@ export default function PaintingContractorSoftwarePage() {
                 </div>
 
                 <div className="relative">
-                  <div className="glass-card p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8  from-blue-500/10 to-purple-500/10">
                     <h3 className="text-2xl font-bold text-white mb-6">See the Difference</h3>
                     <div className="space-y-4">
                       <div className="flex items-start gap-4">
@@ -177,7 +177,7 @@ export default function PaintingContractorSoftwarePage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* AI-Powered Estimating */}
-              <Card className="glass-card border-blue-500/20 group hover:scale-105 transition-transform">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-blue-500/20 group hover:scale-105 transition-transform">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-4">
                     <Sparkles className="h-6 w-6 text-blue-400" />
@@ -206,7 +206,7 @@ export default function PaintingContractorSoftwarePage() {
               </Card>
 
               {/* Mobile-First Design */}
-              <Card className="glass-card border-emerald-500/20 group hover:scale-105 transition-transform">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-emerald-500/20 group hover:scale-105 transition-transform">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center mb-4">
                     <Smartphone className="h-6 w-6 text-emerald-400" />
@@ -235,7 +235,7 @@ export default function PaintingContractorSoftwarePage() {
               </Card>
 
               {/* Professional Templates */}
-              <Card className="glass-card border-purple-500/20 group hover:scale-105 transition-transform">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-purple-500/20 group hover:scale-105 transition-transform">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-4">
                     <FileText className="h-6 w-6 text-purple-400" />
@@ -264,7 +264,7 @@ export default function PaintingContractorSoftwarePage() {
               </Card>
 
               {/* Accurate Calculations */}
-              <Card className="glass-card border-amber-500/20 group hover:scale-105 transition-transform">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-amber-500/20 group hover:scale-105 transition-transform">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center mb-4">
                     <Calculator className="h-6 w-6 text-amber-400" />
@@ -293,7 +293,7 @@ export default function PaintingContractorSoftwarePage() {
               </Card>
 
               {/* Customer Management */}
-              <Card className="glass-card border-cyan-500/20 group hover:scale-105 transition-transform">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-cyan-500/20 group hover:scale-105 transition-transform">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-4">
                     <Users className="h-6 w-6 text-cyan-400" />
@@ -322,7 +322,7 @@ export default function PaintingContractorSoftwarePage() {
               </Card>
 
               {/* Business Insights */}
-              <Card className="glass-card border-rose-500/20 group hover:scale-105 transition-transform">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-rose-500/20 group hover:scale-105 transition-transform">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-rose-500/20 to-pink-500/20 flex items-center justify-center mb-4">
                     <BarChart3 className="h-6 w-6 text-rose-400" />
@@ -388,7 +388,7 @@ export default function PaintingContractorSoftwarePage() {
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Residential */}
-              <div className="glass-card p-8">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <Home className="h-6 w-6 text-blue-400" />
@@ -423,7 +423,7 @@ export default function PaintingContractorSoftwarePage() {
               </div>
 
               {/* Commercial */}
-              <div className="glass-card p-8">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center">
                     <Building2 className="h-6 w-6 text-emerald-400" />
@@ -563,7 +563,7 @@ export default function PaintingContractorSoftwarePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <Card className="glass-card">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -583,7 +583,7 @@ export default function PaintingContractorSoftwarePage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -603,7 +603,7 @@ export default function PaintingContractorSoftwarePage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -695,7 +695,7 @@ export default function PaintingContractorSoftwarePage() {
               </h2>
               
               <div className="space-y-6">
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Is this painting contractor software easy to learn?
                   </h3>
@@ -704,7 +704,7 @@ export default function PaintingContractorSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Does the paint contractor app work offline?
                   </h3>
@@ -713,7 +713,7 @@ export default function PaintingContractorSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Can I customize quotes for my painting business?
                   </h3>
@@ -722,7 +722,7 @@ export default function PaintingContractorSoftwarePage() {
                   </p>
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
                   <h3 className="text-xl font-semibold text-white mb-3">
                     What makes this better than other contractor software?
                   </h3>
@@ -742,7 +742,7 @@ export default function PaintingContractorSoftwarePage() {
           </div>
           
           <div className="relative z-10 container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center glass-card p-12 bg-gradient-to-br from-blue-500/10 to-purple-500/10">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md max-w-4xl mx-auto text-center p-12  from-blue-500/10 to-purple-500/10">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Start Winning More Painting Jobs Today
               </h2>

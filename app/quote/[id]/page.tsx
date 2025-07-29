@@ -122,7 +122,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
   if (!quote) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center">
-        <Card className="glass-card max-w-md">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md max-w-md">
           <CardContent className="p-8 text-center">
             <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <X className="h-8 w-8 text-red-400" />
@@ -166,7 +166,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Company Info */}
-        <Card className="glass-card mb-6">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md mb-6">
           <CardHeader>
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
@@ -217,7 +217,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
 
         {/* Customer & Project Info */}
         <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <Card className="glass-card">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
             <CardHeader>
               <CardTitle className="text-white text-lg">Customer Information</CardTitle>
             </CardHeader>
@@ -250,7 +250,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
             </CardContent>
           </Card>
 
-          <Card className="glass-card">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
             <CardHeader>
               <CardTitle className="text-white text-lg">Project Details</CardTitle>
             </CardHeader>
@@ -286,7 +286,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
 
         {/* Scope of Work */}
         {quote.conversation_summary && (
-          <Card className="glass-card mb-6">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md mb-6">
             <CardHeader>
               <CardTitle className="text-white text-lg">Scope of Work</CardTitle>
             </CardHeader>
@@ -297,7 +297,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
         )}
 
         {/* Pricing */}
-        <Card className="glass-card mb-6">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md mb-6">
           <CardHeader>
             <CardTitle className="text-white text-lg">Investment Summary</CardTitle>
           </CardHeader>

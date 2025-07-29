@@ -119,7 +119,7 @@ export default function BillingPage() {
   return (
     <div className="space-y-8">
       {/* Current Plan */}
-      <Card className="glass-card">
+      <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
         <CardHeader>
           <CardTitle className="text-white">Current Plan</CardTitle>
           <CardDescription className="text-gray-200">
@@ -173,25 +173,25 @@ export default function BillingPage() {
 
           {/* Performance Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="glass-card p-4">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4">
               <div className="text-2xl font-bold text-white">
                 {usage?.lastMonth.quotesCreated || 0}
               </div>
               <p className="text-base text-gray-200">Quotes Last Month</p>
             </div>
-            <div className="glass-card p-4">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4">
               <div className="text-2xl font-bold text-green-400">
                 {usage?.lastMonth.conversionRate || 0}%
               </div>
               <p className="text-base text-gray-200">Win Rate</p>
             </div>
-            <div className="glass-card p-4">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4">
               <div className="text-2xl font-bold text-blue-400">
                 {usage?.lastMonth.avgResponseTime || 0}h
               </div>
               <p className="text-base text-gray-200">Avg Response Time</p>
             </div>
-            <div className="glass-card p-4">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4">
               <div className="text-2xl font-bold text-purple-400">
                 ${((usage?.lastMonth.quotesAccepted || 0) * 2800).toLocaleString()}
               </div>
@@ -296,7 +296,7 @@ export default function BillingPage() {
 
       {/* Billing History */}
       {currentTier !== 'free' && (
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader>
             <CardTitle className="text-white">Billing History</CardTitle>
             <CardDescription className="text-gray-200">
@@ -305,7 +305,7 @@ export default function BillingPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 glass-card rounded-lg">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-4 rounded-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
                     <Check className="h-5 w-5 text-green-400" />

@@ -376,7 +376,7 @@ export default function StatusPage() {
       {/* Subscribe Section */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <Bell className="h-16 w-16 text-blue-400 mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-white mb-4">
               Get Status Updates
@@ -422,7 +422,7 @@ export default function StatusPage() {
             <p className="text-gray-100">Last 90 days</p>
           </div>
 
-          <Card className="glass-card p-8">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
             <div className="grid grid-cols-7 gap-2">
               {[...Array(90)].map((_, i) => (
                 <div

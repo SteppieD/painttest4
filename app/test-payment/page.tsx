@@ -52,7 +52,7 @@ export default function TestPaymentPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8">
       <div className="mx-auto max-w-2xl">
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader>
             <CardTitle className="text-white">Test Stripe Payment Integration</CardTitle>
             <CardDescription className="text-gray-100">

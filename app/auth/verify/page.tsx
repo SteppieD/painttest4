@@ -73,7 +73,7 @@ function VerifyContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center p-4">
-      <Card className="glass-card max-w-md w-full">
+      <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md max-w-md w-full">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-white text-center">
             Email Verification
@@ -142,7 +142,7 @@ export default function VerifyMagicLinkPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center p-4">
-        <Card className="glass-card max-w-md w-full">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md max-w-md w-full">
           <CardContent className="pt-6">
             <div className="text-center space-y-4">
               <Loader2 className="h-12 w-12 animate-spin text-blue-400 mx-auto" />

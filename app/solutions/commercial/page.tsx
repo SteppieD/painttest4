@@ -186,14 +186,14 @@ export default function CommercialPage() {
             </div>
 
             <div>
-              <Card className="glass-card p-8">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold text-white mb-2">Quick Bid Calculator</h3>
                   <p className="text-gray-200">See how fast you can bid commercial jobs</p>
                 </div>
                 
                 <div className="space-y-4 mb-6">
-                  <div className="glass-card p-4">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4">
                     <label className="text-base text-gray-200">Project Type</label>
                     <select className="w-full bg-transparent text-white mt-1 p-2 border border-gray-600 rounded">
                       <option>Office Building</option>
@@ -201,7 +201,7 @@ export default function CommercialPage() {
                       <option>Industrial Facility</option>
                     </select>
                   </div>
-                  <div className="glass-card p-4">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-4">
                     <label className="text-sm text-gray-200">Square Footage</label>
                     <input 
                       type="text" 
@@ -283,7 +283,7 @@ export default function CommercialPage() {
       {/* Success Metrics */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">
                 Commercial Contractors See Real Results
@@ -347,7 +347,7 @@ export default function CommercialPage() {
       {/* CTA Section */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Win More Commercial Contracts?
             </h2>

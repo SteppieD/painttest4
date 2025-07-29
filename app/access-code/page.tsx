@@ -136,7 +136,7 @@ export default function AccessCodePage() {
           </Link>
         </div>
 
-        <Card className="glass-card bg-surface border-white/20">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
           <CardHeader className="text-center pb-8">
             <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-blue-500/30">
               <LogIn className="h-8 w-8 text-white" />
@@ -230,19 +230,19 @@ export default function AccessCodePage() {
         {/* Features reminder */}
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
           <div className="space-y-2">
-            <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md mx-auto w-10 h-10 rounded-full flex items-center justify-center">
               <Shield className="h-5 w-5 text-blue-400" />
             </div>
             <p className="text-base text-medium-contrast">Secure Access</p>
           </div>
           <div className="space-y-2">
-            <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md mx-auto w-10 h-10 rounded-full flex items-center justify-center">
               <Clock className="h-5 w-5 text-emerald-400" />
             </div>
             <p className="text-base text-medium-contrast">Quick Login</p>
           </div>
           <div className="space-y-2">
-            <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md mx-auto w-10 h-10 rounded-full flex items-center justify-center">
               <User className="h-5 w-5 text-purple-400" />
             </div>
             <p className="text-base text-medium-contrast">Multi-Company</p>

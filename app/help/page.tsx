@@ -392,7 +392,7 @@ export default function HelpPage() {
       {/* Training Section */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <GraduationCap className="h-16 w-16 text-blue-400 mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-white mb-4">
               Free Training Sessions

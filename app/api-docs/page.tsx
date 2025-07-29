@@ -223,7 +223,7 @@ export default function ApiDocsPage() {
 
           <div className="max-w-4xl mx-auto space-y-6">
             {/* Step 1 */}
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="flex items-start gap-4">
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
                   1
@@ -246,7 +246,7 @@ export default function ApiDocsPage() {
             </Card>
 
             {/* Step 2 */}
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="flex items-start gap-4">
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
                   2
@@ -269,7 +269,7 @@ export default function ApiDocsPage() {
             </Card>
 
             {/* Step 3 */}
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="flex items-start gap-4">
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
                   3
@@ -309,7 +309,7 @@ export default function ApiDocsPage() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <Card className="glass-card overflow-hidden">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md overflow-hidden">
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-4">Core Endpoints</h3>
               </div>
@@ -386,7 +386,7 @@ export default function ApiDocsPage() {
               </h2>
             </div>
 
-            <Card className="glass-card p-8">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
               <div className="flex items-start gap-4 mb-6">
                 <Lock className="h-8 w-8 text-blue-400 flex-shrink-0" />
                 <div>
@@ -444,7 +444,7 @@ export default function ApiDocsPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="glass-card p-6 text-center">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 text-center">
               <Book className="h-12 w-12 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Full Reference</h3>
               <p className="text-gray-200 mb-4">Complete API documentation with examples</p>
@@ -453,7 +453,7 @@ export default function ApiDocsPage() {
               </Button>
             </Card>
 
-            <Card className="glass-card p-6 text-center">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 text-center">
               <GitBranch className="h-12 w-12 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">SDKs & Libraries</h3>
               <p className="text-gray-200 mb-4">Official client libraries for all platforms</p>
@@ -462,7 +462,7 @@ export default function ApiDocsPage() {
               </Button>
             </Card>
 
-            <Card className="glass-card p-6 text-center">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 text-center">
               <FileText className="h-12 w-12 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Postman Collection</h3>
               <p className="text-gray-200 mb-4">Import our API collection for testing</p>
@@ -477,7 +477,7 @@ export default function ApiDocsPage() {
       {/* CTA */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Build?
             </h2>

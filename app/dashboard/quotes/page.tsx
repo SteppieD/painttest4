@@ -125,7 +125,7 @@ export default function QuotesPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-4">
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Total Quotes</CardTitle>
             <FileText className="h-4 w-4 text-blue-400" />
@@ -136,7 +136,7 @@ export default function QuotesPage() {
           </CardContent>
         </Card>
         
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Accepted</CardTitle>
             <CheckCircle className="h-4 w-4 text-emerald-400" />
@@ -147,7 +147,7 @@ export default function QuotesPage() {
           </CardContent>
         </Card>
         
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Total Value</CardTitle>
             <DollarSign className="h-4 w-4 text-emerald-400" />
@@ -160,7 +160,7 @@ export default function QuotesPage() {
           </CardContent>
         </Card>
         
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-base font-medium text-gray-100">Average Quote</CardTitle>
             <Clock className="h-4 w-4 text-purple-400" />
@@ -175,7 +175,7 @@ export default function QuotesPage() {
       </div>
 
       {/* Quotes List */}
-      <Card className="glass-card">
+      <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
         <CardHeader>
           <CardTitle className="text-white">Recent Quotes</CardTitle>
         </CardHeader>

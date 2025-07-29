@@ -376,7 +376,7 @@ export default function FeedbackPage() {
       {/* Submit Idea CTA */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12">
             <div className="text-center">
               <Lightbulb className="h-16 w-16 text-yellow-400 mx-auto mb-6" />
               <h2 className="text-3xl font-bold text-white mb-4">
@@ -387,7 +387,7 @@ export default function FeedbackPage() {
               </p>
               
               <div className="max-w-2xl mx-auto">
-                <div className="glass-card p-6 text-left mb-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 text-left mb-6">
                   <label className="block text-base font-medium text-gray-100 mb-2">
                     What would make PaintQuote Pro better?
                   </label>
@@ -437,19 +437,19 @@ export default function FeedbackPage() {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6 text-center">
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="text-3xl font-bold text-blue-400 mb-2">2,847</div>
               <div className="text-gray-100">Ideas Submitted</div>
             </Card>
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="text-3xl font-bold text-green-400 mb-2">342</div>
               <div className="text-gray-100">Features Shipped</div>
             </Card>
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="text-3xl font-bold text-purple-400 mb-2">15,234</div>
               <div className="text-gray-100">Votes Cast</div>
             </Card>
-            <Card className="glass-card p-6">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
               <div className="text-3xl font-bold text-yellow-400 mb-2">89%</div>
               <div className="text-gray-100">User Satisfaction</div>
             </Card>

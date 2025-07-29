@@ -35,7 +35,7 @@ export function ROIWidget({
   const roiPercentage = (netROI / softwareCost) * 100
 
   return (
-    <Card className="glass-card border-emerald-500/50 bg-gradient-to-br from-emerald-500/10 to-green-500/10">
+    <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-emerald-500/50  from-emerald-500/10 to-green-500/10">
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-4">

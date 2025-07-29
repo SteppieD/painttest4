@@ -115,7 +115,7 @@ export default function DemoPage() {
           </div>
 
           {/* Video Section */}
-          <div className="glass-card p-2 max-w-4xl mx-auto mb-12">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-2 max-w-4xl mx-auto mb-12">
             <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
@@ -156,7 +156,7 @@ export default function DemoPage() {
             </p>
           </div>
 
-          <div className="glass-card p-8 max-w-3xl mx-auto">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8 max-w-3xl mx-auto">
             <div className="text-center mb-8">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Start a Sample Quote Conversation
@@ -167,7 +167,7 @@ export default function DemoPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <Card className="glass-card p-6 cursor-pointer hover:border-blue-500 transition-colors">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 cursor-pointer hover:border-blue-500 transition-colors">
                 <h4 className="font-semibold text-white mb-2">Interior Home Painting</h4>
                 <p className="text-base text-gray-200 mb-4">
                   3-bedroom house, 2,000 sq ft, walls and ceilings
@@ -177,7 +177,7 @@ export default function DemoPage() {
                 </Button>
               </Card>
 
-              <Card className="glass-card p-6 cursor-pointer hover:border-blue-500 transition-colors">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6 cursor-pointer hover:border-blue-500 transition-colors">
                 <h4 className="font-semibold text-white mb-2">Commercial Office</h4>
                 <p className="text-base text-gray-200 mb-4">
                   5,000 sq ft office space, after-hours work
@@ -255,7 +255,7 @@ export default function DemoPage() {
       {/* CTA Section */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <div className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Transform Your Quoting Process?
             </h2>

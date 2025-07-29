@@ -189,7 +189,7 @@ export default function UnlockAnalyticsPage() {
         {/* Visual Analytics Preview */}
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-6xl mx-auto">
-            <Card className="glass-card border-purple-500/20 overflow-hidden">
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-purple-500/20 overflow-hidden">
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-6">See Your Business at a Glance</h3>
                 
@@ -261,7 +261,7 @@ export default function UnlockAnalyticsPage() {
 
         {/* Final CTA */}
         <div className="container mx-auto px-4 py-16 text-center">
-          <Card className="glass-card border-purple-500/20 max-w-2xl mx-auto">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-purple-500/20 max-w-2xl mx-auto">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-white mb-4">
                 Ready to Grow Your Business?

@@ -163,7 +163,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
   if (!quote) {
     return (
       <div className="mx-auto max-w-4xl">
-        <div className="glass-card p-8 text-center">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8 text-center">
           <p className="text-white mb-4">Quote not found</p>
           <Link href="/dashboard/quotes">
             <Button className="btn-primary-modern">Back to Quotes</Button>
@@ -177,7 +177,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
     <div className="mx-auto max-w-4xl pb-20">
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Header */}
-        <div className="glass-card p-6">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
           <div className="flex items-center gap-4">
             <Link href={`/dashboard/quotes/${params.id}`}>
               <Button type="button" variant="ghost" size="icon" className="text-gray-200 hover:text-white hover:bg-gray-900/70">
@@ -208,7 +208,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
         </div>
 
         {/* Customer Information */}
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader>
             <CardTitle className="text-white">Customer Information</CardTitle>
           </CardHeader>
@@ -257,7 +257,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
         </Card>
 
         {/* Project Details */}
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader>
             <CardTitle className="text-white">Project Details</CardTitle>
           </CardHeader>
@@ -328,7 +328,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
         </Card>
 
         {/* Measurements */}
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader>
             <CardTitle className="text-white">Measurements</CardTitle>
             <CardDescription className="text-gray-200">Enter square footage and counts</CardDescription>
@@ -390,7 +390,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
         </Card>
 
         {/* Pricing */}
-        <Card className="glass-card">
+        <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md ">
           <CardHeader>
             <CardTitle className="text-white">Pricing</CardTitle>
             <CardDescription className="text-gray-200">Adjust pricing and markup</CardDescription>

@@ -152,7 +152,7 @@ export default function MobilePage() {
             </div>
 
             <div className="relative">
-              <div className="glass-card p-8 text-center">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8 text-center">
                 <Smartphone className="h-64 w-32 mx-auto text-gray-600" />
                 <p className="text-gray-200 mt-4">App screenshot placeholder</p>
               </div>
@@ -226,7 +226,7 @@ export default function MobilePage() {
       {/* App Stats */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               {appStats.map((stat, index) => (
                 <div key={index}>
@@ -242,7 +242,7 @@ export default function MobilePage() {
       {/* QR Code Download */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card p-12">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-12">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-white mb-4">
                 Download Now with QR Code

@@ -203,7 +203,7 @@ export default function EnterprisePage() {
             </div>
 
             <div>
-              <Card className="glass-card p-8">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="mb-6">
                   <Award className="h-12 w-12 text-purple-400 mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Enterprise Readiness</h3>
@@ -211,21 +211,21 @@ export default function EnterprisePage() {
                 </div>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Security</span>
                     <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                       SOC 2 Type II
                     </Badge>
                   </div>
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Uptime</span>
                     <span className="text-green-400 font-semibold">99.95%</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Response Time</span>
                     <span className="text-green-400 font-semibold">&lt;200ms</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center justify-between p-3">
                     <span className="text-gray-100">Data Centers</span>
                     <span className="text-green-400 font-semibold">Global</span>
                   </div>
@@ -349,7 +349,7 @@ export default function EnterprisePage() {
             </h2>
           </div>
 
-          <Card className="glass-card overflow-hidden">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md overflow-hidden">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-700">
@@ -375,7 +375,7 @@ export default function EnterprisePage() {
       {/* Security & Compliance */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <Card className="glass-card bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-12">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-purple-500/10 to-blue-500/10 p-12">
             <div className="text-center mb-8">
               <Shield className="h-16 w-16 text-purple-400 mx-auto mb-4" />
               <h2 className="text-3xl font-bold text-white mb-4">
@@ -410,7 +410,7 @@ export default function EnterprisePage() {
       {/* CTA */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-purple-500/10 to-blue-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready for Enterprise-Scale Quoting?
             </h2>

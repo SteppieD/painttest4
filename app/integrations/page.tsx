@@ -329,7 +329,7 @@ export default function IntegrationsPage() {
       {/* API Section */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <Card className="glass-card p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-12 text-center">
             <div className="max-w-3xl mx-auto">
               <div className="inline-flex p-3 bg-gray-800 rounded-lg mb-6">
                 <Globe className="h-12 w-12 text-blue-400" />

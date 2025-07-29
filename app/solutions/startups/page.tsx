@@ -229,7 +229,7 @@ export default function StartupsPage() {
             </div>
 
             <div>
-              <Card className="glass-card p-8">
+              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-8">
                 <div className="text-center mb-6">
                   <Lightbulb className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Your Success Checklist</h3>
@@ -237,23 +237,23 @@ export default function StartupsPage() {
                 </div>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center gap-3 p-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
                     <span className="text-gray-100">Professional quoting system</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center gap-3 p-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
                     <span className="text-gray-100">Pricing templates & guides</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center gap-3 p-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
                     <span className="text-gray-100">Business document templates</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center gap-3 p-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
                     <span className="text-gray-100">Marketing materials</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 glass-card">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md flex items-center gap-3 p-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
                     <span className="text-gray-100">Direct support access</span>
                   </div>
@@ -424,7 +424,7 @@ export default function StartupsPage() {
       {/* CTA */}
       <section className="py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-12 text-center">
+          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md from-blue-500/10 to-purple-500/10 p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Launch Your Painting Business?
             </h2>
