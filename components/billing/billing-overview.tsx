@@ -81,7 +81,7 @@ export function BillingOverview({
                   <h3 className="font-semibold capitalize">
                     {subscription.plan} Plan
                   </h3>
-                  <p className="text-sm text-gray-600 capitalize">
+                  <p className="text-base text-gray-600 capitalize">
                     {subscription.billingPeriod} billing
                   </p>
                 </div>
@@ -92,13 +92,13 @@ export function BillingOverview({
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-600">Current Period</p>
+                  <p className="text-base text-gray-600">Current Period</p>
                   <p className="font-medium">
                     {format(subscription.currentPeriodStart, 'MMM d')} - {format(subscription.currentPeriodEnd, 'MMM d, yyyy')}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Next Billing</p>
+                  <p className="text-base text-gray-600">Next Billing</p>
                   <p className="font-medium">
                     {subscription.cancelAtPeriodEnd 
                       ? 'Canceled' 
@@ -111,7 +111,7 @@ export function BillingOverview({
               {subscription.cancelAtPeriodEnd && (
                 <div className="flex items-center gap-2 p-3 bg-yellow-50 rounded-lg">
                   <AlertCircle className="w-4 h-4 text-yellow-600" />
-                  <span className="text-sm text-yellow-800">
+                  <span className="text-base text-yellow-800">
                     Your subscription will end on {format(subscription.currentPeriodEnd, 'MMM d, yyyy')}
                   </span>
                 </div>
@@ -164,11 +164,11 @@ export function BillingOverview({
         <CardContent>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Quotes Generated</span>
+              <span className="text-base font-medium">Quotes Generated</span>
               <span className="text-lg font-bold">
                 {usage.quotesThisMonth}
                 {usage.quotesLimit !== -1 && (
-                  <span className="text-sm font-normal text-gray-600">
+                  <span className="text-base font-normal text-gray-600">
                     /{usage.quotesLimit}
                   </span>
                 )}
@@ -181,7 +181,7 @@ export function BillingOverview({
                   value={getUsagePercentage()} 
                   className="h-2"
                 />
-                <div className="flex justify-between text-xs text-gray-600">
+                <div className="flex justify-between text-base text-gray-600">
                   <span>0</span>
                   <span>{usage.quotesLimit} limit</span>
                 </div>
@@ -189,7 +189,7 @@ export function BillingOverview({
             )}
 
             {usage.quotesLimit === -1 && (
-              <div className="flex items-center gap-2 text-sm text-green-600">
+              <div className="flex items-center gap-2 text-base text-green-600">
                 <TrendingUp className="w-4 h-4" />
                 <span>Unlimited quotes</span>
               </div>
@@ -198,7 +198,7 @@ export function BillingOverview({
             {usage.quotesLimit !== -1 && usage.quotesThisMonth >= usage.quotesLimit * 0.8 && (
               <div className="flex items-center gap-2 p-3 bg-yellow-50 rounded-lg">
                 <AlertCircle className="w-4 h-4 text-yellow-600" />
-                <span className="text-sm text-yellow-800">
+                <span className="text-base text-yellow-800">
                   You're approaching your monthly limit. Consider upgrading for unlimited quotes.
                 </span>
               </div>

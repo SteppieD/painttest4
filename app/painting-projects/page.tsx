@@ -121,7 +121,7 @@ export default function PaintingProjectsPage() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Our Painting Project Portfolio
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Real projects, real results. Explore our portfolio of successful painting 
                   transformations from luxury estates to commercial complexes.
                 </p>
@@ -145,27 +145,27 @@ export default function PaintingProjectsPage() {
                               <Icon className="h-6 w-6 text-primary" />
                             </div>
                             <div>
-                              <p className="text-sm font-medium text-primary">{study.category}</p>
+                              <p className="text-base font-medium text-primary">{study.category}</p>
                               <h3 className="text-2xl font-bold">{study.title}</h3>
                             </div>
                           </div>
                         </div>
                         
-                        <p className="text-muted-foreground mb-6">
+                        <p className="text-gray-200 mb-6">
                           {study.description}
                         </p>
 
                         <div className="grid grid-cols-3 gap-4 mb-6">
                           <div>
-                            <p className="text-sm text-muted-foreground">Location</p>
+                            <p className="text-base text-gray-200">Location</p>
                             <p className="font-semibold">{study.location}</p>
                           </div>
                           <div>
-                            <p className="text-sm text-muted-foreground">Project Value</p>
+                            <p className="text-base text-gray-200">Project Value</p>
                             <p className="font-semibold">{study.projectValue}</p>
                           </div>
                           <div>
-                            <p className="text-sm text-muted-foreground">Key Result</p>
+                            <p className="text-base text-gray-200">Key Result</p>
                             <p className="font-semibold text-primary">{study.keyMetric}</p>
                           </div>
                         </div>
@@ -198,14 +198,14 @@ export default function PaintingProjectsPage() {
                           </div>
                           <div className="flex-1">
                             <div className="mb-2">
-                              <span className="text-sm font-medium text-primary">{study.category}</span>
+                              <span className="text-base font-medium text-primary">{study.category}</span>
                               <h3 className="text-xl font-semibold">{study.title}</h3>
                             </div>
-                            <p className="text-muted-foreground text-sm mb-3">
+                            <p className="text-gray-200 text-base mb-3">
                               {study.description}
                             </p>
-                            <div className="flex items-center justify-between text-sm">
-                              <span className="text-muted-foreground">{study.location}</span>
+                            <div className="flex items-center justify-between text-base">
+                              <span className="text-gray-200">{study.location}</span>
                               <span className="text-primary font-medium flex items-center">
                                 View Details
                                 <ArrowRight className="ml-1 h-3 w-3" />
@@ -229,19 +229,19 @@ export default function PaintingProjectsPage() {
                 <div className="grid gap-6 md:grid-cols-4 text-center">
                   <div className="rounded-lg bg-muted p-6">
                     <p className="text-3xl font-bold text-primary">$1.87M</p>
-                    <p className="text-sm text-muted-foreground mt-2">Total Project Value</p>
+                    <p className="text-base text-gray-200 mt-2">Total Project Value</p>
                   </div>
                   <div className="rounded-lg bg-muted p-6">
                     <p className="text-3xl font-bold text-primary">687K+</p>
-                    <p className="text-sm text-muted-foreground mt-2">Square Feet Painted</p>
+                    <p className="text-base text-gray-200 mt-2">Square Feet Painted</p>
                   </div>
                   <div className="rounded-lg bg-muted p-6">
                     <p className="text-3xl font-bold text-primary">100%</p>
-                    <p className="text-sm text-muted-foreground mt-2">On-Time Delivery</p>
+                    <p className="text-base text-gray-200 mt-2">On-Time Delivery</p>
                   </div>
                   <div className="rounded-lg bg-muted p-6">
                     <p className="text-3xl font-bold text-primary">4.9/5</p>
-                    <p className="text-sm text-muted-foreground mt-2">Client Satisfaction</p>
+                    <p className="text-base text-gray-200 mt-2">Client Satisfaction</p>
                   </div>
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function PaintingProjectsPage() {
                       <Award className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Proven Excellence</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Award-winning work recognized by preservation societies, HOA boards, 
                       and commercial property managers nationwide.
                     </p>
@@ -269,7 +269,7 @@ export default function PaintingProjectsPage() {
                       <Users className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Client-Centric Approach</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       From luxury homeowners to Fortune 500 facilities managers, we adapt 
                       our process to exceed every client's unique needs.
                     </p>
@@ -279,7 +279,7 @@ export default function PaintingProjectsPage() {
                       <Building2 className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Scale & Expertise</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Whether it's a single estate or 156 homes, we have the resources 
                       and systems to deliver consistent quality at any scale.
                     </p>
@@ -296,7 +296,7 @@ export default function PaintingProjectsPage() {
                 <h2 className="text-3xl font-bold mb-4">
                   Are You a Painting Contractor?
                 </h2>
-                <p className="text-xl mb-8 text-muted-foreground">
+                <p className="text-xl mb-8 text-gray-200">
                   Join thousands of contractors using PaintQuote Pro to create professional 
                   quotes in minutes and win more jobs like these.
                 </p>
@@ -326,7 +326,7 @@ export default function PaintingProjectsPage() {
                 <h2 className="text-3xl font-bold mb-4">
                   Need Professional Painting Services?
                 </h2>
-                <p className="text-xl mb-8 opacity-90">
+                <p className="text-xl mb-8 opacity-100">
                   Get your free quote today and discover why property owners trust us 
                   for exceptional results, on time and on budget.
                 </p>
@@ -356,13 +356,13 @@ export default function PaintingProjectsPage() {
             <div className="grid gap-8 md:grid-cols-4">
               <div>
                 <h3 className="text-lg font-semibold mb-4">About PaintQuote Pro</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-gray-200">
                   Professional painting contractors and software solutions for the painting industry.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">For Property Owners</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li><Link href="/painting-projects" className="hover:text-foreground">View Our Work</Link></li>
                   <li><Link href="/locations" className="hover:text-foreground">Service Areas</Link></li>
                   <li><Link href="/quote" className="hover:text-foreground">Get Free Quote</Link></li>
@@ -371,7 +371,7 @@ export default function PaintingProjectsPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">For Contractors</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
                   <li><Link href="/painting-estimate-software" className="hover:text-foreground">Quoting Software</Link></li>
                   <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
@@ -380,7 +380,7 @@ export default function PaintingProjectsPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Resources</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li><Link href="/how-to-quote-painting-jobs" className="hover:text-foreground">How to Quote</Link></li>
                   <li><Link href="/paint-estimate-templates" className="hover:text-foreground">Templates</Link></li>
                   <li><Link href="/painting-contractors" className="hover:text-foreground">Find Contractors</Link></li>
@@ -388,7 +388,7 @@ export default function PaintingProjectsPage() {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. All rights reserved.</p>
             </div>
           </div>

@@ -130,7 +130,7 @@ export function ClientDashboard() {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <div className="relative w-16 h-16 mx-auto mb-4">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-75 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-100 animate-pulse"></div>
             <div className="relative w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full animate-spin"></div>
           </div>
           <p className="text-white font-medium">Loading dashboard...</p>
@@ -188,14 +188,14 @@ export function ClientDashboard() {
             <h1 className="text-3xl font-bold text-white mb-2">
               Welcome back to {dashboardData.companyName}
             </h1>
-            <p className="text-gray-300">
+            <p className="text-gray-100">
               Create professional quotes in under 2 minutes with AI assistance
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <MobileQuoteButton />
             <Link href="/create-quote" className="group relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-sm opacity-80 group-hover:opacity-100 transition-opacity"></div>
               <button className="relative btn-primary-modern inline-flex items-center gap-2">
                 <Sparkles className="h-5 w-5" />
                 Create New Quote
@@ -217,18 +217,18 @@ export function ClientDashboard() {
               </div>
               <div className="flex-1">
                 <h3 className="font-semibold text-white mb-1">Complete Your Business Setup</h3>
-                <p className="text-sm text-gray-300 mb-3">
+                <p className="text-base text-gray-100 mb-3">
                   Finish setting up your business profile to unlock all features and start creating professional quotes.
                 </p>
                 <div className="flex gap-3">
                   <Link href="/onboarding">
-                    <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-black">
+                    <Button size="default" className="bg-amber-500 hover:bg-amber-600 text-black">
                       <Sparkles className="h-4 w-4 mr-2" />
                       Complete Setup
                     </Button>
                   </Link>
                   <Button 
-                    size="sm"
+                    size="default"
                     variant="outline" 
                     className="bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700"
                     onClick={() => {
@@ -265,20 +265,20 @@ export function ClientDashboard() {
                 <h3 className="font-semibold text-white mb-2">
                   See PaintQuote Pro in Action - 60 Second Demo!
                 </h3>
-                <p className="text-sm text-gray-300 mb-4">
+                <p className="text-base text-gray-100 mb-4">
                   Watch how fast you can create professional quotes. We&apos;ll show you with a real example.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link href="/create-quote?demo=true">
                     <Button 
-                      size="sm" 
+                      size="default" 
                       className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white"
                     >
                       <Sparkles className="h-4 w-4 mr-2" />
                       Try Demo Quote (60 seconds)
                     </Button>
                   </Link>
-                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 text-base text-gray-200">
                     <Clock className="h-4 w-4" />
                     <span>Save 6 hours per quote</span>
                   </div>
@@ -316,20 +316,20 @@ export function ClientDashboard() {
                 <div className="glass-card p-6 group card-hover-modern relative overflow-hidden cursor-pointer">
                 <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                   <div className="text-center">
-                    <Lock className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-xs text-gray-400 font-medium">{stat.lockedText}</p>
-                    <p className="text-xs text-blue-400 mt-1">Upgrade to Pro</p>
+                    <Lock className="h-8 w-8 text-gray-200 mx-auto mb-2" />
+                    <p className="text-base text-gray-200 font-medium">{stat.lockedText}</p>
+                    <p className="text-base text-blue-400 mt-1">Upgrade to Pro</p>
                   </div>
                 </div>
-                <div className="flex items-start justify-between mb-4 opacity-50">
+                <div className="flex items-start justify-between mb-4 opacity-80">
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color}`}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
-                  <span className="text-sm font-medium text-gray-500">--</span>
+                  <span className="text-base font-medium text-gray-200">--</span>
                 </div>
-                <div className="space-y-1 opacity-50">
-                  <p className="text-sm text-gray-400">{stat.title}</p>
-                  <p className="text-2xl font-bold text-gray-500">---</p>
+                <div className="space-y-1 opacity-80">
+                  <p className="text-base text-gray-200">{stat.title}</p>
+                  <p className="text-2xl font-bold text-gray-200">---</p>
                 </div>
               </div>
               </Link>
@@ -343,7 +343,7 @@ export function ClientDashboard() {
                   <Icon className="h-6 w-6 text-white" />
                 </div>
                 {stat.change && (
-                  <span className={`text-sm font-medium ${
+                  <span className={`text-base font-medium ${
                     stat.change.startsWith('+') ? 'text-emerald-400' : 'text-red-400'
                   }`}>
                     {stat.change}
@@ -351,12 +351,12 @@ export function ClientDashboard() {
                 )}
               </div>
               <div className="space-y-1">
-                <p className="text-sm text-gray-400">{stat.title}</p>
-                <p className={`text-2xl font-bold ${typeof stat.value === 'string' && (stat.value.includes('Start') || stat.value.includes('Coming') || stat.value.includes('Track') || stat.value.includes('Build')) ? 'text-gray-500' : 'text-white'}`}>
+                <p className="text-base text-gray-200">{stat.title}</p>
+                <p className={`text-2xl font-bold ${typeof stat.value === 'string' && (stat.value.includes('Start') || stat.value.includes('Coming') || stat.value.includes('Track') || stat.value.includes('Build')) ? 'text-gray-200' : 'text-white'}`}>
                   {stat.value}
                 </p>
                 {stat.emptyMessage && dashboardData.totalQuotes === 0 && (
-                  <p className="text-xs text-blue-400 mt-1">{stat.emptyMessage}</p>
+                  <p className="text-base text-blue-400 mt-1">{stat.emptyMessage}</p>
                 )}
               </div>
             </div>
@@ -373,7 +373,7 @@ export function ClientDashboard() {
               <Activity className="h-5 w-5 text-blue-400" />
               Recent Quotes
             </h2>
-            <Link href="/dashboard/quotes" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
+            <Link href="/dashboard/quotes" className="text-base text-blue-400 hover:text-blue-300 transition-colors">
               View all →
             </Link>
           </div>
@@ -384,14 +384,14 @@ export function ClientDashboard() {
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}
-                  className="block p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-300 group"
+                  className="block p-4 bg-gray-900/80 hover:bg-gray-900/70 rounded-xl transition-all duration-300 group"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-medium text-white group-hover:text-blue-400 transition-colors">
                         {quote.customer}
                       </p>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-base text-gray-200">
                         <ClientDate date={quote.date} />
                       </p>
                     </div>
@@ -399,7 +399,7 @@ export function ClientDashboard() {
                       <p className="text-lg font-bold text-white">
                         ${quote.amount.toLocaleString()}
                       </p>
-                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-base font-medium ${
                         quote.status === 'accepted' 
                           ? 'bg-emerald-500/20 text-emerald-400'
                           : 'bg-amber-500/20 text-amber-400'
@@ -416,11 +416,11 @@ export function ClientDashboard() {
                   <FileText className="h-8 w-8 text-blue-400" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Your First Quote Awaits!</h3>
-                <p className="text-sm text-gray-400 mb-4">
+                <p className="text-base text-gray-200 mb-4">
                   Create your first professional quote in under 2 minutes
                 </p>
                 <Link href="/create-quote">
-                  <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                  <Button size="default" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                     <Sparkles className="h-4 w-4 mr-2" />
                     Create Your First Quote
                   </Button>
@@ -443,9 +443,9 @@ export function ClientDashboard() {
                 <Sparkles className="h-5 w-5 text-blue-400" />
                 <div className="flex-1">
                   <p className="font-medium text-white">AI Quote Assistant</p>
-                  <p className="text-xs text-gray-400">Create quotes with AI help</p>
+                  <p className="text-base text-gray-200">Create quotes with AI help</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
             
@@ -454,9 +454,9 @@ export function ClientDashboard() {
                 <Users className="h-5 w-5 text-emerald-400" />
                 <div className="flex-1">
                   <p className="font-medium text-white">Manage Customers</p>
-                  <p className="text-xs text-gray-400">View customer database</p>
+                  <p className="text-base text-gray-200">View customer database</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
             
@@ -465,9 +465,9 @@ export function ClientDashboard() {
                 <TrendingUp className="h-5 w-5 text-amber-400" />
                 <div className="flex-1">
                   <p className="font-medium text-white">ROI Calculator</p>
-                  <p className="text-xs text-gray-400">Calculate your savings</p>
+                  <p className="text-base text-gray-200">Calculate your savings</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
           </div>
@@ -487,7 +487,7 @@ export function ClientDashboard() {
               <TrendingUp className="h-5 w-5 text-emerald-400" />
               Performance This Month
             </h2>
-            <span className="text-sm text-gray-400">
+            <span className="text-base text-gray-200">
               <ClientDate date={new Date()} options={{ year: 'numeric', month: 'long' }} />
             </span>
           </div>
@@ -521,19 +521,19 @@ export function ClientDashboard() {
                   <span className="text-3xl font-bold text-white">{dashboardData.acceptanceRate}%</span>
                 </div>
               </div>
-              <p className="text-sm text-gray-400">Quote Acceptance Rate</p>
+              <p className="text-base text-gray-200">Quote Acceptance Rate</p>
             </div>
             
             <div className="flex flex-col justify-center items-center">
               <p className="text-3xl font-bold text-purple-400 mb-2">{dashboardData.monthlyQuotes}</p>
-              <p className="text-sm text-gray-400">Quotes This Month</p>
+              <p className="text-base text-gray-200">Quotes This Month</p>
             </div>
             
             <div className="flex flex-col justify-center items-center">
               <p className="text-3xl font-bold text-blue-400 mb-2">
                 ${dashboardData.monthlyQuotedAmount.toLocaleString()}
               </p>
-              <p className="text-sm text-gray-400">Monthly Revenue</p>
+              <p className="text-base text-gray-200">Monthly Revenue</p>
             </div>
           </div>
         </div>
@@ -541,9 +541,9 @@ export function ClientDashboard() {
         <div className="glass-card p-8 relative overflow-hidden">
           <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/70 z-10 flex items-center justify-center">
             <div className="text-center">
-              <Lock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <Lock className="h-12 w-12 text-gray-200 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2">Unlock Performance Analytics</h3>
-              <p className="text-gray-400 mb-4 max-w-sm">
+              <p className="text-gray-200 mb-4 max-w-sm">
                 Track your acceptance rates, revenue trends, and business growth with Pro analytics
               </p>
               <Link href="/unlock-analytics">
@@ -563,18 +563,18 @@ export function ClientDashboard() {
                 <div className="w-32 h-32 bg-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
                   <Target className="h-16 w-16 text-gray-700" />
                 </div>
-                <p className="text-sm text-gray-400">Quote Acceptance Rate</p>
-                <p className="text-xs text-blue-400 mt-1">Create quotes to track</p>
+                <p className="text-base text-gray-200">Quote Acceptance Rate</p>
+                <p className="text-base text-blue-400 mt-1">Create quotes to track</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-gray-600 mb-2">--</p>
-                <p className="text-sm text-gray-400">Quotes This Month</p>
-                <p className="text-xs text-blue-400 mt-1">Start with your first</p>
+                <p className="text-base text-gray-200">Quotes This Month</p>
+                <p className="text-base text-blue-400 mt-1">Start with your first</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-gray-600 mb-2">$--</p>
-                <p className="text-sm text-gray-400">Monthly Revenue</p>
-                <p className="text-xs text-blue-400 mt-1">Revenue tracking ready</p>
+                <p className="text-base text-gray-200">Monthly Revenue</p>
+                <p className="text-base text-blue-400 mt-1">Revenue tracking ready</p>
               </div>
             </div>
           </div>
@@ -599,14 +599,14 @@ export function ClientDashboard() {
                         className="w-full bg-gradient-to-t from-blue-500 to-purple-500 rounded-t"
                         style={{ height: `${(value / 100) * 100}%` }}
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-base text-gray-200">
                         {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'][index]}
                       </span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <p className="text-sm text-gray-400">6-month average</p>
+                  <p className="text-base text-gray-200">6-month average</p>
                   <p className="text-lg font-semibold text-white">
                     {Math.round(dashboardData.conversionTrend.reduce((a, b) => a + b) / dashboardData.conversionTrend.length)}%
                   </p>
@@ -615,8 +615,8 @@ export function ClientDashboard() {
             ) : (
               <div className="text-center py-16">
                 <BarChart className="h-12 w-12 text-gray-700 mx-auto mb-3" />
-                <p className="text-gray-400">No data yet</p>
-                <p className="text-sm text-blue-400 mt-1">Create quotes to see trends</p>
+                <p className="text-gray-200">No data yet</p>
+                <p className="text-base text-blue-400 mt-1">Create quotes to see trends</p>
               </div>
             )}
           </div>
@@ -625,9 +625,9 @@ export function ClientDashboard() {
             <div className="glass-card p-6 relative overflow-hidden cursor-pointer group">
               <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                 <div className="text-center">
-                  <Lock className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-white">Conversion Trends</p>
-                  <p className="text-xs text-blue-400 mt-1">Pro Feature</p>
+                  <Lock className="h-8 w-8 text-gray-200 mx-auto mb-2" />
+                  <p className="text-base font-medium text-white">Conversion Trends</p>
+                  <p className="text-base text-blue-400 mt-1">Pro Feature</p>
                 </div>
               </div>
               <div className="opacity-20">
@@ -649,27 +649,27 @@ export function ClientDashboard() {
               <>
                 <div className="space-y-3">
                   {dashboardData.topCustomers.map((customer, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-gray-900/80 rounded-lg">
                       <div>
                         <p className="font-medium text-white">{customer.name}</p>
-                        <p className="text-xs text-gray-400">{customer.jobs} jobs completed</p>
+                        <p className="text-base text-gray-200">{customer.jobs} jobs completed</p>
                       </div>
                       <div className="text-right">
                         <p className="font-semibold text-white">${customer.value.toLocaleString()}</p>
-                        <p className="text-xs text-emerald-400">+15%</p>
+                        <p className="text-base text-emerald-400">+15%</p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <Link href="/dashboard/customers" className="block mt-4 text-center text-sm text-blue-400 hover:text-blue-300">
+                <Link href="/dashboard/customers" className="block mt-4 text-center text-base text-blue-400 hover:text-blue-300">
                   View all customers →
                 </Link>
               </>
             ) : (
               <div className="text-center py-16">
                 <Users className="h-12 w-12 text-gray-700 mx-auto mb-3" />
-                <p className="text-gray-400">No customers yet</p>
-                <p className="text-sm text-blue-400 mt-1">Your best clients will appear here</p>
+                <p className="text-gray-200">No customers yet</p>
+                <p className="text-base text-blue-400 mt-1">Your best clients will appear here</p>
               </div>
             )}
           </div>
@@ -678,9 +678,9 @@ export function ClientDashboard() {
             <div className="glass-card p-6 relative overflow-hidden cursor-pointer group">
               <div className="absolute inset-0 backdrop-blur-sm bg-gray-900/50 z-10 flex items-center justify-center">
                 <div className="text-center">
-                  <Lock className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-white">Top Customers</p>
-                  <p className="text-xs text-blue-400 mt-1">Pro Feature</p>
+                  <Lock className="h-8 w-8 text-gray-200 mx-auto mb-2" />
+                  <p className="text-base font-medium text-white">Top Customers</p>
+                  <p className="text-base text-blue-400 mt-1">Pro Feature</p>
                 </div>
               </div>
               <div className="opacity-20">
@@ -704,26 +704,26 @@ export function ClientDashboard() {
             <h2 className="text-2xl font-bold text-white mb-3">
               Unlock Advanced Analytics with Pro
             </h2>
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-100 mb-6">
               Get detailed insights into your business performance, track customer lifetime value, 
               monitor conversion trends, and make data-driven decisions to grow your painting business.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="text-center">
                 <p className="text-2xl font-bold text-blue-400">40%</p>
-                <p className="text-xs text-gray-400">Higher win rate</p>
+                <p className="text-base text-gray-200">Higher win rate</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold text-purple-400">3x</p>
-                <p className="text-xs text-gray-400">Faster quotes</p>
+                <p className="text-base text-gray-200">Faster quotes</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold text-emerald-400">$8.4k</p>
-                <p className="text-xs text-gray-400">Extra revenue/mo</p>
+                <p className="text-base text-gray-200">Extra revenue/mo</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold text-amber-400">283x</p>
-                <p className="text-xs text-gray-400">ROI on Pro</p>
+                <p className="text-base text-gray-200">ROI on Pro</p>
               </div>
             </div>
             <Link href="/unlock-analytics">

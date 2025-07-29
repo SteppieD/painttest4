@@ -73,7 +73,7 @@ export default function DashboardLayout({
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-slate-900">
         <div className="text-center glass-card p-8">
           <div className="relative w-16 h-16 mx-auto mb-4">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-75 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-100 animate-pulse"></div>
             <div className="relative w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full animate-spin"></div>
           </div>
           <p className="text-white font-medium">Loading dashboard...</p>
@@ -101,14 +101,14 @@ export default function DashboardLayout({
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-600 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-600 rounded-xl blur-md opacity-80 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-black text-xl">P</span>
                 </div>
               </div>
               <div>
                 <div className="font-bold text-white">PaintQuote Pro</div>
-                <div className="text-xs text-gray-400">{company.name}</div>
+                <div className="text-base text-gray-200">{company.name}</div>
               </div>
             </Link>
 
@@ -125,8 +125,8 @@ export default function DashboardLayout({
                     className={`
                       relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group
                       ${isActive 
-                        ? 'bg-white/10 text-white' 
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                        ? 'bg-gray-900/70 text-white' 
+                        : 'text-gray-200 hover:text-white hover:bg-gray-900/80'
                       }
                     `}
                   >
@@ -150,14 +150,14 @@ export default function DashboardLayout({
               <div className="glass-card p-4 mb-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="h-4 w-4 text-purple-400" />
-                  <span className="text-sm font-medium text-white">Pro Tip</span>
+                  <span className="text-base font-medium text-white">Pro Tip</span>
                 </div>
-                <p className="text-xs text-gray-400">Create quotes 95% faster with our AI assistant</p>
+                <p className="text-base text-gray-200">Create quotes 95% faster with our AI assistant</p>
               </div>
               
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-3 w-full px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300"
+                className="flex items-center gap-3 w-full px-4 py-3 text-gray-200 hover:text-white hover:bg-gray-900/80 rounded-xl transition-all duration-300"
               >
                 <LogOut className="h-5 w-5" />
                 <span className="font-medium">Sign Out</span>
@@ -174,9 +174,9 @@ export default function DashboardLayout({
                 {navItems.find(item => item.href === pathname)?.label || 'Dashboard'}
               </h2>
               <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-400 hidden md:block">⚡ {company.email}</span>
+                <span className="text-base text-gray-200 hidden md:block">⚡ {company.email}</span>
                 <Link href="/create-quote" className="group relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-sm opacity-80 group-hover:opacity-100 transition-opacity"></div>
                   <div className="relative btn-primary-modern inline-flex items-center gap-2">
                     <Sparkles className="h-4 w-4" />
                     New Quote
@@ -207,15 +207,15 @@ export default function DashboardLayout({
                 className={`
                   flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition-all
                   ${isActive 
-                    ? 'bg-white/10 text-white' 
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-gray-900/70 text-white' 
+                    : 'text-gray-200 hover:text-white hover:bg-gray-900/80'
                   }
                 `}
               >
                 <div className={`relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} ${isActive ? '' : 'opacity-60'} transition-opacity`}>
                   <Icon className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-xs font-medium">{item.label}</span>
+                <span className="text-base font-medium">{item.label}</span>
               </Link>
             )
           })}

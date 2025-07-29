@@ -12,7 +12,7 @@ export default function SigninRedirect() {
   
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <p className="text-gray-500">Redirecting to access code login...</p>
+      <p className="text-gray-200">Redirecting to access code login...</p>
     </div>
   );
 }

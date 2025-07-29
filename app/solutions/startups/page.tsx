@@ -197,7 +197,7 @@ export default function StartupsPage() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Professional quoting tools for new painting contractors. 
                 Look established, quote confidently, and grow faster from day one.
               </p>
@@ -216,7 +216,7 @@ export default function StartupsPage() {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>No experience needed</span>
@@ -233,29 +233,29 @@ export default function StartupsPage() {
                 <div className="text-center mb-6">
                   <Lightbulb className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Your Success Checklist</h3>
-                  <p className="text-gray-400">Everything you need to launch</p>
+                  <p className="text-gray-200">Everything you need to launch</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 p-3 glass-card">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-gray-300">Professional quoting system</span>
+                    <span className="text-gray-100">Professional quoting system</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 glass-card">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-gray-300">Pricing templates & guides</span>
+                    <span className="text-gray-100">Pricing templates & guides</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 glass-card">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-gray-300">Business document templates</span>
+                    <span className="text-gray-100">Business document templates</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 glass-card">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-gray-300">Marketing materials</span>
+                    <span className="text-gray-100">Marketing materials</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 glass-card">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-gray-300">Direct support access</span>
+                    <span className="text-gray-100">Direct support access</span>
                   </div>
                 </div>
               </Card>
@@ -271,7 +271,7 @@ export default function StartupsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Built to Help New Contractors Succeed
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Every tool and resource you need to build a thriving painting business
             </p>
           </div>
@@ -281,7 +281,7 @@ export default function StartupsPage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -295,7 +295,7 @@ export default function StartupsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Your First 90 Days to Success
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Follow our proven path from startup to profitable business
             </p>
           </div>
@@ -304,9 +304,9 @@ export default function StartupsPage() {
             {startupJourney.map((stage, index) => (
               <Card key={index} className="glass-card p-6 text-center">
                 <stage.icon className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-                <div className="text-sm text-gray-400 mb-2">{stage.week}</div>
+                <div className="text-sm text-gray-200 mb-2">{stage.week}</div>
                 <h3 className="text-lg font-semibold text-white mb-2">{stage.milestone}</h3>
-                <p className="text-sm text-gray-400">{stage.description}</p>
+                <p className="text-sm text-gray-200">{stage.description}</p>
               </Card>
             ))}
           </div>
@@ -331,7 +331,7 @@ export default function StartupsPage() {
                 </h3>
                 <ul className="space-y-2">
                   {package_.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-300">
+                    <li key={i} className="flex items-start gap-2 text-gray-100">
                       <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                       {item}
                     </li>
@@ -350,7 +350,7 @@ export default function StartupsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               New Contractors Crushing It
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Real stories from painters who started with zero experience
             </p>
           </div>
@@ -365,11 +365,11 @@ export default function StartupsPage() {
                 </div>
                 
                 <h3 className="text-lg font-semibold text-white mb-1">{story.name}</h3>
-                <p className="text-gray-400 mb-3">{story.company}</p>
+                <p className="text-gray-200 mb-3">{story.company}</p>
                 
-                <p className="text-gray-300 mb-3">{story.story}</p>
+                <p className="text-gray-100 mb-3">{story.story}</p>
                 
-                <p className="text-sm text-gray-400 italic mb-3">"{story.key}"</p>
+                <p className="text-base text-gray-200 italic mb-3">"{story.key}"</p>
                 
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                   {story.timeline}
@@ -387,7 +387,7 @@ export default function StartupsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Startup-Friendly Pricing
             </h2>
-            <p className="text-gray-300">Start small, scale as you grow</p>
+            <p className="text-gray-100">Start small, scale as you grow</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -401,11 +401,11 @@ export default function StartupsPage() {
                 
                 <h3 className="text-2xl font-semibold text-white mb-2">{option.name}</h3>
                 <div className="text-3xl font-bold text-blue-400 mb-2">{option.price}</div>
-                <p className="text-gray-400 mb-6">{option.description}</p>
+                <p className="text-gray-200 mb-6">{option.description}</p>
                 
                 <ul className="space-y-2 mb-8">
                   {option.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-gray-300">
+                    <li key={i} className="flex items-center gap-2 text-gray-100">
                       <CheckCircle className="h-4 w-4 text-green-400" />
                       {feature}
                     </li>
@@ -428,7 +428,7 @@ export default function StartupsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Launch Your Painting Business?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Join hundreds of successful contractors who started here
             </p>
             
@@ -447,7 +447,7 @@ export default function StartupsPage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>30-day guarantee</span>

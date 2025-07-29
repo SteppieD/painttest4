@@ -61,7 +61,7 @@ export function MobileNav({ userEmail }: MobileNavProps) {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-base font-medium transition-colors ${
                       isActive
                         ? 'bg-primary text-primary-foreground'
                         : 'hover:bg-accent hover:text-accent-foreground'
@@ -75,13 +75,13 @@ export function MobileNav({ userEmail }: MobileNavProps) {
             </nav>
             
             <div className="border-t pt-4 mt-4">
-              <div className="px-3 py-2 text-sm text-muted-foreground">
+              <div className="px-3 py-2 text-base text-gray-200">
                 {userEmail}
               </div>
               <form action="/api/auth/signout" method="POST">
                 <button
                   type="submit"
-                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                 >
                   <LogOut className="h-5 w-5" />
                   Sign Out
@@ -106,11 +106,11 @@ export function MobileNav({ userEmail }: MobileNavProps) {
                 className={`flex flex-col items-center justify-center gap-1 py-2 rounded-lg transition-colors ${
                   isActive
                     ? 'text-primary bg-primary/10'
-                    : 'text-muted-foreground hover:text-foreground'
+                    : 'text-gray-200 hover:text-foreground'
                 }`}
               >
                 <Icon className="h-5 w-5" />
-                <span className="text-xs">{item.label.split(' ')[0]}</span>
+                <span className="text-base">{item.label.split(' ')[0]}</span>
               </Link>
             )
           })}

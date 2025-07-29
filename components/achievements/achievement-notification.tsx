@@ -162,7 +162,7 @@ export function AchievementNotification({ achievementId, onClose }: AchievementN
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-sm text-gray-300"
+                  className="text-base text-gray-100"
                 >
                   {achievement.description}
                 </motion.p>
@@ -170,10 +170,10 @@ export function AchievementNotification({ achievementId, onClose }: AchievementN
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.6, type: 'spring' }}
-                  className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1"
+                  className="mt-3 inline-flex items-center gap-2 bg-gray-900/70 rounded-full px-3 py-1"
                 >
                   <Star className="h-4 w-4 text-yellow-400" />
-                  <span className="text-sm font-medium text-yellow-400">+{achievement.points} XP</span>
+                  <span className="text-base font-medium text-yellow-400">+{achievement.points} XP</span>
                 </motion.div>
               </div>
             </div>

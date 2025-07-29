@@ -173,7 +173,7 @@ export default function EnterprisePage() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 The most powerful quoting platform for large painting contractors. 
                 Custom workflows, unlimited scale, and white-glove support.
               </p>
@@ -190,7 +190,7 @@ export default function EnterprisePage() {
                 </Button>
               </div>
 
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>SOC 2 Compliant</span>
@@ -207,26 +207,26 @@ export default function EnterprisePage() {
                 <div className="mb-6">
                   <Award className="h-12 w-12 text-purple-400 mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Enterprise Readiness</h3>
-                  <p className="text-gray-400">Everything large contractors need</p>
+                  <p className="text-gray-200">Everything large contractors need</p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Security</span>
+                    <span className="text-gray-100">Security</span>
                     <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                       SOC 2 Type II
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Uptime</span>
+                    <span className="text-gray-100">Uptime</span>
                     <span className="text-green-400 font-semibold">99.95%</span>
                   </div>
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Response Time</span>
+                    <span className="text-gray-100">Response Time</span>
                     <span className="text-green-400 font-semibold">&lt;200ms</span>
                   </div>
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Data Centers</span>
+                    <span className="text-gray-100">Data Centers</span>
                     <span className="text-green-400 font-semibold">Global</span>
                   </div>
                 </div>
@@ -247,7 +247,7 @@ export default function EnterprisePage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Enterprise-Grade Features
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Built from the ground up for large painting contractors
             </p>
           </div>
@@ -257,7 +257,7 @@ export default function EnterprisePage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-purple-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -279,7 +279,7 @@ export default function EnterprisePage() {
                 <h3 className="text-lg font-semibold text-white mb-4">{category.category}</h3>
                 <ul className="space-y-2">
                   {category.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                    <li key={i} className="flex items-start gap-2 text-base text-gray-100">
                       <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                       {benefit}
                     </li>
@@ -306,7 +306,7 @@ export default function EnterprisePage() {
                 <div className="grid lg:grid-cols-3 gap-6">
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-2">{client.company}</h3>
-                    <p className="text-gray-400 mb-3">{client.size}</p>
+                    <p className="text-gray-200 mb-3">{client.size}</p>
                     <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                       {client.result}
                     </Badge>
@@ -314,18 +314,18 @@ export default function EnterprisePage() {
                   
                   <div>
                     <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-gray-400 mb-1">CHALLENGE</h4>
-                      <p className="text-gray-300">{client.challenge}</p>
+                      <h4 className="text-base font-semibold text-gray-200 mb-1">CHALLENGE</h4>
+                      <p className="text-gray-100">{client.challenge}</p>
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-400 mb-1">SOLUTION</h4>
-                      <p className="text-gray-300">{client.solution}</p>
+                      <h4 className="text-base font-semibold text-gray-200 mb-1">SOLUTION</h4>
+                      <p className="text-gray-100">{client.solution}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
                     <div>
-                      <p className="text-gray-300 italic mb-2">"{client.quote}"</p>
+                      <p className="text-gray-100 italic mb-2">"{client.quote}"</p>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
@@ -353,16 +353,16 @@ export default function EnterprisePage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-700">
-                  <th className="text-left p-4 text-gray-400">Feature</th>
-                  <th className="text-center p-4 text-gray-400">Standard</th>
+                  <th className="text-left p-4 text-gray-200">Feature</th>
+                  <th className="text-center p-4 text-gray-200">Standard</th>
                   <th className="text-center p-4 text-white bg-purple-500/10">Enterprise</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonTable.map((row, index) => (
                   <tr key={index} className="border-b border-gray-700">
-                    <td className="p-4 text-gray-300">{row.feature}</td>
-                    <td className="p-4 text-center text-gray-400">{row.standard}</td>
+                    <td className="p-4 text-gray-100">{row.feature}</td>
+                    <td className="p-4 text-center text-gray-200">{row.standard}</td>
                     <td className="p-4 text-center text-white bg-purple-500/5">{row.enterprise}</td>
                   </tr>
                 ))}
@@ -381,7 +381,7 @@ export default function EnterprisePage() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 Enterprise Security & Compliance
               </h2>
-              <p className="text-gray-300 max-w-2xl mx-auto">
+              <p className="text-gray-100 max-w-2xl mx-auto">
                 Your data is protected by industry-leading security measures
               </p>
             </div>
@@ -390,17 +390,17 @@ export default function EnterprisePage() {
               <div>
                 <Lock className="h-10 w-10 text-purple-400 mx-auto mb-3" />
                 <h3 className="text-lg font-semibold text-white mb-2">Data Encryption</h3>
-                <p className="text-sm text-gray-400">256-bit AES encryption at rest and in transit</p>
+                <p className="text-base text-gray-200">256-bit AES encryption at rest and in transit</p>
               </div>
               <div>
                 <Database className="h-10 w-10 text-purple-400 mx-auto mb-3" />
                 <h3 className="text-lg font-semibold text-white mb-2">Data Residency</h3>
-                <p className="text-sm text-gray-400">Choose where your data is stored globally</p>
+                <p className="text-base text-gray-200">Choose where your data is stored globally</p>
               </div>
               <div>
                 <Shield className="h-10 w-10 text-purple-400 mx-auto mb-3" />
                 <h3 className="text-lg font-semibold text-white mb-2">Compliance</h3>
-                <p className="text-sm text-gray-400">SOC 2, GDPR, CCPA compliant</p>
+                <p className="text-base text-gray-200">SOC 2, GDPR, CCPA compliant</p>
               </div>
             </div>
           </Card>
@@ -414,7 +414,7 @@ export default function EnterprisePage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready for Enterprise-Scale Quoting?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Let's discuss how PaintQuote Pro can transform your operations
             </p>
             
@@ -430,7 +430,7 @@ export default function EnterprisePage() {
               </Button>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>Custom pricing</span>

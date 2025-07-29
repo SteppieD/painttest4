@@ -131,7 +131,7 @@ export default function ContactFreeTrial() {
                 <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                   Start Your <span className="text-gradient-modern">14-Day Free Trial</span>
                 </h1>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
                   Join 15,000+ painting contractors who create professional quotes 10x faster. 
                   No credit card required. Cancel anytime.
                 </p>
@@ -145,13 +145,13 @@ export default function ContactFreeTrial() {
                   </Link>
                   <Link
                     href="/painting-contractor-software"
-                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/20 hover:bg-white/10 rounded-lg transition-all duration-200"
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/20 hover:bg-gray-900/70 rounded-lg transition-all duration-200"
                   >
                     Learn More
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </div>
-                <p className="text-sm text-gray-400">
+                <p className="text-base text-gray-200">
                   ✓ No credit card required &nbsp;&nbsp; ✓ Full feature access &nbsp;&nbsp; ✓ Cancel anytime
                 </p>
               </div>
@@ -173,7 +173,7 @@ export default function ContactFreeTrial() {
                         <Icon className="h-8 w-8 text-blue-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                      <p className="text-gray-300 text-sm">{benefit.description}</p>
+                      <p className="text-gray-100 text-base">{benefit.description}</p>
                     </div>
                   )
                 })}
@@ -192,7 +192,7 @@ export default function ContactFreeTrial() {
                   {trialFeatures.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0" />
-                      <span className="text-gray-300">{feature}</span>
+                      <span className="text-gray-100">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -209,13 +209,13 @@ export default function ContactFreeTrial() {
               <div className="grid md:grid-cols-3 gap-8">
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="glass-card p-6">
-                    <p className="text-gray-300 mb-4 italic">&ldquo;{testimonial.text}&rdquo;</p>
+                    <p className="text-gray-100 mb-4 italic">&ldquo;{testimonial.text}&rdquo;</p>
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="font-semibold text-white">{testimonial.name}</p>
-                        <p className="text-sm text-gray-400">{testimonial.company}</p>
+                        <p className="text-base text-gray-200">{testimonial.company}</p>
                       </div>
-                      <span className="text-sm font-medium text-emerald-400">{testimonial.savings}</span>
+                      <span className="text-base font-medium text-emerald-400">{testimonial.savings}</span>
                     </div>
                   </div>
                 ))}
@@ -239,7 +239,7 @@ export default function ContactFreeTrial() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-2">Sign Up in 30 Seconds</h3>
-                      <p className="text-gray-300">
+                      <p className="text-gray-100">
                         Enter your company name and email. No credit card or lengthy forms required.
                       </p>
                     </div>
@@ -252,7 +252,7 @@ export default function ContactFreeTrial() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-2">Get Full Access Immediately</h3>
-                      <p className="text-gray-300">
+                      <p className="text-gray-100">
                         Access all features instantly. Create quotes, manage customers, and explore the platform.
                       </p>
                     </div>
@@ -265,7 +265,7 @@ export default function ContactFreeTrial() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-2">Decide After 14 Days</h3>
-                      <p className="text-gray-300">
+                      <p className="text-gray-100">
                         If you love it, choose a plan. If not, no worries - no charges, no hassle.
                       </p>
                     </div>
@@ -288,8 +288,8 @@ export default function ContactFreeTrial() {
                     <div key={index} className="glass-card p-6 text-center">
                       <Icon className="h-12 w-12 text-blue-400 mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-white mb-2">{option.title}</h3>
-                      <p className="text-gray-300 text-sm mb-2">{option.description}</p>
-                      <p className="text-blue-400 text-sm font-medium">{option.availability}</p>
+                      <p className="text-gray-100 text-base mb-2">{option.description}</p>
+                      <p className="text-blue-400 text-base font-medium">{option.availability}</p>
                     </div>
                   )
                 })}
@@ -308,7 +308,7 @@ export default function ContactFreeTrial() {
                   <h3 className="text-lg font-semibold text-white mb-2">
                     Do I need to enter credit card details?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     No! Your trial is completely free with no credit card required. We only ask for payment if you decide to continue after 14 days.
                   </p>
                 </div>
@@ -316,7 +316,7 @@ export default function ContactFreeTrial() {
                   <h3 className="text-lg font-semibold text-white mb-2">
                     What happens after my trial ends?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     You&apos;ll receive a reminder email before your trial expires. If you don&apos;t choose a plan, your account will be paused but your data will be saved for 30 days.
                   </p>
                 </div>
@@ -324,7 +324,7 @@ export default function ContactFreeTrial() {
                   <h3 className="text-lg font-semibold text-white mb-2">
                     Can I cancel during the trial?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Absolutely! You can cancel anytime during your trial with no charges or penalties. Simply let your trial expire or contact support.
                   </p>
                 </div>
@@ -332,7 +332,7 @@ export default function ContactFreeTrial() {
                   <h3 className="text-lg font-semibold text-white mb-2">
                     Is support included in the trial?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Yes! You get full access to our support team via live chat, email, and phone during your trial period.
                   </p>
                 </div>
@@ -346,7 +346,7 @@ export default function ContactFreeTrial() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Transform Your Painting Business?
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
                 Join 15,000+ painting contractors who trust PaintQuote Pro to grow their business. 
                 Start your free trial today - no credit card required.
               </p>
@@ -360,12 +360,12 @@ export default function ContactFreeTrial() {
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/20 hover:bg-white/10 rounded-lg transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/20 hover:bg-gray-900/70 rounded-lg transition-all duration-200"
                 >
                   View Pricing Plans
                 </Link>
               </div>
-              <p className="mt-6 text-sm text-gray-400">
+              <p className="mt-6 text-base text-gray-200">
                 14-day free trial • No credit card required • Cancel anytime
               </p>
             </div>

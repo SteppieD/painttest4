@@ -119,7 +119,7 @@ export default function LuxuryHomeTransformation() {
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="font-bold">PaintQuote Pro</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-base font-medium">
               <Link href="/services" className="transition-colors hover:text-foreground/80">
                 Services
               </Link>
@@ -136,7 +136,7 @@ export default function LuxuryHomeTransformation() {
             <div className="ml-auto">
               <Link
                 href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Get Free Quote
               </Link>
@@ -159,14 +159,14 @@ export default function LuxuryHomeTransformation() {
           <section className="relative py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-base font-medium text-primary">
                   <Home className="mr-2 h-4 w-4" />
                   Residential Case Study
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Luxury Estate Transformation
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   How we transformed a $8.5M Paradise Valley estate with premium painting 
                   services, completing the project 2 days ahead of schedule despite extreme heat.
                 </p>
@@ -176,7 +176,7 @@ export default function LuxuryHomeTransformation() {
               <div className="mt-12 overflow-hidden rounded-lg bg-muted">
                 <div className="aspect-video relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-muted-foreground">Before & After Comparison</span>
+                    <span className="text-gray-200">Before & After Comparison</span>
                   </div>
                 </div>
               </div>
@@ -190,22 +190,22 @@ export default function LuxuryHomeTransformation() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
                 <div className="bg-background rounded-lg p-6 text-center">
                   <MapPin className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="text-base text-gray-200">Location</p>
                   <p className="text-lg font-semibold">{projectDetails.location}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Home className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Property Size</p>
+                  <p className="text-base text-gray-200">Property Size</p>
                   <p className="text-lg font-semibold">{projectDetails.squareFootage}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Calendar className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Timeline</p>
+                  <p className="text-base text-gray-200">Timeline</p>
                   <p className="text-lg font-semibold">{projectDetails.projectDuration}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <DollarSign className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Investment</p>
+                  <p className="text-base text-gray-200">Investment</p>
                   <p className="text-lg font-semibold">{projectDetails.investment}</p>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function LuxuryHomeTransformation() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">The Challenge</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   This Paradise Valley estate presented unique challenges that required our 
                   most experienced team and innovative solutions. The combination of extreme 
                   weather, intricate architectural details, and a non-negotiable deadline 
@@ -227,7 +227,7 @@ export default function LuxuryHomeTransformation() {
                   {challenges.map((challenge, index) => (
                     <div key={index} className="rounded-lg border bg-card p-6">
                       <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
-                      <p className="text-muted-foreground">{challenge.description}</p>
+                      <p className="text-gray-200">{challenge.description}</p>
                     </div>
                   ))}
                 </div>
@@ -240,7 +240,7 @@ export default function LuxuryHomeTransformation() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">Our Solution</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   We developed a comprehensive strategy that addressed each challenge with 
                   precision. Our approach combined advanced technology, expert craftsmanship, 
                   and meticulous project management.
@@ -252,8 +252,8 @@ export default function LuxuryHomeTransformation() {
                         <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
                         <div className="flex-1">
                           <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
-                          <p className="text-muted-foreground mb-2">{solution.description}</p>
-                          <p className="text-sm font-medium text-primary">
+                          <p className="text-gray-200 mb-2">{solution.description}</p>
+                          <p className="text-base font-medium text-primary">
                             Result: {solution.impact}
                           </p>
                         </div>
@@ -280,7 +280,7 @@ export default function LuxuryHomeTransformation() {
                     </div>
                     <div className="flex-1 pb-8">
                       <h3 className="text-xl font-semibold mb-2">Days 1-2: Preparation & Protection</h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-200">
                         Extensive masking, pressure washing, and surface preparation. Protected 
                         landscaping and installed cooling systems for crew.
                       </p>
@@ -295,7 +295,7 @@ export default function LuxuryHomeTransformation() {
                     </div>
                     <div className="flex-1 pb-8">
                       <h3 className="text-xl font-semibold mb-2">Days 3-5: Primer Application</h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-200">
                         Applied specialized heat-resistant primer across all surfaces. Extra 
                         attention to stucco and wood transitions.
                       </p>
@@ -310,7 +310,7 @@ export default function LuxuryHomeTransformation() {
                     </div>
                     <div className="flex-1 pb-8">
                       <h3 className="text-xl font-semibold mb-2">Days 6-10: Primary Coating</h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-200">
                         Applied custom-matched paint colors with airless sprayers and hand-brushed 
                         all detailed architectural elements.
                       </p>
@@ -324,7 +324,7 @@ export default function LuxuryHomeTransformation() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold mb-2">Days 11-12: Detail & Touch-ups</h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-200">
                         Final detail work, quality inspection, and client walkthrough. Completed 
                         2 days ahead of schedule.
                       </p>
@@ -343,7 +343,7 @@ export default function LuxuryHomeTransformation() {
                 <div className="grid gap-6 md:grid-cols-2 mb-12">
                   {results.map((result, index) => (
                     <div key={index} className="bg-background rounded-lg p-6 text-center">
-                      <p className="text-sm text-muted-foreground mb-2">{result.metric}</p>
+                      <p className="text-base text-gray-200 mb-2">{result.metric}</p>
                       <p className="text-2xl font-bold text-primary">{result.value}</p>
                     </div>
                   ))}
@@ -365,7 +365,7 @@ export default function LuxuryHomeTransformation() {
                   </blockquote>
                   <footer>
                     <strong>Robert & Jennifer Morrison</strong>
-                    <p className="text-sm text-muted-foreground">Paradise Valley Homeowners</p>
+                    <p className="text-base text-gray-200">Paradise Valley Homeowners</p>
                   </footer>
                 </div>
               </div>
@@ -381,7 +381,7 @@ export default function LuxuryHomeTransformation() {
                   <div className="text-center">
                     <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Time Management</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Strategic scheduling and crew deployment can overcome weather challenges 
                       and tight deadlines.
                     </p>
@@ -389,7 +389,7 @@ export default function LuxuryHomeTransformation() {
                   <div className="text-center">
                     <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Quality Focus</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Attention to architectural details and custom color matching creates 
                       exceptional results.
                     </p>
@@ -397,7 +397,7 @@ export default function LuxuryHomeTransformation() {
                   <div className="text-center">
                     <DollarSign className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Value Creation</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Professional painting is an investment that enhances property value 
                       and curb appeal.
                     </p>
@@ -414,7 +414,7 @@ export default function LuxuryHomeTransformation() {
                 <h2 className="text-3xl font-bold mb-4">
                   Ready to Transform Your Luxury Property?
                 </h2>
-                <p className="text-xl mb-8 opacity-90">
+                <p className="text-xl mb-8 opacity-100">
                   Let's discuss how we can enhance your home's beauty and value with our 
                   premium painting services.
                 </p>
@@ -444,14 +444,14 @@ export default function LuxuryHomeTransformation() {
             <div className="grid gap-8 md:grid-cols-4">
               <div>
                 <h3 className="text-lg font-semibold mb-4">About PaintQuote Pro</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-gray-200">
                   Professional painting contractors specializing in high-end residential 
                   and commercial projects across the United States.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Services</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li>Interior Painting</li>
                   <li>Exterior Painting</li>
                   <li>Cabinet Refinishing</li>
@@ -460,7 +460,7 @@ export default function LuxuryHomeTransformation() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Case Studies</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li><Link href="/case-studies/luxury-home-transformation" className="hover:text-foreground">Luxury Home</Link></li>
                   <li><Link href="/case-studies/commercial-office-building" className="hover:text-foreground">Office Building</Link></li>
                   <li><Link href="/case-studies/historic-restoration" className="hover:text-foreground">Historic Restoration</Link></li>
@@ -469,14 +469,14 @@ export default function LuxuryHomeTransformation() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Contact</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li>1-800-PAINT-PRO</li>
                   <li>info@paintquotepro.com</li>
                   <li><Link href="/quote" className="hover:text-foreground">Get Free Quote</Link></li>
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. All rights reserved.</p>
             </div>
           </div>

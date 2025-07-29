@@ -48,7 +48,7 @@ export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProp
   return (
     <div className="rounded-lg border bg-card p-4">
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-sm font-medium flex items-center gap-2">
+        <h3 className="text-base font-medium flex items-center gap-2">
           {percentageUsed >= 100 ? (
             <AlertCircle className="h-4 w-4 text-destructive" />
           ) : (
@@ -56,14 +56,14 @@ export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProp
           )}
           Quote Usage
         </h3>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-base text-gray-200">
           {usage.quotesUsed} / {usage.quotesLimit}
         </span>
       </div>
       
       <Progress value={Math.min(percentageUsed, 100)} className="mb-2" />
       
-      <div className="flex items-center justify-between text-xs text-muted-foreground">
+      <div className="flex items-center justify-between text-base text-gray-200">
         <span>
           {remainingQuotes > 0 
             ? `${remainingQuotes} quotes remaining`
@@ -75,7 +75,7 @@ export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProp
 
       {percentageUsed >= 80 && (
         <div className="mt-3 p-2 rounded-md bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800">
-          <p className="text-xs text-amber-800 dark:text-amber-200">
+          <p className="text-base text-amber-800 dark:text-amber-200">
             {percentageUsed >= 100 
               ? "You've used all your free quotes this month."
               : `You're running low on quotes.`

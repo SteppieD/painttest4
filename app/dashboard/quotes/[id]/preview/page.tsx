@@ -242,7 +242,7 @@ Your Painting Company`
           </Link>
           <div>
             <h1 className="text-2xl font-bold">Quote Preview</h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-gray-200">
               Review and edit before sending to customer
             </p>
           </div>
@@ -386,7 +386,7 @@ Your Painting Company`
             <div>
               <Label>Status</Label>
               <p className="mt-1">
-                <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
+                <span className={`inline-flex px-2 py-1 rounded-full text-base font-medium ${
                   quote.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
                   quote.status === 'sent' ? 'bg-blue-100 text-blue-700' :
                   quote.status === 'accepted' ? 'bg-green-100 text-green-700' :
@@ -422,7 +422,7 @@ Your Painting Company`
           <div className="space-y-3">
             {/* Show bundled cost (materials + labor + markup) as single line */}
             <div className="flex justify-between items-center">
-              <span className="text-muted-foreground">Professional Painting Services</span>
+              <span className="text-gray-200">Professional Painting Services</span>
               <span className="font-medium">
                 ${(((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)).toFixed(2)}
               </span>
@@ -433,14 +433,14 @@ Your Painting Company`
               <>
                 <div className="border-t pt-3">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="text-gray-200">Subtotal</span>
                     <span className="font-medium">
                       ${(((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)).toFixed(2)}
                     </span>
                   </div>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Sales Tax ({quote.tax_rate || 0}%)</span>
+                  <span className="text-gray-200">Sales Tax ({quote.tax_rate || 0}%)</span>
                   <span className="font-medium">
                     ${((((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)) * ((quote.tax_rate || 0) / 100)).toFixed(2)}
                   </span>
@@ -465,7 +465,7 @@ Your Painting Company`
         <CardContent className="pt-6">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-gray-200">
                 This quote is valid for 30 days from creation date
               </p>
             </div>
@@ -485,22 +485,22 @@ Your Painting Company`
             
             {/* Public Link Display */}
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <Label className="text-sm text-gray-600">Share this link with your customer:</Label>
+              <Label className="text-base text-gray-600">Share this link with your customer:</Label>
               <div className="flex items-center gap-2 mt-2">
                 <Input 
                   readOnly 
                   value={`${window.location.origin}/quote/${params.id}`}
-                  className="font-mono text-sm"
+                  className="font-mono text-base"
                 />
                 <Button 
-                  size="sm" 
+                  size="default" 
                   onClick={copyPublicLink}
                   variant="ghost"
                 >
                   <Copy className="h-4 w-4" />
                 </Button>
                 <Link href={`/quote/${params.id}`} target="_blank">
-                  <Button size="sm" variant="ghost">
+                  <Button size="default" variant="ghost">
                     <ExternalLink className="h-4 w-4" />
                   </Button>
                 </Link>

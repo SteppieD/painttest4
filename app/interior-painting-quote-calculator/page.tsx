@@ -251,7 +251,7 @@ export default function InteriorPaintingQuoteCalculator() {
           <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <Home className="mr-2 h-4 w-4" />
                   Interior Specialist
                 </div>
@@ -259,7 +259,7 @@ export default function InteriorPaintingQuoteCalculator() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Interior Painting Quote Calculator
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Get accurate interior painting quotes for any room or entire house. Professional estimates 
                   for bedrooms, living rooms, kitchens, bathrooms, and more with specialized considerations.
                 </p>
@@ -283,15 +283,15 @@ export default function InteriorPaintingQuoteCalculator() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">$1.50-4</div>
-                    <p className="text-sm text-muted-foreground">Per Square Foot</p>
+                    <p className="text-base text-gray-200">Per Square Foot</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">1-3 days</div>
-                    <p className="text-sm text-muted-foreground">Per Room</p>
+                    <p className="text-base text-gray-200">Per Room</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">6 finishes</div>
-                    <p className="text-sm text-muted-foreground">Paint Options</p>
+                    <p className="text-base text-gray-200">Paint Options</p>
                   </div>
                 </div>
               </div>
@@ -319,19 +319,19 @@ export default function InteriorPaintingQuoteCalculator() {
                           </h4>
                           <div className="grid gap-4 sm:grid-cols-2">
                             <div>
-                              <label className="text-sm font-medium">Room Type</label>
+                              <label className="text-base font-medium">Room Type</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Living Room</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Wall Area</label>
+                              <label className="text-base font-medium">Wall Area</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">320 sq ft</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Ceiling Height</label>
+                              <label className="text-base font-medium">Ceiling Height</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">9 feet</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Complexity Level</label>
+                              <label className="text-base font-medium">Complexity Level</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Medium</div>
                             </div>
                           </div>
@@ -344,20 +344,20 @@ export default function InteriorPaintingQuoteCalculator() {
                           </h4>
                           <div className="space-y-3">
                             <div className="flex justify-between">
-                              <span className="text-sm">Paint finish:</span>
-                              <span className="text-sm font-medium">Eggshell</span>
+                              <span className="text-base">Paint finish:</span>
+                              <span className="text-base font-medium">Eggshell</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Paint quality:</span>
-                              <span className="text-sm font-medium">Premium</span>
+                              <span className="text-base">Paint quality:</span>
+                              <span className="text-base font-medium">Premium</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Color change:</span>
-                              <span className="text-sm font-medium">Light</span>
+                              <span className="text-base">Color change:</span>
+                              <span className="text-base font-medium">Light</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Primer needed:</span>
-                              <span className="text-sm font-medium">Yes</span>
+                              <span className="text-base">Primer needed:</span>
+                              <span className="text-base font-medium">Yes</span>
                             </div>
                           </div>
                         </div>
@@ -394,7 +394,7 @@ export default function InteriorPaintingQuoteCalculator() {
                             <span>Total Quote:</span>
                             <span className="text-primary">$1,448</span>
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             Price per sq ft: $4.53 | Timeline: 2-3 days
                           </div>
                         </div>
@@ -404,7 +404,7 @@ export default function InteriorPaintingQuoteCalculator() {
                             Get Professional Quote
                           </Button>
                           <div className="text-center">
-                            <Link href="/auth/signup" className="text-sm text-primary hover:underline">
+                            <Link href="/auth/signup" className="text-base text-primary hover:underline">
                               Save quote and customize options
                             </Link>
                           </div>
@@ -422,7 +422,7 @@ export default function InteriorPaintingQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Interior Room Painting Costs</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Specialized pricing for different room types and their unique requirements
                 </p>
               </div>
@@ -433,14 +433,14 @@ export default function InteriorPaintingQuoteCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${room.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {room.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Common
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{room.room}</h3>
-                      <div className="text-sm text-muted-foreground mb-4">
+                      <div className="text-base text-gray-200 mb-4">
                         <div>Size: {room.avgSize}</div>
                         <div>Timeline: {room.timeframe}</div>
                         <div>Complexity: {room.complexity}</div>
@@ -448,12 +448,12 @@ export default function InteriorPaintingQuoteCalculator() {
                       
                       <div className="mb-4">
                         <div className="text-2xl font-bold text-primary">{room.costRange}</div>
-                        <div className="text-sm text-muted-foreground">Typical cost range</div>
+                        <div className="text-base text-gray-200">Typical cost range</div>
                       </div>
 
                       <ul className="space-y-1 mb-6">
                         {room.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li key={featureIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {feature}
                           </li>
@@ -475,7 +475,7 @@ export default function InteriorPaintingQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Interior Paint Finish Guide</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Choose the right finish for each room based on function and durability needs
                 </p>
               </div>
@@ -486,7 +486,7 @@ export default function InteriorPaintingQuoteCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${finish.popular ? 'border-primary shadow-lg' : ''}`}>
                       {finish.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Popular
                           </span>
                         </div>
@@ -498,16 +498,16 @@ export default function InteriorPaintingQuoteCalculator() {
                       </div>
                       
                       <div className="mb-4">
-                        <div className="text-sm font-medium mb-2">Best for:</div>
-                        <div className="text-sm text-muted-foreground">{finish.bestFor}</div>
+                        <div className="text-base font-medium mb-2">Best for:</div>
+                        <div className="text-base text-gray-200">{finish.bestFor}</div>
                       </div>
 
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div>
-                          <div className="text-sm font-medium text-green-700 mb-2">Pros:</div>
+                          <div className="text-base font-medium text-green-700 mb-2">Pros:</div>
                           <ul className="space-y-1">
                             {finish.pros.map((pro, proIndex) => (
-                              <li key={proIndex} className="flex items-center text-sm">
+                              <li key={proIndex} className="flex items-center text-base">
                                 <CheckCircle className="mr-2 h-3 w-3 text-green-600" />
                                 {pro}
                               </li>
@@ -516,10 +516,10 @@ export default function InteriorPaintingQuoteCalculator() {
                         </div>
                         
                         <div>
-                          <div className="text-sm font-medium text-orange-700 mb-2">Cons:</div>
+                          <div className="text-base font-medium text-orange-700 mb-2">Cons:</div>
                           <ul className="space-y-1">
                             {finish.cons.map((con, conIndex) => (
-                              <li key={conIndex} className="text-sm text-muted-foreground">
+                              <li key={conIndex} className="text-base text-gray-200">
                                 • {con}
                               </li>
                             ))}
@@ -538,7 +538,7 @@ export default function InteriorPaintingQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Interior Painting Pricing by Room Size</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Detailed cost breakdowns based on room categories and square footage
                 </p>
               </div>
@@ -550,7 +550,7 @@ export default function InteriorPaintingQuoteCalculator() {
                       <div className="grid gap-6 lg:grid-cols-2">
                         <div>
                           <h3 className="text-xl font-semibold mb-2">{category.category}</h3>
-                          <div className="text-sm text-muted-foreground mb-4">
+                          <div className="text-base text-gray-200 mb-4">
                             <div><strong>Includes:</strong> {category.rooms}</div>
                             <div><strong>Wall area:</strong> {category.sqft}</div>
                             <div><strong>Labor time:</strong> {category.laborHours}</div>
@@ -560,15 +560,15 @@ export default function InteriorPaintingQuoteCalculator() {
                         <div>
                           <div className="grid gap-3 sm:grid-cols-3 text-center">
                             <div className="rounded bg-muted/50 p-3">
-                              <div className="text-sm text-muted-foreground">Materials</div>
+                              <div className="text-base text-gray-200">Materials</div>
                               <div className="font-medium">{category.materialCost}</div>
                             </div>
                             <div className="rounded bg-muted/50 p-3">
-                              <div className="text-sm text-muted-foreground">Labor</div>
+                              <div className="text-base text-gray-200">Labor</div>
                               <div className="font-medium">{category.laborCost}</div>
                             </div>
                             <div className="rounded bg-primary/10 p-3">
-                              <div className="text-sm text-muted-foreground">Total</div>
+                              <div className="text-base text-gray-200">Total</div>
                               <div className="font-bold text-primary">{category.totalRange}</div>
                             </div>
                           </div>
@@ -586,7 +586,7 @@ export default function InteriorPaintingQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Factors Affecting Interior Paint Costs</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Key variables that influence your interior painting project pricing
                 </p>
               </div>
@@ -598,13 +598,13 @@ export default function InteriorPaintingQuoteCalculator() {
                       <div className="grid gap-4 md:grid-cols-3 md:items-center">
                         <div>
                           <h3 className="text-lg font-semibold">{factor.factor}</h3>
-                          <p className="text-sm text-muted-foreground">{factor.description}</p>
+                          <p className="text-base text-gray-200">{factor.description}</p>
                         </div>
                         <div className="md:text-center">
-                          <div className="text-sm font-medium text-primary">{factor.impact}</div>
+                          <div className="text-base font-medium text-primary">{factor.impact}</div>
                         </div>
                         <div className="md:text-right">
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="default">
                             Calculate Impact
                           </Button>
                         </div>
@@ -628,7 +628,7 @@ export default function InteriorPaintingQuoteCalculator() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-muted/50 p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -641,7 +641,7 @@ export default function InteriorPaintingQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Painting Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Complete suite of calculators for all your painting projects
                 </p>
               </div>
@@ -651,25 +651,25 @@ export default function InteriorPaintingQuoteCalculator() {
                   <Link href="/paint-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">General Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Universal calculator for all painting projects</p>
+                    <p className="text-base text-gray-200">Universal calculator for all painting projects</p>
                   </Link>
 
                   <Link href="/exterior-painting-estimate-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Exterior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for exterior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized for exterior painting projects</p>
                   </Link>
 
                   <Link href="/paint-cost-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Cost Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Calculate total project costs and budget</p>
+                    <p className="text-base text-gray-200">Calculate total project costs and budget</p>
                   </Link>
 
                   <Link href="/apartment-painting-quote" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Apartment Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for rental and apartment painting</p>
+                    <p className="text-base text-gray-200">Specialized for rental and apartment painting</p>
                   </Link>
                 </div>
               </div>
@@ -682,7 +682,7 @@ export default function InteriorPaintingQuoteCalculator() {
               <h2 className="text-3xl font-bold mb-4">
                 Get Your Interior Painted Professionally
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Transform your home's interior with professional painting. Get accurate quotes, 
                 choose the perfect finishes, and create the space you've always wanted.
               </p>
@@ -701,7 +701,7 @@ export default function InteriorPaintingQuoteCalculator() {
                   View Pro Features
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 Professional estimates • Quality finishes • Expert advice
               </p>
             </div>

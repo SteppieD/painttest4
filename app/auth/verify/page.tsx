@@ -84,7 +84,7 @@ function VerifyContent() {
             {status === 'verifying' && (
               <div className="space-y-4">
                 <Loader2 className="h-12 w-12 animate-spin text-blue-400 mx-auto" />
-                <p className="text-gray-300">Verifying your email...</p>
+                <p className="text-gray-100">Verifying your email...</p>
               </div>
             )}
 
@@ -92,17 +92,17 @@ function VerifyContent() {
               <div className="space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-400 mx-auto" />
                 <h3 className="text-xl font-semibold text-white">Success!</h3>
-                <p className="text-gray-300">{message}</p>
+                <p className="text-gray-100">{message}</p>
                 
                 {accessCode && (
                   <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                    <p className="text-sm text-gray-400 mb-2">Your access code:</p>
+                    <p className="text-base text-gray-200 mb-2">Your access code:</p>
                     <p className="text-2xl font-mono font-bold text-white">{accessCode}</p>
-                    <p className="text-xs text-gray-400 mt-2">Save this code - you{'\''}ll need it to log in</p>
+                    <p className="text-base text-gray-200 mt-2">Save this code - you{'\''}ll need it to log in</p>
                   </div>
                 )}
                 
-                <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
+                <div className="flex items-center justify-center gap-2 text-base text-gray-200">
                   <Loader2 className="h-4 w-4 animate-spin" />
                   <span>Redirecting to dashboard...</span>
                 </div>
@@ -113,7 +113,7 @@ function VerifyContent() {
               <div className="space-y-4">
                 <XCircle className="h-12 w-12 text-red-400 mx-auto" />
                 <h3 className="text-xl font-semibold text-white">Verification Failed</h3>
-                <p className="text-gray-300">{message}</p>
+                <p className="text-gray-100">{message}</p>
                 
                 <div className="space-y-3 mt-6">
                   <Link href="/trial-signup" className="block">
@@ -146,7 +146,7 @@ export default function VerifyMagicLinkPage() {
           <CardContent className="pt-6">
             <div className="text-center space-y-4">
               <Loader2 className="h-12 w-12 animate-spin text-blue-400 mx-auto" />
-              <p className="text-gray-300">Loading...</p>
+              <p className="text-gray-100">Loading...</p>
             </div>
           </CardContent>
         </Card>

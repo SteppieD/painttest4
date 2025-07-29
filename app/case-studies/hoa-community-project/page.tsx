@@ -126,7 +126,7 @@ export default function HOACommunityProjectCaseStudy() {
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="font-bold">PaintQuote Pro</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-base font-medium">
               <Link href="/services" className="transition-colors hover:text-foreground/80">
                 Services
               </Link>
@@ -143,7 +143,7 @@ export default function HOACommunityProjectCaseStudy() {
             <div className="ml-auto">
               <Link
                 href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Get Free Quote
               </Link>
@@ -166,14 +166,14 @@ export default function HOACommunityProjectCaseStudy() {
           <section className="relative py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-base font-medium text-primary">
                   <Users className="mr-2 h-4 w-4" />
                   HOA Community Case Study
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   156-Home HOA Community Transformation
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   How we coordinated painting 156 homes in 10 weeks with zone-based scheduling, 
                   consistent quality control, and digital progress tracking that kept every 
                   homeowner informed and satisfied.
@@ -184,7 +184,7 @@ export default function HOACommunityProjectCaseStudy() {
               <div className="mt-12 overflow-hidden rounded-lg bg-muted">
                 <div className="aspect-video relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-muted-foreground">Community Transformation Overview</span>
+                    <span className="text-gray-200">Community Transformation Overview</span>
                   </div>
                 </div>
               </div>
@@ -198,22 +198,22 @@ export default function HOACommunityProjectCaseStudy() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Home className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Total Homes</p>
+                  <p className="text-base text-gray-200">Total Homes</p>
                   <p className="text-lg font-semibold">{projectDetails.totalHomes}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Users className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Daily Crew Size</p>
+                  <p className="text-base text-gray-200">Daily Crew Size</p>
                   <p className="text-lg font-semibold">{projectDetails.dailyCrew}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Calendar className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Completion Time</p>
+                  <p className="text-base text-gray-200">Completion Time</p>
                   <p className="text-lg font-semibold">{projectDetails.projectDuration}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <TrendingUp className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Volume Savings</p>
+                  <p className="text-base text-gray-200">Volume Savings</p>
                   <p className="text-lg font-semibold">30% vs Individual</p>
                 </div>
               </div>
@@ -223,15 +223,15 @@ export default function HOACommunityProjectCaseStudy() {
                 <div className="grid md:grid-cols-3 gap-8 text-center">
                   <div>
                     <p className="text-3xl font-bold">425,000</p>
-                    <p className="text-sm opacity-90">Square Feet Painted</p>
+                    <p className="text-base opacity-100">Square Feet Painted</p>
                   </div>
                   <div>
                     <p className="text-3xl font-bold">$1,275,000</p>
-                    <p className="text-sm opacity-90">Total Investment</p>
+                    <p className="text-base opacity-100">Total Investment</p>
                   </div>
                   <div>
                     <p className="text-3xl font-bold">5 Days</p>
-                    <p className="text-sm opacity-90">Ahead of Schedule</p>
+                    <p className="text-base opacity-100">Ahead of Schedule</p>
                   </div>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function HOACommunityProjectCaseStudy() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">The Challenge</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   Desert Winds HOA needed all 156 homes painted before the brutal Arizona summer. 
                   The challenge wasn't just the scale - it was coordinating with residents, 
                   maintaining consistent quality across multiple crews, and meeting strict HOA 
@@ -253,7 +253,7 @@ export default function HOACommunityProjectCaseStudy() {
                   {challenges.map((challenge, index) => (
                     <div key={index} className="rounded-lg border bg-card p-6">
                       <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
-                      <p className="text-muted-foreground">{challenge.description}</p>
+                      <p className="text-gray-200">{challenge.description}</p>
                     </div>
                   ))}
                 </div>
@@ -266,7 +266,7 @@ export default function HOACommunityProjectCaseStudy() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">Our Solution</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   We developed a comprehensive project management system specifically for this 
                   HOA community. Our approach combined military-precision scheduling with 
                   resident-friendly communication and uncompromising quality standards.
@@ -278,8 +278,8 @@ export default function HOACommunityProjectCaseStudy() {
                         <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
                         <div className="flex-1">
                           <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
-                          <p className="text-muted-foreground mb-2">{solution.description}</p>
-                          <p className="text-sm font-medium text-primary">
+                          <p className="text-gray-200 mb-2">{solution.description}</p>
+                          <p className="text-base font-medium text-primary">
                             Result: {solution.impact}
                           </p>
                         </div>
@@ -296,7 +296,7 @@ export default function HOACommunityProjectCaseStudy() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">Zone-by-Zone Execution</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   Our systematic approach divided the community into manageable zones, allowing 
                   residents to know exactly when their home would be painted.
                 </p>
@@ -304,10 +304,10 @@ export default function HOACommunityProjectCaseStudy() {
                   <table className="w-full">
                     <thead className="bg-muted">
                       <tr>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Timeline</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Homes</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Zone</th>
-                        <th className="px-6 py-4 text-left text-sm font-medium">Milestone</th>
+                        <th className="px-6 py-4 text-left text-base font-medium">Timeline</th>
+                        <th className="px-6 py-4 text-left text-base font-medium">Homes</th>
+                        <th className="px-6 py-4 text-left text-base font-medium">Zone</th>
+                        <th className="px-6 py-4 text-left text-base font-medium">Milestone</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y">
@@ -316,7 +316,7 @@ export default function HOACommunityProjectCaseStudy() {
                           <td className="px-6 py-4">{week.week}</td>
                           <td className="px-6 py-4 font-semibold">{week.homes}</td>
                           <td className="px-6 py-4">{week.zone}</td>
-                          <td className="px-6 py-4 text-sm text-muted-foreground">{week.milestone}</td>
+                          <td className="px-6 py-4 text-base text-gray-200">{week.milestone}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -337,7 +337,7 @@ export default function HOACommunityProjectCaseStudy() {
                       <Users className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Resident App</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Custom mobile app allowed residents to track progress, view schedules, 
                       approve colors, and communicate directly with project managers.
                     </p>
@@ -347,7 +347,7 @@ export default function HOACommunityProjectCaseStudy() {
                       <CheckCircle className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Quality Checkpoints</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       156-point inspection checklist for each home ensured consistent quality. 
                       Digital documentation with photos for every completed property.
                     </p>
@@ -357,7 +357,7 @@ export default function HOACommunityProjectCaseStudy() {
                       <Clock className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Speed Systems</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Assembly-line approach with specialized teams: prep crew, spray crew, 
                       detail crew, and cleanup crew maximized efficiency.
                     </p>
@@ -375,7 +375,7 @@ export default function HOACommunityProjectCaseStudy() {
                 <div className="grid gap-6 md:grid-cols-2 mb-12">
                   {results.map((result, index) => (
                     <div key={index} className="bg-muted rounded-lg p-6 text-center">
-                      <p className="text-sm text-muted-foreground mb-2">{result.metric}</p>
+                      <p className="text-base text-gray-200 mb-2">{result.metric}</p>
                       <p className="text-2xl font-bold text-primary">{result.value}</p>
                     </div>
                   ))}
@@ -392,7 +392,7 @@ export default function HOACommunityProjectCaseStudy() {
                   </blockquote>
                   <footer>
                     <strong>Richard Chen</strong>
-                    <p className="text-sm text-muted-foreground">HOA Board President, Desert Winds Community</p>
+                    <p className="text-base text-gray-200">HOA Board President, Desert Winds Community</p>
                   </footer>
                 </div>
 
@@ -405,7 +405,7 @@ export default function HOACommunityProjectCaseStudy() {
                   </blockquote>
                   <footer>
                     <strong>Sarah Mitchell</strong>
-                    <p className="text-sm text-muted-foreground">Desert Winds Resident</p>
+                    <p className="text-base text-gray-200">Desert Winds Resident</p>
                   </footer>
                 </div>
 
@@ -413,7 +413,7 @@ export default function HOACommunityProjectCaseStudy() {
                 <div className="mt-12 bg-primary text-primary-foreground rounded-lg p-8 text-center">
                   <DollarSign className="h-16 w-16 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Volume Pricing Benefit</h3>
-                  <p className="text-lg opacity-90">
+                  <p className="text-lg opacity-100">
                     Homeowners saved an average of $2,450 per home compared to individual quotes - 
                     a total community savings of $382,200
                   </p>
@@ -430,28 +430,28 @@ export default function HOACommunityProjectCaseStudy() {
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold mb-3">Volume Pricing Power</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Bulk contracting saved 30% versus individual homeowner quotes while 
                       ensuring consistent quality and warranty coverage for all properties.
                     </p>
                   </div>
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold mb-3">Communication is Key</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Digital tools and proactive updates prevented 95% of typical project 
                       complaints and created a positive experience for all residents.
                     </p>
                   </div>
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold mb-3">Zone-Based Efficiency</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Systematic zone progression allowed crews to perfect their process, 
                       increasing speed 15% by Week 3 without sacrificing quality.
                     </p>
                   </div>
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold mb-3">Property Value Impact</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Post-project appraisals showed an average 4.5% increase in home values, 
                       far exceeding the painting investment for each property.
                     </p>
@@ -468,7 +468,7 @@ export default function HOACommunityProjectCaseStudy() {
                 <h2 className="text-3xl font-bold mb-4">
                   Planning an HOA Painting Project?
                 </h2>
-                <p className="text-xl mb-8 opacity-90">
+                <p className="text-xl mb-8 opacity-100">
                   Let's discuss how we can transform your community with volume pricing, 
                   seamless coordination, and guaranteed satisfaction for every homeowner.
                 </p>
@@ -498,14 +498,14 @@ export default function HOACommunityProjectCaseStudy() {
             <div className="grid gap-8 md:grid-cols-4">
               <div>
                 <h3 className="text-lg font-semibold mb-4">About PaintQuote Pro</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-gray-200">
                   Professional painting contractors specializing in large-scale HOA and 
                   community projects with volume pricing advantages.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">HOA Services</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li>Community-Wide Projects</li>
                   <li>Volume Pricing Programs</li>
                   <li>Digital Progress Tracking</li>
@@ -514,7 +514,7 @@ export default function HOACommunityProjectCaseStudy() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Case Studies</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li><Link href="/case-studies/luxury-home-transformation" className="hover:text-foreground">Luxury Home</Link></li>
                   <li><Link href="/case-studies/commercial-office-building" className="hover:text-foreground">Office Building</Link></li>
                   <li><Link href="/case-studies/historic-restoration" className="hover:text-foreground">Historic Restoration</Link></li>
@@ -523,14 +523,14 @@ export default function HOACommunityProjectCaseStudy() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Contact</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li>1-800-PAINT-PRO</li>
                   <li>hoa@paintquotepro.com</li>
                   <li><Link href="/quote" className="hover:text-foreground">Get Free Quote</Link></li>
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. All rights reserved.</p>
             </div>
           </div>

@@ -96,8 +96,8 @@ export default function CommonQuotingMistakesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -116,7 +116,7 @@ export default function CommonQuotingMistakesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Painting Quote Mistakes Costing You Jobs
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Stop losing 40% of potential jobs to preventable quoting errors. Learn the 
                 critical mistakes and exactly how to fix them. Part of our 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> complete quoting guide</Link>.
@@ -146,7 +146,7 @@ export default function CommonQuotingMistakesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">What Are the Most Common Painting Quote Mistakes?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   The top painting quote mistakes are: Not itemizing costs (loses 35% of jobs), forgetting 
                   prep work in estimates (causes 40% profit loss), generic one-size-fits-all quotes, taking 
                   too long to deliver (48hr+ loses 60% of jobs), and poor presentation. These mistakes 
@@ -183,19 +183,19 @@ export default function CommonQuotingMistakesGuide() {
                       <div className="grid md:grid-cols-2 gap-6 mt-6">
                         <div className="bg-red-500/10 rounded p-4">
                           <h4 className="text-lg font-semibold text-red-400 mb-3">❌ Wrong Way</h4>
-                          <div className="bg-gray-900/50 rounded p-3 font-mono text-sm">
-                            <p className="text-gray-300">Interior Painting: $3,500</p>
-                            <p className="text-gray-500 mt-2">"What does this include?"</p>
+                          <div className="bg-gray-900/50 rounded p-3 font-mono text-base">
+                            <p className="text-gray-100">Interior Painting: $3,500</p>
+                            <p className="text-gray-200 mt-2">"What does this include?"</p>
                           </div>
                         </div>
                         <div className="bg-green-500/10 rounded p-4">
                           <h4 className="text-lg font-semibold text-green-400 mb-3">✓ Right Way</h4>
-                          <div className="bg-gray-900/50 rounded p-3 text-sm space-y-1">
-                            <p className="text-gray-300">Prep & Repairs: $800</p>
-                            <p className="text-gray-300">Labor (32 hrs): $1,600</p>
-                            <p className="text-gray-300">Premium Paint: $700</p>
-                            <p className="text-gray-300">Supplies: $200</p>
-                            <p className="text-gray-300">Protection: $200</p>
+                          <div className="bg-gray-900/50 rounded p-3 text-base space-y-1">
+                            <p className="text-gray-100">Prep & Repairs: $800</p>
+                            <p className="text-gray-100">Labor (32 hrs): $1,600</p>
+                            <p className="text-gray-100">Premium Paint: $700</p>
+                            <p className="text-gray-100">Supplies: $200</p>
+                            <p className="text-gray-100">Protection: $200</p>
                             <p className="text-green-400 font-semibold pt-2 border-t border-gray-700">Total: $3,500</p>
                           </div>
                         </div>
@@ -223,13 +223,13 @@ export default function CommonQuotingMistakesGuide() {
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-yellow-400 mb-4">Commonly Forgotten Prep Items:</h4>
                         <div className="grid md:grid-cols-2 gap-4">
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Patching nail holes (2-4 hrs)</li>
                             <li>• Caulking gaps (3-5 hrs)</li>
                             <li>• Sanding rough spots (2-3 hrs)</li>
                             <li>• Priming stains (1-2 hrs)</li>
                           </ul>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Moving furniture (1-2 hrs)</li>
                             <li>• Extensive masking (2-3 hrs)</li>
                             <li>• Cleaning surfaces (1-2 hrs)</li>
@@ -237,7 +237,7 @@ export default function CommonQuotingMistakesGuide() {
                           </ul>
                         </div>
                         <div className="mt-4 p-3 bg-yellow-500/10 rounded">
-                          <p className="text-sm text-yellow-400">
+                          <p className="text-base text-yellow-400">
                             <strong>Rule:</strong> Add 20-30% of painting time for prep on good surfaces, 40-50% for poor condition
                           </p>
                         </div>
@@ -265,7 +265,7 @@ export default function CommonQuotingMistakesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-red-400 mb-3">Generic Quote Signs:</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li className="flex items-start gap-2">
                               <XCircle className="h-4 w-4 text-red-400 mt-1" />
                               <span>No customer name</span>
@@ -286,7 +286,7 @@ export default function CommonQuotingMistakesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Personalization Wins:</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li className="flex items-start gap-2">
                               <CheckCircle className="h-4 w-4 text-green-400 mt-1" />
                               <span>Reference their style</span>
@@ -330,7 +330,7 @@ export default function CommonQuotingMistakesGuide() {
                         <h4 className="text-lg font-semibold text-white mb-4">Quote Delivery Timeline Impact:</h4>
                         <div className="space-y-3">
                           <div className="flex items-center justify-between">
-                            <span className="text-gray-300">Within 24 hours</span>
+                            <span className="text-gray-100">Within 24 hours</span>
                             <div className="flex items-center gap-2">
                               <div className="w-32 bg-gray-700 rounded-full h-4">
                                 <div className="bg-green-500 h-4 rounded-full" style={{width: '75%'}}></div>
@@ -339,7 +339,7 @@ export default function CommonQuotingMistakesGuide() {
                             </div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-gray-300">24-48 hours</span>
+                            <span className="text-gray-100">24-48 hours</span>
                             <div className="flex items-center gap-2">
                               <div className="w-32 bg-gray-700 rounded-full h-4">
                                 <div className="bg-yellow-500 h-4 rounded-full" style={{width: '45%'}}></div>
@@ -348,7 +348,7 @@ export default function CommonQuotingMistakesGuide() {
                             </div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-gray-300">3-7 days</span>
+                            <span className="text-gray-100">3-7 days</span>
                             <div className="flex items-center gap-2">
                               <div className="w-32 bg-gray-700 rounded-full h-4">
                                 <div className="bg-orange-500 h-4 rounded-full" style={{width: '25%'}}></div>
@@ -357,7 +357,7 @@ export default function CommonQuotingMistakesGuide() {
                             </div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-gray-300">Over 7 days</span>
+                            <span className="text-gray-100">Over 7 days</span>
                             <div className="flex items-center gap-2">
                               <div className="w-32 bg-gray-700 rounded-full h-4">
                                 <div className="bg-red-500 h-4 rounded-full" style={{width: '15%'}}></div>
@@ -390,7 +390,7 @@ export default function CommonQuotingMistakesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="bg-red-500/10 rounded p-4">
                           <h4 className="text-lg font-semibold text-red-400 mb-3">Unprofessional Signs:</h4>
-                          <ul className="space-y-2 text-gray-300 text-sm">
+                          <ul className="space-y-2 text-gray-100 text-base">
                             <li>• Handwritten on napkins</li>
                             <li>• Spelling/grammar errors</li>
                             <li>• No company branding</li>
@@ -401,7 +401,7 @@ export default function CommonQuotingMistakesGuide() {
                         </div>
                         <div className="bg-green-500/10 rounded p-4">
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Professional Elements:</h4>
-                          <ul className="space-y-2 text-gray-300 text-sm">
+                          <ul className="space-y-2 text-gray-100 text-base">
                             <li>• Clean PDF format</li>
                             <li>• Company logo/branding</li>
                             <li>• Clear section headers</li>
@@ -428,33 +428,33 @@ export default function CommonQuotingMistakesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-orange-400 mb-4">Pricing Mistakes</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-orange-400 mt-1" />
                       <div>
                         <strong>Forgetting labor burden</strong>
-                        <p className="text-sm text-gray-400">Add 30-40% to wages</p>
+                        <p className="text-base text-gray-200">Add 30-40% to wages</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-orange-400 mt-1" />
                       <div>
                         <strong>No material waste factor</strong>
-                        <p className="text-sm text-gray-400">Include 10-15% waste</p>
+                        <p className="text-base text-gray-200">Include 10-15% waste</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-orange-400 mt-1" />
                       <div>
                         <strong>Ignoring travel time</strong>
-                        <p className="text-sm text-gray-400">Bill portal-to-portal</p>
+                        <p className="text-base text-gray-200">Bill portal-to-portal</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-orange-400 mt-1" />
                       <div>
                         <strong>No contingency buffer</strong>
-                        <p className="text-sm text-gray-400">Add 10-15% cushion</p>
+                        <p className="text-base text-gray-200">Add 10-15% cushion</p>
                       </div>
                     </li>
                   </ul>
@@ -462,33 +462,33 @@ export default function CommonQuotingMistakesGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">Process Mistakes</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-yellow-400 mt-1" />
                       <div>
                         <strong>Not measuring properly</strong>
-                        <p className="text-sm text-gray-400">Never estimate by eye</p>
+                        <p className="text-base text-gray-200">Never estimate by eye</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-yellow-400 mt-1" />
                       <div>
                         <strong>Skipping the walkthrough</strong>
-                        <p className="text-sm text-gray-400">Always inspect in person</p>
+                        <p className="text-base text-gray-200">Always inspect in person</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-yellow-400 mt-1" />
                       <div>
                         <strong>No photos for reference</strong>
-                        <p className="text-sm text-gray-400">Document everything</p>
+                        <p className="text-base text-gray-200">Document everything</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <AlertTriangle className="h-4 w-4 text-yellow-400 mt-1" />
                       <div>
                         <strong>Verbal quotes only</strong>
-                        <p className="text-sm text-gray-400">Always put in writing</p>
+                        <p className="text-base text-gray-200">Always put in writing</p>
                       </div>
                     </li>
                   </ul>
@@ -500,19 +500,19 @@ export default function CommonQuotingMistakesGuide() {
                 <div className="grid md:grid-cols-4 gap-4 text-center">
                   <div>
                     <div className="text-3xl font-bold text-red-400">$75K</div>
-                    <p className="text-sm text-gray-400">Annual revenue lost</p>
+                    <p className="text-base text-gray-200">Annual revenue lost</p>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-orange-400">40%</div>
-                    <p className="text-sm text-gray-400">Lower close rate</p>
+                    <p className="text-base text-gray-200">Lower close rate</p>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-yellow-400">25%</div>
-                    <p className="text-sm text-gray-400">Profit margin loss</p>
+                    <p className="text-base text-gray-200">Profit margin loss</p>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-red-400">2.5x</div>
-                    <p className="text-sm text-gray-400">More callbacks</p>
+                    <p className="text-base text-gray-200">More callbacks</p>
                   </div>
                 </div>
               </Card>
@@ -530,7 +530,7 @@ export default function CommonQuotingMistakesGuide() {
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <CheckCircle className="h-8 w-8 text-green-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">Today: Template It</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Create quote template</li>
                     <li>• Add itemization sections</li>
                     <li>• Include all standard items</li>
@@ -541,7 +541,7 @@ export default function CommonQuotingMistakesGuide() {
                 <Card className="bg-blue-500/10 border-blue-500/30 p-6">
                   <Clock className="h-8 w-8 text-blue-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">This Week: Speed Up</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Measure during visit</li>
                     <li>• Quote same day</li>
                     <li>• Set up automation</li>
@@ -552,7 +552,7 @@ export default function CommonQuotingMistakesGuide() {
                 <Card className="bg-purple-500/10 border-purple-500/30 p-6">
                   <Calculator className="h-8 w-8 text-purple-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">This Month: Refine</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Audit win/loss reasons</li>
                     <li>• Update pricing formulas</li>
                     <li>• A/B test presentations</li>
@@ -572,7 +572,7 @@ export default function CommonQuotingMistakesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Stop Losing Jobs to Preventable Mistakes
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Our quote software eliminates these mistakes automatically. Professional templates, 
                   instant delivery, perfect calculations every time. Win 40% more jobs starting today.
                 </p>
@@ -607,7 +607,7 @@ export default function CommonQuotingMistakesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master the entire process
                     </p>
                   </Card>
@@ -619,7 +619,7 @@ export default function CommonQuotingMistakesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Presentation Tips
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Present quotes professionally
                     </p>
                   </Card>
@@ -631,7 +631,7 @@ export default function CommonQuotingMistakesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Follow-up Strategies
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Convert more quotes
                     </p>
                   </Card>

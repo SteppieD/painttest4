@@ -108,7 +108,7 @@ export default function DemoPage() {
               See AI Quotes in Action
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Watch how painting contractors create professional quotes in 60 seconds. 
               No typing, no calculations, just natural conversation.
             </p>
@@ -134,7 +134,7 @@ export default function DemoPage() {
               <Card key={index} className="glass-card p-6 text-center">
                 <feature.icon className="h-10 w-10 text-blue-400 mx-auto mb-3" />
                 <h3 className="font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-400 mb-2">{feature.description}</p>
+                <p className="text-base text-gray-200 mb-2">{feature.description}</p>
                 <Badge variant="outline" className="text-xs">
                   {feature.time}
                 </Badge>
@@ -151,7 +151,7 @@ export default function DemoPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Try It Yourself - Live Demo
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Experience the AI quote assistant right now. No signup required.
             </p>
           </div>
@@ -161,7 +161,7 @@ export default function DemoPage() {
               <h3 className="text-xl font-semibold text-white mb-4">
                 Start a Sample Quote Conversation
               </h3>
-              <p className="text-gray-400 mb-6">
+              <p className="text-gray-200 mb-6">
                 Click below to see how our AI handles real painting scenarios
               </p>
             </div>
@@ -169,7 +169,7 @@ export default function DemoPage() {
             <div className="grid md:grid-cols-2 gap-4">
               <Card className="glass-card p-6 cursor-pointer hover:border-blue-500 transition-colors">
                 <h4 className="font-semibold text-white mb-2">Interior Home Painting</h4>
-                <p className="text-sm text-gray-400 mb-4">
+                <p className="text-base text-gray-200 mb-4">
                   3-bedroom house, 2,000 sq ft, walls and ceilings
                 </p>
                 <Button className="w-full" variant="outline">
@@ -179,7 +179,7 @@ export default function DemoPage() {
 
               <Card className="glass-card p-6 cursor-pointer hover:border-blue-500 transition-colors">
                 <h4 className="font-semibold text-white mb-2">Commercial Office</h4>
-                <p className="text-sm text-gray-400 mb-4">
+                <p className="text-base text-gray-200 mb-4">
                   5,000 sq ft office space, after-hours work
                 </p>
                 <Button className="w-full" variant="outline">
@@ -214,7 +214,7 @@ export default function DemoPage() {
               <Card key={index} className="glass-card p-6 text-center">
                 <div className="text-3xl font-bold text-blue-400 mb-2">{stat.value}</div>
                 <div className="text-white font-semibold mb-1">{stat.label}</div>
-                <div className="text-sm text-gray-400">{stat.comparison}</div>
+                <div className="text-base text-gray-200">{stat.comparison}</div>
               </Card>
             ))}
           </div>
@@ -238,10 +238,10 @@ export default function DemoPage() {
                     <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4 italic">"{testimonial.quote}"</p>
+                <p className="text-gray-100 mb-4 italic">"{testimonial.quote}"</p>
                 <div className="border-t border-gray-700 pt-4">
                   <div className="font-semibold text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-400">{testimonial.company}</div>
+                  <div className="text-base text-gray-200">{testimonial.company}</div>
                   <Badge className="mt-2 bg-green-500/20 text-green-300 border-green-500/30">
                     Saves {testimonial.savings}
                   </Badge>
@@ -259,7 +259,7 @@ export default function DemoPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Transform Your Quoting Process?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Join 2,000+ contractors saving 6+ hours per week
             </p>
             
@@ -277,7 +277,7 @@ export default function DemoPage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>No credit card required</span>

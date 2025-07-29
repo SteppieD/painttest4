@@ -80,14 +80,14 @@ function CreateQuoteContent() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/dashboard">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-gray-900/70">
                   <ArrowLeft className="h-5 w-5" />
                 </Button>
               </Link>
               <h1 className="text-xl font-semibold text-white">Create Professional Quote</h1>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-300">
+              <span className="text-base text-gray-100">
                 ⚡ 2-minute quotes with AI
               </span>
             </div>
@@ -103,14 +103,14 @@ function CreateQuoteContent() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div>
-                    <p className="text-sm text-gray-400">Monthly Quote Usage</p>
+                    <p className="text-base text-gray-200">Monthly Quote Usage</p>
                     <p className="text-lg font-medium text-white">
                       {quotaInfo.used} / {quotaInfo.limit} quotes used
                     </p>
                   </div>
                   <Progress 
                     value={(quotaInfo.used / quotaInfo.limit) * 100} 
-                    className="w-32 h-2 bg-white/10 [&>div]:bg-gradient-to-r [&>div]:from-blue-400 [&>div]:to-purple-400"
+                    className="w-32 h-2 bg-gray-900/70 [&>div]:bg-gradient-to-r [&>div]:from-blue-400 [&>div]:to-purple-400"
                   />
                 </div>
                 
@@ -124,7 +124,7 @@ function CreateQuoteContent() {
                 {quotaInfo.remaining === 0 && (
                   <Link href="/dashboard/settings/billing">
                     <Button 
-                      size="sm" 
+                      size="default" 
                       className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
                     >
                       <Sparkles className="h-4 w-4 mr-2" />
@@ -147,12 +147,12 @@ function CreateQuoteContent() {
                 <AlertCircle className="h-5 w-5 text-red-400 mt-0.5" />
                 <div className="flex-1">
                   <h3 className="font-medium text-white mb-1">Monthly Quote Limit Reached</h3>
-                  <p className="text-sm text-gray-300 mb-3">
+                  <p className="text-base text-gray-100 mb-3">
                     You've used all {quotaInfo.limit} quotes in your free plan this month. 
                     Upgrade to Pro for unlimited quotes and advanced features.
                   </p>
                   <Link href="/dashboard/settings/billing">
-                    <Button size="sm" variant="outline" className="border-white/20 text-white">
+                    <Button size="default" variant="outline" className="border-white/20 text-white">
                       View Upgrade Options
                     </Button>
                   </Link>
@@ -171,7 +171,7 @@ function CreateQuoteContent() {
               <h2 className="text-2xl font-bold text-white">
                 Quick Quote Builder
               </h2>
-              <p className="text-sm text-gray-300 mt-1">
+              <p className="text-base text-gray-100 mt-1">
                 Just describe the project - get a professional quote in under 2 minutes
               </p>
             </div>
@@ -183,7 +183,7 @@ function CreateQuoteContent() {
                       <AlertCircle className="h-8 w-8 text-red-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">Quote Limit Reached</h3>
-                    <p className="text-gray-400 mb-6 max-w-md">
+                    <p className="text-gray-200 mb-6 max-w-md">
                       You've reached your monthly limit of {quotaInfo.limit} quotes. 
                       Upgrade to Pro for unlimited quotes and continue growing your business.
                     </p>
@@ -218,7 +218,7 @@ export default function CreateQuotePage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading quote builder...</p>
+          <p className="text-gray-200">Loading quote builder...</p>
         </div>
       </div>
     }>

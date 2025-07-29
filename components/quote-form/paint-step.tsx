@@ -107,14 +107,14 @@ export function PaintStep({ form }: PaintStepProps) {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-muted-foreground">
+      <p className="text-base text-gray-200">
         Select paint products for each surface type in your project
       </p>
 
       {neededPaintTypes.size === 0 ? (
         <Card>
           <CardContent className="py-8 text-center">
-            <p className="text-muted-foreground">
+            <p className="text-gray-200">
               No surfaces added yet. Please add surfaces in the previous step.
             </p>
           </CardContent>
@@ -142,7 +142,7 @@ export function PaintStep({ form }: PaintStepProps) {
                       <SelectItem key={product.id} value={product.productCode}>
                         <div>
                           <div className="font-medium">{product.name}</div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             {product.manufacturer} • ${product.costPerGallon.toFixed(2)}/gal • {product.coveragePerGallon} sq ft/gal
                           </div>
                         </div>

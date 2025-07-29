@@ -157,7 +157,7 @@ export function ChatInterface({
             description: data.message || 'You\'ve reached your monthly quote limit.',
             action: (
               <Button 
-                size="sm" 
+                size="default" 
                 onClick={() => redirectToStripePayment('professional', 'monthly')}
               >
                 Upgrade Now
@@ -321,7 +321,7 @@ export function ChatInterface({
         description: `Quote ${result.quoteId} has been created successfully.`,
         action: (
           <Button 
-            size="sm" 
+            size="default" 
             onClick={() => router.push(`/dashboard/quotes/${result.quoteId}`)}
           >
             View Quote
@@ -383,16 +383,16 @@ export function ChatInterface({
               <h3 className="font-semibold text-green-300 text-lg">
                 Quote Ready!
               </h3>
-              <p className="text-sm text-green-400/80 mt-1">
+              <p className="text-base text-green-400/80 mt-1">
                 {quoteData.customerName} - {quoteData.address}
               </p>
               
               {/* Quote Breakdown */}
               {quoteData.pricing?.breakdown && (
                 <div className="mt-4 space-y-3">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                    <h4 className="font-semibold text-sm mb-2 text-white">MATERIALS: ${quoteData.pricing.materials?.total?.toFixed(2)}</h4>
-                    <div className="space-y-1 text-sm text-gray-300">
+                  <div className="bg-gray-900/70 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <h4 className="font-semibold text-base mb-2 text-white">MATERIALS: ${quoteData.pricing.materials?.total?.toFixed(2)}</h4>
+                    <div className="space-y-1 text-base text-gray-100">
                       {quoteData.pricing.breakdown.primer && (
                         <div>• Primer: {quoteData.pricing.breakdown.primer.gallons} gallons - ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}</div>
                       )}
@@ -408,9 +408,9 @@ export function ChatInterface({
                     </div>
                   </div>
                   
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                    <h4 className="font-semibold text-sm mb-2 text-white">LABOR: ${quoteData.pricing.labor?.total?.toFixed(2)}</h4>
-                    <div className="space-y-1 text-sm text-gray-300">
+                  <div className="bg-gray-900/70 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                    <h4 className="font-semibold text-base mb-2 text-white">LABOR: ${quoteData.pricing.labor?.total?.toFixed(2)}</h4>
+                    <div className="space-y-1 text-base text-gray-100">
                       {quoteData.pricing.breakdown.prepWork && (
                         <div>• Prep work: {quoteData.pricing.breakdown.prepWork.hours} hours - ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}</div>
                       )}
@@ -429,7 +429,7 @@ export function ChatInterface({
                       Total: ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
                     </p>
                     {quoteData.pricing?.timeline && (
-                      <p className="text-sm text-green-400">
+                      <p className="text-base text-green-400">
                         Timeline: {quoteData.pricing.timeline}
                       </p>
                     )}

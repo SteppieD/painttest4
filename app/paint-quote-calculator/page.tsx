@@ -132,7 +132,7 @@ export default function PaintQuoteCalculator() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Free Paint Quote Calculator
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Generate professional painting quotes instantly. Calculate accurate costs for interior, 
                   exterior, and commercial painting projects with our AI-powered calculator.
                 </p>
@@ -156,15 +156,15 @@ export default function PaintQuoteCalculator() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">95%</div>
-                    <p className="text-sm text-muted-foreground">Accuracy Rate</p>
+                    <p className="text-base text-gray-200">Accuracy Rate</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">2 min</div>
-                    <p className="text-sm text-muted-foreground">Quote Generation</p>
+                    <p className="text-base text-gray-200">Quote Generation</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">50K+</div>
-                    <p className="text-sm text-muted-foreground">Quotes Generated</p>
+                    <p className="text-base text-gray-200">Quotes Generated</p>
                   </div>
                 </div>
               </div>
@@ -192,19 +192,19 @@ export default function PaintQuoteCalculator() {
                           </h4>
                           <div className="grid gap-4 sm:grid-cols-2">
                             <div>
-                              <label className="text-sm font-medium">Room Length (ft)</label>
+                              <label className="text-base font-medium">Room Length (ft)</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">12</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Room Width (ft)</label>
+                              <label className="text-base font-medium">Room Width (ft)</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">10</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Ceiling Height (ft)</label>
+                              <label className="text-base font-medium">Ceiling Height (ft)</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">9</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Doors & Windows</label>
+                              <label className="text-base font-medium">Doors & Windows</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">3</div>
                             </div>
                           </div>
@@ -217,16 +217,16 @@ export default function PaintQuoteCalculator() {
                           </h4>
                           <div className="space-y-3">
                             <div className="flex justify-between">
-                              <span className="text-sm">Paint Type:</span>
-                              <span className="text-sm font-medium">Premium Interior</span>
+                              <span className="text-base">Paint Type:</span>
+                              <span className="text-base font-medium">Premium Interior</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Primer Needed:</span>
-                              <span className="text-sm font-medium">Yes</span>
+                              <span className="text-base">Primer Needed:</span>
+                              <span className="text-base font-medium">Yes</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Coats Required:</span>
-                              <span className="text-sm font-medium">2</span>
+                              <span className="text-base">Coats Required:</span>
+                              <span className="text-base font-medium">2</span>
                             </div>
                           </div>
                         </div>
@@ -259,7 +259,7 @@ export default function PaintQuoteCalculator() {
                             <span>Total Quote:</span>
                             <span className="text-primary">$1,095</span>
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             Price per sq ft: $3.38
                           </div>
                         </div>
@@ -272,7 +272,7 @@ export default function PaintQuoteCalculator() {
                       </div>
 
                       <div className="mt-6 text-center">
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-base text-gray-200">
                           <Link href="/auth/signup" className="text-primary hover:underline">
                             Sign up free
                           </Link> to customize rates and save quotes
@@ -290,7 +290,7 @@ export default function PaintQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-3xl font-bold mb-4">How the Paint Quote Calculator Works</h2>
-                <p className="text-lg text-muted-foreground mb-12">
+                <p className="text-lg text-gray-200 mb-12">
                   Generate accurate painting quotes in 4 simple steps
                 </p>
               </div>
@@ -305,7 +305,7 @@ export default function PaintQuoteCalculator() {
                       <h3 className="text-lg font-semibold mb-2">
                         Step {step.step}: {step.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-gray-200">
                         {step.description}
                       </p>
                     </div>
@@ -320,7 +320,7 @@ export default function PaintQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Calculate Quotes for Any Project Type</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Our calculator handles residential, commercial, and specialty painting projects
                 </p>
               </div>
@@ -335,18 +335,18 @@ export default function PaintQuoteCalculator() {
                         {type.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start">
                             <CheckCircle className="mr-2 h-4 w-4 shrink-0 text-primary mt-0.5" />
-                            <span className="text-sm">{feature}</span>
+                            <span className="text-base">{feature}</span>
                           </li>
                         ))}
                       </ul>
 
                       <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">Average Cost:</span>
+                        <div className="flex justify-between text-base">
+                          <span className="text-gray-200">Average Cost:</span>
                           <span className="font-medium">{type.avgCost}</span>
                         </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">Time Estimate:</span>
+                        <div className="flex justify-between text-base">
+                          <span className="text-gray-200">Time Estimate:</span>
                           <span className="font-medium">{type.timeEstimate}</span>
                         </div>
                       </div>
@@ -369,7 +369,7 @@ export default function PaintQuoteCalculator() {
                   <div className="text-center">
                     <Zap className="mx-auto h-12 w-12 text-primary mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Instant Results</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Generate professional quotes in under 2 minutes instead of hours of manual calculations.
                     </p>
                   </div>
@@ -377,7 +377,7 @@ export default function PaintQuoteCalculator() {
                   <div className="text-center">
                     <Calculator className="mx-auto h-12 w-12 text-primary mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Accurate Calculations</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Built-in formulas account for paint coverage, prep work, and local labor rates.
                     </p>
                   </div>
@@ -385,7 +385,7 @@ export default function PaintQuoteCalculator() {
                   <div className="text-center">
                     <DollarSign className="mx-auto h-12 w-12 text-primary mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Maximize Profits</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Ensure proper markup and avoid underpricing jobs with built-in profit margins.
                     </p>
                   </div>
@@ -393,7 +393,7 @@ export default function PaintQuoteCalculator() {
                   <div className="text-center">
                     <Clock className="mx-auto h-12 w-12 text-primary mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Save Time</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Respond to quote requests faster and win more jobs with quick turnaround times.
                     </p>
                   </div>
@@ -401,7 +401,7 @@ export default function PaintQuoteCalculator() {
                   <div className="text-center">
                     <CheckCircle className="mx-auto h-12 w-12 text-primary mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Professional Output</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Generate branded, detailed quotes that impress clients and win more business.
                     </p>
                   </div>
@@ -409,7 +409,7 @@ export default function PaintQuoteCalculator() {
                   <div className="text-center">
                     <Building className="mx-auto h-12 w-12 text-primary mb-4" />
                     <h3 className="text-lg font-semibold mb-2">All Project Types</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Handle residential, commercial, interior, and exterior projects with one tool.
                     </p>
                   </div>
@@ -430,7 +430,7 @@ export default function PaintQuoteCalculator() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -443,7 +443,7 @@ export default function PaintQuoteCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Painting Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Explore our complete suite of painting business tools
                 </p>
               </div>
@@ -453,25 +453,25 @@ export default function PaintQuoteCalculator() {
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Quote Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized calculator for interior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized calculator for interior painting projects</p>
                   </Link>
 
                   <Link href="/exterior-painting-estimate-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Exterior Cost Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Calculate exterior painting estimates with weather factors</p>
+                    <p className="text-base text-gray-200">Calculate exterior painting estimates with weather factors</p>
                   </Link>
 
                   <Link href="/paint-estimate-templates" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Quote Templates</h3>
-                    <p className="text-sm text-muted-foreground">Professional templates for all project types</p>
+                    <p className="text-base text-gray-200">Professional templates for all project types</p>
                   </Link>
 
                   <Link href="/painting-business-software" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Business Software</h3>
-                    <p className="text-sm text-muted-foreground">Complete business management for painting contractors</p>
+                    <p className="text-base text-gray-200">Complete business management for painting contractors</p>
                   </Link>
                 </div>
               </div>
@@ -484,7 +484,7 @@ export default function PaintQuoteCalculator() {
               <h2 className="text-3xl font-bold mb-4">
                 Start Generating Professional Paint Quotes Today
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Join thousands of painters using our calculator to create accurate quotes, 
                 win more jobs, and grow their business.
               </p>
@@ -502,7 +502,7 @@ export default function PaintQuoteCalculator() {
                   View All Features
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 No credit card required • Generate unlimited quotes • Cancel anytime
               </p>
             </div>

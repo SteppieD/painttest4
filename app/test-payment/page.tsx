@@ -55,7 +55,7 @@ export default function TestPaymentPage() {
         <Card className="glass-card">
           <CardHeader>
             <CardTitle className="text-white">Test Stripe Payment Integration</CardTitle>
-            <CardDescription className="text-gray-300">
+            <CardDescription className="text-gray-100">
               This page tests the Stripe checkout flow directly
             </CardDescription>
           </CardHeader>
@@ -110,7 +110,7 @@ export default function TestPaymentPage() {
               </Button>
             </div>
 
-            <div className="text-sm text-gray-400 space-y-2">
+            <div className="text-base text-gray-200 space-y-2">
               <p>🧪 This will create a real Stripe checkout session</p>
               <p>💳 Use test card: 4242 4242 4242 4242</p>
               <p>📅 Any future expiry date, any CVC</p>
@@ -120,7 +120,7 @@ export default function TestPaymentPage() {
         </Card>
 
         <div className="mt-8 text-center">
-          <a href="/" className="text-gray-400 hover:text-white">
+          <a href="/" className="text-gray-200 hover:text-white">
             ← Back to Home
           </a>
         </div>

@@ -56,7 +56,7 @@ export function QuoteUsageIndicator() {
 
   if (hasUnlimitedQuotes) {
     return (
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+      <div className="flex items-center gap-2 text-base text-gray-200">
         <Zap className="h-4 w-4 text-yellow-500" />
         <span>Unlimited quotes ({quotesUsed} created)</span>
       </div>
@@ -67,12 +67,12 @@ export function QuoteUsageIndicator() {
     <div className="glass-card p-6 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-white">Quote Usage</span>
+          <span className="text-base font-medium text-white">Quote Usage</span>
           {isNearLimit && (
             <AlertCircle className="h-4 w-4 text-yellow-400" />
           )}
         </div>
-        <span className="text-sm text-gray-300">
+        <span className="text-base text-gray-100">
           {quotesUsed} / {quotesLimit} quotes
         </span>
       </div>
@@ -93,7 +93,7 @@ export function QuoteUsageIndicator() {
       
       {isAtLimit && (
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 backdrop-blur-sm">
-          <p className="text-sm text-red-400">
+          <p className="text-base text-red-400">
             You've reached your monthly quote limit.{' '}
             <Link href="/billing" className="font-medium text-red-300 underline hover:no-underline">
               Upgrade to Pro
@@ -105,7 +105,7 @@ export function QuoteUsageIndicator() {
       
       {isNearLimit && !isAtLimit && (
         <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3 backdrop-blur-sm">
-          <p className="text-sm text-yellow-400">
+          <p className="text-base text-yellow-400">
             You're approaching your quote limit.{' '}
             <Link href="/billing" className="font-medium text-yellow-300 underline hover:no-underline">
               Upgrade now

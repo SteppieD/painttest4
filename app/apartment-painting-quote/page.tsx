@@ -256,7 +256,7 @@ export default function ApartmentPaintingQuote() {
           <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <Building className="mr-2 h-4 w-4" />
                   Apartment Specialists
                 </div>
@@ -264,7 +264,7 @@ export default function ApartmentPaintingQuote() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Apartment Painting Quote Calculator
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Get instant, accurate painting quotes for apartments, condos, and rental properties. 
                   Specialized pricing for studio, 1BR, 2BR, and 3BR units with fast turnaround options.
                 </p>
@@ -288,15 +288,15 @@ export default function ApartmentPaintingQuote() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">24-48hr</div>
-                    <p className="text-sm text-muted-foreground">Quick Turnaround</p>
+                    <p className="text-base text-gray-200">Quick Turnaround</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">$1.50+</div>
-                    <p className="text-sm text-muted-foreground">Per Square Foot</p>
+                    <p className="text-base text-gray-200">Per Square Foot</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">500+</div>
-                    <p className="text-sm text-muted-foreground">Apartments Painted</p>
+                    <p className="text-base text-gray-200">Apartments Painted</p>
                   </div>
                 </div>
               </div>
@@ -308,7 +308,7 @@ export default function ApartmentPaintingQuote() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Apartment Painting Costs by Size</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Professional quotes tailored to your specific apartment type
                 </p>
               </div>
@@ -319,29 +319,29 @@ export default function ApartmentPaintingQuote() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${apt.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {apt.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Common
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{apt.type}</h3>
-                      <div className="text-sm text-muted-foreground mb-4">
+                      <div className="text-base text-gray-200 mb-4">
                         <div>{apt.sqft}</div>
                         <div>{apt.rooms}</div>
                       </div>
                       
                       <div className="mb-4">
                         <div className="text-2xl font-bold text-primary">{apt.avgCost}</div>
-                        <div className="text-sm text-muted-foreground">Complete project</div>
+                        <div className="text-base text-gray-200">Complete project</div>
                       </div>
 
                       <div className="space-y-2 mb-4">
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Timeline:</span>
                           <span className="font-medium">{apt.timeframe}</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Paint needed:</span>
                           <span className="font-medium">{apt.paintNeeded}</span>
                         </div>
@@ -349,7 +349,7 @@ export default function ApartmentPaintingQuote() {
 
                       <ul className="space-y-1 mb-6">
                         {apt.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li key={featureIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {feature}
                           </li>
@@ -387,7 +387,7 @@ export default function ApartmentPaintingQuote() {
                           </h4>
                           <div className="grid gap-4 sm:grid-cols-2">
                             <div>
-                              <label className="text-sm font-medium">Apartment Type</label>
+                              <label className="text-base font-medium">Apartment Type</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">1 Bedroom</div>
                             </div>
                             <div>
@@ -395,11 +395,11 @@ export default function ApartmentPaintingQuote() {
                               <div className="mt-1 p-2 border rounded bg-background text-center">650 sq ft</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Current Condition</label>
+                              <label className="text-base font-medium">Current Condition</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Good</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Timeline Needed</label>
+                              <label className="text-base font-medium">Timeline Needed</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Standard</div>
                             </div>
                           </div>
@@ -412,16 +412,16 @@ export default function ApartmentPaintingQuote() {
                           </h4>
                           <div className="space-y-3">
                             <div className="flex justify-between">
-                              <span className="text-sm">Paint Quality:</span>
-                              <span className="text-sm font-medium">Standard Premium</span>
+                              <span className="text-base">Paint Quality:</span>
+                              <span className="text-base font-medium">Standard Premium</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Color Changes:</span>
-                              <span className="text-sm font-medium">Light/Neutral</span>
+                              <span className="text-base">Color Changes:</span>
+                              <span className="text-base font-medium">Light/Neutral</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Special Features:</span>
-                              <span className="text-sm font-medium">None</span>
+                              <span className="text-base">Special Features:</span>
+                              <span className="text-base font-medium">None</span>
                             </div>
                           </div>
                         </div>
@@ -454,7 +454,7 @@ export default function ApartmentPaintingQuote() {
                             <span>Total Quote:</span>
                             <span className="text-primary">$1,100</span>
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             Price per sq ft: $2.12 | Timeline: 2-3 days
                           </div>
                         </div>
@@ -464,7 +464,7 @@ export default function ApartmentPaintingQuote() {
                             Get Professional Quote
                           </Button>
                           <div className="text-center">
-                            <Link href="/auth/signup" className="text-sm text-primary hover:underline">
+                            <Link href="/auth/signup" className="text-base text-primary hover:underline">
                               Save quote and customize options
                             </Link>
                           </div>
@@ -482,7 +482,7 @@ export default function ApartmentPaintingQuote() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Apartment Painting Considerations</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Unique factors that affect apartment painting projects
                 </p>
               </div>
@@ -497,10 +497,10 @@ export default function ApartmentPaintingQuote() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold mb-2">{item.consideration}</h3>
-                          <p className="text-sm text-muted-foreground mb-4">{item.description}</p>
+                          <p className="text-base text-gray-200 mb-4">{item.description}</p>
                           <ul className="space-y-1">
                             {item.tips.map((tip, tipIndex) => (
-                              <li key={tipIndex} className="flex items-center text-sm">
+                              <li key={tipIndex} className="flex items-center text-base">
                                 <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                                 {tip}
                               </li>
@@ -520,7 +520,7 @@ export default function ApartmentPaintingQuote() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Apartment Painting Packages</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Choose the right service level for your needs and budget
                 </p>
               </div>
@@ -531,30 +531,30 @@ export default function ApartmentPaintingQuote() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${pkg.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {pkg.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Popular
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{pkg.package}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{pkg.description}</p>
+                      <p className="text-base text-gray-200 mb-4">{pkg.description}</p>
                       
                       <div className="mb-6">
                         <div className="text-2xl font-bold text-primary">{pkg.price}</div>
-                        <div className="text-sm text-muted-foreground">Timeline: {pkg.timeframe}</div>
+                        <div className="text-base text-gray-200">Timeline: {pkg.timeframe}</div>
                       </div>
 
                       <ul className="space-y-2 mb-6">
                         {pkg.included.map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-center text-sm">
+                          <li key={itemIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {item}
                           </li>
                         ))}
                       </ul>
 
-                      <div className="mb-4 text-sm">
+                      <div className="mb-4 text-base">
                         <span className="font-medium">Best for:</span> {pkg.bestFor}
                       </div>
 
@@ -573,7 +573,7 @@ export default function ApartmentPaintingQuote() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">What Affects Apartment Painting Costs?</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Key factors that influence your final quote
                 </p>
               </div>
@@ -585,13 +585,13 @@ export default function ApartmentPaintingQuote() {
                       <div className="grid gap-4 md:grid-cols-3 md:items-center">
                         <div>
                           <h3 className="text-lg font-semibold">{factor.factor}</h3>
-                          <p className="text-sm text-muted-foreground">{factor.description}</p>
+                          <p className="text-base text-gray-200">{factor.description}</p>
                         </div>
                         <div className="md:text-center">
-                          <div className="text-sm font-medium text-primary">{factor.impact}</div>
+                          <div className="text-base font-medium text-primary">{factor.impact}</div>
                         </div>
                         <div className="md:text-right">
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="default">
                             Calculate Impact
                           </Button>
                         </div>
@@ -608,7 +608,7 @@ export default function ApartmentPaintingQuote() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">ROI for Landlords & Property Managers</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Fresh paint is one of the highest-return improvements for rental properties
                 </p>
               </div>
@@ -622,7 +622,7 @@ export default function ApartmentPaintingQuote() {
                       </div>
                       <h3 className="text-lg font-semibold mb-2">{benefit.benefit}</h3>
                       <div className="text-2xl font-bold text-primary mb-2">{benefit.value}</div>
-                      <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                      <p className="text-base text-gray-200">{benefit.description}</p>
                     </div>
                   ))}
                 </div>
@@ -642,7 +642,7 @@ export default function ApartmentPaintingQuote() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -655,7 +655,7 @@ export default function ApartmentPaintingQuote() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Painting Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Complete suite of calculators for all painting projects
                 </p>
               </div>
@@ -665,25 +665,25 @@ export default function ApartmentPaintingQuote() {
                   <Link href="/paint-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">General Paint Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Universal calculator for all painting projects</p>
+                    <p className="text-base text-gray-200">Universal calculator for all painting projects</p>
                   </Link>
 
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for interior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized for interior painting projects</p>
                   </Link>
 
                   <Link href="/paint-cost-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Cost Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Calculate total project costs and budget</p>
+                    <p className="text-base text-gray-200">Calculate total project costs and budget</p>
                   </Link>
 
                   <Link href="/how-to-estimate-interior-paint-jobs" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Estimation Guide</h3>
-                    <p className="text-sm text-muted-foreground">Learn professional estimation techniques</p>
+                    <p className="text-base text-gray-200">Learn professional estimation techniques</p>
                   </Link>
                 </div>
               </div>
@@ -696,7 +696,7 @@ export default function ApartmentPaintingQuote() {
               <h2 className="text-3xl font-bold mb-4">
                 Get Your Apartment Painted Fast & Professional
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Whether you're a tenant, landlord, or property manager, get accurate quotes 
                 and professional results with quick turnaround times.
               </p>
@@ -715,7 +715,7 @@ export default function ApartmentPaintingQuote() {
                   View Pro Features
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 Quick quotes • Professional results • Tenant-friendly scheduling
               </p>
             </div>

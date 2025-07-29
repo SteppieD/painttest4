@@ -377,7 +377,7 @@ export default function PaintingEstimatingSoftware() {
           <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <BarChart3 className="mr-2 h-4 w-4" />
                   2025 Software Comparison
                 </div>
@@ -385,7 +385,7 @@ export default function PaintingEstimatingSoftware() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Best Painting Estimating Software for Contractors
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Compare top painting estimating software tools, features, and pricing. Find the perfect 
                   solution to create accurate quotes faster and win more painting jobs.
                 </p>
@@ -409,15 +409,15 @@ export default function PaintingEstimatingSoftware() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">6</div>
-                    <p className="text-sm text-muted-foreground">Software Options</p>
+                    <p className="text-base text-gray-200">Software Options</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">200,000+</div>
-                    <p className="text-sm text-muted-foreground">Active Users</p>
+                    <p className="text-base text-gray-200">Active Users</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">Free</div>
-                    <p className="text-sm text-muted-foreground">Options Available</p>
+                    <p className="text-base text-gray-200">Options Available</p>
                   </div>
                 </div>
               </div>
@@ -429,7 +429,7 @@ export default function PaintingEstimatingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Painting Estimating Software Comparison</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Detailed comparison of the top painting estimating software options for contractors
                 </p>
               </div>
@@ -440,7 +440,7 @@ export default function PaintingEstimatingSoftware() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${software.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {software.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Best for Painters
                           </span>
                         </div>
@@ -452,27 +452,27 @@ export default function PaintingEstimatingSoftware() {
                           <div className="flex items-center gap-2 mt-1">
                             <div className="flex items-center">
                               <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
-                              <span className="text-sm font-medium ml-1">{software.rating}</span>
+                              <span className="text-base font-medium ml-1">{software.rating}</span>
                             </div>
-                            <span className="text-sm text-muted-foreground">•</span>
-                            <span className="text-sm text-muted-foreground">{software.users} users</span>
+                            <span className="text-base text-gray-200">•</span>
+                            <span className="text-base text-gray-200">{software.users} users</span>
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="text-2xl font-bold text-primary">{software.startingPrice}</div>
                           {software.billingPeriod !== 'one-time' && (
-                            <div className="text-xs text-muted-foreground">/{software.billingPeriod}</div>
+                            <div className="text-base text-gray-200">/{software.billingPeriod}</div>
                           )}
                         </div>
                       </div>
                       
-                      <p className="text-sm text-muted-foreground mb-4">{software.description}</p>
+                      <p className="text-base text-gray-200 mb-4">{software.description}</p>
 
                       <div className="mb-4">
-                        <h4 className="text-sm font-medium mb-2">Key Features:</h4>
+                        <h4 className="text-base font-medium mb-2">Key Features:</h4>
                         <ul className="space-y-1">
                           {software.features.slice(0, 4).map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-center text-sm">
+                            <li key={featureIndex} className="flex items-center text-base">
                               <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                               {feature}
                             </li>
@@ -482,24 +482,24 @@ export default function PaintingEstimatingSoftware() {
 
                       <div className="grid gap-4 sm:grid-cols-2 mb-6">
                         <div>
-                          <h4 className="text-sm font-medium text-green-700 mb-2">Pros:</h4>
+                          <h4 className="text-base font-medium text-green-700 mb-2">Pros:</h4>
                           <ul className="space-y-1">
                             {software.pros.slice(0, 3).map((pro, proIndex) => (
-                              <li key={proIndex} className="text-xs text-muted-foreground">• {pro}</li>
+                              <li key={proIndex} className="text-base text-gray-200">• {pro}</li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <h4 className="text-sm font-medium text-orange-700 mb-2">Cons:</h4>
+                          <h4 className="text-base font-medium text-orange-700 mb-2">Cons:</h4>
                           <ul className="space-y-1">
                             {software.cons.slice(0, 3).map((con, conIndex) => (
-                              <li key={conIndex} className="text-xs text-muted-foreground">• {con}</li>
+                              <li key={conIndex} className="text-base text-gray-200">• {con}</li>
                             ))}
                           </ul>
                         </div>
                       </div>
 
-                      <div className="mb-4 text-sm">
+                      <div className="mb-4 text-base">
                         <span className="font-medium">Best for:</span> {software.bestFor}
                       </div>
 
@@ -508,7 +508,7 @@ export default function PaintingEstimatingSoftware() {
                           {software.freeTrialDays ? `Start ${software.freeTrialDays}-Day Trial` : 'Learn More'}
                         </Button>
                         {software.freeTrialDays && (
-                          <p className="text-xs text-center text-muted-foreground">
+                          <p className="text-base text-center text-gray-200">
                             No credit card required
                           </p>
                         )}
@@ -525,7 +525,7 @@ export default function PaintingEstimatingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Feature Comparison</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Side-by-side comparison of key features across painting estimating software
                 </p>
               </div>
@@ -554,22 +554,22 @@ export default function PaintingEstimatingSoftware() {
                                 <tr key={itemIndex} className="border-b">
                                   <td className="p-4 font-medium">{item.feature}</td>
                                   <td className="text-center p-4">
-                                    {item.paintQuotePro ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                    {item.paintQuotePro ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-gray-200">-</span>}
                                   </td>
                                   <td className="text-center p-4">
-                                    {item.jobNimbus ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                    {item.jobNimbus ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-gray-200">-</span>}
                                   </td>
                                   <td className="text-center p-4">
-                                    {item.estimateRocket ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                    {item.estimateRocket ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-gray-200">-</span>}
                                   </td>
                                   <td className="text-center p-4">
-                                    {item.contractorForeman ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                    {item.contractorForeman ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-gray-200">-</span>}
                                   </td>
                                   <td className="text-center p-4">
-                                    {item.paintScope ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                    {item.paintScope ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-gray-200">-</span>}
                                   </td>
                                   <td className="text-center p-4">
-                                    {item.excel ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-muted-foreground">-</span>}
+                                    {item.excel ? <CheckCircle className="h-5 w-5 text-green-600 mx-auto" /> : <span className="text-gray-200">-</span>}
                                   </td>
                                 </tr>
                               ))}
@@ -589,7 +589,7 @@ export default function PaintingEstimatingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Which Software is Right for Your Business?</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Choose the best painting estimating software based on your business size and needs
                 </p>
               </div>
@@ -601,17 +601,17 @@ export default function PaintingEstimatingSoftware() {
                       <div className="grid gap-6 lg:grid-cols-3 lg:items-center">
                         <div>
                           <h3 className="text-lg font-semibold mb-2">{guide.businessType}</h3>
-                          <p className="text-sm text-muted-foreground">{guide.reason}</p>
+                          <p className="text-base text-gray-200">{guide.reason}</p>
                         </div>
                         <div className="text-center">
                           <div className="text-xl font-bold text-primary">{guide.recommendation}</div>
-                          <p className="text-sm text-muted-foreground">Recommended solution</p>
+                          <p className="text-base text-gray-200">Recommended solution</p>
                         </div>
                         <div>
-                          <h4 className="text-sm font-medium mb-2">Key features for you:</h4>
+                          <h4 className="text-base font-medium mb-2">Key features for you:</h4>
                           <ul className="space-y-1">
                             {guide.features.map((feature, featureIndex) => (
-                              <li key={featureIndex} className="flex items-center text-sm">
+                              <li key={featureIndex} className="flex items-center text-base">
                                 <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                                 {feature}
                               </li>
@@ -631,7 +631,7 @@ export default function PaintingEstimatingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">What Painting Contractors Say</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Real reviews from contractors using painting estimating software
                 </p>
               </div>
@@ -645,10 +645,10 @@ export default function PaintingEstimatingSoftware() {
                           <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
                         ))}
                       </div>
-                      <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
+                      <p className="text-gray-200 mb-4 italic">"{testimonial.text}"</p>
                       <div>
                         <div className="font-medium">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+                        <div className="text-base text-gray-200">{testimonial.company}</div>
                       </div>
                     </div>
                   ))}
@@ -669,7 +669,7 @@ export default function PaintingEstimatingSoftware() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -682,7 +682,7 @@ export default function PaintingEstimatingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Free Painting Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Try our free calculators before choosing paid software
                 </p>
               </div>
@@ -693,28 +693,28 @@ export default function PaintingEstimatingSoftware() {
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <Calculator className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Paint Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Universal calculator for all painting projects</p>
+                    <p className="text-base text-gray-200">Universal calculator for all painting projects</p>
                   </Link>
 
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <Building className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for interior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized for interior painting projects</p>
                   </Link>
 
                   <Link href="/paint-estimate-templates" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <FileText className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Free Templates</h3>
-                    <p className="text-sm text-muted-foreground">Download professional estimate templates</p>
+                    <p className="text-base text-gray-200">Download professional estimate templates</p>
                   </Link>
 
                   <Link href="/how-to-quote-painting-jobs" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <TrendingUp className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">How-To Guide</h3>
-                    <p className="text-sm text-muted-foreground">Learn professional estimation techniques</p>
+                    <p className="text-base text-gray-200">Learn professional estimation techniques</p>
                   </Link>
                 </div>
               </div>
@@ -727,7 +727,7 @@ export default function PaintingEstimatingSoftware() {
               <h2 className="text-3xl font-bold mb-4">
                 Ready to Transform Your Painting Business?
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Start with PaintQuote Pro's free plan and experience the difference professional 
                 estimating software makes for your painting business.
               </p>
@@ -746,7 +746,7 @@ export default function PaintingEstimatingSoftware() {
                   View Pricing Plans
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 Free plan available • No credit card required • 14-day pro trial
               </p>
             </div>

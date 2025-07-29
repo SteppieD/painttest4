@@ -151,7 +151,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="font-bold">PaintQuote Pro</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-base font-medium">
               <Link href="/services" className="transition-colors hover:text-foreground/80">
                 Services
               </Link>
@@ -168,7 +168,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
             <div className="ml-auto">
               <Link
                 href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Get Free Quote
               </Link>
@@ -191,14 +191,14 @@ export default function CommercialOfficeBuildingCaseStudy() {
           <section className="relative py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-base font-medium text-primary">
                   <Building2 className="mr-2 h-4 w-4" />
                   Commercial Case Study
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   15-Story Office Building Transformation
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   How we painted 250,000 sq ft of corporate offices without disrupting a 
                   single workday for 1,200 employees through strategic night and weekend scheduling.
                 </p>
@@ -208,7 +208,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
               <div className="mt-12 overflow-hidden rounded-lg bg-muted">
                 <div className="aspect-video relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-muted-foreground">Building Transformation Image</span>
+                    <span className="text-gray-200">Building Transformation Image</span>
                   </div>
                 </div>
               </div>
@@ -222,22 +222,22 @@ export default function CommercialOfficeBuildingCaseStudy() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
                 <div className="bg-background rounded-lg p-6 text-center">
                   <MapPin className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="text-base text-gray-200">Location</p>
                   <p className="text-lg font-semibold">{projectDetails.location}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Building2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Building Size</p>
+                  <p className="text-base text-gray-200">Building Size</p>
                   <p className="text-lg font-semibold">{projectDetails.squareFootage}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Work Schedule</p>
+                  <p className="text-base text-gray-200">Work Schedule</p>
                   <p className="text-lg font-semibold">{projectDetails.shifts}</p>
                 </div>
                 <div className="bg-background rounded-lg p-6 text-center">
                   <DollarSign className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-sm text-muted-foreground">Investment</p>
+                  <p className="text-base text-gray-200">Investment</p>
                   <p className="text-lg font-semibold">{projectDetails.investment}</p>
                 </div>
               </div>
@@ -249,7 +249,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">The Challenge</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   This Fortune 500 corporate headquarters required a complete interior refresh 
                   without any disruption to their 24/7 operations. With 1,200 employees working 
                   daily and sensitive areas requiring special clearance, this project demanded 
@@ -259,7 +259,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   {challenges.map((challenge, index) => (
                     <div key={index} className="rounded-lg border bg-card p-6">
                       <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
-                      <p className="text-muted-foreground">{challenge.description}</p>
+                      <p className="text-gray-200">{challenge.description}</p>
                     </div>
                   ))}
                 </div>
@@ -272,7 +272,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-3xl font-bold mb-8">Our Solution</h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   We developed a comprehensive strategy that prioritized business continuity 
                   while maintaining the highest quality standards. Our approach combined 
                   specialized scheduling, security compliance, and low-impact products.
@@ -284,8 +284,8 @@ export default function CommercialOfficeBuildingCaseStudy() {
                         <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
                         <div className="flex-1">
                           <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
-                          <p className="text-muted-foreground mb-2">{solution.description}</p>
-                          <p className="text-sm font-medium text-primary">
+                          <p className="text-gray-200 mb-2">{solution.description}</p>
+                          <p className="text-base font-medium text-primary">
                             Result: {solution.impact}
                           </p>
                         </div>
@@ -306,12 +306,12 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   {timeline.map((week, index) => (
                     <div key={index} className="rounded-lg border bg-card p-6">
                       <div className="mb-3">
-                        <span className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-0.5 text-sm font-medium text-primary">
+                        <span className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-0.5 text-base font-medium text-primary">
                           {week.week}
                         </span>
                       </div>
                       <h3 className="text-lg font-semibold mb-2">{week.description}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-gray-200">
                         <CheckCircle className="inline h-4 w-4 text-green-600 mr-1" />
                         {week.milestone}
                       </p>
@@ -331,7 +331,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   <div>
                     <Users className="h-12 w-12 text-primary mb-4" />
                     <h3 className="text-xl font-semibold mb-3">3-Crew Rotation</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Rotating crews ensured fresh workers each shift, maintaining quality 
                       and safety standards throughout night work.
                     </p>
@@ -339,7 +339,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   <div>
                     <Clock className="h-12 w-12 text-primary mb-4" />
                     <h3 className="text-xl font-semibold mb-3">Time Management</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Precise scheduling allowed completion of 2-3 floors weekly while 
                       ensuring areas were ready for morning business.
                     </p>
@@ -347,7 +347,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   <div>
                     <CheckCircle className="h-12 w-12 text-primary mb-4" />
                     <h3 className="text-xl font-semibold mb-3">Quality Control</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-200">
                       Daily inspections and sign-offs ensured consistent quality across 
                       all 15 floors despite challenging conditions.
                     </p>
@@ -365,7 +365,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                 <div className="grid gap-6 md:grid-cols-2 mb-12">
                   {results.map((result, index) => (
                     <div key={index} className="bg-muted rounded-lg p-6 text-center">
-                      <p className="text-sm text-muted-foreground mb-2">{result.metric}</p>
+                      <p className="text-base text-gray-200 mb-2">{result.metric}</p>
                       <p className="text-2xl font-bold text-primary">{result.value}</p>
                     </div>
                   ))}
@@ -383,7 +383,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   </blockquote>
                   <footer>
                     <strong>David Thompson</strong>
-                    <p className="text-sm text-muted-foreground">VP of Facilities, Fortune 500 Financial Services</p>
+                    <p className="text-base text-gray-200">VP of Facilities, Fortune 500 Financial Services</p>
                   </footer>
                 </div>
 
@@ -391,15 +391,15 @@ export default function CommercialOfficeBuildingCaseStudy() {
                 <div className="mt-12 grid gap-6 md:grid-cols-3 text-center">
                   <div>
                     <p className="text-4xl font-bold text-primary">1,200</p>
-                    <p className="text-muted-foreground">Employees Unaffected</p>
+                    <p className="text-gray-200">Employees Unaffected</p>
                   </div>
                   <div>
                     <p className="text-4xl font-bold text-primary">168</p>
-                    <p className="text-muted-foreground">Night Shift Hours</p>
+                    <p className="text-gray-200">Night Shift Hours</p>
                   </div>
                   <div>
                     <p className="text-4xl font-bold text-primary">100%</p>
-                    <p className="text-muted-foreground">On-Time Completion</p>
+                    <p className="text-gray-200">On-Time Completion</p>
                   </div>
                 </div>
               </div>
@@ -413,7 +413,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                 <h2 className="text-3xl font-bold mb-4">
                   Need Zero-Disruption Commercial Painting?
                 </h2>
-                <p className="text-xl mb-8 opacity-90">
+                <p className="text-xl mb-8 opacity-100">
                   Let's discuss how we can transform your commercial space without impacting 
                   your business operations.
                 </p>
@@ -443,14 +443,14 @@ export default function CommercialOfficeBuildingCaseStudy() {
             <div className="grid gap-8 md:grid-cols-4">
               <div>
                 <h3 className="text-lg font-semibold mb-4">About PaintQuote Pro</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-gray-200">
                   Professional painting contractors specializing in zero-disruption commercial 
                   projects and high-end residential properties.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Commercial Services</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li>Office Buildings</li>
                   <li>Retail Spaces</li>
                   <li>Healthcare Facilities</li>
@@ -459,7 +459,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Case Studies</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li><Link href="/case-studies/luxury-home-transformation" className="hover:text-foreground">Luxury Home</Link></li>
                   <li><Link href="/case-studies/commercial-office-building" className="hover:text-foreground">Office Building</Link></li>
                   <li><Link href="/case-studies/historic-restoration" className="hover:text-foreground">Historic Restoration</Link></li>
@@ -468,14 +468,14 @@ export default function CommercialOfficeBuildingCaseStudy() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Contact</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-base text-gray-200">
                   <li>1-800-PAINT-PRO</li>
                   <li>commercial@paintquotepro.com</li>
                   <li><Link href="/quote" className="hover:text-foreground">Get Free Quote</Link></li>
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. All rights reserved.</p>
             </div>
           </div>

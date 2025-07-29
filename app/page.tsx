@@ -115,7 +115,7 @@ export default function Home() {
               Not Hours
             </h1>
             
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
               While your competitors take 3-6 hours to create quotes, you'll deliver professional estimates in 10-15 minutes. 
               <span className="text-white font-semibold"> Win 40-60% more jobs</span> with speed and professionalism.
             </p>
@@ -128,7 +128,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/roi-calculator">
-                <Button size="lg" variant="ghost" className="border border-white/20 text-white hover:bg-white/10 bg-transparent px-8 py-6 text-lg">
+                <Button size="lg" variant="ghost" className="border border-white/20 text-white hover:bg-gray-900/70 bg-transparent px-8 py-6 text-lg">
                   Calculate Your ROI
                   <DollarSign className="ml-2 h-5 w-5" />
                 </Button>
@@ -136,7 +136,7 @@ export default function Home() {
             </div>
 
             {/* Social Proof */}
-            <div className="flex items-center justify-center gap-8 text-gray-400">
+            <div className="flex items-center justify-center gap-8 text-gray-200">
               <div className="flex items-center gap-2">
                 <Star className="h-5 w-5 text-yellow-400 fill-current" />
                 <span>4.9/5 Rating</span>
@@ -161,7 +161,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Stop Losing Jobs to Faster Competitors
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-200">
               Industry research shows these are the top reasons contractors lose jobs:
             </p>
           </div>
@@ -170,25 +170,25 @@ export default function Home() {
             <div className="glass-card border-red-500/20 p-6">
               <div className="text-red-400 text-3xl font-bold mb-2">40-60%</div>
               <h3 className="text-white font-semibold mb-2">Lost to Slow Response</h3>
-              <p className="text-gray-400 text-sm">Jobs lost because quotes take too long to deliver</p>
+              <p className="text-gray-200 text-base">Jobs lost because quotes take too long to deliver</p>
             </div>
 
             <div className="glass-card border-orange-500/20 p-6">
               <div className="text-orange-400 text-3xl font-bold mb-2">25-35%</div>
               <h3 className="text-white font-semibold mb-2">Unprofessional Look</h3>
-              <p className="text-gray-400 text-sm">Lost due to handwritten or basic quotes</p>
+              <p className="text-gray-200 text-base">Lost due to handwritten or basic quotes</p>
             </div>
 
             <div className="glass-card border-yellow-500/20 p-6">
               <div className="text-yellow-400 text-3xl font-bold mb-2">30-40%</div>
               <h3 className="text-white font-semibold mb-2">Poor Follow-up</h3>
-              <p className="text-gray-400 text-sm">Jobs lost from inconsistent communication</p>
+              <p className="text-gray-200 text-base">Jobs lost from inconsistent communication</p>
             </div>
 
             <div className="glass-card border-purple-500/20 p-6">
               <div className="text-purple-400 text-3xl font-bold mb-2">20-30%</div>
               <h3 className="text-white font-semibold mb-2">Pricing Errors</h3>
-              <p className="text-gray-400 text-sm">Lost from calculation mistakes</p>
+              <p className="text-gray-200 text-base">Lost from calculation mistakes</p>
             </div>
           </div>
 
@@ -233,7 +233,7 @@ export default function Home() {
                   <Zap className="h-6 w-6 text-blue-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">AI-Powered Speed</h3>
-                <p className="text-gray-400">Create accurate quotes in minutes with our intelligent assistant that understands painting projects</p>
+                <p className="text-gray-200">Create accurate quotes in minutes with our intelligent assistant that understands painting projects</p>
             </div>
 
             <div className="glass-card group hover:border-purple-500/50 transition-all p-6">
@@ -241,7 +241,7 @@ export default function Home() {
                   <Smartphone className="h-6 w-6 text-purple-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Quote On-Site</h3>
-                <p className="text-gray-400">Mobile-first design lets you create and deliver quotes before leaving the customer's property</p>
+                <p className="text-gray-200">Mobile-first design lets you create and deliver quotes before leaving the customer's property</p>
             </div>
 
             <div className="glass-card group hover:border-green-500/50 transition-all p-6">
@@ -249,7 +249,7 @@ export default function Home() {
                   <Award className="h-6 w-6 text-green-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Professional Templates</h3>
-                <p className="text-gray-400">Branded, professional quotes that make you look like a $10M company</p>
+                <p className="text-gray-200">Branded, professional quotes that make you look like a $10M company</p>
             </div>
 
             <div className="glass-card group hover:border-orange-500/50 transition-all p-6">
@@ -257,7 +257,7 @@ export default function Home() {
                   <Clock className="h-6 w-6 text-orange-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Beat the 24hr Window</h3>
-                <p className="text-gray-400">Respond to leads while they're hot - quote delivery in minutes, not days</p>
+                <p className="text-gray-200">Respond to leads while they're hot - quote delivery in minutes, not days</p>
             </div>
 
             <div className="glass-card group hover:border-yellow-500/50 transition-all p-6">
@@ -265,7 +265,7 @@ export default function Home() {
                   <BarChart3 className="h-6 w-6 text-yellow-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Track Win Rates</h3>
-                <p className="text-gray-400">See which quotes convert and optimize your pricing for maximum profit</p>
+                <p className="text-gray-200">See which quotes convert and optimize your pricing for maximum profit</p>
             </div>
 
             <div className="glass-card group hover:border-cyan-500/50 transition-all p-6">
@@ -273,7 +273,7 @@ export default function Home() {
                   <Shield className="h-6 w-6 text-cyan-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Never Lose Data</h3>
-                <p className="text-gray-400">Cloud storage ensures your quotes are always accessible and never lost</p>
+                <p className="text-gray-200">Cloud storage ensures your quotes are always accessible and never lost</p>
             </div>
           </div>
         </div>
@@ -287,7 +287,7 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Your ROI with PaintQuote Pro
                 </h2>
-                <p className="text-xl text-gray-400">
+                <p className="text-xl text-gray-200">
                   Based on industry averages for painting contractors
                 </p>
               </div>
@@ -296,23 +296,23 @@ export default function Home() {
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-white">Before PaintQuote Pro</h3>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Quotes per month:</span>
                       <span className="text-white">20</span>
                     </div>
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Win rate:</span>
                       <span className="text-white">35%</span>
                     </div>
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Jobs won:</span>
                       <span className="text-white">7</span>
                     </div>
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Avg job value:</span>
                       <span className="text-white">$2,800</span>
                     </div>
-                    <div className="flex justify-between text-gray-400 font-semibold pt-2 border-t border-white/10">
+                    <div className="flex justify-between text-gray-200 font-semibold pt-2 border-t border-white/10">
                       <span>Monthly revenue:</span>
                       <span className="text-white">$19,600</span>
                     </div>
@@ -322,23 +322,23 @@ export default function Home() {
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-white">After PaintQuote Pro</h3>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Quotes per month:</span>
                       <span className="text-green-400">30+</span>
                     </div>
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Win rate:</span>
                       <span className="text-green-400">50%+</span>
                     </div>
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Jobs won:</span>
                       <span className="text-green-400">15+</span>
                     </div>
-                    <div className="flex justify-between text-gray-400">
+                    <div className="flex justify-between text-gray-200">
                       <span>Avg job value:</span>
                       <span className="text-white">$2,800</span>
                     </div>
-                    <div className="flex justify-between text-gray-400 font-semibold pt-2 border-t border-white/10">
+                    <div className="flex justify-between text-gray-200 font-semibold pt-2 border-t border-white/10">
                       <span>Monthly revenue:</span>
                       <span className="text-green-400">$42,000+</span>
                     </div>
@@ -351,7 +351,7 @@ export default function Home() {
                   +$22,400/month
                 </div>
                 <p className="text-white">Additional revenue with PaintQuote Pro</p>
-                <p className="text-gray-400 text-sm mt-2">
+                <p className="text-gray-200 text-base mt-2">
                   That's a 283x ROI on our $79/month Pro plan
                 </p>
               </div>
@@ -375,10 +375,10 @@ export default function Home() {
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-100 mb-4">
                   "My closing rate has skyrocketed. Being able to deliver professional quotes on-site makes all the difference."
                 </p>
-                <div className="text-sm text-gray-400">
+                <div className="text-base text-gray-200">
                   <div className="font-semibold text-white">Mike Johnson</div>
                   <div>Johnson Painting Co.</div>
                 </div>
@@ -390,10 +390,10 @@ export default function Home() {
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-100 mb-4">
                   "Our quotation rate increased from 50 to over 200 per month. Game changer for our business."
                 </p>
-                <div className="text-sm text-gray-400">
+                <div className="text-base text-gray-200">
                   <div className="font-semibold text-white">Sarah Chen</div>
                   <div>Premier Paint Solutions</div>
                 </div>
@@ -405,10 +405,10 @@ export default function Home() {
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-100 mb-4">
                   "I receive compliments on how professional my estimates look. Worth every penny."
                 </p>
-                <div className="text-sm text-gray-400">
+                <div className="text-base text-gray-200">
                   <div className="font-semibold text-white">David Martinez</div>
                   <div>DM Professional Painting</div>
                 </div>
@@ -424,7 +424,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Simple, Transparent Pricing
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-200">
               Start free, upgrade when you see the value
             </p>
           </div>
@@ -435,22 +435,22 @@ export default function Home() {
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Free</h3>
                   <div className="text-4xl font-bold text-white mb-2">$0</div>
-                  <p className="text-gray-400">Perfect for getting started</p>
+                  <p className="text-gray-200">Perfect for getting started</p>
                 </div>
                 <ul className="space-y-3 mb-8">
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>5 quotes per month</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>AI-powered quote creation</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Basic templates</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Mobile access</span>
                   </li>
@@ -472,26 +472,26 @@ export default function Home() {
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
                   <div className="text-4xl font-bold text-white mb-2">$79</div>
-                  <p className="text-gray-400">For growing contractors</p>
+                  <p className="text-gray-200">For growing contractors</p>
                 </div>
                 <ul className="space-y-3 mb-8">
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Unlimited quotes</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Professional templates</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Custom branding</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Analytics & insights</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Priority support</span>
                   </li>
@@ -508,26 +508,26 @@ export default function Home() {
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Enterprise</h3>
                   <div className="text-4xl font-bold text-white mb-2">Custom</div>
-                  <p className="text-gray-400">For large teams</p>
+                  <p className="text-gray-200">For large teams</p>
                 </div>
                 <ul className="space-y-3 mb-8">
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Everything in Pro</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Multiple users</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>API access</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Custom integrations</span>
                   </li>
-                  <li className="flex items-start gap-2 text-gray-300">
+                  <li className="flex items-start gap-2 text-gray-100">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Dedicated support</span>
                   </li>
@@ -547,7 +547,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Win More Jobs?
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
                 Join 500+ painting contractors who are closing more deals with professional quotes delivered in minutes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -558,7 +558,7 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              <p className="text-gray-400 text-sm mt-4">
+              <p className="text-gray-200 text-base mt-4">
                 No credit card required • 5 free quotes • Setup in 2 minutes
               </p>
           </div>

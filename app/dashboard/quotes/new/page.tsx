@@ -93,7 +93,7 @@ export default function NewQuotePage() {
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Create New Quote</h1>
-        <p className="text-muted-foreground">
+        <p className="text-gray-200">
           Follow the steps below to create a professional painting quote
         </p>
       </div>
@@ -109,14 +109,14 @@ export default function NewQuotePage() {
                 className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 ${
                   index <= currentStep
                     ? 'border-primary bg-primary text-primary-foreground'
-                    : 'border-muted bg-background text-muted-foreground'
+                    : 'border-muted bg-background text-gray-200'
                 }`}
                 onClick={() => index < currentStep && setCurrentStep(index)}
                 disabled={index > currentStep}
               >
                 {index + 1}
               </button>
-              <span className="mt-2 text-xs font-medium">{step.title}</span>
+              <span className="mt-2 text-base font-medium">{step.title}</span>
             </div>
           ))}
         </div>

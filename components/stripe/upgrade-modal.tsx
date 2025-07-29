@@ -53,7 +53,7 @@ export function UpgradeModal({ isOpen, onClose, plan }: UpgradeModalProps) {
             <TabsContent value="monthly" className="mt-6">
               <div className="text-center mb-6">
                 <p className="text-3xl font-bold text-white">{planPrice}</p>
-                <p className="text-gray-400">per month</p>
+                <p className="text-gray-200">per month</p>
               </div>
               
               <div className="flex justify-center">
@@ -67,8 +67,8 @@ export function UpgradeModal({ isOpen, onClose, plan }: UpgradeModalProps) {
             <TabsContent value="yearly" className="mt-6">
               <div className="text-center mb-6">
                 <p className="text-3xl font-bold text-white">{yearlyPrice}</p>
-                <p className="text-gray-400">per year</p>
-                <p className="text-green-400 text-sm mt-1">
+                <p className="text-gray-200">per year</p>
+                <p className="text-green-400 text-base mt-1">
                   Save {plan === 'professional' ? '$158' : '$298'} per year!
                 </p>
               </div>
@@ -83,7 +83,7 @@ export function UpgradeModal({ isOpen, onClose, plan }: UpgradeModalProps) {
           </Tabs>
           
           <div className="mt-6 space-y-2">
-            <p className="text-sm text-gray-400 text-center">
+            <p className="text-base text-gray-200 text-center">
               • Cancel anytime from your Stripe dashboard<br/>
               • Secure payment powered by Stripe<br/>
               • Instant access after payment

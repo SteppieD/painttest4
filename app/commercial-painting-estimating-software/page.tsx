@@ -52,7 +52,7 @@ export default function CommercialPaintingEstimatingSoftware() {
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="font-bold">PaintQuote Pro</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-base font-medium">
               <Link href="/painting-contractors" className="transition-colors hover:text-foreground/80">
                 For Contractors
               </Link>
@@ -69,13 +69,13 @@ export default function CommercialPaintingEstimatingSoftware() {
             <div className="ml-auto flex items-center space-x-4">
               <Link
                 href="/demo"
-                className="text-sm font-medium transition-colors hover:text-foreground/80"
+                className="text-base font-medium transition-colors hover:text-foreground/80"
               >
                 Schedule Demo
               </Link>
               <Link
                 href="/auth/signup"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Get Started
               </Link>
@@ -91,7 +91,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Commercial Painting Estimating Software Built for Scale
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Handle million-dollar projects with confidence. From office buildings to industrial 
                   facilities, create accurate estimates for any commercial painting project.
                 </p>
@@ -111,7 +111,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                     See Enterprise Demo
                   </Link>
                 </div>
-                <p className="mt-4 text-sm text-muted-foreground">
+                <p className="mt-4 text-base text-gray-200">
                   Trusted by commercial contractors managing $100M+ in annual projects
                 </p>
               </div>
@@ -125,7 +125,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Enterprise Features for Commercial Painting Contractors
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Specialized tools designed for the complexity of commercial projects
                 </p>
               </div>
@@ -134,11 +134,11 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Building className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Multi-Building Projects</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Estimate entire campuses, shopping centers, or multi-phase developments. 
                     Break down by building, floor, or area with detailed tracking.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Building-by-building breakdown
@@ -157,11 +157,11 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <FileSpreadsheet className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Specification Compliance</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Meet exact project specifications with detailed product tracking, 
                     mil thickness calculations, and warranty requirements.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Spec sheet integration
@@ -180,11 +180,11 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <DollarSign className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Prevailing Wage Calculator</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Automatically calculate labor costs for government and union projects. 
                     Stay compliant with Davis-Bacon and local wage requirements.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Davis-Bacon rates
@@ -203,11 +203,11 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Users className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Subcontractor Management</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Manage multiple subs on large projects. Track bids, insurance, 
                     certifications, and coordinate schedules seamlessly.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Sub bid comparison
@@ -226,11 +226,11 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Shield className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Bond & Insurance Tracking</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Keep all project bonds, insurance certificates, and compliance 
                     documents organized and accessible for every project.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Performance bonds
@@ -249,11 +249,11 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <BarChart className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Enterprise Reporting</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Advanced analytics for multi-million dollar projects. Track costs, 
                     progress, and profitability across all commercial jobs.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Executive dashboards
@@ -279,7 +279,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Built for Every Type of Commercial Project
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   From office buildings to industrial facilities, we've got you covered
                 </p>
               </div>
@@ -288,7 +288,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Building className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Office Buildings</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Multi-floor offices, corporate campuses, and high-rise buildings
                   </p>
                 </div>
@@ -296,7 +296,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Briefcase className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Retail & Hospitality</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Shopping centers, hotels, restaurants, and retail chains
                   </p>
                 </div>
@@ -304,7 +304,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Building className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Healthcare Facilities</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Hospitals, medical offices, and specialized healthcare environments
                   </p>
                 </div>
@@ -312,7 +312,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Shield className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Government & Education</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Schools, universities, military bases, and government buildings
                   </p>
                 </div>
@@ -320,7 +320,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Building className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Industrial Facilities</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Warehouses, manufacturing plants, and distribution centers
                   </p>
                 </div>
@@ -328,7 +328,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Building className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Multi-Family Housing</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Apartment complexes, condos, and large residential developments
                   </p>
                 </div>
@@ -336,7 +336,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Shield className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Parking Structures</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Parking garages, decks, and specialty coating projects
                   </p>
                 </div>
@@ -344,7 +344,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <Building className="mx-auto h-12 w-12 text-primary" />
                   <h3 className="mt-4 font-semibold">Special Projects</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Stadiums, airports, bridges, and unique architectural projects
                   </p>
                 </div>
@@ -360,18 +360,18 @@ export default function CommercialPaintingEstimatingSoftware() {
                   <h2 className="text-3xl font-bold sm:text-4xl">
                     Streamlined Commercial Estimating Process
                   </h2>
-                  <p className="mt-4 text-lg text-muted-foreground">
+                  <p className="mt-4 text-lg text-gray-200">
                     Win more commercial contracts with our proven estimating workflow
                   </p>
                   
                   <div className="mt-8 space-y-6">
                     <div className="flex items-start">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                         1
                       </div>
                       <div className="ml-4">
                         <h3 className="font-semibold">Import Plans & Specifications</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           Upload blueprints, spec sheets, and project documents. AI extracts 
                           key information and populates your estimate.
                         </p>
@@ -379,12 +379,12 @@ export default function CommercialPaintingEstimatingSoftware() {
                     </div>
 
                     <div className="flex items-start">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                         2
                       </div>
                       <div className="ml-4">
                         <h3 className="font-semibold">Digital Takeoff & Measurements</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           Measure directly from plans or use our square footage calculators. 
                           Break down by area type, substrate, and coating system.
                         </p>
@@ -392,12 +392,12 @@ export default function CommercialPaintingEstimatingSoftware() {
                     </div>
 
                     <div className="flex items-start">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                         3
                       </div>
                       <div className="ml-4">
                         <h3 className="font-semibold">Calculate Materials & Labor</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           Automatically calculate paint, equipment, and labor needs. Factor in 
                           productivity rates, access requirements, and project complexity.
                         </p>
@@ -405,12 +405,12 @@ export default function CommercialPaintingEstimatingSoftware() {
                     </div>
 
                     <div className="flex items-start">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                         4
                       </div>
                       <div className="ml-4">
                         <h3 className="font-semibold">Generate Professional Proposal</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           Create detailed proposals with scope of work, exclusions, and 
                           terms. Include bonds, insurance, and compliance documentation.
                         </p>
@@ -425,42 +425,42 @@ export default function CommercialPaintingEstimatingSoftware() {
                     <div className="mt-6 space-y-4">
                       <div className="rounded-md bg-background p-4">
                         <h4 className="font-medium">Corporate Office Complex</h4>
-                        <p className="mt-1 text-sm text-muted-foreground">3 Buildings • 450,000 sq ft</p>
+                        <p className="mt-1 text-base text-gray-200">3 Buildings • 450,000 sq ft</p>
                       </div>
                       
                       <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Exterior Surfaces</span>
                           <span>$385,000</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Interior Common Areas</span>
                           <span>$215,000</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Office Spaces</span>
                           <span>$340,000</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Parking Structures</span>
                           <span>$160,000</span>
                         </div>
                       </div>
 
                       <div className="border-t pt-4">
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Materials & Equipment</span>
                           <span>$440,000</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Labor (Prevailing Wage)</span>
                           <span>$660,000</span>
                         </div>
-                        <div className="flex justify-between text-sm font-medium">
+                        <div className="flex justify-between text-base font-medium">
                           <span>Subtotal</span>
                           <span>$1,100,000</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Overhead & Profit (18%)</span>
                           <span>$198,000</span>
                         </div>
@@ -486,7 +486,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Enterprise-Grade Security & Compliance
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Meet the strictest requirements for commercial and government projects
                 </p>
               </div>
@@ -495,7 +495,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Shield className="h-10 w-10 text-primary" />
                   <h3 className="mt-4 font-semibold">SOC 2 Type II Certified</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Independently audited for security, availability, and confidentiality
                   </p>
                 </div>
@@ -503,7 +503,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Shield className="h-10 w-10 text-primary" />
                   <h3 className="mt-4 font-semibold">GDPR Compliant</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Full compliance with international data protection regulations
                   </p>
                 </div>
@@ -511,7 +511,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Shield className="h-10 w-10 text-primary" />
                   <h3 className="mt-4 font-semibold">256-bit Encryption</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Bank-level encryption for all data at rest and in transit
                   </p>
                 </div>
@@ -519,7 +519,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Shield className="h-10 w-10 text-primary" />
                   <h3 className="mt-4 font-semibold">Role-Based Access</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Granular permissions for estimators, PMs, and executives
                   </p>
                 </div>
@@ -527,7 +527,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Shield className="h-10 w-10 text-primary" />
                   <h3 className="mt-4 font-semibold">Audit Trail</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Complete history of all estimate changes and approvals
                   </p>
                 </div>
@@ -535,7 +535,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Shield className="h-10 w-10 text-primary" />
                   <h3 className="mt-4 font-semibold">API Access</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Integrate with ERP, accounting, and project management systems
                   </p>
                 </div>
@@ -550,7 +550,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Trusted by Leading Commercial Painting Contractors
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   See the results our commercial customers are achieving
                 </p>
               </div>
@@ -559,28 +559,28 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">$2.5B+</div>
                   <p className="mt-2 text-lg font-semibold">Projects Estimated</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 text-base text-gray-200">
                     Total value of commercial projects
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">47%</div>
                   <p className="mt-2 text-lg font-semibold">Win Rate Increase</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 text-base text-gray-200">
                     Average improvement in bid success
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">3.2x</div>
                   <p className="mt-2 text-lg font-semibold">Faster Estimates</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 text-base text-gray-200">
                     Compared to spreadsheets
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">98%</div>
                   <p className="mt-2 text-lg font-semibold">Accuracy Rate</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 text-base text-gray-200">
                     Within 5% of actual costs
                   </p>
                 </div>
@@ -598,7 +598,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                   </blockquote>
                   <div className="mt-6">
                     <p className="font-semibold">Michael Torres</p>
-                    <p className="text-muted-foreground">VP of Estimating, Premier Commercial Coatings</p>
+                    <p className="text-gray-200">VP of Estimating, Premier Commercial Coatings</p>
                   </div>
                 </div>
               </div>
@@ -612,7 +612,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Ready to Win More Commercial Projects?
                 </h2>
-                <p className="mt-4 text-lg opacity-90">
+                <p className="mt-4 text-lg opacity-100">
                   Join hundreds of commercial painting contractors using our software to scale their business
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -630,7 +630,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                     Schedule Enterprise Demo
                   </Link>
                 </div>
-                <p className="mt-4 text-sm opacity-75">
+                <p className="mt-4 text-base opacity-100">
                   30-day free trial • No credit card required • Full feature access
                 </p>
               </div>
@@ -643,8 +643,8 @@ export default function CommercialPaintingEstimatingSoftware() {
           <div className="container py-12">
             <div className="grid gap-8 md:grid-cols-4">
               <div>
-                <h3 className="text-sm font-semibold">Commercial Solutions</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Commercial Solutions</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/enterprise" className="hover:text-foreground">Enterprise Features</Link></li>
                   <li><Link href="/government-contracting" className="hover:text-foreground">Government Contracting</Link></li>
                   <li><Link href="/prevailing-wage-calculator" className="hover:text-foreground">Prevailing Wage Tool</Link></li>
@@ -652,8 +652,8 @@ export default function CommercialPaintingEstimatingSoftware() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Resources</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Resources</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/commercial-painting-guide" className="hover:text-foreground">Commercial Guide</Link></li>
                   <li><Link href="/rfp-response-templates" className="hover:text-foreground">RFP Templates</Link></li>
                   <li><Link href="/case-studies/commercial" className="hover:text-foreground">Commercial Case Studies</Link></li>
@@ -661,8 +661,8 @@ export default function CommercialPaintingEstimatingSoftware() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Support</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Support</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/enterprise-support" className="hover:text-foreground">Enterprise Support</Link></li>
                   <li><Link href="/implementation" className="hover:text-foreground">Implementation Services</Link></li>
                   <li><Link href="/training" className="hover:text-foreground">Training Programs</Link></li>
@@ -670,8 +670,8 @@ export default function CommercialPaintingEstimatingSoftware() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Company</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Company</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
                   <li><Link href="/security" className="hover:text-foreground">Security & Compliance</Link></li>
                   <li><Link href="/sla" className="hover:text-foreground">SLA</Link></li>
@@ -679,7 +679,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. Enterprise commercial painting estimating software.</p>
             </div>
           </div>

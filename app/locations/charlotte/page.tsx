@@ -120,7 +120,7 @@ export default function CharlottePaintingSoftware() {
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                     Painting Quote Software for Charlotte Contractors
                   </h1>
-                  <p className="mt-6 text-xl text-muted-foreground">
+                  <p className="mt-6 text-xl text-gray-200">
                     Join 220+ Queen City painting contractors who've transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
@@ -144,15 +144,15 @@ export default function CharlottePaintingSoftware() {
                   <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="text-2xl font-bold text-primary">220+</div>
-                      <p className="text-sm text-muted-foreground">Charlotte Contractors</p>
+                      <p className="text-base text-gray-200">Charlotte Contractors</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">$2.9M</div>
-                      <p className="text-sm text-muted-foreground">Quotes Generated</p>
+                      <p className="text-base text-gray-200">Quotes Generated</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">4.9/5</div>
-                      <p className="text-sm text-muted-foreground">User Rating</p>
+                      <p className="text-base text-gray-200">User Rating</p>
                     </div>
                   </div>
                 </div>
@@ -160,11 +160,11 @@ export default function CharlottePaintingSoftware() {
                 <div className="relative">
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted">
                     <div className="flex h-full items-center justify-center">
-                      <Calculator className="h-12 w-12 text-muted-foreground" />
+                      <Calculator className="h-12 w-12 text-gray-200" />
                     </div>
                   </div>
                   <div className="absolute -bottom-4 -right-4 rounded-lg bg-primary p-4 text-primary-foreground shadow-lg">
-                    <p className="text-sm font-medium">Trusted by contractors in</p>
+                    <p className="text-base font-medium">Trusted by contractors in</p>
                     <p className="text-xl font-bold">Greater Charlotte</p>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ export default function CharlottePaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold">Charlotte Painting Contractors Are Winning More Jobs</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   See how PaintQuote Pro transforms painting businesses in the Queen City
                 </p>
               </div>
@@ -186,17 +186,17 @@ export default function CharlottePaintingSoftware() {
                 <table className="w-full">
                   <thead className="bg-muted">
                     <tr>
-                      <th className="px-6 py-4 text-left text-sm font-medium">Metric</th>
-                      <th className="px-6 py-4 text-left text-sm font-medium">Traditional Method</th>
-                      <th className="px-6 py-4 text-left text-sm font-medium">With PaintQuote Pro</th>
-                      <th className="px-6 py-4 text-left text-sm font-medium">Improvement</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">Metric</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">Traditional Method</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">With PaintQuote Pro</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">Improvement</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
                     {localContractorStats.map((stat, index) => (
                       <tr key={index}>
                         <td className="px-6 py-4 font-medium">{stat.metric}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{stat.traditional}</td>
+                        <td className="px-6 py-4 text-gray-200">{stat.traditional}</td>
                         <td className="px-6 py-4 font-semibold text-primary">{stat.withPaintQuote}</td>
                         <td className="px-6 py-4 text-green-600 font-semibold">{stat.improvement}</td>
                       </tr>
@@ -212,7 +212,7 @@ export default function CharlottePaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold">Built for Charlotte's Unique Market</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Queen City painting contractors
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function CharlottePaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Cloud className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Humidity & Mildew Pricing</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Built-in calculations for Charlotte's 70% humidity. Automatically includes 
                     mildew-resistant primers, moisture barriers, and breathable topcoats 
                     to handle Carolina's humid climate.
@@ -231,7 +231,7 @@ export default function CharlottePaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <TreePine className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Pine Pollen Templates</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Pre-built quotes for Charlotte's yellow pollen season. Includes 
                     pollen-resistant sealers, easy-clean surfaces, and strategic scheduling 
                     recommendations for optimal results.
@@ -241,7 +241,7 @@ export default function CharlottePaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Building className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Banking Center Specs</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Templates for Charlotte's corporate headquarters. Includes after-hours 
                     pricing, low-VOC products, security compliance, and minimal disruption 
                     strategies for busy offices.
@@ -251,7 +251,7 @@ export default function CharlottePaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Zap className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Quote on-site from Myers Park to Ballantyne. Works offline and syncs 
                     when connected. Perfect for Charlotte's sprawling metro area from 
                     Lake Norman to Fort Mill.
@@ -261,7 +261,7 @@ export default function CharlottePaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <BarChart className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Charlotte Market Analytics</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Track win rates by neighborhood, see seasonal trends, and optimize 
                     pricing for different areas. Know exactly what works in Dilworth 
                     vs Matthews.
@@ -271,7 +271,7 @@ export default function CharlottePaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Stand out in Charlotte's competitive market with professional quotes 
                     that build trust. Include your NC license, insurance details, 
                     and customer testimonials automatically.
@@ -300,7 +300,7 @@ export default function CharlottePaintingSoftware() {
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Marcus Johnson</strong>
-                    <p className="text-sm text-muted-foreground">Queen City Pro Painters, Uptown</p>
+                    <p className="text-base text-gray-200">Queen City Pro Painters, Uptown</p>
                   </footer>
                 </div>
 
@@ -317,7 +317,7 @@ export default function CharlottePaintingSoftware() {
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Jennifer Davis</strong>
-                    <p className="text-sm text-muted-foreground">Carolina Elite Painting, Lake Norman</p>
+                    <p className="text-base text-gray-200">Carolina Elite Painting, Lake Norman</p>
                   </footer>
                 </div>
               </div>
@@ -326,7 +326,7 @@ export default function CharlottePaintingSoftware() {
                 <p className="text-lg font-semibold mb-4">Join 220+ Charlotte contractors using PaintQuote Pro</p>
                 <Link
                   href="/case-studies"
-                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                 >
                   Read More Success Stories
                 </Link>
@@ -346,21 +346,21 @@ export default function CharlottePaintingSoftware() {
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
                       <h3 className="font-semibold mb-4">Current Situation</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="text-gray-200">Quotes per month:</span>
                           <span className="font-medium">23</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="text-gray-200">Win rate:</span>
                           <span className="font-medium">25%</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="text-gray-200">Average job value:</span>
                           <span className="font-medium">$4,200</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="text-gray-200">Monthly revenue:</span>
                           <span className="font-medium">$24,150</span>
                         </li>
                       </ul>
@@ -368,21 +368,21 @@ export default function CharlottePaintingSoftware() {
                     
                     <div>
                       <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="text-gray-200">Quotes per month:</span>
                           <span className="font-medium text-primary">92</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="text-gray-200">Win rate:</span>
                           <span className="font-medium text-primary">53%</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="text-gray-200">Average job value:</span>
                           <span className="font-medium text-primary">$4,200</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="text-gray-200">Monthly revenue:</span>
                           <span className="font-medium text-primary">$204,960</span>
                         </li>
                       </ul>
@@ -392,7 +392,7 @@ export default function CharlottePaintingSoftware() {
                   <div className="mt-8 rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$180,810</p>
-                    <p className="text-sm text-muted-foreground mt-2">
+                    <p className="text-base text-gray-200 mt-2">
                       That's 3,767x return on your PaintQuote Pro investment
                     </p>
                   </div>
@@ -415,15 +415,15 @@ export default function CharlottePaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold">Serving Painting Contractors Throughout Greater Charlotte</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Wherever you operate in the Charlotte area, PaintQuote Pro helps you win more jobs
                 </p>
               </div>
               
               <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                 {serviceAreas.map((area) => (
-                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
-                    <MapPin className="h-4 w-4 mx-auto mb-1 text-muted-foreground" />
+                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-base font-medium">
+                    <MapPin className="h-4 w-4 mx-auto mb-1 text-gray-200" />
                     {area}
                   </div>
                 ))}
@@ -437,7 +437,7 @@ export default function CharlottePaintingSoftware() {
               <h2 className="text-3xl font-bold">
                 Ready to Transform Your Charlotte Painting Business?
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
+              <p className="mx-auto mt-4 max-w-2xl text-xl opacity-100">
                 Join 220+ Queen City contractors who quote faster, win more jobs, 
                 and grow their revenue with PaintQuote Pro.
               </p>
@@ -455,7 +455,7 @@ export default function CharlottePaintingSoftware() {
                   View Pricing Plans
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 No credit card required • 5 free quotes • Cancel anytime
               </p>
             </div>
@@ -466,7 +466,7 @@ export default function CharlottePaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl">
                 <h2 className="text-2xl font-bold">Why Charlotte Painting Contractors Choose PaintQuote Pro</h2>
-                <div className="mt-6 space-y-4 text-muted-foreground">
+                <div className="mt-6 space-y-4 text-gray-200">
                   <p>
                     Charlotte's painting market is unique. With over 700 painting contractors 
                     serving the Queen City, standing out requires more than just quality work. 
@@ -494,7 +494,7 @@ export default function CharlottePaintingSoftware() {
                       <Clock className="h-5 w-5 text-primary" />
                       Save 3-5 Hours Per Quote
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="mt-2 text-base text-gray-200">
                       Stop spending evenings creating quotes. Finish them on-site in minutes.
                     </p>
                   </div>
@@ -503,7 +503,7 @@ export default function CharlottePaintingSoftware() {
                       <CheckCircle className="h-5 w-5 text-primary" />
                       Win 40-60% More Jobs
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="mt-2 text-base text-gray-200">
                       Fast, professional quotes dramatically increase your win rate.
                     </p>
                   </div>
@@ -519,14 +519,14 @@ export default function CharlottePaintingSoftware() {
             <div className="grid gap-8 md:grid-cols-4">
               <div>
                 <h3 className="text-lg font-semibold">PaintQuote Pro</h3>
-                <p className="mt-4 text-sm text-muted-foreground">
+                <p className="mt-4 text-base text-gray-200">
                   AI-powered quoting software for painting contractors. 
                   Quote in minutes, win more jobs.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Charlotte Resources</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/locations/charlotte" className="hover:text-foreground">Charlotte Overview</Link></li>
                   <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
                   <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
@@ -535,7 +535,7 @@ export default function CharlottePaintingSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Features</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li>AI Quote Generation</li>
                   <li>Mobile Estimating</li>
                   <li>Professional Templates</li>
@@ -544,7 +544,7 @@ export default function CharlottePaintingSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Get Started</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
                   <li><Link href="/contact" className="hover:text-foreground">Contact Sales</Link></li>
                   <li><Link href="/support" className="hover:text-foreground">Support Center</Link></li>
@@ -552,7 +552,7 @@ export default function CharlottePaintingSoftware() {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. Software for painting contractors.</p>
             </div>
           </div>

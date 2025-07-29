@@ -34,7 +34,7 @@ export function ProjectStep({ form }: ProjectStepProps) {
         <textarea
           id="description"
           {...register('description')}
-          className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-80"
           placeholder="Describe the painting project..."
         />
       </div>
@@ -49,7 +49,7 @@ export function ProjectStep({ form }: ProjectStepProps) {
             {...register('settings.laborRate', { valueAsNumber: true })}
           />
           {errors.settings?.laborRate && (
-            <p className="mt-1 text-sm text-destructive">{errors.settings.laborRate.message}</p>
+            <p className="mt-1 text-base text-destructive">{errors.settings.laborRate.message}</p>
           )}
         </div>
 
@@ -62,7 +62,7 @@ export function ProjectStep({ form }: ProjectStepProps) {
             {...register('settings.taxRate', { valueAsNumber: true })}
           />
           {errors.settings?.taxRate && (
-            <p className="mt-1 text-sm text-destructive">{errors.settings.taxRate.message}</p>
+            <p className="mt-1 text-base text-destructive">{errors.settings.taxRate.message}</p>
           )}
         </div>
 
@@ -75,7 +75,7 @@ export function ProjectStep({ form }: ProjectStepProps) {
             {...register('settings.overheadPercent', { valueAsNumber: true })}
           />
           {errors.settings?.overheadPercent && (
-            <p className="mt-1 text-sm text-destructive">{errors.settings.overheadPercent.message}</p>
+            <p className="mt-1 text-base text-destructive">{errors.settings.overheadPercent.message}</p>
           )}
         </div>
 
@@ -88,7 +88,7 @@ export function ProjectStep({ form }: ProjectStepProps) {
             {...register('settings.profitMargin', { valueAsNumber: true })}
           />
           {errors.settings?.profitMargin && (
-            <p className="mt-1 text-sm text-destructive">{errors.settings.profitMargin.message}</p>
+            <p className="mt-1 text-base text-destructive">{errors.settings.profitMargin.message}</p>
           )}
         </div>
       </div>

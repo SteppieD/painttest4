@@ -219,7 +219,7 @@ export default function HowToEstimateInteriorPaintJobs() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   How to Estimate Interior Paint Jobs
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Complete step-by-step guide to accurate interior painting estimates. Learn professional 
                   techniques, avoid common mistakes, and price jobs profitably with real examples.
                 </p>
@@ -243,15 +243,15 @@ export default function HowToEstimateInteriorPaintJobs() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">5 Steps</div>
-                    <p className="text-sm text-muted-foreground">To Accurate Estimates</p>
+                    <p className="text-base text-gray-200">To Accurate Estimates</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">95%</div>
-                    <p className="text-sm text-muted-foreground">Accuracy Rate</p>
+                    <p className="text-base text-gray-200">Accuracy Rate</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">15 min</div>
-                    <p className="text-sm text-muted-foreground">With Our System</p>
+                    <p className="text-base text-gray-200">With Our System</p>
                   </div>
                 </div>
               </div>
@@ -263,7 +263,7 @@ export default function HowToEstimateInteriorPaintJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">5-Step Interior Paint Estimation Process</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Follow this proven method used by professional contractors to create accurate estimates
                 </p>
               </div>
@@ -282,14 +282,14 @@ export default function HowToEstimateInteriorPaintJobs() {
                         <h3 className="text-xl font-semibold mb-2">
                           Step {step.step}: {step.title}
                         </h3>
-                        <p className="text-lg text-muted-foreground mb-4">
+                        <p className="text-lg text-gray-200 mb-4">
                           {step.description}
                         </p>
                         <ul className="space-y-2">
                           {step.details.map((detail, detailIndex) => (
                             <li key={detailIndex} className="flex items-center">
                               <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                              <span className="text-sm">{detail}</span>
+                              <span className="text-base">{detail}</span>
                             </li>
                           ))}
                         </ul>
@@ -306,7 +306,7 @@ export default function HowToEstimateInteriorPaintJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Interior Painting Estimate Example</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Real calculation for a {estimationExample.roomType}
                 </p>
               </div>
@@ -341,7 +341,7 @@ export default function HowToEstimateInteriorPaintJobs() {
 
                       <div className="rounded-lg bg-muted/50 p-6">
                         <h4 className="font-medium mb-4">Measurements Breakdown</h4>
-                        <div className="space-y-3 text-sm">
+                        <div className="space-y-3 text-base">
                           <div className="flex justify-between">
                             <span>Wall perimeter:</span>
                             <span>({estimationExample.dimensions.length}+{estimationExample.dimensions.width}) × 2 = {(estimationExample.dimensions.length + estimationExample.dimensions.width) * 2} ft</span>
@@ -369,7 +369,7 @@ export default function HowToEstimateInteriorPaintJobs() {
                     <div className="space-y-6">
                       <div>
                         <h4 className="font-medium mb-4">Materials</h4>
-                        <div className="space-y-3 text-sm">
+                        <div className="space-y-3 text-base">
                           <div className="flex justify-between">
                             <span>Paint needed:</span>
                             <span>{estimationExample.calculations.gallonsNeeded} gallons</span>
@@ -383,7 +383,7 @@ export default function HowToEstimateInteriorPaintJobs() {
 
                       <div>
                         <h4 className="font-medium mb-4">Labor</h4>
-                        <div className="space-y-3 text-sm">
+                        <div className="space-y-3 text-base">
                           <div className="flex justify-between">
                             <span>Estimated hours:</span>
                             <span>{estimationExample.calculations.laborHours} hours</span>
@@ -397,7 +397,7 @@ export default function HowToEstimateInteriorPaintJobs() {
 
                       <hr className="border-muted" />
 
-                      <div className="space-y-3 text-sm">
+                      <div className="space-y-3 text-base">
                         <div className="flex justify-between">
                           <span>Subtotal:</span>
                           <span>${estimationExample.calculations.totalCost}</span>
@@ -410,7 +410,7 @@ export default function HowToEstimateInteriorPaintJobs() {
                           <span>Final Quote:</span>
                           <span className="text-primary">${estimationExample.calculations.finalQuote}</span>
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-base text-gray-200">
                           Price per sq ft: ${(estimationExample.calculations.finalQuote / estimationExample.calculations.paintableArea).toFixed(2)}
                         </div>
                       </div>
@@ -426,7 +426,7 @@ export default function HowToEstimateInteriorPaintJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Common Estimation Mistakes to Avoid</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Learn from these frequent errors that cost contractors money
                 </p>
               </div>
@@ -441,10 +441,10 @@ export default function HowToEstimateInteriorPaintJobs() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold mb-2">{mistake.mistake}</h3>
-                          <p className="text-sm text-red-600 mb-3">
+                          <p className="text-base text-red-600 mb-3">
                             <strong>Consequence:</strong> {mistake.consequence}
                           </p>
-                          <p className="text-sm text-green-700">
+                          <p className="text-base text-green-700">
                             <strong>Solution:</strong> {mistake.solution}
                           </p>
                         </div>
@@ -461,7 +461,7 @@ export default function HowToEstimateInteriorPaintJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Factors That Affect Interior Paint Job Pricing</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Understanding these variables helps you create more accurate estimates
                 </p>
               </div>
@@ -473,13 +473,13 @@ export default function HowToEstimateInteriorPaintJobs() {
                       <div className="grid gap-4 md:grid-cols-3 md:items-center">
                         <div>
                           <h3 className="text-lg font-semibold">{factor.factor}</h3>
-                          <p className="text-sm text-muted-foreground">{factor.description}</p>
+                          <p className="text-base text-gray-200">{factor.description}</p>
                         </div>
                         <div className="md:text-center">
-                          <div className="text-sm font-medium text-primary">{factor.impact}</div>
+                          <div className="text-base font-medium text-primary">{factor.impact}</div>
                         </div>
                         <div className="md:text-right">
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="default">
                             Calculate Impact
                           </Button>
                         </div>
@@ -503,7 +503,7 @@ export default function HowToEstimateInteriorPaintJobs() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -516,7 +516,7 @@ export default function HowToEstimateInteriorPaintJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Tools to Speed Up Your Estimates</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Professional tools that make estimation faster and more accurate
                 </p>
               </div>
@@ -526,25 +526,25 @@ export default function HowToEstimateInteriorPaintJobs() {
                   <Link href="/paint-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Paint Quote Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Instant calculations for any interior project</p>
+                    <p className="text-base text-gray-200">Instant calculations for any interior project</p>
                   </Link>
 
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for interior painting estimates</p>
+                    <p className="text-base text-gray-200">Specialized for interior painting estimates</p>
                   </Link>
 
                   <Link href="/painting-quote-generator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">AI Quote Generator</h3>
-                    <p className="text-sm text-muted-foreground">Generate estimates in seconds with AI</p>
+                    <p className="text-base text-gray-200">Generate estimates in seconds with AI</p>
                   </Link>
 
                   <Link href="/paint-estimate-templates" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Quote Templates</h3>
-                    <p className="text-sm text-muted-foreground">Professional templates for all projects</p>
+                    <p className="text-base text-gray-200">Professional templates for all projects</p>
                   </Link>
                 </div>
               </div>
@@ -557,7 +557,7 @@ export default function HowToEstimateInteriorPaintJobs() {
               <h2 className="text-3xl font-bold mb-4">
                 Ready to Create Professional Estimates?
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Stop spending hours on manual calculations. Use our professional tools to create 
                 accurate estimates in minutes and win more jobs.
               </p>
@@ -576,7 +576,7 @@ export default function HowToEstimateInteriorPaintJobs() {
                   Try Calculator Now
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 No credit card required • Professional results guaranteed
               </p>
             </div>

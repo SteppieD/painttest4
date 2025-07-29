@@ -168,7 +168,7 @@ export default function ApiDocsPage() {
               API Documentation
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Build powerful integrations with PaintQuote Pro's RESTful API. 
               Create quotes, manage customers, and automate your workflow.
             </p>
@@ -202,7 +202,7 @@ export default function ApiDocsPage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -216,7 +216,7 @@ export default function ApiDocsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Quick Start
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Get up and running with the PaintQuote Pro API in minutes
             </p>
           </div>
@@ -230,13 +230,13 @@ export default function ApiDocsPage() {
                 </Badge>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white mb-2">Get Your API Key</h3>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Sign in to your dashboard and navigate to Settings → API Keys
                   </p>
-                  <div className="bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                  <div className="bg-gray-800 rounded-lg p-4 font-mono text-base">
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-300">pk_live_Jk3n2KJHasdf8923hjkKJH32</span>
-                      <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white">
+                      <span className="text-gray-100">pk_live_Jk3n2KJHasdf8923hjkKJH32</span>
+                      <Button size="default" variant="ghost" className="text-gray-200 hover:text-white">
                         <Copy className="h-4 w-4" />
                       </Button>
                     </div>
@@ -253,14 +253,14 @@ export default function ApiDocsPage() {
                 </Badge>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white mb-2">Install SDK (Optional)</h3>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Use our official SDKs for faster integration
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {codeExamples.map((example, index) => (
                       <div key={index} className="bg-gray-800 rounded-lg p-4">
-                        <div className="text-sm text-gray-400 mb-2">{example.language}</div>
-                        <code className="text-sm text-gray-300 font-mono">{example.sdk}</code>
+                        <div className="text-base text-gray-200 mb-2">{example.language}</div>
+                        <code className="text-base text-gray-100 font-mono">{example.sdk}</code>
                       </div>
                     ))}
                   </div>
@@ -276,11 +276,11 @@ export default function ApiDocsPage() {
                 </Badge>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white mb-2">Make Your First Request</h3>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Create a quote using our REST API
                   </p>
                   <div className="bg-gray-800 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-sm text-gray-300 font-mono">
+                    <pre className="text-base text-gray-100 font-mono">
 {`curl -X POST https://api.paintquotepro.com/v1/quotes \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
@@ -328,13 +328,13 @@ export default function ApiDocsPage() {
                         >
                           {endpoint.method}
                         </Badge>
-                        <code className="text-gray-300 font-mono">{endpoint.path}</code>
+                        <code className="text-gray-100 font-mono">{endpoint.path}</code>
                       </div>
                       {endpoint.auth && (
-                        <Lock className="h-4 w-4 text-gray-400" />
+                        <Lock className="h-4 w-4 text-gray-200" />
                       )}
                     </div>
-                    <p className="text-gray-400 mt-2 ml-20">{endpoint.description}</p>
+                    <p className="text-gray-200 mt-2 ml-20">{endpoint.description}</p>
                   </div>
                 ))}
               </div>
@@ -365,10 +365,10 @@ export default function ApiDocsPage() {
             {useCases.map((useCase, index) => (
               <Card key={index} className="glass-card p-6">
                 <h3 className="text-xl font-semibold text-white mb-2">{useCase.title}</h3>
-                <p className="text-gray-400 mb-4">{useCase.description}</p>
+                <p className="text-gray-200 mb-4">{useCase.description}</p>
                 <div className="flex items-start gap-2">
                   <Terminal className="h-4 w-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-gray-300">{useCase.example}</p>
+                  <p className="text-base text-gray-100">{useCase.example}</p>
                 </div>
               </Card>
             ))}
@@ -391,14 +391,14 @@ export default function ApiDocsPage() {
                 <Lock className="h-8 w-8 text-blue-400 flex-shrink-0" />
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-2">Bearer Token Authentication</h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     All API requests must include your API key in the Authorization header:
                   </p>
                 </div>
               </div>
 
               <div className="bg-gray-800 rounded-lg p-6 mb-6">
-                <code className="text-sm text-gray-300 font-mono">
+                <code className="text-base text-gray-100 font-mono">
                   Authorization: Bearer YOUR_API_KEY
                 </code>
               </div>
@@ -407,7 +407,7 @@ export default function ApiDocsPage() {
                 <div className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-gray-300">
+                    <p className="text-gray-100">
                       <span className="font-semibold text-white">Keep your API key secure.</span> Never expose it in client-side code or public repositories.
                     </p>
                   </div>
@@ -415,7 +415,7 @@ export default function ApiDocsPage() {
                 <div className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-gray-300">
+                    <p className="text-gray-100">
                       <span className="font-semibold text-white">Use environment variables</span> to store your API key in production applications.
                     </p>
                   </div>
@@ -423,7 +423,7 @@ export default function ApiDocsPage() {
                 <div className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-gray-300">
+                    <p className="text-gray-100">
                       <span className="font-semibold text-white">Rotate keys regularly</span> and revoke unused keys from your dashboard.
                     </p>
                   </div>
@@ -447,7 +447,7 @@ export default function ApiDocsPage() {
             <Card className="glass-card p-6 text-center">
               <Book className="h-12 w-12 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Full Reference</h3>
-              <p className="text-gray-400 mb-4">Complete API documentation with examples</p>
+              <p className="text-gray-200 mb-4">Complete API documentation with examples</p>
               <Button variant="outline" className="w-full">
                 View Reference
               </Button>
@@ -456,7 +456,7 @@ export default function ApiDocsPage() {
             <Card className="glass-card p-6 text-center">
               <GitBranch className="h-12 w-12 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">SDKs & Libraries</h3>
-              <p className="text-gray-400 mb-4">Official client libraries for all platforms</p>
+              <p className="text-gray-200 mb-4">Official client libraries for all platforms</p>
               <Button variant="outline" className="w-full">
                 Browse SDKs
               </Button>
@@ -465,7 +465,7 @@ export default function ApiDocsPage() {
             <Card className="glass-card p-6 text-center">
               <FileText className="h-12 w-12 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Postman Collection</h3>
-              <p className="text-gray-400 mb-4">Import our API collection for testing</p>
+              <p className="text-gray-200 mb-4">Import our API collection for testing</p>
               <Button variant="outline" className="w-full">
                 Download Collection
               </Button>
@@ -481,7 +481,7 @@ export default function ApiDocsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Build?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Start integrating PaintQuote Pro into your application today
             </p>
             
@@ -497,7 +497,7 @@ export default function ApiDocsPage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <Zap className="h-4 w-4" />
                 <span>1000 requests/hour</span>

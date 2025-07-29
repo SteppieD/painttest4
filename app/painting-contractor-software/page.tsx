@@ -55,7 +55,7 @@ export default function PaintingContractorSoftwarePage() {
           <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               {/* Breadcrumbs */}
-              <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+              <nav className="flex items-center gap-2 text-base text-gray-200 mb-8">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
                 <ChevronRight className="h-4 w-4" />
                 <span className="text-white">Painting Contractor Software</span>
@@ -72,7 +72,7 @@ export default function PaintingContractorSoftwarePage() {
                     The Only <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Painting Contractor Software</span> Built for Speed
                   </h1>
                   
-                  <p className="text-xl text-gray-300 mb-8">
+                  <p className="text-xl text-gray-100 mb-8">
                     Stop losing jobs to slow quotes. Our painting contractor app helps you create professional estimates in under 10 minutes—from anywhere. 
                     <span className="text-white font-semibold"> Win 40% more jobs</span> with instant, accurate quotes.
                   </p>
@@ -92,7 +92,7 @@ export default function PaintingContractorSoftwarePage() {
                     </Link>
                   </div>
 
-                  <div className="flex items-center gap-6 text-sm text-gray-400">
+                  <div className="flex items-center gap-6 text-base text-gray-200">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       No credit card required
@@ -114,7 +114,7 @@ export default function PaintingContractorSoftwarePage() {
                         </div>
                         <div>
                           <p className="font-medium text-white">Without Software</p>
-                          <p className="text-gray-400">3-6 hours per quote, 24-48 hour delivery</p>
+                          <p className="text-gray-200">3-6 hours per quote, 24-48 hour delivery</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-4">
@@ -123,12 +123,12 @@ export default function PaintingContractorSoftwarePage() {
                         </div>
                         <div>
                           <p className="font-medium text-white">With PaintQuote Pro</p>
-                          <p className="text-gray-400">10-15 minutes, instant delivery</p>
+                          <p className="text-gray-200">10-15 minutes, instant delivery</p>
                         </div>
                       </div>
                     </div>
                     <div className="mt-6 p-4 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                      <p className="text-sm text-amber-400 font-medium">
+                      <p className="text-base text-amber-400 font-medium">
                         💡 Average contractor saves 40 hours/month
                       </p>
                     </div>
@@ -145,19 +145,19 @@ export default function PaintingContractorSoftwarePage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-white mb-2">1,000+</div>
-                <p className="text-gray-400">Active Contractors</p>
+                <p className="text-gray-200">Active Contractors</p>
               </div>
               <div>
                 <div className="text-3xl font-bold text-white mb-2">50,000+</div>
-                <p className="text-gray-400">Quotes Created</p>
+                <p className="text-gray-200">Quotes Created</p>
               </div>
               <div>
                 <div className="text-3xl font-bold text-white mb-2">$25M+</div>
-                <p className="text-gray-400">Revenue Quoted</p>
+                <p className="text-gray-200">Revenue Quoted</p>
               </div>
               <div>
                 <div className="text-3xl font-bold text-white mb-2">4.9/5</div>
-                <p className="text-gray-400">User Rating</p>
+                <p className="text-gray-200">User Rating</p>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function PaintingContractorSoftwarePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Everything a Painting Contractor Needs
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-gray-100">
                 Built by painters, for painters. Every feature designed to help you quote faster, win more jobs, and grow your painting business.
               </p>
             </div>
@@ -185,10 +185,10 @@ export default function PaintingContractorSoftwarePage() {
                   <CardTitle className="text-white">AI-Powered Estimating</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Just describe the job in plain English. Our AI understands painting terminology and calculates accurate estimates instantly.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       Auto-calculates paint & materials
@@ -214,10 +214,10 @@ export default function PaintingContractorSoftwarePage() {
                   <CardTitle className="text-white">Quote From Anywhere</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Create quotes on-site using your phone or tablet. No laptop needed. Works offline and syncs when connected.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       iPhone & Android apps
@@ -243,10 +243,10 @@ export default function PaintingContractorSoftwarePage() {
                   <CardTitle className="text-white">Win More Jobs</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Professional quote templates that convert. Include your logo, terms, and payment options automatically.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       Branded PDF quotes
@@ -272,10 +272,10 @@ export default function PaintingContractorSoftwarePage() {
                   <CardTitle className="text-white">Never Miss Costs</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Built-in calculators for every surface type. Automatically includes prep work, primers, and multiple coats.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       Interior & exterior rates
@@ -301,10 +301,10 @@ export default function PaintingContractorSoftwarePage() {
                   <CardTitle className="text-white">Track Everything</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     Keep all your quotes, customers, and jobs organized. See your pipeline and never lose track of leads.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       Customer database
@@ -330,10 +330,10 @@ export default function PaintingContractorSoftwarePage() {
                   <CardTitle className="text-white">Grow Your Business</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-200 mb-4">
                     See which jobs make you the most money. Track win rates, average job size, and profit margins.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-emerald-400" />
                       Win rate analytics
@@ -361,7 +361,7 @@ export default function PaintingContractorSoftwarePage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 See How Much You'll Save
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Most painting contractors save 40+ hours per month and win 35% more jobs with our software.
               </p>
               <Link href="/roi-calculator">
@@ -381,7 +381,7 @@ export default function PaintingContractorSoftwarePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Built for Every Painting Job
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-gray-100">
                 From single rooms to commercial buildings, our painting contractor app handles it all.
               </p>
             </div>
@@ -395,10 +395,10 @@ export default function PaintingContractorSoftwarePage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">Residential Painting</h3>
-                    <p className="text-gray-400">Perfect for house painters and residential contractors</p>
+                    <p className="text-gray-200">Perfect for house painters and residential contractors</p>
                   </div>
                 </div>
-                <ul className="space-y-3 text-gray-300">
+                <ul className="space-y-3 text-gray-100">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-emerald-400 mt-0.5" />
                     <span>Interior room painting quotes</span>
@@ -430,10 +430,10 @@ export default function PaintingContractorSoftwarePage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">Commercial Painting</h3>
-                    <p className="text-gray-400">Ideal for commercial painting contractors</p>
+                    <p className="text-gray-200">Ideal for commercial painting contractors</p>
                   </div>
                 </div>
-                <ul className="space-y-3 text-gray-300">
+                <ul className="space-y-3 text-gray-100">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-emerald-400 mt-0.5" />
                     <span>Office building estimates</span>
@@ -467,7 +467,7 @@ export default function PaintingContractorSoftwarePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Why Painters Choose PaintQuote Pro
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-gray-100">
                 See how we compare to traditional methods and other painting software
               </p>
             </div>
@@ -476,32 +476,32 @@ export default function PaintingContractorSoftwarePage() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-white/10">
-                    <th className="text-left py-4 px-4 text-gray-400 font-medium">Feature</th>
+                    <th className="text-left py-4 px-4 text-gray-200 font-medium">Feature</th>
                     <th className="text-center py-4 px-4">
                       <div className="text-white font-semibold">PaintQuote Pro</div>
-                      <div className="text-sm text-gray-400">Our Software</div>
+                      <div className="text-base text-gray-200">Our Software</div>
                     </th>
                     <th className="text-center py-4 px-4">
-                      <div className="text-gray-400 font-semibold">Manual Method</div>
-                      <div className="text-sm text-gray-500">Spreadsheets</div>
+                      <div className="text-gray-200 font-semibold">Manual Method</div>
+                      <div className="text-base text-gray-200">Spreadsheets</div>
                     </th>
                     <th className="text-center py-4 px-4">
-                      <div className="text-gray-400 font-semibold">Other Software</div>
-                      <div className="text-sm text-gray-500">Generic CRMs</div>
+                      <div className="text-gray-200 font-semibold">Other Software</div>
+                      <div className="text-base text-gray-200">Generic CRMs</div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-white/5">
-                    <td className="py-4 px-4 text-gray-300">Time to Create Quote</td>
+                    <td className="py-4 px-4 text-gray-100">Time to Create Quote</td>
                     <td className="text-center py-4 px-4">
                       <span className="text-emerald-400 font-semibold">10-15 min</span>
                     </td>
-                    <td className="text-center py-4 px-4 text-gray-500">3-6 hours</td>
-                    <td className="text-center py-4 px-4 text-gray-500">30-60 min</td>
+                    <td className="text-center py-4 px-4 text-gray-200">3-6 hours</td>
+                    <td className="text-center py-4 px-4 text-gray-200">30-60 min</td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="py-4 px-4 text-gray-300">Painting-Specific Features</td>
+                    <td className="py-4 px-4 text-gray-100">Painting-Specific Features</td>
                     <td className="text-center py-4 px-4">
                       <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                     </td>
@@ -513,7 +513,7 @@ export default function PaintingContractorSoftwarePage() {
                     </td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="py-4 px-4 text-gray-300">Mobile App</td>
+                    <td className="py-4 px-4 text-gray-100">Mobile App</td>
                     <td className="text-center py-4 px-4">
                       <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                     </td>
@@ -525,7 +525,7 @@ export default function PaintingContractorSoftwarePage() {
                     </td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="py-4 px-4 text-gray-300">AI Assistance</td>
+                    <td className="py-4 px-4 text-gray-100">AI Assistance</td>
                     <td className="text-center py-4 px-4">
                       <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                     </td>
@@ -537,12 +537,12 @@ export default function PaintingContractorSoftwarePage() {
                     </td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="py-4 px-4 text-gray-300">Price</td>
+                    <td className="py-4 px-4 text-gray-100">Price</td>
                     <td className="text-center py-4 px-4">
                       <span className="text-emerald-400 font-semibold">$79/mo</span>
                     </td>
-                    <td className="text-center py-4 px-4 text-gray-500">Free (hidden costs)</td>
-                    <td className="text-center py-4 px-4 text-gray-500">$150-300/mo</td>
+                    <td className="text-center py-4 px-4 text-gray-200">Free (hidden costs)</td>
+                    <td className="text-center py-4 px-4 text-gray-200">$150-300/mo</td>
                   </tr>
                 </tbody>
               </table>
@@ -557,7 +557,7 @@ export default function PaintingContractorSoftwarePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Trusted by Painting Contractors Nationwide
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-gray-100">
                 Join thousands of painters who've transformed their business with our software
               </p>
             </div>
@@ -570,14 +570,14 @@ export default function PaintingContractorSoftwarePage() {
                       <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <p className="text-gray-300 mb-4">
+                  <p className="text-gray-100 mb-4">
                     "Cut my quoting time from 4 hours to 15 minutes. I'm winning more jobs because I can respond to leads instantly. Game changer!"
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500"></div>
                     <div>
                       <p className="font-semibold text-white">Mike Rodriguez</p>
-                      <p className="text-sm text-gray-400">Premium Painting LLC</p>
+                      <p className="text-base text-gray-200">Premium Painting LLC</p>
                     </div>
                   </div>
                 </CardContent>
@@ -590,14 +590,14 @@ export default function PaintingContractorSoftwarePage() {
                       <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <p className="text-gray-300 mb-4">
+                  <p className="text-gray-100 mb-4">
                     "The AI feature is incredible. I describe the job and it creates a perfect quote. My close rate went from 30% to 48%!"
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-500"></div>
                     <div>
                       <p className="font-semibold text-white">Sarah Chen</p>
-                      <p className="text-sm text-gray-400">Chen's Custom Painting</p>
+                      <p className="text-base text-gray-200">Chen's Custom Painting</p>
                     </div>
                   </div>
                 </CardContent>
@@ -610,14 +610,14 @@ export default function PaintingContractorSoftwarePage() {
                       <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <p className="text-gray-300 mb-4">
+                  <p className="text-gray-100 mb-4">
                     "Finally, software built for painters! Handles everything from cabinets to commercial jobs. Worth every penny."
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
                     <div>
                       <p className="font-semibold text-white">David Thompson</p>
-                      <p className="text-sm text-gray-400">Thompson Pro Painters</p>
+                      <p className="text-base text-gray-200">Thompson Pro Painters</p>
                     </div>
                   </div>
                 </CardContent>
@@ -634,7 +634,7 @@ export default function PaintingContractorSoftwarePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Try Our Free Tools
                 </h2>
-                <p className="text-xl text-gray-300">
+                <p className="text-xl text-gray-100">
                   See how much time and money you could save with better quoting software
                 </p>
               </div>
@@ -645,7 +645,7 @@ export default function PaintingContractorSoftwarePage() {
               </div>
               
               <div className="mt-12 text-center">
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-100 mb-6">
                   Ready to create quotes this fast for your actual jobs?
                 </p>
                 <Link href="/trial-signup">
@@ -667,7 +667,7 @@ export default function PaintingContractorSoftwarePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   See It In Action
                 </h2>
-                <p className="text-xl text-gray-300">
+                <p className="text-xl text-gray-100">
                   Watch how fast you can create a professional painting quote
                 </p>
               </div>
@@ -675,7 +675,7 @@ export default function PaintingContractorSoftwarePage() {
               <div className="relative aspect-video glass-card overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                   <div className="text-center">
-                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform cursor-pointer">
+                    <div className="w-20 h-20 rounded-full bg-gray-900/70 backdrop-blur flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform cursor-pointer">
                       <Play className="h-10 w-10 text-white ml-1" />
                     </div>
                     <p className="text-white font-medium">2-Minute Demo</p>
@@ -699,7 +699,7 @@ export default function PaintingContractorSoftwarePage() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Is this painting contractor software easy to learn?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Absolutely! Most contractors are creating quotes within 10 minutes of signing up. Our AI assistant guides you through everything, and we offer free onboarding calls to get you started.
                   </p>
                 </div>
@@ -708,7 +708,7 @@ export default function PaintingContractorSoftwarePage() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Does the paint contractor app work offline?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Yes! You can create quotes on-site without internet. The app syncs automatically when you're back online. Perfect for estimates at properties with poor cell service.
                   </p>
                 </div>
@@ -717,7 +717,7 @@ export default function PaintingContractorSoftwarePage() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Can I customize quotes for my painting business?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Yes! Add your logo, set your own rates, customize terms, and create templates for different job types. The software adapts to how you run your painting business.
                   </p>
                 </div>
@@ -726,7 +726,7 @@ export default function PaintingContractorSoftwarePage() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     What makes this better than other contractor software?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     We're built specifically for painters. While generic contractor software tries to serve everyone, we focus on painting-specific features like surface calculators, paint quantity estimates, and coating specifications.
                   </p>
                 </div>
@@ -746,7 +746,7 @@ export default function PaintingContractorSoftwarePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Start Winning More Painting Jobs Today
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Join 1,000+ painting contractors who quote faster, look more professional, and win more jobs with PaintQuote Pro.
               </p>
               
@@ -765,7 +765,7 @@ export default function PaintingContractorSoftwarePage() {
                 </Link>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-400">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald-400" />
                   No credit card required
@@ -793,15 +793,15 @@ export default function PaintingContractorSoftwarePage() {
               <div className="grid md:grid-cols-3 gap-6">
                 <Link href="/paint-estimate-templates" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Free Quote Templates</h4>
-                  <p className="text-gray-400 text-sm">Download professional painting quote templates</p>
+                  <p className="text-gray-200 text-base">Download professional painting quote templates</p>
                 </Link>
                 <Link href="/interior-painting-quote-calculator" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Interior Paint Calculator</h4>
-                  <p className="text-gray-400 text-sm">Calculate interior painting costs instantly</p>
+                  <p className="text-gray-200 text-base">Calculate interior painting costs instantly</p>
                 </Link>
                 <Link href="/how-to-quote-painting-jobs" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Quoting Guide</h4>
-                  <p className="text-gray-400 text-sm">Learn professional quoting strategies</p>
+                  <p className="text-gray-200 text-base">Learn professional quoting strategies</p>
                 </Link>
               </div>
             </div>

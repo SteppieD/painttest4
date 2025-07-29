@@ -61,7 +61,7 @@ export default function SharedNavigation() {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-base font-medium">
             {navigationItems.map((item, index) => {
               if (item.type === 'link') {
                 return (
@@ -109,7 +109,7 @@ export default function SharedNavigation() {
                           <Link
                             key={subIndex}
                             href={subItem.href}
-                            className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                            className="block px-4 py-2 text-base hover:bg-accent hover:text-accent-foreground"
                           >
                             {subItem.label}
                           </Link>
@@ -128,13 +128,13 @@ export default function SharedNavigation() {
         <div className="hidden md:flex items-center space-x-2">
           <Link
             href="/access-code"
-            className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex items-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             Sign In
           </Link>
           <Link
             href="/trial-signup"
-            className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+            className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
           >
             Start Free Trial
           </Link>
@@ -163,7 +163,7 @@ export default function SharedNavigation() {
                   <Link
                     key={index}
                     href={item.href || '#'}
-                    className="block py-2 text-sm font-medium"
+                    className="block py-2 text-base font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -172,7 +172,7 @@ export default function SharedNavigation() {
               } else if (item.type === 'dropdown') {
                 return (
                   <div key={index}>
-                    <div className="py-2 text-sm font-medium text-muted-foreground">
+                    <div className="py-2 text-base font-medium text-gray-200">
                       {item.label}
                     </div>
                     <div className="ml-4 space-y-2">
@@ -180,7 +180,7 @@ export default function SharedNavigation() {
                         <Link
                           key={subIndex}
                           href={subItem.href}
-                          className="block py-1 text-sm"
+                          className="block py-1 text-base"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {subItem.label}
@@ -195,14 +195,14 @@ export default function SharedNavigation() {
             <div className="pt-4 border-t space-y-2">
               <Link
                 href="/access-code"
-                className="block py-2 text-sm font-medium"
+                className="block py-2 text-base font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Sign In
               </Link>
               <Link
                 href="/trial-signup"
-                className="block py-2 text-sm font-medium text-primary"
+                className="block py-2 text-base font-medium text-primary"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Start Free Trial

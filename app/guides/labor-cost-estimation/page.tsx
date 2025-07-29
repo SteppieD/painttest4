@@ -127,8 +127,8 @@ export default function LaborCostEstimationGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -147,7 +147,7 @@ export default function LaborCostEstimationGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Labor Cost Estimation for Painting
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master accurate labor cost calculations with production rates, crew optimization, 
                 and real-world pricing formulas. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -177,7 +177,7 @@ export default function LaborCostEstimationGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">How Do You Calculate Painting Labor Cost?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Calculate painting labor cost by: (Square Footage ÷ Production Rate per Hour) × Hourly Rate × Crew Size. 
                   For example: 2,000 sq ft ÷ 200 sq ft/hour = 10 hours × $50/hour × 2 workers = $1,000 labor cost. 
                   Add 20-30% for prep work and cleanup.
@@ -205,7 +205,7 @@ export default function LaborCostEstimationGuide() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h3 className="text-xl font-semibold text-emerald-400 mb-4">Formula Components</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <Clock className="h-5 w-5 text-emerald-400 mt-0.5" />
                         <div>
@@ -235,13 +235,13 @@ export default function LaborCostEstimationGuide() {
 
                   <div>
                     <h3 className="text-xl font-semibold text-green-400 mb-4">Example Calculation</h3>
-                    <div className="bg-gray-900/50 rounded p-4 space-y-2 font-mono text-sm">
-                      <p className="text-gray-400">{"// 2,500 sq ft interior"}</p>
+                    <div className="bg-gray-900/50 rounded p-4 space-y-2 font-mono text-base">
+                      <p className="text-gray-200">{"// 2,500 sq ft interior"}</p>
                       <p className="text-green-400">Production: 200 sq ft/hour</p>
                       <p className="text-green-400">Hours: 2,500 ÷ 200 = 12.5</p>
                       <p className="text-green-400">Rate: $30/hour base</p>
                       <p className="text-green-400">Crew: 2 painters</p>
-                      <p className="text-gray-400">{"// Calculation"}</p>
+                      <p className="text-gray-200">{"// Calculation"}</p>
                       <p className="text-yellow-400">12.5 × $30 × 2 = $750</p>
                       <p className="text-yellow-400">+ 35% burden = $262.50</p>
                       <p className="text-cyan-400">Total Labor: $1,012.50</p>
@@ -264,13 +264,13 @@ export default function LaborCostEstimationGuide() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-3 px-4 text-gray-400">Task</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Sq Ft/Hour</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Skill Level</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Quality</th>
+                        <th className="text-left py-3 px-4 text-gray-200">Task</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Sq Ft/Hour</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Skill Level</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Quality</th>
                       </tr>
                     </thead>
-                    <tbody className="text-gray-300">
+                    <tbody className="text-gray-100">
                       <tr className="border-b border-gray-800">
                         <td className="py-3 px-4">Interior Wall Rolling</td>
                         <td className="text-center">180-250</td>
@@ -318,7 +318,7 @@ export default function LaborCostEstimationGuide() {
                 </div>
                 
                 <div className="mt-6 p-4 bg-emerald-500/10 rounded-lg">
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     <strong className="text-emerald-400">Pro Tip:</strong> Adjust production rates based on surface condition 
                     (-20% for poor condition), height factors (-15% for high ceilings), and crew experience level.
                   </p>
@@ -337,7 +337,7 @@ export default function LaborCostEstimationGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">High Cost Regions</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex justify-between">
                       <span>San Francisco/NYC:</span>
                       <span className="text-green-400 font-semibold">$45-80/hr</span>
@@ -359,7 +359,7 @@ export default function LaborCostEstimationGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">Average Cost Regions</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex justify-between">
                       <span>Phoenix/Atlanta:</span>
                       <span className="text-yellow-400 font-semibold">$30-50/hr</span>
@@ -385,7 +385,7 @@ export default function LaborCostEstimationGuide() {
                 <div className="grid md:grid-cols-3 gap-4">
                   <div>
                     <h4 className="text-emerald-400 font-semibold mb-2">Employee Costs (30-40%)</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <ul className="text-base text-gray-100 space-y-1">
                       <li>• Payroll taxes: 7.65%</li>
                       <li>• Workers comp: 8-15%</li>
                       <li>• Unemployment: 3-6%</li>
@@ -394,7 +394,7 @@ export default function LaborCostEstimationGuide() {
                   </div>
                   <div>
                     <h4 className="text-teal-400 font-semibold mb-2">Subcontractor Markup</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <ul className="text-base text-gray-100 space-y-1">
                       <li>• Base rate: $40-60/hr</li>
                       <li>• Your markup: 15-25%</li>
                       <li>• No burden costs</li>
@@ -403,7 +403,7 @@ export default function LaborCostEstimationGuide() {
                   </div>
                   <div>
                     <h4 className="text-cyan-400 font-semibold mb-2">Hidden Costs</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <ul className="text-base text-gray-100 space-y-1">
                       <li>• Drive time pay</li>
                       <li>• Tool allowance</li>
                       <li>• Training time</li>
@@ -428,7 +428,7 @@ export default function LaborCostEstimationGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-emerald-400 mb-3">Residential Projects</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• <strong>1 Painter:</strong> Small rooms, touch-ups (&lt; 500 sq ft)</li>
                         <li>• <strong>2 Painters:</strong> Standard rooms, efficiency sweet spot</li>
                         <li>• <strong>3-4 Painters:</strong> Whole house, tight deadlines</li>
@@ -437,7 +437,7 @@ export default function LaborCostEstimationGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Commercial Projects</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• <strong>2-3 Painters:</strong> Small offices (&lt; 5,000 sq ft)</li>
                         <li>• <strong>4-6 Painters:</strong> Medium buildings</li>
                         <li>• <strong>8+ Painters:</strong> Large projects, phases</li>
@@ -454,19 +454,19 @@ export default function LaborCostEstimationGuide() {
                       <Users className="h-8 w-8 text-green-400 mx-auto mb-2" />
                       <h4 className="text-lg font-semibold text-green-400 mb-2">2-Person Crew</h4>
                       <p className="text-2xl font-bold text-white mb-1">100%</p>
-                      <p className="text-sm text-gray-300">Peak efficiency</p>
+                      <p className="text-base text-gray-100">Peak efficiency</p>
                     </div>
                     <div className="bg-yellow-500/10 rounded p-4 text-center">
                       <Users className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
                       <h4 className="text-lg font-semibold text-yellow-400 mb-2">3-4 Person Crew</h4>
                       <p className="text-2xl font-bold text-white mb-1">85-90%</p>
-                      <p className="text-sm text-gray-300">Good for speed</p>
+                      <p className="text-base text-gray-100">Good for speed</p>
                     </div>
                     <div className="bg-orange-500/10 rounded p-4 text-center">
                       <Users className="h-8 w-8 text-orange-400 mx-auto mb-2" />
                       <h4 className="text-lg font-semibold text-orange-400 mb-2">5+ Person Crew</h4>
                       <p className="text-2xl font-bold text-white mb-1">70-80%</p>
-                      <p className="text-sm text-gray-300">Coordination issues</p>
+                      <p className="text-base text-gray-100">Coordination issues</p>
                     </div>
                   </div>
                 </Card>
@@ -487,7 +487,7 @@ export default function LaborCostEstimationGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-emerald-400 mb-3">Project Details</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Total area: 1,800 sq ft walls</li>
                         <li>• Ceilings: 1,200 sq ft</li>
                         <li>• Condition: Good, minor prep</li>
@@ -497,7 +497,7 @@ export default function LaborCostEstimationGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-green-400 mb-3">Labor Breakdown</h4>
-                      <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
+                      <div className="bg-gray-900/50 rounded p-4 font-mono text-base">
                         <p className="text-green-400">Prep: 8 hours × 2 = 16 hrs</p>
                         <p className="text-green-400">Walls: 1,800 ÷ 200 = 9 hrs</p>
                         <p className="text-green-400">Ceilings: 1,200 ÷ 180 = 7 hrs</p>
@@ -515,7 +515,7 @@ export default function LaborCostEstimationGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Project Details</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Total area: 8,000 sq ft</li>
                         <li>• After-hours work required</li>
                         <li>• Low-VOC paint mandatory</li>
@@ -525,7 +525,7 @@ export default function LaborCostEstimationGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-green-400 mb-3">Labor Breakdown</h4>
-                      <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
+                      <div className="bg-gray-900/50 rounded p-4 font-mono text-base">
                         <p className="text-green-400">Base hours: 8,000 ÷ 220 = 36</p>
                         <p className="text-green-400">4-person crew ÷ 0.85 = 42 hrs</p>
                         <p className="text-green-400">Night shift premium: +25%</p>
@@ -551,7 +551,7 @@ export default function LaborCostEstimationGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Do's</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
                       <span>Track actual vs estimated hours</span>
@@ -577,7 +577,7 @@ export default function LaborCostEstimationGuide() {
 
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
                   <h3 className="text-xl font-semibold text-red-400 mb-4">Don'ts</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
                       <span>Use same rates for all tasks</span>
@@ -613,7 +613,7 @@ export default function LaborCostEstimationGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Calculate Labor Costs Instantly
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Stop guessing labor hours. Our AI-powered calculator uses real production rates and 
                   automatically factors in crew size, project complexity, and regional rates.
                 </p>
@@ -648,7 +648,7 @@ export default function LaborCostEstimationGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master guide to all quoting aspects
                     </p>
                   </Card>
@@ -660,7 +660,7 @@ export default function LaborCostEstimationGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Paint Calculations
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Material quantity formulas
                     </p>
                   </Card>
@@ -672,7 +672,7 @@ export default function LaborCostEstimationGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Pricing Psychology
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Win more jobs with smart pricing
                     </p>
                   </Card>

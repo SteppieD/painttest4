@@ -123,7 +123,7 @@ export function EnhancedHero() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
+              <p className="text-xl text-gray-100 leading-relaxed max-w-lg">
                 Transform your painting business with AI-powered quotes. Join <strong className="text-white">2,000+ contractors</strong> winning <strong className="text-white">40-60% more jobs</strong> by responding within 24 hours.
               </p>
             </div>
@@ -131,7 +131,7 @@ export function EnhancedHero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/trial-signup" className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur-md opacity-100 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative btn-primary-modern inline-flex items-center gap-2 px-8 py-4">
                   <Sparkles className="h-5 w-5" />
                   Start Free Trial
@@ -139,7 +139,7 @@ export function EnhancedHero() {
                 </div>
               </Link>
               
-              <Link href="/pricing" className="glass-card px-8 py-4 inline-flex items-center justify-center gap-2 text-white font-semibold hover:bg-white/10 transition-all group">
+              <Link href="/pricing" className="glass-card px-8 py-4 inline-flex items-center justify-center gap-2 text-white font-semibold hover:bg-gray-900/70 transition-all group">
                 View Pricing
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -155,7 +155,7 @@ export function EnhancedHero() {
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="text-2xl font-bold text-white">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                    <div className="text-base text-gray-200">{stat.label}</div>
                   </div>
                 )
               })}
@@ -173,7 +173,7 @@ export function EnhancedHero() {
                     <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
                     <div className="absolute inset-0 w-3 h-3 bg-emerald-400 rounded-full animate-ping"></div>
                   </div>
-                  <span className="text-emerald-400 text-sm font-medium">Live Results</span>
+                  <span className="text-emerald-400 text-base font-medium">Live Results</span>
                 </div>
                 <TrendingUp className="h-5 w-5 text-emerald-400" />
               </div>
@@ -184,16 +184,16 @@ export function EnhancedHero() {
                   <div className="text-4xl">{testimonials[currentTestimonial].avatar}</div>
                   <div>
                     <div className="font-semibold text-white">{testimonials[currentTestimonial].name}</div>
-                    <div className="text-sm text-gray-400">{testimonials[currentTestimonial].company}</div>
+                    <div className="text-base text-gray-200">{testimonials[currentTestimonial].company}</div>
                   </div>
                 </div>
                 
-                <blockquote className="text-lg text-gray-300 leading-relaxed italic">
+                <blockquote className="text-lg text-gray-100 leading-relaxed italic">
                   "{testimonials[currentTestimonial].quote}"
                 </blockquote>
                 
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-500/10 to-green-500/10 rounded-xl border border-emerald-500/20">
-                  <span className="text-sm text-gray-300">Revenue Increase</span>
+                  <span className="text-base text-gray-100">Revenue Increase</span>
                   <span className="text-2xl font-bold text-emerald-400">{testimonials[currentTestimonial].revenue}</span>
                 </div>
               </div>
@@ -215,15 +215,15 @@ export function EnhancedHero() {
 
             {/* Floating Metric Cards */}
             <div className="absolute -top-8 -right-8 glass-card p-6 floating">
-              <div className="text-sm text-gray-400 mb-2">Quote Speed</div>
+              <div className="text-base text-gray-200 mb-2">Quote Speed</div>
               <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">2:34</div>
-              <div className="text-xs text-gray-500">vs 3-6 hours</div>
+              <div className="text-base text-gray-200">vs 3-6 hours</div>
             </div>
 
             <div className="absolute -bottom-6 -left-6 glass-card p-6 floating-delayed">
-              <div className="text-sm text-gray-400 mb-2">Win Rate</div>
+              <div className="text-base text-gray-200 mb-2">Win Rate</div>
               <div className="text-3xl font-bold text-emerald-400">65%</div>
-              <div className="text-xs text-gray-500">+40% improvement</div>
+              <div className="text-base text-gray-200">+40% improvement</div>
             </div>
           </div>
         </div>

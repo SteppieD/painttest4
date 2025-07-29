@@ -107,7 +107,7 @@ export default function BillingPage() {
     return <div className="flex items-center justify-center min-h-[400px]">
       <div className="text-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-gray-400">Loading billing information...</p>
+        <p className="text-gray-200">Loading billing information...</p>
       </div>
     </div>
   }
@@ -122,7 +122,7 @@ export default function BillingPage() {
       <Card className="glass-card">
         <CardHeader>
           <CardTitle className="text-white">Current Plan</CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardDescription className="text-gray-200">
             Manage your subscription and billing
           </CardDescription>
         </CardHeader>
@@ -138,7 +138,7 @@ export default function BillingPage() {
                   </Badge>
                 )}
               </div>
-              <p className="text-gray-400 mt-1">
+              <p className="text-gray-200 mt-1">
                 {currentTier === 'free' 
                   ? 'Perfect for getting started'
                   : 'Unlimited quotes and advanced features'}
@@ -147,7 +147,7 @@ export default function BillingPage() {
             <div className="text-right">
               <div className="text-3xl font-bold text-white">
                 ${tierInfo.price}
-                <span className="text-sm font-normal text-gray-400">/month</span>
+                <span className="text-base font-normal text-gray-200">/month</span>
               </div>
             </div>
           </div>
@@ -155,15 +155,15 @@ export default function BillingPage() {
           {/* Usage Stats */}
           {usage && currentTier === 'free' && (
             <div className="mb-6">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Monthly Quote Usage</span>
+              <div className="flex justify-between text-base mb-2">
+                <span className="text-gray-200">Monthly Quote Usage</span>
                 <span className="text-white">
                   {usage.currentMonth.quotesCreated} / {usage.currentMonth.limit}
                 </span>
               </div>
               <Progress value={usagePercentage} className="h-2 mb-2" />
               {usagePercentage >= 80 && (
-                <div className="flex items-center gap-2 text-amber-400 text-sm">
+                <div className="flex items-center gap-2 text-amber-400 text-base">
                   <AlertCircle className="h-4 w-4" />
                   <span>You're approaching your monthly limit</span>
                 </div>
@@ -177,25 +177,25 @@ export default function BillingPage() {
               <div className="text-2xl font-bold text-white">
                 {usage?.lastMonth.quotesCreated || 0}
               </div>
-              <p className="text-sm text-gray-400">Quotes Last Month</p>
+              <p className="text-base text-gray-200">Quotes Last Month</p>
             </div>
             <div className="glass-card p-4">
               <div className="text-2xl font-bold text-green-400">
                 {usage?.lastMonth.conversionRate || 0}%
               </div>
-              <p className="text-sm text-gray-400">Win Rate</p>
+              <p className="text-base text-gray-200">Win Rate</p>
             </div>
             <div className="glass-card p-4">
               <div className="text-2xl font-bold text-blue-400">
                 {usage?.lastMonth.avgResponseTime || 0}h
               </div>
-              <p className="text-sm text-gray-400">Avg Response Time</p>
+              <p className="text-base text-gray-200">Avg Response Time</p>
             </div>
             <div className="glass-card p-4">
               <div className="text-2xl font-bold text-purple-400">
                 ${((usage?.lastMonth.quotesAccepted || 0) * 2800).toLocaleString()}
               </div>
-              <p className="text-sm text-gray-400">Est. Revenue</p>
+              <p className="text-base text-gray-200">Est. Revenue</p>
             </div>
           </div>
 
@@ -207,7 +207,7 @@ export default function BillingPage() {
                   <p className="text-white font-medium mb-1">
                     Unlock Your Full Potential
                   </p>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     Based on your usage, upgrading to Pro could help you win {Math.round((usage?.lastMonth.quotesCreated || 20) * 0.15)} more jobs per month
                   </p>
                 </div>
@@ -243,7 +243,7 @@ export default function BillingPage() {
                 
                 <CardHeader>
                   <CardTitle className="text-white">{tier.displayName}</CardTitle>
-                  <CardDescription className="text-gray-400">
+                  <CardDescription className="text-gray-200">
                     {key === 'free' && 'Perfect for getting started'}
                     {key === 'pro' && 'For growing contractors'}
                     {key === 'enterprise' && 'For large teams'}
@@ -255,7 +255,7 @@ export default function BillingPage() {
                     <div className="text-3xl font-bold text-white">
                       {tier.price === -1 ? 'Custom' : `$${tier.price}`}
                       {tier.price !== -1 && (
-                        <span className="text-sm font-normal text-gray-400">/month</span>
+                        <span className="text-base font-normal text-gray-200">/month</span>
                       )}
                     </div>
                   </div>
@@ -264,7 +264,7 @@ export default function BillingPage() {
                     {tier.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-2">
                         <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300 text-sm">{feature}</span>
+                        <span className="text-gray-100 text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -299,7 +299,7 @@ export default function BillingPage() {
         <Card className="glass-card">
           <CardHeader>
             <CardTitle className="text-white">Billing History</CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardDescription className="text-gray-200">
               Your recent transactions
             </CardDescription>
           </CardHeader>
@@ -312,7 +312,7 @@ export default function BillingPage() {
                   </div>
                   <div>
                     <p className="text-white font-medium">Pro Plan</p>
-                    <p className="text-sm text-gray-400">January 1, 2025</p>
+                    <p className="text-base text-gray-200">January 1, 2025</p>
                   </div>
                 </div>
                 <div className="text-white font-medium">$79.00</div>

@@ -44,10 +44,10 @@ export function ChatInput({
             <Button
               key={index}
               variant="outline"
-              size="sm"
+              size="default"
               onClick={() => handleSuggestedReply(reply)}
               disabled={isLoading}
-              className="text-sm bg-white/5 border-white/20 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/30"
+              className="text-base bg-gray-900/80 border-white/20 text-gray-100 hover:bg-gray-900/70 hover:text-white hover:border-white/30"
             >
               {reply}
             </Button>
@@ -61,7 +61,7 @@ export function ChatInput({
           type="button"
           variant="ghost"
           size="icon"
-          className="shrink-0 text-gray-400 hover:text-gray-200 hover:bg-white/10"
+          className="shrink-0 text-gray-200 hover:text-gray-200 hover:bg-gray-900/70"
           disabled
           title="Voice input coming soon"
         >
@@ -72,7 +72,7 @@ export function ChatInput({
           type="button"
           variant="ghost"
           size="icon"
-          className="shrink-0 text-gray-400 hover:text-gray-200 hover:bg-white/10"
+          className="shrink-0 text-gray-200 hover:text-gray-200 hover:bg-gray-900/70"
           disabled
           title="Image upload coming soon"
         >
@@ -84,7 +84,7 @@ export function ChatInput({
           onChange={(e) => setMessage(e.target.value)}
           placeholder={placeholder}
           disabled={isLoading}
-          className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 bg-gray-900/70 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent disabled:opacity-80 disabled:cursor-not-allowed"
           autoFocus
         />
 
@@ -96,7 +96,7 @@ export function ChatInput({
             'shrink-0 transition-all',
             message.trim() && !isLoading
               ? 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg shadow-blue-500/25'
-              : 'bg-white/10 text-gray-400'
+              : 'bg-gray-900/70 text-gray-200'
           )}
         >
           <Send className="h-5 w-5" />

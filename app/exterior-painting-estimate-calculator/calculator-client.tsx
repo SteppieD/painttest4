@@ -106,7 +106,7 @@ export default function ExteriorPaintingCalculatorClient() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-bold">PaintQuote Pro</span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="flex items-center space-x-6 text-base font-medium">
             <Link href="/interior-painting-quote-calculator" className="transition-colors hover:text-foreground/80">
               Interior Calculator
             </Link>
@@ -120,7 +120,7 @@ export default function ExteriorPaintingCalculatorClient() {
           <div className="ml-auto">
             <Link
               href="/auth/signup"
-              className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+              className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
             >
               Save & Get Full Features
             </Link>
@@ -136,7 +136,7 @@ export default function ExteriorPaintingCalculatorClient() {
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Exterior Painting Estimate Calculator
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-gray-200">
                 Calculate exterior painting costs for any building. Add surfaces, adjust for condition, 
                 and get accurate quotes for siding, trim, doors, decks, and more.
               </p>
@@ -156,7 +156,7 @@ export default function ExteriorPaintingCalculatorClient() {
                       <h2 className="text-xl font-semibold">Exterior Surfaces</h2>
                       <button
                         onClick={addSurface}
-                        className="inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                        className="inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-base font-medium text-primary-foreground hover:bg-primary/90"
                       >
                         <Plus className="mr-1 h-4 w-4" />
                         Add Surface
@@ -185,7 +185,7 @@ export default function ExteriorPaintingCalculatorClient() {
 
                           <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
                             <div>
-                              <label className="text-sm font-medium">Surface Type</label>
+                              <label className="text-base font-medium">Surface Type</label>
                               <select
                                 value={surface.type}
                                 onChange={(e) => updateSurface(surface.id, 'type', e.target.value)}
@@ -202,7 +202,7 @@ export default function ExteriorPaintingCalculatorClient() {
 
                             {(surface.type === 'siding' || surface.type === 'deck') && (
                               <div>
-                                <label className="text-sm font-medium">Area (sq ft)</label>
+                                <label className="text-base font-medium">Area (sq ft)</label>
                                 <input
                                   type="number"
                                   value={surface.area || ''}
@@ -215,7 +215,7 @@ export default function ExteriorPaintingCalculatorClient() {
 
                             {surface.type === 'trim' && (
                               <div>
-                                <label className="text-sm font-medium">Length (linear ft)</label>
+                                <label className="text-base font-medium">Length (linear ft)</label>
                                 <input
                                   type="number"
                                   value={surface.length || ''}
@@ -228,7 +228,7 @@ export default function ExteriorPaintingCalculatorClient() {
 
                             {(surface.type === 'shutters' || surface.type === 'doors' || surface.type === 'garage') && (
                               <div>
-                                <label className="text-sm font-medium">Count</label>
+                                <label className="text-base font-medium">Count</label>
                                 <input
                                   type="number"
                                   value={surface.count || ''}
@@ -240,7 +240,7 @@ export default function ExteriorPaintingCalculatorClient() {
                             )}
 
                             <div>
-                              <label className="text-sm font-medium">Condition</label>
+                              <label className="text-base font-medium">Condition</label>
                               <select
                                 value={surface.condition}
                                 onChange={(e) => updateSurface(surface.id, 'condition', e.target.value)}
@@ -254,7 +254,7 @@ export default function ExteriorPaintingCalculatorClient() {
                             </div>
 
                             <div>
-                              <label className="text-sm font-medium">Surface Total</label>
+                              <label className="text-base font-medium">Surface Total</label>
                               <div className="mt-1 rounded-md bg-muted px-3 py-2 font-semibold">
                                 ${calculateSurfaceTotal(surface).toFixed(2)}
                               </div>
@@ -268,13 +268,13 @@ export default function ExteriorPaintingCalculatorClient() {
                   {/* Charge Rates Section */}
                   <div className="mt-6 rounded-lg border bg-card p-6">
                     <h3 className="text-lg font-semibold">Exterior Charge Rates</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
+                    <p className="mt-1 text-base text-gray-200">
                       Rates include prep work, primer, and two coats of paint
                     </p>
 
                     <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <div>
-                        <label className="text-sm font-medium">Siding ($/sq ft)</label>
+                        <label className="text-base font-medium">Siding ($/sq ft)</label>
                         <input
                           type="number"
                           value={sidingRate}
@@ -284,7 +284,7 @@ export default function ExteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Trim/Fascia ($/linear ft)</label>
+                        <label className="text-base font-medium">Trim/Fascia ($/linear ft)</label>
                         <input
                           type="number"
                           value={trimRate}
@@ -294,7 +294,7 @@ export default function ExteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Shutters ($/each)</label>
+                        <label className="text-base font-medium">Shutters ($/each)</label>
                         <input
                           type="number"
                           value={shutterRate}
@@ -304,7 +304,7 @@ export default function ExteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Doors ($/each)</label>
+                        <label className="text-base font-medium">Doors ($/each)</label>
                         <input
                           type="number"
                           value={doorRate}
@@ -314,7 +314,7 @@ export default function ExteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Deck/Porch ($/sq ft)</label>
+                        <label className="text-base font-medium">Deck/Porch ($/sq ft)</label>
                         <input
                           type="number"
                           value={deckRate}
@@ -324,7 +324,7 @@ export default function ExteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Garage Door ($/each)</label>
+                        <label className="text-base font-medium">Garage Door ($/each)</label>
                         <input
                           type="number"
                           value={garageDoorRate}
@@ -344,9 +344,9 @@ export default function ExteriorPaintingCalculatorClient() {
                     
                     <div className="mt-6 space-y-4">
                       <div>
-                        <h3 className="font-medium text-muted-foreground">Surface Breakdown</h3>
+                        <h3 className="font-medium text-gray-200">Surface Breakdown</h3>
                         {surfaces.map((surface) => (
-                          <div key={surface.id} className="mt-2 flex justify-between text-sm">
+                          <div key={surface.id} className="mt-2 flex justify-between text-base">
                             <span>{surface.name}</span>
                             <span>${calculateSurfaceTotal(surface).toFixed(2)}</span>
                           </div>
@@ -358,11 +358,11 @@ export default function ExteriorPaintingCalculatorClient() {
                           <span>Subtotal</span>
                           <span className="font-semibold">${calculateTotal().toFixed(2)}</span>
                         </div>
-                        <div className="mt-2 flex justify-between text-sm text-muted-foreground">
+                        <div className="mt-2 flex justify-between text-base text-gray-200">
                           <span>Labor (30%)</span>
                           <span>${laborCost.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between text-sm text-muted-foreground">
+                        <div className="flex justify-between text-base text-gray-200">
                           <span>Materials (70%)</span>
                           <span>${materialCost.toFixed(2)}</span>
                         </div>
@@ -378,12 +378,12 @@ export default function ExteriorPaintingCalculatorClient() {
                       <div className="space-y-2 pt-4">
                         <Link
                           href="/auth/signup"
-                          className="flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                          className="flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground hover:bg-primary/90"
                         >
                           <Download className="mr-2 h-4 w-4" />
                           Save Quote as PDF
                         </Link>
-                        <p className="text-center text-xs text-muted-foreground">
+                        <p className="text-center text-base text-gray-200">
                           Create a free account to save and share quotes
                         </p>
                       </div>
@@ -393,7 +393,7 @@ export default function ExteriorPaintingCalculatorClient() {
                   {/* Condition Guide */}
                   <div className="mt-6 rounded-lg border bg-card p-4">
                     <h3 className="font-semibold">Surface Condition Guide</h3>
-                    <div className="mt-3 space-y-2 text-sm">
+                    <div className="mt-3 space-y-2 text-base">
                       <div className="flex items-start">
                         <Shield className="mr-2 h-4 w-4 flex-shrink-0 text-green-600" />
                         <div>
@@ -437,7 +437,7 @@ export default function ExteriorPaintingCalculatorClient() {
               <div className="mt-12 grid gap-8 md:grid-cols-2">
                 <div>
                   <h3 className="text-xl font-semibold">Key Pricing Considerations</h3>
-                  <ul className="mt-4 space-y-3 text-muted-foreground">
+                  <ul className="mt-4 space-y-3 text-gray-200">
                     <li className="flex items-start">
                       <Sun className="mr-2 h-5 w-5 flex-shrink-0 text-primary" />
                       <span><strong>Weather Protection:</strong> Exterior paint must withstand sun, rain, and temperature changes</span>
@@ -502,7 +502,7 @@ export default function ExteriorPaintingCalculatorClient() {
 
               <div className="mt-12 rounded-lg bg-primary/5 p-8 text-center">
                 <h3 className="text-2xl font-bold">Professional Exterior Quotes in Minutes</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   This calculator provides quick estimates. For detailed quotes with weather considerations, 
                   warranty options, and project scheduling, upgrade to PaintQuote Pro.
                 </p>
@@ -524,39 +524,39 @@ export default function ExteriorPaintingCalculatorClient() {
         <div className="container py-8">
           <div className="grid gap-8 md:grid-cols-4">
             <div>
-              <h3 className="text-sm font-semibold">Other Calculators</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Other Calculators</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/interior-painting-quote-calculator" className="hover:text-foreground">Interior Calculator</Link></li>
                 <li><Link href="/house-painting-cost-calculator" className="hover:text-foreground">Full House Calculator</Link></li>
                 <li><Link href="/painting-estimate-calculator-free" className="hover:text-foreground">General Calculator</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold">Resources</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Resources</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/how-to-quote-painting-jobs" className="hover:text-foreground">How to Quote</Link></li>
                 <li><Link href="/painting-quote-templates" className="hover:text-foreground">Quote Templates</Link></li>
                 <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold">Software</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Software</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/painting-estimate-software" className="hover:text-foreground">Estimate Software</Link></li>
                 <li><Link href="/painting-contractors" className="hover:text-foreground">For Contractors</Link></li>
                 <li><Link href="/pricing" className="hover:text-foreground">Pricing</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold">Company</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Company</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/about" className="hover:text-foreground">About</Link></li>
                 <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
                 <li><Link href="/help" className="hover:text-foreground">Help</Link></li>
               </ul>
             </div>
           </div>
-          <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+          <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
             <p>&copy; 2025 PaintQuote Pro. Free exterior painting estimate calculator for contractors.</p>
           </div>
         </div>

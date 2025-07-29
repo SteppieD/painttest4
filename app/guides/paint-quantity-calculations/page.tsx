@@ -126,8 +126,8 @@ export default function PaintQuantityCalculationsGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -146,7 +146,7 @@ export default function PaintQuantityCalculationsGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Paint Quantity Calculations: Pro Guide
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master the exact formulas and methods professionals use to calculate paint quantities. 
                 Never run short or overbuy again. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -176,7 +176,7 @@ export default function PaintQuantityCalculationsGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">What is the Formula for Paint Quantity?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   The paint quantity formula is: (Total Square Footage ÷ Coverage Rate per Gallon) × Number of Coats × 1.1 
                   (10% waste factor) = Gallons Needed. For example: (400 sq ft ÷ 350 sq ft/gallon) × 2 coats × 1.1 = 2.5 gallons.
                 </p>
@@ -203,7 +203,7 @@ export default function PaintQuantityCalculationsGuide() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h3 className="text-xl font-semibold text-cyan-400 mb-4">Formula Components</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <Ruler className="h-5 w-5 text-cyan-400 mt-0.5" />
                         <div>
@@ -233,13 +233,13 @@ export default function PaintQuantityCalculationsGuide() {
 
                   <div>
                     <h3 className="text-xl font-semibold text-green-400 mb-4">Example Calculation</h3>
-                    <div className="bg-gray-900/50 rounded p-4 space-y-2 font-mono text-sm">
-                      <p className="text-gray-400">{"// Living room walls"}</p>
+                    <div className="bg-gray-900/50 rounded p-4 space-y-2 font-mono text-base">
+                      <p className="text-gray-200">{"// Living room walls"}</p>
                       <p className="text-green-400">Area: 385 sq ft</p>
                       <p className="text-green-400">Coverage: 350 sq ft/gal</p>
                       <p className="text-green-400">Coats: 2</p>
                       <p className="text-green-400">Waste: 1.1 (10%)</p>
-                      <p className="text-gray-400">{"// Calculation"}</p>
+                      <p className="text-gray-200">{"// Calculation"}</p>
                       <p className="text-yellow-400">(385 ÷ 350) × 2 × 1.1 = 2.42 gal</p>
                       <p className="text-cyan-400">Round up = 3 gallons</p>
                     </div>
@@ -261,14 +261,14 @@ export default function PaintQuantityCalculationsGuide() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-3 px-4 text-gray-400">Surface Type</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Primer Coverage</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Paint Coverage</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Recommended Coats</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Waste Factor</th>
+                        <th className="text-left py-3 px-4 text-gray-200">Surface Type</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Primer Coverage</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Paint Coverage</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Recommended Coats</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Waste Factor</th>
                       </tr>
                     </thead>
-                    <tbody className="text-gray-300">
+                    <tbody className="text-gray-100">
                       <tr className="border-b border-gray-800">
                         <td className="py-3 px-4">Smooth Drywall</td>
                         <td className="text-center">300-350 sq ft</td>
@@ -323,7 +323,7 @@ export default function PaintQuantityCalculationsGuide() {
                 </div>
                 
                 <div className="mt-6 p-4 bg-cyan-500/10 rounded-lg">
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     <strong className="text-cyan-400">Pro Tip:</strong> Always check the specific paint manufacturer's 
                     coverage rates as premium paints often cover more area. Spray application typically uses 30-40% more paint than brush/roll.
                   </p>
@@ -346,9 +346,9 @@ export default function PaintQuantityCalculationsGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-cyan-400 mb-3">Formula</h4>
-                      <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
+                      <div className="bg-gray-900/50 rounded p-4 font-mono text-base">
                         <p className="text-green-400">Ceiling Area = Length × Width</p>
-                        <p className="text-gray-400 mt-2">// 12×15 room example</p>
+                        <p className="text-gray-200 mt-2">// 12×15 room example</p>
                         <p className="text-yellow-400">12 × 15 = 180 sq ft</p>
                         <p className="text-yellow-400">180 ÷ 350 = 0.51 gal</p>
                         <p className="text-cyan-400">× 2 coats = 1.03 gallons</p>
@@ -356,7 +356,7 @@ export default function PaintQuantityCalculationsGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-green-400 mb-3">Special Considerations</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Textured ceilings use 25% more paint</li>
                         <li>• White ceiling paint hides better</li>
                         <li>• Usually needs only 1-2 coats</li>
@@ -372,7 +372,7 @@ export default function PaintQuantityCalculationsGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-purple-400 mb-3">Quick Estimates</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Standard door: 20 sq ft per side</li>
                         <li>• Door + frame: 30 sq ft total</li>
                         <li>• Window trim: 10-15 sq ft</li>
@@ -383,10 +383,10 @@ export default function PaintQuantityCalculationsGuide() {
                     <div>
                       <h4 className="text-lg font-semibold text-yellow-400 mb-3">Coverage Rates</h4>
                       <div className="bg-gray-900/50 rounded p-4">
-                        <p className="text-gray-300 mb-2">Trim paint coverage:</p>
+                        <p className="text-gray-100 mb-2">Trim paint coverage:</p>
                         <p className="text-green-400">• 1 quart = 100 sq ft</p>
                         <p className="text-green-400">• 1 gallon = 400 sq ft</p>
-                        <p className="text-gray-300 mt-3">Average room trim:</p>
+                        <p className="text-gray-100 mt-3">Average room trim:</p>
                         <p className="text-yellow-400">• 150-200 sq ft total</p>
                         <p className="text-cyan-400">• Needs 2 quarts (2 coats)</p>
                       </div>
@@ -401,17 +401,17 @@ export default function PaintQuantityCalculationsGuide() {
                     <div className="bg-green-500/10 rounded p-4 text-center">
                       <h4 className="text-lg font-semibold text-green-400 mb-2">Light to Light</h4>
                       <p className="text-3xl font-bold text-white mb-2">2 coats</p>
-                      <p className="text-sm text-gray-300">Standard calculation</p>
+                      <p className="text-base text-gray-100">Standard calculation</p>
                     </div>
                     <div className="bg-yellow-500/10 rounded p-4 text-center">
                       <h4 className="text-lg font-semibold text-yellow-400 mb-2">Dark to Light</h4>
                       <p className="text-3xl font-bold text-white mb-2">3-4 coats</p>
-                      <p className="text-sm text-gray-300">Or use primer + 2 coats</p>
+                      <p className="text-base text-gray-100">Or use primer + 2 coats</p>
                     </div>
                     <div className="bg-orange-500/10 rounded p-4 text-center">
                       <h4 className="text-lg font-semibold text-orange-400 mb-2">Red/Dark Colors</h4>
                       <p className="text-3xl font-bold text-white mb-2">3+ coats</p>
-                      <p className="text-sm text-gray-300">Tinted primer recommended</p>
+                      <p className="text-base text-gray-100">Tinted primer recommended</p>
                     </div>
                   </div>
                 </Card>
@@ -429,7 +429,7 @@ export default function PaintQuantityCalculationsGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
                   <h3 className="text-xl font-semibold text-red-400 mb-4">Common Errors</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
                       <span>Forgetting to multiply by number of coats</span>
@@ -455,7 +455,7 @@ export default function PaintQuantityCalculationsGuide() {
 
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Pro Best Practices</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
                       <span>Always round up to nearest gallon</span>
@@ -495,7 +495,7 @@ export default function PaintQuantityCalculationsGuide() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
                     <h3 className="text-lg font-semibold text-cyan-400 mb-3">Room Sizes</h3>
-                    <ul className="space-y-1 text-sm text-gray-300">
+                    <ul className="space-y-1 text-base text-gray-100">
                       <li>Small bedroom: 1-2 gallons</li>
                       <li>Master bedroom: 2-3 gallons</li>
                       <li>Living room: 2-3 gallons</li>
@@ -505,7 +505,7 @@ export default function PaintQuantityCalculationsGuide() {
                   
                   <div className="text-center">
                     <h3 className="text-lg font-semibold text-green-400 mb-3">Quick Math</h3>
-                    <ul className="space-y-1 text-sm text-gray-300">
+                    <ul className="space-y-1 text-base text-gray-100">
                       <li>1 gallon = 350 sq ft</li>
                       <li>5 gallons = 1,750 sq ft</li>
                       <li>Average room = 300-400 sq ft</li>
@@ -515,7 +515,7 @@ export default function PaintQuantityCalculationsGuide() {
                   
                   <div className="text-center">
                     <h3 className="text-lg font-semibold text-yellow-400 mb-3">Sheen Coverage</h3>
-                    <ul className="space-y-1 text-sm text-gray-300">
+                    <ul className="space-y-1 text-base text-gray-100">
                       <li>Flat: Best coverage</li>
                       <li>Eggshell: -5% coverage</li>
                       <li>Satin: -10% coverage</li>
@@ -536,7 +536,7 @@ export default function PaintQuantityCalculationsGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Stop Guessing Paint Quantities
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Our AI-powered calculator handles all the formulas automatically. Get accurate paint quantities 
                   for any project in seconds, not minutes.
                 </p>
@@ -571,7 +571,7 @@ export default function PaintQuantityCalculationsGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master guide to all aspects of quoting
                     </p>
                   </Card>
@@ -583,7 +583,7 @@ export default function PaintQuantityCalculationsGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Paint Calculators
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Free online calculation tools
                     </p>
                   </Card>
@@ -595,7 +595,7 @@ export default function PaintQuantityCalculationsGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Labor Calculations
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Calculate crew hours and costs
                     </p>
                   </Card>

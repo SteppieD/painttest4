@@ -129,8 +129,8 @@ export default function ExteriorPaintingQuotesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -149,7 +149,7 @@ export default function ExteriorPaintingQuotesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Exterior Painting Quotes: Complete Guide
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master exterior painting estimates with detailed calculations, weather considerations, 
                 and pricing strategies for every surface type. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -179,7 +179,7 @@ export default function ExteriorPaintingQuotesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">What is the Average Cost to Paint a House Exterior?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Exterior house painting costs average $3-7 per square foot or $3,000-8,000 for a 2,000 sq ft home. 
                   Prices vary based on siding type, height, prep work needed, and paint quality. Multi-story homes 
                   cost 20-40% more due to equipment and safety requirements.
@@ -205,7 +205,7 @@ export default function ExteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-amber-400 mb-3">Characteristics</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Requires extensive prep work</li>
                             <li>• May need sanding/scraping</li>
                             <li>• Prime all bare wood</li>
@@ -214,7 +214,7 @@ export default function ExteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing per Sq Ft</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Good condition: $3.50-4.50</li>
                             <li>• Minor repairs: $4.50-6.00</li>
                             <li>• Major prep: $6.00-8.00</li>
@@ -223,7 +223,7 @@ export default function ExteriorPaintingQuotesGuide() {
                         </div>
                       </div>
                       <div className="mt-4 p-4 bg-amber-500/10 rounded-lg">
-                        <p className="text-sm text-gray-300">
+                        <p className="text-base text-gray-100">
                           <strong className="text-amber-400">Pro Tip:</strong> Always test for lead paint on homes built before 1978. 
                           RRP certification required for lead paint removal, adding $0.50-1.00 per sq ft.
                         </p>
@@ -241,7 +241,7 @@ export default function ExteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-blue-400 mb-3">Characteristics</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Minimal prep required</li>
                             <li>• Must use vinyl-safe paint</li>
                             <li>• Light colors only</li>
@@ -250,7 +250,7 @@ export default function ExteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing per Sq Ft</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Standard vinyl: $2.50-3.50</li>
                             <li>• Textured vinyl: $3.00-4.00</li>
                             <li>• With repairs: $3.50-5.00</li>
@@ -271,7 +271,7 @@ export default function ExteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-purple-400 mb-3">Characteristics</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Patch cracks first</li>
                             <li>• Elastomeric paint recommended</li>
                             <li>• Higher paint consumption</li>
@@ -280,7 +280,7 @@ export default function ExteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing per Sq Ft</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Smooth stucco: $3.00-4.00</li>
                             <li>• Textured stucco: $3.50-5.00</li>
                             <li>• With repairs: $4.50-6.50</li>
@@ -301,7 +301,7 @@ export default function ExteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-red-400 mb-3">Characteristics</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Requires masonry primer</li>
                             <li>• Tuckpointing may be needed</li>
                             <li>• Breathable paint essential</li>
@@ -310,7 +310,7 @@ export default function ExteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing per Sq Ft</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Standard painting: $3.50-5.00</li>
                             <li>• Limewash finish: $2.50-4.00</li>
                             <li>• With tuckpointing: $6.00-10.00</li>
@@ -337,13 +337,13 @@ export default function ExteriorPaintingQuotesGuide() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-3 px-4 text-gray-400">Height/Access Type</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Equipment Needed</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Cost Multiplier</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Safety Requirements</th>
+                        <th className="text-left py-3 px-4 text-gray-200">Height/Access Type</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Equipment Needed</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Cost Multiplier</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Safety Requirements</th>
                       </tr>
                     </thead>
-                    <tbody className="text-gray-300">
+                    <tbody className="text-gray-100">
                       <tr className="border-b border-gray-800">
                         <td className="py-3 px-4">Single Story (8-12 ft)</td>
                         <td className="text-center">Step ladders</td>
@@ -379,7 +379,7 @@ export default function ExteriorPaintingQuotesGuide() {
                 </div>
                 
                 <div className="mt-6 p-4 bg-blue-500/10 rounded-lg">
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     <strong className="text-blue-400">Equipment Costs:</strong> Scaffolding: $15-20/day per section | 
                     40ft Ladder: $200-300 | Boom Lift: $300-500/day | Safety Equipment: $50-100/worker
                   </p>
@@ -401,7 +401,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <Sun className="h-6 w-6 text-yellow-400" />
                     <h3 className="text-xl font-semibold text-white">Ideal Conditions</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Temperature: 50-85°F</li>
                     <li>• Humidity: 40-70%</li>
                     <li>• No rain for 24 hours</li>
@@ -409,7 +409,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <li>• No direct sun on wet paint</li>
                   </ul>
                   <div className="mt-4 p-3 bg-green-500/10 rounded">
-                    <p className="text-sm text-green-400">Standard pricing applies</p>
+                    <p className="text-base text-green-400">Standard pricing applies</p>
                   </div>
                 </Card>
 
@@ -418,7 +418,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <CloudRain className="h-6 w-6 text-blue-400" />
                     <h3 className="text-xl font-semibold text-white">Challenging Conditions</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Temperature: Below 50°F</li>
                     <li>• High humidity: Over 85%</li>
                     <li>• Rainy season work</li>
@@ -426,7 +426,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <li>• High winds: Over 20 mph</li>
                   </ul>
                   <div className="mt-4 p-3 bg-orange-500/10 rounded">
-                    <p className="text-sm text-orange-400">Add 15-25% to pricing</p>
+                    <p className="text-base text-orange-400">Add 15-25% to pricing</p>
                   </div>
                 </Card>
 
@@ -435,7 +435,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <Thermometer className="h-6 w-6 text-purple-400" />
                     <h3 className="text-xl font-semibold text-white">Seasonal Pricing</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Spring (High demand): +10-15%</li>
                     <li>• Summer (Peak season): +15-20%</li>
                     <li>• Fall (Good weather): Standard</li>
@@ -448,10 +448,10 @@ export default function ExteriorPaintingQuotesGuide() {
                     <Clock className="h-6 w-6 text-green-400" />
                     <h3 className="text-xl font-semibold text-white">Weather Delays</h3>
                   </div>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     Build in contingency time:
                   </p>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Spring: +20% time buffer</li>
                     <li>• Summer: +10% time buffer</li>
                     <li>• Fall: +15% time buffer</li>
@@ -476,7 +476,7 @@ export default function ExteriorPaintingQuotesGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Property Details</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• 2,400 sq ft siding area</li>
                         <li>• Wood siding, good condition</li>
                         <li>• 300 linear ft trim</li>
@@ -486,7 +486,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-green-400 mb-3">Materials Needed</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Primer: 8 gallons @ $35 = $280</li>
                         <li>• Siding paint: 16 gal @ $45 = $720</li>
                         <li>• Trim paint: 3 gal @ $50 = $150</li>
@@ -498,7 +498,7 @@ export default function ExteriorPaintingQuotesGuide() {
 
                   <div className="border-t border-gray-700 pt-6">
                     <h4 className="text-lg font-semibold text-yellow-400 mb-3">Labor Calculation</h4>
-                    <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
+                    <div className="bg-gray-900/50 rounded p-4 font-mono text-base">
                       <p className="text-green-400">Prep Work: 16 hours @ $50/hr = $800</p>
                       <p className="text-green-400">Priming: 20 hours @ $50/hr = $1,000</p>
                       <p className="text-green-400">Painting: 32 hours @ $50/hr = $1,600</p>
@@ -513,23 +513,23 @@ export default function ExteriorPaintingQuotesGuide() {
                     <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded p-4">
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Materials</span>
+                          <span className="text-gray-100">Materials</span>
                           <span className="text-white">$1,400</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Labor</span>
+                          <span className="text-gray-100">Labor</span>
                           <span className="text-white">$5,200</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Equipment Rental</span>
+                          <span className="text-gray-100">Equipment Rental</span>
                           <span className="text-white">$300</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Overhead (30%)</span>
+                          <span className="text-gray-100">Overhead (30%)</span>
                           <span className="text-white">$2,070</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Profit (20%)</span>
+                          <span className="text-gray-100">Profit (20%)</span>
                           <span className="text-white">$1,794</span>
                         </div>
                         <div className="border-t border-gray-600 pt-2 mt-2">
@@ -537,9 +537,9 @@ export default function ExteriorPaintingQuotesGuide() {
                             <span className="text-white">Total Quote</span>
                             <span className="text-green-400">$10,764</span>
                           </div>
-                          <div className="flex justify-between text-sm mt-1">
-                            <span className="text-gray-400">Price per sq ft</span>
-                            <span className="text-gray-400">$4.49</span>
+                          <div className="flex justify-between text-base mt-1">
+                            <span className="text-gray-200">Price per sq ft</span>
+                            <span className="text-gray-200">$4.49</span>
                           </div>
                         </div>
                       </div>
@@ -560,7 +560,7 @@ export default function ExteriorPaintingQuotesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
                   <h3 className="text-xl font-semibold text-red-400 mb-4">Common Mistakes</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
                       <span>Not inspecting for lead paint on older homes</span>
@@ -586,7 +586,7 @@ export default function ExteriorPaintingQuotesGuide() {
 
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Best Practices</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
                       <span>Always do a complete walk-around inspection</span>
@@ -622,7 +622,7 @@ export default function ExteriorPaintingQuotesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Quote Exterior Jobs 3x Faster
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Our software calculates surface areas, adjusts for height factors, and generates professional 
                   quotes with weather contingencies built in.
                 </p>
@@ -657,7 +657,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master guide to all painting quotes
                     </p>
                   </Card>
@@ -669,7 +669,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Interior Painting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Room-by-room pricing strategies
                     </p>
                   </Card>
@@ -681,7 +681,7 @@ export default function ExteriorPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Commercial Quotes
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Large-scale project pricing
                     </p>
                   </Card>

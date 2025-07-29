@@ -155,7 +155,7 @@ export default function PaintingQuoteGenerator() {
           <section className="relative py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <Bot className="mr-2 h-4 w-4" />
                   AI-Powered Quote Generation
                 </div>
@@ -163,7 +163,7 @@ export default function PaintingQuoteGenerator() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Painting Quote Generator
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Generate professional painting quotes in seconds with AI. Simply describe your project 
                   and get detailed, accurate estimates instantly. Free for contractors and homeowners.
                 </p>
@@ -187,15 +187,15 @@ export default function PaintingQuoteGenerator() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">30 sec</div>
-                    <p className="text-sm text-muted-foreground">Average Generation</p>
+                    <p className="text-base text-gray-200">Average Generation</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">97%</div>
-                    <p className="text-sm text-muted-foreground">Accuracy Rate</p>
+                    <p className="text-base text-gray-200">Accuracy Rate</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">125K+</div>
-                    <p className="text-sm text-muted-foreground">Quotes Generated</p>
+                    <p className="text-base text-gray-200">Quotes Generated</p>
                   </div>
                 </div>
               </div>
@@ -220,15 +220,15 @@ export default function PaintingQuoteGenerator() {
                       
                       <div className="rounded-lg bg-muted/50 p-6">
                         <div className="space-y-4">
-                          <div className="text-sm font-medium text-muted-foreground">Project Description:</div>
-                          <div className="rounded-lg bg-background p-4 border text-sm">
+                          <div className="text-base font-medium text-gray-200">Project Description:</div>
+                          <div className="rounded-lg bg-background p-4 border text-base">
                             "I need to paint the interior of a 12x14 living room with 9-foot ceilings. 
                             There are 2 windows and 1 door. The walls are currently white and in good 
                             condition. I want to use premium paint in a light gray color. Include primer 
                             and all prep work."
                           </div>
                           
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-2 text-base text-gray-200">
                             <Clock className="h-4 w-4" />
                             <span>AI processing...</span>
                           </div>
@@ -238,7 +238,7 @@ export default function PaintingQuoteGenerator() {
                       <div className="mt-6 space-y-3">
                         <div className="flex items-center gap-3">
                           <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                          <span className="text-sm">Project details analyzed</span>
+                          <span className="text-base">Project details analyzed</span>
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="h-2 w-2 rounded-full bg-green-500"></div>
@@ -246,11 +246,11 @@ export default function PaintingQuoteGenerator() {
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                          <span className="text-sm">Materials estimated</span>
+                          <span className="text-base">Materials estimated</span>
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                          <span className="text-sm">Labor costs calculated</span>
+                          <span className="text-base">Labor costs calculated</span>
                         </div>
                       </div>
                     </div>
@@ -264,7 +264,7 @@ export default function PaintingQuoteGenerator() {
                       <div className="rounded-lg bg-primary/5 p-6">
                         <div className="text-lg font-bold mb-4">Painting Quote #PQ-2024-001</div>
                         
-                        <div className="space-y-3 text-sm">
+                        <div className="space-y-3 text-base">
                           <div className="flex justify-between">
                             <span>Project: Interior Living Room</span>
                             <span>324 sq ft</span>
@@ -297,11 +297,11 @@ export default function PaintingQuoteGenerator() {
                         </div>
 
                         <div className="mt-6 flex gap-3">
-                          <Button size="sm" className="flex-1">
+                          <Button size="default" className="flex-1">
                             <Download className="mr-2 h-4 w-4" />
                             Download PDF
                           </Button>
-                          <Button size="sm" variant="outline" className="flex-1">
+                          <Button size="default" variant="outline" className="flex-1">
                             <Send className="mr-2 h-4 w-4" />
                             Send to Client
                           </Button>
@@ -309,7 +309,7 @@ export default function PaintingQuoteGenerator() {
                       </div>
 
                       <div className="mt-4 text-center">
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-base text-gray-200">
                           Generated in <span className="font-medium text-primary">18 seconds</span>
                         </div>
                       </div>
@@ -325,7 +325,7 @@ export default function PaintingQuoteGenerator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Why Use Our AI Quote Generator?</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Advanced AI technology meets professional painting expertise
                 </p>
               </div>
@@ -338,7 +338,7 @@ export default function PaintingQuoteGenerator() {
                         <feature.icon className="h-8 w-8 text-primary" />
                       </div>
                       <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground">{feature.description}</p>
+                      <p className="text-base text-gray-200">{feature.description}</p>
                     </div>
                   ))}
                 </div>
@@ -351,7 +351,7 @@ export default function PaintingQuoteGenerator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Real Quote Examples</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   See how our AI generates quotes for different project types
                 </p>
               </div>
@@ -361,16 +361,16 @@ export default function PaintingQuoteGenerator() {
                   {quoteExamples.map((example, index) => (
                     <div key={index} className="rounded-lg border bg-background p-6">
                       <h3 className="text-lg font-semibold mb-2">{example.projectType}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{example.details}</p>
+                      <p className="text-base text-gray-200 mb-4">{example.details}</p>
                       
                       <div className="mb-4">
                         <div className="text-2xl font-bold text-primary">{example.generatedQuote}</div>
-                        <div className="text-sm text-muted-foreground">Generated in {example.timeToGenerate}</div>
+                        <div className="text-base text-gray-200">Generated in {example.timeToGenerate}</div>
                       </div>
 
                       <ul className="space-y-1">
                         {example.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li key={featureIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {feature}
                           </li>
@@ -388,7 +388,7 @@ export default function PaintingQuoteGenerator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">What Contractors Say</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Join thousands of painters using our quote generator
                 </p>
               </div>
@@ -405,7 +405,7 @@ export default function PaintingQuoteGenerator() {
                       <blockquote className="mb-4">"{testimonial.text}"</blockquote>
                       <footer>
                         <div className="font-semibold">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+                        <div className="text-base text-gray-200">{testimonial.company}</div>
                       </footer>
                     </div>
                   ))}
@@ -426,7 +426,7 @@ export default function PaintingQuoteGenerator() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -439,7 +439,7 @@ export default function PaintingQuoteGenerator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Quoting Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Complete suite of tools for painting professionals
                 </p>
               </div>
@@ -449,25 +449,25 @@ export default function PaintingQuoteGenerator() {
                   <Link href="/paint-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Paint Quote Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Manual calculations with detailed breakdowns</p>
+                    <p className="text-base text-gray-200">Manual calculations with detailed breakdowns</p>
                   </Link>
 
                   <Link href="/painting-quote-templates" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Quote Templates</h3>
-                    <p className="text-sm text-muted-foreground">Professional templates for all project types</p>
+                    <p className="text-base text-gray-200">Professional templates for all project types</p>
                   </Link>
 
                   <Link href="/painting-estimating-software" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Estimating Software</h3>
-                    <p className="text-sm text-muted-foreground">Complete business management platform</p>
+                    <p className="text-base text-gray-200">Complete business management platform</p>
                   </Link>
 
                   <Link href="/roi-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">ROI Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Calculate your business growth potential</p>
+                    <p className="text-base text-gray-200">Calculate your business growth potential</p>
                   </Link>
                 </div>
               </div>
@@ -480,7 +480,7 @@ export default function PaintingQuoteGenerator() {
               <h2 className="text-3xl font-bold mb-4">
                 Start Generating AI-Powered Quotes Today
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Join the AI revolution in painting. Generate professional quotes in seconds, 
                 impress clients, and win more jobs than ever before.
               </p>
@@ -499,7 +499,7 @@ export default function PaintingQuoteGenerator() {
                   View Pricing Plans
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 Free forever plan • 5 quotes per month • No credit card required
               </p>
             </div>

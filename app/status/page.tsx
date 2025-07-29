@@ -143,7 +143,7 @@ export default function StatusPage() {
       case 'major':
         return 'text-red-400'
       default:
-        return 'text-gray-400'
+        return 'text-gray-200'
     }
   }
 
@@ -189,16 +189,16 @@ export default function StatusPage() {
               )}
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Current status of PaintQuote Pro services and infrastructure
             </p>
 
-            <div className="flex items-center justify-center gap-6 text-sm">
-              <div className="flex items-center gap-2 text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base">
+              <div className="flex items-center gap-2 text-gray-200">
                 <Clock className="h-4 w-4" />
                 <span>Last updated: Just now</span>
               </div>
-              <div className="flex items-center gap-2 text-gray-400">
+              <div className="flex items-center gap-2 text-gray-200">
                 <RefreshCw className="h-4 w-4" />
                 <span>Auto-refreshes every 60s</span>
               </div>
@@ -230,19 +230,19 @@ export default function StatusPage() {
                   </div>
                   
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">Status</span>
+                    <div className="flex items-center justify-between text-base">
+                      <span className="text-gray-200">Status</span>
                       <span className={`font-medium capitalize ${getStatusColor(service.status)}`}>
                         {service.status}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">Uptime (90d)</span>
-                      <span className="text-gray-300">{service.uptime}</span>
+                    <div className="flex items-center justify-between text-base">
+                      <span className="text-gray-200">Uptime (90d)</span>
+                      <span className="text-gray-100">{service.uptime}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">Response Time</span>
-                      <span className="text-gray-300">{service.responseTime}</span>
+                    <div className="flex items-center justify-between text-base">
+                      <span className="text-gray-200">Response Time</span>
+                      <span className="text-gray-100">{service.responseTime}</span>
                     </div>
                   </div>
                   
@@ -275,7 +275,7 @@ export default function StatusPage() {
               <Card key={index} className="glass-card p-6 text-center">
                 <BarChart3 className="h-8 w-8 text-blue-400 mx-auto mb-3" />
                 <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
-                <div className="text-sm text-gray-400 mb-2">{metric.label}</div>
+                <div className="text-base text-gray-200 mb-2">{metric.label}</div>
                 <Badge className={`${
                   metric.status === 'good' 
                     ? 'bg-green-500/20 text-green-300 border-green-500/30' 
@@ -306,19 +306,19 @@ export default function StatusPage() {
                     <div className="flex items-center gap-3 mb-2">
                       <Badge className={`${
                         incident.severity === 'low' 
-                          ? 'bg-gray-500/20 text-gray-300 border-gray-500/30'
+                          ? 'bg-gray-500/20 text-gray-100 border-gray-500/30'
                           : incident.severity === 'medium'
                           ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30'
                           : 'bg-red-500/20 text-red-300 border-red-500/30'
                       }`}>
                         {incident.severity} severity
                       </Badge>
-                      <span className="text-sm text-gray-400">{incident.date}</span>
+                      <span className="text-base text-gray-200">{incident.date}</span>
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2">{incident.title}</h3>
-                    <p className="text-gray-400 mb-2">{incident.description}</p>
-                    <div className="flex items-center gap-4 text-sm">
-                      <span className="text-gray-400">Duration: {incident.duration}</span>
+                    <p className="text-gray-200 mb-2">{incident.description}</p>
+                    <div className="flex items-center gap-4 text-base">
+                      <span className="text-gray-200">Duration: {incident.duration}</span>
                       {incident.resolved && (
                         <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                           <CheckCircle className="h-3 w-3 mr-1" />
@@ -356,12 +356,12 @@ export default function StatusPage() {
                   <Calendar className="h-6 w-6 text-blue-400 flex-shrink-0" />
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-white mb-2">{maintenance.title}</h3>
-                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
+                    <div className="flex items-center gap-4 text-base text-gray-200 mb-3">
                       <span>{maintenance.date}</span>
                       <span>•</span>
                       <span>{maintenance.time}</span>
                     </div>
-                    <p className="text-gray-300 mb-3">{maintenance.description}</p>
+                    <p className="text-gray-100 mb-3">{maintenance.description}</p>
                     <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                       Impact: {maintenance.impact}
                     </Badge>
@@ -381,7 +381,7 @@ export default function StatusPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Get Status Updates
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Subscribe to receive notifications about system status changes
             </p>
             
@@ -398,7 +398,7 @@ export default function StatusPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>Instant notifications</span>
@@ -419,7 +419,7 @@ export default function StatusPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Historical Uptime
             </h2>
-            <p className="text-gray-300">Last 90 days</p>
+            <p className="text-gray-100">Last 90 days</p>
           </div>
 
           <Card className="glass-card p-8">
@@ -432,7 +432,7 @@ export default function StatusPage() {
                 />
               ))}
             </div>
-            <div className="mt-6 flex items-center justify-between text-sm text-gray-400">
+            <div className="mt-6 flex items-center justify-between text-base text-gray-200">
               <span>90 days ago</span>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">

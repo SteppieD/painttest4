@@ -123,7 +123,7 @@ export default function MobilePage() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Professional estimates in 60 seconds. Take photos, calculate costs, 
                 and send quotes on-site. No laptop needed.
               </p>
@@ -139,7 +139,7 @@ export default function MobilePage() {
                 </Button>
               </div>
 
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>Free to download</span>
@@ -154,7 +154,7 @@ export default function MobilePage() {
             <div className="relative">
               <div className="glass-card p-8 text-center">
                 <Smartphone className="h-64 w-32 mx-auto text-gray-600" />
-                <p className="text-gray-400 mt-4">App screenshot placeholder</p>
+                <p className="text-gray-200 mt-4">App screenshot placeholder</p>
               </div>
               {/* Floating feature badges */}
               <Badge className="absolute -top-4 -right-4 bg-green-500/20 text-green-300 border-green-500/30">
@@ -177,7 +177,7 @@ export default function MobilePage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Everything You Need On-Site
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Professional quoting tools designed for painting contractors on the go
             </p>
           </div>
@@ -187,7 +187,7 @@ export default function MobilePage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -208,10 +208,10 @@ export default function MobilePage() {
               <Card key={index} className="glass-card p-8">
                 <useCase.icon className="h-12 w-12 text-blue-400 mb-4" />
                 <h3 className="text-2xl font-semibold text-white mb-3">{useCase.title}</h3>
-                <p className="text-gray-400 mb-6">{useCase.description}</p>
+                <p className="text-gray-200 mb-6">{useCase.description}</p>
                 <ul className="space-y-2">
                   {useCase.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-2 text-gray-300">
+                    <li key={i} className="flex items-center gap-2 text-gray-100">
                       <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0" />
                       {benefit}
                     </li>
@@ -231,7 +231,7 @@ export default function MobilePage() {
               {appStats.map((stat, index) => (
                 <div key={index}>
                   <div className="text-4xl font-bold text-blue-400 mb-2">{stat.value}</div>
-                  <div className="text-gray-300">{stat.label}</div>
+                  <div className="text-gray-100">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -247,7 +247,7 @@ export default function MobilePage() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 Download Now with QR Code
               </h2>
-              <p className="text-gray-300 mb-8">
+              <p className="text-gray-100 mb-8">
                 Scan with your phone camera to download instantly
               </p>
               
@@ -280,7 +280,7 @@ export default function MobilePage() {
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Quote Faster?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-gray-100 mb-8">
             Join thousands of contractors creating quotes in 60 seconds
           </p>
           

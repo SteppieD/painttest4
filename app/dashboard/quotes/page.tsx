@@ -79,7 +79,7 @@ export default function QuotesPage() {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      draft: { label: 'Draft', className: 'bg-gray-500/20 text-gray-400 border-gray-500/50' },
+      draft: { label: 'Draft', className: 'bg-gray-500/20 text-gray-200 border-gray-500/50' },
       sent: { label: 'Sent', className: 'bg-blue-500/20 text-blue-400 border-blue-500/50' },
       viewed: { label: 'Viewed', className: 'bg-purple-500/20 text-purple-400 border-purple-500/50' },
       accepted: { label: 'Accepted', className: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50' },
@@ -100,7 +100,7 @@ export default function QuotesPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading quotes...</p>
+          <p className="text-gray-200">Loading quotes...</p>
         </div>
       </div>
     )
@@ -127,49 +127,49 @@ export default function QuotesPage() {
       <div className="grid gap-4 md:grid-cols-4">
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Quotes</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Quotes</CardTitle>
             <FileText className="h-4 w-4 text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">{stats.totalQuotes}</div>
-            <p className="text-xs text-gray-400 mt-1">All time</p>
+            <p className="text-base text-gray-200 mt-1">All time</p>
           </CardContent>
         </Card>
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Accepted</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Accepted</CardTitle>
             <CheckCircle className="h-4 w-4 text-emerald-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">{stats.acceptedQuotes}</div>
-            <p className="text-xs text-gray-400 mt-1">{stats.acceptanceRate}% acceptance rate</p>
+            <p className="text-base text-gray-200 mt-1">{stats.acceptanceRate}% acceptance rate</p>
           </CardContent>
         </Card>
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Value</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Value</CardTitle>
             <DollarSign className="h-4 w-4 text-emerald-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">
               ${stats.totalValue.toLocaleString()}
             </div>
-            <p className="text-xs text-gray-400 mt-1">From accepted quotes</p>
+            <p className="text-base text-gray-200 mt-1">From accepted quotes</p>
           </CardContent>
         </Card>
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Average Quote</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Average Quote</CardTitle>
             <Clock className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">
               ${stats.acceptedQuotes > 0 ? Math.round(stats.totalValue / stats.acceptedQuotes).toLocaleString() : '0'}
             </div>
-            <p className="text-xs text-gray-400 mt-1">Per accepted quote</p>
+            <p className="text-base text-gray-200 mt-1">Per accepted quote</p>
           </CardContent>
         </Card>
       </div>
@@ -184,7 +184,7 @@ export default function QuotesPage() {
             <div className="text-center py-12">
               <FileText className="h-12 w-12 text-gray-600 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">No quotes yet</h3>
-              <p className="text-gray-400 mb-4">Create your first quote to get started</p>
+              <p className="text-gray-200 mb-4">Create your first quote to get started</p>
               <Link href="/create-quote">
                 <Button className="btn-primary-modern">
                   Create Your First Quote
@@ -197,7 +197,7 @@ export default function QuotesPage() {
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}
-                  className="block p-4 border border-white/10 rounded-lg hover:bg-white/5 transition-all group"
+                  className="block p-4 border border-white/10 rounded-lg hover:bg-gray-900/80 transition-all group"
                 >
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
@@ -208,12 +208,12 @@ export default function QuotesPage() {
                         {getStatusBadge(quote.status)}
                       </div>
                       {quote.customer && (
-                        <p className="text-sm text-gray-400">
+                        <p className="text-base text-gray-200">
                           {quote.customer.name}
                           {quote.customer.email && ` • ${quote.customer.email}`}
                         </p>
                       )}
-                      <p className="text-xs text-gray-500">
+                      <p className="text-base text-gray-200">
                         Created {new Date(quote.created_at).toLocaleDateString()}
                       </p>
                     </div>

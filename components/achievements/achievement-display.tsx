@@ -24,11 +24,11 @@ export function AchievementDisplay() {
           </h3>
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <p className="text-xs text-gray-400">Level</p>
+              <p className="text-base text-gray-200">Level</p>
               <p className="text-xl font-bold text-white">{level}</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-gray-400">Total XP</p>
+              <p className="text-base text-gray-200">Total XP</p>
               <p className="text-xl font-bold text-yellow-400">{totalPoints}</p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export function AchievementDisplay() {
       <div>
         {/* Level Progress */}
         <div className="mb-6">
-          <div className="flex justify-between text-xs text-gray-400 mb-2">
+          <div className="flex justify-between text-base text-gray-200 mb-2">
             <span>{pointsInCurrentLevel} XP</span>
             <span>{pointsForNextLevel} XP</span>
           </div>
@@ -45,7 +45,7 @@ export function AchievementDisplay() {
             value={(pointsInCurrentLevel / pointsForNextLevel) * 100} 
             className="h-2 bg-gray-700"
           />
-          <p className="text-xs text-gray-400 mt-1 text-center">
+          <p className="text-base text-gray-200 mt-1 text-center">
             {pointsForNextLevel - pointsInCurrentLevel} XP to level {level + 1}
           </p>
         </div>
@@ -83,15 +83,15 @@ export function AchievementDisplay() {
                   </div>
                   <div>
                     <p className={cn(
-                      "text-xs font-medium",
-                      isUnlocked ? "text-white" : "text-gray-500"
+                      "text-base font-medium",
+                      isUnlocked ? "text-white" : "text-gray-200"
                     )}>
                       {achievement.name}
                     </p>
                     <div className="flex items-center gap-1 mt-1">
                       <Star className="h-3 w-3 text-yellow-400" />
                       <span className={cn(
-                        "text-xs",
+                        "text-base",
                         isUnlocked ? "text-yellow-400" : "text-gray-600"
                       )}>
                         {achievement.points}
@@ -102,7 +102,7 @@ export function AchievementDisplay() {
                 
                 {/* Hover tooltip */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/80 rounded-lg p-2">
-                  <p className="text-xs text-gray-300 text-center">
+                  <p className="text-base text-gray-100 text-center">
                     {achievement.description}
                   </p>
                 </div>
@@ -114,7 +114,7 @@ export function AchievementDisplay() {
         {/* Progress Summary */}
         <div className="mt-4 pt-4 border-t border-gray-800">
           <div className="flex justify-between items-center">
-            <p className="text-sm text-gray-400">
+            <p className="text-base text-gray-200">
               {unlockedAchievements.length} of {Object.keys(achievements).length} unlocked
             </p>
             <div className="flex items-center gap-2">
@@ -122,7 +122,7 @@ export function AchievementDisplay() {
                 value={(unlockedAchievements.length / Object.keys(achievements).length) * 100} 
                 className="w-20 h-2 bg-gray-700"
               />
-              <span className="text-xs text-gray-400">
+              <span className="text-base text-gray-200">
                 {Math.round((unlockedAchievements.length / Object.keys(achievements).length) * 100)}%
               </span>
             </div>

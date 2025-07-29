@@ -79,10 +79,10 @@ export function SurfacesStep({ form }: SurfacesStepProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-gray-200">
           Add all surfaces that need to be painted
         </p>
-        <Button type="button" variant="outline" size="sm" onClick={addSurface}>
+        <Button type="button" variant="outline" size="default" onClick={addSurface}>
           <Plus className="mr-2 h-4 w-4" />
           Add Surface
         </Button>
@@ -91,8 +91,8 @@ export function SurfacesStep({ form }: SurfacesStepProps) {
       {surfaces.length === 0 ? (
         <Card>
           <CardContent className="flex flex-col items-center justify-center py-8">
-            <p className="text-muted-foreground">No surfaces added yet</p>
-            <Button type="button" variant="outline" size="sm" className="mt-4" onClick={addSurface}>
+            <p className="text-gray-200">No surfaces added yet</p>
+            <Button type="button" variant="outline" size="default" className="mt-4" onClick={addSurface}>
               <Plus className="mr-2 h-4 w-4" />
               Add Your First Surface
             </Button>
@@ -107,7 +107,7 @@ export function SurfacesStep({ form }: SurfacesStepProps) {
                 <Button
                   type="button"
                   variant="ghost"
-                  size="sm"
+                  size="default"
                   onClick={() => removeSurface(index)}
                 >
                   <Trash2 className="h-4 w-4" />
@@ -231,7 +231,7 @@ export function SurfacesStep({ form }: SurfacesStepProps) {
       )}
 
       {errors.surfaces && (
-        <p className="text-sm text-destructive">{errors.surfaces.message}</p>
+        <p className="text-base text-destructive">{errors.surfaces.message}</p>
       )}
     </div>
   )

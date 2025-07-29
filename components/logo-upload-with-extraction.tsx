@@ -197,7 +197,7 @@ export function LogoUploadWithExtraction({
             />
           ) : (
             <div className="h-20 w-20 rounded-lg bg-muted flex items-center justify-center">
-              <Building2 className="h-10 w-10 text-muted-foreground" />
+              <Building2 className="h-10 w-10 text-gray-200" />
             </div>
           )}
           <div>
@@ -210,14 +210,14 @@ export function LogoUploadWithExtraction({
             />
             <Button 
               variant="outline" 
-              size="sm"
+              size="default"
               onClick={() => fileInputRef.current?.click()}
               disabled={isUploading}
             >
               <Upload className="h-4 w-4 mr-2" />
               {isUploading ? 'Uploading...' : 'Upload Logo'}
             </Button>
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-base text-gray-200 mt-1">
               PNG, JPG up to 5MB
             </p>
           </div>
@@ -238,7 +238,7 @@ export function LogoUploadWithExtraction({
                   className="w-12 h-12 rounded-lg border shadow-sm"
                   style={{ backgroundColor: color }}
                 />
-                <p className="text-xs mt-1 capitalize">{name}</p>
+                <p className="text-base mt-1 capitalize">{name}</p>
               </div>
             ))}
           </div>
@@ -268,7 +268,7 @@ export function LogoUploadWithExtraction({
                 </div>
                 
                 {/* Mini Quote Preview */}
-                <div className="rounded border overflow-hidden text-xs">
+                <div className="rounded border overflow-hidden text-base">
                   <div 
                     className="p-2 font-medium"
                     style={{ 

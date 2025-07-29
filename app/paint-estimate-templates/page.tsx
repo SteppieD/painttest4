@@ -240,7 +240,7 @@ export default function PaintEstimateTemplates() {
           <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <FileText className="mr-2 h-4 w-4" />
                   Free Downloads • No Email Required
                 </div>
@@ -248,7 +248,7 @@ export default function PaintEstimateTemplates() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Free Paint Estimate Templates for Contractors
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Professional painting estimate templates used by thousands of contractors. 
                   Download Excel, Word, and PDF formats instantly - no sign-up required.
                 </p>
@@ -272,15 +272,15 @@ export default function PaintEstimateTemplates() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">68,234</div>
-                    <p className="text-sm text-muted-foreground">Downloads This Month</p>
+                    <p className="text-base text-gray-200">Downloads This Month</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">4.8/5</div>
-                    <p className="text-sm text-muted-foreground">Average Rating</p>
+                    <p className="text-base text-gray-200">Average Rating</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">2,847+</div>
-                    <p className="text-sm text-muted-foreground">Active Contractors</p>
+                    <p className="text-base text-gray-200">Active Contractors</p>
                   </div>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function PaintEstimateTemplates() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Professional Painting Estimate Templates</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Choose from our collection of proven templates used by successful painting contractors
                 </p>
               </div>
@@ -303,7 +303,7 @@ export default function PaintEstimateTemplates() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${template.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {template.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Popular
                           </span>
                         </div>
@@ -311,30 +311,30 @@ export default function PaintEstimateTemplates() {
                       
                       <div className="flex items-start justify-between mb-4">
                         <FileText className="h-8 w-8 text-primary" />
-                        <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium">
+                        <span className="rounded-full bg-muted px-3 py-1 text-base font-medium">
                           {template.format}
                         </span>
                       </div>
                       
                       <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">
+                      <p className="text-base text-gray-200 mb-4">
                         {template.description}
                       </p>
 
-                      <div className="flex items-center gap-4 text-sm mb-4">
+                      <div className="flex items-center gap-4 text-base mb-4">
                         <div className="flex items-center gap-1">
                           <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
                           <span>{template.rating}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Download className="h-4 w-4 text-muted-foreground" />
+                          <Download className="h-4 w-4 text-gray-200" />
                           <span>{template.downloads}</span>
                         </div>
                       </div>
 
                       <ul className="space-y-2 mb-6">
                         {template.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start text-sm">
+                          <li key={idx} className="flex items-start text-base">
                             <CheckCircle className="mr-2 h-3 w-3 flex-shrink-0 text-primary mt-0.5" />
                             <span>{feature}</span>
                           </li>
@@ -359,7 +359,7 @@ export default function PaintEstimateTemplates() {
                 <h2 className="text-3xl font-bold mb-4">
                   Why Use Professional Painting Estimate Templates?
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Save time and win more jobs with proven templates that work
                 </p>
               </div>
@@ -372,7 +372,7 @@ export default function PaintEstimateTemplates() {
                         <benefit.icon className="h-8 w-8 text-primary" />
                       </div>
                       <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                      <p className="text-muted-foreground">{benefit.description}</p>
+                      <p className="text-gray-200">{benefit.description}</p>
                     </div>
                   ))}
                 </div>
@@ -396,7 +396,7 @@ export default function PaintEstimateTemplates() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                        <p className="text-muted-foreground">{step.description}</p>
+                        <p className="text-gray-200">{step.description}</p>
                       </div>
                     </div>
                   ))}
@@ -414,7 +414,7 @@ export default function PaintEstimateTemplates() {
                     <h2 className="text-3xl font-bold mb-4">
                       Ready to Create Quotes 10x Faster?
                     </h2>
-                    <p className="text-lg text-muted-foreground">
+                    <p className="text-lg text-gray-200">
                       While these templates save time, PaintQuote Pro saves even more. Create 
                       professional quotes in 15 minutes with our AI-powered software.
                     </p>
@@ -423,21 +423,21 @@ export default function PaintEstimateTemplates() {
                   <div className="grid gap-8 lg:grid-cols-2">
                     <div className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-4">With Templates</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex items-start">
-                          <span className="mr-2 text-muted-foreground">•</span>
+                          <span className="mr-2 text-gray-200">•</span>
                           Still takes 45-60 minutes per quote
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-2 text-muted-foreground">•</span>
+                          <span className="mr-2 text-gray-200">•</span>
                           Manual calculations prone to errors
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-2 text-muted-foreground">•</span>
+                          <span className="mr-2 text-gray-200">•</span>
                           No customer database or tracking
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-2 text-muted-foreground">•</span>
+                          <span className="mr-2 text-gray-200">•</span>
                           Must update pricing manually
                         </li>
                       </ul>
@@ -445,7 +445,7 @@ export default function PaintEstimateTemplates() {
 
                     <div className="rounded-lg bg-primary/10 p-6">
                       <h3 className="text-lg font-semibold mb-4">With PaintQuote Pro</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex items-start">
                           <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                           Create quotes in 15 minutes
@@ -474,7 +474,7 @@ export default function PaintEstimateTemplates() {
                       <Zap className="mr-2 h-5 w-5" />
                       Try PaintQuote Pro Free
                     </Link>
-                    <p className="mt-4 text-sm text-muted-foreground">
+                    <p className="mt-4 text-base text-gray-200">
                       No credit card required • 1 free quote per month
                     </p>
                   </div>
@@ -495,7 +495,7 @@ export default function PaintEstimateTemplates() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -508,7 +508,7 @@ export default function PaintEstimateTemplates() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Painting Business Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Complete suite of resources for painting contractors
                 </p>
               </div>
@@ -519,28 +519,28 @@ export default function PaintEstimateTemplates() {
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <Calculator className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Paint Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Instant calculations for any painting project</p>
+                    <p className="text-base text-gray-200">Instant calculations for any painting project</p>
                   </Link>
 
                   <Link href="/how-to-quote-painting-jobs" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <FileText className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">How-To Guides</h3>
-                    <p className="text-sm text-muted-foreground">Learn professional estimation techniques</p>
+                    <p className="text-base text-gray-200">Learn professional estimation techniques</p>
                   </Link>
 
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <Building className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for interior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized for interior painting projects</p>
                   </Link>
 
                   <Link href="/painting-estimating-software" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <Zap className="h-8 w-8 text-primary mb-3" />
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Software Reviews</h3>
-                    <p className="text-sm text-muted-foreground">Compare painting estimate software options</p>
+                    <p className="text-base text-gray-200">Compare painting estimate software options</p>
                   </Link>
                 </div>
               </div>
@@ -553,7 +553,7 @@ export default function PaintEstimateTemplates() {
               <h2 className="text-3xl font-bold mb-4">
                 Start Creating Professional Estimates Today
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Download our free templates and start impressing customers with professional, 
                 detailed painting estimates that win more jobs.
               </p>
@@ -572,7 +572,7 @@ export default function PaintEstimateTemplates() {
                   Try PaintQuote Pro
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 Free downloads • No email required • Professional results
               </p>
             </div>

@@ -92,8 +92,8 @@ export default function InteriorPaintingQuotesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -112,7 +112,7 @@ export default function InteriorPaintingQuotesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Interior Painting Quotes: Room-by-Room Guide
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master the art of quoting interior painting projects with specific pricing strategies, 
                 calculations, and tips for every room type. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -142,7 +142,7 @@ export default function InteriorPaintingQuotesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">What is the Average Cost for Interior Painting?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Interior painting costs average $2-6 per square foot or $200-750 per room. A typical 2,000 sq ft home 
                   costs $2,000-6,000 to paint entirely. Prices vary based on paint quality, wall condition, ceiling height, 
                   and regional labor rates.
@@ -168,7 +168,7 @@ export default function InteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-blue-400 mb-3">Typical Specifications</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Size: 200-400 sq ft</li>
                             <li>• Walls: 350-600 sq ft surface</li>
                             <li>• Ceiling: Optional (+$150-300)</li>
@@ -177,7 +177,7 @@ export default function InteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Basic (1 color): $400-600</li>
                             <li>• Standard (2 colors): $500-800</li>
                             <li>• Premium (accent walls): $600-1,000</li>
@@ -186,7 +186,7 @@ export default function InteriorPaintingQuotesGuide() {
                         </div>
                       </div>
                       <div className="mt-4 p-4 bg-blue-500/10 rounded-lg">
-                        <p className="text-sm text-gray-300">
+                        <p className="text-base text-gray-100">
                           <strong className="text-blue-400">Pro Tip:</strong> Living rooms often have high ceilings and large windows. 
                           Add 10-15% for rooms over 9ft height and factor in extra cutting-in time around windows.
                         </p>
@@ -204,7 +204,7 @@ export default function InteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-purple-400 mb-3">Typical Specifications</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Size: 100-200 sq ft</li>
                             <li>• Walls: 300-400 sq ft surface</li>
                             <li>• Ceiling: Usually included</li>
@@ -213,7 +213,7 @@ export default function InteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Small bedroom: $300-450</li>
                             <li>• Medium bedroom: $400-600</li>
                             <li>• Master bedroom: $500-750</li>
@@ -234,7 +234,7 @@ export default function InteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-yellow-400 mb-3">Special Considerations</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Extensive prep work needed</li>
                             <li>• Grease/stain blocking primer</li>
                             <li>• Semi-gloss or satin finish</li>
@@ -243,7 +243,7 @@ export default function InteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Walls only: $350-550</li>
                             <li>• Walls + ceiling: $450-700</li>
                             <li>• Cabinet painting: $1,500-3,500</li>
@@ -264,7 +264,7 @@ export default function InteriorPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Special Requirements</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Moisture-resistant paint</li>
                             <li>• Mildew-resistant primer</li>
                             <li>• Extra prep for humidity damage</li>
@@ -273,7 +273,7 @@ export default function InteriorPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Half bath: $200-300</li>
                             <li>• Full bath: $300-500</li>
                             <li>• Master bath: $400-700</li>
@@ -303,8 +303,8 @@ export default function InteriorPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">Measure Wall Square Footage</h4>
-                      <p className="text-gray-300 mb-2">Wall SF = (Room Perimeter × Wall Height) - (Doors + Windows)</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Wall SF = (Room Perimeter × Wall Height) - (Doors + Windows)</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Example: (50ft × 8ft) - 45 sq ft = 355 sq ft
                       </div>
                     </div>
@@ -314,8 +314,8 @@ export default function InteriorPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">Calculate Paint Needed</h4>
-                      <p className="text-gray-300 mb-2">Gallons = (Total SF ÷ Coverage Rate) × Coats + 10% waste</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Gallons = (Total SF ÷ Coverage Rate) × Coats + 10% waste</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Example: (355 ÷ 350) × 2 × 1.1 = 2.2 gallons
                       </div>
                     </div>
@@ -325,8 +325,8 @@ export default function InteriorPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">Estimate Labor Hours</h4>
-                      <p className="text-gray-300 mb-2">Hours = (Prep Time + Paint Time + Cleanup) × Difficulty Factor</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Hours = (Prep Time + Paint Time + Cleanup) × Difficulty Factor</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Example: (2 + 4 + 0.5) × 1.0 = 6.5 hours
                       </div>
                     </div>
@@ -336,8 +336,8 @@ export default function InteriorPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">4</div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">Calculate Total Price</h4>
-                      <p className="text-gray-300 mb-2">Price = (Labor Cost + Material Cost) × (1 + Overhead + Profit)</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Price = (Labor Cost + Material Cost) × (1 + Overhead + Profit)</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Example: ($325 + $110) × 1.5 = $652.50
                       </div>
                     </div>
@@ -359,13 +359,13 @@ export default function InteriorPaintingQuotesGuide() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-3 px-4 text-gray-400">Task</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Sq Ft/Hour</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Hours/Room</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Difficulty</th>
+                        <th className="text-left py-3 px-4 text-gray-200">Task</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Sq Ft/Hour</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Hours/Room</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Difficulty</th>
                       </tr>
                     </thead>
-                    <tbody className="text-gray-300">
+                    <tbody className="text-gray-100">
                       <tr className="border-b border-gray-800">
                         <td className="py-3 px-4">Wall prep (patching, sanding)</td>
                         <td className="text-center">150-200</td>
@@ -419,7 +419,7 @@ export default function InteriorPaintingQuotesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
                   <h3 className="text-xl font-semibold text-red-400 mb-4">Mistakes to Avoid</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
                       <span>Forgetting to subtract openings from square footage</span>
@@ -441,7 +441,7 @@ export default function InteriorPaintingQuotesGuide() {
 
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Best Practices</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
                       <span>Always measure each room individually</span>
@@ -473,7 +473,7 @@ export default function InteriorPaintingQuotesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Create Professional Interior Quotes in Minutes
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Stop spending hours on calculations. Our software handles room measurements, paint quantities, 
                   and pricing automatically.
                 </p>
@@ -508,7 +508,7 @@ export default function InteriorPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master guide to all painting quotes
                     </p>
                   </Card>
@@ -520,7 +520,7 @@ export default function InteriorPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Paint Calculator
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Free tools for accurate estimates
                     </p>
                   </Card>
@@ -532,7 +532,7 @@ export default function InteriorPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Cabinet Painting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Specialty interior painting quotes
                     </p>
                   </Card>
@@ -632,10 +632,10 @@ export default function InteriorPaintingQuotesGuide() {
                     <DollarSign className="h-5 w-5 text-blue-400 mr-2" />
                     How much does interior painting cost per room?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     Interior painting costs vary by room type and size:
                   </p>
-                  <div className="grid md:grid-cols-2 gap-3 text-gray-300">
+                  <div className="grid md:grid-cols-2 gap-3 text-gray-100">
                     <div className="space-y-2">
                       <div><strong>Bedroom (10x12):</strong> $300-$750</div>
                       <div><strong>Living Room (15x20):</strong> $400-$1,000</div>
@@ -657,10 +657,10 @@ export default function InteriorPaintingQuotesGuide() {
                     <FileText className="h-5 w-5 text-purple-400 mr-2" />
                     What's included in an interior painting estimate?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     A complete interior painting estimate includes:
                   </p>
-                  <div className="grid md:grid-cols-2 gap-2 text-gray-300">
+                  <div className="grid md:grid-cols-2 gap-2 text-gray-100">
                     <div>✓ Wall preparation & repairs</div>
                     <div>✓ Priming if needed</div>
                     <div>✓ Paint materials (specified brand)</div>
@@ -678,17 +678,17 @@ export default function InteriorPaintingQuotesGuide() {
                     <Clock className="h-5 w-5 text-blue-400 mr-2" />
                     How long does it take to paint a room?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Professional painting timeframes:
                   </p>
-                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                  <ul className="mt-2 space-y-1 text-gray-100 ml-4">
                     <li>• <strong>Small bedroom:</strong> 4-6 hours</li>
                     <li>• <strong>Master bedroom:</strong> 6-8 hours</li>
                     <li>• <strong>Living room:</strong> 6-8 hours</li>
                     <li>• <strong>Kitchen:</strong> 5-7 hours</li>
                     <li>• <strong>Bathroom:</strong> 3-5 hours</li>
                   </ul>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     Add 2-4 hours for extensive repairs or multiple colors.
                   </p>
                 </Card>
@@ -699,10 +699,10 @@ export default function InteriorPaintingQuotesGuide() {
                     <Home className="h-5 w-5 text-green-400 mr-2" />
                     Should I paint ceilings when painting walls?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     <strong>Yes, paint ceilings with walls because:</strong>
                   </p>
-                  <div className="space-y-2 text-gray-300">
+                  <div className="space-y-2 text-gray-100">
                     <div>✓ More cost-effective (adds only 20-30%)</div>
                     <div>✓ Ensures perfect color coordination</div>
                     <div>✓ Brightens entire room dramatically</div>
@@ -717,14 +717,14 @@ export default function InteriorPaintingQuotesGuide() {
                     <Paintbrush className="h-5 w-5 text-purple-400 mr-2" />
                     What's the best paint sheen for interior walls?
                   </h3>
-                  <div className="space-y-2 text-gray-300">
+                  <div className="space-y-2 text-gray-100">
                     <div><strong>Flat/Matte:</strong> Ceilings, low-traffic areas</div>
                     <div><strong>Eggshell:</strong> Living rooms, bedrooms (most popular)</div>
                     <div><strong>Satin:</strong> Kids rooms, hallways (washable)</div>
                     <div><strong>Semi-gloss:</strong> Kitchens, bathrooms, trim</div>
                     <div><strong>High-gloss:</strong> Cabinets, doors, accent walls</div>
                   </div>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     Higher sheen = more durable but shows more imperfections.
                   </p>
                 </Card>
@@ -735,10 +735,10 @@ export default function InteriorPaintingQuotesGuide() {
                     <Layers className="h-5 w-5 text-blue-400 mr-2" />
                     How many coats of paint do interior walls need?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Standard coating requirements:
                   </p>
-                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                  <ul className="mt-2 space-y-1 text-gray-100 ml-4">
                     <li>• <strong>Most walls:</strong> 2 coats for full coverage</li>
                     <li>• <strong>Dark over light:</strong> 2-3 coats</li>
                     <li>• <strong>New drywall:</strong> 1 primer + 2 paint coats</li>
@@ -753,16 +753,16 @@ export default function InteriorPaintingQuotesGuide() {
                     <Package className="h-5 w-5 text-green-400 mr-2" />
                     Do I need to move furniture for interior painting?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     Furniture handling options:
                   </p>
-                  <div className="space-y-2 text-gray-300">
+                  <div className="space-y-2 text-gray-100">
                     <div><strong>Standard service:</strong> Painters move to center & cover</div>
                     <div><strong>Full clearing:</strong> $50-$200 extra per room</div>
                     <div><strong>DIY prep:</strong> Move small items yourself to save</div>
                     <div><strong>Large furniture:</strong> Stays in place with protection</div>
                   </div>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     Always remove valuables and wall decorations yourself.
                   </p>
                 </Card>
@@ -773,10 +773,10 @@ export default function InteriorPaintingQuotesGuide() {
                     <TrendingUp className="h-5 w-5 text-amber-400 mr-2" />
                     What's the cost difference between DIY and professional interior painting?
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+                  <div className="grid md:grid-cols-2 gap-4 text-gray-100">
                     <div>
                       <strong className="text-white">DIY Costs:</strong>
-                      <ul className="mt-1 space-y-1 text-sm">
+                      <ul className="mt-1 space-y-1 text-base">
                         <li>• Materials: $150-$400/room</li>
                         <li>• Time: 16-24 hours/room</li>
                         <li>• Tools: $100-$300 initial</li>
@@ -785,7 +785,7 @@ export default function InteriorPaintingQuotesGuide() {
                     </div>
                     <div>
                       <strong className="text-white">Professional:</strong>
-                      <ul className="mt-1 space-y-1 text-sm">
+                      <ul className="mt-1 space-y-1 text-base">
                         <li>• Total: $300-$1,000/room</li>
                         <li>• Time: 4-8 hours/room</li>
                         <li>• Tools included</li>
@@ -793,7 +793,7 @@ export default function InteriorPaintingQuotesGuide() {
                       </ul>
                     </div>
                   </div>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     Professionals save 75% time with better results and warranty protection.
                   </p>
                 </Card>

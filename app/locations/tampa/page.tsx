@@ -120,7 +120,7 @@ export default function TampaPaintingSoftware() {
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                     Painting Quote Software for Tampa Contractors
                   </h1>
-                  <p className="mt-6 text-xl text-muted-foreground">
+                  <p className="mt-6 text-xl text-gray-200">
                     Join 240+ Tampa Bay painting contractors who've transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
@@ -144,15 +144,15 @@ export default function TampaPaintingSoftware() {
                   <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="text-2xl font-bold text-primary">240+</div>
-                      <p className="text-sm text-muted-foreground">Tampa Contractors</p>
+                      <p className="text-base text-gray-200">Tampa Contractors</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">$3.1M</div>
-                      <p className="text-sm text-muted-foreground">Quotes Generated</p>
+                      <p className="text-base text-gray-200">Quotes Generated</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary">4.9/5</div>
-                      <p className="text-sm text-muted-foreground">User Rating</p>
+                      <p className="text-base text-gray-200">User Rating</p>
                     </div>
                   </div>
                 </div>
@@ -160,11 +160,11 @@ export default function TampaPaintingSoftware() {
                 <div className="relative">
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted">
                     <div className="flex h-full items-center justify-center">
-                      <Calculator className="h-12 w-12 text-muted-foreground" />
+                      <Calculator className="h-12 w-12 text-gray-200" />
                     </div>
                   </div>
                   <div className="absolute -bottom-4 -right-4 rounded-lg bg-primary p-4 text-primary-foreground shadow-lg">
-                    <p className="text-sm font-medium">Trusted by contractors in</p>
+                    <p className="text-base font-medium">Trusted by contractors in</p>
                     <p className="text-xl font-bold">Tampa Bay</p>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ export default function TampaPaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold">Tampa Painting Contractors Are Winning More Jobs</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   See how PaintQuote Pro transforms painting businesses in Tampa Bay
                 </p>
               </div>
@@ -186,17 +186,17 @@ export default function TampaPaintingSoftware() {
                 <table className="w-full">
                   <thead className="bg-muted">
                     <tr>
-                      <th className="px-6 py-4 text-left text-sm font-medium">Metric</th>
-                      <th className="px-6 py-4 text-left text-sm font-medium">Traditional Method</th>
-                      <th className="px-6 py-4 text-left text-sm font-medium">With PaintQuote Pro</th>
-                      <th className="px-6 py-4 text-left text-sm font-medium">Improvement</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">Metric</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">Traditional Method</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">With PaintQuote Pro</th>
+                      <th className="px-6 py-4 text-left text-base font-medium">Improvement</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
                     {localContractorStats.map((stat, index) => (
                       <tr key={index}>
                         <td className="px-6 py-4 font-medium">{stat.metric}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{stat.traditional}</td>
+                        <td className="px-6 py-4 text-gray-200">{stat.traditional}</td>
                         <td className="px-6 py-4 font-semibold text-primary">{stat.withPaintQuote}</td>
                         <td className="px-6 py-4 text-green-600 font-semibold">{stat.improvement}</td>
                       </tr>
@@ -212,7 +212,7 @@ export default function TampaPaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold">Built for Tampa's Unique Market</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Tampa Bay painting contractors
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function TampaPaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <CloudLightning className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Hurricane-Ready Pricing</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Built-in calculations for Tampa's hurricane season. Automatically includes 
                     storm-rated adhesion, impact-resistant formulas, and wind-tested coatings 
                     that withstand 150+ mph winds.
@@ -231,7 +231,7 @@ export default function TampaPaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Droplets className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Salt Air & Moisture Templates</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Pre-built quotes for Tampa Bay's coastal humidity. Includes marine-grade 
                     primers, anti-corrosion barriers, and mold prevention systems for our 
                     90% morning humidity levels.
@@ -241,7 +241,7 @@ export default function TampaPaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Palmtree className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Florida Sun Protection</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Templates for Tampa's 244 sunny days. Includes UV-stable pigments, 
                     heat-reflective technology, and 20-year fade warranties to handle 
                     Florida's intense tropical sun.
@@ -251,7 +251,7 @@ export default function TampaPaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <Zap className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Quote on-site from Hyde Park to Wesley Chapel. Works offline and syncs 
                     when connected. Perfect for Tampa Bay's sprawling metro area from 
                     St. Pete to Plant City.
@@ -261,7 +261,7 @@ export default function TampaPaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <BarChart className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Tampa Market Analytics</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Track win rates by neighborhood, see seasonal trends, and optimize 
                     pricing for different areas. Know exactly what works in South Tampa 
                     vs Brandon.
@@ -271,7 +271,7 @@ export default function TampaPaintingSoftware() {
                 <div className="rounded-lg border bg-background p-6">
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Stand out in Tampa's competitive market with professional quotes 
                     that build trust. Include your Florida license, insurance details, 
                     and customer testimonials automatically.
@@ -300,7 +300,7 @@ export default function TampaPaintingSoftware() {
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Mike Thompson</strong>
-                    <p className="text-sm text-muted-foreground">Bay Area Pro Painters, South Tampa</p>
+                    <p className="text-base text-gray-200">Bay Area Pro Painters, South Tampa</p>
                   </footer>
                 </div>
 
@@ -317,7 +317,7 @@ export default function TampaPaintingSoftware() {
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Lisa Garcia</strong>
-                    <p className="text-sm text-muted-foreground">Coastal Elite Painting, Clearwater</p>
+                    <p className="text-base text-gray-200">Coastal Elite Painting, Clearwater</p>
                   </footer>
                 </div>
               </div>
@@ -326,7 +326,7 @@ export default function TampaPaintingSoftware() {
                 <p className="text-lg font-semibold mb-4">Join 240+ Tampa Bay contractors using PaintQuote Pro</p>
                 <Link
                   href="/case-studies"
-                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-2 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                 >
                   Read More Success Stories
                 </Link>
@@ -346,21 +346,21 @@ export default function TampaPaintingSoftware() {
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
                       <h3 className="font-semibold mb-4">Current Situation</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="text-gray-200">Quotes per month:</span>
                           <span className="font-medium">21</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="text-gray-200">Win rate:</span>
                           <span className="font-medium">24%</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="text-gray-200">Average job value:</span>
                           <span className="font-medium">$4,400</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="text-gray-200">Monthly revenue:</span>
                           <span className="font-medium">$22,176</span>
                         </li>
                       </ul>
@@ -368,21 +368,21 @@ export default function TampaPaintingSoftware() {
                     
                     <div>
                       <h3 className="font-semibold mb-4">With PaintQuote Pro</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Quotes per month:</span>
+                          <span className="text-gray-200">Quotes per month:</span>
                           <span className="font-medium text-primary">88</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Win rate:</span>
+                          <span className="text-gray-200">Win rate:</span>
                           <span className="font-medium text-primary">52%</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Average job value:</span>
+                          <span className="text-gray-200">Average job value:</span>
                           <span className="font-medium text-primary">$4,400</span>
                         </li>
                         <li className="flex justify-between">
-                          <span className="text-muted-foreground">Monthly revenue:</span>
+                          <span className="text-gray-200">Monthly revenue:</span>
                           <span className="font-medium text-primary">$201,344</span>
                         </li>
                       </ul>
@@ -392,7 +392,7 @@ export default function TampaPaintingSoftware() {
                   <div className="mt-8 rounded-lg bg-green-50 dark:bg-green-950/20 p-6 text-center">
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$179,168</p>
-                    <p className="text-sm text-muted-foreground mt-2">
+                    <p className="text-base text-gray-200 mt-2">
                       That's 3,733x return on your PaintQuote Pro investment
                     </p>
                   </div>
@@ -415,15 +415,15 @@ export default function TampaPaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold">Serving Painting Contractors Throughout Tampa Bay</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Wherever you operate in the Tampa area, PaintQuote Pro helps you win more jobs
                 </p>
               </div>
               
               <div className="mt-12 grid gap-2 text-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                 {serviceAreas.map((area) => (
-                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-sm font-medium">
-                    <MapPin className="h-4 w-4 mx-auto mb-1 text-muted-foreground" />
+                  <div key={area} className="rounded-lg bg-muted/50 px-4 py-3 text-base font-medium">
+                    <MapPin className="h-4 w-4 mx-auto mb-1 text-gray-200" />
                     {area}
                   </div>
                 ))}
@@ -437,7 +437,7 @@ export default function TampaPaintingSoftware() {
               <h2 className="text-3xl font-bold">
                 Ready to Transform Your Tampa Painting Business?
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
+              <p className="mx-auto mt-4 max-w-2xl text-xl opacity-100">
                 Join 240+ Tampa Bay contractors who quote faster, win more jobs, 
                 and grow their revenue with PaintQuote Pro.
               </p>
@@ -455,7 +455,7 @@ export default function TampaPaintingSoftware() {
                   View Pricing Plans
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 No credit card required • 5 free quotes • Cancel anytime
               </p>
             </div>
@@ -466,7 +466,7 @@ export default function TampaPaintingSoftware() {
             <div className="container">
               <div className="mx-auto max-w-3xl">
                 <h2 className="text-2xl font-bold">Why Tampa Painting Contractors Choose PaintQuote Pro</h2>
-                <div className="mt-6 space-y-4 text-muted-foreground">
+                <div className="mt-6 space-y-4 text-gray-200">
                   <p>
                     Tampa's painting market is unique. With over 800 painting contractors 
                     serving Tampa Bay, standing out requires more than just quality work. 
@@ -494,7 +494,7 @@ export default function TampaPaintingSoftware() {
                       <Clock className="h-5 w-5 text-primary" />
                       Save 4-6 Hours Per Quote
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="mt-2 text-base text-gray-200">
                       Stop spending nights creating quotes. Finish them on-site in minutes.
                     </p>
                   </div>
@@ -503,7 +503,7 @@ export default function TampaPaintingSoftware() {
                       <CheckCircle className="h-5 w-5 text-primary" />
                       Win 40-60% More Jobs
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="mt-2 text-base text-gray-200">
                       Fast, professional quotes dramatically increase your win rate.
                     </p>
                   </div>
@@ -519,14 +519,14 @@ export default function TampaPaintingSoftware() {
             <div className="grid gap-8 md:grid-cols-4">
               <div>
                 <h3 className="text-lg font-semibold">PaintQuote Pro</h3>
-                <p className="mt-4 text-sm text-muted-foreground">
+                <p className="mt-4 text-base text-gray-200">
                   AI-powered quoting software for painting contractors. 
                   Quote in minutes, win more jobs.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Tampa Resources</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/locations/tampa" className="hover:text-foreground">Tampa Overview</Link></li>
                   <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
                   <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
@@ -535,7 +535,7 @@ export default function TampaPaintingSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Features</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li>AI Quote Generation</li>
                   <li>Mobile Estimating</li>
                   <li>Professional Templates</li>
@@ -544,7 +544,7 @@ export default function TampaPaintingSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Get Started</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
                   <li><Link href="/contact" className="hover:text-foreground">Contact Sales</Link></li>
                   <li><Link href="/support" className="hover:text-foreground">Support Center</Link></li>
@@ -552,7 +552,7 @@ export default function TampaPaintingSoftware() {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. Software for painting contractors.</p>
             </div>
           </div>

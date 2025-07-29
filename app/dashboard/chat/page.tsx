@@ -122,7 +122,7 @@ export default function ChatPage() {
     <div className="mx-auto max-w-4xl space-y-4 md:space-y-8 px-4 md:px-0">
       <div>
         <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Quote Assistant</h1>
-        <p className="text-sm md:text-base text-muted-foreground">
+        <p className="text-base md:text-base text-gray-200">
           Chat with our AI assistant to create a painting quote
         </p>
       </div>
@@ -130,7 +130,7 @@ export default function ChatPage() {
       <Card className="h-[calc(100vh-200px)] md:h-[600px] flex flex-col">
         <CardHeader className="px-4 py-3 md:px-6 md:py-4">
           <CardTitle className="text-lg md:text-xl">New Quote Conversation</CardTitle>
-          <CardDescription className="text-sm">
+          <CardDescription className="text-base">
             Answer the assistant&apos;s questions to generate a quote
           </CardDescription>
         </CardHeader>
@@ -150,8 +150,8 @@ export default function ChatPage() {
                       : 'bg-muted'
                   }`}
                 >
-                  <p className="text-sm md:text-sm leading-relaxed">{message.content}</p>
-                  <p className="text-xs opacity-70 mt-1">
+                  <p className="text-base md:text-base leading-relaxed">{message.content}</p>
+                  <p className="text-base opacity-70 mt-1">
                     <ClientTimestamp timestamp={message.timestamp} />
                   </p>
                 </div>
@@ -174,7 +174,7 @@ export default function ChatPage() {
               onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
               placeholder="Type your message..."
               disabled={isLoading}
-              className="h-10 md:h-9 text-base md:text-sm"
+              className="h-10 md:h-9 text-base md:text-base"
             />
             <Button 
               onClick={sendMessage} 

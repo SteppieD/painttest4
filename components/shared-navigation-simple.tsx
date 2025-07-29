@@ -38,7 +38,7 @@ export default function SharedNavigationSimple() {
           {/* Logo with animation */}
           <Link href="/" className="group flex items-center space-x-3 relative">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-600 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-600 rounded-xl blur-lg opacity-100 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative w-10 h-10 bg-gradient-to-br from-slate-400 via-slate-500 to-slate-600 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg">
                 <span className="text-white font-black text-xl">P</span>
               </div>
@@ -55,21 +55,21 @@ export default function SharedNavigationSimple() {
 
           {/* Desktop Navigation with hover effects */}
           <div className="hidden lg:flex items-center">
-            <div className="relative flex items-center space-x-1 p-1.5 bg-white/5 rounded-2xl backdrop-blur-xl border border-white/10">
+            <div className="relative flex items-center space-x-1 p-1.5 bg-gray-900/80 rounded-2xl backdrop-blur-xl border border-white/10">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onMouseEnter={() => setHoveredItem(item.label)}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className="relative px-5 py-2.5 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 rounded-xl"
+                  className="relative px-5 py-2.5 text-base font-medium text-gray-100 hover:text-white transition-all duration-300 rounded-xl"
                 >
                   {hoveredItem === item.label && (
                     <div className={`absolute inset-0 bg-gradient-to-r ${item.glow} opacity-20 rounded-xl blur-xl`}></div>
                   )}
                   <span className="relative z-10">{item.label}</span>
                   {hoveredItem === item.label && (
-                    <div className="absolute inset-0 bg-white/10 rounded-xl"></div>
+                    <div className="absolute inset-0 bg-gray-900/70 rounded-xl"></div>
                   )}
                 </Link>
               ))}
@@ -80,7 +80,7 @@ export default function SharedNavigationSimple() {
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               href="/access-code"
-              className="relative px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-all duration-300 group"
+              className="relative px-5 py-2.5 text-base font-medium text-slate-300 hover:text-white transition-all duration-300 group"
             >
               <span className="relative z-10">Sign In</span>
               <div className="absolute inset-0 border border-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -90,8 +90,8 @@ export default function SharedNavigationSimple() {
               href="/trial-signup"
               className="relative group"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-slate-400 via-slate-500 to-slate-600 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-slate-500 to-slate-600 text-white font-semibold text-sm rounded-xl transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-slate-500/25 group-hover:scale-105">
+              <div className="absolute -inset-1 bg-gradient-to-r from-slate-400 via-slate-500 to-slate-600 rounded-xl blur-md opacity-100 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-slate-500 to-slate-600 text-white font-semibold text-base rounded-xl transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-slate-500/25 group-hover:scale-105">
                 <Sparkles className="h-4 w-4" />
                 Start Free Trial
                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -102,9 +102,9 @@ export default function SharedNavigationSimple() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden relative p-2.5 text-gray-300 hover:text-white transition-colors"
+            className="lg:hidden relative p-2.5 text-gray-100 hover:text-white transition-colors"
           >
-            <div className="absolute inset-0 bg-white/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 bg-gray-900/70 rounded-lg opacity-0 hover:opacity-100 transition-opacity"></div>
             <div className="relative z-10">
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -124,7 +124,7 @@ export default function SharedNavigationSimple() {
               <Link 
                 key={item.href}
                 href={item.href}
-                className="block mx-4 px-5 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200"
+                className="block mx-4 px-5 py-3 text-base font-medium text-gray-100 hover:text-white hover:bg-gray-900/70 rounded-xl transition-all duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
@@ -133,14 +133,14 @@ export default function SharedNavigationSimple() {
             <div className="mx-4 pt-4 space-y-3 border-t border-white/10">
               <Link
                 href="/access-code"
-                className="block px-5 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200 text-center"
+                className="block px-5 py-3 text-base font-medium text-gray-100 hover:text-white hover:bg-gray-900/70 rounded-xl transition-all duration-200 text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sign In
               </Link>
               <Link
                 href="/trial-signup"
-                className="block px-5 py-3 bg-gradient-to-r from-slate-500 to-slate-600 text-white font-medium text-sm rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/25"
+                className="block px-5 py-3 bg-gradient-to-r from-slate-500 to-slate-600 text-white font-medium text-base rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/25"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Start Free Trial

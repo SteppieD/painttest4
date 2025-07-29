@@ -307,7 +307,7 @@ export default function ExteriorPaintingEstimateCalculator() {
           <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <Sun className="mr-2 h-4 w-4" />
                   Exterior Specialist
                 </div>
@@ -315,7 +315,7 @@ export default function ExteriorPaintingEstimateCalculator() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Exterior Painting Estimate Calculator
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Get accurate exterior house painting estimates for siding, trim, doors, and all exterior surfaces. 
                   Professional calculations that account for weather, access, and surface complexity.
                 </p>
@@ -339,15 +339,15 @@ export default function ExteriorPaintingEstimateCalculator() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">$2.50-5</div>
-                    <p className="text-sm text-muted-foreground">Per Sq Ft Siding</p>
+                    <p className="text-base text-gray-200">Per Sq Ft Siding</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">5-12 days</div>
-                    <p className="text-sm text-muted-foreground">Typical Timeline</p>
+                    <p className="text-base text-gray-200">Typical Timeline</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">7-10 years</div>
-                    <p className="text-sm text-muted-foreground">Paint Lifespan</p>
+                    <p className="text-base text-gray-200">Paint Lifespan</p>
                   </div>
                 </div>
               </div>
@@ -375,19 +375,19 @@ export default function ExteriorPaintingEstimateCalculator() {
                           </h4>
                           <div className="grid gap-4 sm:grid-cols-2">
                             <div>
-                              <label className="text-sm font-medium">House Size</label>
+                              <label className="text-base font-medium">House Size</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Medium House</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Stories</label>
+                              <label className="text-base font-medium">Stories</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">2 Stories</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Exterior Area</label>
+                              <label className="text-base font-medium">Exterior Area</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">2,400 sq ft</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Current Condition</label>
+                              <label className="text-base font-medium">Current Condition</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Good</div>
                             </div>
                           </div>
@@ -400,20 +400,20 @@ export default function ExteriorPaintingEstimateCalculator() {
                           </h4>
                           <div className="space-y-3">
                             <div className="flex justify-between">
-                              <span className="text-sm">Paint type:</span>
-                              <span className="text-sm font-medium">Acrylic Latex</span>
+                              <span className="text-base">Paint type:</span>
+                              <span className="text-base font-medium">Acrylic Latex</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Season:</span>
-                              <span className="text-sm font-medium">Spring</span>
+                              <span className="text-base">Season:</span>
+                              <span className="text-base font-medium">Spring</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Complexity:</span>
-                              <span className="text-sm font-medium">Moderate</span>
+                              <span className="text-base">Complexity:</span>
+                              <span className="text-base font-medium">Moderate</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Access level:</span>
-                              <span className="text-sm font-medium">Standard</span>
+                              <span className="text-base">Access level:</span>
+                              <span className="text-base font-medium">Standard</span>
                             </div>
                           </div>
                         </div>
@@ -450,7 +450,7 @@ export default function ExteriorPaintingEstimateCalculator() {
                             <span>Total Estimate:</span>
                             <span className="text-primary">$11,385</span>
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             Price per sq ft: $4.74 | Timeline: 6-8 days
                           </div>
                         </div>
@@ -460,7 +460,7 @@ export default function ExteriorPaintingEstimateCalculator() {
                             Get Professional Estimate
                           </Button>
                           <div className="text-center">
-                            <Link href="/auth/signup" className="text-sm text-primary hover:underline">
+                            <Link href="/auth/signup" className="text-base text-primary hover:underline">
                               Save estimate and get detailed breakdown
                             </Link>
                           </div>
@@ -478,7 +478,7 @@ export default function ExteriorPaintingEstimateCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Exterior Painting Costs by House Size</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Professional estimates based on typical house sizes and exterior areas
                 </p>
               </div>
@@ -489,14 +489,14 @@ export default function ExteriorPaintingEstimateCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${house.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {house.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Common
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{house.size}</h3>
-                      <div className="text-sm text-muted-foreground mb-4">
+                      <div className="text-base text-gray-200 mb-4">
                         <div>Interior: {house.sqft}</div>
                         <div>Exterior area: {house.exteriorArea}</div>
                         <div>Height: {house.stories}</div>
@@ -505,10 +505,10 @@ export default function ExteriorPaintingEstimateCalculator() {
                       
                       <div className="mb-4">
                         <div className="text-2xl font-bold text-primary">{house.costRange}</div>
-                        <div className="text-sm text-muted-foreground">Complete exterior</div>
+                        <div className="text-base text-gray-200">Complete exterior</div>
                       </div>
 
-                      <div className="grid gap-3 sm:grid-cols-2 mb-4 text-sm">
+                      <div className="grid gap-3 sm:grid-cols-2 mb-4 text-base">
                         <div className="flex justify-between">
                           <span>Paint needed:</span>
                           <span className="font-medium">{house.paintNeeded}</span>
@@ -521,7 +521,7 @@ export default function ExteriorPaintingEstimateCalculator() {
 
                       <ul className="space-y-1 mb-6">
                         {house.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li key={featureIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {feature}
                           </li>
@@ -543,7 +543,7 @@ export default function ExteriorPaintingEstimateCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Exterior Surface Breakdown</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Different exterior surfaces require specialized approaches and pricing
                 </p>
               </div>
@@ -554,14 +554,14 @@ export default function ExteriorPaintingEstimateCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${surface.popular ? 'border-primary shadow-lg' : ''}`}>
                       {surface.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Primary Surface
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{surface.surface}</h3>
-                      <div className="text-sm text-muted-foreground mb-4">
+                      <div className="text-base text-gray-200 mb-4">
                         <div>Difficulty: {surface.difficulty}</div>
                         <div>Timeline: {surface.timeframe}</div>
                         <div>Paint share: {surface.paintNeeded}</div>
@@ -569,12 +569,12 @@ export default function ExteriorPaintingEstimateCalculator() {
                       
                       <div className="mb-4">
                         <div className="text-2xl font-bold text-primary">{surface.avgCost}</div>
-                        <div className="text-sm text-muted-foreground">Average cost</div>
+                        <div className="text-base text-gray-200">Average cost</div>
                       </div>
 
                       <ul className="space-y-1 mb-6">
                         {surface.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li key={featureIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {feature}
                           </li>
@@ -596,7 +596,7 @@ export default function ExteriorPaintingEstimateCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Exterior Painting Challenges</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Key factors that affect exterior painting complexity and costs
                 </p>
               </div>
@@ -611,17 +611,17 @@ export default function ExteriorPaintingEstimateCalculator() {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-lg font-semibold mb-2">{challenge.challenge}</h3>
-                          <p className="text-sm text-muted-foreground mb-4">{challenge.description}</p>
+                          <p className="text-base text-gray-200 mb-4">{challenge.description}</p>
                           
                           <div className="mb-4">
-                            <div className="text-sm font-medium text-primary">{challenge.impact}</div>
+                            <div className="text-base font-medium text-primary">{challenge.impact}</div>
                           </div>
 
                           <div>
-                            <div className="text-sm font-medium mb-2">Solutions:</div>
+                            <div className="text-base font-medium mb-2">Solutions:</div>
                             <ul className="space-y-1">
                               {challenge.solutions.map((solution, solutionIndex) => (
-                                <li key={solutionIndex} className="flex items-center text-sm">
+                                <li key={solutionIndex} className="flex items-center text-base">
                                   <CheckCircle className="mr-2 h-3 w-3 text-green-600" />
                                   {solution}
                                 </li>
@@ -642,7 +642,7 @@ export default function ExteriorPaintingEstimateCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Best Time for Exterior Painting</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Seasonal considerations for optimal exterior painting results and pricing
                 </p>
               </div>
@@ -653,25 +653,25 @@ export default function ExteriorPaintingEstimateCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${season.popular ? 'border-primary shadow-lg' : ''}`}>
                       {season.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Best Season
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{season.season}</h3>
-                      <div className="grid gap-3 sm:grid-cols-3 mb-4 text-sm">
+                      <div className="grid gap-3 sm:grid-cols-3 mb-4 text-base">
                         <div>
                           <span className="font-medium">Conditions:</span>
-                          <div className="text-muted-foreground">{season.conditions}</div>
+                          <div className="text-gray-200">{season.conditions}</div>
                         </div>
                         <div>
                           <span className="font-medium">Availability:</span>
-                          <div className="text-muted-foreground">{season.availability}</div>
+                          <div className="text-gray-200">{season.availability}</div>
                         </div>
                         <div>
                           <span className="font-medium">Pricing:</span>
-                          <div className="text-muted-foreground">{season.pricing}</div>
+                          <div className="text-gray-200">{season.pricing}</div>
                         </div>
                       </div>
 
@@ -689,10 +689,10 @@ export default function ExteriorPaintingEstimateCalculator() {
                         </div>
                         
                         <div>
-                          <div className="text-sm font-medium text-orange-700 mb-2">Considerations:</div>
+                          <div className="text-base font-medium text-orange-700 mb-2">Considerations:</div>
                           <ul className="space-y-1">
                             {season.considerations.map((consideration, considerationIndex) => (
-                              <li key={considerationIndex} className="text-sm text-muted-foreground">
+                              <li key={considerationIndex} className="text-base text-gray-200">
                                 • {consideration}
                               </li>
                             ))}
@@ -711,7 +711,7 @@ export default function ExteriorPaintingEstimateCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Exterior Paint Types Guide</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Choose the right paint type for your exterior surfaces and climate
                 </p>
               </div>
@@ -722,24 +722,24 @@ export default function ExteriorPaintingEstimateCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${paint.popular ? 'border-primary shadow-lg' : ''}`}>
                       {paint.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Popular
                           </span>
                         </div>
                       )}
                       
                       <h3 className="text-xl font-semibold mb-2">{paint.type}</h3>
-                      <div className="text-sm text-muted-foreground mb-4">
+                      <div className="text-base text-gray-200 mb-4">
                         <div><strong>Best for:</strong> {paint.bestFor}</div>
                         <div><strong>Lifespan:</strong> {paint.lifespan}</div>
                         <div><strong>Cost:</strong> {paint.cost}</div>
                       </div>
 
                       <div className="mb-4">
-                        <div className="text-sm font-medium mb-2">Key Features:</div>
+                        <div className="text-base font-medium mb-2">Key Features:</div>
                         <div className="flex flex-wrap gap-2">
                           {paint.features.map((feature, featureIndex) => (
-                            <span key={featureIndex} className="text-xs bg-muted px-2 py-1 rounded">
+                            <span key={featureIndex} className="text-base bg-muted px-2 py-1 rounded">
                               {feature}
                             </span>
                           ))}
@@ -748,10 +748,10 @@ export default function ExteriorPaintingEstimateCalculator() {
 
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div>
-                          <div className="text-sm font-medium text-green-700 mb-2">Pros:</div>
+                          <div className="text-base font-medium text-green-700 mb-2">Pros:</div>
                           <ul className="space-y-1">
                             {paint.pros.map((pro, proIndex) => (
-                              <li key={proIndex} className="flex items-center text-sm">
+                              <li key={proIndex} className="flex items-center text-base">
                                 <CheckCircle className="mr-2 h-3 w-3 text-green-600" />
                                 {pro}
                               </li>
@@ -760,10 +760,10 @@ export default function ExteriorPaintingEstimateCalculator() {
                         </div>
                         
                         <div>
-                          <div className="text-sm font-medium text-orange-700 mb-2">Cons:</div>
+                          <div className="text-base font-medium text-orange-700 mb-2">Cons:</div>
                           <ul className="space-y-1">
                             {paint.cons.map((con, conIndex) => (
-                              <li key={conIndex} className="text-sm text-muted-foreground">
+                              <li key={conIndex} className="text-base text-gray-200">
                                 • {con}
                               </li>
                             ))}
@@ -789,7 +789,7 @@ export default function ExteriorPaintingEstimateCalculator() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -802,7 +802,7 @@ export default function ExteriorPaintingEstimateCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Painting Tools</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Complete suite of calculators for all your painting projects
                 </p>
               </div>
@@ -812,25 +812,25 @@ export default function ExteriorPaintingEstimateCalculator() {
                   <Link href="/paint-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">General Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Universal calculator for all painting projects</p>
+                    <p className="text-base text-gray-200">Universal calculator for all painting projects</p>
                   </Link>
 
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for interior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized for interior painting projects</p>
                   </Link>
 
                   <Link href="/paint-cost-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Cost Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Calculate total project costs and budget</p>
+                    <p className="text-base text-gray-200">Calculate total project costs and budget</p>
                   </Link>
 
                   <Link href="/how-to-estimate-interior-paint-jobs" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Estimation Guide</h3>
-                    <p className="text-sm text-muted-foreground">Learn professional estimation techniques</p>
+                    <p className="text-base text-gray-200">Learn professional estimation techniques</p>
                   </Link>
                 </div>
               </div>
@@ -843,7 +843,7 @@ export default function ExteriorPaintingEstimateCalculator() {
               <h2 className="text-3xl font-bold mb-4">
                 Transform Your Home's Exterior
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Protect and beautify your home with professional exterior painting. Get accurate estimates, 
                 choose the right season, and ensure lasting results with weather-resistant paints.
               </p>
@@ -862,7 +862,7 @@ export default function ExteriorPaintingEstimateCalculator() {
                   View Pro Features
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 Weather-resistant • Long-lasting • Professional results
               </p>
             </div>

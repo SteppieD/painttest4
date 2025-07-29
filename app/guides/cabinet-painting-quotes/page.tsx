@@ -122,8 +122,8 @@ export default function CabinetPaintingQuotesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -142,7 +142,7 @@ export default function CabinetPaintingQuotesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Cabinet Painting Quotes: Pricing Guide
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master the art of cabinet painting estimates with detailed pricing strategies, 
                 finish options, and professional techniques. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -172,7 +172,7 @@ export default function CabinetPaintingQuotesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">How Much Does Cabinet Painting Cost?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Kitchen cabinet painting costs average $75-150 per door or $3,000-6,000 for a typical kitchen 
                   with 30-40 doors and drawers. Prices vary based on cabinet condition, finish quality, and whether 
                   boxes are painted. Spray finishing costs 20-30% more but provides superior results.
@@ -198,7 +198,7 @@ export default function CabinetPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-amber-400 mb-3">Brush & Roll Method</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Standard door: $75-100</li>
                             <li>• Large/panel door: $100-125</li>
                             <li>• Drawer front: $40-60</li>
@@ -208,7 +208,7 @@ export default function CabinetPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Spray Finish Method</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Standard door: $100-150</li>
                             <li>• Large/panel door: $125-175</li>
                             <li>• Drawer front: $50-75</li>
@@ -218,7 +218,7 @@ export default function CabinetPaintingQuotesGuide() {
                         </div>
                       </div>
                       <div className="mt-4 p-4 bg-amber-500/10 rounded-lg">
-                        <p className="text-sm text-gray-300">
+                        <p className="text-base text-gray-100">
                           <strong className="text-amber-400">Pro Tip:</strong> Always count doors and drawers during 
                           the estimate visit. Photos help ensure accurate counts. Add 10% for potential missed items.
                         </p>
@@ -236,7 +236,7 @@ export default function CabinetPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-blue-400 mb-3">Upper Cabinets</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Basic finish: $125-175/ft</li>
                             <li>• Premium finish: $175-225/ft</li>
                             <li>• With crown molding: +$25/ft</li>
@@ -245,7 +245,7 @@ export default function CabinetPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Lower Cabinets</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Basic finish: $150-200/ft</li>
                             <li>• Premium finish: $200-275/ft</li>
                             <li>• Island/peninsula: +20%</li>
@@ -271,7 +271,7 @@ export default function CabinetPaintingQuotesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-bronze-400 mb-4">Basic Finish</h3>
                   <div className="text-2xl font-bold text-white mb-3">$75-100/door</div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Clean and degrease</li>
                     <li>• Light sanding</li>
                     <li>• One coat primer</li>
@@ -285,7 +285,7 @@ export default function CabinetPaintingQuotesGuide() {
                   <Badge className="mb-2 bg-amber-500/20 text-amber-400 border-amber-500/30">Most Popular</Badge>
                   <h3 className="text-xl font-semibold text-amber-400 mb-4">Professional Finish</h3>
                   <div className="text-2xl font-bold text-white mb-3">$100-150/door</div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Thorough prep work</li>
                     <li>• Fill grain (oak)</li>
                     <li>• Premium primer</li>
@@ -298,7 +298,7 @@ export default function CabinetPaintingQuotesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-purple-400 mb-4">Premium Finish</h3>
                   <div className="text-2xl font-bold text-white mb-3">$150-200/door</div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Complete stripping</li>
                     <li>• Repair all defects</li>
                     <li>• High-end primer</li>
@@ -324,8 +324,8 @@ export default function CabinetPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Day 1: Prep & Remove</h4>
-                      <p className="text-gray-300 mb-2">Remove doors, drawers, and hardware. Clean and degrease all surfaces.</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Remove doors, drawers, and hardware. Clean and degrease all surfaces.</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Time: 4-6 hours | Labor: 2 workers
                       </div>
                     </div>
@@ -335,8 +335,8 @@ export default function CabinetPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Day 2-3: Sanding & Priming</h4>
-                      <p className="text-gray-300 mb-2">Sand all surfaces, fill grain/damage, apply bonding primer.</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Sand all surfaces, fill grain/damage, apply bonding primer.</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Time: 8-12 hours | Labor: 2 workers
                       </div>
                     </div>
@@ -346,8 +346,8 @@ export default function CabinetPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Day 4-5: Paint Application</h4>
-                      <p className="text-gray-300 mb-2">Apply 2-3 coats of finish paint with proper drying between coats.</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Apply 2-3 coats of finish paint with proper drying between coats.</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Time: 10-16 hours | Labor: 2 workers
                       </div>
                     </div>
@@ -357,8 +357,8 @@ export default function CabinetPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">4</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Day 6: Reinstall</h4>
-                      <p className="text-gray-300 mb-2">Reinstall doors, drawers, and hardware. Final adjustments and cleanup.</p>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm text-green-400">
+                      <p className="text-gray-100 mb-2">Reinstall doors, drawers, and hardware. Final adjustments and cleanup.</p>
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base text-green-400">
                         Time: 4-6 hours | Labor: 2 workers
                       </div>
                     </div>
@@ -366,7 +366,7 @@ export default function CabinetPaintingQuotesGuide() {
                 </div>
 
                 <div className="mt-6 p-4 bg-amber-500/10 rounded-lg">
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     <strong className="text-amber-400">Total Project Time:</strong> 5-6 days typical | 
                     <strong className="text-amber-400"> Total Labor:</strong> 60-80 hours for average kitchen
                   </p>
@@ -388,7 +388,7 @@ export default function CabinetPaintingQuotesGuide() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-lg font-semibold text-amber-400 mb-3">Material Requirements</h4>
-                    <ul className="space-y-2 text-gray-300">
+                    <ul className="space-y-2 text-gray-100">
                       <li>• Degreaser: 1 gallon @ $20</li>
                       <li>• Sandpaper: Various grits @ $40</li>
                       <li>• Wood filler: 2 tubes @ $30</li>
@@ -403,16 +403,16 @@ export default function CabinetPaintingQuotesGuide() {
 
                   <div>
                     <h4 className="text-lg font-semibold text-blue-400 mb-3">Coverage Formulas</h4>
-                    <div className="space-y-3 text-gray-300">
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm">
+                    <div className="space-y-3 text-gray-100">
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base">
                         <p className="text-green-400">Primer needed:</p>
                         <p>Doors × 4 sq ft ÷ 300 = gallons</p>
                       </div>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm">
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base">
                         <p className="text-green-400">Paint needed:</p>
                         <p>Doors × 4 sq ft × 2.5 coats ÷ 350 = gallons</p>
                       </div>
-                      <div className="bg-gray-900/50 rounded p-3 font-mono text-sm">
+                      <div className="bg-gray-900/50 rounded p-3 font-mono text-base">
                         <p className="text-green-400">Add 20% for boxes if painting</p>
                       </div>
                     </div>
@@ -432,7 +432,7 @@ export default function CabinetPaintingQuotesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-amber-400 mb-4">Oak Cabinets</h3>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Extensive grain filling required</li>
                     <li>• 2-3 coats grain filler @ $200-300</li>
                     <li>• Extra sanding between coats</li>
@@ -443,7 +443,7 @@ export default function CabinetPaintingQuotesGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Maple/Cherry</h3>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Smooth surface, minimal grain</li>
                     <li>• Standard prep work sufficient</li>
                     <li>• Excellent paint adhesion</li>
@@ -454,7 +454,7 @@ export default function CabinetPaintingQuotesGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-purple-400 mb-4">Laminate/Thermofoil</h3>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Special bonding primer required</li>
                     <li>• Cannot sand aggressively</li>
                     <li>• Limited to light colors</li>
@@ -465,7 +465,7 @@ export default function CabinetPaintingQuotesGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Previously Painted</h3>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Check for lead paint (pre-1978)</li>
                     <li>• May need stripping</li>
                     <li>• Test adhesion carefully</li>
@@ -491,7 +491,7 @@ export default function CabinetPaintingQuotesGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-amber-400 mb-3">Cabinet Count</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Upper doors: 18 @ $125 = $2,250</li>
                         <li>• Lower doors: 10 @ $125 = $1,250</li>
                         <li>• Drawer fronts: 8 @ $65 = $520</li>
@@ -501,7 +501,7 @@ export default function CabinetPaintingQuotesGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Additional Work</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Grain filling (oak): $450</li>
                         <li>• Crown molding: $200</li>
                         <li>• Interior shelves: $300</li>
@@ -516,15 +516,15 @@ export default function CabinetPaintingQuotesGuide() {
                     <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded p-4">
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Door/Drawer Painting</span>
+                          <span className="text-gray-100">Door/Drawer Painting</span>
                           <span className="text-white">$4,120</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Additional Work</span>
+                          <span className="text-gray-100">Additional Work</span>
                           <span className="text-white">$1,200</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Materials</span>
+                          <span className="text-gray-100">Materials</span>
                           <span className="text-white">$580</span>
                         </div>
                         <div className="border-t border-gray-600 pt-2 mt-2">
@@ -532,9 +532,9 @@ export default function CabinetPaintingQuotesGuide() {
                             <span className="text-white">Total Investment</span>
                             <span className="text-green-400">$5,900</span>
                           </div>
-                          <div className="flex justify-between text-sm mt-1">
-                            <span className="text-gray-400">vs. New Cabinets</span>
-                            <span className="text-gray-400">Save $12,000+</span>
+                          <div className="flex justify-between text-base mt-1">
+                            <span className="text-gray-200">vs. New Cabinets</span>
+                            <span className="text-gray-200">Save $12,000+</span>
                           </div>
                         </div>
                       </div>
@@ -542,7 +542,7 @@ export default function CabinetPaintingQuotesGuide() {
                   </div>
 
                   <div className="p-4 bg-green-500/10 rounded-lg">
-                    <p className="text-gray-300">
+                    <p className="text-gray-100">
                       <strong className="text-green-400">Value Proposition:</strong> Transform your kitchen for 30% of 
                       replacement cost. Professional spray finish, 3-year warranty, completed in one week.
                     </p>
@@ -562,7 +562,7 @@ export default function CabinetPaintingQuotesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Do's</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
                       <span>Always test existing finish adhesion</span>
@@ -588,7 +588,7 @@ export default function CabinetPaintingQuotesGuide() {
 
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
                   <h3 className="text-xl font-semibold text-red-400 mb-4">Don'ts</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
                       <span>Never skip proper prep work</span>
@@ -624,7 +624,7 @@ export default function CabinetPaintingQuotesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Quote Cabinet Jobs with Confidence
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Our software calculates door counts, tracks finish options, and generates professional 
                   cabinet painting proposals that sell the value.
                 </p>
@@ -659,7 +659,7 @@ export default function CabinetPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master guide to all painting quotes
                     </p>
                   </Card>
@@ -671,7 +671,7 @@ export default function CabinetPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Interior Painting
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Room-by-room pricing guide
                     </p>
                   </Card>
@@ -683,7 +683,7 @@ export default function CabinetPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Specialty Finishes
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Advanced painting techniques
                     </p>
                   </Card>

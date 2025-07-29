@@ -33,8 +33,8 @@ export function SubscriptionPlans({
       {/* Billing Period Toggle */}
       <div className="flex items-center justify-center gap-4">
         <span className={cn(
-          "text-sm font-medium",
-          billingPeriod === 'monthly' ? 'text-gray-900' : 'text-gray-500'
+          "text-base font-medium",
+          billingPeriod === 'monthly' ? 'text-gray-900' : 'text-gray-200'
         )}>
           Monthly
         </span>
@@ -43,8 +43,8 @@ export function SubscriptionPlans({
           onCheckedChange={(checked) => setBillingPeriod(checked ? 'yearly' : 'monthly')}
         />
         <span className={cn(
-          "text-sm font-medium",
-          billingPeriod === 'yearly' ? 'text-gray-900' : 'text-gray-500'
+          "text-base font-medium",
+          billingPeriod === 'yearly' ? 'text-gray-900' : 'text-gray-200'
         )}>
           Yearly
         </span>
@@ -95,12 +95,12 @@ export function SubscriptionPlans({
                     <span className="text-gray-600">/month</span>
                   </div>
                   {billingPeriod === 'yearly' && (
-                    <div className="text-sm text-green-600 mt-1">
+                    <div className="text-base text-green-600 mt-1">
                       Save ${savings}/month
                     </div>
                   )}
                   {billingPeriod === 'yearly' && (
-                    <div className="text-xs text-gray-500 mt-1">
+                    <div className="text-base text-gray-200 mt-1">
                       Billed annually (${yearlyPrice}/year)
                     </div>
                   )}
@@ -112,7 +112,7 @@ export function SubscriptionPlans({
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
+                      <span className="text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>

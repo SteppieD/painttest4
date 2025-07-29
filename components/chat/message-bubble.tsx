@@ -26,7 +26,7 @@ export function MessageBubble({ message, isTyping }: MessageBubbleProps) {
           'max-w-[80%] rounded-2xl px-4 py-3 shadow-lg backdrop-blur-sm',
           isUser
             ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-blue-500/20'
-            : 'bg-white/10 text-gray-100 border border-white/10'
+            : 'bg-gray-900/70 text-gray-100 border border-white/10'
         )}
       >
         {isTyping ? (
@@ -41,8 +41,8 @@ export function MessageBubble({ message, isTyping }: MessageBubbleProps) {
             {message.timestamp && (
               <p
                 className={cn(
-                  'mt-1 text-xs',
-                  isUser ? 'text-blue-100' : 'text-gray-500 dark:text-gray-400'
+                  'mt-1 text-base',
+                  isUser ? 'text-blue-100' : 'text-gray-200 dark:text-gray-200'
                 )}
               >
                 {new Date(message.timestamp).toLocaleTimeString([], {

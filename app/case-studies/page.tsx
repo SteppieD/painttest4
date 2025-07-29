@@ -29,7 +29,7 @@ export default function CaseStudies() {
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                 Painting Contractor Success Stories
               </h1>
-              <p className="mt-6 text-xl text-muted-foreground">
+              <p className="mt-6 text-xl text-gray-200">
                 Real contractors. Real results. See how PaintQuote Pro helped painting businesses 
                 increase profits, save time, and win more jobs.
               </p>
@@ -61,22 +61,22 @@ export default function CaseStudies() {
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary">87%</div>
                 <p className="mt-2 text-lg font-semibold">Time Saved</p>
-                <p className="text-sm text-muted-foreground">On quote creation</p>
+                <p className="text-base text-gray-200">On quote creation</p>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary">42%</div>
                 <p className="mt-2 text-lg font-semibold">More Jobs Won</p>
-                <p className="text-sm text-muted-foreground">Higher close rate</p>
+                <p className="text-base text-gray-200">Higher close rate</p>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary">3.2x</div>
                 <p className="mt-2 text-lg font-semibold">ROI</p>
-                <p className="text-sm text-muted-foreground">Return on investment</p>
+                <p className="text-base text-gray-200">Return on investment</p>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary">$18K</div>
                 <p className="mt-2 text-lg font-semibold">Extra Revenue</p>
-                <p className="text-sm text-muted-foreground">Per month average</p>
+                <p className="text-base text-gray-200">Per month average</p>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function CaseStudies() {
                     ))}
                   </div>
                 </div>
-                <p className="mt-2 text-lg text-muted-foreground">Phoenix, Arizona • 12 employees</p>
+                <p className="mt-2 text-lg text-gray-200">Phoenix, Arizona • 12 employees</p>
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
@@ -112,35 +112,35 @@ export default function CaseStudies() {
                   <div className="rounded-lg border p-4">
                     <TrendingUp className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">58%</p>
-                    <p className="text-sm text-muted-foreground">Revenue increase</p>
+                    <p className="text-base text-gray-200">Revenue increase</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <Clock className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">91%</p>
-                    <p className="text-sm text-muted-foreground">Time saved on quotes</p>
+                    <p className="text-base text-gray-200">Time saved on quotes</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <Users className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">2.5x</p>
-                    <p className="text-sm text-muted-foreground">More quotes sent</p>
+                    <p className="text-base text-gray-200">More quotes sent</p>
                   </div>
                 </div>
 
                 <h3 className="mt-8 text-xl font-semibold">The Challenge</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   Rodriguez Painting was losing jobs to competitors who responded faster. Their manual 
                   quoting process took hours and often contained errors, leading to unprofitable jobs.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold">The Solution</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   They implemented PaintQuote Pro's AI chat system, allowing them to generate quotes 
                   during the initial site visit. The charge rate calculator ensured consistent, 
                   profitable pricing on every job.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold">The Results</h3>
-                <ul className="mt-4 space-y-2 text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-gray-200">
                   <li>• Grew from $80K to $126K monthly revenue in 6 months</li>
                   <li>• Increased quote-to-job conversion rate from 22% to 38%</li>
                   <li>• Eliminated pricing errors that cost them $3-5K monthly</li>
@@ -164,7 +164,7 @@ export default function CaseStudies() {
                     ))}
                   </div>
                 </div>
-                <p className="mt-2 text-lg text-muted-foreground">Seattle, Washington • 8 employees</p>
+                <p className="mt-2 text-lg text-gray-200">Seattle, Washington • 8 employees</p>
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
@@ -181,36 +181,36 @@ export default function CaseStudies() {
                   <div className="rounded-lg border p-4">
                     <DollarSign className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">15%</p>
-                    <p className="text-sm text-muted-foreground">Higher profit margins</p>
+                    <p className="text-base text-gray-200">Higher profit margins</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <BarChart className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">73%</p>
-                    <p className="text-sm text-muted-foreground">Better job tracking</p>
+                    <p className="text-base text-gray-200">Better job tracking</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <Star className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">4.9</p>
-                    <p className="text-sm text-muted-foreground">Customer rating</p>
+                    <p className="text-base text-gray-200">Customer rating</p>
                   </div>
                 </div>
 
                 <h3 className="mt-8 text-xl font-semibold">The Challenge</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   Premier Coatings specialized in high-end residential repaints but struggled with 
                   inconsistent pricing. Different estimators quoted different prices for similar 
                   jobs, confusing customers and hurting profitability.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold">The Solution</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   They standardized their pricing using PaintQuote Pro's charge rate system. All 
                   estimators now use the same rates, ensuring consistency. The analytics dashboard 
                   helps them track which types of jobs are most profitable.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold">The Results</h3>
-                <ul className="mt-4 space-y-2 text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-gray-200">
                   <li>• Increased average job value from $4,200 to $5,100</li>
                   <li>• Reduced quote preparation time by 85%</li>
                   <li>• Improved customer satisfaction scores to 4.9/5.0</li>
@@ -234,7 +234,7 @@ export default function CaseStudies() {
                     ))}
                   </div>
                 </div>
-                <p className="mt-2 text-lg text-muted-foreground">Atlanta, Georgia • 25 employees</p>
+                <p className="mt-2 text-lg text-gray-200">Atlanta, Georgia • 25 employees</p>
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
@@ -251,36 +251,36 @@ export default function CaseStudies() {
                   <div className="rounded-lg border p-4">
                     <Users className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">40%</p>
-                    <p className="text-sm text-muted-foreground">Higher close rate</p>
+                    <p className="text-base text-gray-200">Higher close rate</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <TrendingUp className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">$2.1M</p>
-                    <p className="text-sm text-muted-foreground">Annual revenue</p>
+                    <p className="text-base text-gray-200">Annual revenue</p>
                   </div>
                   <div className="rounded-lg border p-4">
                     <Clock className="h-8 w-8 text-primary" />
                     <p className="mt-2 text-2xl font-bold">24hr</p>
-                    <p className="text-sm text-muted-foreground">Quote turnaround</p>
+                    <p className="text-base text-gray-200">Quote turnaround</p>
                   </div>
                 </div>
 
                 <h3 className="mt-8 text-xl font-semibold">The Challenge</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   As a larger operation focusing on commercial projects, Wilson & Sons needed to 
                   process high volumes of quote requests quickly. Their old system couldn't scale, 
                   causing them to miss opportunities.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold">The Solution</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   They deployed PaintQuote Pro across their entire sales team. The AI chat interface 
                   allowed even junior estimators to create accurate quotes. Integration with their 
                   CRM streamlined the entire sales process.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold">The Results</h3>
-                <ul className="mt-4 space-y-2 text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-gray-200">
                   <li>• Scaled from $1.3M to $2.1M annual revenue</li>
                   <li>• Reduced quote turnaround from 5 days to 24 hours</li>
                   <li>• Won 3 major commercial contracts worth $400K+</li>
@@ -297,7 +297,7 @@ export default function CaseStudies() {
             <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
               Success at Every Scale
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-200">
               PaintQuote Pro works for contractors of all sizes, from solo operators to large crews
             </p>
             
@@ -305,7 +305,7 @@ export default function CaseStudies() {
               {/* Solo Contractor */}
               <div className="rounded-lg border bg-background p-6">
                 <h3 className="text-xl font-semibold">Solo Contractor</h3>
-                <p className="mt-2 font-medium text-muted-foreground">
+                <p className="mt-2 font-medium text-gray-200">
                   Tom's Quality Painting • Chicago, IL
                 </p>
                 <div className="mt-4">
@@ -314,13 +314,13 @@ export default function CaseStudies() {
                       <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="mt-4 text-sm italic">
+                  <p className="mt-4 text-base italic">
                     "As a one-man operation, time is everything. PaintQuote Pro lets me quote jobs 
                     on-site and close deals immediately. My income doubled in the first year."
                   </p>
-                  <p className="mt-2 text-sm font-semibold">— Tom Martinez</p>
+                  <p className="mt-2 text-base font-semibold">— Tom Martinez</p>
                 </div>
-                <div className="mt-4 space-y-2 text-sm">
+                <div className="mt-4 space-y-2 text-base">
                   <div className="flex justify-between">
                     <span>Monthly revenue:</span>
                     <span className="font-semibold">$8K → $16K</span>
@@ -335,7 +335,7 @@ export default function CaseStudies() {
               {/* Small Crew */}
               <div className="rounded-lg border bg-background p-6">
                 <h3 className="text-xl font-semibold">Small Crew</h3>
-                <p className="mt-2 font-medium text-muted-foreground">
+                <p className="mt-2 font-medium text-gray-200">
                   Coastal Painters • San Diego, CA
                 </p>
                 <div className="mt-4">
@@ -344,13 +344,13 @@ export default function CaseStudies() {
                       <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="mt-4 text-sm italic">
+                  <p className="mt-4 text-base italic">
                     "We were drowning in paperwork. Now our crew leader can create quotes in the 
                     field while I focus on growing the business. Game changer!"
                   </p>
-                  <p className="mt-2 text-sm font-semibold">— Lisa Park</p>
+                  <p className="mt-2 text-base font-semibold">— Lisa Park</p>
                 </div>
-                <div className="mt-4 space-y-2 text-sm">
+                <div className="mt-4 space-y-2 text-base">
                   <div className="flex justify-between">
                     <span>Team size:</span>
                     <span className="font-semibold">3 → 6 painters</span>
@@ -365,7 +365,7 @@ export default function CaseStudies() {
               {/* Growing Company */}
               <div className="rounded-lg border bg-background p-6">
                 <h3 className="text-xl font-semibold">Growing Company</h3>
-                <p className="mt-2 font-medium text-muted-foreground">
+                <p className="mt-2 font-medium text-gray-200">
                   Elite Finishes • Denver, CO
                 </p>
                 <div className="mt-4">
@@ -374,13 +374,13 @@ export default function CaseStudies() {
                       <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="mt-4 text-sm italic">
+                  <p className="mt-4 text-base italic">
                     "PaintQuote Pro scaled with us perfectly. From 5 to 15 employees, the system 
                     handled our growth and helped maintain quality standards."
                   </p>
-                  <p className="mt-2 text-sm font-semibold">— Robert Lee</p>
+                  <p className="mt-2 text-base font-semibold">— Robert Lee</p>
                 </div>
-                <div className="mt-4 space-y-2 text-sm">
+                <div className="mt-4 space-y-2 text-base">
                   <div className="flex justify-between">
                     <span>Annual growth:</span>
                     <span className="font-semibold">+127%</span>
@@ -401,7 +401,7 @@ export default function CaseStudies() {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Calculate Your Potential ROI
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
+            <p className="mx-auto mt-4 max-w-2xl text-xl opacity-100">
               Based on our customer data, here's what you could achieve with PaintQuote Pro
             </p>
             
@@ -425,7 +425,7 @@ export default function CaseStudies() {
                   <span>+$15,000/month</span>
                 </div>
               </div>
-              <p className="mt-6 text-sm text-muted-foreground">
+              <p className="mt-6 text-base text-gray-200">
                 *Based on average customer results. Individual results may vary.
               </p>
             </div>
@@ -451,19 +451,19 @@ export default function CaseStudies() {
               <div className="mt-12 grid gap-8 md:grid-cols-4">
                 <div>
                   <div className="text-4xl font-bold text-primary">2,847</div>
-                  <p className="mt-2 text-sm text-muted-foreground">Active Contractors</p>
+                  <p className="mt-2 text-base text-gray-200">Active Contractors</p>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-primary">186K</div>
-                  <p className="mt-2 text-sm text-muted-foreground">Quotes Created</p>
+                  <p className="mt-2 text-base text-gray-200">Quotes Created</p>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-primary">$47M</div>
-                  <p className="mt-2 text-sm text-muted-foreground">In Quoted Work</p>
+                  <p className="mt-2 text-base text-gray-200">In Quoted Work</p>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-primary">4.8/5</div>
-                  <p className="mt-2 text-sm text-muted-foreground">Average Rating</p>
+                  <p className="mt-2 text-base text-gray-200">Average Rating</p>
                 </div>
               </div>
             </div>
@@ -475,20 +475,20 @@ export default function CaseStudies() {
       <footer className="border-t bg-background">
         <div className="container py-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-gray-200">
               © 2025 PaintQuote Pro. Helping contractors succeed since 2023.
             </p>
             <div className="flex gap-6">
-              <Link href="/painting-estimate-calculator-free" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href="/painting-estimate-calculator-free" className="text-base text-gray-200 hover:text-foreground">
                 Calculator
               </Link>
-              <Link href="/how-to-quote-painting-jobs" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href="/how-to-quote-painting-jobs" className="text-base text-gray-200 hover:text-foreground">
                 How to Quote
               </Link>
-              <Link href="/painting-quote-templates" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href="/painting-quote-templates" className="text-base text-gray-200 hover:text-foreground">
                 Templates
               </Link>
-              <Link href="/pricing" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href="/pricing" className="text-base text-gray-200 hover:text-foreground">
                 Pricing
               </Link>
             </div>

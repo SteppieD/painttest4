@@ -131,7 +131,7 @@ export default function AboutPage() {
                 Empowering Painting Contractors to 
                 <span className="text-primary"> Grow Their Business</span>
               </h1>
-              <p className="mt-6 text-xl text-muted-foreground">
+              <p className="mt-6 text-xl text-gray-200">
                 Since 2018, we{'\''}ve been on a mission to help painting contractors save time, 
                 win more jobs, and build successful businesses with professional estimating software.
               </p>
@@ -148,7 +148,7 @@ export default function AboutPage() {
                   <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
                     Our Story
                   </h2>
-                  <div className="space-y-4 text-muted-foreground">
+                  <div className="space-y-4 text-gray-200">
                     <p>
                       PaintQuote Pro was born out of frustration. Our founder, Michael Chen, 
                       ran a successful painting business for 15 years but constantly struggled 
@@ -174,7 +174,7 @@ export default function AboutPage() {
                 <div className="relative h-96 overflow-hidden rounded-lg border bg-muted lg:h-full">
                   {/* Placeholder for story image */}
                   <div className="flex h-full items-center justify-center">
-                    <Users className="h-24 w-24 text-muted-foreground" />
+                    <Users className="h-24 w-24 text-gray-200" />
                   </div>
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function AboutPage() {
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-4xl font-bold mb-2">{stat.number}</div>
-                    <div className="text-sm opacity-90">{stat.label}</div>
+                    <div className="text-base opacity-100">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -209,7 +209,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   Our Values
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   The principles that guide everything we do
                 </p>
               </div>
@@ -222,7 +222,7 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
-                      <p className="text-muted-foreground">{value.description}</p>
+                      <p className="text-gray-200">{value.description}</p>
                     </div>
                   </div>
                 ))}
@@ -239,7 +239,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   Our Journey
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Major milestones in our mission to help contractors succeed
                 </p>
               </div>
@@ -256,9 +256,9 @@ export default function AboutPage() {
                       )}
                     </div>
                     <div className="pb-8">
-                      <div className="text-sm font-medium text-primary mb-1">{milestone.year}</div>
+                      <div className="text-base font-medium text-primary mb-1">{milestone.year}</div>
                       <h3 className="text-lg font-semibold mb-1">{milestone.title}</h3>
-                      <p className="text-muted-foreground">{milestone.description}</p>
+                      <p className="text-gray-200">{milestone.description}</p>
                     </div>
                   </div>
                 ))}
@@ -275,7 +275,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   Meet Our Team
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Dedicated to making your business more successful
                 </p>
               </div>
@@ -284,11 +284,11 @@ export default function AboutPage() {
                 {teamMembers.map((member, index) => (
                   <div key={index} className="text-center">
                     <div className="mb-4 h-32 w-32 mx-auto rounded-full bg-muted flex items-center justify-center">
-                      <Users className="h-16 w-16 text-muted-foreground" />
+                      <Users className="h-16 w-16 text-gray-200" />
                     </div>
                     <h3 className="font-semibold mb-1">{member.name}</h3>
-                    <div className="text-sm text-primary mb-3">{member.role}</div>
-                    <p className="text-sm text-muted-foreground">{member.bio}</p>
+                    <div className="text-base text-primary mb-3">{member.role}</div>
+                    <p className="text-base text-gray-200">{member.bio}</p>
                   </div>
                 ))}
               </div>
@@ -306,7 +306,7 @@ export default function AboutPage() {
                   <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
                     Our Mission
                   </h2>
-                  <p className="text-xl text-muted-foreground mb-8">
+                  <p className="text-xl text-gray-200 mb-8">
                     To empower every painting contractor with the tools and technology they need 
                     to create professional quotes quickly, win more jobs, and build thriving businesses 
                     that support their families and communities.
@@ -339,7 +339,7 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold mb-4">
                 Have Questions? We{'\''}d Love to Hear From You
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-gray-200 mb-8">
                 Whether you{'\''}re a current customer or considering PaintQuote Pro, 
                 our team is here to help you succeed.
               </p>

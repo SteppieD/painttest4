@@ -203,7 +203,7 @@ export default function FeaturesPage() {
                 Everything You Need to Run a 
                 <span className="text-primary"> Successful Painting Business</span>
               </h1>
-              <p className="mt-6 text-xl text-muted-foreground">
+              <p className="mt-6 text-xl text-gray-200">
                 From quick estimates to complete business management, PaintQuote Pro has 
                 all the tools professional painting contractors need to win more jobs and 
                 increase profits.
@@ -237,7 +237,7 @@ export default function FeaturesPage() {
                   <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                     {category.title}
                   </h2>
-                  <p className="mt-4 text-lg text-muted-foreground">
+                  <p className="mt-4 text-lg text-gray-200">
                     {category.description}
                   </p>
                 </div>
@@ -251,7 +251,7 @@ export default function FeaturesPage() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                          <p className="text-muted-foreground">{feature.description}</p>
+                          <p className="text-gray-200">{feature.description}</p>
                         </div>
                       </div>
                     </div>
@@ -270,7 +270,7 @@ export default function FeaturesPage() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   See the Difference
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Compare traditional estimating methods with PaintQuote Pro
                 </p>
               </div>
@@ -281,27 +281,27 @@ export default function FeaturesPage() {
                   <h3 className="text-xl font-bold mb-6">{comparisonData.traditional.title}</h3>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Time per quote</span>
+                      <span className="text-gray-200">Time per quote</span>
                       <span className="font-medium text-destructive">{comparisonData.traditional.timePerQuote}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Accuracy</span>
+                      <span className="text-gray-200">Accuracy</span>
                       <span className="font-medium">{comparisonData.traditional.accuracy}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Professional look</span>
+                      <span className="text-gray-200">Professional look</span>
                       <span className="font-medium">{comparisonData.traditional.professionalLook}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Mobile access</span>
+                      <span className="text-gray-200">Mobile access</span>
                       <span className="font-medium">{comparisonData.traditional.mobileAccess}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Follow-up</span>
+                      <span className="text-gray-200">Follow-up</span>
                       <span className="font-medium">{comparisonData.traditional.followUp}</span>
                     </div>
                     <div className="flex justify-between items-center py-2">
-                      <span className="text-muted-foreground">Cost tracking</span>
+                      <span className="text-gray-200">Cost tracking</span>
                       <span className="font-medium">{comparisonData.traditional.costTracking}</span>
                     </div>
                   </div>
@@ -312,27 +312,27 @@ export default function FeaturesPage() {
                   <h3 className="text-xl font-bold mb-6 text-primary">{comparisonData.paintquotepro.title}</h3>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Time per quote</span>
+                      <span className="text-gray-200">Time per quote</span>
                       <span className="font-medium text-primary">{comparisonData.paintquotepro.timePerQuote}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Accuracy</span>
+                      <span className="text-gray-200">Accuracy</span>
                       <span className="font-medium text-primary">{comparisonData.paintquotepro.accuracy}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Professional look</span>
+                      <span className="text-gray-200">Professional look</span>
                       <span className="font-medium text-primary">{comparisonData.paintquotepro.professionalLook}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Mobile access</span>
+                      <span className="text-gray-200">Mobile access</span>
                       <span className="font-medium text-primary">{comparisonData.paintquotepro.mobileAccess}</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-muted-foreground">Follow-up</span>
+                      <span className="text-gray-200">Follow-up</span>
                       <span className="font-medium text-primary">{comparisonData.paintquotepro.followUp}</span>
                     </div>
                     <div className="flex justify-between items-center py-2">
-                      <span className="text-muted-foreground">Cost tracking</span>
+                      <span className="text-gray-200">Cost tracking</span>
                       <span className="font-medium text-primary">{comparisonData.paintquotepro.costTracking}</span>
                     </div>
                   </div>
@@ -350,7 +350,7 @@ export default function FeaturesPage() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   Integrations & Compatibility
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Works seamlessly with your existing tools
                 </p>
               </div>
@@ -358,27 +358,27 @@ export default function FeaturesPage() {
               <div className="grid gap-6 md:grid-cols-3">
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <h3 className="font-semibold mb-2">QuickBooks Integration</h3>
-                  <p className="text-sm text-muted-foreground">Sync invoices and payments</p>
+                  <p className="text-base text-gray-200">Sync invoices and payments</p>
                 </div>
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <h3 className="font-semibold mb-2">Google Calendar Sync</h3>
-                  <p className="text-sm text-muted-foreground">Schedule jobs and appointments</p>
+                  <p className="text-base text-gray-200">Schedule jobs and appointments</p>
                 </div>
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <h3 className="font-semibold mb-2">Email Marketing Tools</h3>
-                  <p className="text-sm text-muted-foreground">Automated follow-up campaigns</p>
+                  <p className="text-base text-gray-200">Automated follow-up campaigns</p>
                 </div>
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <h3 className="font-semibold mb-2">Payment Processing</h3>
-                  <p className="text-sm text-muted-foreground">Accept payments online</p>
+                  <p className="text-base text-gray-200">Accept payments online</p>
                 </div>
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <h3 className="font-semibold mb-2">Cloud Storage</h3>
-                  <p className="text-sm text-muted-foreground">Backup to Google Drive or Dropbox</p>
+                  <p className="text-base text-gray-200">Backup to Google Drive or Dropbox</p>
                 </div>
                 <div className="rounded-lg border bg-background p-6 text-center">
                   <h3 className="font-semibold mb-2">API Access</h3>
-                  <p className="text-sm text-muted-foreground">Build custom integrations</p>
+                  <p className="text-base text-gray-200">Build custom integrations</p>
                 </div>
               </div>
             </div>
@@ -391,7 +391,7 @@ export default function FeaturesPage() {
             <h2 className="text-3xl font-bold mb-4">
               Ready to Transform Your Painting Business?
             </h2>
-            <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+            <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
               Join thousands of painting contractors who save hours on every quote 
               and win more jobs with professional estimates.
             </p>
@@ -410,7 +410,7 @@ export default function FeaturesPage() {
                 View Pricing Plans
               </Link>
             </div>
-            <p className="mt-4 text-sm opacity-75">
+            <p className="mt-4 text-base opacity-100">
               Free trial • No credit card required • Cancel anytime
             </p>
           </div>

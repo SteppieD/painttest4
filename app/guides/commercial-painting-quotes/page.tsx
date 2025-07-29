@@ -127,8 +127,8 @@ export default function CommercialPaintingQuotesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -147,7 +147,7 @@ export default function CommercialPaintingQuotesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Commercial Painting Quotes: Bidding Guide
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master commercial painting bids with detailed takeoffs, compliance requirements, 
                 and competitive pricing strategies. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -177,7 +177,7 @@ export default function CommercialPaintingQuotesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">How Much Does Commercial Painting Cost?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Commercial painting costs average $1.50-4.00 per square foot for interior work and $2.00-5.00 
                   for exterior. Prices vary based on surface type, height, project size, and special coatings. 
                   Large projects over 10,000 sq ft often receive volume discounts of 10-20%.
@@ -203,7 +203,7 @@ export default function CommercialPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-blue-400 mb-3">Typical Scope</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Interior walls and ceilings</li>
                             <li>• Common areas and lobbies</li>
                             <li>• After-hours work required</li>
@@ -213,7 +213,7 @@ export default function CommercialPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Standard offices: $1.50-2.50/sq ft</li>
                             <li>• Executive suites: $2.50-3.50/sq ft</li>
                             <li>• Common areas: $2.00-3.00/sq ft</li>
@@ -223,7 +223,7 @@ export default function CommercialPaintingQuotesGuide() {
                         </div>
                       </div>
                       <div className="mt-4 p-4 bg-blue-500/10 rounded-lg">
-                        <p className="text-sm text-gray-300">
+                        <p className="text-base text-gray-100">
                           <strong className="text-blue-400">Pro Tip:</strong> Office buildings often require phased work 
                           to minimize disruption. Quote each phase separately and include move-in/move-out coordination.
                         </p>
@@ -241,7 +241,7 @@ export default function CommercialPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-purple-400 mb-3">Special Requirements</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Fast turnaround essential</li>
                             <li>• Brand color matching</li>
                             <li>• Specialty finishes common</li>
@@ -251,7 +251,7 @@ export default function CommercialPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Retail stores: $2.00-3.50/sq ft</li>
                             <li>• Restaurants: $2.50-4.00/sq ft</li>
                             <li>• Kitchen areas: $3.50-5.00/sq ft</li>
@@ -273,7 +273,7 @@ export default function CommercialPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-orange-400 mb-3">Unique Challenges</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• High ceilings (30-50 ft)</li>
                             <li>• Specialty equipment needed</li>
                             <li>• Industrial coatings required</li>
@@ -283,7 +283,7 @@ export default function CommercialPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Warehouse walls: $1.00-2.00/sq ft</li>
                             <li>• Ceilings/structure: $1.50-3.00/sq ft</li>
                             <li>• Epoxy floors: $3.00-7.00/sq ft</li>
@@ -305,7 +305,7 @@ export default function CommercialPaintingQuotesGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Compliance Requirements</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Antimicrobial coatings</li>
                             <li>• Zero-VOC mandatory</li>
                             <li>• Infection control protocols</li>
@@ -315,7 +315,7 @@ export default function CommercialPaintingQuotesGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Pricing Range</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Patient rooms: $3.00-4.50/sq ft</li>
                             <li>• Operating areas: $4.50-6.00/sq ft</li>
                             <li>• Common areas: $2.50-3.50/sq ft</li>
@@ -344,7 +344,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Pre-Bid Analysis</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Review bid invitation and specifications</li>
                         <li>• Attend mandatory pre-bid meetings</li>
                         <li>• Identify special requirements (bonds, insurance)</li>
@@ -357,7 +357,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Site Visit & Takeoff</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Measure all surfaces accurately</li>
                         <li>• Document existing conditions with photos</li>
                         <li>• Note access restrictions and safety hazards</li>
@@ -370,7 +370,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Cost Estimation</h4>
-                      <div className="bg-gray-900/50 rounded p-4 font-mono text-sm mt-3">
+                      <div className="bg-gray-900/50 rounded p-4 font-mono text-base mt-3">
                         <p className="text-green-400">Materials: Surface Area × Coverage × Price + 10% waste</p>
                         <p className="text-green-400">Labor: Hours × Rate × Crew Size × Productivity Factor</p>
                         <p className="text-green-400">Equipment: Daily Rate × Duration + Delivery/Setup</p>
@@ -384,7 +384,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold">4</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Bid Submission</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Complete all required forms accurately</li>
                         <li>• Include insurance certificates and bonds</li>
                         <li>• Attach product data sheets and samples</li>
@@ -410,7 +410,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <Shield className="h-6 w-6 text-blue-400" />
                     <h3 className="text-xl font-semibold text-white">Insurance Requirements</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• General Liability: $1-5 million</li>
                     <li>• Workers' Comp: State required</li>
                     <li>• Commercial Auto: $1 million</li>
@@ -424,7 +424,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <FileText className="h-6 w-6 text-green-400" />
                     <h3 className="text-xl font-semibold text-white">Documentation</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Business license</li>
                     <li>• Contractor's license</li>
                     <li>• Safety certifications</li>
@@ -438,7 +438,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <AlertTriangle className="h-6 w-6 text-yellow-400" />
                     <h3 className="text-xl font-semibold text-white">Safety Requirements</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Written safety program</li>
                     <li>• OSHA 30-hour training</li>
                     <li>• Site-specific safety plan</li>
@@ -452,7 +452,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <Users className="h-6 w-6 text-purple-400" />
                     <h3 className="text-xl font-semibold text-white">Labor Compliance</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-gray-100">
                     <li>• Prevailing wage rates</li>
                     <li>• Certified payroll reports</li>
                     <li>• Union requirements</li>
@@ -478,7 +478,7 @@ export default function CommercialPaintingQuotesGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-indigo-400 mb-3">Project Scope</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• 40,000 sq ft walls</li>
                         <li>• 10,000 sq ft ceilings</li>
                         <li>• 3 floors, occupied</li>
@@ -488,7 +488,7 @@ export default function CommercialPaintingQuotesGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-cyan-400 mb-3">Material Requirements</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Primer: 40 gallons @ $40 = $1,600</li>
                         <li>• Wall paint: 125 gal @ $45 = $5,625</li>
                         <li>• Ceiling paint: 35 gal @ $40 = $1,400</li>
@@ -500,7 +500,7 @@ export default function CommercialPaintingQuotesGuide() {
 
                   <div className="border-t border-gray-700 pt-6">
                     <h4 className="text-lg font-semibold text-yellow-400 mb-3">Labor Calculation</h4>
-                    <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
+                    <div className="bg-gray-900/50 rounded p-4 font-mono text-base">
                       <p className="text-green-400">Prep/Protection: 160 hrs × $65/hr = $10,400</p>
                       <p className="text-green-400">Wall Painting: 400 hrs × $65/hr = $26,000</p>
                       <p className="text-green-400">Ceiling Painting: 200 hrs × $65/hr = $13,000</p>
@@ -516,27 +516,27 @@ export default function CommercialPaintingQuotesGuide() {
                     <div className="bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 rounded p-4">
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Materials</span>
+                          <span className="text-gray-100">Materials</span>
                           <span className="text-white">$11,125</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Labor</span>
+                          <span className="text-gray-100">Labor</span>
                           <span className="text-white">$84,240</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Equipment Rental</span>
+                          <span className="text-gray-100">Equipment Rental</span>
                           <span className="text-white">$3,500</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Insurance/Bonds</span>
+                          <span className="text-gray-100">Insurance/Bonds</span>
                           <span className="text-white">$2,500</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Overhead (30%)</span>
+                          <span className="text-gray-100">Overhead (30%)</span>
                           <span className="text-white">$30,410</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Profit (15%)</span>
+                          <span className="text-gray-100">Profit (15%)</span>
                           <span className="text-white">$19,766</span>
                         </div>
                         <div className="border-t border-gray-600 pt-2 mt-2">
@@ -544,9 +544,9 @@ export default function CommercialPaintingQuotesGuide() {
                             <span className="text-white">Total Project Cost</span>
                             <span className="text-green-400">$151,541</span>
                           </div>
-                          <div className="flex justify-between text-sm mt-1">
-                            <span className="text-gray-400">Price per sq ft</span>
-                            <span className="text-gray-400">$3.03</span>
+                          <div className="flex justify-between text-base mt-1">
+                            <span className="text-gray-200">Price per sq ft</span>
+                            <span className="text-gray-200">$3.03</span>
                           </div>
                         </div>
                       </div>
@@ -567,7 +567,7 @@ export default function CommercialPaintingQuotesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Competitive Advantages</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
                       <span>Detailed project scheduling with milestones</span>
@@ -593,7 +593,7 @@ export default function CommercialPaintingQuotesGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Relationship Building</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <Users className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
                       <span>Pre-qualify with major GCs</span>
@@ -629,7 +629,7 @@ export default function CommercialPaintingQuotesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Win More Commercial Projects
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Create professional commercial bids in half the time. Our software handles complex takeoffs, 
                   compliance tracking, and generates detailed proposals that win.
                 </p>
@@ -664,7 +664,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master guide to all painting quotes
                     </p>
                   </Card>
@@ -676,7 +676,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-orange-400 mb-2">
                       Industrial Painting
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Specialty coatings and equipment
                     </p>
                   </Card>
@@ -688,7 +688,7 @@ export default function CommercialPaintingQuotesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Business Growth Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Scale to commercial projects
                     </p>
                   </Card>

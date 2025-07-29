@@ -328,7 +328,7 @@ export default function SettingsPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading settings...</p>
+          <p className="text-gray-200">Loading settings...</p>
         </div>
       </div>
     )
@@ -401,7 +401,7 @@ export default function SettingsPage() {
                   <div>
                     <Label htmlFor="email">Email</Label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-200" />
                       <Input
                         id="email"
                         type="email"
@@ -414,7 +414,7 @@ export default function SettingsPage() {
                   <div>
                     <Label htmlFor="phone">Phone</Label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-200" />
                       <Input
                         id="phone"
                         type="tel"
@@ -427,7 +427,7 @@ export default function SettingsPage() {
                   <div>
                     <Label htmlFor="website">Website</Label>
                     <div className="relative">
-                      <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-200" />
                       <Input
                         id="website"
                         type="url"
@@ -508,7 +508,7 @@ export default function SettingsPage() {
                     value={settings.overheadPercent}
                     onChange={(e) => setSettings({ ...settings, overheadPercent: parseFloat(e.target.value) || 0 })}
                   />
-                  <p className="text-xs text-muted-foreground mt-1">Covers business operating expenses</p>
+                  <p className="text-base text-gray-200 mt-1">Covers business operating expenses</p>
                 </div>
                 <div>
                   <Label htmlFor="profit">Profit Margin (%)</Label>
@@ -519,7 +519,7 @@ export default function SettingsPage() {
                     value={settings.profitMargin}
                     onChange={(e) => setSettings({ ...settings, profitMargin: parseFloat(e.target.value) || 0 })}
                   />
-                  <p className="text-xs text-muted-foreground mt-1">Your target profit on each job</p>
+                  <p className="text-base text-gray-200 mt-1">Your target profit on each job</p>
                 </div>
               </div>
             </CardContent>
@@ -585,7 +585,7 @@ export default function SettingsPage() {
                       onChange={(e) => updateLaborSettings('hourlyRate', e.target.value)}
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">What you pay your painters per hour</p>
+                  <p className="text-base text-gray-200 mt-1">What you pay your painters per hour</p>
                 </div>
                 <div>
                   <Label htmlFor="overheadMultiplier">Overhead Multiplier</Label>
@@ -596,7 +596,7 @@ export default function SettingsPage() {
                     value={settings.laborSettings.overheadMultiplier}
                     onChange={(e) => updateLaborSettings('overheadMultiplier', e.target.value)}
                   />
-                  <p className="text-xs text-muted-foreground mt-1">Covers insurance, workers comp, etc (typically 1.3-1.5)</p>
+                  <p className="text-base text-gray-200 mt-1">Covers insurance, workers comp, etc (typically 1.3-1.5)</p>
                 </div>
               </div>
 
@@ -942,7 +942,7 @@ export default function SettingsPage() {
               <div className="space-y-2">
                 <h4 className="font-medium">Your Paint Products</h4>
                 {settings.paintProducts.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">No paint products added yet.</p>
+                  <p className="text-base text-gray-200">No paint products added yet.</p>
                 ) : (
                   <div className="space-y-2">
                     {settings.paintProducts.map((paint) => (
@@ -951,24 +951,24 @@ export default function SettingsPage() {
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{paint.name}</span>
                             {paint.isPreferred && (
-                              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Preferred</span>
+                              <span className="text-base bg-primary/10 text-primary px-2 py-1 rounded">Preferred</span>
                             )}
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             {paint.manufacturer} • {paint.type} • ${paint.costPerGallon}/gal • {paint.coveragePerGallon} sq ft/gal
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
                           <Button
                             variant="ghost"
-                            size="sm"
+                            size="default"
                             onClick={() => togglePreferredPaint(paint.id)}
                           >
                             {paint.isPreferred ? 'Unmark' : 'Mark'} Preferred
                           </Button>
                           <Button
                             variant="ghost"
-                            size="sm"
+                            size="default"
                             onClick={() => removePaintProduct(paint.id)}
                           >
                             <Trash2 className="h-4 w-4" />

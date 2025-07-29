@@ -97,7 +97,7 @@ export default function PaintingQuoteSoftwarePage() {
           <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Breadcrumbs */}
-              <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+              <nav className="flex items-center gap-2 text-base text-gray-200 mb-8">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
                 <ChevronRight className="h-4 w-4" />
                 <Link href="/painting-contractor-software" className="hover:text-white transition-colors">Software</Link>
@@ -115,7 +115,7 @@ export default function PaintingQuoteSoftwarePage() {
                   Painting Quote Software That <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Wins Jobs</span>
                 </h1>
                 
-                <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                <p className="text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
                   Stop losing jobs to slow quotes. Our painting quote app helps you create professional, accurate estimates in minutes—not hours. 
                   <span className="text-white font-semibold"> Join 1,000+ contractors</span> winning more with instant quotes.
                 </p>
@@ -124,19 +124,19 @@ export default function PaintingQuoteSoftwarePage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
                   <div className="glass-card p-4 text-center">
                     <div className="text-2xl font-bold text-white">10 min</div>
-                    <div className="text-sm text-gray-400">Average quote time</div>
+                    <div className="text-base text-gray-200">Average quote time</div>
                   </div>
                   <div className="glass-card p-4 text-center">
                     <div className="text-2xl font-bold text-white">40%</div>
-                    <div className="text-sm text-gray-400">Higher win rate</div>
+                    <div className="text-base text-gray-200">Higher win rate</div>
                   </div>
                   <div className="glass-card p-4 text-center">
                     <div className="text-2xl font-bold text-white">50k+</div>
-                    <div className="text-sm text-gray-400">Quotes created</div>
+                    <div className="text-base text-gray-200">Quotes created</div>
                   </div>
                   <div className="glass-card p-4 text-center">
                     <div className="text-2xl font-bold text-white">4.9/5</div>
-                    <div className="text-sm text-gray-400">User rating</div>
+                    <div className="text-base text-gray-200">User rating</div>
                   </div>
                 </div>
 
@@ -148,7 +148,7 @@ export default function PaintingQuoteSoftwarePage() {
                     </Button>
                   </Link>
                   <Link href="/painting-quote-templates">
-                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent px-8 py-6 text-lg">
+                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-gray-900/70 bg-transparent px-8 py-6 text-lg">
                       <Download className="mr-2 h-5 w-5" />
                       Free Quote Templates
                     </Button>
@@ -173,7 +173,7 @@ export default function PaintingQuoteSoftwarePage() {
                     <span className="text-2xl font-bold text-white">1</span>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">Describe the Job</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-200">
                     Tell our AI about the painting project in plain English. Room sizes, surfaces, special requirements—just type naturally.
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export default function PaintingQuoteSoftwarePage() {
                     <span className="text-2xl font-bold text-white">2</span>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">AI Calculates Everything</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-200">
                     Our painting quote calculator instantly figures out paint quantities, labor hours, and material costs based on your rates.
                   </p>
                 </div>
@@ -193,7 +193,7 @@ export default function PaintingQuoteSoftwarePage() {
                     <span className="text-2xl font-bold text-white">3</span>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">Send Professional Quote</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-200">
                     Get a branded PDF quote ready to email or text. Customers can view, approve, and pay deposits online.
                   </p>
                 </div>
@@ -202,7 +202,7 @@ export default function PaintingQuoteSoftwarePage() {
               {/* Video Demo CTA */}
               <div className="mt-16 text-center">
                 <Link href="#demo-video">
-                  <Button size="lg" variant="ghost" className="text-white hover:bg-white/10 group">
+                  <Button size="lg" variant="ghost" className="text-white hover:bg-gray-900/70 group">
                     <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                     Watch 2-Minute Demo
                   </Button>
@@ -220,7 +220,7 @@ export default function PaintingQuoteSoftwarePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Everything You Need in a Paint Quote App
                 </h2>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                <p className="text-xl text-gray-100 max-w-3xl mx-auto">
                   Built by painters for painters. Every feature designed to help you quote faster and more accurately.
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Describe jobs in plain English</span>
@@ -277,7 +277,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Accurate paint quantity estimates</span>
@@ -304,7 +304,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Create quotes on-site</span>
@@ -331,7 +331,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Branded quote templates</span>
@@ -362,7 +362,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Store all customer details</span>
@@ -389,7 +389,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Auto-send quote reminders</span>
@@ -420,7 +420,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Win rate tracking</span>
@@ -447,7 +447,7 @@ export default function PaintingQuoteSoftwarePage() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-gray-100">
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
                             <span>Response time tracking</span>
@@ -487,7 +487,7 @@ export default function PaintingQuoteSoftwarePage() {
                     </div>
                     <h3 className="text-xl font-bold text-white">Interior Painting Quotes</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300 mb-6">
+                  <ul className="space-y-2 text-gray-100 mb-6">
                     <li>• Single rooms to whole houses</li>
                     <li>• Walls, ceilings, trim, doors</li>
                     <li>• Cabinet painting & refinishing</li>
@@ -508,7 +508,7 @@ export default function PaintingQuoteSoftwarePage() {
                     </div>
                     <h3 className="text-xl font-bold text-white">Exterior Painting Quotes</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300 mb-6">
+                  <ul className="space-y-2 text-gray-100 mb-6">
                     <li>• House siding (all types)</li>
                     <li>• Decks & fences</li>
                     <li>• Garage doors & shutters</li>
@@ -529,7 +529,7 @@ export default function PaintingQuoteSoftwarePage() {
                     </div>
                     <h3 className="text-xl font-bold text-white">Commercial Painting Quotes</h3>
                   </div>
-                  <ul className="space-y-2 text-gray-300 mb-6">
+                  <ul className="space-y-2 text-gray-100 mb-6">
                     <li>• Office buildings</li>
                     <li>• Retail spaces</li>
                     <li>• Apartments & HOAs</li>
@@ -554,7 +554,7 @@ export default function PaintingQuoteSoftwarePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Why Choose Our Online Paint Quote System?
                 </h2>
-                <p className="text-xl text-gray-300">
+                <p className="text-xl text-gray-100">
                   See how we stack up against traditional methods and competitors
                 </p>
               </div>
@@ -563,32 +563,32 @@ export default function PaintingQuoteSoftwarePage() {
                 <table className="w-full text-left">
                   <thead>
                     <tr className="border-b border-white/10">
-                      <th className="py-4 px-6 text-gray-400 font-medium">Feature</th>
+                      <th className="py-4 px-6 text-gray-200 font-medium">Feature</th>
                       <th className="py-4 px-6 text-center">
                         <div className="text-white font-semibold">PaintQuote Pro</div>
-                        <div className="text-sm text-emerald-400">Our Software</div>
+                        <div className="text-base text-emerald-400">Our Software</div>
                       </th>
                       <th className="py-4 px-6 text-center">
-                        <div className="text-gray-400">Excel/Word</div>
-                        <div className="text-sm text-gray-500">Manual</div>
+                        <div className="text-gray-200">Excel/Word</div>
+                        <div className="text-base text-gray-200">Manual</div>
                       </th>
                       <th className="py-4 px-6 text-center">
-                        <div className="text-gray-400">Generic CRM</div>
-                        <div className="text-sm text-gray-500">Not Industry-Specific</div>
+                        <div className="text-gray-200">Generic CRM</div>
+                        <div className="text-base text-gray-200">Not Industry-Specific</div>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-white/5">
-                      <td className="py-4 px-6 text-gray-300">Quote Creation Time</td>
+                      <td className="py-4 px-6 text-gray-100">Quote Creation Time</td>
                       <td className="py-4 px-6 text-center">
                         <span className="text-emerald-400 font-semibold">10 minutes</span>
                       </td>
-                      <td className="py-4 px-6 text-center text-gray-500">3-6 hours</td>
-                      <td className="py-4 px-6 text-center text-gray-500">30-60 minutes</td>
+                      <td className="py-4 px-6 text-center text-gray-200">3-6 hours</td>
+                      <td className="py-4 px-6 text-center text-gray-200">30-60 minutes</td>
                     </tr>
                     <tr className="border-b border-white/5">
-                      <td className="py-4 px-6 text-gray-300">Paint Calculations</td>
+                      <td className="py-4 px-6 text-gray-100">Paint Calculations</td>
                       <td className="py-4 px-6 text-center">
                         <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                       </td>
@@ -600,7 +600,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </td>
                     </tr>
                     <tr className="border-b border-white/5">
-                      <td className="py-4 px-6 text-gray-300">Surface-Specific Rates</td>
+                      <td className="py-4 px-6 text-gray-100">Surface-Specific Rates</td>
                       <td className="py-4 px-6 text-center">
                         <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                       </td>
@@ -612,7 +612,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </td>
                     </tr>
                     <tr className="border-b border-white/5">
-                      <td className="py-4 px-6 text-gray-300">Mobile App</td>
+                      <td className="py-4 px-6 text-gray-100">Mobile App</td>
                       <td className="py-4 px-6 text-center">
                         <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                       </td>
@@ -624,7 +624,7 @@ export default function PaintingQuoteSoftwarePage() {
                       </td>
                     </tr>
                     <tr className="border-b border-white/5">
-                      <td className="py-4 px-6 text-gray-300">AI Assistance</td>
+                      <td className="py-4 px-6 text-gray-100">AI Assistance</td>
                       <td className="py-4 px-6 text-center">
                         <CheckCircle className="h-5 w-5 text-emerald-400 mx-auto" />
                       </td>
@@ -636,12 +636,12 @@ export default function PaintingQuoteSoftwarePage() {
                       </td>
                     </tr>
                     <tr className="border-b border-white/5">
-                      <td className="py-4 px-6 text-gray-300">Monthly Cost</td>
+                      <td className="py-4 px-6 text-gray-100">Monthly Cost</td>
                       <td className="py-4 px-6 text-center">
                         <span className="text-emerald-400 font-semibold">$79</span>
                       </td>
-                      <td className="py-4 px-6 text-center text-gray-500">$0 (hidden costs)</td>
-                      <td className="py-4 px-6 text-center text-gray-500">$200-500+</td>
+                      <td className="py-4 px-6 text-center text-gray-200">$0 (hidden costs)</td>
+                      <td className="py-4 px-6 text-center text-gray-200">$200-500+</td>
                     </tr>
                   </tbody>
                 </table>
@@ -649,7 +649,7 @@ export default function PaintingQuoteSoftwarePage() {
 
               <div className="mt-8 text-center">
                 <Link href="/pricing">
-                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-gray-900/70">
                     View Full Comparison
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -675,14 +675,14 @@ export default function PaintingQuoteSoftwarePage() {
                         <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <p className="text-gray-300 mb-6">
+                    <p className="text-gray-100 mb-6">
                       "This painting quote app changed my business. I'm responding to leads in 15 minutes instead of 2 days. My close rate went from 25% to 45%!"
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500"></div>
                       <div>
                         <p className="font-semibold text-white">Maria Garcia</p>
-                        <p className="text-sm text-gray-400">Garcia's Professional Painting</p>
+                        <p className="text-base text-gray-200">Garcia's Professional Painting</p>
                       </div>
                     </div>
                   </CardContent>
@@ -695,14 +695,14 @@ export default function PaintingQuoteSoftwarePage() {
                         <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <p className="text-gray-300 mb-6">
+                    <p className="text-gray-100 mb-6">
                       "The painting calculator is spot-on accurate. No more underquoting jobs. I've increased my profit margins by 20% just by having better estimates."
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-500"></div>
                       <div>
                         <p className="font-semibold text-white">Tom Anderson</p>
-                        <p className="text-sm text-gray-400">Anderson Paint Co.</p>
+                        <p className="text-base text-gray-200">Anderson Paint Co.</p>
                       </div>
                     </div>
                   </CardContent>
@@ -715,14 +715,14 @@ export default function PaintingQuoteSoftwarePage() {
                         <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <p className="text-gray-300 mb-6">
+                    <p className="text-gray-100 mb-6">
                       "Being able to create quotes on my phone at the job site is incredible. Customers love getting professional quotes before I even leave their house."
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
                       <div>
                         <p className="font-semibold text-white">James Wilson</p>
-                        <p className="text-sm text-gray-400">Wilson's Painting Services</p>
+                        <p className="text-base text-gray-200">Wilson's Painting Services</p>
                       </div>
                     </div>
                   </CardContent>
@@ -730,9 +730,9 @@ export default function PaintingQuoteSoftwarePage() {
               </div>
 
               <div className="mt-12 text-center">
-                <p className="text-lg text-gray-300 mb-4">Join 1,000+ painting contractors using our software</p>
+                <p className="text-lg text-gray-100 mb-4">Join 1,000+ painting contractors using our software</p>
                 <Link href="/case-studies">
-                  <Button variant="ghost" className="text-white hover:bg-white/10">
+                  <Button variant="ghost" className="text-white hover:bg-gray-900/70">
                     Read More Success Stories
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -750,7 +750,7 @@ export default function PaintingQuoteSoftwarePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Try Our Free Painting Calculators
                 </h2>
-                <p className="text-xl text-gray-300">
+                <p className="text-xl text-gray-100">
                   See how our quote software can save you time and increase your revenue
                 </p>
               </div>
@@ -761,7 +761,7 @@ export default function PaintingQuoteSoftwarePage() {
               </div>
               
               <div className="mt-12 text-center">
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-100 mb-6">
                   Ready to create quotes this fast for all your painting jobs?
                 </p>
                 <Link href="/trial-signup">
@@ -789,9 +789,9 @@ export default function PaintingQuoteSoftwarePage() {
                     <h3 className="text-xl font-semibold text-white">
                       How fast can I really create painting quotes?
                     </h3>
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="h-5 w-5 text-gray-200" />
                   </button>
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-100 mt-4">
                     Most contractors create complete, professional quotes in 10-15 minutes. Simple jobs like single rooms can be done in 5 minutes. Compare that to 3-6 hours manually!
                   </p>
                 </div>
@@ -801,9 +801,9 @@ export default function PaintingQuoteSoftwarePage() {
                     <h3 className="text-xl font-semibold text-white">
                       Does the painting quote calculator handle complex jobs?
                     </h3>
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="h-5 w-5 text-gray-200" />
                   </button>
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-100 mt-4">
                     Yes! Our AI understands multi-room projects, different surface types, prep work requirements, and special finishes. It can handle everything from single walls to entire commercial buildings.
                   </p>
                 </div>
@@ -813,9 +813,9 @@ export default function PaintingQuoteSoftwarePage() {
                     <h3 className="text-xl font-semibold text-white">
                       Can I use the paint quote app on my phone?
                     </h3>
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="h-5 w-5 text-gray-200" />
                   </button>
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-100 mt-4">
                     Absolutely! Our mobile app works on iPhone and Android. Create quotes on-site, take photos, and send to customers instantly. It even works offline and syncs when you're back online.
                   </p>
                 </div>
@@ -825,9 +825,9 @@ export default function PaintingQuoteSoftwarePage() {
                     <h3 className="text-xl font-semibold text-white">
                       How accurate are the paint quantity calculations?
                     </h3>
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="h-5 w-5 text-gray-200" />
                   </button>
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-100 mt-4">
                     Very accurate! We factor in surface type, number of coats, coverage rates, and waste percentage. You can customize all these factors based on your experience and the specific paints you use.
                   </p>
                 </div>
@@ -837,9 +837,9 @@ export default function PaintingQuoteSoftwarePage() {
                     <h3 className="text-xl font-semibold text-white">
                       Can I customize the quote templates?
                     </h3>
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="h-5 w-5 text-gray-200" />
                   </button>
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-100 mt-4">
                     Yes! Add your logo, customize colors, edit terms and conditions, and create multiple templates for different job types. Your quotes will look professional and match your brand.
                   </p>
                 </div>
@@ -859,7 +859,7 @@ export default function PaintingQuoteSoftwarePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Start Creating Professional Painting Quotes Today
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Join 1,000+ painting contractors who quote faster, look more professional, and win more jobs with PaintQuote Pro.
               </p>
               
@@ -872,14 +872,14 @@ export default function PaintingQuoteSoftwarePage() {
                     </Button>
                   </Link>
                   <Link href="/paint-estimate-templates">
-                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent px-8 py-6 text-lg">
+                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-gray-900/70 bg-transparent px-8 py-6 text-lg">
                       <Download className="mr-2 h-5 w-5" />
                       Download Free Templates
                     </Button>
                   </Link>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
+                <div className="flex flex-wrap items-center justify-center gap-6 text-base text-gray-200">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-emerald-400" />
                     No credit card required
@@ -909,42 +909,42 @@ export default function PaintingQuoteSoftwarePage() {
               <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <Link href="/painting-contractor-software" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Contractor Software</h4>
-                  <p className="text-gray-400 text-sm">Complete business management</p>
+                  <p className="text-gray-200 text-base">Complete business management</p>
                 </Link>
                 
                 <Link href="/painting-quote-templates" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Quote Templates</h4>
-                  <p className="text-gray-400 text-sm">Free professional templates</p>
+                  <p className="text-gray-200 text-base">Free professional templates</p>
                 </Link>
                 
                 <Link href="/interior-painting-quote-calculator" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Interior Calculator</h4>
-                  <p className="text-gray-400 text-sm">Room-by-room estimates</p>
+                  <p className="text-gray-200 text-base">Room-by-room estimates</p>
                 </Link>
                 
                 <Link href="/exterior-painting-estimate-calculator" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Exterior Calculator</h4>
-                  <p className="text-gray-400 text-sm">House painting quotes</p>
+                  <p className="text-gray-200 text-base">House painting quotes</p>
                 </Link>
                 
                 <Link href="/paint-estimate-templates" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Estimate Templates</h4>
-                  <p className="text-gray-400 text-sm">Customizable formats</p>
+                  <p className="text-gray-200 text-base">Customizable formats</p>
                 </Link>
                 
                 <Link href="/how-to-quote-painting-jobs" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Quoting Guide</h4>
-                  <p className="text-gray-400 text-sm">Pro tips & strategies</p>
+                  <p className="text-gray-200 text-base">Pro tips & strategies</p>
                 </Link>
                 
                 <Link href="/roi-calculator" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">ROI Calculator</h4>
-                  <p className="text-gray-400 text-sm">See your savings</p>
+                  <p className="text-gray-200 text-base">See your savings</p>
                 </Link>
                 
                 <Link href="/mobile-painting-estimate-app" className="glass-card p-6 hover:scale-105 transition-transform">
                   <h4 className="text-lg font-semibold text-white mb-2">Mobile App</h4>
-                  <p className="text-gray-400 text-sm">Quote on the go</p>
+                  <p className="text-gray-200 text-base">Quote on the go</p>
                 </Link>
               </div>
             </div>

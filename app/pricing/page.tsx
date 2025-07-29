@@ -131,22 +131,22 @@ export default function PricingPage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl text-white">
               Your $8,400/Month Revenue Opportunity
             </h1>
-            <p className="mt-4 text-xl text-gray-300">
+            <p className="mt-4 text-xl text-gray-100">
               Based on our research: Win 3 more jobs per month (from 7 to 10 out of 20 quotes) 
               at $2,800 average = $8,400 additional revenue monthly
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+            <div className="mt-6 flex flex-wrap justify-center gap-4 text-base">
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-emerald-400" />
-                <span className="text-gray-300">Quote in 10-15 minutes vs 3-6 hours</span>
+                <span className="text-gray-100">Quote in 10-15 minutes vs 3-6 hours</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-emerald-400" />
-                <span className="text-gray-300">Respond within 24 hours (73% win rate)</span>
+                <span className="text-gray-100">Respond within 24 hours (73% win rate)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-emerald-400" />
-                <span className="text-gray-300">Professional quotes = 40-60% higher close rate</span>
+                <span className="text-gray-100">Professional quotes = 40-60% higher close rate</span>
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function PricingPage() {
                 <TabsTrigger value="monthly" className="text-white data-[state=active]:bg-white/20">Monthly</TabsTrigger>
                 <TabsTrigger value="yearly" className="text-white data-[state=active]:bg-white/20">
                   Yearly
-                  <span className="ml-2 rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs font-medium text-emerald-400">
+                  <span className="ml-2 rounded-full bg-emerald-500/20 px-2 py-0.5 text-base font-medium text-emerald-400">
                     Save 17%
                   </span>
                 </TabsTrigger>
@@ -175,7 +175,7 @@ export default function PricingPage() {
               >
                 {(plan as any).popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
-                    <span className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-1 text-sm font-medium text-white">
+                    <span className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-1 text-base font-medium text-white">
                       Most Popular
                     </span>
                   </div>
@@ -183,9 +183,9 @@ export default function PricingPage() {
                 
                 <CardHeader>
                   <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
-                  <CardDescription className="text-gray-300">{plan.description}</CardDescription>
+                  <CardDescription className="text-gray-100">{plan.description}</CardDescription>
                   {(plan as any).highlight && (
-                    <p className="mt-2 text-sm font-medium text-blue-400">
+                    <p className="mt-2 text-base font-medium text-blue-400">
                       {(plan as any).highlight}
                     </p>
                   )}
@@ -198,9 +198,9 @@ export default function PricingPage() {
                         <span className="text-4xl font-bold text-white">
                           ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round(plan.yearlyPrice / 12)}
                         </span>
-                        <span className="text-gray-400">/month</span>
+                        <span className="text-gray-200">/month</span>
                         {billingPeriod === 'yearly' && plan.yearlyPrice > 0 && (
-                          <p className="mt-1 text-sm text-gray-400">
+                          <p className="mt-1 text-base text-gray-200">
                             ${plan.yearlyPrice} billed annually
                           </p>
                         )}
@@ -212,12 +212,12 @@ export default function PricingPage() {
 
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-medium text-gray-400 mb-3">Features included:</h4>
+                      <h4 className="text-base font-medium text-gray-200 mb-3">Features included:</h4>
                       <ul className="space-y-2">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
                             <Check className="mr-2 h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
-                            <span className="text-sm text-gray-300">{feature}</span>
+                            <span className="text-base text-gray-100">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -225,12 +225,12 @@ export default function PricingPage() {
 
                     {plan.limitations.length > 0 && (
                       <div>
-                        <h4 className="text-sm font-medium text-gray-400 mb-3">Not included:</h4>
+                        <h4 className="text-base font-medium text-gray-200 mb-3">Not included:</h4>
                         <ul className="space-y-2">
                           {plan.limitations.map((limitation, i) => (
                             <li key={i} className="flex items-start">
-                              <X className="mr-2 h-4 w-4 shrink-0 text-gray-500 mt-0.5" />
-                              <span className="text-sm text-gray-500">{limitation}</span>
+                              <X className="mr-2 h-4 w-4 shrink-0 text-gray-200 mt-0.5" />
+                              <span className="text-base text-gray-200">{limitation}</span>
                             </li>
                           ))}
                         </ul>
@@ -244,7 +244,7 @@ export default function PricingPage() {
                     className={`w-full ${
                       (plan as any).popular 
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white' 
-                        : 'glass-card border-white/20 text-white hover:bg-white/10'
+                        : 'glass-card border-white/20 text-white hover:bg-gray-900/70'
                     }`}
                     onClick={() => handleSelectPlan(key)}
                   >
@@ -263,21 +263,21 @@ export default function PricingPage() {
               <div className="grid gap-6 md:grid-cols-2 mb-8">
                 <div className="rounded-lg glass-card p-6">
                   <h3 className="font-semibold mb-4 text-white">Current Situation</h3>
-                  <ul className="space-y-3 text-sm">
+                  <ul className="space-y-3 text-base">
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Quotes per month:</span>
+                      <span className="text-gray-200">Quotes per month:</span>
                       <span className="font-medium text-white">20</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Current win rate:</span>
+                      <span className="text-gray-200">Current win rate:</span>
                       <span className="font-medium text-white">35% (7 jobs)</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Average job value:</span>
+                      <span className="text-gray-200">Average job value:</span>
                       <span className="font-medium text-white">$2,800</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Monthly revenue:</span>
+                      <span className="text-gray-200">Monthly revenue:</span>
                       <span className="font-medium text-white">$19,600</span>
                     </li>
                   </ul>
@@ -285,21 +285,21 @@ export default function PricingPage() {
                 
                 <div className="rounded-lg glass-card border border-blue-500/30 p-6">
                   <h3 className="font-semibold mb-4 text-white">With PaintQuote Pro</h3>
-                  <ul className="space-y-3 text-sm">
+                  <ul className="space-y-3 text-base">
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Quotes per month:</span>
+                      <span className="text-gray-200">Quotes per month:</span>
                       <span className="font-medium text-blue-400">20</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Improved win rate:</span>
+                      <span className="text-gray-200">Improved win rate:</span>
                       <span className="font-medium text-blue-400">50% (10 jobs)</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Average job value:</span>
+                      <span className="text-gray-200">Average job value:</span>
                       <span className="font-medium text-blue-400">$2,800</span>
                     </li>
                     <li className="flex justify-between">
-                      <span className="text-gray-400">Monthly revenue:</span>
+                      <span className="text-gray-200">Monthly revenue:</span>
                       <span className="font-medium text-blue-400">$28,000</span>
                     </li>
                   </ul>
@@ -307,12 +307,12 @@ export default function PricingPage() {
               </div>
               
               <div className="rounded-lg bg-emerald-500/10 backdrop-blur-sm border border-emerald-500/20 p-6 text-center">
-                <p className="text-lg mb-2 text-gray-300">Your Additional Monthly Revenue</p>
+                <p className="text-lg mb-2 text-gray-100">Your Additional Monthly Revenue</p>
                 <p className="text-4xl font-bold text-emerald-400 mb-4">+$8,400</p>
-                <p className="text-sm text-gray-300 mb-4">
+                <p className="text-base text-gray-100 mb-4">
                   That's a <strong className="text-white">100x return</strong> on your PaintQuote Pro investment
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-base text-gray-200">
                   Based on research showing 40-60% win rate improvement from faster response times 
                   and professional presentation
                 </p>
@@ -326,35 +326,35 @@ export default function PricingPage() {
             <div className="mx-auto max-w-3xl space-y-8">
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Can I change plans anytime?</h3>
-                <p className="text-gray-300">
+                <p className="text-gray-100">
                   Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll prorate any payments.
                 </p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">What payment methods do you accept?</h3>
-                <p className="text-gray-300">
+                <p className="text-gray-100">
                   We accept all major credit cards, debit cards, and ACH transfers for annual plans. Enterprise customers can also pay by invoice.
                 </p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Is there a setup fee?</h3>
-                <p className="text-gray-300">
+                <p className="text-gray-100">
                   No setup fees! You can start using PaintQuote Pro immediately after signing up.
                 </p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">What happens if I exceed my quote limit?</h3>
-                <p className="text-gray-300">
+                <p className="text-gray-100">
                   Free plan users will be prompted to upgrade when they reach their monthly limit. Paid plans have unlimited quotes.
                 </p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Do you offer discounts for annual billing?</h3>
-                <p className="text-gray-300">
+                <p className="text-gray-100">
                   Yes! Annual billing saves you 17% compared to monthly billing - that's 2 months free every year.
                 </p>
               </div>

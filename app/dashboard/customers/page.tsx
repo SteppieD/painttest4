@@ -64,7 +64,7 @@ export default function CustomersPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading customers...</p>
+          <p className="text-gray-200">Loading customers...</p>
         </div>
       </div>
     )
@@ -85,36 +85,36 @@ export default function CustomersPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Customers</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Customers</CardTitle>
             <Users className="h-4 w-4 text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">{customers.length}</div>
-            <p className="text-xs text-gray-400 mt-1">Active relationships</p>
+            <p className="text-base text-gray-200 mt-1">Active relationships</p>
           </CardContent>
         </Card>
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Quotes</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Quotes</CardTitle>
             <FileText className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">{totalQuotes}</div>
-            <p className="text-xs text-gray-400 mt-1">Quotes sent</p>
+            <p className="text-base text-gray-200 mt-1">Quotes sent</p>
           </CardContent>
         </Card>
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Revenue</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-emerald-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-white">
               ${totalRevenue.toLocaleString()}
             </div>
-            <p className="text-xs text-gray-400 mt-1">From accepted quotes</p>
+            <p className="text-base text-gray-200 mt-1">From accepted quotes</p>
           </CardContent>
         </Card>
       </div>
@@ -128,7 +128,7 @@ export default function CustomersPage() {
             <div className="text-center py-12">
               <Users className="h-12 w-12 text-gray-600 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">No customers yet</h3>
-              <p className="text-gray-400 mb-4">Your customers will appear here after creating quotes</p>
+              <p className="text-gray-200 mb-4">Your customers will appear here after creating quotes</p>
               <Link href="/create-quote">
                 <Button className="btn-primary-modern">
                   Create Your First Quote
@@ -138,14 +138,14 @@ export default function CustomersPage() {
           ) : (
             <div className="space-y-4">
               {customers.map((customer) => (
-                <div key={customer.id} className="border border-white/10 rounded-lg p-4 hover:bg-white/5 transition-all">
+                <div key={customer.id} className="border border-white/10 rounded-lg p-4 hover:bg-gray-900/80 transition-all">
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <h3 className="text-lg font-medium text-white hover:text-blue-400 transition-colors">
                         {customer.name}
                       </h3>
                       
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                      <div className="flex flex-wrap gap-4 text-base text-gray-200">
                         {customer.email && (
                           <div className="flex items-center gap-1">
                             <Mail className="h-3 w-3" />
@@ -169,15 +169,15 @@ export default function CustomersPage() {
                     
                     <div className="text-right space-y-1">
                       <div className="flex items-center gap-2 justify-end">
-                        <FileText className="h-4 w-4 text-gray-400" />
-                        <span className="text-sm font-medium text-white">{customer.totalQuotes} quotes</span>
+                        <FileText className="h-4 w-4 text-gray-200" />
+                        <span className="text-base font-medium text-white">{customer.totalQuotes} quotes</span>
                       </div>
                       {customer.totalRevenue > 0 && (
-                        <div className="text-sm text-emerald-400 font-medium">
+                        <div className="text-base text-emerald-400 font-medium">
                           ${customer.totalRevenue.toLocaleString()} revenue
                         </div>
                       )}
-                      <div className="text-xs text-gray-500">
+                      <div className="text-base text-gray-200">
                         Last quote: {new Date(customer.lastQuoteDate).toLocaleDateString()}
                       </div>
                     </div>

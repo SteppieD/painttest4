@@ -169,7 +169,7 @@ export default function FranchisePage() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 The only quoting platform built for painting franchises. 
                 Maintain brand standards while empowering franchisees to succeed.
               </p>
@@ -188,7 +188,7 @@ export default function FranchisePage() {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>20+ franchise systems</span>
@@ -205,24 +205,24 @@ export default function FranchisePage() {
                 <div className="text-center mb-6">
                   <Target className="h-16 w-16 text-blue-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Franchise Success Dashboard</h3>
-                  <p className="text-gray-400">See how PaintQuote Pro drives franchise growth</p>
+                  <p className="text-gray-200">See how PaintQuote Pro drives franchise growth</p>
                 </div>
                 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Avg. Quote Time</span>
+                    <span className="text-gray-100">Avg. Quote Time</span>
                     <span className="text-green-400 font-semibold">2 minutes</span>
                   </div>
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Close Rate Increase</span>
+                    <span className="text-gray-100">Close Rate Increase</span>
                     <span className="text-green-400 font-semibold">+45%</span>
                   </div>
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Franchisee Satisfaction</span>
+                    <span className="text-gray-100">Franchisee Satisfaction</span>
                     <span className="text-green-400 font-semibold">4.9/5</span>
                   </div>
                   <div className="flex items-center justify-between p-3 glass-card">
-                    <span className="text-gray-300">Training Time Saved</span>
+                    <span className="text-gray-100">Training Time Saved</span>
                     <span className="text-green-400 font-semibold">75%</span>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ export default function FranchisePage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Built for Franchise Success
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Every feature designed to help franchisors scale and franchisees succeed
             </p>
           </div>
@@ -249,7 +249,7 @@ export default function FranchisePage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -276,7 +276,7 @@ export default function FranchisePage() {
                   {group.benefits.map((benefit, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{benefit}</span>
+                      <span className="text-gray-100">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -301,7 +301,7 @@ export default function FranchisePage() {
                 <div key={index} className="text-center">
                   <div className="text-4xl font-bold text-blue-400 mb-2">{stat.metric}</div>
                   <div className="text-white font-semibold mb-1">{stat.description}</div>
-                  <div className="text-sm text-gray-400">{stat.detail}</div>
+                  <div className="text-base text-gray-200">{stat.detail}</div>
                 </div>
               ))}
             </div>
@@ -323,16 +323,16 @@ export default function FranchisePage() {
               <Card key={index} className="glass-card p-6">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold text-white">{partner.name}</h3>
-                  <p className="text-gray-400">{partner.locations}</p>
+                  <p className="text-gray-200">{partner.locations}</p>
                 </div>
                 
-                <p className="text-gray-300 mb-4 italic">"{partner.testimonial}"</p>
+                <p className="text-gray-100 mb-4 italic">"{partner.testimonial}"</p>
                 
                 <div className="border-t border-gray-700 pt-4">
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30 mb-2">
                     {partner.results}
                   </Badge>
-                  <p className="text-sm text-gray-400">- {partner.author}</p>
+                  <p className="text-base text-gray-200">- {partner.author}</p>
                 </div>
               </Card>
             ))}
@@ -347,7 +347,7 @@ export default function FranchisePage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Franchise-Friendly Pricing
             </h2>
-            <p className="text-gray-300">Volume discounts that scale with your growth</p>
+            <p className="text-gray-100">Volume discounts that scale with your growth</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -360,12 +360,12 @@ export default function FranchisePage() {
                 )}
                 
                 <h3 className="text-2xl font-semibold text-white mb-2">{tier.name}</h3>
-                <p className="text-gray-400 mb-4">{tier.locations}</p>
+                <p className="text-gray-200 mb-4">{tier.locations}</p>
                 <div className="text-3xl font-bold text-blue-400 mb-6">{tier.price}</div>
                 
                 <ul className="space-y-2 mb-8">
                   {tier.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-gray-300">
+                    <li key={i} className="flex items-center gap-2 text-gray-100">
                       <CheckCircle className="h-4 w-4 text-green-400" />
                       {feature}
                     </li>
@@ -388,7 +388,7 @@ export default function FranchisePage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Empower Your Franchise Network?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Join 20+ painting franchises using PaintQuote Pro to scale faster
             </p>
             
@@ -406,7 +406,7 @@ export default function FranchisePage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>Multi-location ready</span>

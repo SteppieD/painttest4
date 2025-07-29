@@ -191,7 +191,7 @@ export default function IntegrationsPage() {
               </span>
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Seamlessly integrate PaintQuote Pro with your favorite tools. 
               Automate workflows, sync data, and run your painting business from one place.
             </p>
@@ -220,7 +220,7 @@ export default function IntegrationsPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Most Popular Integrations
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Connect with the tools painting contractors use every day
             </p>
           </div>
@@ -235,7 +235,7 @@ export default function IntegrationsPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white">{integration.name}</h3>
-                      <p className="text-sm text-gray-400">{integration.category}</p>
+                      <p className="text-base text-gray-200">{integration.category}</p>
                     </div>
                   </div>
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
@@ -243,11 +243,11 @@ export default function IntegrationsPage() {
                   </Badge>
                 </div>
                 
-                <p className="text-gray-300 mb-4">{integration.description}</p>
+                <p className="text-gray-100 mb-4">{integration.description}</p>
                 
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   {integration.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-400">
+                    <div key={i} className="flex items-center gap-2 text-base text-gray-200">
                       <CheckCircle className="h-3 w-3 text-green-400" />
                       {feature}
                     </div>
@@ -283,7 +283,7 @@ export default function IntegrationsPage() {
                 <div className="space-y-3">
                   {category.integrations.map((integration, i) => (
                     <div key={i} className="flex items-center justify-between py-2 border-b border-gray-700 last:border-0">
-                      <span className="text-gray-300">{integration.name}</span>
+                      <span className="text-gray-100">{integration.name}</span>
                       <Badge 
                         variant="outline" 
                         className={
@@ -291,7 +291,7 @@ export default function IntegrationsPage() {
                             ? 'text-green-400 border-green-400' 
                             : integration.status === 'Coming Soon'
                             ? 'text-yellow-400 border-yellow-400'
-                            : 'text-gray-400 border-gray-400'
+                            : 'text-gray-200 border-gray-400'
                         }
                       >
                         {integration.status}
@@ -319,7 +319,7 @@ export default function IntegrationsPage() {
               <Card key={index} className="glass-card p-6 text-center">
                 <benefit.icon className="h-10 w-10 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                <p className="text-gray-400 text-sm">{benefit.description}</p>
+                <p className="text-gray-200 text-base">{benefit.description}</p>
               </Card>
             ))}
           </div>
@@ -339,7 +339,7 @@ export default function IntegrationsPage() {
                 Build Custom Integrations
               </h2>
               
-              <p className="text-xl text-gray-300 mb-6">
+              <p className="text-xl text-gray-100 mb-6">
                 Use our REST API to create custom integrations with any platform. 
                 Full documentation and SDKs available.
               </p>
@@ -357,7 +357,7 @@ export default function IntegrationsPage() {
                 </Link>
               </div>
               
-              <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center justify-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>RESTful API</span>
@@ -382,7 +382,7 @@ export default function IntegrationsPage() {
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Connect Your Tools?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-gray-100 mb-8">
             Start automating your workflow today with 20+ integrations
           </p>
           

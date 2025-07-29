@@ -74,18 +74,18 @@ export default function Footer() {
             <Link href="/" className="text-2xl font-bold text-primary">
               PaintQuote Pro
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground max-w-xs">
+            <p className="mt-4 text-base text-gray-200 max-w-xs">
               Professional painting estimating software that helps contractors save time, 
               win more jobs, and grow their business.
             </p>
             
             {/* Contact Info */}
             <div className="mt-6 space-y-3">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-base text-gray-200">
                 <Mail className="h-4 w-4" />
                 <span>support@paintquotepro.com</span>
               </div>
-              <div className="flex items-start gap-2 text-sm text-muted-foreground">
+              <div className="flex items-start gap-2 text-base text-gray-200">
                 <MapPin className="h-4 w-4 mt-0.5" />
                 <span>123 Business Ave, Suite 100<br />Austin, TX 78701</span>
               </div>
@@ -95,28 +95,28 @@ export default function Footer() {
             <div className="mt-6 flex gap-4">
               <Link 
                 href="https://facebook.com/paintquotepro" 
-                className="text-muted-foreground hover:text-primary"
+                className="text-gray-200 hover:text-primary"
                 aria-label="Facebook"
               >
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link 
                 href="https://twitter.com/paintquotepro" 
-                className="text-muted-foreground hover:text-primary"
+                className="text-gray-200 hover:text-primary"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </Link>
               <Link 
                 href="https://linkedin.com/company/paintquotepro" 
-                className="text-muted-foreground hover:text-primary"
+                className="text-gray-200 hover:text-primary"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link 
                 href="https://youtube.com/paintquotepro" 
-                className="text-muted-foreground hover:text-primary"
+                className="text-gray-200 hover:text-primary"
                 aria-label="YouTube"
               >
                 <Youtube className="h-5 w-5" />
@@ -133,7 +133,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link 
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary"
+                      className="text-base text-gray-200 hover:text-primary"
                     >
                       {link.label}
                     </Link>
@@ -152,14 +152,14 @@ export default function Footer() {
               <Link
                 key={location}
                 href={`/locations/${location.toLowerCase().replace(' ', '-')}`}
-                className="text-sm text-muted-foreground hover:text-primary"
+                className="text-base text-gray-200 hover:text-primary"
               >
                 {location}
               </Link>
             ))}
             <Link
               href="/locations"
-              className="text-sm text-primary hover:underline"
+              className="text-base text-primary hover:underline"
             >
               View all locations →
             </Link>
@@ -169,10 +169,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-gray-200">
               © {currentYear} PaintQuote Pro. All rights reserved.
             </p>
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+            <div className="flex flex-wrap gap-4 text-base text-gray-200">
               <Link href="/sitemap" className="hover:text-primary">
                 Sitemap
               </Link>
@@ -188,15 +188,15 @@ export default function Footer() {
 
         {/* Trust Badges */}
         <div className="mt-8 flex flex-wrap items-center gap-6">
-          <div className="text-xs text-muted-foreground">
+          <div className="text-base text-gray-200">
             <div className="font-semibold">🔒 SSL Secured</div>
             <div>Your data is encrypted</div>
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-base text-gray-200">
             <div className="font-semibold">✓ SOC 2 Compliant</div>
             <div>Enterprise-grade security</div>
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-base text-gray-200">
             <div className="font-semibold">🏆 Top Rated</div>
             <div>4.9/5 stars from 2,000+ reviews</div>
           </div>
@@ -206,7 +206,7 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
           <Link 
             href="/sitemap.xml" 
-            className="text-sm text-muted-foreground hover:text-primary"
+            className="text-base text-gray-200 hover:text-primary"
           >
             XML Sitemap
           </Link>

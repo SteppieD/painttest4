@@ -173,7 +173,7 @@ export default function FeedbackPage() {
       case 'Completed':
         return 'bg-green-500/20 text-green-300 border-green-500/30'
       default:
-        return 'bg-gray-500/20 text-gray-300 border-gray-500/30'
+        return 'bg-gray-500/20 text-gray-100 border-gray-500/30'
     }
   }
 
@@ -196,7 +196,7 @@ export default function FeedbackPage() {
               Help Shape the Future
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Your ideas drive our roadmap. Vote on features, submit requests, 
               and see what we're building next.
             </p>
@@ -235,7 +235,7 @@ export default function FeedbackPage() {
                   'text-pink-400'
                 }`} />
                 <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                <p className="text-gray-400 mb-3">{category.description}</p>
+                <p className="text-gray-200 mb-3">{category.description}</p>
                 <Badge variant="outline">{category.count} submissions</Badge>
               </Card>
             ))}
@@ -250,7 +250,7 @@ export default function FeedbackPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Top Feature Requests
             </h2>
-            <p className="text-gray-300">Vote for features you want to see</p>
+            <p className="text-gray-100">Vote for features you want to see</p>
           </div>
 
           <div className="space-y-4">
@@ -259,14 +259,14 @@ export default function FeedbackPage() {
                 <div className="flex items-start gap-6">
                   <div className="flex flex-col items-center">
                     <Button 
-                      size="sm" 
+                      size="default" 
                       variant="ghost" 
                       className="hover:text-blue-400 transition-colors"
                     >
                       <ArrowUp className="h-5 w-5" />
                     </Button>
                     <span className="text-2xl font-bold text-white">{request.votes}</span>
-                    <span className="text-sm text-gray-400">votes</span>
+                    <span className="text-base text-gray-200">votes</span>
                   </div>
                   
                   <div className="flex-1">
@@ -277,9 +277,9 @@ export default function FeedbackPage() {
                       </Badge>
                     </div>
                     
-                    <p className="text-gray-400 mb-3">{request.description}</p>
+                    <p className="text-gray-200 mb-3">{request.description}</p>
                     
-                    <div className="flex items-center gap-6 text-sm text-gray-400">
+                    <div className="flex items-center gap-6 text-base text-gray-200">
                       <Badge variant="outline">{request.category}</Badge>
                       <div className="flex items-center gap-1">
                         <MessageSquare className="h-4 w-4" />
@@ -307,7 +307,7 @@ export default function FeedbackPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Recently Shipped
             </h2>
-            <p className="text-gray-300">Features you requested that are now live</p>
+            <p className="text-gray-100">Features you requested that are now live</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -317,8 +317,8 @@ export default function FeedbackPage() {
                   <update.icon className="h-8 w-8 text-green-400 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">{update.title}</h3>
-                    <p className="text-gray-400 mb-3">{update.description}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
+                    <p className="text-gray-200 mb-3">{update.description}</p>
+                    <div className="flex items-center gap-4 text-base text-gray-200">
                       <span>{update.date}</span>
                       <span>•</span>
                       <span className="text-green-400">{update.votes} votes delivered</span>
@@ -338,7 +338,7 @@ export default function FeedbackPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Product Roadmap
             </h2>
-            <p className="text-gray-300">See what we're working on next</p>
+            <p className="text-gray-100">See what we're working on next</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -363,7 +363,7 @@ export default function FeedbackPage() {
                         phase.status === 'planned' ? 'bg-purple-400' :
                         'bg-gray-400'
                       }`} />
-                      <span className="text-gray-300">{item}</span>
+                      <span className="text-gray-100">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -382,13 +382,13 @@ export default function FeedbackPage() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 Have an Idea?
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
                 We read every submission. The best ideas get built and shipped to all users.
               </p>
               
               <div className="max-w-2xl mx-auto">
                 <div className="glass-card p-6 text-left mb-6">
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-base font-medium text-gray-100 mb-2">
                     What would make PaintQuote Pro better?
                   </label>
                   <textarea
@@ -411,7 +411,7 @@ export default function FeedbackPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+                <div className="flex items-center justify-center gap-6 text-base text-gray-200">
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     <span>Join 2,000+ contributors</span>
@@ -439,19 +439,19 @@ export default function FeedbackPage() {
           <div className="grid md:grid-cols-4 gap-6 text-center">
             <Card className="glass-card p-6">
               <div className="text-3xl font-bold text-blue-400 mb-2">2,847</div>
-              <div className="text-gray-300">Ideas Submitted</div>
+              <div className="text-gray-100">Ideas Submitted</div>
             </Card>
             <Card className="glass-card p-6">
               <div className="text-3xl font-bold text-green-400 mb-2">342</div>
-              <div className="text-gray-300">Features Shipped</div>
+              <div className="text-gray-100">Features Shipped</div>
             </Card>
             <Card className="glass-card p-6">
               <div className="text-3xl font-bold text-purple-400 mb-2">15,234</div>
-              <div className="text-gray-300">Votes Cast</div>
+              <div className="text-gray-100">Votes Cast</div>
             </Card>
             <Card className="glass-card p-6">
               <div className="text-3xl font-bold text-yellow-400 mb-2">89%</div>
-              <div className="text-gray-300">User Satisfaction</div>
+              <div className="text-gray-100">User Satisfaction</div>
             </Card>
           </div>
         </div>

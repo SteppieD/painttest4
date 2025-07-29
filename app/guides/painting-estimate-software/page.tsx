@@ -269,8 +269,8 @@ export default function PaintingEstimateSoftwareGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -287,7 +287,7 @@ export default function PaintingEstimateSoftwareGuide() {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Best Painting Estimate Software: Complete Guide
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Compare the top painting quote software solutions. Find the perfect tool to create 
                 professional estimates faster and win more jobs.
               </p>
@@ -296,15 +296,15 @@ export default function PaintingEstimateSoftwareGuide() {
               <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <div className="text-2xl font-bold text-blue-400">6+ hrs</div>
-                  <div className="text-sm text-gray-400">Saved weekly</div>
+                  <div className="text-base text-gray-200">Saved weekly</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <div className="text-2xl font-bold text-green-400">40%</div>
-                  <div className="text-sm text-gray-400">More jobs won</div>
+                  <div className="text-base text-gray-200">More jobs won</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <div className="text-2xl font-bold text-purple-400">283x</div>
-                  <div className="text-sm text-gray-400">Average ROI</div>
+                  <div className="text-base text-gray-200">Average ROI</div>
                 </div>
               </div>
 
@@ -340,23 +340,23 @@ export default function PaintingEstimateSoftwareGuide() {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">2-3 hours per quote</span>
+                      <span className="text-gray-100">2-3 hours per quote</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">Calculation errors cost profits</span>
+                      <span className="text-gray-100">Calculation errors cost profits</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">Unprofessional appearance</span>
+                      <span className="text-gray-100">Unprofessional appearance</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">Lost jobs to faster competitors</span>
+                      <span className="text-gray-100">Lost jobs to faster competitors</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">No tracking or analytics</span>
+                      <span className="text-gray-100">No tracking or analytics</span>
                     </li>
                   </ul>
                 </Card>
@@ -366,23 +366,23 @@ export default function PaintingEstimateSoftwareGuide() {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">10-15 minute quotes</span>
+                      <span className="text-gray-100">10-15 minute quotes</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">95%+ accuracy rate</span>
+                      <span className="text-gray-100">95%+ accuracy rate</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">Professional branded quotes</span>
+                      <span className="text-gray-100">Professional branded quotes</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">Quote on-site instantly</span>
+                      <span className="text-gray-100">Quote on-site instantly</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">Analytics to improve win rate</span>
+                      <span className="text-gray-100">Analytics to improve win rate</span>
                     </li>
                   </ul>
                 </Card>
@@ -395,15 +395,15 @@ export default function PaintingEstimateSoftwareGuide() {
                 <div className="grid md:grid-cols-3 gap-6 text-center">
                   <div>
                     <div className="text-3xl font-bold text-red-400 mb-2">$45,000</div>
-                    <div className="text-sm text-gray-300">Annual revenue lost from slow quotes</div>
+                    <div className="text-base text-gray-100">Annual revenue lost from slow quotes</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-orange-400 mb-2">312 hrs</div>
-                    <div className="text-sm text-gray-300">Wasted on manual calculations yearly</div>
+                    <div className="text-base text-gray-100">Wasted on manual calculations yearly</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-yellow-400 mb-2">40%</div>
-                    <div className="text-sm text-gray-300">Jobs lost to tech-savvy competitors</div>
+                    <div className="text-base text-gray-100">Jobs lost to tech-savvy competitors</div>
                   </div>
                 </div>
               </Card>
@@ -464,39 +464,39 @@ export default function PaintingEstimateSoftwareGuide() {
                                   />
                                 ))}
                               </div>
-                              <span className="text-sm text-gray-400">{software.rating}/5</span>
+                              <span className="text-base text-gray-200">{software.rating}/5</span>
                             </div>
                           </div>
                         </div>
                         
                         <div className="space-y-2">
-                          <div className="text-sm">
-                            <span className="text-gray-400">Starting at:</span>
+                          <div className="text-base">
+                            <span className="text-gray-200">Starting at:</span>
                             <span className="text-white font-semibold ml-2">{software.pricing}</span>
                           </div>
-                          <div className="text-sm">
-                            <span className="text-gray-400">Best for:</span>
+                          <div className="text-base">
+                            <span className="text-gray-200">Best for:</span>
                             <span className="text-white ml-2">{software.bestFor}</span>
                           </div>
                         </div>
 
                         {/* Quick Features */}
                         <div className="mt-4 space-y-2">
-                          <div className="flex items-center gap-2 text-sm">
+                          <div className="flex items-center gap-2 text-base">
                             {software.features.aiPowered ? (
                               <CheckCircle className="h-4 w-4 text-green-400" />
                             ) : (
                               <XCircle className="h-4 w-4 text-gray-600" />
                             )}
-                            <span className="text-gray-300">AI-Powered</span>
+                            <span className="text-gray-100">AI-Powered</span>
                           </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <Clock className="h-4 w-4 text-gray-400" />
-                            <span className="text-gray-300">Setup: {software.features.setup}</span>
+                          <div className="flex items-center gap-2 text-base">
+                            <Clock className="h-4 w-4 text-gray-200" />
+                            <span className="text-gray-100">Setup: {software.features.setup}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <Users className="h-4 w-4 text-gray-400" />
-                            <span className="text-gray-300">Support: {software.features.support}</span>
+                          <div className="flex items-center gap-2 text-base">
+                            <Users className="h-4 w-4 text-gray-200" />
+                            <span className="text-gray-100">Support: {software.features.support}</span>
                           </div>
                         </div>
                       </div>
@@ -509,7 +509,7 @@ export default function PaintingEstimateSoftwareGuide() {
                             {software.pros.map((pro, index) => (
                               <li key={index} className="flex items-start gap-2">
                                 <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
-                                <span className="text-sm text-gray-300">{pro}</span>
+                                <span className="text-base text-gray-100">{pro}</span>
                               </li>
                             ))}
                           </ul>
@@ -521,7 +521,7 @@ export default function PaintingEstimateSoftwareGuide() {
                             {software.cons.map((con, index) => (
                               <li key={index} className="flex items-start gap-2">
                                 <XCircle className="h-4 w-4 text-red-400 flex-shrink-0 mt-0.5" />
-                                <span className="text-sm text-gray-300">{con}</span>
+                                <span className="text-base text-gray-100">{con}</span>
                               </li>
                             ))}
                           </ul>
@@ -538,7 +538,7 @@ export default function PaintingEstimateSoftwareGuide() {
                             <Sparkles className="ml-2 h-5 w-5" />
                           </Button>
                         </Link>
-                        <p className="text-sm text-gray-400 mt-2">No credit card required</p>
+                        <p className="text-base text-gray-200 mt-2">No credit card required</p>
                       </div>
                     )}
                   </Card>
@@ -552,58 +552,58 @@ export default function PaintingEstimateSoftwareGuide() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-3 px-4 text-gray-400">Feature</th>
+                        <th className="text-left py-3 px-4 text-gray-200">Feature</th>
                         <th className="text-center py-3 px-4 text-blue-400">PaintQuote Pro</th>
-                        <th className="text-center py-3 px-4 text-gray-400">JobNimbus</th>
-                        <th className="text-center py-3 px-4 text-gray-400">Jobber</th>
-                        <th className="text-center py-3 px-4 text-gray-400">ServiceTitan</th>
+                        <th className="text-center py-3 px-4 text-gray-200">JobNimbus</th>
+                        <th className="text-center py-3 px-4 text-gray-200">Jobber</th>
+                        <th className="text-center py-3 px-4 text-gray-200">ServiceTitan</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4 text-gray-300">Quote Creation Time</td>
+                        <td className="py-3 px-4 text-gray-100">Quote Creation Time</td>
                         <td className="text-center text-green-400 font-semibold">10-15 min</td>
                         <td className="text-center text-yellow-400">45-60 min</td>
                         <td className="text-center text-yellow-400">30-45 min</td>
                         <td className="text-center text-orange-400">60-90 min</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4 text-gray-300">Painting-Specific Features</td>
+                        <td className="py-3 px-4 text-gray-100">Painting-Specific Features</td>
                         <td className="text-center text-green-400">✓ Excellent</td>
-                        <td className="text-center text-gray-400">✗ None</td>
-                        <td className="text-center text-gray-400">✗ None</td>
+                        <td className="text-center text-gray-200">✗ None</td>
+                        <td className="text-center text-gray-200">✗ None</td>
                         <td className="text-center text-yellow-400">~ Limited</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4 text-gray-300">AI Assistance</td>
+                        <td className="py-3 px-4 text-gray-100">AI Assistance</td>
                         <td className="text-center text-green-400">✓ Advanced</td>
-                        <td className="text-center text-gray-400">✗ No</td>
-                        <td className="text-center text-gray-400">✗ No</td>
-                        <td className="text-center text-gray-400">✗ No</td>
+                        <td className="text-center text-gray-200">✗ No</td>
+                        <td className="text-center text-gray-200">✗ No</td>
+                        <td className="text-center text-gray-200">✗ No</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4 text-gray-300">Mobile Experience</td>
+                        <td className="py-3 px-4 text-gray-100">Mobile Experience</td>
                         <td className="text-center text-green-400">★★★★★</td>
                         <td className="text-center text-yellow-400">★★★☆☆</td>
                         <td className="text-center text-yellow-400">★★★★☆</td>
                         <td className="text-center text-yellow-400">★★★☆☆</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4 text-gray-300">Learning Curve</td>
+                        <td className="py-3 px-4 text-gray-100">Learning Curve</td>
                         <td className="text-center text-green-400">Very Easy</td>
                         <td className="text-center text-orange-400">Moderate</td>
                         <td className="text-center text-yellow-400">Easy</td>
                         <td className="text-center text-red-400">Complex</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4 text-gray-300">Template Quality</td>
+                        <td className="py-3 px-4 text-gray-100">Template Quality</td>
                         <td className="text-center text-green-400">Professional</td>
                         <td className="text-center text-yellow-400">Basic</td>
                         <td className="text-center text-orange-400">Generic</td>
                         <td className="text-center text-yellow-400">Good</td>
                       </tr>
                       <tr>
-                        <td className="py-3 px-4 text-gray-300">Value for Money</td>
+                        <td className="py-3 px-4 text-gray-100">Value for Money</td>
                         <td className="text-center text-green-400">★★★★★</td>
                         <td className="text-center text-yellow-400">★★★☆☆</td>
                         <td className="text-center text-yellow-400">★★★☆☆</td>
@@ -631,7 +631,7 @@ export default function PaintingEstimateSoftwareGuide() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Painting-Specific Calculations
                   </h3>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• Square footage calculators</li>
                     <li>• Paint coverage estimators</li>
                     <li>• Labor hour calculations</li>
@@ -645,7 +645,7 @@ export default function PaintingEstimateSoftwareGuide() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Mobile-First Design
                   </h3>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• Quote on-site capability</li>
                     <li>• Photo attachments</li>
                     <li>• Offline functionality</li>
@@ -659,7 +659,7 @@ export default function PaintingEstimateSoftwareGuide() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Professional Templates
                   </h3>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• Customizable branding</li>
                     <li>• Multiple quote formats</li>
                     <li>• Scope of work details</li>
@@ -673,7 +673,7 @@ export default function PaintingEstimateSoftwareGuide() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     Business Intelligence
                   </h3>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• Win/loss tracking</li>
                     <li>• Pricing analytics</li>
                     <li>• Customer insights</li>
@@ -687,12 +687,12 @@ export default function PaintingEstimateSoftwareGuide() {
                 <h3 className="text-xl font-semibold text-blue-400 mb-4">
                   Why Painting-Specific Software Matters
                 </h3>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-100 mb-4">
                   Generic contractor software forces you to adapt your process to their system. 
                   Painting-specific software like <Link href="/" className="text-blue-400 hover:text-blue-300">PaintQuote Pro</Link> is 
                   built around how painters actually work:
                 </p>
-                <ul className="space-y-2 text-gray-300">
+                <ul className="space-y-2 text-gray-100">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>Pre-built room types with standard measurements</span>
@@ -731,7 +731,7 @@ export default function PaintingEstimateSoftwareGuide() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Questions to Ask</h4>
-                      <ul className="space-y-2 text-gray-300 text-sm">
+                      <ul className="space-y-2 text-gray-100 text-base">
                         <li>• How many quotes do you create monthly?</li>
                         <li>• What's your current win rate?</li>
                         <li>• Do you quote on-site or at the office?</li>
@@ -741,7 +741,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-purple-400 mb-3">Red Flags to Avoid</h4>
-                      <ul className="space-y-2 text-gray-300 text-sm">
+                      <ul className="space-y-2 text-gray-100 text-base">
                         <li>• Long-term contracts required</li>
                         <li>• Hidden setup or training fees</li>
                         <li>• No free trial available</li>
@@ -757,28 +757,28 @@ export default function PaintingEstimateSoftwareGuide() {
                     Step 2: Test Before Committing
                   </h3>
                   <div className="space-y-4">
-                    <p className="text-gray-300">
+                    <p className="text-gray-100">
                       Always use the free trial to test these critical workflows:
                     </p>
-                    <ol className="space-y-3 text-gray-300">
+                    <ol className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">1</span>
+                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-base">1</span>
                         <span>Create a complete residential quote from start to finish</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">2</span>
+                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-base">2</span>
                         <span>Test the mobile app on an actual job site</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">3</span>
+                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-base">3</span>
                         <span>Customize templates with your branding</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">4</span>
+                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-base">4</span>
                         <span>Send a quote to yourself as a customer would see it</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">5</span>
+                        <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-base">5</span>
                         <span>Contact support with questions</span>
                       </li>
                     </ol>
@@ -792,7 +792,7 @@ export default function PaintingEstimateSoftwareGuide() {
                   <div className="space-y-6">
                     <div>
                       <h4 className="text-lg font-semibold text-green-400 mb-3">Week 1: Setup & Training</h4>
-                      <ul className="space-y-2 text-gray-300 text-sm">
+                      <ul className="space-y-2 text-gray-100 text-base">
                         <li>• Complete initial setup and branding</li>
                         <li>• Import your pricing and materials</li>
                         <li>• Train on 5-10 practice quotes</li>
@@ -801,7 +801,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-yellow-400 mb-3">Week 2: Pilot Testing</h4>
-                      <ul className="space-y-2 text-gray-300 text-sm">
+                      <ul className="space-y-2 text-gray-100 text-base">
                         <li>• Use for all new quotes</li>
                         <li>• Track time savings</li>
                         <li>• Gather customer feedback</li>
@@ -810,7 +810,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-purple-400 mb-3">Week 3+: Scale & Optimize</h4>
-                      <ul className="space-y-2 text-gray-300 text-sm">
+                      <ul className="space-y-2 text-gray-100 text-base">
                         <li>• Analyze win rates</li>
                         <li>• Adjust pricing based on data</li>
                         <li>• Expand features usage</li>
@@ -837,15 +837,15 @@ export default function PaintingEstimateSoftwareGuide() {
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-4">Time Savings</h3>
                     <div className="space-y-3">
-                      <div className="flex justify-between text-gray-300">
+                      <div className="flex justify-between text-gray-100">
                         <span>Current quote time:</span>
                         <span className="font-semibold">2.5 hours</span>
                       </div>
-                      <div className="flex justify-between text-gray-300">
+                      <div className="flex justify-between text-gray-100">
                         <span>With software:</span>
                         <span className="font-semibold text-green-400">15 minutes</span>
                       </div>
-                      <div className="flex justify-between text-gray-300">
+                      <div className="flex justify-between text-gray-100">
                         <span>Quotes per month:</span>
                         <span className="font-semibold">× 30</span>
                       </div>
@@ -859,15 +859,15 @@ export default function PaintingEstimateSoftwareGuide() {
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-4">Revenue Impact</h3>
                     <div className="space-y-3">
-                      <div className="flex justify-between text-gray-300">
+                      <div className="flex justify-between text-gray-100">
                         <span>Win rate increase:</span>
                         <span className="font-semibold">+40%</span>
                       </div>
-                      <div className="flex justify-between text-gray-300">
+                      <div className="flex justify-between text-gray-100">
                         <span>Extra jobs won:</span>
                         <span className="font-semibold">8/month</span>
                       </div>
-                      <div className="flex justify-between text-gray-300">
+                      <div className="flex justify-between text-gray-100">
                         <span>Average job value:</span>
                         <span className="font-semibold">× $2,800</span>
                       </div>
@@ -882,7 +882,7 @@ export default function PaintingEstimateSoftwareGuide() {
                 <div className="text-center bg-green-500/20 rounded-lg p-6">
                   <div className="text-4xl font-bold text-green-400 mb-2">283x ROI</div>
                   <p className="text-white">Average return on investment with PaintQuote Pro</p>
-                  <p className="text-sm text-gray-300 mt-2">
+                  <p className="text-base text-gray-100 mt-2">
                     $22,400 additional revenue ÷ $79 monthly cost = 283x return
                   </p>
                 </div>
@@ -907,7 +907,7 @@ export default function PaintingEstimateSoftwareGuide() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 Ready to Modernize Your Quoting Process?
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Join 2,000+ painting contractors creating professional quotes in minutes.
               </p>
               
@@ -915,17 +915,17 @@ export default function PaintingEstimateSoftwareGuide() {
                 <div className="text-center">
                   <Clock className="h-12 w-12 text-blue-400 mx-auto mb-3" />
                   <div className="text-lg font-semibold text-white">Save 6+ Hours</div>
-                  <div className="text-sm text-gray-400">Every week on quotes</div>
+                  <div className="text-base text-gray-200">Every week on quotes</div>
                 </div>
                 <div className="text-center">
                   <TrendingUp className="h-12 w-12 text-green-400 mx-auto mb-3" />
                   <div className="text-lg font-semibold text-white">Win 40% More</div>
-                  <div className="text-sm text-gray-400">Jobs with fast quotes</div>
+                  <div className="text-base text-gray-200">Jobs with fast quotes</div>
                 </div>
                 <div className="text-center">
                   <Award className="h-12 w-12 text-purple-400 mx-auto mb-3" />
                   <div className="text-lg font-semibold text-white">Look Professional</div>
-                  <div className="text-sm text-gray-400">Branded, detailed quotes</div>
+                  <div className="text-base text-gray-200">Branded, detailed quotes</div>
                 </div>
               </div>
               
@@ -944,7 +944,7 @@ export default function PaintingEstimateSoftwareGuide() {
                 </Link>
               </div>
               
-              <p className="text-sm text-gray-400 mt-4">
+              <p className="text-base text-gray-200 mt-4">
                 No credit card required • 5 free quotes • Setup in 2 minutes
               </p>
             </div>
@@ -963,7 +963,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       How to Quote Painting Jobs
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Complete guide to creating winning painting quotes
                     </p>
                   </Card>
@@ -975,7 +975,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Free Paint Calculator
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Calculate paint and material needs instantly
                     </p>
                   </Card>
@@ -987,7 +987,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Grow Your Painting Business
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Scale from side hustle to 7-figure business
                     </p>
                   </Card>
@@ -1087,10 +1087,10 @@ export default function PaintingEstimateSoftwareGuide() {
                     <Award className="h-5 w-5 text-blue-400 mr-2" />
                     What is the best painting estimate software?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     The best software depends on your specific needs:
                   </p>
-                  <ul className="space-y-2 text-gray-300 ml-4">
+                  <ul className="space-y-2 text-gray-100 ml-4">
                     <li>• <strong>PaintQuote Pro:</strong> Best for quick quotes (2-min creation)</li>
                     <li>• <strong>JobNimbus:</strong> Best all-in-one with CRM</li>
                     <li>• <strong>CoatingsTracker:</strong> Best for commercial painters</li>
@@ -1104,11 +1104,11 @@ export default function PaintingEstimateSoftwareGuide() {
                     <DollarSign className="h-5 w-5 text-green-400 mr-2" />
                     How much does painting estimating software cost?
                   </h3>
-                  <div className="space-y-3 text-gray-300">
+                  <div className="space-y-3 text-gray-100">
                     <div><strong>Entry-level:</strong> $29-49/month (basic quoting)</div>
                     <div><strong>Professional:</strong> $79-149/month (CRM + scheduling)</div>
                     <div><strong>Enterprise:</strong> $199-299/month (teams + advanced)</div>
-                    <div className="pt-2 text-gray-400 text-sm">
+                    <div className="pt-2 text-gray-200 text-base">
                       ROI calculation: Saving 5 hours/week at $50/hour = $1,000/month value
                     </div>
                   </div>
@@ -1120,17 +1120,17 @@ export default function PaintingEstimateSoftwareGuide() {
                     <Calculator className="h-5 w-5 text-purple-400 mr-2" />
                     Can painting software calculate paint quantities automatically?
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     Yes! Quality painting software automatically calculates:
                   </p>
-                  <ul className="mt-2 space-y-1 text-gray-300 ml-4">
+                  <ul className="mt-2 space-y-1 text-gray-100 ml-4">
                     <li>• Paint gallons needed per surface</li>
                     <li>• Coverage rates by paint type</li>
                     <li>• Waste factors (10-15%)</li>
                     <li>• Primer requirements</li>
                     <li>• Multiple coat calculations</li>
                   </ul>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     Eliminates manual math and reduces costly material errors.
                   </p>
                 </Card>
@@ -1141,10 +1141,10 @@ export default function PaintingEstimateSoftwareGuide() {
                     <Paintbrush className="h-5 w-5 text-blue-400 mr-2" />
                     What's the difference between painting software and general contractor software?
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+                  <div className="grid md:grid-cols-2 gap-4 text-gray-100">
                     <div>
                       <strong className="text-white">Painting Software:</strong>
-                      <ul className="mt-1 space-y-1 text-sm">
+                      <ul className="mt-1 space-y-1 text-base">
                         <li>✓ Paint calculators</li>
                         <li>✓ Surface pricing</li>
                         <li>✓ Spray rates</li>
@@ -1154,7 +1154,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     </div>
                     <div>
                       <strong className="text-white">General Software:</strong>
-                      <ul className="mt-1 space-y-1 text-sm">
+                      <ul className="mt-1 space-y-1 text-base">
                         <li>✗ Generic calculations</li>
                         <li>✗ No paint specifics</li>
                         <li>✗ Manual workarounds</li>
@@ -1171,13 +1171,13 @@ export default function PaintingEstimateSoftwareGuide() {
                     <Clock className="h-5 w-5 text-green-400 mr-2" />
                     How long does it take to create a quote with painting software?
                   </h3>
-                  <div className="space-y-2 text-gray-300">
+                  <div className="space-y-2 text-gray-100">
                     <div><strong>Simple residential:</strong> 2-5 minutes</div>
                     <div><strong>Standard home:</strong> 10-15 minutes</div>
                     <div><strong>Commercial project:</strong> 15-30 minutes</div>
                     <div><strong>Traditional method:</strong> 2-3 hours</div>
                   </div>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     90% time reduction allows quoting 10x more jobs!
                   </p>
                 </Card>
@@ -1188,10 +1188,10 @@ export default function PaintingEstimateSoftwareGuide() {
                     <User className="h-5 w-5 text-purple-400 mr-2" />
                     Do I need painting software if I'm a solo painter?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     <strong>Yes! Solo painters benefit even more because:</strong>
                   </p>
-                  <div className="space-y-2 text-gray-300">
+                  <div className="space-y-2 text-gray-100">
                     <div>✓ Save 5-10 hours weekly on admin work</div>
                     <div>✓ Look as professional as larger companies</div>
                     <div>✓ Respond to leads faster (win more jobs)</div>
@@ -1206,10 +1206,10 @@ export default function PaintingEstimateSoftwareGuide() {
                     <Smartphone className="h-5 w-5 text-blue-400 mr-2" />
                     Can painting estimate software work on mobile devices?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     Modern painting software is fully mobile-optimized:
                   </p>
-                  <ul className="space-y-1 text-gray-300 ml-4">
+                  <ul className="space-y-1 text-gray-100 ml-4">
                     <li>• Create quotes on-site via phone/tablet</li>
                     <li>• Take and attach photos instantly</li>
                     <li>• Get customer signatures digitally</li>
@@ -1224,10 +1224,10 @@ export default function PaintingEstimateSoftwareGuide() {
                     <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     What features should I look for in painting estimating software?
                   </h3>
-                  <p className="text-gray-300 mb-3">
+                  <p className="text-gray-100 mb-3">
                     Essential features for painting contractors:
                   </p>
-                  <div className="grid md:grid-cols-2 gap-2 text-gray-300">
+                  <div className="grid md:grid-cols-2 gap-2 text-gray-100">
                     <div>✓ Paint quantity calculators</div>
                     <div>✓ Labor hour estimators</div>
                     <div>✓ Material cost database</div>
@@ -1237,7 +1237,7 @@ export default function PaintingEstimateSoftwareGuide() {
                     <div>✓ QuickBooks sync</div>
                     <div>✓ Mobile access</div>
                   </div>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-200 text-base mt-3">
                     Painting-specific calculations are the #1 must-have feature.
                   </p>
                 </Card>

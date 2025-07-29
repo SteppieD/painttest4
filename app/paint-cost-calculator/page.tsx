@@ -207,7 +207,7 @@ export default function PaintCostCalculator() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Paint Cost Calculator
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Calculate the total cost of your painting project including paint, materials, and labor. 
                   Get accurate budget estimates and save money with professional insights.
                 </p>
@@ -231,15 +231,15 @@ export default function PaintCostCalculator() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">$2-6</div>
-                    <p className="text-sm text-muted-foreground">Per Sq Ft Average</p>
+                    <p className="text-base text-gray-200">Per Sq Ft Average</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">60-80%</div>
-                    <p className="text-sm text-muted-foreground">Labor Cost Share</p>
+                    <p className="text-base text-gray-200">Labor Cost Share</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">25%</div>
-                    <p className="text-sm text-muted-foreground">Potential Savings</p>
+                    <p className="text-base text-gray-200">Potential Savings</p>
                   </div>
                 </div>
               </div>
@@ -271,15 +271,15 @@ export default function PaintCostCalculator() {
                               <div className="mt-1 p-2 border rounded bg-background text-center">1,200</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Room Type</label>
+                              <label className="text-base font-medium">Room Type</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Living Areas</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Paint Quality</label>
+                              <label className="text-base font-medium">Paint Quality</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">Premium</div>
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Your Location</label>
+                              <label className="text-base font-medium">Your Location</label>
                               <div className="mt-1 p-2 border rounded bg-background text-center">National Avg</div>
                             </div>
                           </div>
@@ -292,16 +292,16 @@ export default function PaintCostCalculator() {
                           </h4>
                           <div className="space-y-3">
                             <div className="flex justify-between">
-                              <span className="text-sm">Paint needed:</span>
-                              <span className="text-sm font-medium">3.5 gallons</span>
+                              <span className="text-base">Paint needed:</span>
+                              <span className="text-base font-medium">3.5 gallons</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Primer needed:</span>
-                              <span className="text-sm font-medium">1 gallon</span>
+                              <span className="text-base">Primer needed:</span>
+                              <span className="text-base font-medium">1 gallon</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm">Number of coats:</span>
-                              <span className="text-sm font-medium">2</span>
+                              <span className="text-base">Number of coats:</span>
+                              <span className="text-base font-medium">2</span>
                             </div>
                           </div>
                         </div>
@@ -338,7 +338,7 @@ export default function PaintCostCalculator() {
                             <span>Total Project Cost:</span>
                             <span className="text-primary">$1,970</span>
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-base text-gray-200">
                             Cost per sq ft: $1.64
                           </div>
                         </div>
@@ -351,7 +351,7 @@ export default function PaintCostCalculator() {
                       </div>
 
                       <div className="mt-6 text-center">
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-base text-gray-200">
                           <Link href="/auth/signup" className="text-primary hover:underline">
                             Sign up free
                           </Link> to save and customize calculations
@@ -369,7 +369,7 @@ export default function PaintCostCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">What Affects Painting Costs?</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Understanding these factors helps you budget accurately and make informed decisions
                 </p>
               </div>
@@ -384,18 +384,18 @@ export default function PaintCostCalculator() {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-lg font-semibold mb-2">{factor.category}</h3>
-                          <p className="text-sm text-muted-foreground mb-4">{factor.description}</p>
+                          <p className="text-base text-gray-200 mb-4">{factor.description}</p>
                           
                           <ul className="space-y-1 mb-4">
                             {factor.factors.map((item, itemIndex) => (
-                              <li key={itemIndex} className="flex items-center text-sm">
+                              <li key={itemIndex} className="flex items-center text-base">
                                 <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                                 {item}
                               </li>
                             ))}
                           </ul>
                           
-                          <div className="text-sm font-medium text-primary">
+                          <div className="text-base font-medium text-primary">
                             Average: {factor.averageCost}
                           </div>
                         </div>
@@ -412,7 +412,7 @@ export default function PaintCostCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Paint Grade Comparison</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Choose the right paint grade for your project and budget
                 </p>
               </div>
@@ -423,7 +423,7 @@ export default function PaintCostCalculator() {
                     <div key={index} className={`rounded-lg border bg-background p-6 ${grade.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
                       {grade.popular && (
                         <div className="text-center mb-4">
-                          <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+                          <span className="rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                             Most Popular
                           </span>
                         </div>
@@ -431,25 +431,25 @@ export default function PaintCostCalculator() {
                       
                       <h3 className="text-xl font-semibold mb-2">{grade.grade}</h3>
                       <div className="text-2xl font-bold text-primary mb-1">{grade.priceRange}</div>
-                      <div className="text-sm text-muted-foreground mb-4">
+                      <div className="text-base text-gray-200 mb-4">
                         Coverage: {grade.coverage}
                       </div>
                       
                       <div className="mb-4">
-                        <div className="text-sm font-medium mb-2">Best for:</div>
-                        <div className="text-sm text-muted-foreground">{grade.bestFor}</div>
+                        <div className="text-base font-medium mb-2">Best for:</div>
+                        <div className="text-base text-gray-200">{grade.bestFor}</div>
                       </div>
 
                       <ul className="space-y-2 mb-4">
                         {grade.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li key={featureIndex} className="flex items-center text-base">
                             <CheckCircle className="mr-2 h-3 w-3 text-primary" />
                             {feature}
                           </li>
                         ))}
                       </ul>
 
-                      <div className="text-sm">
+                      <div className="text-base">
                         <span className="font-medium">Lifespan:</span> {grade.lifespan}
                       </div>
                     </div>
@@ -464,7 +464,7 @@ export default function PaintCostCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Regional Pricing Differences</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Painting costs vary significantly by location due to labor rates and material costs
                 </p>
               </div>
@@ -501,7 +501,7 @@ export default function PaintCostCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Money-Saving Tips</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Professional strategies to reduce your painting project costs
                 </p>
               </div>
@@ -517,7 +517,7 @@ export default function PaintCostCalculator() {
                         <div>
                           <h3 className="font-semibold mb-2">{tip.tip}</h3>
                           <div className="text-lg font-bold text-green-600 mb-2">Save {tip.savings}</div>
-                          <p className="text-sm text-muted-foreground">{tip.description}</p>
+                          <p className="text-base text-gray-200">{tip.description}</p>
                         </div>
                       </div>
                     </div>
@@ -532,7 +532,7 @@ export default function PaintCostCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Real Project Cost Example</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   See how costs break down for a typical {costBreakdownExample.projectType}
                 </p>
               </div>
@@ -546,7 +546,7 @@ export default function PaintCostCalculator() {
                       <div key={key} className="flex justify-between items-start">
                         <div className="flex-1">
                           <div className="font-medium capitalize">{key}:</div>
-                          <div className="text-sm text-muted-foreground">{item.description}</div>
+                          <div className="text-base text-gray-200">{item.description}</div>
                         </div>
                         <div className="text-lg font-bold">${item.cost.toLocaleString()}</div>
                       </div>
@@ -559,7 +559,7 @@ export default function PaintCostCalculator() {
                       <span className="text-primary">${costBreakdownExample.total.toLocaleString()}</span>
                     </div>
                     
-                    <div className="text-center text-sm text-muted-foreground">
+                    <div className="text-center text-base text-gray-200">
                       Cost per square foot: ${costBreakdownExample.perSqFt}
                     </div>
                   </div>
@@ -584,7 +584,7 @@ export default function PaintCostCalculator() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -597,7 +597,7 @@ export default function PaintCostCalculator() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">More Painting Calculators</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Complete suite of tools for painting project planning
                 </p>
               </div>
@@ -607,25 +607,25 @@ export default function PaintCostCalculator() {
                   <Link href="/paint-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Paint Quote Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Generate professional quotes with detailed breakdowns</p>
+                    <p className="text-base text-gray-200">Generate professional quotes with detailed breakdowns</p>
                   </Link>
 
                   <Link href="/interior-painting-quote-calculator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Interior Calculator</h3>
-                    <p className="text-sm text-muted-foreground">Specialized for interior painting projects</p>
+                    <p className="text-base text-gray-200">Specialized for interior painting projects</p>
                   </Link>
 
                   <Link href="/painting-quote-generator" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">AI Quote Generator</h3>
-                    <p className="text-sm text-muted-foreground">AI-powered instant quote generation</p>
+                    <p className="text-base text-gray-200">AI-powered instant quote generation</p>
                   </Link>
 
                   <Link href="/how-to-estimate-interior-paint-jobs" 
                         className="group rounded-lg border bg-background p-6 hover:shadow-lg transition-shadow">
                     <h3 className="font-semibold mb-2 group-hover:text-primary">Estimation Guide</h3>
-                    <p className="text-sm text-muted-foreground">Learn professional estimation techniques</p>
+                    <p className="text-base text-gray-200">Learn professional estimation techniques</p>
                   </Link>
                 </div>
               </div>
@@ -638,7 +638,7 @@ export default function PaintCostCalculator() {
               <h2 className="text-3xl font-bold mb-4">
                 Start Planning Your Paint Budget Today
               </h2>
-              <p className="mx-auto max-w-2xl text-xl opacity-90 mb-8">
+              <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Get accurate cost estimates, compare options, and save money on your painting project 
                 with our professional-grade calculators.
               </p>
@@ -657,7 +657,7 @@ export default function PaintCostCalculator() {
                   View Pro Features
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base opacity-100">
                 No credit card required • Professional results guaranteed
               </p>
             </div>

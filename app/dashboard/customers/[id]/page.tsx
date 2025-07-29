@@ -92,7 +92,7 @@ export default function CustomerDetailPage() {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      draft: { label: 'Draft', className: 'bg-gray-500/20 text-gray-400 border-gray-500/50' },
+      draft: { label: 'Draft', className: 'bg-gray-500/20 text-gray-200 border-gray-500/50' },
       sent: { label: 'Sent', className: 'bg-blue-500/20 text-blue-400 border-blue-500/50' },
       viewed: { label: 'Viewed', className: 'bg-purple-500/20 text-purple-400 border-purple-500/50' },
       accepted: { label: 'Accepted', className: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50' },
@@ -113,7 +113,7 @@ export default function CustomerDetailPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading customer details...</p>
+          <p className="text-gray-200">Loading customer details...</p>
         </div>
       </div>
     )
@@ -128,7 +128,7 @@ export default function CustomerDetailPage() {
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/dashboard/customers">
-          <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-900/70">
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
@@ -146,29 +146,29 @@ export default function CustomerDetailPage() {
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-3">
             {customer.email && (
-              <div className="flex items-center gap-2 text-gray-300">
-                <Mail className="h-4 w-4 text-gray-400" />
+              <div className="flex items-center gap-2 text-gray-100">
+                <Mail className="h-4 w-4 text-gray-200" />
                 <a href={`mailto:${customer.email}`} className="hover:text-blue-400 transition-colors">
                   {customer.email}
                 </a>
               </div>
             )}
             {customer.phone && (
-              <div className="flex items-center gap-2 text-gray-300">
-                <Phone className="h-4 w-4 text-gray-400" />
+              <div className="flex items-center gap-2 text-gray-100">
+                <Phone className="h-4 w-4 text-gray-200" />
                 <a href={`tel:${customer.phone}`} className="hover:text-blue-400 transition-colors">
                   {customer.phone}
                 </a>
               </div>
             )}
             {customer.address && (
-              <div className="flex items-center gap-2 text-gray-300">
-                <MapPin className="h-4 w-4 text-gray-400" />
+              <div className="flex items-center gap-2 text-gray-100">
+                <MapPin className="h-4 w-4 text-gray-200" />
                 <span>{customer.address}</span>
               </div>
             )}
           </div>
-          <div className="flex items-center gap-2 text-gray-400 text-sm">
+          <div className="flex items-center gap-2 text-gray-200 text-base">
             <Calendar className="h-4 w-4" />
             <span>Customer since {new Date(customer.created_at).toLocaleDateString()}</span>
           </div>
@@ -179,7 +179,7 @@ export default function CustomerDetailPage() {
       <div className="grid gap-4 md:grid-cols-4">
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Quotes</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Quotes</CardTitle>
             <FileText className="h-4 w-4 text-blue-400" />
           </CardHeader>
           <CardContent>
@@ -189,7 +189,7 @@ export default function CustomerDetailPage() {
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Acceptance Rate</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Acceptance Rate</CardTitle>
             <TrendingUp className="h-4 w-4 text-emerald-400" />
           </CardHeader>
           <CardContent>
@@ -199,7 +199,7 @@ export default function CustomerDetailPage() {
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Total Revenue</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-emerald-400" />
           </CardHeader>
           <CardContent>
@@ -211,7 +211,7 @@ export default function CustomerDetailPage() {
         
         <Card className="glass-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-300">Avg Quote Value</CardTitle>
+            <CardTitle className="text-base font-medium text-gray-100">Avg Quote Value</CardTitle>
             <DollarSign className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
@@ -226,20 +226,20 @@ export default function CustomerDetailPage() {
       <Card className="glass-card">
         <CardHeader>
           <CardTitle className="text-white">Quote History</CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardDescription className="text-gray-200">
             All quotes for this customer
           </CardDescription>
         </CardHeader>
         <CardContent>
           {customer.quotes.length === 0 ? (
-            <p className="text-center py-8 text-gray-400">No quotes yet for this customer</p>
+            <p className="text-center py-8 text-gray-200">No quotes yet for this customer</p>
           ) : (
             <div className="space-y-4">
               {customer.quotes.map((quote) => (
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}
-                  className="block p-4 border border-white/10 rounded-lg hover:bg-white/5 transition-all group"
+                  className="block p-4 border border-white/10 rounded-lg hover:bg-gray-900/80 transition-all group"
                 >
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
@@ -249,7 +249,7 @@ export default function CustomerDetailPage() {
                         </h3>
                         {getStatusBadge(quote.status)}
                       </div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-base text-gray-200">
                         {new Date(quote.created_at).toLocaleDateString()}
                       </p>
                     </div>

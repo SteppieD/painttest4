@@ -57,7 +57,7 @@ export default function MobilePaintingEstimateApp() {
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="font-bold">PaintQuote Pro</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-base font-medium">
               <Link href="/paint-contractor-app" className="transition-colors hover:text-foreground/80">
                 Contractor App
               </Link>
@@ -74,13 +74,13 @@ export default function MobilePaintingEstimateApp() {
             <div className="ml-auto flex items-center space-x-4">
               <Link
                 href="/demo"
-                className="text-sm font-medium transition-colors hover:text-foreground/80"
+                className="text-base font-medium transition-colors hover:text-foreground/80"
               >
                 See Demo
               </Link>
               <Link
                 href="/auth/signup"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Try Free
               </Link>
@@ -97,7 +97,7 @@ export default function MobilePaintingEstimateApp() {
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                     The Mobile Painting Estimate App That Closes Deals On-Site
                   </h1>
-                  <p className="mt-6 text-xl text-muted-foreground">
+                  <p className="mt-6 text-xl text-gray-200">
                     Create professional painting estimates in minutes from your phone. Measure rooms, 
                     calculate paint needs, and get signatures on the spot. No more back-and-forth.
                   </p>
@@ -121,15 +121,15 @@ export default function MobilePaintingEstimateApp() {
                       Get for Android
                     </Link>
                   </div>
-                  <div className="mt-6 flex items-center space-x-6 text-sm">
+                  <div className="mt-6 flex items-center space-x-6 text-base">
                     <div className="flex items-center">
                       <svg className="mr-1 h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                       <span className="font-semibold">4.8</span>
-                      <span className="text-muted-foreground">(2,156 reviews)</span>
+                      <span className="text-gray-200">(2,156 reviews)</span>
                     </div>
-                    <span className="text-muted-foreground">Free to download</span>
+                    <span className="text-gray-200">Free to download</span>
                   </div>
                 </div>
 
@@ -153,32 +153,32 @@ export default function MobilePaintingEstimateApp() {
                               <div className="space-y-3">
                                 <div className="rounded-lg bg-background p-3">
                                   <div className="flex items-center justify-between">
-                                    <span className="text-sm font-medium">Living Room</span>
-                                    <span className="text-xs text-muted-foreground">450 sq ft</span>
+                                    <span className="text-base font-medium">Living Room</span>
+                                    <span className="text-base text-gray-200">450 sq ft</span>
                                   </div>
                                   <div className="mt-2 flex items-center space-x-2">
                                     <Camera className="h-4 w-4 text-primary" />
-                                    <span className="text-xs">3 photos</span>
+                                    <span className="text-base">3 photos</span>
                                   </div>
                                 </div>
                                 
                                 <div className="rounded-lg bg-background p-3">
                                   <div className="flex items-center justify-between">
-                                    <span className="text-sm font-medium">Master Bedroom</span>
-                                    <span className="text-xs text-muted-foreground">380 sq ft</span>
+                                    <span className="text-base font-medium">Master Bedroom</span>
+                                    <span className="text-base text-gray-200">380 sq ft</span>
                                   </div>
                                   <div className="mt-2 flex items-center space-x-2">
                                     <Camera className="h-4 w-4 text-primary" />
-                                    <span className="text-xs">2 photos</span>
+                                    <span className="text-base">2 photos</span>
                                   </div>
                                 </div>
                                 
                                 <div className="rounded-lg bg-primary/10 p-3">
                                   <div className="flex items-center justify-between">
-                                    <span className="text-sm font-medium">Paint Calculator</span>
+                                    <span className="text-base font-medium">Paint Calculator</span>
                                     <Calculator className="h-4 w-4 text-primary" />
                                   </div>
-                                  <div className="mt-2 text-xs">
+                                  <div className="mt-2 text-base">
                                     <div className="flex justify-between">
                                       <span>Total: 12 gallons</span>
                                       <span>$486</span>
@@ -192,10 +192,10 @@ export default function MobilePaintingEstimateApp() {
                             <div className="border-t bg-background p-4">
                               <div className="flex items-center justify-between">
                                 <div>
-                                  <p className="text-xs text-muted-foreground">Total Estimate</p>
+                                  <p className="text-base text-gray-200">Total Estimate</p>
                                   <p className="text-lg font-bold text-primary">$2,450</p>
                                 </div>
-                                <button className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
+                                <button className="rounded-full bg-primary px-4 py-2 text-base font-medium text-primary-foreground">
                                   Send Quote
                                 </button>
                               </div>
@@ -217,7 +217,7 @@ export default function MobilePaintingEstimateApp() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Everything You Need to Estimate On-Site
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Professional estimating tools designed for speed and accuracy in the field
                 </p>
               </div>
@@ -226,11 +226,11 @@ export default function MobilePaintingEstimateApp() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Ruler className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Quick Room Measurements</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Enter room dimensions quickly with our intuitive interface. Calculate 
                     wall, ceiling, and trim areas instantly.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Smart dimension entry
@@ -249,11 +249,11 @@ export default function MobilePaintingEstimateApp() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Calculator className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Instant Paint Calculations</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Calculate exact paint quantities based on surface type, texture, 
                     and number of coats. No more guesswork.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Coverage rates database
@@ -272,11 +272,11 @@ export default function MobilePaintingEstimateApp() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Camera className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Photo Documentation</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Capture room photos, surface conditions, and color samples. 
                     Attach images directly to estimates.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Auto-organize by room
@@ -295,11 +295,11 @@ export default function MobilePaintingEstimateApp() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Palette className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Color Selection Tools</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Browse paint colors from major brands, match existing colors, 
                     and save customer preferences.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Brand color libraries
@@ -318,11 +318,11 @@ export default function MobilePaintingEstimateApp() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Clock className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Labor Time Estimator</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Calculate accurate labor hours based on room size, surface condition, 
                     and job complexity. Factor in crew size.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Productivity rates
@@ -341,11 +341,11 @@ export default function MobilePaintingEstimateApp() {
                 <div className="relative rounded-lg border bg-card p-8">
                   <Zap className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Instant Professional Quotes</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Generate beautiful PDF quotes on the spot. Collect digital signatures 
                     and close deals immediately.
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm">
+                  <ul className="mt-4 space-y-2 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Professional templates
@@ -371,7 +371,7 @@ export default function MobilePaintingEstimateApp() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   From Walk-Through to Signed Quote in Minutes
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Our mobile estimate app streamlines your entire quoting process
                 </p>
               </div>
@@ -382,7 +382,7 @@ export default function MobilePaintingEstimateApp() {
                     1
                   </div>
                   <h3 className="mt-4 text-lg font-semibold">Walk & Measure</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Walk through with the customer, measuring rooms and taking photos 
                     as you go. Everything saves automatically.
                   </p>
@@ -393,7 +393,7 @@ export default function MobilePaintingEstimateApp() {
                     2
                   </div>
                   <h3 className="mt-4 text-lg font-semibold">Calculate Instantly</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Our app calculates paint quantities, labor hours, and total costs 
                     automatically based on your measurements.
                   </p>
@@ -404,7 +404,7 @@ export default function MobilePaintingEstimateApp() {
                     3
                   </div>
                   <h3 className="mt-4 text-lg font-semibold">Review Together</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Show the customer a professional quote on your device. Make 
                     adjustments and answer questions in real-time.
                   </p>
@@ -415,7 +415,7 @@ export default function MobilePaintingEstimateApp() {
                     4
                   </div>
                   <h3 className="mt-4 text-lg font-semibold">Close the Deal</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Collect a digital signature and deposit right from the app. 
                     Schedule the job and you're done!
                   </p>
@@ -432,7 +432,7 @@ export default function MobilePaintingEstimateApp() {
                   <h2 className="text-3xl font-bold sm:text-4xl">
                     Works Everywhere, Even Without Internet
                   </h2>
-                  <p className="mt-4 text-lg text-muted-foreground">
+                  <p className="mt-4 text-lg text-gray-200">
                     Create estimates anywhere with full offline functionality. Everything syncs 
                     automatically when you're back online
                   </p>
@@ -442,7 +442,7 @@ export default function MobilePaintingEstimateApp() {
                       <Cloud className="mr-4 h-6 w-6 flex-shrink-0 text-primary" />
                       <div>
                         <h3 className="font-semibold">Automatic Cloud Sync</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           All estimates backup to the cloud instantly. Access from any 
                           device and never lose your work.
                         </p>
@@ -453,7 +453,7 @@ export default function MobilePaintingEstimateApp() {
                       <MapPin className="mr-4 h-6 w-6 flex-shrink-0 text-primary" />
                       <div>
                         <h3 className="font-semibold">GPS Job Tracking</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           Automatically tag estimates with location. Map all your quotes 
                           and optimize routes between appointments.
                         </p>
@@ -464,7 +464,7 @@ export default function MobilePaintingEstimateApp() {
                       <Smartphone className="mr-4 h-6 w-6 flex-shrink-0 text-primary" />
                       <div>
                         <h3 className="font-semibold">Cross-Device Access</h3>
-                        <p className="mt-1 text-muted-foreground">
+                        <p className="mt-1 text-gray-200">
                           Start an estimate on your phone, finish on your tablet. Everything 
                           stays in sync across all your devices.
                         </p>
@@ -488,41 +488,41 @@ export default function MobilePaintingEstimateApp() {
                     <h3 className="text-xl font-semibold">Mobile Estimate Stats</h3>
                     <div className="mt-6 space-y-6">
                       <div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Average time to create estimate</span>
                           <span className="font-semibold text-primary">8 minutes</span>
                         </div>
-                        <div className="mt-2 text-xs text-muted-foreground">
+                        <div className="mt-2 text-base text-gray-200">
                           vs 45 minutes with traditional methods
                         </div>
                       </div>
 
                       <div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Close rate for on-site estimates</span>
                           <span className="font-semibold text-primary">73%</span>
                         </div>
-                        <div className="mt-2 text-xs text-muted-foreground">
+                        <div className="mt-2 text-base text-gray-200">
                           vs 31% for estimates sent later
                         </div>
                       </div>
 
                       <div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-base">
                           <span>Customer satisfaction</span>
                           <span className="font-semibold text-primary">4.9/5.0</span>
                         </div>
-                        <div className="mt-2 text-xs text-muted-foreground">
+                        <div className="mt-2 text-base text-gray-200">
                           "Professional and fast" - most common feedback
                         </div>
                       </div>
 
                       <div className="rounded-lg border bg-background p-4">
-                        <p className="text-sm font-medium">
+                        <p className="text-base font-medium">
                           "The mobile estimate app paid for itself in the first week. 
                           I close 2x more jobs now." 
                         </p>
-                        <p className="mt-2 text-xs text-muted-foreground">
+                        <p className="mt-2 text-base text-gray-200">
                           - David Park, Park Painting Services
                         </p>
                       </div>
@@ -540,7 +540,7 @@ export default function MobilePaintingEstimateApp() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Free Mobile App with Every Plan
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   The mobile painting estimate app is included with all PaintQuote Pro subscriptions
                 </p>
               </div>
@@ -549,7 +549,7 @@ export default function MobilePaintingEstimateApp() {
                 <div className="rounded-lg border bg-background p-8">
                   <h3 className="text-xl font-semibold">Starter</h3>
                   <p className="mt-2 text-3xl font-bold">$79<span className="text-lg font-normal">/mo</span></p>
-                  <ul className="mt-6 space-y-3 text-sm">
+                  <ul className="mt-6 space-y-3 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Mobile estimate app included
@@ -570,12 +570,12 @@ export default function MobilePaintingEstimateApp() {
                 </div>
 
                 <div className="relative rounded-lg border-2 border-primary bg-background p-8">
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                     Most Popular
                   </div>
                   <h3 className="text-xl font-semibold">Professional</h3>
                   <p className="mt-2 text-3xl font-bold">$99<span className="text-lg font-normal">/mo</span></p>
-                  <ul className="mt-6 space-y-3 text-sm">
+                  <ul className="mt-6 space-y-3 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Mobile estimate app included
@@ -598,7 +598,7 @@ export default function MobilePaintingEstimateApp() {
                 <div className="rounded-lg border bg-background p-8">
                   <h3 className="text-xl font-semibold">Business</h3>
                   <p className="mt-2 text-3xl font-bold">$199<span className="text-lg font-normal">/mo</span></p>
-                  <ul className="mt-6 space-y-3 text-sm">
+                  <ul className="mt-6 space-y-3 text-base">
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-primary" />
                       Mobile estimate app included
@@ -638,7 +638,7 @@ export default function MobilePaintingEstimateApp() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   See the Mobile Estimate App in Action
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Professional estimating has never been this easy
                 </p>
               </div>
@@ -649,7 +649,7 @@ export default function MobilePaintingEstimateApp() {
                     <div className="aspect-[9/16] rounded-lg bg-background"></div>
                   </div>
                   <h3 className="mt-4 font-semibold">Room Measurements</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Quick entry with smart calculations
                   </p>
                 </div>
@@ -659,7 +659,7 @@ export default function MobilePaintingEstimateApp() {
                     <div className="aspect-[9/16] rounded-lg bg-background"></div>
                   </div>
                   <h3 className="mt-4 font-semibold">Paint Calculator</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Instant material calculations
                   </p>
                 </div>
@@ -669,7 +669,7 @@ export default function MobilePaintingEstimateApp() {
                     <div className="aspect-[9/16] rounded-lg bg-background"></div>
                   </div>
                   <h3 className="mt-4 font-semibold">Professional Quote</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-base text-gray-200">
                     Beautiful quotes ready to send
                   </p>
                 </div>
@@ -684,7 +684,7 @@ export default function MobilePaintingEstimateApp() {
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Start Creating Mobile Estimates Today
                 </h2>
-                <p className="mt-4 text-lg opacity-90">
+                <p className="mt-4 text-lg opacity-100">
                   Download the app and start closing more deals on the spot
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -703,7 +703,7 @@ export default function MobilePaintingEstimateApp() {
                     Download for Android
                   </Link>
                 </div>
-                <p className="mt-6 text-sm opacity-75">
+                <p className="mt-6 text-base opacity-100">
                   Free with all PaintQuote Pro plans • Works offline • Syncs automatically
                 </p>
               </div>
@@ -716,8 +716,8 @@ export default function MobilePaintingEstimateApp() {
           <div className="container py-12">
             <div className="grid gap-8 md:grid-cols-4">
               <div>
-                <h3 className="text-sm font-semibold">Mobile Tools</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Mobile Tools</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/paint-contractor-app" className="hover:text-foreground">Full Contractor App</Link></li>
                   <li><Link href="/features#offline" className="hover:text-foreground">Offline Features</Link></li>
                   <li><Link href="/features#photos" className="hover:text-foreground">Photo Tools</Link></li>
@@ -725,8 +725,8 @@ export default function MobilePaintingEstimateApp() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Calculators</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Calculators</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/interior-painting-quote-calculator" className="hover:text-foreground">Interior Calculator</Link></li>
                   <li><Link href="/exterior-painting-estimate-calculator" className="hover:text-foreground">Exterior Calculator</Link></li>
                   <li><Link href="/paint-quantity-calculator" className="hover:text-foreground">Paint Quantity</Link></li>
@@ -734,8 +734,8 @@ export default function MobilePaintingEstimateApp() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Resources</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Resources</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/mobile-estimating-guide" className="hover:text-foreground">Mobile Guide</Link></li>
                   <li><Link href="/tutorials/mobile" className="hover:text-foreground">Video Tutorials</Link></li>
                   <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>
@@ -743,8 +743,8 @@ export default function MobilePaintingEstimateApp() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Company</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-base font-semibold">Company</h3>
+                <ul className="mt-4 space-y-2 text-base text-gray-200">
                   <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
                   <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
                   <li><Link href="/privacy" className="hover:text-foreground">Privacy Policy</Link></li>
@@ -752,7 +752,7 @@ export default function MobilePaintingEstimateApp() {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
               <p>&copy; 2025 PaintQuote Pro. The fastest mobile painting estimate app for contractors.</p>
             </div>
           </div>

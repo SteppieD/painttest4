@@ -80,7 +80,7 @@ export default function UnlockAnalyticsPage() {
         {/* Header */}
         <div className="container mx-auto px-4 py-8">
           <Link href="/dashboard">
-            <Button variant="ghost" className="text-white hover:bg-white/10">
+            <Button variant="ghost" className="text-white hover:bg-gray-900/70">
               ← Back to Dashboard
             </Button>
           </Link>
@@ -89,7 +89,7 @@ export default function UnlockAnalyticsPage() {
         {/* Hero Section */}
         <div className="container mx-auto px-4 py-12 text-center">
           <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-400 text-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-400 text-base mb-6">
               <Sparkles className="h-4 w-4" />
               Unlock Advanced Analytics
             </div>
@@ -98,14 +98,14 @@ export default function UnlockAnalyticsPage() {
               Turn Data Into <span className="text-gradient-modern">More Wins</span>
             </h1>
             
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Professional contractors using our analytics see an average 40% increase in win rate 
               and $8,400 more revenue per month
             </p>
 
             {/* Pricing Toggle */}
             <div className="flex items-center justify-center gap-4 mb-8">
-              <span className={`text-lg ${selectedPlan === 'monthly' ? 'text-white' : 'text-gray-400'}`}>
+              <span className={`text-lg ${selectedPlan === 'monthly' ? 'text-white' : 'text-gray-200'}`}>
                 Monthly
               </span>
               <button
@@ -116,9 +116,9 @@ export default function UnlockAnalyticsPage() {
                   selectedPlan === 'yearly' ? 'translate-x-8' : 'translate-x-1'
                 }`} />
               </button>
-              <span className={`text-lg ${selectedPlan === 'yearly' ? 'text-white' : 'text-gray-400'}`}>
+              <span className={`text-lg ${selectedPlan === 'yearly' ? 'text-white' : 'text-gray-200'}`}>
                 Yearly
-                <span className="text-sm text-emerald-400 ml-2">Save 20%</span>
+                <span className="text-base text-emerald-400 ml-2">Save 20%</span>
               </span>
             </div>
 
@@ -127,7 +127,7 @@ export default function UnlockAnalyticsPage() {
               <div className="text-5xl font-bold text-white mb-2">
                 ${selectedPlan === 'monthly' ? '79' : '63'}/mo
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-200">
                 {selectedPlan === 'yearly' && 'Billed annually at $756/year'}
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function UnlockAnalyticsPage() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
 
-            <p className="text-sm text-gray-400 mt-4">
+            <p className="text-base text-gray-200 mt-4">
               30-day money back guarantee • Cancel anytime
             </p>
           </div>
@@ -166,14 +166,14 @@ export default function UnlockAnalyticsPage() {
                       </div>
                       <div className="flex-1">
                         <CardTitle className="text-white text-xl mb-2">{feature.title}</CardTitle>
-                        <p className="text-gray-400">{feature.description}</p>
+                        <p className="text-gray-200">{feature.description}</p>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
                       {feature.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-gray-300">
+                        <li key={idx} className="flex items-center gap-2 text-gray-100">
                           <Check className="h-4 w-4 text-emerald-400" />
                           {benefit}
                         </li>
@@ -195,27 +195,27 @@ export default function UnlockAnalyticsPage() {
                 
                 <div className="grid md:grid-cols-3 gap-6">
                   {/* Sample Metrics */}
-                  <div className="text-center p-6 bg-white/5 rounded-lg">
+                  <div className="text-center p-6 bg-gray-900/80 rounded-lg">
                     <div className="text-4xl font-bold text-emerald-400 mb-2">76%</div>
-                    <p className="text-gray-400">Average Win Rate</p>
-                    <p className="text-xs text-emerald-400 mt-2">↑ 12% from last month</p>
+                    <p className="text-gray-200">Average Win Rate</p>
+                    <p className="text-base text-emerald-400 mt-2">↑ 12% from last month</p>
                   </div>
                   
-                  <div className="text-center p-6 bg-white/5 rounded-lg">
+                  <div className="text-center p-6 bg-gray-900/80 rounded-lg">
                     <div className="text-4xl font-bold text-purple-400 mb-2">$124k</div>
-                    <p className="text-gray-400">Monthly Revenue</p>
-                    <p className="text-xs text-purple-400 mt-2">↑ 23% from last month</p>
+                    <p className="text-gray-200">Monthly Revenue</p>
+                    <p className="text-base text-purple-400 mt-2">↑ 23% from last month</p>
                   </div>
                   
-                  <div className="text-center p-6 bg-white/5 rounded-lg">
+                  <div className="text-center p-6 bg-gray-900/80 rounded-lg">
                     <div className="text-4xl font-bold text-blue-400 mb-2">$3,200</div>
-                    <p className="text-gray-400">Avg Quote Value</p>
-                    <p className="text-xs text-blue-400 mt-2">↑ 8% from last month</p>
+                    <p className="text-gray-200">Avg Quote Value</p>
+                    <p className="text-base text-blue-400 mt-2">↑ 8% from last month</p>
                   </div>
                 </div>
 
                 {/* Chart Preview */}
-                <div className="mt-8 p-6 bg-white/5 rounded-lg">
+                <div className="mt-8 p-6 bg-gray-900/80 rounded-lg">
                   <div className="flex items-center gap-2 mb-4">
                     <Activity className="h-5 w-5 text-purple-400" />
                     <h4 className="text-lg font-semibold text-white">Revenue Trend</h4>
@@ -246,13 +246,13 @@ export default function UnlockAnalyticsPage() {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <p className="font-semibold text-white">{testimonial.name}</p>
-                      <p className="text-sm text-gray-400">{testimonial.company}</p>
+                      <p className="text-base text-gray-200">{testimonial.company}</p>
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-emerald-400">{testimonial.metric}</p>
                     </div>
                   </div>
-                  <p className="text-gray-300 italic">"{testimonial.text}"</p>
+                  <p className="text-gray-100 italic">"{testimonial.text}"</p>
                 </CardContent>
               </Card>
             ))}
@@ -266,18 +266,18 @@ export default function UnlockAnalyticsPage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Ready to Grow Your Business?
               </h3>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-100 mb-6">
                 Join hundreds of painting contractors who are winning more jobs and earning more revenue with data-driven insights.
               </p>
               
               <div className="flex items-center justify-center gap-4 mb-6">
                 <div className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-purple-400" />
-                  <span className="text-gray-300">Setup in 30 seconds</span>
+                  <span className="text-gray-100">Setup in 30 seconds</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-emerald-400" />
-                  <span className="text-gray-300">30-day guarantee</span>
+                  <span className="text-gray-100">30-day guarantee</span>
                 </div>
               </div>
 

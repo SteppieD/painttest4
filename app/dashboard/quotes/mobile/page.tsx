@@ -160,7 +160,7 @@ export default function MobileQuotePage() {
             <Smartphone className="h-5 w-5" />
             Quick Quote
           </h1>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-base text-gray-200">
             Step {currentStep + 1} of {steps.length}
           </span>
         </div>
@@ -190,8 +190,8 @@ export default function MobileQuotePage() {
             >
               {step.icon}
             </div>
-            <span className={`text-xs ${
-              index === currentStep ? 'font-semibold' : 'text-muted-foreground'
+            <span className={`text-base ${
+              index === currentStep ? 'font-semibold' : 'text-gray-200'
             }`}>
               {step.title}
             </span>
@@ -211,7 +211,7 @@ export default function MobileQuotePage() {
           <Card className="border-0 shadow-none">
             <CardHeader className="px-0 pt-0">
               <CardTitle className="text-xl">{steps[currentStep].title}</CardTitle>
-              <CardDescription className="text-sm">
+              <CardDescription className="text-base">
                 {currentStep === 0 && "Who is this quote for?"}
                 {currentStep === 1 && "What type of project?"}
                 {currentStep === 2 && "What needs painting?"}
@@ -273,7 +273,7 @@ export default function MobileQuotePage() {
 
         {/* Swipe Hint */}
         {currentStep > 0 && currentStep < steps.length - 1 && (
-          <div className="text-center text-xs text-muted-foreground pb-20">
+          <div className="text-center text-base text-gray-200 pb-20">
             Swipe left or right to navigate
           </div>
         )}

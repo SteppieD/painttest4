@@ -80,7 +80,7 @@ export default function InteriorPaintingCalculatorClient() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-bold">PaintQuote Pro</span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="flex items-center space-x-6 text-base font-medium">
             <Link href="/exterior-painting-estimate-calculator" className="transition-colors hover:text-foreground/80">
               Exterior Calculator
             </Link>
@@ -94,7 +94,7 @@ export default function InteriorPaintingCalculatorClient() {
           <div className="ml-auto">
             <Link
               href="/auth/signup"
-              className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+              className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
             >
               Save & Get Full Features
             </Link>
@@ -120,7 +120,7 @@ export default function InteriorPaintingCalculatorClient() {
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Interior Painting Quote Calculator
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-gray-200">
                 Calculate interior painting costs instantly. Add rooms, enter measurements, 
                 and get accurate quotes for walls, ceilings, trim, doors, and windows.
               </p>
@@ -140,7 +140,7 @@ export default function InteriorPaintingCalculatorClient() {
                       <h2 className="text-xl font-semibold">Room Details</h2>
                       <button
                         onClick={addRoom}
-                        className="inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                        className="inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-base font-medium text-primary-foreground hover:bg-primary/90"
                       >
                         <Plus className="mr-1 h-4 w-4" />
                         Add Room
@@ -169,7 +169,7 @@ export default function InteriorPaintingCalculatorClient() {
 
                           <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                             <div>
-                              <label className="text-sm font-medium">Walls (sq ft)</label>
+                              <label className="text-base font-medium">Walls (sq ft)</label>
                               <input
                                 type="number"
                                 value={room.walls}
@@ -179,7 +179,7 @@ export default function InteriorPaintingCalculatorClient() {
                               />
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Ceilings (sq ft)</label>
+                              <label className="text-base font-medium">Ceilings (sq ft)</label>
                               <input
                                 type="number"
                                 value={room.ceilings}
@@ -189,7 +189,7 @@ export default function InteriorPaintingCalculatorClient() {
                               />
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Trim (linear ft)</label>
+                              <label className="text-base font-medium">Trim (linear ft)</label>
                               <input
                                 type="number"
                                 value={room.trim}
@@ -199,7 +199,7 @@ export default function InteriorPaintingCalculatorClient() {
                               />
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Doors (count)</label>
+                              <label className="text-base font-medium">Doors (count)</label>
                               <input
                                 type="number"
                                 value={room.doors}
@@ -209,7 +209,7 @@ export default function InteriorPaintingCalculatorClient() {
                               />
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Windows (count)</label>
+                              <label className="text-base font-medium">Windows (count)</label>
                               <input
                                 type="number"
                                 value={room.windows}
@@ -219,7 +219,7 @@ export default function InteriorPaintingCalculatorClient() {
                               />
                             </div>
                             <div>
-                              <label className="text-sm font-medium">Room Total</label>
+                              <label className="text-base font-medium">Room Total</label>
                               <div className="mt-1 rounded-md bg-muted px-3 py-2 font-semibold">
                                 ${calculateRoomTotal(room).toFixed(2)}
                               </div>
@@ -233,13 +233,13 @@ export default function InteriorPaintingCalculatorClient() {
                   {/* Charge Rates Section */}
                   <div className="mt-6 rounded-lg border bg-card p-6">
                     <h3 className="text-lg font-semibold">Charge Rates</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
+                    <p className="mt-1 text-base text-gray-200">
                       Adjust rates based on your local market and paint quality
                     </p>
 
                     <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <div>
-                        <label className="text-sm font-medium">Walls ($/sq ft)</label>
+                        <label className="text-base font-medium">Walls ($/sq ft)</label>
                         <input
                           type="number"
                           value={wallRate}
@@ -249,7 +249,7 @@ export default function InteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Ceilings ($/sq ft)</label>
+                        <label className="text-base font-medium">Ceilings ($/sq ft)</label>
                         <input
                           type="number"
                           value={ceilingRate}
@@ -259,7 +259,7 @@ export default function InteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Trim ($/linear ft)</label>
+                        <label className="text-base font-medium">Trim ($/linear ft)</label>
                         <input
                           type="number"
                           value={trimRate}
@@ -269,7 +269,7 @@ export default function InteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Doors ($/each)</label>
+                        <label className="text-base font-medium">Doors ($/each)</label>
                         <input
                           type="number"
                           value={doorRate}
@@ -279,7 +279,7 @@ export default function InteriorPaintingCalculatorClient() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium">Windows ($/each)</label>
+                        <label className="text-base font-medium">Windows ($/each)</label>
                         <input
                           type="number"
                           value={windowRate}
@@ -299,9 +299,9 @@ export default function InteriorPaintingCalculatorClient() {
                     
                     <div className="mt-6 space-y-4">
                       <div>
-                        <h3 className="font-medium text-muted-foreground">Room Breakdown</h3>
+                        <h3 className="font-medium text-gray-200">Room Breakdown</h3>
                         {rooms.map((room) => (
-                          <div key={room.id} className="mt-2 flex justify-between text-sm">
+                          <div key={room.id} className="mt-2 flex justify-between text-base">
                             <span>{room.name}</span>
                             <span>${calculateRoomTotal(room).toFixed(2)}</span>
                           </div>
@@ -313,11 +313,11 @@ export default function InteriorPaintingCalculatorClient() {
                           <span>Subtotal</span>
                           <span className="font-semibold">${calculateTotal().toFixed(2)}</span>
                         </div>
-                        <div className="mt-2 flex justify-between text-sm text-muted-foreground">
+                        <div className="mt-2 flex justify-between text-base text-gray-200">
                           <span>Labor (30%)</span>
                           <span>${laborCost.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between text-sm text-muted-foreground">
+                        <div className="flex justify-between text-base text-gray-200">
                           <span>Materials (70%)</span>
                           <span>${materialCost.toFixed(2)}</span>
                         </div>
@@ -333,12 +333,12 @@ export default function InteriorPaintingCalculatorClient() {
                       <div className="space-y-2 pt-4">
                         <Link
                           href="/auth/signup"
-                          className="flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                          className="flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground hover:bg-primary/90"
                         >
                           <Download className="mr-2 h-4 w-4" />
                           Save Quote as PDF
                         </Link>
-                        <p className="text-center text-xs text-muted-foreground">
+                        <p className="text-center text-base text-gray-200">
                           Create a free account to save and share quotes
                         </p>
                       </div>
@@ -361,7 +361,7 @@ export default function InteriorPaintingCalculatorClient() {
               <div className="mt-12 grid gap-8 md:grid-cols-2">
                 <div>
                   <h3 className="text-xl font-semibold">What Affects Interior Painting Costs?</h3>
-                  <ul className="mt-4 space-y-3 text-muted-foreground">
+                  <ul className="mt-4 space-y-3 text-gray-200">
                     <li className="flex items-start">
                       <Info className="mr-2 h-5 w-5 flex-shrink-0 text-primary" />
                       <span><strong>Surface Condition:</strong> Walls needing repair or heavy prep work cost more</span>
@@ -420,7 +420,7 @@ export default function InteriorPaintingCalculatorClient() {
 
               <div className="mt-12 rounded-lg bg-primary/5 p-8 text-center">
                 <h3 className="text-2xl font-bold">Get More Accurate Quotes with PaintQuote Pro</h3>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-gray-200">
                   This calculator provides estimates. For detailed, professional quotes that win jobs, 
                   try our full software with AI assistance, customer management, and profit tracking.
                 </p>
@@ -442,39 +442,39 @@ export default function InteriorPaintingCalculatorClient() {
         <div className="container py-8">
           <div className="grid gap-8 md:grid-cols-4">
             <div>
-              <h3 className="text-sm font-semibold">Other Calculators</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Other Calculators</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/exterior-painting-estimate-calculator" className="hover:text-foreground">Exterior Calculator</Link></li>
                 <li><Link href="/house-painting-cost-calculator" className="hover:text-foreground">Full House Calculator</Link></li>
                 <li><Link href="/painting-estimate-calculator-free" className="hover:text-foreground">General Calculator</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold">Resources</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Resources</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/how-to-quote-painting-jobs" className="hover:text-foreground">How to Quote</Link></li>
                 <li><Link href="/painting-quote-templates" className="hover:text-foreground">Quote Templates</Link></li>
                 <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold">Software</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Software</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/painting-estimate-software" className="hover:text-foreground">Estimate Software</Link></li>
                 <li><Link href="/painting-contractors" className="hover:text-foreground">For Contractors</Link></li>
                 <li><Link href="/pricing" className="hover:text-foreground">Pricing</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold">Company</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-base font-semibold">Company</h3>
+              <ul className="mt-4 space-y-2 text-base text-gray-200">
                 <li><Link href="/about" className="hover:text-foreground">About</Link></li>
                 <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
                 <li><Link href="/help" className="hover:text-foreground">Help</Link></li>
               </ul>
             </div>
           </div>
-          <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+          <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
             <p>&copy; 2025 PaintQuote Pro. Free interior painting quote calculator for contractors.</p>
           </div>
         </div>

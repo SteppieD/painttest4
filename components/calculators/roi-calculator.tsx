@@ -88,7 +88,7 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
           <TrendingUp className="h-5 w-5" />
           ROI Calculator
         </CardTitle>
-        <CardDescription className="text-gray-300">
+        <CardDescription className="text-gray-100">
           See how much you could save with PaintQuote Pro
         </CardDescription>
       </CardHeader>
@@ -150,21 +150,21 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
               {/* Current State */}
               <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
                 <h4 className="font-semibold text-white mb-3">Current Situation</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-base">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Win Rate:</span>
+                    <span className="text-gray-200">Win Rate:</span>
                     <span className="text-white">{results.current.winRate}%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Jobs Won:</span>
+                    <span className="text-gray-200">Jobs Won:</span>
                     <span className="text-white">{results.current.jobsWon}/month</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Monthly Revenue:</span>
+                    <span className="text-gray-200">Monthly Revenue:</span>
                     <span className="text-white font-semibold">${results.current.revenue.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Time on Quotes:</span>
+                    <span className="text-gray-200">Time on Quotes:</span>
                     <span className="text-white">{results.current.hoursSpent} hours</span>
                   </div>
                 </div>
@@ -173,21 +173,21 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
               {/* With PaintQuote Pro */}
               <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
                 <h4 className="font-semibold text-white mb-3">With PaintQuote Pro</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-base">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Win Rate:</span>
+                    <span className="text-gray-200">Win Rate:</span>
                     <span className="text-emerald-400 font-semibold">{results.improved.winRate}%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Jobs Won:</span>
+                    <span className="text-gray-200">Jobs Won:</span>
                     <span className="text-emerald-400 font-semibold">{results.improved.jobsWon}/month</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Monthly Revenue:</span>
+                    <span className="text-gray-200">Monthly Revenue:</span>
                     <span className="text-emerald-400 font-semibold">${results.improved.revenue.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Time on Quotes:</span>
+                    <span className="text-gray-200">Time on Quotes:</span>
                     <span className="text-emerald-400 font-semibold">{results.improved.hoursSpent} hours</span>
                   </div>
                 </div>
@@ -201,12 +201,12 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <DollarSign className="h-4 w-4 text-emerald-400" />
-                    <span className="text-sm text-gray-400">Additional Revenue:</span>
+                    <span className="text-base text-gray-200">Additional Revenue:</span>
                   </div>
                   <p className="text-2xl font-bold text-emerald-400">
                     +${results.savings.additionalRevenue.toLocaleString()}/mo
                   </p>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-base text-gray-200">
                     {results.savings.additionalJobs} more jobs won
                   </p>
                 </div>
@@ -214,12 +214,12 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-blue-400" />
-                    <span className="text-sm text-gray-400">Time Saved:</span>
+                    <span className="text-base text-gray-200">Time Saved:</span>
                   </div>
                   <p className="text-2xl font-bold text-blue-400">
                     {results.savings.hoursSaved} hrs/mo
                   </p>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-base text-gray-200">
                     Worth ${results.savings.timeSavingsValue.toLocaleString()}
                   </p>
                 </div>
@@ -227,13 +227,13 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
 
               <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-400">Total Monthly Benefit:</span>
+                  <span className="text-gray-200">Total Monthly Benefit:</span>
                   <span className="text-xl font-semibold text-white">
                     ${results.savings.totalBenefit.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-400">PaintQuote Pro Cost:</span>
+                  <span className="text-gray-200">PaintQuote Pro Cost:</span>
                   <span className="text-white">-$79</span>
                 </div>
                 <div className="flex justify-between items-center pt-2 border-t border-white/10">
@@ -249,19 +249,19 @@ export function ROICalculator({ className = '', variant = 'glass' }: ROICalculat
                   <p className="text-3xl font-bold text-purple-400">
                     {results.savings.roiPercentage}%
                   </p>
-                  <p className="text-xs text-gray-400">Annual ROI</p>
+                  <p className="text-base text-gray-200">Annual ROI</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-blue-400">
                     {results.savings.paybackDays}
                   </p>
-                  <p className="text-xs text-gray-400">Days to Payback</p>
+                  <p className="text-base text-gray-200">Days to Payback</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-emerald-400">
                     ${(results.savings.yearlyROI / 1000).toFixed(1)}k
                   </p>
-                  <p className="text-xs text-gray-400">Yearly Benefit</p>
+                  <p className="text-base text-gray-200">Yearly Benefit</p>
                 </div>
               </div>
             </div>

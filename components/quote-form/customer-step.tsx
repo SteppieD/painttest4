@@ -20,7 +20,7 @@ export function CustomerStep({ form }: CustomerStepProps) {
           placeholder="John Smith"
         />
         {errors.customer?.name && (
-          <p className="mt-1 text-sm text-destructive">{errors.customer.name.message}</p>
+          <p className="mt-1 text-base text-destructive">{errors.customer.name.message}</p>
         )}
       </div>
 
@@ -33,7 +33,7 @@ export function CustomerStep({ form }: CustomerStepProps) {
           placeholder="john@example.com"
         />
         {errors.customer?.email && (
-          <p className="mt-1 text-sm text-destructive">{errors.customer.email.message}</p>
+          <p className="mt-1 text-base text-destructive">{errors.customer.email.message}</p>
         )}
       </div>
 

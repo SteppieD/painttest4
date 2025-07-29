@@ -96,8 +96,8 @@ export default function FollowUpStrategiesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -116,7 +116,7 @@ export default function FollowUpStrategiesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Quote Follow-up Strategies That Close Deals
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Turn pending quotes into signed contracts with proven follow-up techniques. 
                 Learn the perfect timing, messaging, and automation strategies. Part of our 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> complete quoting guide</Link>.
@@ -146,7 +146,7 @@ export default function FollowUpStrategiesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">When Should You Follow Up on Painting Quotes?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Follow up using the 2-2-2 rule: 2 days after sending (quick check-in), 2 weeks later 
                   (address concerns), and 2 months later (seasonal reminder). Studies show 80% of sales 
                   require 5+ follow-ups, but most contractors stop after 2. Mix channels: text first 
@@ -169,17 +169,17 @@ export default function FollowUpStrategiesGuide() {
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-3">2 Days: Quick Check-in</h3>
-                      <p className="text-gray-300 mb-4">
+                      <p className="text-gray-100 mb-4">
                         Confirm receipt and offer to answer questions while you're top of mind.
                       </p>
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-blue-400 mb-3">Text Template (90% open rate):</h4>
-                        <p className="text-gray-300 italic mb-4">
+                        <p className="text-gray-100 italic mb-4">
                           "Hi [Name], just making sure you received the quote I sent Tuesday for your 
                           [project type]. Happy to answer any questions! - [Your name]"
                         </p>
                         <div className="mt-4 p-3 bg-blue-500/10 rounded">
-                          <p className="text-sm text-blue-400">
+                          <p className="text-base text-blue-400">
                             <strong>Success tip:</strong> Send between 10am-2pm for best response rates
                           </p>
                         </div>
@@ -193,12 +193,12 @@ export default function FollowUpStrategiesGuide() {
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-3">2 Weeks: Value-Add Email</h3>
-                      <p className="text-gray-300 mb-4">
+                      <p className="text-gray-100 mb-4">
                         Provide additional value and address common concerns proactively.
                       </p>
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-cyan-400 mb-3">Email Template:</h4>
-                        <div className="space-y-3 text-gray-300">
+                        <div className="space-y-3 text-gray-100">
                           <p><strong>Subject:</strong> Color trends + your painting quote</p>
                           <p>Hi [Name],</p>
                           <p>
@@ -223,12 +223,12 @@ export default function FollowUpStrategiesGuide() {
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-3">2 Months: Seasonal Reminder</h3>
-                      <p className="text-gray-300 mb-4">
+                      <p className="text-gray-100 mb-4">
                         Re-engage with seasonal relevance and special offers.
                       </p>
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-green-400 mb-3">Phone Script:</h4>
-                        <div className="space-y-3 text-gray-300">
+                        <div className="space-y-3 text-gray-100">
                           <p>
                             "Hi [Name], this is [Your name] from [Company]. I quoted your [project] back in 
                             [month] and wanted to check if you're still planning to move forward."
@@ -262,8 +262,8 @@ export default function FollowUpStrategiesGuide() {
                   <Phone className="h-8 w-8 text-blue-400 mb-4" />
                   <h3 className="text-xl font-semibold text-white mb-3">Text Messaging</h3>
                   <div className="text-3xl font-bold text-blue-400 mb-2">90%</div>
-                  <p className="text-gray-400 mb-4">Open Rate</p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <p className="text-gray-200 mb-4">Open Rate</p>
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Best for: Quick check-ins</li>
                     <li>• Timing: 10am-2pm weekdays</li>
                     <li>• Keep under 160 characters</li>
@@ -275,8 +275,8 @@ export default function FollowUpStrategiesGuide() {
                   <Mail className="h-8 w-8 text-cyan-400 mb-4" />
                   <h3 className="text-xl font-semibold text-white mb-3">Email</h3>
                   <div className="text-3xl font-bold text-cyan-400 mb-2">23%</div>
-                  <p className="text-gray-400 mb-4">Open Rate</p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <p className="text-gray-200 mb-4">Open Rate</p>
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Best for: Detailed info</li>
                     <li>• Timing: Tue-Thu mornings</li>
                     <li>• Include visuals</li>
@@ -288,8 +288,8 @@ export default function FollowUpStrategiesGuide() {
                   <Phone className="h-8 w-8 text-green-400 mb-4" />
                   <h3 className="text-xl font-semibold text-white mb-3">Phone Calls</h3>
                   <div className="text-3xl font-bold text-green-400 mb-2">75%</div>
-                  <p className="text-gray-400 mb-4">Connect Rate</p>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <p className="text-gray-200 mb-4">Connect Rate</p>
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Best for: Closing deals</li>
                     <li>• Timing: 4-6pm best</li>
                     <li>• Leave voicemail</li>
@@ -308,14 +308,14 @@ export default function FollowUpStrategiesGuide() {
               <h2 className="text-3xl font-bold text-white mb-8">Value-Add Follow-up Content</h2>
               
               <Card className="bg-gray-800/30 border-gray-700 p-8">
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Never just "check in" - always provide value to stay relevant and helpful.
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h3 className="text-xl font-semibold text-blue-400 mb-4">Educational Content</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <span>Color trend reports for their style</span>
@@ -337,7 +337,7 @@ export default function FollowUpStrategiesGuide() {
                   
                   <div>
                     <h3 className="text-xl font-semibold text-cyan-400 mb-4">Incentive Ideas</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <TrendingUp className="h-5 w-5 text-yellow-400 mt-0.5" />
                         <span>Early booking discounts (5-10%)</span>
@@ -372,26 +372,26 @@ export default function FollowUpStrategiesGuide() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-xl font-semibold text-purple-400 mb-4">What to Automate</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <div>
                           <strong>Initial acknowledgment</strong>
-                          <p className="text-sm text-gray-400">Auto-send within 1 hour</p>
+                          <p className="text-base text-gray-200">Auto-send within 1 hour</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <div>
                           <strong>2-day check-in text</strong>
-                          <p className="text-sm text-gray-400">Schedule when sending quote</p>
+                          <p className="text-base text-gray-200">Schedule when sending quote</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <div>
                           <strong>Educational emails</strong>
-                          <p className="text-sm text-gray-400">Weekly value content</p>
+                          <p className="text-base text-gray-200">Weekly value content</p>
                         </div>
                       </li>
                     </ul>
@@ -399,26 +399,26 @@ export default function FollowUpStrategiesGuide() {
                   
                   <div>
                     <h3 className="text-xl font-semibold text-orange-400 mb-4">Keep Personal</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <AlertCircle className="h-5 w-5 text-yellow-400 mt-0.5" />
                         <div>
                           <strong>Phone calls</strong>
-                          <p className="text-sm text-gray-400">Always make personally</p>
+                          <p className="text-base text-gray-200">Always make personally</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-2">
                         <AlertCircle className="h-5 w-5 text-yellow-400 mt-0.5" />
                         <div>
                           <strong>Objection handling</strong>
-                          <p className="text-sm text-gray-400">Requires human touch</p>
+                          <p className="text-base text-gray-200">Requires human touch</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-2">
                         <AlertCircle className="h-5 w-5 text-yellow-400 mt-0.5" />
                         <div>
                           <strong>Price negotiations</strong>
-                          <p className="text-sm text-gray-400">Build trust in person</p>
+                          <p className="text-base text-gray-200">Build trust in person</p>
                         </div>
                       </li>
                     </ul>
@@ -430,19 +430,19 @@ export default function FollowUpStrategiesGuide() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div>
                       <div className="text-2xl font-bold text-white">73%</div>
-                      <p className="text-sm text-gray-400">Higher close rate</p>
+                      <p className="text-base text-gray-200">Higher close rate</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white">2.3x</div>
-                      <p className="text-sm text-gray-400">More touchpoints</p>
+                      <p className="text-base text-gray-200">More touchpoints</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white">85%</div>
-                      <p className="text-sm text-gray-400">Time saved</p>
+                      <p className="text-base text-gray-200">Time saved</p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white">45%</div>
-                      <p className="text-sm text-gray-400">Faster response</p>
+                      <p className="text-base text-gray-200">Faster response</p>
                     </div>
                   </div>
                 </div>
@@ -461,8 +461,8 @@ export default function FollowUpStrategiesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">"We're getting other quotes"</h3>
                   <div className="bg-gray-900/50 rounded p-4">
-                    <p className="text-gray-300 mb-3"><strong>Response:</strong></p>
-                    <p className="text-gray-300 italic">
+                    <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
+                    <p className="text-gray-100 italic">
                       "That's smart! While you're comparing, here's what to look for: [share comparison checklist]. 
                       I'm confident our value stands out, but I want you to make the best decision. 
                       May I follow up next week to see if you have questions after reviewing other options?"
@@ -473,8 +473,8 @@ export default function FollowUpStrategiesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">"The price is too high"</h3>
                   <div className="bg-gray-900/50 rounded p-4">
-                    <p className="text-gray-300 mb-3"><strong>Response:</strong></p>
-                    <p className="text-gray-300 italic">
+                    <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
+                    <p className="text-gray-100 italic">
                       "I understand price is important. Let me show you where the value is: [break down what's included]. 
                       We could also look at adjusting the scope or offer payment plans. 
                       What's your ideal budget so I can create an option that works?"
@@ -485,8 +485,8 @@ export default function FollowUpStrategiesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">"We need to think about it"</h3>
                   <div className="bg-gray-900/50 rounded p-4">
-                    <p className="text-gray-300 mb-3"><strong>Response:</strong></p>
-                    <p className="text-gray-300 italic">
+                    <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
+                    <p className="text-gray-100 italic">
                       "Of course! It's a big decision. What specific concerns can I address to help you decide? 
                       I'll send over our project gallery and warranty details. 
                       When would be a good time to reconnect - maybe early next week?"
@@ -506,7 +506,7 @@ export default function FollowUpStrategiesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Automate Your Follow-up System
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Set up automated follow-ups that convert. Our system sends perfectly timed messages 
                   while you focus on painting. Close 73% more deals with less effort.
                 </p>
@@ -541,7 +541,7 @@ export default function FollowUpStrategiesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master the entire quoting process
                     </p>
                   </Card>
@@ -553,7 +553,7 @@ export default function FollowUpStrategiesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Pricing Psychology
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Price for higher conversions
                     </p>
                   </Card>
@@ -565,7 +565,7 @@ export default function FollowUpStrategiesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Presentation Tips
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Present quotes that convert
                     </p>
                   </Card>

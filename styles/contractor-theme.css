@@ -188,7 +188,7 @@
 .card-dark {
   background: rgba(45, 45, 45, 0.95);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(30, 30, 30, 0.75);
 }
 
 /* Hero Animations */
@@ -216,7 +216,7 @@
 
 /* Progress Indicators */
 .progress-modern {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(30, 30, 30, 0.75);
   border-radius: 50px;
   height: 8px;
   overflow: hidden;
@@ -351,7 +351,7 @@
   .card-enhanced {
     background: rgba(45, 45, 45, 0.95);
     color: white;
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(30, 30, 30, 0.75);
   }
   
   .skeleton {
@@ -370,7 +370,7 @@
 .animate-delay-400 { animation-delay: 0.4s; }
 
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(30, 30, 30, 0.75);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }

@@ -225,7 +225,7 @@ export default function OnboardingPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Welcome to PaintQuote Pro! 🎨</h1>
-          <p className="text-gray-400">Let{'\''}s get your account set up in just a few minutes</p>
+          <p className="text-gray-200">Let{'\''}s get your account set up in just a few minutes</p>
         </div>
 
 
@@ -237,7 +237,7 @@ export default function OnboardingPage() {
               <div
                 key={step.id}
                 className={`flex flex-col items-center ${
-                  step.id <= currentStep ? 'text-white' : 'text-gray-500'
+                  step.id <= currentStep ? 'text-white' : 'text-gray-200'
                 }`}
               >
                 <div
@@ -255,7 +255,7 @@ export default function OnboardingPage() {
                     <step.icon className="h-5 w-5" />
                   )}
                 </div>
-                <span className="text-xs mt-1 hidden sm:block">{step.title}</span>
+                <span className="text-base mt-1 hidden sm:block">{step.title}</span>
               </div>
             ))}
           </div>
@@ -267,39 +267,39 @@ export default function OnboardingPage() {
             <>
               <div className="mb-6">
                 <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Company Information</h3>
-                <p className="text-sm text-gray-400 mt-1.5">
+                <p className="text-base text-gray-200 mt-1.5">
                   Tell us about your painting business
                 </p>
               </div>
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="companyName" className="text-gray-300">Company Name</Label>
+                  <Label htmlFor="companyName" className="text-gray-100">Company Name</Label>
                   <Input
                     id="companyName"
                     value={data.companyName}
                     onChange={(e) => setData({ ...data, companyName: e.target.value })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="ABC Painting Co."
                   />
                 </div>
                 <div>
-                  <Label htmlFor="email" className="text-gray-300">Business Email</Label>
+                  <Label htmlFor="email" className="text-gray-100">Business Email</Label>
                   <Input
                     id="email"
                     type="email"
                     value={data.email}
                     onChange={(e) => setData({ ...data, email: e.target.value })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="contact@abcpainting.com"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="text-gray-300">Business Phone</Label>
+                  <Label htmlFor="phone" className="text-gray-100">Business Phone</Label>
                   <Input
                     id="phone"
                     value={data.phone}
                     onChange={(e) => setData({ ...data, phone: e.target.value })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="(555) 123-4567"
                   />
                 </div>
@@ -311,44 +311,44 @@ export default function OnboardingPage() {
             <>
               <div className="mb-6">
                 <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Tax & Location</h3>
-                <p className="text-sm text-gray-400 mt-1.5">
+                <p className="text-base text-gray-200 mt-1.5">
                   Set up your local tax rate and service area
                 </p>
               </div>
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="taxRate" className="text-gray-300">Sales Tax Rate (%)</Label>
+                  <Label htmlFor="taxRate" className="text-gray-100">Sales Tax Rate (%)</Label>
                   <Input
                     id="taxRate"
                     type="number"
                     step="0.01"
                     value={data.taxRate}
                     onChange={(e) => setData({ ...data, taxRate: parseFloat(e.target.value) || 0 })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="8.25"
                   />
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-base text-gray-200 mt-1">
                     Enter your local sales tax rate (e.g., 8.25 for 8.25%)
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="city" className="text-gray-300">City</Label>
+                    <Label htmlFor="city" className="text-gray-100">City</Label>
                     <Input
                       id="city"
                       value={data.city}
                       onChange={(e) => setData({ ...data, city: e.target.value })}
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-gray-900/70 border-white/20 text-white"
                       placeholder="Phoenix"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="state" className="text-gray-300">State</Label>
+                    <Label htmlFor="state" className="text-gray-100">State</Label>
                     <Input
                       id="state"
                       value={data.state}
                       onChange={(e) => setData({ ...data, state: e.target.value })}
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-gray-900/70 border-white/20 text-white"
                       placeholder="AZ"
                       maxLength={2}
                     />
@@ -362,53 +362,53 @@ export default function OnboardingPage() {
             <>
               <div className="mb-6">
                 <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Pricing Preferences</h3>
-                <p className="text-sm text-gray-400 mt-1.5">
+                <p className="text-base text-gray-200 mt-1.5">
                   Set your default rates and markups
                 </p>
               </div>
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="laborRate" className="text-gray-300">Hourly Labor Rate ($)</Label>
+                  <Label htmlFor="laborRate" className="text-gray-100">Hourly Labor Rate ($)</Label>
                   <Input
                     id="laborRate"
                     type="number"
                     step="5"
                     value={data.laborRate}
                     onChange={(e) => setData({ ...data, laborRate: parseFloat(e.target.value) || 0 })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="45"
                   />
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-base text-gray-200 mt-1">
                     Your standard hourly rate for labor
                   </p>
                 </div>
                 <div>
-                  <Label htmlFor="markup" className="text-gray-300">Default Markup (%)</Label>
+                  <Label htmlFor="markup" className="text-gray-100">Default Markup (%)</Label>
                   <Input
                     id="markup"
                     type="number"
                     step="5"
                     value={data.markupPercentage}
                     onChange={(e) => setData({ ...data, markupPercentage: parseFloat(e.target.value) || 0 })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="30"
                   />
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-base text-gray-200 mt-1">
                     Industry standard is 20-50% depending on your market
                   </p>
                 </div>
                 <div>
-                  <Label htmlFor="minimum" className="text-gray-300">Minimum Job Size ($)</Label>
+                  <Label htmlFor="minimum" className="text-gray-100">Minimum Job Size ($)</Label>
                   <Input
                     id="minimum"
                     type="number"
                     step="100"
                     value={data.minimumJobSize}
                     onChange={(e) => setData({ ...data, minimumJobSize: parseFloat(e.target.value) || 0 })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-gray-900/70 border-white/20 text-white"
                     placeholder="500"
                   />
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-base text-gray-200 mt-1">
                     Smallest job you{'\''}ll accept
                   </p>
                 </div>
@@ -420,7 +420,7 @@ export default function OnboardingPage() {
             <>
               <div className="mb-6">
                 <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">You{'\''}re All Set! 🎉</h3>
-                <p className="text-sm text-gray-400 mt-1.5">
+                <p className="text-base text-gray-200 mt-1.5">
                   Here{'\''}s what you can do with PaintQuote Pro
                 </p>
               </div>
@@ -432,7 +432,7 @@ export default function OnboardingPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-white">Create Quotes in Minutes</h3>
-                      <p className="text-sm text-gray-400">Use our AI assistant to generate professional quotes 10x faster</p>
+                      <p className="text-base text-gray-200">Use our AI assistant to generate professional quotes 10x faster</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
@@ -441,7 +441,7 @@ export default function OnboardingPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-white">Win More Jobs</h3>
-                      <p className="text-sm text-gray-400">Professional quotes with instant delivery help you close more deals</p>
+                      <p className="text-base text-gray-200">Professional quotes with instant delivery help you close more deals</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
@@ -450,14 +450,14 @@ export default function OnboardingPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-white">Track Your Business</h3>
-                      <p className="text-sm text-gray-400">See your quotes, customers, and revenue all in one place</p>
+                      <p className="text-base text-gray-200">See your quotes, customers, and revenue all in one place</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-4 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
-                  <p className="text-sm text-white font-medium mb-1">💡 Pro Tip</p>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-white font-medium mb-1">💡 Pro Tip</p>
+                  <p className="text-base text-gray-100">
                     Start by creating your first quote using the AI assistant. It will guide you through the entire process!
                   </p>
                 </div>
@@ -471,7 +471,7 @@ export default function OnboardingPage() {
               onClick={handleBack}
               disabled={currentStep === 1}
               variant="ghost"
-              className="text-gray-400 hover:text-white"
+              className="text-gray-200 hover:text-white"
             >
               <ChevronLeft className="h-4 w-4 mr-2" />
               Back

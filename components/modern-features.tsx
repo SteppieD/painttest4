@@ -111,7 +111,7 @@ export function ModernFeatures() {
             <br />Failure Points
           </h2>
           
-          <p className={`text-xl text-gray-300 max-w-3xl mx-auto ${inView ? 'animate-in animate-delay-200' : 'opacity-0'}`}>
+          <p className={`text-xl text-gray-100 max-w-3xl mx-auto ${inView ? 'animate-in animate-delay-200' : 'opacity-0'}`}>
             We solve the exact problems that cost painters 40-60% of their potential jobs
           </p>
         </div>
@@ -146,24 +146,24 @@ export function ModernFeatures() {
                     {feature.title}
                   </h3>
                   
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-gray-200 mb-6 leading-relaxed">
                     {feature.description}
                   </p>
                   
                   {/* Highlight Badge */}
                   <div className="flex items-center justify-between">
-                    <span className={`inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r ${feature.color} bg-clip-text text-transparent`}>
+                    <span className={`inline-flex items-center gap-2 text-base font-medium bg-gradient-to-r ${feature.color} bg-clip-text text-transparent`}>
                       <Sparkles className="h-4 w-4" style={{ color: 'currentColor' }} />
                       {feature.highlight}
                     </span>
                     
-                    <ArrowRight className={`h-5 w-5 text-gray-500 transition-all ${isHovered ? 'translate-x-2 text-white' : ''}`} />
+                    <ArrowRight className={`h-5 w-5 text-gray-200 transition-all ${isHovered ? 'translate-x-2 text-white' : ''}`} />
                   </div>
                   
                   {/* Metric Display */}
                   <div className="absolute top-8 right-8 text-right opacity-20 group-hover:opacity-40 transition-opacity">
                     <div className="text-4xl font-black text-white">{feature.metric}</div>
-                    <div className="text-xs text-gray-400 uppercase tracking-wider">{feature.metricLabel}</div>
+                    <div className="text-base text-gray-200 uppercase tracking-wider">{feature.metricLabel}</div>
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export function ModernFeatures() {
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <span className="text-gray-400 text-sm font-medium">PaintQuote Pro Dashboard</span>
+                <span className="text-gray-200 text-base font-medium">PaintQuote Pro Dashboard</span>
               </div>
               <TrendingUp className="h-5 w-5 text-emerald-400" />
             </div>
@@ -191,26 +191,26 @@ export function ModernFeatures() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               <div className="glass-card p-4 text-center">
                 <div className="text-3xl font-bold text-blue-400">2.5m</div>
-                <div className="text-sm text-gray-400">Avg Quote Time</div>
+                <div className="text-base text-gray-200">Avg Quote Time</div>
               </div>
               <div className="glass-card p-4 text-center">
                 <div className="text-3xl font-bold text-purple-400">65%</div>
-                <div className="text-sm text-gray-400">Win Rate</div>
+                <div className="text-base text-gray-200">Win Rate</div>
               </div>
               <div className="glass-card p-4 text-center">
                 <div className="text-3xl font-bold text-emerald-400">$8.4k</div>
-                <div className="text-sm text-gray-400">Added Revenue</div>
+                <div className="text-base text-gray-200">Added Revenue</div>
               </div>
               <div className="glass-card p-4 text-center">
                 <div className="text-3xl font-bold text-amber-400">4.9★</div>
-                <div className="text-sm text-gray-400">Customer Rating</div>
+                <div className="text-base text-gray-200">Customer Rating</div>
               </div>
             </div>
 
             {/* Progress Bar */}
             <div className="space-y-3">
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Implementation Progress</span>
+              <div className="flex justify-between text-base">
+                <span className="text-gray-200">Implementation Progress</span>
                 <span className="text-emerald-400 font-medium">98% Complete</span>
               </div>
               <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
@@ -228,10 +228,10 @@ export function ModernFeatures() {
           <div className="inline-flex flex-col lg:flex-row items-center gap-8 p-8 glass-card container-glass">
             <div className="text-left">
               <div className="text-2xl font-bold text-white mb-2">Ready to solve all 6 problems?</div>
-              <div className="text-gray-400">Join 2,000+ contractors winning more jobs</div>
+              <div className="text-gray-200">Join 2,000+ contractors winning more jobs</div>
             </div>
             <Link href="/trial-signup" className="group relative flex-shrink-0">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur-md opacity-100 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative btn-primary-modern inline-flex items-center gap-2 px-8 py-4">
                 <Sparkles className="h-5 w-5" />
                 Start Your Free Trial

@@ -184,7 +184,7 @@ export default function HowToQuotePaintingJobs() {
           <section className="py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <BookOpen className="mr-2 h-4 w-4" />
                   Complete Professional Guide
                 </div>
@@ -192,7 +192,7 @@ export default function HowToQuotePaintingJobs() {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   How to Quote Painting Jobs Like a Pro
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   The complete guide to creating accurate, professional painting quotes that win more jobs 
                   and increase your profits. Learn the techniques successful contractors use.
                 </p>
@@ -217,15 +217,15 @@ export default function HowToQuotePaintingJobs() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">6 Steps</div>
-                    <p className="text-sm text-muted-foreground">To Professional Quotes</p>
+                    <p className="text-base text-gray-200">To Professional Quotes</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">3,000+</div>
-                    <p className="text-sm text-muted-foreground">Contractors Trained</p>
+                    <p className="text-base text-gray-200">Contractors Trained</p>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary">85 min</div>
-                    <p className="text-sm text-muted-foreground">Complete Guide</p>
+                    <p className="text-base text-gray-200">Complete Guide</p>
                   </div>
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function HowToQuotePaintingJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">6-Step Professional Quoting Process</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   Follow this proven system used by successful painting contractors nationwide
                 </p>
               </div>
@@ -250,14 +250,14 @@ export default function HowToQuotePaintingJobs() {
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
                           {step.step}
                         </div>
-                        <span className="text-sm text-muted-foreground">{step.time}</span>
+                        <span className="text-base text-gray-200">{step.time}</span>
                       </div>
                       
                       <step.icon className="h-8 w-8 text-primary mb-3" />
                       <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                      <p className="text-sm text-muted-foreground">{step.description}</p>
+                      <p className="text-base text-gray-200">{step.description}</p>
                       
-                      <Button variant="outline" size="sm" className="w-full mt-4">
+                      <Button variant="outline" size="default" className="w-full mt-4">
                         <Link href={`#step-${step.step}`} className="w-full">
                           Learn Step {step.step}
                         </Link>
@@ -282,11 +282,11 @@ export default function HowToQuotePaintingJobs() {
                     </div>
                     <div>
                       <h2 className="text-3xl font-bold">Taking Accurate Measurements</h2>
-                      <p className="text-muted-foreground">Foundation of profitable quotes</p>
+                      <p className="text-gray-200">Foundation of profitable quotes</p>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     Accurate measurements are the foundation of profitable painting quotes. Here's how to measure 
                     different surfaces correctly:
                   </p>
@@ -300,21 +300,21 @@ export default function HowToQuotePaintingJobs() {
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <div className="text-sm">
+                          <div className="text-base">
                             <strong>Walls:</strong> Measure height × width for each wall. Subtract doors and windows 
                             over 15 sq ft. Don't forget closets and hallways.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <div className="text-sm">
+                          <div className="text-base">
                             <strong>Ceilings:</strong> Length × width of the room. Add 10% for textured ceilings 
                             that require more paint.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <div className="text-sm">
+                          <div className="text-base">
                             <strong>Trim & Baseboards:</strong> Measure linear feet. Include door frames, window 
                             casings, and crown molding separately.
                           </div>
@@ -330,21 +330,21 @@ export default function HowToQuotePaintingJobs() {
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <div className="text-sm">
+                          <div className="text-base">
                             <strong>Siding:</strong> Measure each side of the house. Height × width, accounting for 
                             gables and architectural features.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <div className="text-sm">
+                          <div className="text-base">
                             <strong>Fascia & Soffits:</strong> Linear feet for fascia boards, square feet for 
                             soffits. Don't forget to check accessibility.
                           </div>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <div className="text-sm">
+                          <div className="text-base">
                             <strong>Windows & Doors:</strong> Measure frames and shutters separately. 
                             Note prep work needed for each.
                           </div>
@@ -355,7 +355,7 @@ export default function HowToQuotePaintingJobs() {
 
                   <div className="mt-8 rounded-lg bg-primary/5 p-6">
                     <h4 className="font-semibold text-primary mb-2">Pro Tip: The 15% Rule</h4>
-                    <p className="text-sm">
+                    <p className="text-base">
                       Always add a 10-15% waste factor to your measurements. This covers touch-ups, overspray, 
                       and ensures you don't run short on materials. Better to have leftover paint than an angry customer.
                     </p>
@@ -370,11 +370,11 @@ export default function HowToQuotePaintingJobs() {
                     </div>
                     <div>
                       <h2 className="text-3xl font-bold">Understanding Charge Rates and Pricing</h2>
-                      <p className="text-muted-foreground">Modern pricing that includes materials and labor</p>
+                      <p className="text-gray-200">Modern pricing that includes materials and labor</p>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     Modern painting contractors use charge rates - a single price per unit that includes both 
                     materials and labor. This simplifies quoting and improves accuracy.
                   </p>
@@ -395,7 +395,7 @@ export default function HowToQuotePaintingJobs() {
                         {chargRates.map((rate, index) => (
                           <tr key={index}>
                             <td className="border p-4 font-medium">{rate.surface}</td>
-                            <td className="border p-4 text-sm text-muted-foreground">{rate.unit}</td>
+                            <td className="border p-4 text-base text-gray-200">{rate.unit}</td>
                             <td className="border p-4">{rate.low}</td>
                             <td className="border p-4 font-medium">{rate.average}</td>
                             <td className="border p-4">{rate.high}</td>
@@ -408,7 +408,7 @@ export default function HowToQuotePaintingJobs() {
                   <div className="mt-8 grid gap-6 md:grid-cols-2">
                     <div className="rounded-lg border bg-background p-6">
                       <h4 className="font-semibold mb-4">Factors That Increase Rates</h4>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-base">
                         <li>• Premium paint or specialty finishes</li>
                         <li>• Extensive prep work needed</li>
                         <li>• Difficult access (ladders, scaffolding)</li>
@@ -419,7 +419,7 @@ export default function HowToQuotePaintingJobs() {
                     
                     <div className="rounded-lg border bg-background p-6">
                       <h4 className="font-semibold mb-4">Geographic Adjustments</h4>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-base">
                         <li>• Major cities: +25-50% higher rates</li>
                         <li>• Rural areas: -15-25% lower rates</li>
                         <li>• Coastal regions: +20-30% higher</li>
@@ -438,19 +438,19 @@ export default function HowToQuotePaintingJobs() {
                     </div>
                     <div>
                       <h2 className="text-3xl font-bold">Calculating Labor Costs</h2>
-                      <p className="text-muted-foreground">Accurate time estimates and proper rates</p>
+                      <p className="text-gray-200">Accurate time estimates and proper rates</p>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     Labor typically represents 25-35% of your total project cost. Here's how to calculate it accurately:
                   </p>
 
                   <div className="grid gap-8 lg:grid-cols-2">
                     <div className="rounded-lg border bg-background p-6">
                       <h3 className="text-xl font-semibold mb-4">The 30% Rule (Simple Method)</h3>
-                      <p className="mb-4 text-sm">A quick approach many contractors use:</p>
-                      <div className="space-y-2 text-sm">
+                      <p className="mb-4 text-base">A quick approach many contractors use:</p>
+                      <div className="space-y-2 text-base">
                         <div className="flex justify-between">
                           <span>Total project charge:</span>
                           <span className="font-medium">$5,000</span>
@@ -468,7 +468,7 @@ export default function HowToQuotePaintingJobs() {
 
                     <div className="rounded-lg border bg-background p-6">
                       <h3 className="text-xl font-semibold mb-4">Detailed Calculation Method</h3>
-                      <div className="space-y-4 text-sm">
+                      <div className="space-y-4 text-base">
                         <div>
                           <p className="font-medium mb-2">1. Production Rates (per hour):</p>
                           <ul className="space-y-1 ml-4">
@@ -496,11 +496,11 @@ export default function HowToQuotePaintingJobs() {
                     </div>
                     <div>
                       <h2 className="text-3xl font-bold">Estimating Material Requirements</h2>
-                      <p className="text-muted-foreground">Paint, primer, and supplies calculation</p>
+                      <p className="text-gray-200">Paint, primer, and supplies calculation</p>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     Accurate material estimates prevent costly overruns and ensure profitability.
                   </p>
 
@@ -510,7 +510,7 @@ export default function HowToQuotePaintingJobs() {
                         <PaintBucket className="h-5 w-5 mr-2 text-primary" />
                         Paint Coverage Guidelines
                       </h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex items-start">
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                           <div>
@@ -534,7 +534,7 @@ export default function HowToQuotePaintingJobs() {
 
                     <div className="rounded-lg border bg-background p-6">
                       <h3 className="text-xl font-semibold mb-4">Additional Materials Checklist</h3>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-base">
                         <li>• Primer (when needed)</li>
                         <li>• Brushes and roller covers</li>
                         <li>• Drop cloths and plastic sheeting</li>
@@ -548,7 +548,7 @@ export default function HowToQuotePaintingJobs() {
 
                   <div className="mt-8 rounded-lg bg-primary/5 p-6">
                     <h4 className="font-semibold text-primary mb-2">Material Cost Formula</h4>
-                    <p className="text-sm font-mono bg-background p-3 rounded border">
+                    <p className="text-base font-mono bg-background p-3 rounded border">
                       (Total Square Feet ÷ Coverage per Gallon) × Cost per Gallon × Number of Coats = Paint Cost
                     </p>
                   </div>
@@ -562,11 +562,11 @@ export default function HowToQuotePaintingJobs() {
                     </div>
                     <div>
                       <h2 className="text-3xl font-bold">Adding Profit Margins</h2>
-                      <p className="text-muted-foreground">Building sustainable business growth</p>
+                      <p className="text-gray-200">Building sustainable business growth</p>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     Your quote must include adequate profit to sustain and grow your business. Don't work for free!
                   </p>
 
@@ -577,28 +577,28 @@ export default function HowToQuotePaintingJobs() {
                         <TrendingUp className="h-12 w-12 text-primary mx-auto mb-4" />
                         <h4 className="font-semibold mb-2">Materials</h4>
                         <div className="text-2xl font-bold text-primary mb-2">20-50%</div>
-                        <p className="text-sm text-muted-foreground">Mark up from wholesale cost</p>
+                        <p className="text-base text-gray-200">Mark up from wholesale cost</p>
                       </div>
                       
                       <div className="rounded-lg border bg-background p-6 text-center">
                         <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
                         <h4 className="font-semibold mb-2">Labor</h4>
                         <div className="text-2xl font-bold text-primary mb-2">15-25%</div>
-                        <p className="text-sm text-muted-foreground">Profit after overhead costs</p>
+                        <p className="text-base text-gray-200">Profit after overhead costs</p>
                       </div>
                       
                       <div className="rounded-lg border bg-background p-6 text-center">
                         <DollarSign className="h-12 w-12 text-primary mx-auto mb-4" />
                         <h4 className="font-semibold mb-2">Overall Project</h4>
                         <div className="text-2xl font-bold text-primary mb-2">20-40%</div>
-                        <p className="text-sm text-muted-foreground">Net profit margin target</p>
+                        <p className="text-base text-gray-200">Net profit margin target</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="mt-8 rounded-lg bg-orange-50 border border-orange-200 p-6">
                     <h4 className="font-semibold text-orange-800 mb-2">⚠️ Don't Race to the Bottom</h4>
-                    <p className="text-sm text-orange-700">
+                    <p className="text-base text-orange-700">
                       Charging too little hurts the entire industry and makes it impossible to provide quality service. 
                       Price for value, not just to win jobs. Quality customers will pay for professional work.
                     </p>
@@ -613,18 +613,18 @@ export default function HowToQuotePaintingJobs() {
                     </div>
                     <div>
                       <h2 className="text-3xl font-bold">Presenting Your Quote Professionally</h2>
-                      <p className="text-muted-foreground">Win more jobs with professional presentation</p>
+                      <p className="text-gray-200">Win more jobs with professional presentation</p>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     A professional presentation can be the difference between winning and losing a job.
                   </p>
 
                   <div className="grid gap-8 lg:grid-cols-2">
                     <div className="rounded-lg border bg-background p-6">
                       <h3 className="text-xl font-semibold mb-4">Essential Quote Elements</h3>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-base">
                         <li className="flex items-start">
                           <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                           <div>
@@ -660,7 +660,7 @@ export default function HowToQuotePaintingJobs() {
 
                     <div className="rounded-lg border bg-background p-6">
                       <h3 className="text-xl font-semibold mb-4">Professional Tips</h3>
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-base">
                         <li>• Deliver quotes within 24-48 hours</li>
                         <li>• Use professional quote software or templates</li>
                         <li>• Include photos from the site visit</li>
@@ -683,10 +683,10 @@ export default function HowToQuotePaintingJobs() {
                           <mistake.icon className="h-8 w-8 text-destructive flex-shrink-0" />
                           <div>
                             <h3 className="text-lg font-semibold text-destructive mb-2">❌ {mistake.mistake}</h3>
-                            <p className="text-sm text-destructive/80 mb-3">
+                            <p className="text-base text-destructive/80 mb-3">
                               <strong>Consequence:</strong> {mistake.consequence}
                             </p>
-                            <p className="text-sm text-green-700">
+                            <p className="text-base text-green-700">
                               <strong>✅ Solution:</strong> {mistake.solution}
                             </p>
                           </div>
@@ -711,7 +711,7 @@ export default function HowToQuotePaintingJobs() {
                   {faqData.map((faq, index) => (
                     <div key={index} className="rounded-lg bg-background p-6">
                       <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-gray-200">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -725,7 +725,7 @@ export default function HowToQuotePaintingJobs() {
               <div className="mx-auto max-w-4xl">
                 <div className="rounded-lg bg-primary/5 p-8 text-center">
                   <h2 className="text-3xl font-bold mb-4">Ready to Create Professional Quotes?</h2>
-                  <p className="text-lg text-muted-foreground mb-8">
+                  <p className="text-lg text-gray-200 mb-8">
                     Mastering painting quotes takes practice, but with the right tools and knowledge, you can 
                     create accurate, profitable quotes that win more jobs and grow your business.
                   </p>
@@ -746,7 +746,7 @@ export default function HowToQuotePaintingJobs() {
                     </Link>
                   </div>
                   
-                  <p className="mt-4 text-sm text-muted-foreground">
+                  <p className="mt-4 text-base text-gray-200">
                     Join 3,000+ contractors creating professional quotes with our tools
                   </p>
                 </div>
@@ -759,7 +759,7 @@ export default function HowToQuotePaintingJobs() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Related Painting Business Resources</h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-gray-200">
                   More tools and guides to help grow your painting business
                 </p>
               </div>
@@ -771,7 +771,7 @@ export default function HowToQuotePaintingJobs() {
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
                       Quote Calculator
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-gray-200">
                       Calculate painting costs instantly with our professional tool
                     </p>
                   </Link>
@@ -781,7 +781,7 @@ export default function HowToQuotePaintingJobs() {
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
                       Quote Templates
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-gray-200">
                       Professional templates to create winning quotes faster
                     </p>
                   </Link>
@@ -791,7 +791,7 @@ export default function HowToQuotePaintingJobs() {
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
                       Estimation Guide
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-gray-200">
                       Learn professional estimation techniques with examples
                     </p>
                   </Link>
@@ -801,7 +801,7 @@ export default function HowToQuotePaintingJobs() {
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
                       Software Reviews
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-gray-200">
                       Compare the best painting estimate software options
                     </p>
                   </Link>

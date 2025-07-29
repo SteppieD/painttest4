@@ -154,7 +154,7 @@ export default function CommercialPage() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Professional estimating software for commercial painting contractors. 
                 Create detailed proposals that win RFPs and impress facility managers.
               </p>
@@ -173,7 +173,7 @@ export default function CommercialPage() {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>500+ commercial painters</span>
@@ -189,12 +189,12 @@ export default function CommercialPage() {
               <Card className="glass-card p-8">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold text-white mb-2">Quick Bid Calculator</h3>
-                  <p className="text-gray-400">See how fast you can bid commercial jobs</p>
+                  <p className="text-gray-200">See how fast you can bid commercial jobs</p>
                 </div>
                 
                 <div className="space-y-4 mb-6">
                   <div className="glass-card p-4">
-                    <label className="text-sm text-gray-400">Project Type</label>
+                    <label className="text-base text-gray-200">Project Type</label>
                     <select className="w-full bg-transparent text-white mt-1 p-2 border border-gray-600 rounded">
                       <option>Office Building</option>
                       <option>Retail Space</option>
@@ -202,7 +202,7 @@ export default function CommercialPage() {
                     </select>
                   </div>
                   <div className="glass-card p-4">
-                    <label className="text-sm text-gray-400">Square Footage</label>
+                    <label className="text-sm text-gray-200">Square Footage</label>
                     <input 
                       type="text" 
                       placeholder="e.g., 50,000"
@@ -227,7 +227,7 @@ export default function CommercialPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Built for Commercial Painting Scale
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Every feature designed to help you win and manage large commercial projects
             </p>
           </div>
@@ -237,7 +237,7 @@ export default function CommercialPage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -259,7 +259,7 @@ export default function CommercialPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-1">{project.type}</h3>
-                    <p className="text-gray-400">{project.size}</p>
+                    <p className="text-gray-200">{project.size}</p>
                   </div>
                   <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                     {project.typical}
@@ -268,7 +268,7 @@ export default function CommercialPage() {
                 
                 <div className="space-y-2">
                   {project.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-300">
+                    <div key={i} className="flex items-center gap-2 text-base text-gray-100">
                       <CheckCircle className="h-4 w-4 text-green-400" />
                       {feature}
                     </div>
@@ -295,7 +295,7 @@ export default function CommercialPage() {
                 <div key={index} className="text-center">
                   <div className="text-4xl font-bold text-blue-400 mb-2">{stat.metric}</div>
                   <div className="text-white font-semibold mb-1">{stat.description}</div>
-                  <div className="text-sm text-gray-400">{stat.detail}</div>
+                  <div className="text-base text-gray-200">{stat.detail}</div>
                 </div>
               ))}
             </div>
@@ -318,23 +318,23 @@ export default function CommercialPage() {
                 <div className="grid lg:grid-cols-3 gap-6">
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-2">{study.client}</h3>
-                    <p className="text-gray-400 mb-2">By {study.contractor}</p>
+                    <p className="text-gray-200 mb-2">By {study.contractor}</p>
                     <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                       {study.result}
                     </Badge>
                   </div>
                   
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-400 mb-2">CHALLENGE</h4>
-                    <p className="text-gray-300 mb-4">{study.challenge}</p>
-                    <h4 className="text-sm font-semibold text-gray-400 mb-2">SOLUTION</h4>
-                    <p className="text-gray-300">{study.solution}</p>
+                    <h4 className="text-base font-semibold text-gray-200 mb-2">CHALLENGE</h4>
+                    <p className="text-gray-100 mb-4">{study.challenge}</p>
+                    <h4 className="text-base font-semibold text-gray-200 mb-2">SOLUTION</h4>
+                    <p className="text-gray-100">{study.solution}</p>
                   </div>
                   
                   <div className="flex items-center">
                     <div>
                       <Award className="h-8 w-8 text-yellow-400 mb-3" />
-                      <p className="text-gray-300 italic">"{study.testimonial}"</p>
+                      <p className="text-gray-100 italic">"{study.testimonial}"</p>
                     </div>
                   </div>
                 </div>
@@ -351,7 +351,7 @@ export default function CommercialPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Win More Commercial Contracts?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Join 500+ commercial painters closing bigger deals faster
             </p>
             
@@ -370,7 +370,7 @@ export default function CommercialPage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>RFP templates</span>

@@ -54,20 +54,20 @@ export function ROIWidget({
                       <p className="text-2xl font-bold text-emerald-400">
                         {roiPercentage > 0 ? `${roiPercentage.toFixed(0)}%` : 'Calculate'}
                       </p>
-                      <p className="text-xs text-gray-400">Annual ROI</p>
+                      <p className="text-base text-gray-200">Annual ROI</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-emerald-400">
                         {timeSavedPerMonth.toFixed(0)} hrs
                       </p>
-                      <p className="text-xs text-gray-400">Saved Monthly</p>
+                      <p className="text-base text-gray-200">Saved Monthly</p>
                     </div>
                   </div>
                   
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                    size="default"
+                    className="bg-gray-900/70 border-white/20 text-white hover:bg-white/20"
                     onClick={() => setExpanded(true)}
                   >
                     See Full Breakdown
@@ -81,39 +81,39 @@ export function ROIWidget({
                       <p className="text-3xl font-bold text-emerald-400">
                         {roiPercentage.toFixed(0)}%
                       </p>
-                      <p className="text-xs text-gray-400">Annual ROI</p>
+                      <p className="text-base text-gray-200">Annual ROI</p>
                     </div>
                     <div className="bg-black/20 rounded-lg p-3">
                       <p className="text-3xl font-bold text-emerald-400">
                         ${netROI.toLocaleString()}
                       </p>
-                      <p className="text-xs text-gray-400">Net Annual Gain</p>
+                      <p className="text-base text-gray-200">Net Annual Gain</p>
                     </div>
                   </div>
                   
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-base">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Time Saved Monthly</span>
+                      <span className="text-gray-100">Time Saved Monthly</span>
                       <span className="text-white font-medium">{timeSavedPerMonth.toFixed(0)} hours</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Additional Quotes/Month</span>
+                      <span className="text-gray-100">Additional Quotes/Month</span>
                       <span className="text-white font-medium">+{additionalQuotes}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Extra Revenue Potential</span>
+                      <span className="text-gray-100">Extra Revenue Potential</span>
                       <span className="text-emerald-400 font-medium">+${potentialExtraRevenue.toLocaleString()}/mo</span>
                     </div>
                     <div className="flex justify-between items-center pt-2 border-t border-white/10">
-                      <span className="text-gray-300">Software Investment</span>
-                      <span className="text-gray-400">$79/month</span>
+                      <span className="text-gray-100">Software Investment</span>
+                      <span className="text-gray-200">$79/month</span>
                     </div>
                   </div>
                   
                   <div className="flex gap-3 pt-2">
                     <Link href="/roi-calculator" className="flex-1">
                       <Button 
-                        size="sm" 
+                        size="default" 
                         className="w-full bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600"
                       >
                         <Calculator className="mr-2 h-4 w-4" />
@@ -122,8 +122,8 @@ export function ROIWidget({
                     </Link>
                     <Button
                       variant="outline"
-                      size="sm"
-                      className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                      size="default"
+                      className="bg-gray-900/70 border-white/20 text-white hover:bg-white/20"
                       onClick={() => setExpanded(false)}
                     >
                       Collapse
@@ -137,8 +137,8 @@ export function ROIWidget({
         
         {!expanded && (
           <div className="mt-4 flex items-center gap-2">
-            <span className="text-xs text-gray-400">Based on your current metrics</span>
-            <Link href="/roi-calculator" className="text-xs text-emerald-400 hover:text-emerald-300">
+            <span className="text-base text-gray-200">Based on your current metrics</span>
+            <Link href="/roi-calculator" className="text-base text-emerald-400 hover:text-emerald-300">
               Get detailed analysis →
             </Link>
           </div>

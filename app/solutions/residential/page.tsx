@@ -153,7 +153,7 @@ export default function ResidentialPage() {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Professional painting estimates for residential contractors. 
                 Walk through homes, tap rooms, and send quotes in 60 seconds.
               </p>
@@ -172,7 +172,7 @@ export default function ResidentialPage() {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-base text-gray-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>1,000+ house painters</span>
@@ -189,16 +189,16 @@ export default function ResidentialPage() {
                 <div className="text-center mb-6">
                   <Paintbrush className="h-16 w-16 text-blue-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-semibold text-white mb-2">Try It Now</h3>
-                  <p className="text-gray-400">Describe a room to see instant pricing</p>
+                  <p className="text-gray-200">Describe a room to see instant pricing</p>
                 </div>
                 <div className="space-y-4">
                   <div className="glass-card p-4 cursor-pointer hover:border-blue-500 transition-colors">
                     <p className="text-white font-medium">Master bedroom, 12x14, walls only</p>
-                    <p className="text-sm text-gray-400">Click to generate quote →</p>
+                    <p className="text-base text-gray-200">Click to generate quote →</p>
                   </div>
                   <div className="glass-card p-4 cursor-pointer hover:border-blue-500 transition-colors">
                     <p className="text-white font-medium">Full house exterior, vinyl siding</p>
-                    <p className="text-sm text-gray-400">Click to generate quote →</p>
+                    <p className="text-base text-gray-200">Click to generate quote →</p>
                   </div>
                 </div>
               </Card>
@@ -214,7 +214,7 @@ export default function ResidentialPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Built for Residential Painting Contractors
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Every feature designed to help you quote homes faster and win more jobs
             </p>
           </div>
@@ -224,7 +224,7 @@ export default function ResidentialPage() {
               <Card key={index} className="glass-card p-6">
                 <feature.icon className="h-10 w-10 text-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-200">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -238,7 +238,7 @@ export default function ResidentialPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Quote Any Residential Job in Seconds
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Pre-configured templates for the most common house painting projects
             </p>
           </div>
@@ -249,7 +249,7 @@ export default function ResidentialPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-1">{job.type}</h3>
-                    <p className="text-gray-400">{job.rooms} • {job.sqft}</p>
+                    <p className="text-gray-200">{job.rooms} • {job.sqft}</p>
                   </div>
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                     <Clock className="h-3 w-3 mr-1" />
@@ -258,7 +258,7 @@ export default function ResidentialPage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-blue-400">{job.price}</span>
-                  <Button size="sm" variant="outline">
+                  <Button size="default" variant="outline">
                     Try This Quote
                   </Button>
                 </div>
@@ -282,7 +282,7 @@ export default function ResidentialPage() {
               <Card key={index} className="glass-card p-6 text-center">
                 <div className="text-4xl font-bold text-blue-400 mb-2">{item.metric}</div>
                 <div className="text-white font-semibold mb-1">{item.description}</div>
-                <div className="text-sm text-gray-400">{item.detail}</div>
+                <div className="text-base text-gray-200">{item.detail}</div>
               </Card>
             ))}
           </div>
@@ -306,10 +306,10 @@ export default function ResidentialPage() {
                     <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4 italic">"{testimonial.quote}"</p>
+                <p className="text-gray-100 mb-4 italic">"{testimonial.quote}"</p>
                 <div className="border-t border-gray-700 pt-4">
                   <div className="font-semibold text-white">{testimonial.author}</div>
-                  <div className="text-sm text-gray-400">{testimonial.company}</div>
+                  <div className="text-base text-gray-200">{testimonial.company}</div>
                   <Badge className="mt-2 bg-green-500/20 text-green-300 border-green-500/30">
                     {testimonial.results}
                   </Badge>
@@ -327,7 +327,7 @@ export default function ResidentialPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Transform Your Residential Painting Business?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-100 mb-8">
               Join 1,000+ house painters creating professional quotes in 60 seconds
             </p>
             
@@ -346,7 +346,7 @@ export default function ResidentialPage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-400" />
                 <span>No credit card required</span>

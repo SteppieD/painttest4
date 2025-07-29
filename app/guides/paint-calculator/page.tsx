@@ -178,8 +178,8 @@ export default function PaintCalculatorGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -196,7 +196,7 @@ export default function PaintCalculatorGuide() {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Professional Paint Calculator & Estimating Tools
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Accurate paint calculations in seconds. Used by 2,000+ painting contractors to 
                 create precise estimates and reduce material waste.
               </p>
@@ -211,7 +211,7 @@ export default function PaintCalculatorGuide() {
                   >
                     <Card className="bg-gray-800/50 border-gray-700 p-4 hover:border-blue-500/50 transition-all">
                       <calc.icon className={`h-8 w-8 text-${calc.color}-400 mx-auto mb-2`} />
-                      <div className="text-sm font-semibold text-white group-hover:text-blue-400">
+                      <div className="text-base font-semibold text-white group-hover:text-blue-400">
                         {calc.title}
                       </div>
                     </Card>
@@ -249,7 +249,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6 text-center">
                   <DollarSign className="h-12 w-12 text-red-400 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-2">Avoid Overbuying</h3>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     Save 15-20% on material costs by ordering exactly what you need
                   </p>
                 </Card>
@@ -257,7 +257,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6 text-center">
                   <Clock className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-2">Eliminate Delays</h3>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     No more mid-job trips to buy additional paint or supplies
                   </p>
                 </Card>
@@ -265,7 +265,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6 text-center">
                   <TrendingUp className="h-12 w-12 text-green-400 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-2">Protect Profits</h3>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-base text-gray-100">
                     Accurate estimates ensure healthy margins on every job
                   </p>
                 </Card>
@@ -273,12 +273,12 @@ export default function PaintCalculatorGuide() {
 
               <Card className="bg-yellow-500/10 border-yellow-500/30 p-8">
                 <h3 className="text-xl font-semibold text-yellow-400 mb-4">Industry Fact</h3>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-100 mb-4">
                   According to the Painting Contractors Association, inaccurate material estimates 
                   are the #1 cause of reduced profits, costing contractors an average of $8,500 
                   per year in wasted materials and emergency supply runs.
                 </p>
-                <p className="text-sm text-gray-400">
+                <p className="text-base text-gray-200">
                   Our calculators use industry-standard formulas refined by professional painters 
                   to ensure accuracy within 5% on every estimate.
                 </p>
@@ -300,7 +300,7 @@ export default function PaintCalculatorGuide() {
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Room Type
                     </label>
                     <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
@@ -315,7 +315,7 @@ export default function PaintCalculatorGuide() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Wall Height (feet)
                     </label>
                     <input 
@@ -328,7 +328,7 @@ export default function PaintCalculatorGuide() {
 
                 <div className="grid md:grid-cols-4 gap-4 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Length (ft)
                     </label>
                     <input 
@@ -338,7 +338,7 @@ export default function PaintCalculatorGuide() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Width (ft)
                     </label>
                     <input 
@@ -348,7 +348,7 @@ export default function PaintCalculatorGuide() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Doors
                     </label>
                     <input 
@@ -358,7 +358,7 @@ export default function PaintCalculatorGuide() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Windows
                     </label>
                     <input 
@@ -371,7 +371,7 @@ export default function PaintCalculatorGuide() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Surface Type
                     </label>
                     <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
@@ -383,7 +383,7 @@ export default function PaintCalculatorGuide() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Number of Coats
                     </label>
                     <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
@@ -395,11 +395,11 @@ export default function PaintCalculatorGuide() {
                 </div>
 
                 <div className="mt-6 flex items-center gap-4">
-                  <label className="flex items-center gap-2 text-gray-300">
+                  <label className="flex items-center gap-2 text-gray-100">
                     <input type="checkbox" className="rounded" defaultChecked />
                     <span>Include Ceiling</span>
                   </label>
-                  <label className="flex items-center gap-2 text-gray-300">
+                  <label className="flex items-center gap-2 text-gray-100">
                     <input type="checkbox" className="rounded" />
                     <span>Include Primer</span>
                   </label>
@@ -420,19 +420,19 @@ export default function PaintCalculatorGuide() {
                     <h4 className="text-lg font-semibold text-blue-400 mb-4">Paint Requirements</h4>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Total Square Footage:</span>
+                        <span className="text-gray-100">Total Square Footage:</span>
                         <span className="text-white font-semibold">384 sq ft</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Wall Paint Needed:</span>
+                        <span className="text-gray-100">Wall Paint Needed:</span>
                         <span className="text-white font-semibold">2 gallons</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Ceiling Paint:</span>
+                        <span className="text-gray-100">Ceiling Paint:</span>
                         <span className="text-white font-semibold">1 gallon</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Primer (if needed):</span>
+                        <span className="text-gray-100">Primer (if needed):</span>
                         <span className="text-white font-semibold">2 gallons</span>
                       </div>
                     </div>
@@ -442,15 +442,15 @@ export default function PaintCalculatorGuide() {
                     <h4 className="text-lg font-semibold text-purple-400 mb-4">Cost Estimate</h4>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Paint Cost:</span>
+                        <span className="text-gray-100">Paint Cost:</span>
                         <span className="text-white font-semibold">$90-150</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Labor (4-6 hrs):</span>
+                        <span className="text-gray-100">Labor (4-6 hrs):</span>
                         <span className="text-white font-semibold">$200-360</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Supplies:</span>
+                        <span className="text-gray-100">Supplies:</span>
                         <span className="text-white font-semibold">$25-40</span>
                       </div>
                       <div className="flex justify-between pt-3 border-t border-gray-700">
@@ -462,8 +462,8 @@ export default function PaintCalculatorGuide() {
                 </div>
 
                 <div className="bg-gray-900/50 rounded-lg p-4 mb-6">
-                  <h4 className="text-sm font-semibold text-yellow-400 mb-2">Pro Tip</h4>
-                  <p className="text-sm text-gray-300">
+                  <h4 className="text-base font-semibold text-yellow-400 mb-2">Pro Tip</h4>
+                  <p className="text-base text-gray-100">
                     Always add 10-15% to your paint calculation for touch-ups and future maintenance. 
                     This bedroom would benefit from 2.5 gallons instead of 2 to ensure complete coverage.
                   </p>
@@ -498,7 +498,7 @@ export default function PaintCalculatorGuide() {
                 
                 <div className="grid md:grid-cols-3 gap-6 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Building Type
                     </label>
                     <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
@@ -511,7 +511,7 @@ export default function PaintCalculatorGuide() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Siding Material
                     </label>
                     <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
@@ -525,7 +525,7 @@ export default function PaintCalculatorGuide() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Current Condition
                     </label>
                     <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
@@ -538,7 +538,7 @@ export default function PaintCalculatorGuide() {
 
                 <div className="grid md:grid-cols-4 gap-4 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Perimeter (ft)
                     </label>
                     <input 
@@ -548,7 +548,7 @@ export default function PaintCalculatorGuide() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Height (ft)
                     </label>
                     <input 
@@ -558,7 +558,7 @@ export default function PaintCalculatorGuide() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Gable Ends
                     </label>
                     <input 
@@ -568,7 +568,7 @@ export default function PaintCalculatorGuide() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                    <label className="block text-base font-medium text-gray-200 mb-2">
                       Garage Doors
                     </label>
                     <input 
@@ -582,27 +582,27 @@ export default function PaintCalculatorGuide() {
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-white">Additional Surfaces</h4>
                   <div className="grid md:grid-cols-3 gap-4">
-                    <label className="flex items-center gap-2 text-gray-300">
+                    <label className="flex items-center gap-2 text-gray-100">
                       <input type="checkbox" className="rounded" defaultChecked />
                       <span>Trim & Fascia</span>
                     </label>
-                    <label className="flex items-center gap-2 text-gray-300">
+                    <label className="flex items-center gap-2 text-gray-100">
                       <input type="checkbox" className="rounded" />
                       <span>Shutters</span>
                     </label>
-                    <label className="flex items-center gap-2 text-gray-300">
+                    <label className="flex items-center gap-2 text-gray-100">
                       <input type="checkbox" className="rounded" />
                       <span>Doors</span>
                     </label>
-                    <label className="flex items-center gap-2 text-gray-300">
+                    <label className="flex items-center gap-2 text-gray-100">
                       <input type="checkbox" className="rounded" defaultChecked />
                       <span>Soffit</span>
                     </label>
-                    <label className="flex items-center gap-2 text-gray-300">
+                    <label className="flex items-center gap-2 text-gray-100">
                       <input type="checkbox" className="rounded" />
                       <span>Deck/Porch</span>
                     </label>
-                    <label className="flex items-center gap-2 text-gray-300">
+                    <label className="flex items-center gap-2 text-gray-100">
                       <input type="checkbox" className="rounded" />
                       <span>Garage Doors</span>
                     </label>
@@ -622,17 +622,17 @@ export default function PaintCalculatorGuide() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div>
                     <h4 className="text-lg font-semibold text-purple-400 mb-4">Surface Areas</h4>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-base">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Siding:</span>
+                        <span className="text-gray-100">Siding:</span>
                         <span className="text-white">2,450 sq ft</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Trim:</span>
+                        <span className="text-gray-100">Trim:</span>
                         <span className="text-white">380 linear ft</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Soffit:</span>
+                        <span className="text-gray-100">Soffit:</span>
                         <span className="text-white">280 sq ft</span>
                       </div>
                     </div>
@@ -640,17 +640,17 @@ export default function PaintCalculatorGuide() {
                   
                   <div>
                     <h4 className="text-lg font-semibold text-pink-400 mb-4">Paint Needed</h4>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-base">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Siding Paint:</span>
+                        <span className="text-gray-100">Siding Paint:</span>
                         <span className="text-white font-semibold">10 gallons</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Trim Paint:</span>
+                        <span className="text-gray-100">Trim Paint:</span>
                         <span className="text-white font-semibold">3 gallons</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Primer:</span>
+                        <span className="text-gray-100">Primer:</span>
                         <span className="text-white font-semibold">8 gallons</span>
                       </div>
                     </div>
@@ -658,13 +658,13 @@ export default function PaintCalculatorGuide() {
                   
                   <div>
                     <h4 className="text-lg font-semibold text-yellow-400 mb-4">Project Cost</h4>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-base">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Materials:</span>
+                        <span className="text-gray-100">Materials:</span>
                         <span className="text-white">$650-850</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Labor:</span>
+                        <span className="text-gray-100">Labor:</span>
                         <span className="text-white">$2,800-3,500</span>
                       </div>
                       <div className="flex justify-between font-semibold pt-2 border-t border-gray-700">
@@ -693,32 +693,32 @@ export default function PaintCalculatorGuide() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-lg font-semibold text-blue-400 mb-4">Interior Surfaces</h4>
-                    <table className="w-full text-sm">
+                    <table className="w-full text-base">
                       <thead>
                         <tr className="border-b border-gray-700">
-                          <th className="text-left py-2 text-gray-400">Surface</th>
-                          <th className="text-right py-2 text-gray-400">Sq Ft/Gallon</th>
+                          <th className="text-left py-2 text-gray-200">Surface</th>
+                          <th className="text-right py-2 text-gray-200">Sq Ft/Gallon</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Smooth Drywall</td>
+                          <td className="py-2 text-gray-100">Smooth Drywall</td>
                           <td className="text-right text-white">350-400</td>
                         </tr>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Textured Walls</td>
+                          <td className="py-2 text-gray-100">Textured Walls</td>
                           <td className="text-right text-white">250-350</td>
                         </tr>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Primed Wood</td>
+                          <td className="py-2 text-gray-100">Primed Wood</td>
                           <td className="text-right text-white">300-350</td>
                         </tr>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Plaster</td>
+                          <td className="py-2 text-gray-100">Plaster</td>
                           <td className="text-right text-white">300-400</td>
                         </tr>
                         <tr>
-                          <td className="py-2 text-gray-300">Acoustic Ceiling</td>
+                          <td className="py-2 text-gray-100">Acoustic Ceiling</td>
                           <td className="text-right text-white">150-200</td>
                         </tr>
                       </tbody>
@@ -727,32 +727,32 @@ export default function PaintCalculatorGuide() {
                   
                   <div>
                     <h4 className="text-lg font-semibold text-purple-400 mb-4">Exterior Surfaces</h4>
-                    <table className="w-full text-sm">
+                    <table className="w-full text-base">
                       <thead>
                         <tr className="border-b border-gray-700">
-                          <th className="text-left py-2 text-gray-400">Surface</th>
-                          <th className="text-right py-2 text-gray-400">Sq Ft/Gallon</th>
+                          <th className="text-left py-2 text-gray-200">Surface</th>
+                          <th className="text-right py-2 text-gray-200">Sq Ft/Gallon</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Wood Siding</td>
+                          <td className="py-2 text-gray-100">Wood Siding</td>
                           <td className="text-right text-white">250-300</td>
                         </tr>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Stucco</td>
+                          <td className="py-2 text-gray-100">Stucco</td>
                           <td className="text-right text-white">150-250</td>
                         </tr>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Brick</td>
+                          <td className="py-2 text-gray-100">Brick</td>
                           <td className="text-right text-white">180-250</td>
                         </tr>
                         <tr className="border-b border-gray-800">
-                          <td className="py-2 text-gray-300">Concrete Block</td>
+                          <td className="py-2 text-gray-100">Concrete Block</td>
                           <td className="text-right text-white">100-200</td>
                         </tr>
                         <tr>
-                          <td className="py-2 text-gray-300">Metal Siding</td>
+                          <td className="py-2 text-gray-100">Metal Siding</td>
                           <td className="text-right text-white">300-400</td>
                         </tr>
                       </tbody>
@@ -764,7 +764,7 @@ export default function PaintCalculatorGuide() {
                   <h4 className="text-lg font-semibold text-blue-400 mb-3">Quick Coverage Calculator</h4>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Square Footage</label>
+                      <label className="block text-sm text-gray-200 mb-1">Square Footage</label>
                       <input 
                         type="number" 
                         placeholder="1000"
@@ -772,7 +772,7 @@ export default function PaintCalculatorGuide() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Coverage Rate</label>
+                      <label className="block text-base text-gray-200 mb-1">Coverage Rate</label>
                       <input 
                         type="number" 
                         placeholder="350"
@@ -780,7 +780,7 @@ export default function PaintCalculatorGuide() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Gallons Needed</label>
+                      <label className="block text-base text-gray-200 mb-1">Gallons Needed</label>
                       <div className="bg-gray-900 border border-gray-700 rounded px-3 py-2 text-green-400 font-semibold">
                         2.9 gallons
                       </div>
@@ -796,7 +796,7 @@ export default function PaintCalculatorGuide() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-lg font-semibold text-green-400 mb-3">Increases Coverage</h4>
-                    <ul className="space-y-2 text-sm text-gray-300">
+                    <ul className="space-y-2 text-base text-gray-100">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                         <span>High-quality paint with better hiding power</span>
@@ -818,7 +818,7 @@ export default function PaintCalculatorGuide() {
                   
                   <div>
                     <h4 className="text-lg font-semibold text-red-400 mb-3">Decreases Coverage</h4>
-                    <ul className="space-y-2 text-sm text-gray-300">
+                    <ul className="space-y-2 text-base text-gray-100">
                       <li className="flex items-start gap-2">
                         <AlertCircle className="h-4 w-4 text-red-400 flex-shrink-0 mt-0.5" />
                         <span>Porous or unpainted surfaces</span>
@@ -859,7 +859,7 @@ export default function PaintCalculatorGuide() {
                     <h4 className="text-lg font-semibold text-yellow-400 mb-4">Material Costs</h4>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm text-gray-400 mb-2">Paint Quality</label>
+                        <label className="block text-base text-gray-200 mb-2">Paint Quality</label>
                         <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
                           <option>Budget ($25-35/gal)</option>
                           <option>Mid-Grade ($35-50/gal)</option>
@@ -868,7 +868,7 @@ export default function PaintCalculatorGuide() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm text-gray-400 mb-2">Gallons Needed</label>
+                        <label className="block text-base text-gray-200 mb-2">Gallons Needed</label>
                         <input 
                           type="number" 
                           defaultValue="10"
@@ -882,7 +882,7 @@ export default function PaintCalculatorGuide() {
                     <h4 className="text-lg font-semibold text-blue-400 mb-4">Labor Costs</h4>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>
-                        <label className="block text-sm text-gray-400 mb-2">Region</label>
+                        <label className="block text-base text-gray-200 mb-2">Region</label>
                         <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
                           <option>Northeast (+20%)</option>
                           <option>West Coast (+25%)</option>
@@ -891,7 +891,7 @@ export default function PaintCalculatorGuide() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm text-gray-400 mb-2">Crew Size</label>
+                        <label className="block text-base text-gray-200 mb-2">Crew Size</label>
                         <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white">
                           <option>Solo ($50-80/hr)</option>
                           <option>2-Person ($85-120/hr)</option>
@@ -899,7 +899,7 @@ export default function PaintCalculatorGuide() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm text-gray-400 mb-2">Est. Hours</label>
+                        <label className="block text-base text-gray-200 mb-2">Est. Hours</label>
                         <input 
                           type="number" 
                           defaultValue="24"
@@ -915,34 +915,34 @@ export default function PaintCalculatorGuide() {
                       <label className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <input type="checkbox" className="rounded" defaultChecked />
-                          <span className="text-gray-300">Surface Preparation</span>
+                          <span className="text-gray-100">Surface Preparation</span>
                         </div>
                         <input 
                           type="number" 
                           defaultValue="350"
-                          className="w-24 bg-gray-900 border border-gray-700 rounded px-3 py-1 text-white text-sm"
+                          className="w-24 bg-gray-900 border border-gray-700 rounded px-3 py-1 text-white text-base"
                         />
                       </label>
                       <label className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <input type="checkbox" className="rounded" />
-                          <span className="text-gray-300">Primer</span>
+                          <span className="text-gray-100">Primer</span>
                         </div>
                         <input 
                           type="number" 
                           defaultValue="200"
-                          className="w-24 bg-gray-900 border border-gray-700 rounded px-3 py-1 text-white text-sm"
+                          className="w-24 bg-gray-900 border border-gray-700 rounded px-3 py-1 text-white text-base"
                         />
                       </label>
                       <label className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <input type="checkbox" className="rounded" defaultChecked />
-                          <span className="text-gray-300">Supplies & Equipment</span>
+                          <span className="text-gray-100">Supplies & Equipment</span>
                         </div>
                         <input 
                           type="number" 
                           defaultValue="150"
-                          className="w-24 bg-gray-900 border border-gray-700 rounded px-3 py-1 text-white text-sm"
+                          className="w-24 bg-gray-900 border border-gray-700 rounded px-3 py-1 text-white text-base"
                         />
                       </label>
                     </div>
@@ -961,19 +961,19 @@ export default function PaintCalculatorGuide() {
                 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-300">Paint (10 gallons @ $42.50/gal)</span>
+                    <span className="text-gray-100">Paint (10 gallons @ $42.50/gal)</span>
                     <span className="text-white font-semibold">$425</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-300">Labor (24 hours @ $100/hr)</span>
+                    <span className="text-gray-100">Labor (24 hours @ $100/hr)</span>
                     <span className="text-white font-semibold">$2,400</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-300">Surface Preparation</span>
+                    <span className="text-gray-100">Surface Preparation</span>
                     <span className="text-white font-semibold">$350</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-300">Supplies & Equipment</span>
+                    <span className="text-gray-100">Supplies & Equipment</span>
                     <span className="text-white font-semibold">$150</span>
                   </div>
                   <div className="flex justify-between items-center py-3 border-t border-gray-700">
@@ -981,7 +981,7 @@ export default function PaintCalculatorGuide() {
                     <span className="text-white font-semibold">$3,325</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
-                    <span className="text-gray-300">Overhead & Profit (35%)</span>
+                    <span className="text-gray-100">Overhead & Profit (35%)</span>
                     <span className="text-white font-semibold">$1,164</span>
                   </div>
                   <div className="flex justify-between items-center py-3 border-t border-gray-700">
@@ -992,15 +992,15 @@ export default function PaintCalculatorGuide() {
 
                 <div className="grid md:grid-cols-3 gap-4 text-center">
                   <div className="bg-gray-900/50 rounded-lg p-4">
-                    <div className="text-sm text-gray-400">Cost per Sq Ft</div>
+                    <div className="text-base text-gray-200">Cost per Sq Ft</div>
                     <div className="text-xl font-bold text-white">$1.80</div>
                   </div>
                   <div className="bg-gray-900/50 rounded-lg p-4">
-                    <div className="text-sm text-gray-400">Profit Margin</div>
+                    <div className="text-base text-gray-200">Profit Margin</div>
                     <div className="text-xl font-bold text-green-400">26%</div>
                   </div>
                   <div className="bg-gray-900/50 rounded-lg p-4">
-                    <div className="text-sm text-gray-400">Est. Duration</div>
+                    <div className="text-base text-gray-200">Est. Duration</div>
                     <div className="text-xl font-bold text-white">3 days</div>
                   </div>
                 </div>
@@ -1018,7 +1018,7 @@ export default function PaintCalculatorGuide() {
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Need More Advanced Calculations?
                 </h2>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
                   Our free calculators are great for basic estimates, but PaintQuote Pro's 
                   AI-powered software handles complex projects with multiple surfaces, custom 
                   pricing, and instant professional quotes.
@@ -1028,17 +1028,17 @@ export default function PaintCalculatorGuide() {
                   <div>
                     <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
                     <h3 className="text-lg font-semibold text-white mb-1">Multi-Room Projects</h3>
-                    <p className="text-sm text-gray-400">Calculate entire homes in minutes</p>
+                    <p className="text-base text-gray-200">Calculate entire homes in minutes</p>
                   </div>
                   <div>
                     <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
                     <h3 className="text-lg font-semibold text-white mb-1">Custom Pricing</h3>
-                    <p className="text-sm text-gray-400">Your rates, materials, and markups</p>
+                    <p className="text-base text-gray-200">Your rates, materials, and markups</p>
                   </div>
                   <div>
                     <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
                     <h3 className="text-lg font-semibold text-white mb-1">Professional Quotes</h3>
-                    <p className="text-sm text-gray-400">Branded PDFs ready to send</p>
+                    <p className="text-base text-gray-200">Branded PDFs ready to send</p>
                   </div>
                 </div>
 
@@ -1057,7 +1057,7 @@ export default function PaintCalculatorGuide() {
                   </Link>
                 </div>
 
-                <p className="text-sm text-gray-400 mt-4">
+                <p className="text-base text-gray-200 mt-4">
                   No credit card required • 5 free quotes • Setup in 2 minutes
                 </p>
               </Card>
@@ -1075,7 +1075,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <Ruler className="h-8 w-8 text-blue-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">Measuring Best Practices</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Always measure twice for accuracy</li>
                     <li>• Include closets and alcoves</li>
                     <li>• Subtract only doors, not windows</li>
@@ -1087,7 +1087,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <Package className="h-8 w-8 text-purple-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">Material Ordering Tips</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Order all paint from same batch</li>
                     <li>• Keep 1 gallon for touch-ups</li>
                     <li>• Factor in primer needs</li>
@@ -1099,7 +1099,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <Clock className="h-8 w-8 text-green-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">Time Estimation Guide</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Prep work: 30-40% of total time</li>
                     <li>• Add 20% for occupied spaces</li>
                     <li>• Factor in drying time</li>
@@ -1111,7 +1111,7 @@ export default function PaintCalculatorGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <AlertCircle className="h-8 w-8 text-yellow-400 mb-4" />
                   <h3 className="text-lg font-semibold text-white mb-3">Common Mistakes to Avoid</h3>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Forgetting ceiling paint</li>
                     <li>• Underestimating prep work</li>
                     <li>• Not accounting for primer</li>
@@ -1136,7 +1136,7 @@ export default function PaintCalculatorGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       How to Quote Painting Jobs
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Complete guide to professional painting quotes
                     </p>
                   </Card>
@@ -1148,7 +1148,7 @@ export default function PaintCalculatorGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Best Painting Software
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Compare top estimating software solutions
                     </p>
                   </Card>
@@ -1160,7 +1160,7 @@ export default function PaintCalculatorGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Interior Painting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Room-by-room pricing strategies
                     </p>
                   </Card>

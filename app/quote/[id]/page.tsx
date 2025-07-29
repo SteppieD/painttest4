@@ -113,7 +113,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading your quote...</p>
+          <p className="text-gray-200">Loading your quote...</p>
         </div>
       </div>
     )
@@ -128,7 +128,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
               <X className="h-8 w-8 text-red-400" />
             </div>
             <h2 className="text-xl font-semibold text-white mb-2">Quote Not Found</h2>
-            <p className="text-gray-400">This quote may have expired or been removed.</p>
+            <p className="text-gray-200">This quote may have expired or been removed.</p>
           </CardContent>
         </Card>
       </div>
@@ -152,7 +152,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
               </div>
               <div>
                 <h1 className="text-xl font-semibold text-white">Professional Painting Quote</h1>
-                <p className="text-sm text-gray-400">Quote #{quote.quote_id}</p>
+                <p className="text-base text-gray-200">Quote #{quote.quote_id}</p>
               </div>
             </div>
             <Badge className="bg-green-500/20 text-green-400 border-green-500/50">
@@ -185,13 +185,13 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
                     {quote.company?.name || 'Professional Painting Services'}
                   </CardTitle>
                   {quote.company?.subscription_status !== 'active' && (
-                    <p className="text-xs text-gray-400 mt-1">Powered by PaintQuote Pro</p>
+                    <p className="text-base text-gray-200 mt-1">Powered by PaintQuote Pro</p>
                   )}
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-400">Quote #{quote.quote_id}</p>
-                <p className="text-sm text-gray-400">
+                <p className="text-base text-gray-200">Quote #{quote.quote_id}</p>
+                <p className="text-base text-gray-200">
                   {new Date(quote.created_at).toLocaleDateString()}
                 </p>
               </div>
@@ -200,15 +200,15 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
           <CardContent>
             <div className="grid md:grid-cols-3 gap-4">
               {quote.company?.email && (
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Mail className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm">{quote.company.email}</span>
+                <div className="flex items-center gap-2 text-gray-100">
+                  <Mail className="h-4 w-4 text-gray-200" />
+                  <span className="text-base">{quote.company.email}</span>
                 </div>
               )}
               {quote.company?.phone && (
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Phone className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm">{quote.company.phone}</span>
+                <div className="flex items-center gap-2 text-gray-100">
+                  <Phone className="h-4 w-4 text-gray-200" />
+                  <span className="text-base">{quote.company.phone}</span>
                 </div>
               )}
             </div>
@@ -223,27 +223,27 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
             </CardHeader>
             <CardContent className="space-y-3">
               <div>
-                <p className="text-sm text-gray-400">Name</p>
+                <p className="text-base text-gray-200">Name</p>
                 <p className="text-white">{quote.customer_name}</p>
               </div>
               {quote.address && (
                 <div>
-                  <p className="text-sm text-gray-400">Project Address</p>
+                  <p className="text-base text-gray-200">Project Address</p>
                   <p className="text-white flex items-start gap-2">
-                    <MapPin className="h-4 w-4 text-gray-400 mt-0.5" />
+                    <MapPin className="h-4 w-4 text-gray-200 mt-0.5" />
                     {quote.address}
                   </p>
                 </div>
               )}
               {quote.customer_email && (
                 <div>
-                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-base text-gray-200">Email</p>
                   <p className="text-white">{quote.customer_email}</p>
                 </div>
               )}
               {quote.customer_phone && (
                 <div>
-                  <p className="text-sm text-gray-400">Phone</p>
+                  <p className="text-base text-gray-200">Phone</p>
                   <p className="text-white">{quote.customer_phone}</p>
                 </div>
               )}
@@ -256,26 +256,26 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
             </CardHeader>
             <CardContent className="space-y-3">
               <div>
-                <p className="text-sm text-gray-400">Project Type</p>
+                <p className="text-base text-gray-200">Project Type</p>
                 <p className="text-white capitalize">{quote.project_type} Painting</p>
               </div>
               {quote.walls_sqft && quote.walls_sqft > 0 && (
                 <div>
-                  <p className="text-sm text-gray-400">Total Square Footage</p>
+                  <p className="text-sm text-gray-200">Total Square Footage</p>
                   <p className="text-white">{quote.walls_sqft.toLocaleString()} sq ft</p>
                 </div>
               )}
               {quote.paint_quality && (
                 <div>
-                  <p className="text-sm text-gray-400">Paint Quality</p>
+                  <p className="text-base text-gray-200">Paint Quality</p>
                   <p className="text-white capitalize">{quote.paint_quality}</p>
                 </div>
               )}
               {quote.timeline && (
                 <div>
-                  <p className="text-sm text-gray-400">Timeline</p>
+                  <p className="text-base text-gray-200">Timeline</p>
                   <p className="text-white flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-gray-400" />
+                    <Clock className="h-4 w-4 text-gray-200" />
                     {quote.timeline}
                   </p>
                 </div>
@@ -291,7 +291,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
               <CardTitle className="text-white text-lg">Scope of Work</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-300 whitespace-pre-wrap">{quote.conversation_summary}</p>
+              <p className="text-gray-100 whitespace-pre-wrap">{quote.conversation_summary}</p>
             </CardContent>
           </Card>
         )}
@@ -304,7 +304,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
           <CardContent className="space-y-4">
             <div className="space-y-3">
               <div className="flex justify-between items-center py-2">
-                <span className="text-gray-300">Professional Painting Services</span>
+                <span className="text-gray-100">Professional Painting Services</span>
                 <span className="text-white font-medium">
                   ${bundledServiceCost.toFixed(2)}
                 </span>
@@ -314,12 +314,12 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
                 <>
                   <div className="border-t border-white/10 pt-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Subtotal</span>
+                      <span className="text-gray-100">Subtotal</span>
                       <span className="text-white">${subtotal.toFixed(2)}</span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Sales Tax</span>
+                    <span className="text-gray-100">Sales Tax</span>
                     <span className="text-white">${taxAmount.toFixed(2)}</span>
                   </div>
                 </>
@@ -336,7 +336,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
             </div>
 
             <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/20">
-              <p className="text-sm text-gray-300">
+              <p className="text-base text-gray-100">
                 This quote includes all materials, labor, and equipment needed to complete your project to the highest standards.
               </p>
             </div>
@@ -356,7 +356,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
           <Button 
             size="lg"
             variant="outline"
-            className="border-white/20 text-white hover:bg-white/10"
+            className="border-white/20 text-white hover:bg-gray-900/70"
             onClick={() => window.print()}
           >
             <FileText className="h-5 w-5 mr-2" />
@@ -366,10 +366,10 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
 
         {/* Footer */}
         <div className="text-center mt-8">
-          <p className="text-sm text-gray-400">
+          <p className="text-base text-gray-200">
             Questions? Contact us at {quote.company?.email || 'info@paintingpro.com'}
           </p>
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-base text-gray-200 mt-2">
             This quote is valid for 30 days from the date of issue
           </p>
           
@@ -380,14 +380,14 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
                 href="https://www.paintquoteapp.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-gray-200 hover:text-white transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4" />
-                  <span className="text-sm">Created with PaintQuote Pro</span>
+                  <span className="text-base">Created with PaintQuote Pro</span>
                 </div>
               </a>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-base text-gray-200 mt-1">
                 Professional painting quotes made easy
               </p>
             </div>

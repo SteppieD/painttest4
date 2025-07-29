@@ -103,30 +103,30 @@ export default function TrialSignupPage() {
             <div className="text-center mb-6">
               <Mail className="w-12 h-12 text-blue-400 mx-auto mb-4" />
               <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Check Your Email!</h1>
-              <p className="text-sm text-gray-300 mt-1.5">We've sent you a magic link to sign in</p>
+              <p className="text-base text-gray-100 mt-1.5">We've sent you a magic link to sign in</p>
             </div>
             <div className="space-y-4">
               <div className="glass-card border-blue-500/20 p-4">
-                <p className="text-sm text-gray-300">
+                <p className="text-base text-gray-100">
                   We sent a sign-in link to <strong className="text-white">{email}</strong>
                 </p>
-                <p className="text-xs text-gray-400 mt-2">Click the link in your email to complete signup</p>
+                <p className="text-base text-gray-200 mt-2">Click the link in your email to complete signup</p>
               </div>
               <div className="glass-card border-amber-500/20 p-4 bg-amber-500/5">
-                <p className="text-sm text-amber-300">
+                <p className="text-base text-amber-300">
                   ⏰ The link expires in 15 minutes
                 </p>
               </div>
               <div className="text-center space-y-2">
-                <p className="text-xs text-gray-400">Didn't receive the email?</p>
+                <p className="text-base text-gray-200">Didn't receive the email?</p>
                 <Button
                   variant="outline"
-                  size="sm"
+                  size="default"
                   onClick={() => {
                     setMagicLinkSent(false);
                     setError('');
                   }}
-                  className="text-xs"
+                  className="text-base"
                 >
                   Try Again
                 </Button>
@@ -153,20 +153,20 @@ export default function TrialSignupPage() {
             <div className="text-center mb-6">
               <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
               <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Welcome to PaintQuote Pro!</h1>
-              <p className="text-sm text-gray-300 mt-1.5">Your account has been created successfully</p>
+              <p className="text-base text-gray-100 mt-1.5">Your account has been created successfully</p>
             </div>
             <div className="space-y-4">
               <div className="glass-card border-blue-500/20 p-4">
-                <p className="text-sm text-gray-300 mb-2">Your access code is:</p>
+                <p className="text-base text-gray-100 mb-2">Your access code is:</p>
                 <p className="text-2xl font-mono font-bold text-blue-400">{accessCode}</p>
-                <p className="text-xs text-gray-400 mt-2">Save this code to log in later</p>
+                <p className="text-base text-gray-200 mt-2">Save this code to log in later</p>
               </div>
               <div className="glass-card border-emerald-500/20 p-4">
-                <p className="text-sm text-gray-300">
+                <p className="text-base text-gray-100">
                   We&apos;ve sent a welcome email to <strong className="text-white">{email}</strong> with your access code
                 </p>
               </div>
-              <p className="text-sm text-gray-400 text-center">
+              <p className="text-base text-gray-200 text-center">
                 Redirecting to your dashboard...
               </p>
             </div>
@@ -188,12 +188,12 @@ export default function TrialSignupPage() {
         
         <div className="w-full max-w-md glass-card relative z-10 p-6">
           <div className="mb-6">
-            <Link href="/" className="inline-flex items-center text-sm text-gray-300 hover:text-white mb-4 transition-colors">
+            <Link href="/" className="inline-flex items-center text-base text-gray-100 hover:text-white mb-4 transition-colors">
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to home
             </Link>
             <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Start Your Free Trial</h1>
-            <p className="text-sm text-gray-300 mt-1.5">
+            <p className="text-base text-gray-100 mt-1.5">
               Get 5 free quotes per month • No credit card required
             </p>
           </div>
@@ -210,7 +210,7 @@ export default function TrialSignupPage() {
                 </TabsTrigger>
               </TabsList>
               
-              <div className="mt-4 mb-4 text-xs text-gray-400 text-center">
+              <div className="mt-4 mb-4 text-base text-gray-200 text-center">
                 {signupMethod === 'magic' 
                   ? 'Secure passwordless login via email' 
                   : 'Get instant access with an access code'}
@@ -218,7 +218,7 @@ export default function TrialSignupPage() {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-gray-300">Company Name</Label>
+                  <Label htmlFor="company" className="text-gray-100">Company Name</Label>
                   <Input
                     id="company"
                     type="text"
@@ -235,7 +235,7 @@ export default function TrialSignupPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-300">Email Address</Label>
+                  <Label htmlFor="email" className="text-gray-100">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
@@ -249,7 +249,7 @@ export default function TrialSignupPage() {
                       backgroundColor: 'rgba(31, 41, 55, 0.8) !important'
                     } as React.CSSProperties}
                   />
-                  <p className="text-xs text-gray-400">
+                  <p className="text-base text-gray-200">
                     {signupMethod === 'magic'
                       ? "We'll send a secure login link to your email"
                       : "We'll send your access code and important updates here"}
@@ -257,7 +257,7 @@ export default function TrialSignupPage() {
                 </div>
 
                 {error && (
-                  <div className="glass-card border-red-500/20 bg-red-500/10 p-3 text-sm">
+                  <div className="glass-card border-red-500/20 bg-red-500/10 p-3 text-base">
                     <p className="text-red-400">{error}</p>
                   </div>
                 )}
@@ -279,7 +279,7 @@ export default function TrialSignupPage() {
               </form>
             </Tabs>
 
-            <div className="mt-6 text-center text-sm text-gray-400">
+            <div className="mt-6 text-center text-base text-gray-200">
               Already have an account?{' '}
               <Link href="/access-code" className="text-blue-400 hover:text-blue-300 hover:underline transition-colors">
                 Sign in with access code
@@ -287,8 +287,8 @@ export default function TrialSignupPage() {
             </div>
 
             <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
-              <p className="text-sm font-medium text-white">What&apos;s included:</p>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <p className="text-base font-medium text-white">What&apos;s included:</p>
+              <ul className="space-y-2 text-base text-gray-100">
                 <li className="flex items-center">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />
                   5 professional quotes per month

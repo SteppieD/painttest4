@@ -158,7 +158,7 @@ export default function PaintingQuoteTemplates() {
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="font-bold">PaintQuote Pro</span>
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-base font-medium">
               <Link href="/paint-estimate-templates" className="transition-colors hover:text-foreground/80">
                 Estimate Templates
               </Link>
@@ -172,7 +172,7 @@ export default function PaintingQuoteTemplates() {
             <div className="ml-auto">
               <Link
                 href="/auth/signup"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Try PaintQuote Pro Free
               </Link>
@@ -195,27 +195,27 @@ export default function PaintingQuoteTemplates() {
           <section className="relative py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-base font-medium text-primary">
                   <Award className="mr-2 h-4 w-4" />
                   Trusted by 2,847+ Painting Contractors
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   Professional Painting Quote Templates That Win Jobs
                 </h1>
-                <p className="mt-6 text-xl text-muted-foreground">
+                <p className="mt-6 text-xl text-gray-200">
                   Download free painting quote templates that help you close 40% more deals. 
                   Professional formats, instant download, no email required.
                 </p>
                 <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2 text-base">
                     <Download className="h-4 w-4 text-primary" />
                     <span className="font-semibold">92,456</span> downloads
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2 text-base">
                     <Star className="h-4 w-4 text-yellow-500" />
                     <span className="font-semibold">4.8/5</span> contractor rating
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2 text-base">
                     <Zap className="h-4 w-4 text-primary" />
                     <span className="font-semibold">40%</span> higher close rate
                   </div>
@@ -232,44 +232,44 @@ export default function PaintingQuoteTemplates() {
                   {templates.map((template, index) => (
                     <div key={index} className="relative rounded-lg border bg-card p-6 hover:shadow-lg transition-shadow">
                       {template.badge && (
-                        <div className="absolute -top-3 right-4 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+                        <div className="absolute -top-3 right-4 rounded-full bg-primary px-3 py-1 text-base font-medium text-primary-foreground">
                           {template.badge}
                         </div>
                       )}
                       
                       <div className="flex items-start justify-between">
                         <FileText className="h-8 w-8 text-primary" />
-                        <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium">
+                        <span className="rounded-full bg-muted px-3 py-1 text-base font-medium">
                           {template.format}
                         </span>
                       </div>
                       
                       <h3 className="mt-4 text-xl font-semibold">{template.name}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">
+                      <p className="mt-2 text-base text-gray-200">
                         {template.description}
                       </p>
 
-                      <div className="mt-4 flex items-center gap-4 text-sm">
+                      <div className="mt-4 flex items-center gap-4 text-base">
                         <div className="flex items-center gap-1">
                           <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
                           <span>{template.rating}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Download className="h-4 w-4 text-muted-foreground" />
+                          <Download className="h-4 w-4 text-gray-200" />
                           <span>{template.downloads} downloads</span>
                         </div>
                       </div>
 
                       <ul className="mt-4 space-y-2">
                         {template.features.slice(0, 4).map((feature, idx) => (
-                          <li key={idx} className="flex items-start text-sm">
+                          <li key={idx} className="flex items-start text-base">
                             <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
                             <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
 
-                      <button className="mt-6 w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+                      <button className="mt-6 w-full rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground hover:bg-primary/90">
                         Download Template
                       </button>
                     </div>
@@ -290,11 +290,11 @@ export default function PaintingQuoteTemplates() {
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold">Painting Quotes</h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       A quote is a fixed price offer that doesn't change. Once accepted, you're 
                       committed to that price regardless of actual costs.
                     </p>
-                    <ul className="mt-4 space-y-2 text-sm">
+                    <ul className="mt-4 space-y-2 text-base">
                       <li className="flex items-start">
                         <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
                         <span>Fixed, guaranteed pricing</span>
@@ -316,11 +316,11 @@ export default function PaintingQuoteTemplates() {
 
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold">Painting Estimates</h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       An estimate is an educated guess at the project cost. It can change based 
                       on actual work required and unforeseen issues.
                     </p>
-                    <ul className="mt-4 space-y-2 text-sm">
+                    <ul className="mt-4 space-y-2 text-base">
                       <li className="flex items-start">
                         <CheckCircle className="mr-2 h-4 w-4 flex-shrink-0 text-primary" />
                         <span>Approximate pricing range</span>
@@ -357,18 +357,18 @@ export default function PaintingQuoteTemplates() {
                 <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
                   How to Create Winning Painting Quotes
                 </h2>
-                <p className="mt-4 text-center text-lg text-muted-foreground">
+                <p className="mt-4 text-center text-lg text-gray-200">
                   Follow these steps to create quotes that convert browsers into buyers
                 </p>
                 
                 <div className="mt-12 space-y-8">
                   <div className="flex gap-4">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                       1
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold">Download & Customize Template</h3>
-                      <p className="mt-2 text-muted-foreground">
+                      <p className="mt-2 text-gray-200">
                         Choose a template above and download it instantly. Open in Word or Excel and 
                         add your company logo, contact details, license numbers, and insurance information. 
                         Save this as your master template.
@@ -377,12 +377,12 @@ export default function PaintingQuoteTemplates() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                       2
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold">Capture All Project Details</h3>
-                      <p className="mt-2 text-muted-foreground">
+                      <p className="mt-2 text-gray-200">
                         During your site visit, document room dimensions, surface conditions, and special 
                         requirements. Take photos for reference. Note access issues, furniture moving needs, 
                         and any prep work required.
@@ -391,12 +391,12 @@ export default function PaintingQuoteTemplates() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                       3
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold">Price Accurately & Transparently</h3>
-                      <p className="mt-2 text-muted-foreground">
+                      <p className="mt-2 text-gray-200">
                         Break down costs clearly: labor, materials, prep work, and any extras. Include 
                         your overhead and profit margins. Be transparent about what's included and what 
                         would cost extra.
@@ -405,12 +405,12 @@ export default function PaintingQuoteTemplates() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground">
                       4
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold">Present Professionally</h3>
-                      <p className="mt-2 text-muted-foreground">
+                      <p className="mt-2 text-gray-200">
                         Send the quote promptly (within 24-48 hours). Include a personalized cover message. 
                         Highlight your unique value: experience, warranty, insurance, and quality. Follow 
                         up within 3-5 days if you haven't heard back.
@@ -427,36 +427,36 @@ export default function PaintingQuoteTemplates() {
             <div className="container">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-3xl font-bold">Why Professional Quotes Matter</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Data from 2,847+ painting contractors using professional quote templates
                 </p>
                 
                 <div className="mt-12 grid gap-8 md:grid-cols-4">
                   <div>
                     <div className="text-4xl font-bold text-primary">73%</div>
-                    <p className="mt-2 text-sm font-medium">Higher Acceptance Rate</p>
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="mt-2 text-base font-medium">Higher Acceptance Rate</p>
+                    <p className="mt-1 text-base text-gray-200">
                       Professional quotes vs handwritten
                     </p>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-primary">2.5x</div>
-                    <p className="mt-2 text-sm font-medium">Faster Response Time</p>
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="mt-2 text-base font-medium">Faster Response Time</p>
+                    <p className="mt-1 text-base text-gray-200">
                       Customers decide quicker
                     </p>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-primary">89%</div>
-                    <p className="mt-2 text-sm font-medium">Fewer Revisions</p>
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="mt-2 text-base font-medium">Fewer Revisions</p>
+                    <p className="mt-1 text-base text-gray-200">
                       Clear quotes reduce back-and-forth
                     </p>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-primary">$347</div>
-                    <p className="mt-2 text-sm font-medium">Higher Job Value</p>
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="mt-2 text-base font-medium">Higher Job Value</p>
+                    <p className="mt-1 text-base text-gray-200">
                       Average increase per project
                     </p>
                   </div>
@@ -473,7 +473,7 @@ export default function PaintingQuoteTemplates() {
                   <h2 className="text-3xl font-bold">
                     Ready to Create Quotes 10x Faster?
                   </h2>
-                  <p className="mt-4 text-lg opacity-90">
+                  <p className="mt-4 text-lg opacity-100">
                     While templates are great, PaintQuote Pro automates the entire process. 
                     Create professional quotes in 15 minutes with our AI-powered software.
                   </p>
@@ -481,7 +481,7 @@ export default function PaintingQuoteTemplates() {
                   <div className="mt-8 grid gap-4 text-left md:grid-cols-2">
                     <div className="rounded-lg bg-primary-foreground/10 p-4">
                       <h3 className="font-semibold">Using Templates:</h3>
-                      <ul className="mt-3 space-y-2 text-sm opacity-90">
+                      <ul className="mt-3 space-y-2 text-base opacity-100">
                         <li>• Still takes 45-60 minutes</li>
                         <li>• Manual calculations</li>
                         <li>• Risk of errors</li>
@@ -490,7 +490,7 @@ export default function PaintingQuoteTemplates() {
                     </div>
                     <div className="rounded-lg bg-primary-foreground/20 p-4">
                       <h3 className="font-semibold">Using PaintQuote Pro:</h3>
-                      <ul className="mt-3 space-y-2 text-sm">
+                      <ul className="mt-3 space-y-2 text-base">
                         <li>• 15-minute quotes</li>
                         <li>• Automatic pricing</li>
                         <li>• Error-free calculations</li>
@@ -506,7 +506,7 @@ export default function PaintingQuoteTemplates() {
                     >
                       Try PaintQuote Pro Free
                     </Link>
-                    <p className="mt-4 text-sm opacity-75">
+                    <p className="mt-4 text-base opacity-100">
                       No credit card required • 1 free quote per month
                     </p>
                   </div>
@@ -528,7 +528,7 @@ export default function PaintingQuoteTemplates() {
                     <h3 className="text-xl font-semibold">
                       What should I include in a painting quote?
                     </h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       A professional painting quote should include: detailed scope of work, itemized 
                       pricing (labor and materials separated), timeline, payment terms, warranty details, 
                       insurance information, and clear terms & conditions. Our templates include all 
@@ -540,7 +540,7 @@ export default function PaintingQuoteTemplates() {
                     <h3 className="text-xl font-semibold">
                       How do I price a painting job correctly?
                     </h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       Calculate material costs, add labor (typically 30% of total), include overhead 
                       (15-20%), and profit margin (15-30%). Factor in prep work, number of coats, 
                       surface condition, and access difficulty. Our templates include pricing guides 
@@ -552,7 +552,7 @@ export default function PaintingQuoteTemplates() {
                     <h3 className="text-xl font-semibold">
                       Should I use quotes or estimates?
                     </h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       Use fixed quotes for standard jobs where scope is clear (most residential work). 
                       Use estimates for complex projects with unknowns (water damage, lead paint, 
                       custom work). Quotes give customers confidence and reduce disputes.
@@ -563,7 +563,7 @@ export default function PaintingQuoteTemplates() {
                     <h3 className="text-xl font-semibold">
                       How quickly should I send a quote?
                     </h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       Send quotes within 24-48 hours of the site visit. Faster response dramatically 
                       increases your close rate. Studies show 50% of customers choose the contractor 
                       who responds first with a professional quote.
@@ -574,7 +574,7 @@ export default function PaintingQuoteTemplates() {
                     <h3 className="text-xl font-semibold">
                       Can I customize these templates?
                     </h3>
-                    <p className="mt-3 text-muted-foreground">
+                    <p className="mt-3 text-gray-200">
                       Yes! All templates are fully customizable. Add your logo, adjust pricing sections, 
                       modify terms, and change colors to match your brand. Save your customized version 
                       as a master template for future use.
@@ -609,7 +609,7 @@ export default function PaintingQuoteTemplates() {
 
         {/* Footer */}
         <footer className="border-t bg-background">
-          <div className="container py-8 text-center text-sm text-muted-foreground">
+          <div className="container py-8 text-center text-base text-gray-200">
             <p>&copy; 2025 PaintQuote Pro. All quote templates are free to download and use.</p>
           </div>
         </footer>

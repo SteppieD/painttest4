@@ -218,14 +218,14 @@ export default function HelpPage() {
               How Can We Help?
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Find answers, watch tutorials, and get support for PaintQuote Pro
             </p>
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto mb-12">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-200" />
                 <input
                   type="text"
                   placeholder="Search for help articles..."
@@ -280,12 +280,12 @@ export default function HelpPage() {
                 </div>
                 
                 <h3 className="text-xl font-semibold text-white mb-2">{category.title}</h3>
-                <p className="text-gray-400 mb-4">{category.description}</p>
+                <p className="text-gray-200 mb-4">{category.description}</p>
                 
                 <div className="space-y-2">
                   {category.popular.slice(0, 3).map((article, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                      <ChevronRight className="h-3 w-3 text-gray-500" />
+                    <div key={i} className="flex items-center gap-2 text-base text-gray-100">
+                      <ChevronRight className="h-3 w-3 text-gray-200" />
                       {article}
                     </div>
                   ))}
@@ -316,7 +316,7 @@ export default function HelpPage() {
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">{article.title}</h3>
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
+                    <div className="flex items-center gap-4 text-base text-gray-200">
                       <span>{article.category}</span>
                       <span>•</span>
                       <span>{article.readTime} read</span>
@@ -324,7 +324,7 @@ export default function HelpPage() {
                       <span className="text-green-400">{article.helpful.toLocaleString()} found helpful</span>
                     </div>
                   </div>
-                  <ChevronRight className="h-5 w-5 text-gray-400" />
+                  <ChevronRight className="h-5 w-5 text-gray-200" />
                 </div>
               </Card>
             ))}
@@ -345,7 +345,7 @@ export default function HelpPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Get Support
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-100 max-w-2xl mx-auto">
               Can't find what you're looking for? Our support team is here to help.
             </p>
           </div>
@@ -355,8 +355,8 @@ export default function HelpPage() {
               <Card key={index} className="glass-card p-6 text-center">
                 <option.icon className="h-12 w-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-white mb-2">{option.title}</h3>
-                <p className="text-gray-400 mb-2">{option.description}</p>
-                <p className="text-sm text-gray-500 mb-4">{option.availability}</p>
+                <p className="text-gray-200 mb-2">{option.description}</p>
+                <p className="text-base text-gray-200 mb-4">{option.availability}</p>
                 <Button variant="outline" className="w-full">
                   {option.action}
                 </Button>
@@ -382,7 +382,7 @@ export default function HelpPage() {
                   <HelpCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
                   {faq.question}
                 </h3>
-                <p className="text-gray-300 ml-7">{faq.answer}</p>
+                <p className="text-gray-100 ml-7">{faq.answer}</p>
               </Card>
             ))}
           </div>
@@ -397,7 +397,7 @@ export default function HelpPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Free Training Sessions
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
               Join our weekly training webinars to master PaintQuote Pro
             </p>
             
@@ -413,7 +413,7 @@ export default function HelpPage() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center justify-center gap-6 text-base text-gray-200">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 <span>Every Tuesday 2PM EST</span>
@@ -434,7 +434,7 @@ export default function HelpPage() {
           <h2 className="text-3xl font-bold text-white mb-4">
             Still Need Help?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-gray-100 mb-8">
             Our support team is standing by to assist you
           </p>
           

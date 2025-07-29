@@ -59,7 +59,7 @@ export default function ModernFooter() {
             <h3 className="text-2xl font-bold text-white mb-2">
               Ready to Transform Your Painting Business?
             </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-100 mb-6 max-w-2xl mx-auto">
               Join thousands of painting contractors who save 6+ hours per week with AI-powered quotes
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -90,29 +90,29 @@ export default function ModernFooter() {
               </div>
               <span>PaintQuote Pro</span>
             </Link>
-            <p className="text-gray-400 mb-4 max-w-xs">
+            <p className="text-gray-200 mb-4 max-w-xs">
               The #1 painting estimate software used by 2,000+ contractors to create professional quotes 6x faster. Win more jobs with AI-powered accuracy.
             </p>
             
             {/* Rich Snippet Data */}
             <div className="mb-6 space-y-2">
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 text-base">
                 <CheckCircle className="h-4 w-4 text-green-400" />
-                <span className="text-gray-400">SOC 2 Type II Certified</span>
+                <span className="text-gray-200">SOC 2 Type II Certified</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 text-base">
                 <Clock className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-400">2-minute average quote time</span>
+                <span className="text-gray-200">2-minute average quote time</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 text-base">
                 <Users className="h-4 w-4 text-purple-400" />
-                <span className="text-gray-400">50,000+ quotes created monthly</span>
+                <span className="text-gray-200">50,000+ quotes created monthly</span>
               </div>
             </div>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <a href="mailto:support@paintquotepro.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
+              <a href="mailto:support@paintquotepro.com" className="flex items-center gap-3 text-gray-200 hover:text-white transition-colors">
                 <Mail className="h-4 w-4" />
                 <span>support@paintquotepro.com</span>
               </a>
@@ -130,7 +130,7 @@ export default function ModernFooter() {
                 <a
                   key={label}
                   href={href}
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-colors"
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-200 hover:bg-gray-700 hover:text-white transition-colors"
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -152,11 +152,11 @@ export default function ModernFooter() {
                       href={link.href}
                       className="group block"
                     >
-                      <div className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                      <div className="text-base text-gray-100 group-hover:text-white transition-colors">
                         {link.label}
                       </div>
                       {link.description && (
-                        <div className="text-xs text-gray-500 group-hover:text-gray-400 transition-colors">
+                        <div className="text-base text-gray-200 group-hover:text-gray-200 transition-colors">
                           {link.description}
                         </div>
                       )}
@@ -175,29 +175,29 @@ export default function ModernFooter() {
               <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Shield className="h-6 w-6 text-green-400" />
               </div>
-              <div className="text-sm font-semibold text-white">Bank-Level Security</div>
-              <div className="text-xs text-gray-400">256-bit SSL encryption</div>
+              <div className="text-base font-semibold text-white">Bank-Level Security</div>
+              <div className="text-base text-gray-200">256-bit SSL encryption</div>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Star className="h-6 w-6 text-yellow-400" />
               </div>
-              <div className="text-sm font-semibold text-white">4.9/5 Rating</div>
-              <div className="text-xs text-gray-400">2,000+ reviews</div>
+              <div className="text-base font-semibold text-white">4.9/5 Rating</div>
+              <div className="text-base text-gray-200">2,000+ reviews</div>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Zap className="h-6 w-6 text-blue-400" />
               </div>
-              <div className="text-sm font-semibold text-white">2-Min Quotes</div>
-              <div className="text-xs text-gray-400">6+ hours saved weekly</div>
+              <div className="text-base font-semibold text-white">2-Min Quotes</div>
+              <div className="text-base text-gray-200">6+ hours saved weekly</div>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Sparkles className="h-6 w-6 text-purple-400" />
               </div>
-              <div className="text-sm font-semibold text-white">AI-Powered</div>
-              <div className="text-xs text-gray-400">Smart assistance</div>
+              <div className="text-base font-semibold text-white">AI-Powered</div>
+              <div className="text-base text-gray-200">Smart assistance</div>
             </div>
           </div>
         </div>
@@ -222,16 +222,16 @@ export default function ModernFooter() {
                 className="group"
               >
                 <div className="p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors">
-                  <div className="text-sm font-medium text-white group-hover:text-blue-400">
+                  <div className="text-base font-medium text-white group-hover:text-blue-400">
                     {city}, {state}
                   </div>
-                  <div className="text-xs text-gray-400">{contractors} contractors</div>
+                  <div className="text-base text-gray-200">{contractors} contractors</div>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="flex flex-wrap gap-2 text-sm">
-            <span className="text-gray-400">Popular searches:</span>
+          <div className="flex flex-wrap gap-2 text-base">
+            <span className="text-gray-200">Popular searches:</span>
             {[
               'painting estimate software',
               'contractor quoting app',
@@ -252,21 +252,21 @@ export default function ModernFooter() {
 
         {/* Industry Associations & Certifications */}
         <div className="mt-8 pt-8 border-t border-gray-800">
-          <h4 className="text-sm font-semibold text-white mb-4">Industry Partners & Certifications</h4>
+          <h4 className="text-base font-semibold text-white mb-4">Industry Partners & Certifications</h4>
           <div className="flex flex-wrap gap-6 items-center">
-            <div className="text-xs text-gray-400">
+            <div className="text-base text-gray-200">
               <Award className="h-5 w-5 mb-1 text-yellow-400" />
               <div>PDCA Member</div>
             </div>
-            <div className="text-xs text-gray-400">
+            <div className="text-base text-gray-200">
               <Shield className="h-5 w-5 mb-1 text-green-400" />
               <div>BBB A+ Rating</div>
             </div>
-            <div className="text-xs text-gray-400">
+            <div className="text-base text-gray-200">
               <CheckCircle className="h-5 w-5 mb-1 text-blue-400" />
               <div>ISO 27001</div>
             </div>
-            <div className="text-xs text-gray-400">
+            <div className="text-base text-gray-200">
               <Star className="h-5 w-5 mb-1 text-purple-400" />
               <div>G2 Leader 2024</div>
             </div>
@@ -275,7 +275,7 @@ export default function ModernFooter() {
 
         {/* Schema.org Markup Helper Text */}
         <div className="mt-8 pt-8 border-t border-gray-800">
-          <div className="text-xs text-gray-500 space-y-1">
+          <div className="text-base text-gray-200 space-y-1">
             <p>PaintQuote Pro is professional painting estimate software designed for residential and commercial painting contractors.</p>
             <p>Create accurate painting quotes in minutes • Mobile-friendly • AI-powered pricing • 14-day free trial</p>
           </div>
@@ -284,23 +284,23 @@ export default function ModernFooter() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-400">
-              © {currentYear} PaintQuote Pro, LLC. All rights reserved. | <span className="text-xs">Painting Estimate Software</span>
+            <div className="text-base text-gray-200">
+              © {currentYear} PaintQuote Pro, LLC. All rights reserved. | <span className="text-base">Painting Estimate Software</span>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+            <div className="flex flex-wrap gap-6 text-base">
+              <Link href="/privacy" className="text-gray-200 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/terms" className="text-gray-200 hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/cookies" className="text-gray-200 hover:text-white transition-colors">
                 Cookie Policy
               </Link>
-              <Link href="/sitemap.xml" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/sitemap.xml" className="text-gray-200 hover:text-white transition-colors">
                 Sitemap
               </Link>
-              <Link href="/accessibility" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/accessibility" className="text-gray-200 hover:text-white transition-colors">
                 Accessibility
               </Link>
             </div>

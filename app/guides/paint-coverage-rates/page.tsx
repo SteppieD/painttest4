@@ -96,8 +96,8 @@ export default function PaintCoverageRatesGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -116,7 +116,7 @@ export default function PaintCoverageRatesGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Paint Coverage Rates by Surface Type
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master accurate paint calculations with professional coverage rates for every surface. 
                 Never over-order or run short again. Part of our comprehensive 
                 <Link href="/guides/paint-calculator" className="text-blue-400 hover:text-blue-300"> paint calculator guide</Link>.
@@ -146,7 +146,7 @@ export default function PaintCoverageRatesGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">How Many Sq Ft Does a Gallon Cover?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   A gallon of paint typically covers 350-400 sq ft on smooth surfaces with one coat. 
                   Coverage varies by surface: Smooth drywall (350-400 sq ft), textured walls (250-350 sq ft), 
                   brick/masonry (150-200 sq ft), wood siding (300-350 sq ft), and stucco (200-250 sq ft). 
@@ -168,14 +168,14 @@ export default function PaintCoverageRatesGuide() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700 bg-gray-900/50">
-                        <th className="text-left py-4 px-6 text-gray-400">Surface Type</th>
-                        <th className="text-center py-4 px-4 text-gray-400">1st Coat<br/><span className="text-xs">(sq ft/gal)</span></th>
-                        <th className="text-center py-4 px-4 text-gray-400">2nd Coat<br/><span className="text-xs">(sq ft/gal)</span></th>
-                        <th className="text-center py-4 px-4 text-gray-400">Primer<br/><span className="text-xs">(sq ft/gal)</span></th>
-                        <th className="text-center py-4 px-4 text-gray-400">Loss Factor</th>
+                        <th className="text-left py-4 px-6 text-gray-200">Surface Type</th>
+                        <th className="text-center py-4 px-4 text-gray-200">1st Coat<br/><span className="text-base">(sq ft/gal)</span></th>
+                        <th className="text-center py-4 px-4 text-gray-200">2nd Coat<br/><span className="text-base">(sq ft/gal)</span></th>
+                        <th className="text-center py-4 px-4 text-gray-200">Primer<br/><span className="text-base">(sq ft/gal)</span></th>
+                        <th className="text-center py-4 px-4 text-gray-200">Loss Factor</th>
                       </tr>
                     </thead>
-                    <tbody className="text-gray-300">
+                    <tbody className="text-gray-100">
                       <tr className="border-b border-gray-800 hover:bg-gray-800/20">
                         <td className="py-4 px-6 font-medium">Smooth Drywall (New)</td>
                         <td className="text-center text-green-400">400-450</td>
@@ -187,7 +187,7 @@ export default function PaintCoverageRatesGuide() {
                         <td className="py-4 px-6 font-medium">Smooth Drywall (Previously Painted)</td>
                         <td className="text-center text-green-400">350-400</td>
                         <td className="text-center text-green-400">400-450</td>
-                        <td className="text-center text-gray-500">N/A</td>
+                        <td className="text-center text-gray-200">N/A</td>
                         <td className="text-center text-yellow-400">5-10%</td>
                       </tr>
                       <tr className="border-b border-gray-800 hover:bg-gray-800/20">
@@ -253,7 +253,7 @@ export default function PaintCoverageRatesGuide() {
                 <div className="p-6 bg-indigo-500/10 border-t border-gray-700">
                   <div className="flex items-start gap-3">
                     <Info className="h-5 w-5 text-indigo-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-gray-300">
+                    <p className="text-base text-gray-100">
                       <strong className="text-indigo-400">Pro Tip:</strong> Always order 10-15% extra paint beyond calculated needs. 
                       This accounts for touch-ups, future repairs, and ensures color matching from the same batch.
                     </p>
@@ -273,12 +273,12 @@ export default function PaintCoverageRatesGuide() {
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <div className="text-center mb-4">
-                    <Droplets className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                    <Droplets className="h-12 w-12 text-gray-200 mx-auto mb-3" />
                     <h3 className="text-xl font-semibold text-white">Economy Paint</h3>
-                    <p className="text-3xl font-bold text-gray-400 mt-2">300-350</p>
-                    <p className="text-sm text-gray-500">sq ft/gallon</p>
+                    <p className="text-3xl font-bold text-gray-200 mt-2">300-350</p>
+                    <p className="text-base text-gray-200">sq ft/gallon</p>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Lower solids content (25-35%)</li>
                     <li>• More coats needed</li>
                     <li>• Higher overall cost</li>
@@ -291,9 +291,9 @@ export default function PaintCoverageRatesGuide() {
                     <Droplets className="h-12 w-12 text-indigo-400 mx-auto mb-3" />
                     <h3 className="text-xl font-semibold text-white">Premium Paint</h3>
                     <p className="text-3xl font-bold text-indigo-400 mt-2">400-450</p>
-                    <p className="text-sm text-gray-400">sq ft/gallon</p>
+                    <p className="text-base text-gray-200">sq ft/gallon</p>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li className="text-green-400">• High solids content (35-45%)</li>
                     <li className="text-green-400">• Better hide in 1 coat</li>
                     <li className="text-green-400">• Lower total cost</li>
@@ -306,9 +306,9 @@ export default function PaintCoverageRatesGuide() {
                     <Droplets className="h-12 w-12 text-purple-400 mx-auto mb-3" />
                     <h3 className="text-xl font-semibold text-white">Specialty Paint</h3>
                     <p className="text-3xl font-bold text-purple-400 mt-2">Varies</p>
-                    <p className="text-sm text-gray-500">by type</p>
+                    <p className="text-base text-gray-200">by type</p>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-base text-gray-100">
                     <li>• Elastomeric: 50-100 sq ft/gal</li>
                     <li>• Anti-mold: 350-400 sq ft/gal</li>
                     <li>• Textured: 150-200 sq ft/gal</li>
@@ -338,13 +338,13 @@ export default function PaintCoverageRatesGuide() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-xl font-semibold text-violet-400 mb-4">Example: 2,000 sq ft Room</h3>
-                    <div className="bg-gray-900/50 rounded p-4 font-mono text-sm space-y-2">
-                      <p className="text-gray-400">{"// Smooth walls, 2 coats"}</p>
+                    <div className="bg-gray-900/50 rounded p-4 font-mono text-base space-y-2">
+                      <p className="text-gray-200">{"// Smooth walls, 2 coats"}</p>
                       <p className="text-green-400">Area: 2,000 sq ft</p>
                       <p className="text-green-400">Coverage: 400 sq ft/gal</p>
                       <p className="text-green-400">Coats: 2</p>
                       <p className="text-green-400">Loss: 10%</p>
-                      <p className="text-gray-400">{"// Calculation"}</p>
+                      <p className="text-gray-200">{"// Calculation"}</p>
                       <p className="text-yellow-400">(2,000 ÷ 400) × 2 × 1.1</p>
                       <p className="text-cyan-400 font-bold">= 11 gallons needed</p>
                     </div>
@@ -352,26 +352,26 @@ export default function PaintCoverageRatesGuide() {
 
                   <div>
                     <h3 className="text-xl font-semibold text-indigo-400 mb-4">Adjustment Factors</h3>
-                    <ul className="space-y-3 text-gray-300">
+                    <ul className="space-y-3 text-gray-100">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <div>
                           <strong>Color change:</strong> Add 10-20%
-                          <p className="text-sm text-gray-400">Dark to light needs more</p>
+                          <p className="text-base text-gray-200">Dark to light needs more</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <div>
                           <strong>Porosity:</strong> Add 15-25%
-                          <p className="text-sm text-gray-400">New drywall, bare wood</p>
+                          <p className="text-base text-gray-200">New drywall, bare wood</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                         <div>
                           <strong>Application method:</strong>
-                          <p className="text-sm text-gray-400">Spray: -10%, Brush: +10%</p>
+                          <p className="text-base text-gray-200">Spray: -10%, Brush: +10%</p>
                         </div>
                       </li>
                     </ul>
@@ -395,7 +395,7 @@ export default function PaintCoverageRatesGuide() {
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-indigo-400 font-semibold mb-2">Ceilings</h4>
-                      <ul className="text-sm text-gray-300 space-y-1">
+                      <ul className="text-base text-gray-100 space-y-1">
                         <li>• Flat paint: 400-450 sq ft/gal</li>
                         <li>• Usually needs only 1 coat</li>
                         <li>• Add 20% for popcorn texture</li>
@@ -403,7 +403,7 @@ export default function PaintCoverageRatesGuide() {
                     </div>
                     <div>
                       <h4 className="text-indigo-400 font-semibold mb-2">Trim & Doors</h4>
-                      <ul className="text-sm text-gray-300 space-y-1">
+                      <ul className="text-base text-gray-100 space-y-1">
                         <li>• Coverage: 350-400 sq ft/gal</li>
                         <li>• Multiple thin coats best</li>
                         <li>• Factor in both sides of doors</li>
@@ -418,7 +418,7 @@ export default function PaintCoverageRatesGuide() {
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-green-400 font-semibold mb-2">Weather Impact</h4>
-                      <ul className="text-sm text-gray-300 space-y-1">
+                      <ul className="text-base text-gray-100 space-y-1">
                         <li>• Wind overspray: +10-15%</li>
                         <li>• Hot surfaces: +5-10%</li>
                         <li>• High humidity: Better coverage</li>
@@ -426,7 +426,7 @@ export default function PaintCoverageRatesGuide() {
                     </div>
                     <div>
                       <h4 className="text-green-400 font-semibold mb-2">Surface Prep</h4>
-                      <ul className="text-sm text-gray-300 space-y-1">
+                      <ul className="text-base text-gray-100 space-y-1">
                         <li>• Pressure washed: -5% coverage</li>
                         <li>• Chalky surface: +20-30%</li>
                         <li>• Primed properly: Standard rates</li>
@@ -448,7 +448,7 @@ export default function PaintCoverageRatesGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Best Practices</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
                       <span>Measure actual surface area, not floor space</span>
@@ -474,7 +474,7 @@ export default function PaintCoverageRatesGuide() {
 
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
                   <h3 className="text-xl font-semibold text-red-400 mb-4">Common Mistakes</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
                       <span>Using manufacturer's max coverage</span>
@@ -510,7 +510,7 @@ export default function PaintCoverageRatesGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Calculate Paint Needs Instantly
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Stop guessing paint quantities. Our calculator uses real-world coverage rates and 
                   automatically adjusts for surface type, texture, and paint quality.
                 </p>
@@ -545,7 +545,7 @@ export default function PaintCoverageRatesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Paint Calculator Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Complete calculation system
                     </p>
                   </Card>
@@ -557,7 +557,7 @@ export default function PaintCoverageRatesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Quantity Calculations
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Advanced formulas & methods
                     </p>
                   </Card>
@@ -569,7 +569,7 @@ export default function PaintCoverageRatesGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Measurement Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Accurate measuring techniques
                     </p>
                   </Card>

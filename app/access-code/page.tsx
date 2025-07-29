@@ -129,7 +129,7 @@ export default function AccessCodePage() {
         <div className="mb-8">
           <Link 
             href="/" 
-            className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center text-base text-gray-600 hover:text-gray-900 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />
             Back to home
@@ -179,13 +179,13 @@ export default function AccessCodePage() {
                   required
                 />
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-500">
+                  <p className="text-base text-gray-200">
                     Your unique code provided during registration
                   </p>
                   <button
                     type="button"
                     onClick={() => setShowForgotCode(true)}
-                    className="text-sm text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                    className="text-base text-blue-600 hover:text-blue-700 hover:underline transition-colors"
                   >
                     Forgot your code?
                   </button>
@@ -217,7 +217,7 @@ export default function AccessCodePage() {
 
 
             <div className="text-center pt-4 border-t">
-              <p className="text-sm text-gray-600">
+              <p className="text-base text-gray-600">
                 Don&apos;t have an account?{' '}
                 <Link href="/trial-signup" className="font-medium text-blue-600 hover:underline">
                   Start free trial
@@ -233,19 +233,19 @@ export default function AccessCodePage() {
             <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
               <Shield className="h-5 w-5 text-blue-400" />
             </div>
-            <p className="text-xs text-medium-contrast">Secure Access</p>
+            <p className="text-base text-medium-contrast">Secure Access</p>
           </div>
           <div className="space-y-2">
             <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
               <Clock className="h-5 w-5 text-emerald-400" />
             </div>
-            <p className="text-xs text-medium-contrast">Quick Login</p>
+            <p className="text-base text-medium-contrast">Quick Login</p>
           </div>
           <div className="space-y-2">
             <div className="mx-auto w-10 h-10 glass-card rounded-full flex items-center justify-center">
               <User className="h-5 w-5 text-purple-400" />
             </div>
-            <p className="text-xs text-medium-contrast">Multi-Company</p>
+            <p className="text-base text-medium-contrast">Multi-Company</p>
           </div>
         </div>
 

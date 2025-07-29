@@ -159,7 +159,7 @@ export default function GuidesIndex() {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Painting Contractor Guides & Resources
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Everything you need to know about estimating, pricing, and growing your painting business. 
                 Written by industry experts, used by 2,000+ contractors.
               </p>
@@ -168,22 +168,22 @@ export default function GuidesIndex() {
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <BookOpen className="h-8 w-8 text-blue-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white">12</div>
-                  <div className="text-sm text-gray-400">In-depth guides</div>
+                  <div className="text-base text-gray-200">In-depth guides</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <Clock className="h-8 w-8 text-green-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white">3 hrs</div>
-                  <div className="text-sm text-gray-400">Of content</div>
+                  <div className="text-base text-gray-200">Of content</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <Users className="h-8 w-8 text-purple-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white">50k+</div>
-                  <div className="text-sm text-gray-400">Monthly readers</div>
+                  <div className="text-base text-gray-200">Monthly readers</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-lg p-4">
                   <Award className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white">100%</div>
-                  <div className="text-sm text-gray-400">Free forever</div>
+                  <div className="text-base text-gray-200">Free forever</div>
                 </div>
               </div>
             </div>
@@ -199,11 +199,11 @@ export default function GuidesIndex() {
                 {quickResources.map((resource) => (
                   <Link key={resource.title} href={resource.href} className="group">
                     <Card className="bg-gray-800/30 border-gray-700 p-4 hover:border-blue-500/50 transition-all text-center">
-                      <resource.icon className="h-8 w-8 text-gray-400 group-hover:text-blue-400 mx-auto mb-2" />
-                      <h3 className="font-semibold text-white group-hover:text-blue-400 text-sm">
+                      <resource.icon className="h-8 w-8 text-gray-200 group-hover:text-blue-400 mx-auto mb-2" />
+                      <h3 className="font-semibold text-white group-hover:text-blue-400 text-base">
                         {resource.title}
                       </h3>
-                      <p className="text-xs text-gray-400 mt-1">{resource.description}</p>
+                      <p className="text-base text-gray-200 mt-1">{resource.description}</p>
                     </Card>
                   </Link>
                 ))}
@@ -220,7 +220,7 @@ export default function GuidesIndex() {
                 <div key={category.title} className={categoryIndex > 0 ? 'mt-16' : ''}>
                   <div className="mb-8">
                     <h2 className="text-2xl font-bold text-white mb-2">{category.title}</h2>
-                    <p className="text-gray-400">{category.description}</p>
+                    <p className="text-gray-200">{category.description}</p>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
@@ -235,15 +235,15 @@ export default function GuidesIndex() {
                               <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 mb-2">
                                 {guide.title}
                               </h3>
-                              <p className="text-gray-400 text-sm mb-3">
+                              <p className="text-gray-200 text-base mb-3">
                                 {guide.description}
                               </p>
-                              <div className="flex items-center gap-4 text-xs">
-                                <span className="text-gray-500">
+                              <div className="flex items-center gap-4 text-base">
+                                <span className="text-gray-200">
                                   <Clock className="h-3 w-3 inline mr-1" />
                                   {guide.readTime}
                                 </span>
-                                <Badge variant="outline" className="border-gray-600 text-gray-400">
+                                <Badge variant="outline" className="border-gray-600 text-gray-200">
                                   {guide.level}
                                 </Badge>
                               </div>
@@ -280,11 +280,11 @@ export default function GuidesIndex() {
                       How to Quote Painting Jobs
                     </Link>
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-gray-200 text-base mb-4">
                     Step-by-step guide to creating quotes that win jobs. Includes pricing formulas, 
                     templates, and pro tips.
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 text-base text-gray-200">
                     <span>25k+ reads</span>
                     <span>•</span>
                     <span>4.9★ rating</span>
@@ -303,11 +303,11 @@ export default function GuidesIndex() {
                       Paint Calculator & Tools
                     </Link>
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-gray-200 text-base mb-4">
                     Free calculators for paint coverage, material costs, and labor hours. 
                     Used by contractors daily.
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 text-base text-gray-200">
                     <span>18k+ uses</span>
                     <span>•</span>
                     <span>Saves 30 min</span>
@@ -326,11 +326,11 @@ export default function GuidesIndex() {
                       Starting a Painting Business
                     </Link>
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-gray-200 text-base mb-4">
                     Everything from startup to $1M+ revenue. Legal setup, pricing, hiring, 
                     and scaling strategies.
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 text-base text-gray-200">
                     <span>15k+ reads</span>
                     <span>•</span>
                     <span>20 min read</span>
@@ -349,7 +349,7 @@ export default function GuidesIndex() {
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Get New Guides & Tips Weekly
                 </h2>
-                <p className="text-xl text-gray-300 mb-8">
+                <p className="text-xl text-gray-100 mb-8">
                   Join 5,000+ contractors getting actionable advice to grow their business.
                 </p>
                 
@@ -367,7 +367,7 @@ export default function GuidesIndex() {
                   </button>
                 </form>
                 
-                <p className="text-sm text-gray-400 mt-4">
+                <p className="text-base text-gray-200 mt-4">
                   No spam, unsubscribe anytime. We share tips, not sales pitches.
                 </p>
               </Card>
@@ -386,17 +386,17 @@ export default function GuidesIndex() {
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">By Business Stage</h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/guides/painting-business-guide#getting-started" className="text-gray-300 hover:text-white">
+                      <Link href="/guides/painting-business-guide#getting-started" className="text-gray-100 hover:text-white">
                         → Just Starting Out (0-$100k)
                       </Link>
                     </li>
                     <li>
-                      <Link href="/guides/painting-business-guide#growing" className="text-gray-300 hover:text-white">
+                      <Link href="/guides/painting-business-guide#growing" className="text-gray-100 hover:text-white">
                         → Growing Your Business ($100-500k)
                       </Link>
                     </li>
                     <li>
-                      <Link href="/guides/painting-business-guide#scaling" className="text-gray-300 hover:text-white">
+                      <Link href="/guides/painting-business-guide#scaling" className="text-gray-100 hover:text-white">
                         → Scaling to $1M+
                       </Link>
                     </li>
@@ -407,17 +407,17 @@ export default function GuidesIndex() {
                   <h3 className="text-xl font-semibold text-purple-400 mb-4">By Topic</h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/guides/how-to-quote-painting-jobs#pricing" className="text-gray-300 hover:text-white">
+                      <Link href="/guides/how-to-quote-painting-jobs#pricing" className="text-gray-100 hover:text-white">
                         → Pricing Strategies
                       </Link>
                     </li>
                     <li>
-                      <Link href="/guides/painting-estimate-software" className="text-gray-300 hover:text-white">
+                      <Link href="/guides/painting-estimate-software" className="text-gray-100 hover:text-white">
                         → Technology & Software
                       </Link>
                     </li>
                     <li>
-                      <Link href="/guides/paint-calculator" className="text-gray-300 hover:text-white">
+                      <Link href="/guides/paint-calculator" className="text-gray-100 hover:text-white">
                         → Estimation Tools
                       </Link>
                     </li>

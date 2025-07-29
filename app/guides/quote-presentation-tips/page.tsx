@@ -96,8 +96,8 @@ export default function QuotePresentationTipsGuide() {
           
           <div className="relative z-10 container mx-auto px-4">
             {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm">
-              <ol className="flex items-center space-x-2 text-gray-400">
+            <nav className="mb-8 text-base">
+              <ol className="flex items-center space-x-2 text-gray-200">
                 <li><Link href="/" className="hover:text-white">Home</Link></li>
                 <li>/</li>
                 <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
@@ -116,7 +116,7 @@ export default function QuotePresentationTipsGuide() {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Quote Presentation Tips
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-100 mb-8">
                 Master the art of presenting painting quotes that convert. Learn professional techniques, 
                 communication strategies, and closing methods. Part of our comprehensive 
                 <Link href="/guides/how-to-quote-painting-jobs" className="text-blue-400 hover:text-blue-300"> painting quote guide</Link>.
@@ -146,7 +146,7 @@ export default function QuotePresentationTipsGuide() {
             <div className="max-w-4xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700 p-6">
                 <h2 className="text-2xl font-bold text-white mb-4">How Should You Present a Painting Quote?</h2>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-gray-100">
                   Present painting quotes in person when possible. Use a professional folder with your branding, 
                   walk through each section explaining value not just price, start with the scope of work before 
                   revealing price, use visual aids like color samples and photos, and always offer three options 
@@ -173,7 +173,7 @@ export default function QuotePresentationTipsGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Advantages</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• 65% close rate average</li>
                             <li>• Build personal connection</li>
                             <li>• Read body language</li>
@@ -183,7 +183,7 @@ export default function QuotePresentationTipsGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-blue-400 mb-3">Best Practices</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Schedule within 24-48 hours</li>
                             <li>• Bring professional materials</li>
                             <li>• Dress professionally</li>
@@ -205,7 +205,7 @@ export default function QuotePresentationTipsGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-blue-400 mb-3">When to Use</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Customer prefers remote</li>
                             <li>• 45% close rate average</li>
                             <li>• Good for busy clients</li>
@@ -215,7 +215,7 @@ export default function QuotePresentationTipsGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-yellow-400 mb-3">Video Tips</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Test technology beforehand</li>
                             <li>• Professional background</li>
                             <li>• Good lighting essential</li>
@@ -237,7 +237,7 @@ export default function QuotePresentationTipsGuide() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-purple-400 mb-3">Reality Check</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• 25% close rate average</li>
                             <li>• Easy to ignore/delay</li>
                             <li>• Price shopping risk</li>
@@ -247,7 +247,7 @@ export default function QuotePresentationTipsGuide() {
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-green-400 mb-3">Optimization Tips</h4>
-                          <ul className="space-y-2 text-gray-300">
+                          <ul className="space-y-2 text-gray-100">
                             <li>• Professional PDF design</li>
                             <li>• Video walkthrough link</li>
                             <li>• Clear call-to-action</li>
@@ -276,7 +276,7 @@ export default function QuotePresentationTipsGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Opening & Rapport (3-5 min)</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Thank them for their time</li>
                         <li>• Recap their project goals</li>
                         <li>• Set agenda for meeting</li>
@@ -289,7 +289,7 @@ export default function QuotePresentationTipsGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Company Credentials (2-3 min)</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Years in business</li>
                         <li>• Insurance and licensing</li>
                         <li>• Recent similar projects</li>
@@ -302,7 +302,7 @@ export default function QuotePresentationTipsGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Scope Review (5-7 min)</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Walk through each area</li>
                         <li>• Explain prep work needed</li>
                         <li>• Discuss color choices</li>
@@ -315,7 +315,7 @@ export default function QuotePresentationTipsGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">4</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Investment Options (5-7 min)</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• Present 3 options (always)</li>
                         <li>• Start with premium</li>
                         <li>• Explain differences clearly</li>
@@ -328,7 +328,7 @@ export default function QuotePresentationTipsGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">5</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Questions & Close (5-10 min)</h4>
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-gray-100">
                         <li>• "What questions do you have?"</li>
                         <li>• Address concerns</li>
                         <li>• Assumptive close</li>
@@ -343,15 +343,15 @@ export default function QuotePresentationTipsGuide() {
                   <div className="grid md:grid-cols-3 gap-4 text-center">
                     <div>
                       <p className="text-2xl font-bold text-white">30 min</p>
-                      <p className="text-sm text-gray-400">Ideal total time</p>
+                      <p className="text-base text-gray-200">Ideal total time</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-white">70%</p>
-                      <p className="text-sm text-gray-400">You listening</p>
+                      <p className="text-base text-gray-200">You listening</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-white">30%</p>
-                      <p className="text-sm text-gray-400">You talking</p>
+                      <p className="text-base text-gray-200">You talking</p>
                     </div>
                   </div>
                 </div>
@@ -369,7 +369,7 @@ export default function QuotePresentationTipsGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Physical Materials</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                       <span>Professional folder with logo</span>
@@ -395,7 +395,7 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Digital Elements</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5" />
                       <span>Interactive PDF quote</span>
@@ -425,7 +425,7 @@ export default function QuotePresentationTipsGuide() {
                 <div className="grid md:grid-cols-3 gap-4">
                   <div>
                     <h4 className="text-blue-400 font-semibold mb-2">Header Section</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <ul className="text-base text-gray-100 space-y-1">
                       <li>• Your logo & branding</li>
                       <li>• Quote number & date</li>
                       <li>• Customer information</li>
@@ -434,7 +434,7 @@ export default function QuotePresentationTipsGuide() {
                   </div>
                   <div>
                     <h4 className="text-indigo-400 font-semibold mb-2">Body Content</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <ul className="text-base text-gray-100 space-y-1">
                       <li>• Detailed scope of work</li>
                       <li>• Materials specified</li>
                       <li>• Timeline/schedule</li>
@@ -443,7 +443,7 @@ export default function QuotePresentationTipsGuide() {
                   </div>
                   <div>
                     <h4 className="text-purple-400 font-semibold mb-2">Footer Elements</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <ul className="text-base text-gray-100 space-y-1">
                       <li>• Terms & conditions</li>
                       <li>• Warranty information</li>
                       <li>• Insurance details</li>
@@ -465,7 +465,7 @@ export default function QuotePresentationTipsGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Positive Body Language</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <Eye className="h-5 w-5 text-green-400 mt-0.5" />
                       <span>Maintain appropriate eye contact</span>
@@ -491,7 +491,7 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Power Phrases</h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-gray-100">
                     <li>• "Based on what you've told me..."</li>
                     <li>• "Many of your neighbors chose..."</li>
                     <li>• "To protect your investment..."</li>
@@ -508,7 +508,7 @@ export default function QuotePresentationTipsGuide() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-green-400 font-semibold mb-3">Buying Signals</h4>
-                    <ul className="space-y-2 text-gray-300 text-sm">
+                    <ul className="space-y-2 text-gray-100 text-base">
                       <li>• Asking about timing/schedule</li>
                       <li>• Discussing payment options</li>
                       <li>• Mentioning color preferences</li>
@@ -518,7 +518,7 @@ export default function QuotePresentationTipsGuide() {
                   </div>
                   <div>
                     <h4 className="text-red-400 font-semibold mb-3">Resistance Signals</h4>
-                    <ul className="space-y-2 text-gray-300 text-sm">
+                    <ul className="space-y-2 text-gray-100 text-base">
                       <li>• Arms crossed, leaning back</li>
                       <li>• "We need to think about it"</li>
                       <li>• Focusing only on price</li>
@@ -541,8 +541,8 @@ export default function QuotePresentationTipsGuide() {
               <div className="space-y-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-yellow-400 mb-3">"Your price is too high"</h3>
-                  <p className="text-gray-300 mb-3">Response framework:</p>
-                  <ul className="space-y-2 text-gray-300">
+                  <p className="text-gray-100 mb-3">Response framework:</p>
+                  <ul className="space-y-2 text-gray-100">
                     <li>1. "I understand price is important. Can you help me understand what you were expecting?"</li>
                     <li>2. Reframe to value: "Let me show you what's included that others might skip..."</li>
                     <li>3. Offer middle option: "Would the standard package work better for your budget?"</li>
@@ -551,8 +551,8 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-blue-400 mb-3">"We need to get other quotes"</h3>
-                  <p className="text-gray-300 mb-3">Response framework:</p>
-                  <ul className="space-y-2 text-gray-300">
+                  <p className="text-gray-100 mb-3">Response framework:</p>
+                  <ul className="space-y-2 text-gray-100">
                     <li>1. "That's smart - you should compare. What will you be looking for in other quotes?"</li>
                     <li>2. "While you're comparing, make sure they include [unique value you offer]"</li>
                     <li>3. "I can hold this price for 7 days. After that, material costs may change."</li>
@@ -561,8 +561,8 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-purple-400 mb-3">"We need to think about it"</h3>
-                  <p className="text-gray-300 mb-3">Response framework:</p>
-                  <ul className="space-y-2 text-gray-300">
+                  <p className="text-gray-100 mb-3">Response framework:</p>
+                  <ul className="space-y-2 text-gray-100">
                     <li>1. "Of course! What specific aspects would you like to think through?"</li>
                     <li>2. Address specific concerns they mention</li>
                     <li>3. "When would be a good time for me to follow up? I want to make sure your questions are answered."</li>
@@ -582,8 +582,8 @@ export default function QuotePresentationTipsGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Assumptive Close</h3>
-                  <p className="text-gray-300 mb-3">Act as if they've already decided:</p>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <p className="text-gray-100 mb-3">Act as if they've already decided:</p>
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• "Which option works best for you?"</li>
                     <li>• "When would you like us to start?"</li>
                     <li>• "Would morning or afternoon work better?"</li>
@@ -593,8 +593,8 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-blue-500/10 border-blue-500/30 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Alternative Close</h3>
-                  <p className="text-gray-300 mb-3">Give them control with limits:</p>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <p className="text-gray-100 mb-3">Give them control with limits:</p>
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• "Would April 15th or 22nd work better?"</li>
                     <li>• "Do you prefer the 5 or 7-year warranty?"</li>
                     <li>• "Will you use our financing or pay upfront?"</li>
@@ -604,8 +604,8 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-purple-500/10 border-purple-500/30 p-6">
                   <h3 className="text-xl font-semibold text-purple-400 mb-4">Urgency Close</h3>
-                  <p className="text-gray-300 mb-3">Create ethical urgency:</p>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <p className="text-gray-100 mb-3">Create ethical urgency:</p>
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• "This price is good for 7 days"</li>
                     <li>• "We have 2 spots left this month"</li>
                     <li>• "Spring schedule is filling fast"</li>
@@ -615,8 +615,8 @@ export default function QuotePresentationTipsGuide() {
 
                 <Card className="bg-yellow-500/10 border-yellow-500/30 p-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">Summary Close</h3>
-                  <p className="text-gray-300 mb-3">Recap value before asking:</p>
-                  <ul className="space-y-2 text-gray-300 text-sm">
+                  <p className="text-gray-100 mb-3">Recap value before asking:</p>
+                  <ul className="space-y-2 text-gray-100 text-base">
                     <li>• Summarize all included value</li>
                     <li>• Remind them of their goals</li>
                     <li>• Highlight unique benefits</li>
@@ -636,7 +636,7 @@ export default function QuotePresentationTipsGuide() {
                 <h2 className="text-2xl font-bold text-white mb-4">
                   Create Professional Quotes That Convert
                 </h2>
-                <p className="text-lg text-gray-300 mb-6">
+                <p className="text-lg text-gray-100 mb-6">
                   Our software creates stunning, branded quotes with built-in psychology that helps you present 
                   like a pro. Interactive options, digital signatures, and follow-up automation included.
                 </p>
@@ -671,7 +671,7 @@ export default function QuotePresentationTipsGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 mb-2">
                       Complete Quoting Guide
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Master all aspects of quoting
                     </p>
                   </Card>
@@ -683,7 +683,7 @@ export default function QuotePresentationTipsGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 mb-2">
                       Pricing Psychology
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Price for profit and value
                     </p>
                   </Card>
@@ -695,7 +695,7 @@ export default function QuotePresentationTipsGuide() {
                     <h3 className="text-lg font-semibold text-white group-hover:text-green-400 mb-2">
                       Follow-up Strategies
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-base text-gray-200">
                       Close deals after presentation
                     </p>
                   </Card>

@@ -96,7 +96,7 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
           <Calculator className="h-5 w-5" />
           Quick Paint Estimate Calculator
         </CardTitle>
-        <CardDescription className="text-gray-300">
+        <CardDescription className="text-gray-100">
           Get instant estimates for your painting projects
         </CardDescription>
       </CardHeader>
@@ -130,7 +130,7 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
                 value={roomSize}
                 onChange={(e) => setRoomSize(e.target.value)}
                 placeholder="Enter square footage"
-                className="glass-card border-white/20 text-white placeholder:text-gray-400"
+                className="glass-card border-white/20 text-white placeholder:text-gray-200"
               />
             </div>
           )}
@@ -208,23 +208,23 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
             
             <div className="grid gap-3">
               {/* Room Info */}
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Room Type:</span>
+              <div className="flex justify-between text-base">
+                <span className="text-gray-200">Room Type:</span>
                 <span className="text-white font-medium">{results.roomType}</span>
               </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Total Square Footage:</span>
+              <div className="flex justify-between text-base">
+                <span className="text-gray-200">Total Square Footage:</span>
                 <span className="text-white font-medium">{results.sqft} sq ft</span>
               </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Wall Area:</span>
+              <div className="flex justify-between text-base">
+                <span className="text-gray-200">Wall Area:</span>
                 <span className="text-white font-medium">{results.wallArea} sq ft</span>
               </div>
 
               <div className="border-t border-white/10 pt-3 space-y-2">
                 {/* Materials */}
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400 flex items-center gap-1">
+                <div className="flex justify-between text-base">
+                  <span className="text-gray-200 flex items-center gap-1">
                     <Paintbrush className="h-4 w-4" />
                     Paint ({results.gallonsNeeded} gallons):
                   </span>
@@ -232,8 +232,8 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
                 </div>
                 
                 {/* Labor */}
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400 flex items-center gap-1">
+                <div className="flex justify-between text-base">
+                  <span className="text-gray-200 flex items-center gap-1">
                     <Clock className="h-4 w-4" />
                     Labor ({results.hoursNeeded} hours):
                   </span>
@@ -241,23 +241,23 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
                 </div>
                 
                 {/* Materials */}
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Materials & Supplies:</span>
+                <div className="flex justify-between text-base">
+                  <span className="text-gray-200">Materials & Supplies:</span>
                   <span className="text-white font-medium">${results.materialsCost}</span>
                 </div>
               </div>
 
               <div className="border-t border-white/10 pt-3 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Subtotal:</span>
+                <div className="flex justify-between text-base">
+                  <span className="text-gray-200">Subtotal:</span>
                   <span className="text-white">${results.subtotal}</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Overhead (20%):</span>
+                <div className="flex justify-between text-base">
+                  <span className="text-gray-200">Overhead (20%):</span>
                   <span className="text-white">${results.overhead}</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Profit (30%):</span>
+                <div className="flex justify-between text-base">
+                  <span className="text-gray-200">Profit (30%):</span>
                   <span className="text-white">${results.profit}</span>
                 </div>
               </div>
@@ -267,14 +267,14 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
                   <span className="text-lg font-semibold text-white">Total Estimate:</span>
                   <div className="text-right">
                     <span className="text-2xl font-bold text-emerald-400">${results.total}</span>
-                    <div className="text-sm text-gray-400">${results.pricePerSqft}/sq ft</div>
+                    <div className="text-base text-gray-200">${results.pricePerSqft}/sq ft</div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="mt-4 p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
-              <p className="text-sm text-gray-300 flex items-start gap-2">
+              <p className="text-base text-gray-100 flex items-start gap-2">
                 <Info className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
                 This is an estimate only. Actual costs may vary based on wall condition, 
                 prep work needed, trim complexity, and local market rates.

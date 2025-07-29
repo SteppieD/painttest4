@@ -15,7 +15,7 @@ export default function ChatOnboardingPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 flex items-center justify-center">
       <div className="text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-gray-400">Redirecting to setup...</p>
+        <p className="text-gray-200">Redirecting to setup...</p>
       </div>
     </div>
   )

@@ -34,11 +34,11 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
       />
       
       <nav aria-label="Breadcrumb" className={`py-4 ${className}`}>
-        <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
+        <ol className="flex items-center space-x-2 text-base text-gray-200">
           {items.map((item, index) => (
             <li key={index} className="flex items-center">
               {index > 0 && (
-                <ChevronRight className="w-4 h-4 mx-2 text-muted-foreground/60" />
+                <ChevronRight className="w-4 h-4 mx-2 text-gray-200/60" />
               )}
               {index === 0 && (
                 <Home className="w-4 h-4 mr-2" />
