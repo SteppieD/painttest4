@@ -131,7 +131,7 @@ export function AchievementNotification({ achievementId, onClose }: AchievementN
           transition={{ type: 'spring', duration: 0.5 }}
           className="fixed top-20 right-4 z-50 max-w-sm"
         >
-          <div className="glass-card p-6 border-2 border-white/20">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 border-2 border-white/20">
             <div className="flex items-start gap-4">
               <motion.div
                 initial={{ rotate: -180, scale: 0 }}

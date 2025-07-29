@@ -672,7 +672,7 @@ export default function PaintingContractorSoftwarePage() {
                 </p>
               </div>
               
-              <div className="relative aspect-video glass-card overflow-hidden">
+              <div className="relative aspect-video bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                   <div className="text-center">
                     <div className="w-20 h-20 rounded-full bg-gray-900/70 backdrop-blur flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform cursor-pointer">

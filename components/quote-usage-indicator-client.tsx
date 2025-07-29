@@ -64,7 +64,7 @@ export function QuoteUsageIndicator() {
   }
 
   return (
-    <div className="glass-card p-6 space-y-3">
+    <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-base font-medium text-white">Quote Usage</span>

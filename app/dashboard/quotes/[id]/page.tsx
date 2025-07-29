@@ -169,7 +169,7 @@ Your Painting Company
   if (!quote) {
     return (
       <div className="mx-auto max-w-4xl">
-        <div className="glass-card p-8 text-center">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8 text-center">
           <p className="text-white mb-4">Quote not found</p>
           <Link href="/dashboard/quotes">
             <Button className="btn-primary-modern">Back to Quotes</Button>
@@ -182,7 +182,7 @@ Your Painting Company
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-20 md:pb-6">
       {/* Header */}
-      <div className="glass-card p-6">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <Link href="/dashboard/quotes">
@@ -246,7 +246,7 @@ Your Painting Company
       </div>
 
       {/* Customer Information */}
-      <div className="glass-card p-6">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
         <div className="border-b border-white/10 pb-4 mb-4">
           <h2 className="text-lg font-semibold text-white">Customer Information</h2>
         </div>
@@ -271,7 +271,7 @@ Your Painting Company
       </div>
 
       {/* Project Details */}
-      <div className="glass-card p-6">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
         <div className="border-b border-white/10 pb-4 mb-4">
           <h2 className="text-lg font-semibold text-white">Project Details</h2>
           <p className="text-base text-gray-200 mt-1">
@@ -314,7 +314,7 @@ Your Painting Company
       </div>
 
       {/* Contractor Metrics */}
-      <div className="glass-card p-6 border-l-4 border-l-green-500">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 border-l-4 border-l-green-500">
         <div className="border-b border-white/10 pb-4 mb-4">
           <h2 className="text-lg font-semibold text-white">Contractor Metrics</h2>
           <p className="text-base text-gray-200 mt-1">Key numbers for your crew</p>
@@ -372,7 +372,7 @@ Your Painting Company
       </div>
 
       {/* Cost Breakdown */}
-      <div className="glass-card p-6">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
         <div className="border-b border-white/10 pb-4 mb-4">
           <h2 className="text-lg font-semibold text-white">Cost Breakdown</h2>
         </div>
@@ -409,7 +409,7 @@ Your Painting Company
       </div>
 
       {/* Materials List */}
-      <div className="glass-card p-6">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
         <div className="border-b border-white/10 pb-4 mb-4">
           <h2 className="text-lg font-semibold text-white">Materials Shopping List</h2>
           <p className="text-base text-gray-200 mt-1">What to buy for this job</p>
@@ -435,7 +435,7 @@ Your Painting Company
       </div>
 
       {/* Quick Actions for Contractors */}
-      <div className="glass-card p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
         <div className="border-b border-white/10 pb-4 mb-4">
           <h2 className="text-lg font-semibold text-white">Next Steps</h2>
           <p className="text-base text-gray-200 mt-1">

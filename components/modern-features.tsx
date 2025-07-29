@@ -135,7 +135,7 @@ export function ModernFeatures() {
                   <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-2xl blur-xl opacity-30`}></div>
                 )}
                 
-                <div className="relative glass-card p-8 h-full card-hover-modern">
+                <div className="relative bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8 h-full card-hover-modern">
                   {/* Icon */}
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform`}>
                     <Icon className="h-8 w-8 text-white" />
@@ -172,7 +172,7 @@ export function ModernFeatures() {
         </div>
 
         {/* Interactive Demo Section */}
-        <div className="glass-card p-2 max-w-5xl mx-auto">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-2 max-w-5xl mx-auto">
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8">
             {/* Demo Header */}
             <div className="flex items-center justify-between mb-8">
@@ -189,19 +189,19 @@ export function ModernFeatures() {
 
             {/* Metrics Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              <div className="glass-card p-4 text-center">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-blue-400">2.5m</div>
                 <div className="text-base text-gray-200">Avg Quote Time</div>
               </div>
-              <div className="glass-card p-4 text-center">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-purple-400">65%</div>
                 <div className="text-base text-gray-200">Win Rate</div>
               </div>
-              <div className="glass-card p-4 text-center">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-emerald-400">$8.4k</div>
                 <div className="text-base text-gray-200">Added Revenue</div>
               </div>
-              <div className="glass-card p-4 text-center">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-amber-400">4.9★</div>
                 <div className="text-base text-gray-200">Customer Rating</div>
               </div>
@@ -225,7 +225,7 @@ export function ModernFeatures() {
 
         {/* Bottom CTA */}
         <div className={`text-center mt-20 ${inView ? 'animate-in animate-delay-600' : 'opacity-0'}`}>
-          <div className="inline-flex flex-col lg:flex-row items-center gap-8 p-8 glass-card container-glass">
+          <div className="inline-flex flex-col lg:flex-row items-center gap-8 p-8 bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg container-glass">
             <div className="text-left">
               <div className="text-2xl font-bold text-white mb-2">Ready to solve all 6 problems?</div>
               <div className="text-gray-200">Join 2,000+ contractors winning more jobs</div>

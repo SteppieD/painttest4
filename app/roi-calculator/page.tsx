@@ -107,7 +107,7 @@ export default function ROICalculator() {
           <section className="relative py-16 md:py-24">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full glass-card border-emerald-500/20 px-4 py-2 text-base font-medium text-emerald-400">
+                <div className="mb-4 inline-flex items-center rounded-full bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-emerald-500/20 px-4 py-2 text-base font-medium text-emerald-400">
                   <Calculator className="mr-2 h-4 w-4" />
                   Free ROI Calculator
                 </div>
@@ -128,7 +128,7 @@ export default function ROICalculator() {
               <div className="mx-auto max-w-4xl">
                 <div className="grid gap-8 md:grid-cols-2">
                   {/* Input Form */}
-                  <div className="glass-card p-6 md:p-8">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 md:p-8">
                     <h2 className="text-2xl font-bold text-white">Your Current Business Metrics</h2>
                     <p className="mt-2 text-base text-gray-200">
                       Enter your current numbers to see your potential growth
@@ -214,7 +214,7 @@ export default function ROICalculator() {
                   {/* Results */}
                   <div className="space-y-6">
                     {!showResults ? (
-                      <div className="glass-card border-dashed border-white/20 p-8 text-center">
+                      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-dashed border-white/20 p-8 text-center">
                         <Calculator className="mx-auto h-12 w-12 text-gray-200" />
                         <h3 className="mt-4 text-lg font-semibold text-white">Your Results Will Appear Here</h3>
                         <p className="mt-2 text-base text-gray-200">
@@ -225,7 +225,7 @@ export default function ROICalculator() {
                     ) : (
                       <>
                         {/* ROI Summary */}
-                        <div className="glass-card border-emerald-500/20 p-6">
+                        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-emerald-500/20 p-6">
                           <h3 className="text-lg font-semibold text-white">Your ROI with PaintQuote Pro</h3>
                           <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             <div>
@@ -244,7 +244,7 @@ export default function ROICalculator() {
                         </div>
 
                         {/* Before/After Comparison */}
-                        <div className="glass-card p-6">
+                        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                           <h3 className="text-lg font-semibold text-white">Monthly Business Impact</h3>
                           
                           <div className="mt-6 space-y-6">
@@ -343,7 +343,7 @@ export default function ROICalculator() {
                         </div>
 
                         {/* Visual Chart */}
-                        <div className="glass-card p-6">
+                        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                           <h3 className="text-lg font-semibold text-white mb-4">Revenue Growth Projection</h3>
                           <div className="relative h-48">
                             <div className="absolute bottom-0 left-0 w-full h-full flex items-end justify-between gap-2">
@@ -383,7 +383,7 @@ export default function ROICalculator() {
                         </div>
 
                         {/* CTA */}
-                        <div className="glass-card border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-6 text-center">
+                        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-blue-500/10 p-6 text-center">
                           <TrendingUp className="mx-auto h-8 w-8 text-purple-400" />
                           <h3 className="mt-2 text-lg font-semibold text-white">
                             Ready to Grow Your Business?

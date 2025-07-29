@@ -15,7 +15,7 @@ export function AchievementDisplay() {
   const pointsForNextLevel = 500
   
   return (
-    <div className="glass-card p-6">
+    <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
       <div className="mb-6">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold text-white flex items-center gap-2">

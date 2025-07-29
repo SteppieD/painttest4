@@ -167,25 +167,25 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div className="glass-card border-red-500/20 p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-red-500/20 rounded-lg p-6">
               <div className="text-red-400 text-3xl font-bold mb-2">40-60%</div>
               <h3 className="text-white font-semibold mb-2">Lost to Slow Response</h3>
               <p className="text-gray-200 text-base">Jobs lost because quotes take too long to deliver</p>
             </div>
 
-            <div className="glass-card border-orange-500/20 p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-orange-500/20 rounded-lg p-6">
               <div className="text-orange-400 text-3xl font-bold mb-2">25-35%</div>
               <h3 className="text-white font-semibold mb-2">Unprofessional Look</h3>
               <p className="text-gray-200 text-base">Lost due to handwritten or basic quotes</p>
             </div>
 
-            <div className="glass-card border-yellow-500/20 p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-yellow-500/20 rounded-lg p-6">
               <div className="text-yellow-400 text-3xl font-bold mb-2">30-40%</div>
               <h3 className="text-white font-semibold mb-2">Poor Follow-up</h3>
               <p className="text-gray-200 text-base">Jobs lost from inconsistent communication</p>
             </div>
 
-            <div className="glass-card border-purple-500/20 p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-purple-500/20 rounded-lg p-6">
               <div className="text-purple-400 text-3xl font-bold mb-2">20-30%</div>
               <h3 className="text-white font-semibold mb-2">Pricing Errors</h3>
               <p className="text-gray-200 text-base">Lost from calculation mistakes</p>
@@ -228,7 +228,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="glass-card group hover:border-blue-500/50 transition-all p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-blue-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Zap className="h-6 w-6 text-blue-400" />
                 </div>
@@ -236,7 +236,7 @@ export default function Home() {
                 <p className="text-gray-200">Create accurate quotes in minutes with our intelligent assistant that understands painting projects</p>
             </div>
 
-            <div className="glass-card group hover:border-purple-500/50 transition-all p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-purple-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Smartphone className="h-6 w-6 text-purple-400" />
                 </div>
@@ -244,7 +244,7 @@ export default function Home() {
                 <p className="text-gray-200">Mobile-first design lets you create and deliver quotes before leaving the customer's property</p>
             </div>
 
-            <div className="glass-card group hover:border-green-500/50 transition-all p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-green-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Award className="h-6 w-6 text-green-400" />
                 </div>
@@ -252,7 +252,7 @@ export default function Home() {
                 <p className="text-gray-200">Branded, professional quotes that make you look like a $10M company</p>
             </div>
 
-            <div className="glass-card group hover:border-orange-500/50 transition-all p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-orange-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Clock className="h-6 w-6 text-orange-400" />
                 </div>
@@ -260,7 +260,7 @@ export default function Home() {
                 <p className="text-gray-200">Respond to leads while they're hot - quote delivery in minutes, not days</p>
             </div>
 
-            <div className="glass-card group hover:border-yellow-500/50 transition-all p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-yellow-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <BarChart3 className="h-6 w-6 text-yellow-400" />
                 </div>
@@ -268,7 +268,7 @@ export default function Home() {
                 <p className="text-gray-200">See which quotes convert and optimize your pricing for maximum profit</p>
             </div>
 
-            <div className="glass-card group hover:border-cyan-500/50 transition-all p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-cyan-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Shield className="h-6 w-6 text-cyan-400" />
                 </div>
@@ -282,7 +282,7 @@ export default function Home() {
       {/* ROI Calculator Section */}
       <section id="roi" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="glass-card max-w-4xl mx-auto p-8 md:p-12">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg max-w-4xl mx-auto p-8 md:p-12">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Your ROI with PaintQuote Pro
@@ -369,7 +369,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="glass-card p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -384,7 +384,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="glass-card p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -399,7 +399,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="glass-card p-6">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -431,7 +431,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Free Plan */}
-            <div className="glass-card p-8">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Free</h3>
                   <div className="text-4xl font-bold text-white mb-2">$0</div>
@@ -463,7 +463,7 @@ export default function Home() {
             </div>
 
             {/* Pro Plan */}
-            <div className="glass-card border-blue-500/50 relative p-8">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-blue-500/50 rounded-lg relative p-8">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
                   Most Popular
@@ -504,7 +504,7 @@ export default function Home() {
             </div>
 
             {/* Enterprise Plan */}
-            <div className="glass-card p-8">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Enterprise</h3>
                   <div className="text-4xl font-bold text-white mb-2">Custom</div>
@@ -543,7 +543,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="glass-card max-w-3xl mx-auto border-gradient p-8 md:p-12 text-center">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg max-w-3xl mx-auto border-gradient p-8 md:p-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Win More Jobs?
               </h2>

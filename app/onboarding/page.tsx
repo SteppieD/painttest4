@@ -262,7 +262,7 @@ export default function OnboardingPage() {
         </div>
 
         {/* Content */}
-        <div className="glass-card p-6">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
           {currentStep === 1 && (
             <>
               <div className="mb-6">

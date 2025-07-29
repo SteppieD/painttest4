@@ -184,7 +184,7 @@ export default function ContactFreeTrial() {
           {/* Features Section */}
           <section className="py-20">
             <div className="container mx-auto px-4">
-              <div className="glass-card p-12 max-w-4xl mx-auto">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-12 max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-center text-white mb-8">
                   Full Access to All Features During Your Trial
                 </h2>
@@ -304,7 +304,7 @@ export default function ContactFreeTrial() {
                 Trial Questions? We Have Answers
               </h2>
               <div className="max-w-3xl mx-auto space-y-6">
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     Do I need to enter credit card details?
                   </h3>
@@ -312,7 +312,7 @@ export default function ContactFreeTrial() {
                     No! Your trial is completely free with no credit card required. We only ask for payment if you decide to continue after 14 days.
                   </p>
                 </div>
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     What happens after my trial ends?
                   </h3>
@@ -320,7 +320,7 @@ export default function ContactFreeTrial() {
                     You&apos;ll receive a reminder email before your trial expires. If you don&apos;t choose a plan, your account will be paused but your data will be saved for 30 days.
                   </p>
                 </div>
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     Can I cancel during the trial?
                   </h3>
@@ -328,7 +328,7 @@ export default function ContactFreeTrial() {
                     Absolutely! You can cancel anytime during your trial with no charges or penalties. Simply let your trial expire or contact support.
                   </p>
                 </div>
-                <div className="glass-card p-6">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     Is support included in the trial?
                   </h3>

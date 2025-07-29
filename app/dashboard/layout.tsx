@@ -71,7 +71,7 @@ export default function DashboardLayout({
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-slate-900">
-        <div className="text-center glass-card p-8">
+        <div className="text-center bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
           <div className="relative w-16 h-16 mx-auto mb-4">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-100 animate-pulse"></div>
             <div className="relative w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full animate-spin"></div>
@@ -97,7 +97,7 @@ export default function DashboardLayout({
       {/* Layout Container */}
       <div className="relative z-10 min-h-screen flex">
         {/* Sidebar */}
-        <div className="hidden lg:flex top-0 left-0 h-full glass-card rounded-none border-r border-white/10 z-30 flex-col" style={{ position: 'fixed', width: '256px' }}>
+        <div className="hidden lg:flex top-0 left-0 h-full bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg rounded-none border-r border-white/10 z-30 flex-col" style={{ position: 'fixed', width: '256px' }}>
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
@@ -147,7 +147,7 @@ export default function DashboardLayout({
 
             {/* Bottom Section */}
             <div className="p-4 border-t border-white/10">
-              <div className="glass-card p-4 mb-4">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-4 mb-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="h-4 w-4 text-purple-400" />
                   <span className="text-base font-medium text-white">Pro Tip</span>
@@ -168,7 +168,7 @@ export default function DashboardLayout({
         {/* Main Content */}
         <main className="w-full lg:pl-64 min-h-screen flex flex-col">
           {/* Top Bar */}
-          <div className="h-20 glass-card rounded-none border-b border-white/10 px-8 flex items-center">
+          <div className="h-20 bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg rounded-none border-b border-white/10 px-8 flex items-center">
             <div className="flex items-center justify-between w-full">
               <h2 className="text-2xl font-bold text-white">
                 {navItems.find(item => item.href === pathname)?.label || 'Dashboard'}

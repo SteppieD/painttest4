@@ -120,7 +120,7 @@ export default function PaintingEstimateSoftware() {
                   </div>
                 </div>
                 <div className="relative">
-                  <div className="glass-card p-8">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between border-b border-white/10 pb-4">
                         <h3 className="text-lg font-semibold text-white">Quick Estimate Preview</h3>

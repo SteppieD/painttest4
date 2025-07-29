@@ -99,20 +99,20 @@ export default function TrialSignupPage() {
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
           </div>
           
-          <div className="w-full max-w-md glass-card border-blue-500/20 relative z-10 p-6">
+          <div className="w-full max-w-md bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-blue-500/20 relative z-10 p-6">
             <div className="text-center mb-6">
               <Mail className="w-12 h-12 text-blue-400 mx-auto mb-4" />
               <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Check Your Email!</h1>
               <p className="text-base text-gray-100 mt-1.5">We've sent you a magic link to sign in</p>
             </div>
             <div className="space-y-4">
-              <div className="glass-card border-blue-500/20 p-4">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-blue-500/20 p-4">
                 <p className="text-base text-gray-100">
                   We sent a sign-in link to <strong className="text-white">{email}</strong>
                 </p>
                 <p className="text-base text-gray-200 mt-2">Click the link in your email to complete signup</p>
               </div>
-              <div className="glass-card border-amber-500/20 p-4 bg-amber-500/5">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-amber-500/20 p-4 bg-amber-500/5">
                 <p className="text-base text-amber-300">
                   ⏰ The link expires in 15 minutes
                 </p>
@@ -149,19 +149,19 @@ export default function TrialSignupPage() {
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
           </div>
           
-          <div className="w-full max-w-md glass-card border-emerald-500/20 relative z-10 p-6">
+          <div className="w-full max-w-md bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-emerald-500/20 relative z-10 p-6">
             <div className="text-center mb-6">
               <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
               <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Welcome to PaintQuote Pro!</h1>
               <p className="text-base text-gray-100 mt-1.5">Your account has been created successfully</p>
             </div>
             <div className="space-y-4">
-              <div className="glass-card border-blue-500/20 p-4">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-blue-500/20 p-4">
                 <p className="text-base text-gray-100 mb-2">Your access code is:</p>
                 <p className="text-2xl font-mono font-bold text-blue-400">{accessCode}</p>
                 <p className="text-base text-gray-200 mt-2">Save this code to log in later</p>
               </div>
-              <div className="glass-card border-emerald-500/20 p-4">
+              <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-emerald-500/20 p-4">
                 <p className="text-base text-gray-100">
                   We&apos;ve sent a welcome email to <strong className="text-white">{email}</strong> with your access code
                 </p>
@@ -186,7 +186,7 @@ export default function TrialSignupPage() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
         </div>
         
-        <div className="w-full max-w-md glass-card relative z-10 p-6">
+        <div className="w-full max-w-md bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg relative z-10 p-6">
           <div className="mb-6">
             <Link href="/" className="inline-flex items-center text-base text-gray-100 hover:text-white mb-4 transition-colors">
               <ArrowLeft className="h-4 w-4 mr-1" />
@@ -257,7 +257,7 @@ export default function TrialSignupPage() {
                 </div>
 
                 {error && (
-                  <div className="glass-card border-red-500/20 bg-red-500/10 p-3 text-base">
+                  <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-red-500/20 bg-red-500/10 p-3 text-base">
                     <p className="text-red-400">{error}</p>
                   </div>
                 )}

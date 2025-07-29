@@ -46,7 +46,7 @@ function ModernNavigation() {
                 <ChevronRight className="h-3 w-3 rotate-90" />
               </button>
               <div className="absolute top-full left-0 mt-1 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="glass-card p-2 space-y-1">
+                <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-2 space-y-1">
                   <Link href="/painting-contractor-software" className="block px-3 py-2 text-base text-gray-100 hover:text-white hover:bg-gray-900/70 rounded-lg transition-colors">
                     Painting Contractor Software
                   </Link>

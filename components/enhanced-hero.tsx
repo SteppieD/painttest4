@@ -165,7 +165,7 @@ export function EnhancedHero() {
           {/* Right Column - Interactive Demo/Testimonials */}
           <div className="relative">
             {/* Main Testimonial Card */}
-            <div className="glass-card p-8 space-y-6 container-glass">
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8 space-y-6 container-glass">
               {/* Live Indicator */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -214,13 +214,13 @@ export function EnhancedHero() {
             </div>
 
             {/* Floating Metric Cards */}
-            <div className="absolute -top-8 -right-8 glass-card p-6 floating">
+            <div className="absolute -top-8 -right-8 bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 floating">
               <div className="text-base text-gray-200 mb-2">Quote Speed</div>
               <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">2:34</div>
               <div className="text-base text-gray-200">vs 3-6 hours</div>
             </div>
 
-            <div className="absolute -bottom-6 -left-6 glass-card p-6 floating-delayed">
+            <div className="absolute -bottom-6 -left-6 bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6 floating-delayed">
               <div className="text-base text-gray-200 mb-2">Win Rate</div>
               <div className="text-3xl font-bold text-emerald-400">65%</div>
               <div className="text-base text-gray-200">+40% improvement</div>
@@ -231,7 +231,7 @@ export function EnhancedHero() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="glass-card p-3 rounded-full animate-bounce">
+        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-3 rounded-full animate-bounce">
           <ArrowRight className="h-5 w-5 text-white rotate-90" />
         </div>
       </div>

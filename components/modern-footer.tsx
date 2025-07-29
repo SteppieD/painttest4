@@ -55,7 +55,7 @@ export default function ModernFooter() {
       {/* CTA Section */}
       <div className="border-b border-gray-800">
         <div className="container mx-auto px-4 py-12">
-          <div className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-8 text-center">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-2">
               Ready to Transform Your Painting Business?
             </h3>

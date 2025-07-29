@@ -166,7 +166,7 @@ function CreateQuoteContent() {
       {/* Main content */}
       <main className="container mx-auto px-4 py-4 relative z-10 flex-1">
         <div className="mx-auto max-w-4xl h-full">
-          <div className="glass-card h-full flex flex-col">
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg h-full flex flex-col">
             <div className="p-6 border-b border-white/10">
               <h2 className="text-2xl font-bold text-white">
                 Quick Quote Builder
