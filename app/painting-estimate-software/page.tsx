@@ -79,7 +79,7 @@ export default function PaintingEstimateSoftware() {
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
                     Painting Estimate Software That Wins More Jobs
                   </h1>
-                  <p className="mt-6 text-xl text-gray-300">
+                  <p className="mt-6 text-xl text-gray-100">
                     Create professional painting estimates in minutes with AI-powered accuracy. 
                     Track costs, manage quotes, and grow your painting business faster.
                   </p>
@@ -112,7 +112,7 @@ export default function PaintingEstimateSoftware() {
                             <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                           ))}
                         </div>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-base text-gray-200">
                           Trusted by 2,847+ painting contractors
                         </p>
                       </div>
@@ -124,18 +124,18 @@ export default function PaintingEstimateSoftware() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between border-b border-white/10 pb-4">
                         <h3 className="text-lg font-semibold text-white">Quick Estimate Preview</h3>
-                        <span className="text-sm text-gray-400">Generated in 15 min</span>
+                        <span className="text-base text-gray-200">Generated in 15 min</span>
                       </div>
                       <div className="space-y-3">
-                        <div className="flex justify-between text-gray-300">
+                        <div className="flex justify-between text-gray-100">
                           <span>Interior Walls (2,400 sq ft)</span>
                           <span className="font-medium text-white">$6,000</span>
                         </div>
-                        <div className="flex justify-between text-gray-300">
+                        <div className="flex justify-between text-gray-100">
                           <span>Ceilings (800 sq ft)</span>
                           <span className="font-medium text-white">$2,400</span>
                         </div>
-                        <div className="flex justify-between text-gray-300">
+                        <div className="flex justify-between text-gray-100">
                           <span>Trim & Baseboards (320 ln ft)</span>
                           <span className="font-medium text-white">$1,120</span>
                         </div>
@@ -144,7 +144,7 @@ export default function PaintingEstimateSoftware() {
                             <span className="text-white">Total Estimate</span>
                             <span className="text-blue-400">$9,520</span>
                           </div>
-                          <p className="mt-1 text-sm text-gray-400">
+                          <p className="mt-1 text-base text-gray-200">
                             Includes materials (70%) and labor (30%)
                           </p>
                         </div>
@@ -162,22 +162,22 @@ export default function PaintingEstimateSoftware() {
               <div className="flex flex-wrap items-center justify-center gap-8 text-center">
                 <div>
                   <div className="text-2xl font-bold text-blue-400">87%</div>
-                  <p className="text-sm text-muted-foreground">Faster Quotes</p>
+                  <p className="text-base text-gray-200">Faster Quotes</p>
                 </div>
                 <div className="hidden md:block">•</div>
                 <div>
                   <div className="text-2xl font-bold text-primary">42%</div>
-                  <p className="text-sm text-muted-foreground">More Jobs Won</p>
+                  <p className="text-base text-gray-200">More Jobs Won</p>
                 </div>
                 <div className="hidden md:block">•</div>
                 <div>
                   <div className="text-2xl font-bold text-primary">$47M+</div>
-                  <p className="text-sm text-muted-foreground">Quoted Work</p>
+                  <p className="text-base text-gray-200">Quoted Work</p>
                 </div>
                 <div className="hidden md:block">•</div>
                 <div>
                   <div className="text-2xl font-bold text-primary">4.8/5</div>
-                  <p className="text-sm text-muted-foreground">User Rating</p>
+                  <p className="text-base text-gray-200">User Rating</p>
                 </div>
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function PaintingEstimateSoftware() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   Everything You Need in Painting Estimate Software
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   Professional tools designed specifically for painting contractors to create 
                   accurate estimates and win more profitable jobs.
                 </p>
@@ -200,7 +200,7 @@ export default function PaintingEstimateSoftware() {
                 <div className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-lg">
                   <Calculator className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Smart Estimate Calculator</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Automatically calculate costs based on surface area, paint type, and labor. 
                     Our charge rate system ensures profitable pricing every time.
                   </p>
@@ -223,7 +223,7 @@ export default function PaintingEstimateSoftware() {
                 <div className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-lg">
                   <FileText className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Quote Templates</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Generate beautiful, branded quotes that impress clients. Include photos, 
                     detailed scope, and professional terms automatically.
                   </p>
@@ -246,7 +246,7 @@ export default function PaintingEstimateSoftware() {
                 <div className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-lg">
                   <TrendingUp className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Profit Tracking</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Know exactly which jobs make money. Track estimated vs actual costs, analyze 
                     profit margins, and optimize your pricing.
                   </p>
@@ -269,7 +269,7 @@ export default function PaintingEstimateSoftware() {
                 <div className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-lg">
                   <Clock className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Lightning Fast Estimates</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Create detailed estimates in 15 minutes instead of hours. Our AI understands 
                     painting terminology and extracts all details automatically.
                   </p>
@@ -292,7 +292,7 @@ export default function PaintingEstimateSoftware() {
                 <div className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-lg">
                   <Shield className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Accurate Every Time</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Eliminate costly errors with built-in validation and industry-standard pricing. 
                     Never underbid or overprice a job again.
                   </p>
@@ -315,7 +315,7 @@ export default function PaintingEstimateSoftware() {
                 <div className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-lg">
                   <BarChart className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Business Intelligence</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Make data-driven decisions with comprehensive analytics. See conversion rates, 
                     average job values, and seasonal trends.
                   </p>
@@ -345,7 +345,7 @@ export default function PaintingEstimateSoftware() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   How Our Painting Estimate Software Works
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   From site visit to signed contract in three simple steps
                 </p>
               </div>
@@ -357,7 +357,7 @@ export default function PaintingEstimateSoftware() {
                     1
                   </div>
                   <h3 className="mt-4 text-xl font-semibold">Describe the Job</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Simply chat with our AI about the painting project. Describe rooms, surfaces, 
                     and any special requirements in natural language.
                   </p>
@@ -374,7 +374,7 @@ export default function PaintingEstimateSoftware() {
                     2
                   </div>
                   <h3 className="mt-4 text-xl font-semibold">Review & Adjust</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     AI extracts all details and calculates costs using your charge rates. Review 
                     the estimate and make any adjustments needed.
                   </p>
@@ -397,7 +397,7 @@ export default function PaintingEstimateSoftware() {
                     3
                   </div>
                   <h3 className="mt-4 text-xl font-semibold">Send Quote</h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-gray-200">
                     Generate a professional PDF quote with your branding. Send directly to the 
                     client or print for on-site signing.
                   </p>
@@ -421,7 +421,7 @@ export default function PaintingEstimateSoftware() {
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                   Compare Painting Estimate Software Options
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-gray-200">
                   See why contractors choose PaintQuote Pro over alternatives
                 </p>
               </div>
@@ -535,7 +535,7 @@ export default function PaintingEstimateSoftware() {
                       </p>
                       <footer className="mt-4">
                         <strong>Sarah Chen</strong>
-                        <p className="text-sm text-muted-foreground">Premier Coatings Inc, Seattle</p>
+                        <p className="text-base text-gray-200">Premier Coatings Inc, Seattle</p>
                       </footer>
                     </blockquote>
                   </div>
@@ -554,7 +554,7 @@ export default function PaintingEstimateSoftware() {
                       </p>
                       <footer className="mt-4">
                         <strong>Tom Martinez</strong>
-                        <p className="text-sm text-muted-foreground">Tom{'\''}s Quality Painting, Chicago</p>
+                        <p className="text-base text-gray-200">Tom{'\''}s Quality Painting, Chicago</p>
                       </footer>
                     </blockquote>
                   </div>
@@ -573,7 +573,7 @@ export default function PaintingEstimateSoftware() {
                       </p>
                       <footer className="mt-4">
                         <strong>James Wilson</strong>
-                        <p className="text-sm text-muted-foreground">Wilson & Sons Painting, Atlanta</p>
+                        <p className="text-base text-gray-200">Wilson & Sons Painting, Atlanta</p>
                       </footer>
                     </blockquote>
                   </div>
@@ -591,7 +591,7 @@ export default function PaintingEstimateSoftware() {
                       </p>
                       <footer className="mt-4">
                         <strong>Robert Lee</strong>
-                        <p className="text-sm text-muted-foreground">Elite Finishes, Denver</p>
+                        <p className="text-base text-gray-200">Elite Finishes, Denver</p>
                       </footer>
                     </blockquote>
                   </div>
@@ -608,7 +608,7 @@ export default function PaintingEstimateSoftware() {
                   <h2 className="text-3xl font-bold md:text-4xl text-white mb-4">
                     Free Estimation Tools
                   </h2>
-                  <p className="text-lg text-gray-300">
+                  <p className="text-lg text-gray-100">
                     Try our calculators to see how painting estimate software can transform your business
                   </p>
                 </div>
@@ -619,7 +619,7 @@ export default function PaintingEstimateSoftware() {
                 </div>
                 
                 <div className="mt-12 text-center">
-                  <p className="text-gray-300 mb-6">
+                  <p className="text-gray-100 mb-6">
                     Ready to create professional estimates for your actual painting jobs?
                   </p>
                   <Link href="/trial-signup" className="btn-primary inline-flex items-center gap-2">
@@ -637,7 +637,7 @@ export default function PaintingEstimateSoftware() {
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Start Creating Better Painting Estimates Today
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-xl opacity-90">
+              <p className="mx-auto mt-4 max-w-2xl text-xl text-gray-100">
                 Join thousands of painting contractors who save time, win more jobs, and 
                 increase profits with professional estimate software.
               </p>
@@ -655,7 +655,7 @@ export default function PaintingEstimateSoftware() {
                   Schedule Demo
                 </Link>
               </div>
-              <p className="mt-4 text-sm opacity-75">
+              <p className="mt-4 text-base text-gray-200">
                 Free trial • No credit card • 5-minute setup
               </p>
             </div>
@@ -665,27 +665,27 @@ export default function PaintingEstimateSoftware() {
           <section className="py-12">
             <div className="container">
               <h2 className="text-center text-2xl font-bold">Related Painting Software Solutions</h2>
-              <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
+              <div className="mt-8 flex flex-wrap justify-center gap-4 text-base">
                 <Link href="/painting-estimating-software" className="text-primary hover:underline">
                   Estimating Software
                 </Link>
-                <span className="text-muted-foreground">•</span>
+                <span className="text-gray-400">•</span>
                 <Link href="/painting-business-software" className="text-primary hover:underline">
                   Business Software
                 </Link>
-                <span className="text-muted-foreground">•</span>
+                <span className="text-gray-400">•</span>
                 <Link href="/paint-contractor-app" className="text-primary hover:underline">
                   Mobile App
                 </Link>
-                <span className="text-muted-foreground">•</span>
+                <span className="text-gray-400">•</span>
                 <Link href="/commercial-painting-estimating-software" className="text-primary hover:underline">
                   Commercial Estimating
                 </Link>
-                <span className="text-muted-foreground">•</span>
+                <span className="text-gray-400">•</span>
                 <Link href="/interior-painting-quote-calculator" className="text-primary hover:underline">
                   Interior Calculator
                 </Link>
-                <span className="text-muted-foreground">•</span>
+                <span className="text-gray-400">•</span>
                 <Link href="/exterior-painting-estimate-calculator" className="text-primary hover:underline">
                   Exterior Calculator
                 </Link>
@@ -700,7 +700,7 @@ export default function PaintingEstimateSoftware() {
             <div className="grid gap-8 md:grid-cols-5">
               <div>
                 <h3 className="text-lg font-semibold">Software</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-300">
                   <li><Link href="/painting-estimate-software" className="hover:text-foreground">Estimate Software</Link></li>
                   <li><Link href="/painting-estimating-software" className="hover:text-foreground">Estimating Tools</Link></li>
                   <li><Link href="/painting-business-software" className="hover:text-foreground">Business Suite</Link></li>
@@ -709,7 +709,7 @@ export default function PaintingEstimateSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Calculators</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-300">
                   <li><Link href="/painting-estimate-calculator-free" className="hover:text-foreground">Free Calculator</Link></li>
                   <li><Link href="/interior-painting-quote-calculator" className="hover:text-foreground">Interior Calculator</Link></li>
                   <li><Link href="/exterior-painting-estimate-calculator" className="hover:text-foreground">Exterior Calculator</Link></li>
@@ -718,7 +718,7 @@ export default function PaintingEstimateSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Resources</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-300">
                   <li><Link href="/how-to-quote-painting-jobs" className="hover:text-foreground">How to Quote</Link></li>
                   <li><Link href="/painting-quote-templates" className="hover:text-foreground">Quote Templates</Link></li>
                   <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
@@ -727,7 +727,7 @@ export default function PaintingEstimateSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Company</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-300">
                   <li><Link href="/about" className="hover:text-foreground">About Us</Link></li>
                   <li><Link href="/contact" className="hover:text-foreground">Contact</Link></li>
                   <li><Link href="/testimonials" className="hover:text-foreground">Testimonials</Link></li>
@@ -736,7 +736,7 @@ export default function PaintingEstimateSoftware() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Support</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="mt-4 space-y-2 text-base text-gray-300">
                   <li><Link href="/help" className="hover:text-foreground">Help Center</Link></li>
                   <li><Link href="/tutorials" className="hover:text-foreground">Tutorials</Link></li>
                   <li><Link href="/faq" className="hover:text-foreground">FAQ</Link></li>
@@ -744,7 +744,7 @@ export default function PaintingEstimateSoftware() {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <div className="mt-8 border-t pt-8 text-center text-base text-gray-300">
               <p>&copy; 2025 PaintQuote Pro. The leading painting estimate software for contractors.</p>
             </div>
           </div>
