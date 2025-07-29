@@ -339,12 +339,12 @@ export default function PaintCoverageRatesGuide() {
                   <div>
                     <h3 className="text-xl font-semibold text-violet-400 mb-4">Example: 2,000 sq ft Room</h3>
                     <div className="bg-gray-900/50 rounded p-4 font-mono text-sm space-y-2">
-                      <p className="text-gray-400">// Smooth walls, 2 coats</p>
+                      <p className="text-gray-400">{"// Smooth walls, 2 coats"}</p>
                       <p className="text-green-400">Area: 2,000 sq ft</p>
                       <p className="text-green-400">Coverage: 400 sq ft/gal</p>
                       <p className="text-green-400">Coats: 2</p>
                       <p className="text-green-400">Loss: 10%</p>
-                      <p className="text-gray-400">// Calculation</p>
+                      <p className="text-gray-400">{"// Calculation"}</p>
                       <p className="text-yellow-400">(2,000 ÷ 400) × 2 × 1.1</p>
                       <p className="text-cyan-400 font-bold">= 11 gallons needed</p>
                     </div>

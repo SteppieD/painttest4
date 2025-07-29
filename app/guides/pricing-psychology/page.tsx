@@ -333,7 +333,7 @@ export default function PricingPsychologyGuide() {
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Cost Per Day Framing</h3>
                   <p className="text-gray-300 mb-4">Break down large costs into daily amounts:</p>
                   <div className="bg-gray-900/50 rounded p-4 font-mono text-sm">
-                    <p className="text-gray-400">// $3,000 over 5 years</p>
+                    <p className="text-gray-400">{"// $3,000 over 5 years"}</p>
                     <p className="text-green-400">$3,000 ÷ (5 × 365) = $1.64/day</p>
                     <p className="text-yellow-400 mt-3">"For less than a cup of coffee per day..."</p>
                   </div>

@@ -236,12 +236,12 @@ export default function LaborCostEstimationGuide() {
                   <div>
                     <h3 className="text-xl font-semibold text-green-400 mb-4">Example Calculation</h3>
                     <div className="bg-gray-900/50 rounded p-4 space-y-2 font-mono text-sm">
-                      <p className="text-gray-400">// 2,500 sq ft interior</p>
+                      <p className="text-gray-400">{"// 2,500 sq ft interior"}</p>
                       <p className="text-green-400">Production: 200 sq ft/hour</p>
                       <p className="text-green-400">Hours: 2,500 ÷ 200 = 12.5</p>
                       <p className="text-green-400">Rate: $30/hour base</p>
                       <p className="text-green-400">Crew: 2 painters</p>
-                      <p className="text-gray-400">// Calculation</p>
+                      <p className="text-gray-400">{"// Calculation"}</p>
                       <p className="text-yellow-400">12.5 × $30 × 2 = $750</p>
                       <p className="text-yellow-400">+ 35% burden = $262.50</p>
                       <p className="text-cyan-400">Total Labor: $1,012.50</p>

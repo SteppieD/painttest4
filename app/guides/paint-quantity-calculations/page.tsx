@@ -234,12 +234,12 @@ export default function PaintQuantityCalculationsGuide() {
                   <div>
                     <h3 className="text-xl font-semibold text-green-400 mb-4">Example Calculation</h3>
                     <div className="bg-gray-900/50 rounded p-4 space-y-2 font-mono text-sm">
-                      <p className="text-gray-400">// Living room walls</p>
+                      <p className="text-gray-400">{"// Living room walls"}</p>
                       <p className="text-green-400">Area: 385 sq ft</p>
                       <p className="text-green-400">Coverage: 350 sq ft/gal</p>
                       <p className="text-green-400">Coats: 2</p>
                       <p className="text-green-400">Waste: 1.1 (10%)</p>
-                      <p className="text-gray-400">// Calculation</p>
+                      <p className="text-gray-400">{"// Calculation"}</p>
                       <p className="text-yellow-400">(385 ÷ 350) × 2 × 1.1 = 2.42 gal</p>
                       <p className="text-cyan-400">Round up = 3 gallons</p>
                     </div>

@@ -67,7 +67,7 @@ export default function SharedNavigation() {
                 return (
                   <Link 
                     key={index}
-                    href={item.href} 
+                    href={item.href || '#'} 
                     className={`transition-colors hover:text-foreground/80 ${
                       pathname === item.href ? 'text-foreground' : 'text-foreground/60'
                     }`}
@@ -162,7 +162,7 @@ export default function SharedNavigation() {
                 return (
                   <Link
                     key={index}
-                    href={item.href}
+                    href={item.href || '#'}
                     className="block py-2 text-sm font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >

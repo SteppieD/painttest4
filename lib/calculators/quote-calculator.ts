@@ -182,7 +182,7 @@ export class QuoteCalculator {
     
     // Calculate painting labor cost
     const paintingHours = laborHours;
-    const laborRate = input.laborRate || input.companyRates?.hourlyRate || this.DEFAULT_LABOR_RATE;
+    const laborRate = input.laborRate || (input.companyRates as any)?.hourlyRate || this.DEFAULT_LABOR_RATE;
     const paintingLaborCost = paintingHours * laborRate;
     const prepLaborCost = prepHours * laborRate;
     const totalLaborCost = paintingLaborCost + prepLaborCost;

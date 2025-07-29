@@ -101,11 +101,11 @@ export async function POST(request: NextRequest) {
 
     // Add specific error details for Supabase errors
     if (error && typeof error === 'object' && 'code' in error) {
-      errorInfo['supabaseError'] = {
-        code: error.code,
-        message: error.message,
-        details: error.details,
-        hint: error.hint
+      (errorInfo as any)['supabaseError'] = {
+        code: (error as any).code,
+        message: (error as any).message,
+        details: (error as any).details,
+        hint: (error as any).hint
       };
     }
 

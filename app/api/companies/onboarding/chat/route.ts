@@ -214,7 +214,7 @@ You're all set! Let me save these settings and get you started with PaintQuote P
     }
   };
 
-  return responses[currentStep] || responses[0];
+  return (responses as any)[currentStep] || (responses as any)[0];
 }
 
 function extractLocationFromMessage(message: string): any {
@@ -237,15 +237,15 @@ function extractPricingFromMessage(message: string): any {
   let markupPercentage = 30; // default
   let minimumJobSize = 500; // default
 
-  if (numbers.length >= 1) {
+  if (numbers.length >= 1 && numbers[0]) {
     // First number is likely hourly rate
     laborRate = parseFloat(numbers[0]);
   }
-  if (numbers.length >= 2) {
+  if (numbers.length >= 2 && numbers[1]) {
     // Second number is likely markup
     markupPercentage = parseFloat(numbers[1]);
   }
-  if (numbers.length >= 3) {
+  if (numbers.length >= 3 && numbers[2]) {
     // Third number is likely minimum
     minimumJobSize = parseFloat(numbers[2]);
   }

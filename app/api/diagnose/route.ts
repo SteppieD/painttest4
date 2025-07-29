@@ -13,11 +13,11 @@ export async function GET() {
       supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL?.split('.')[0] + '.supabase.co'
     },
     tests: {
-      databaseType: null,
-      companiesTable: { exists: false, error: null, count: 0 },
-      quotesTable: { exists: false, error: null, count: 0 },
-      demoCompany: { exists: false, error: null, data: null },
-      canCreateQuote: { success: false, error: null }
+      databaseType: null as string | null,
+      companiesTable: { exists: false, error: null as string | null, count: 0 },
+      quotesTable: { exists: false, error: null as string | null, count: 0 },
+      demoCompany: { exists: false, error: null as string | null, data: null as any },
+      canCreateQuote: { success: false, error: null as string | null }
     }
   };
 

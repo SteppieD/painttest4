@@ -10,6 +10,7 @@ export interface Company {
   logo_url?: string;
   is_trial?: boolean;
   quote_limit?: number;
+  onboarding_completed?: boolean;
 }
 
 export interface Session {
@@ -37,7 +38,8 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
         email: company.email,
         logo_url: company.logo_url,
         is_trial: company.is_trial,
-        quote_limit: company.quote_limit
+        quote_limit: company.quote_limit,
+        onboarding_completed: company.onboarding_completed
       };
     }
     
@@ -61,7 +63,8 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
         email: newCompany.email,
         logo_url: newCompany.logo_url,
         is_trial: true,
-        quote_limit: 1
+        quote_limit: 1,
+        onboarding_completed: false
       };
     }
     

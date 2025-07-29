@@ -237,7 +237,7 @@ export async function POST(request: NextRequest) {
     
     // Add stack trace in development
     if (process.env.NODE_ENV === 'development' && error instanceof Error) {
-      errorResponse['stack'] = error.stack;
+      (errorResponse as any)['stack'] = error.stack;
     }
     
     return NextResponse.json(errorResponse, { status: 500 });

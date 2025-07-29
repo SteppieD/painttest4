@@ -229,9 +229,8 @@ export default function TrialSignupPage() {
                     disabled={loading}
                     className="!bg-gray-800/80 !border-gray-600 !text-white !placeholder-gray-400 focus:!bg-gray-800/90 focus:!border-gray-500 hover:!bg-gray-800/80"
                     style={{ 
-                      backgroundColor: 'rgba(31, 41, 55, 0.8) !important',
-                      '--tw-ring-offset-color': 'transparent'
-                    }}
+                      backgroundColor: 'rgba(31, 41, 55, 0.8) !important'
+                    } as React.CSSProperties}
                   />
                 </div>
 
@@ -247,9 +246,8 @@ export default function TrialSignupPage() {
                     disabled={loading}
                     className="!bg-gray-800/80 !border-gray-600 !text-white !placeholder-gray-400 focus:!bg-gray-800/90 focus:!border-gray-500 hover:!bg-gray-800/80"
                     style={{ 
-                      backgroundColor: 'rgba(31, 41, 55, 0.8) !important',
-                      '--tw-ring-offset-color': 'transparent'
-                    }}
+                      backgroundColor: 'rgba(31, 41, 55, 0.8) !important'
+                    } as React.CSSProperties}
                   />
                   <p className="text-xs text-gray-400">
                     {signupMethod === 'magic'

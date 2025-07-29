@@ -69,14 +69,13 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  verification: {
-    google: 'google-site-verification-code',
-    yandex: 'yandex-verification-code',
-    yahoo: 'yahoo-site-verification-code',
-  },
+  // verification: {
+  //   google: 'your-google-site-verification-code',
+  //   yandex: 'your-yandex-verification-code',
+  //   yahoo: 'your-yahoo-site-verification-code',
+  // },
   other: {
     'msapplication-TileColor': '#3b82f6',
-    'msapplication-config': '/browserconfig.xml',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
     'apple-mobile-web-app-title': 'Paint Quote Pro',

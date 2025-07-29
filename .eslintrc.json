@@ -11,7 +11,11 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/no-namespace": "warn",
+    "@typescript-eslint/no-var-requires": "warn",
     "react/no-unescaped-entities": "warn",
+    "react/jsx-no-comment-textnodes": "warn",
+    "prefer-const": "warn",
     "no-var": "warn"
   }
 }

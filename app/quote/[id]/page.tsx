@@ -211,12 +211,6 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
                   <span className="text-sm">{quote.company.phone}</span>
                 </div>
               )}
-              {quote.company?.website && (
-                <div className="flex items-center gap-2 text-gray-300">
-                  <Globe className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm">{quote.company.website}</span>
-                </div>
-              )}
             </div>
           </CardContent>
         </Card>

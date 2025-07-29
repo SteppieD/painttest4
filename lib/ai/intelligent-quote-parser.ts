@@ -1,7 +1,6 @@
 // Intelligent Quote Parsing System for PaintQuote Pro
 // Multi-LLM approach integrated with charge rate system
 
-import { ChargeRates } from '@/lib/validations/quote'
 
 interface ParsedQuoteData {
   // Customer Information
@@ -29,7 +28,7 @@ interface ParsedQuoteData {
   }>
   
   // Charge Rates (from company settings)
-  chargeRates?: ChargeRates
+  chargeRates?: any
   
   // Quote Settings
   settings: {
@@ -346,7 +345,7 @@ Return JSON in this exact structure:
   }
   
   // Convert parsed data to quote input format
-  toQuoteInput(data: ParsedQuoteData, chargeRates: ChargeRates): any {
+  toQuoteInput(data: ParsedQuoteData, chargeRates: any): any {
     return {
       customer: data.customer,
       projectType: data.projectType,

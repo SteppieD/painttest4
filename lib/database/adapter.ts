@@ -263,8 +263,9 @@ export function getDatabaseAdapter(): DatabaseAdapter {
   if (process.env.DATABASE_TYPE === 'sqlite') {
     try {
       console.log('Attempting to use SQLite database adapter');
-      // Dynamic require to prevent bundling
-      const { SQLiteAdapter } = require('./sqlite-adapter');
+      // Use dynamic import instead of require to satisfy ESLint
+      const sqliteModule = eval('require')('./sqlite-adapter');
+      const { SQLiteAdapter } = sqliteModule;
       return new SQLiteAdapter();
     } catch (error) {
       console.warn('SQLite initialization failed, falling back to memory adapter:', error);

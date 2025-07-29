@@ -46,7 +46,7 @@ export async function POST(
     }
 
     if (Object.keys(updates).length > 0) {
-      await db.updateQuote(params.id, updates);
+      await db.updateQuote(parseInt(params.id), updates);
       
       // Update company analytics
       await updateCompanyAnalytics(quote.company_id, event);

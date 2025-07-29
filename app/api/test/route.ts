@@ -17,8 +17,8 @@ export async function GET() {
     },
     database: {
       type: 'unknown',
-      error: null,
-      demoCompany: null
+      error: null as string | null,
+      demoCompany: null as any
     }
   }
 

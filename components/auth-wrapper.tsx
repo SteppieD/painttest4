@@ -17,7 +17,7 @@ interface CompanyData {
   skipOnboarding?: boolean;
 }
 
-export function AuthWrapper({ children }: { children: React.ReactNode }) {
+export function AuthWrapper({ children }: { children: React.ReactNode | ((companyData: CompanyData | null) => React.ReactNode) }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [companyData, setCompanyData] = useState<CompanyData | null>(null);

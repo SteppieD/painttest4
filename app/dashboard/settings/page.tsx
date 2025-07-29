@@ -262,7 +262,7 @@ export default function SettingsPage() {
         laborSettings: {
           ...prev.laborSettings,
           [parent]: {
-            ...prev.laborSettings[parent as keyof typeof prev.laborSettings],
+            ...(prev.laborSettings[parent as keyof typeof prev.laborSettings] as any || {}),
             [child]: numValue
           }
         }

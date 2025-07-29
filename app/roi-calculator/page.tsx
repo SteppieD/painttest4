@@ -230,13 +230,13 @@ export default function ROICalculator() {
                           <div className="mt-4 grid gap-4 sm:grid-cols-2">
                             <div>
                               <p className="text-3xl font-bold text-emerald-400">
-                                {results.roi.roiPercentage.toFixed(0)}%
+                                {results?.roi.roiPercentage.toFixed(0)}%
                               </p>
                               <p className="text-sm text-gray-400">Return on Investment</p>
                             </div>
                             <div>
                               <p className="text-3xl font-bold text-emerald-400">
-                                ${results.roi.netROI.toLocaleString()}
+                                ${results?.roi.netROI.toLocaleString()}
                               </p>
                               <p className="text-sm text-gray-400">Net Annual Gain</p>
                             </div>
@@ -253,19 +253,19 @@ export default function ROICalculator() {
                               <div className="flex items-center justify-between text-sm">
                                 <span className="text-gray-300">Quotes Created</span>
                                 <span className="text-emerald-400">
-                                  +{results.withApp.quotesPerMonth - results.current.quotesPerMonth} more
+                                  +{(results?.withApp.quotesPerMonth || 0) - (results?.current.quotesPerMonth || 0)} more
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">Now:</span>
-                                  <span>{results.current.quotesPerMonth}</span>
+                                  <span>{results?.current.quotesPerMonth}</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">With Pro:</span>
                                   <span className="font-semibold text-emerald-400">
-                                    {results.withApp.quotesPerMonth}
+                                    {results?.withApp.quotesPerMonth}
                                   </span>
                                 </div>
                               </div>
@@ -276,19 +276,19 @@ export default function ROICalculator() {
                               <div className="flex items-center justify-between text-sm">
                                 <span className="text-gray-300">Time on Quotes</span>
                                 <span className="text-emerald-400">
-                                  -{results.roi.timeSaved.toFixed(0)} hours saved
+                                  -{results?.roi.timeSaved.toFixed(0)} hours saved
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">Now:</span>
-                                  <span>{results.current.timeSpentQuoting}h</span>
+                                  <span>{results?.current.timeSpentQuoting}h</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">With Pro:</span>
                                   <span className="font-semibold text-emerald-400">
-                                    {results.withApp.timeSpentQuoting.toFixed(1)}h
+                                    {results?.withApp.timeSpentQuoting.toFixed(1)}h
                                   </span>
                                 </div>
                               </div>
@@ -299,19 +299,19 @@ export default function ROICalculator() {
                               <div className="flex items-center justify-between text-sm">
                                 <span className="text-gray-300">Jobs Won</span>
                                 <span className="text-emerald-400">
-                                  +{(results.withApp.closedJobs - results.current.closedJobs).toFixed(0)} more
+                                  +{((results?.withApp.closedJobs || 0) - (results?.current.closedJobs || 0)).toFixed(0)} more
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">Now:</span>
-                                  <span>{results.current.closedJobs.toFixed(0)}</span>
+                                  <span>{results?.current.closedJobs.toFixed(0)}</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">With Pro:</span>
                                   <span className="font-semibold text-emerald-400">
-                                    {results.withApp.closedJobs.toFixed(0)}
+                                    {results?.withApp.closedJobs.toFixed(0)}
                                   </span>
                                 </div>
                               </div>
@@ -322,19 +322,19 @@ export default function ROICalculator() {
                               <div className="flex items-center justify-between text-sm font-semibold">
                                 <span className="text-gray-300">Monthly Revenue</span>
                                 <span className="text-emerald-400">
-                                  +${results.roi.additionalRevenue.toLocaleString()}
+                                  +${results?.roi.additionalRevenue.toLocaleString()}
                                 </span>
                               </div>
                               <div className="mt-2 flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">Now:</span>
-                                  <span>${results.current.revenue.toLocaleString()}</span>
+                                  <span>${results?.current.revenue.toLocaleString()}</span>
                                 </div>
                                 <ChevronRight className="h-3 w-3" />
                                 <div className="flex items-center gap-1">
                                   <span className="text-gray-400">With Pro:</span>
                                   <span className="font-semibold text-emerald-400">
-                                    ${results.withApp.revenue.toLocaleString()}
+                                    ${results?.withApp.revenue.toLocaleString()}
                                   </span>
                                 </div>
                               </div>
@@ -354,7 +354,7 @@ export default function ROICalculator() {
                                   style={{ height: '40%' }}
                                 >
                                   <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm text-gray-400">
-                                    ${(results.current.revenue / 1000).toFixed(0)}k
+                                    ${((results?.current.revenue || 0) / 1000).toFixed(0)}k
                                   </span>
                                 </div>
                                 <span className="text-xs text-gray-400">Current</span>
@@ -364,10 +364,10 @@ export default function ROICalculator() {
                               <div className="flex-1 flex flex-col items-center gap-2">
                                 <div 
                                   className="w-full bg-gradient-to-t from-emerald-500 to-emerald-400 rounded-t-lg relative"
-                                  style={{ height: `${Math.min((results.withApp.revenue / results.current.revenue) * 40, 90)}%` }}
+                                  style={{ height: `${Math.min(((results?.withApp.revenue || 0) / (results?.current.revenue || 1)) * 40, 90)}%` }}
                                 >
                                   <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm text-emerald-400 font-bold">
-                                    ${(results.withApp.revenue / 1000).toFixed(0)}k
+                                    ${((results?.withApp.revenue || 0) / 1000).toFixed(0)}k
                                   </span>
                                 </div>
                                 <span className="text-xs text-gray-400">With Pro</span>
@@ -376,7 +376,7 @@ export default function ROICalculator() {
                           </div>
                           <div className="text-center mt-4">
                             <span className="text-2xl font-bold text-emerald-400">
-                              +{((results.withApp.revenue - results.current.revenue) / results.current.revenue * 100).toFixed(0)}%
+                              +{(((results?.withApp.revenue || 0) - (results?.current.revenue || 0)) / (results?.current.revenue || 1) * 100).toFixed(0)}%
                             </span>
                             <span className="text-gray-400 ml-2">Revenue Increase</span>
                           </div>

@@ -526,7 +526,7 @@ export default function HowToQuotePaintingJobsGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-8 mb-8">
                   <h3 className="text-xl font-semibold text-white mb-4">Paint Calculation Formula</h3>
                   <div className="bg-gray-900/50 rounded-lg p-6 font-mono text-sm">
-                    <div className="text-green-400 mb-2">// Basic Paint Calculation</div>
+                    <div className="text-green-400 mb-2">{"// Basic Paint Calculation"}</div>
                     <div className="text-gray-300">Total Square Feet ÷ Coverage Rate = Gallons Needed</div>
                     <div className="text-gray-300 mt-4">Example: 2,000 sq ft ÷ 350 sq ft/gal = 5.7 gallons</div>
                     <div className="text-gray-300">Round up to 6 gallons + 10% = 7 gallons total</div>

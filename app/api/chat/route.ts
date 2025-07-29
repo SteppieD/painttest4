@@ -88,12 +88,8 @@ export async function POST(request: NextRequest) {
           suggestedReplies = ['Eggshell walls, semi-gloss trim', 'Flat walls, satin trim', 'Satin throughout'];
           
           // Store demo data
-          manager.updateQuoteData({
-            customerName: 'Sarah Johnson',
-            address: '123 Maple Street',
-            measurements: { wallSqft: 2000, ceilingSqft: 2000 },
-            rooms: ['Living Room', 'Kitchen', 'Master Bedroom', 'Bedroom 2', 'Bedroom 3', 'Bathrooms']
-          });
+          // Note: updateQuoteData method not implemented in ConversationManager
+          // This is demo mode, so we'll handle data in the response directly
         } else if (message.toLowerCase().includes('eggshell')) {
           response = "Excellent choice! Eggshell for walls and semi-gloss for trim is our most popular combination. \n\n✅ **Quote Summary:**\n- Customer: Sarah Johnson\n- Address: 123 Maple Street\n- Interior: 2,000 sq ft\n- Finish: Eggshell walls, semi-gloss trim\n\n**Estimated Total: $4,850**\n\nShall I create the professional quote document now?";
           isComplete = true;
@@ -192,7 +188,7 @@ export async function POST(request: NextRequest) {
           companyId: company.id,
           companyRates,
           preferredPaints,
-          projectType: 'interior' // Default project type
+          projectType: 'interior' as 'interior' | 'exterior' // Default project type with proper typing
         };
         
         // Detect conversation stage
@@ -219,6 +215,17 @@ export async function POST(request: NextRequest) {
             const measurements = manager.parseMeasurements(conversationText);
             
             // Calculate quote with enhanced data
+            // Transform paintProducts to match CalculatorInput structure
+            const paintProducts: any = {};
+            if (preferredPaints.length > 0) {
+              // Use the first preferred paint as default for walls
+              paintProducts.walls = {
+                name: preferredPaints[0].name,
+                coverageRate: preferredPaints[0].coverageRate,
+                costPerGallon: preferredPaints[0].costPerGallon
+              };
+            }
+            
             const calculatorInput = {
               surfaces: {
                 walls: measurements.wallSqft || parsedInfo.measurements?.wallSqft,
@@ -228,7 +235,7 @@ export async function POST(request: NextRequest) {
                 windows: parsedInfo.measurements?.windows,
                 priming: parsedInfo.prepWork === 'major' ? measurements.wallSqft : 0
               },
-              paintProducts: parsedInfo.paintProducts,
+              paintProducts: Object.keys(paintProducts).length > 0 ? paintProducts : undefined,
               companyRates,
               prepCondition: parsedInfo.prepWork as any || 'good',
               rushJob: parsedInfo.timeline === 'this week',

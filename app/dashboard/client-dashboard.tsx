@@ -81,7 +81,7 @@ export function ClientDashboard() {
         
         // Use real data for new companies - no demo data
         setDashboardData({
-          companyName: companyData.name || 'Unknown Company',
+          companyName: companyData?.name || 'Unknown Company',
           totalQuotes: 0, // Start fresh
           uniqueCustomers: 0,
           totalQuotedAmount: 0,
@@ -93,7 +93,7 @@ export function ClientDashboard() {
           quotesUsed: usage.currentMonth.quotesCreated,
           quotesLimit: usage.currentMonth.limit,
           hasUnlimitedQuotes: usage.currentMonth.limit === -1,
-          subscriptionTier: companyData.subscription_tier || 'free',
+          subscriptionTier: companyData?.subscription_tier || 'free',
           avgQuoteValue: 0,
           conversionTrend: [],
           topCustomers: []
@@ -103,7 +103,7 @@ export function ClientDashboard() {
       console.error('Error fetching dashboard data:', error);
       // Fallback to empty data for new companies
       setDashboardData({
-        companyName: companyData.name || 'Unknown Company',
+        companyName: companyData?.name || 'Unknown Company',
         totalQuotes: 0,
         uniqueCustomers: 0,
         totalQuotedAmount: 0,
@@ -352,7 +352,7 @@ export function ClientDashboard() {
               </div>
               <div className="space-y-1">
                 <p className="text-sm text-gray-400">{stat.title}</p>
-                <p className={`text-2xl font-bold ${typeof stat.value === 'string' && stat.value.includes('Start') || stat.value.includes('Coming') || stat.value.includes('Track') || stat.value.includes('Build') ? 'text-gray-500' : 'text-white'}`}>
+                <p className={`text-2xl font-bold ${typeof stat.value === 'string' && (stat.value.includes('Start') || stat.value.includes('Coming') || stat.value.includes('Track') || stat.value.includes('Build')) ? 'text-gray-500' : 'text-white'}`}>
                   {stat.value}
                 </p>
                 {stat.emptyMessage && dashboardData.totalQuotes === 0 && (

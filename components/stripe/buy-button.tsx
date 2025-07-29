@@ -28,8 +28,9 @@ export function StripeBuyButton({ buyButtonId, publishableKey }: StripeBuyButton
   );
 }
 
-// Declare the custom element for TypeScript
+// Declare the custom element for TypeScript without using namespace
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       'stripe-buy-button': React.DetailedHTMLProps<

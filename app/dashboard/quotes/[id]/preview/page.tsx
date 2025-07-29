@@ -440,9 +440,9 @@ Your Painting Company`
                   </div>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Sales Tax ({quote.tax_rate}%)</span>
+                  <span className="text-muted-foreground">Sales Tax ({quote.tax_rate || 0}%)</span>
                   <span className="font-medium">
-                    ${((((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)) * (quote.tax_rate / 100)).toFixed(2)}
+                    ${((((quote.total_materials || 0) + (quote.projected_labor || 0)) * (1 + (quote.markup_percentage || 30) / 100)) * ((quote.tax_rate || 0) / 100)).toFixed(2)}
                   </span>
                 </div>
               </>

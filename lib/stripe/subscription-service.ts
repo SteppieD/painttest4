@@ -101,9 +101,9 @@ export class SubscriptionService {
       status: subscription.status,
       plan,
       billingPeriod,
-      currentPeriodStart: new Date(subscription.current_period_start * 1000),
-      currentPeriodEnd: new Date(subscription.current_period_end * 1000),
-      cancelAtPeriodEnd: subscription.cancel_at_period_end,
+      currentPeriodStart: new Date((subscription as any).current_period_start * 1000),
+      currentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
+      cancelAtPeriodEnd: (subscription as any).cancel_at_period_end,
       customerId: company.stripe_customer_id
     };
   }
@@ -210,7 +210,7 @@ export class SubscriptionService {
     await this.db.updateCompany(companyId, {
       subscription_status: subscription.status,
       subscription_plan: plan,
-      subscription_period_end: new Date(subscription.current_period_end * 1000)
+      subscription_period_end: new Date((subscription as any).current_period_end * 1000)
     });
   }
 
@@ -221,7 +221,7 @@ export class SubscriptionService {
     await this.db.updateCompany(companyId, {
       subscription_status: 'cancelled',
       subscription_plan: null,
-      subscription_period_end: new Date(subscription.current_period_end * 1000)
+      subscription_period_end: new Date((subscription as any).current_period_end * 1000)
     });
   }
 

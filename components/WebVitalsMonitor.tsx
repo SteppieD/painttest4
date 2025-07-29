@@ -41,7 +41,7 @@ export default function WebVitalsMonitor({
       return
     }
 
-    let vitalsData: VitalData[] = []
+    const vitalsData: VitalData[] = []
 
     const sendVital = (vital: VitalData) => {
       const vitalData = {
