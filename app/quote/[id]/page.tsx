@@ -14,7 +14,8 @@ import {
   Calendar,
   DollarSign,
   Sparkles,
-  Globe
+  Globe,
+  X
 } from 'lucide-react'
 
 interface Quote {
