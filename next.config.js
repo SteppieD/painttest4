@@ -34,7 +34,8 @@ const nextConfig = {
   
   // Experimental features
   experimental: {
-    serverComponentsExternalPackages: ['better-sqlite3', 'bcryptjs']
+    serverComponentsExternalPackages: ['better-sqlite3', 'bcryptjs'],
+    optimizeCss: false
   },
   
   // Image configuration
