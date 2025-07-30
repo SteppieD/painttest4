@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
           // Continue without paint products - use defaults
         }
         
-        const preferredPaints = paintProducts?.map(p => ({
+        const preferredPaints = paintProducts?.map((p: any) => ({
           id: p.id,
           name: p.product_name,
           coverageRate: p.coverage_rate || 350,

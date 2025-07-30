@@ -40,9 +40,9 @@ export default async function ProductsPage() {
 
   const totalProducts = products.length
   const averageCost = products.length > 0 
-    ? products.reduce((sum, p) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
+    ? products.reduce((sum: number, p: any) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
     : 0
-  const uniqueBrands = [...new Set(products.map(p => p.brand).filter(Boolean))].length
+  const uniqueBrands = [...new Set(products.map((p: any) => p.brand).filter(Boolean))].length
 
   return (
     <div className="space-y-8">
@@ -122,7 +122,7 @@ export default async function ProductsPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {products.map((product) => (
+              {products.map((product: any) => (
                 <div
                   key={product.id}
                   className="border rounded-lg p-4 hover:bg-muted/50 transition-colors"
