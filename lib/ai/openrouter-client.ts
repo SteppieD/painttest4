@@ -22,7 +22,20 @@ export class OpenRouterClient {
 
   constructor(apiKey?: string) {
     this.apiKey = apiKey || process.env.OPENROUTER_API_KEY || '';
-    console.log('OpenRouter API key status:', this.apiKey ? 'Configured' : 'Not configured');
+    
+    // Enhanced logging for debugging
+    const keyStatus = {
+      provided: !!apiKey,
+      fromEnv: !!process.env.OPENROUTER_API_KEY,
+      configured: !!this.apiKey,
+      length: this.apiKey.length,
+      isPlaceholder: this.apiKey === 'your_openrouter_key',
+      environment: process.env.NODE_ENV,
+      vercelEnv: process.env.VERCEL_ENV
+    };
+    
+    console.log('[OpenRouter] API key configuration:', JSON.stringify(keyStatus, null, 2));
+    
     // Don't throw during build time - only throw when actually trying to use the API
   }
 
@@ -123,5 +136,31 @@ export class OpenRouterClient {
   }
 }
 
-// Export singleton instance
-export const openRouterClient = new OpenRouterClient();
+// Export singleton instance with lazy initialization
+let _openRouterClient: OpenRouterClient | null = null;
+
+export const openRouterClient = {
+  createChatCompletion: async (...args: Parameters<OpenRouterClient['createChatCompletion']>) => {
+    if (!_openRouterClient) {
+      console.log('[OpenRouter] Creating new client instance at runtime');
+      _openRouterClient = new OpenRouterClient();
+    }
+    return _openRouterClient.createChatCompletion(...args);
+  },
+  
+  createStreamingCompletion: async (...args: Parameters<OpenRouterClient['createStreamingCompletion']>) => {
+    if (!_openRouterClient) {
+      console.log('[OpenRouter] Creating new client instance at runtime');
+      _openRouterClient = new OpenRouterClient();
+    }
+    return _openRouterClient.createStreamingCompletion(...args);
+  },
+  
+  getAvailableModels: async (...args: Parameters<OpenRouterClient['getAvailableModels']>) => {
+    if (!_openRouterClient) {
+      console.log('[OpenRouter] Creating new client instance at runtime');
+      _openRouterClient = new OpenRouterClient();
+    }
+    return _openRouterClient.getAvailableModels(...args);
+  }
+};
