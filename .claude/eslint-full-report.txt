@@ -1,0 +1,1336 @@
+
+/Users/sepg/Desktop/painttest4/app/about/page.tsx
+  158:23  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  159:76  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  160:23  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  161:52  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/access-code/page.tsx
+  45:6  warning  React Hook useEffect has a missing dependency: 'accessCode'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/app/apartment-painting-quote/page.tsx
+  700:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/api-docs/page.tsx
+  172:62  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/api/auth/signin/_archive/route-adapted.ts
+  12:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/auth/signup/route.ts
+  2:8  warning  'bcrypt' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/auth/simple-signup/route.ts
+  108:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/chat/route.ts
+  219:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  240:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  292:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  345:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  346:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  352:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/companies/debug/route.ts
+  4:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/companies/onboarding/chat/route.ts
+   10:7   warning  'ONBOARDING_STEPS' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  159:88  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  217:24  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  217:59  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  220:55  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  232:54  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/companies/onboarding/route.ts
+  11:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  12:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/companies/settings/route.ts
+  55:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/debug/route.ts
+  4:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/diagnose/route.ts
+  19:81  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/health/route.ts
+  22:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/init-db/route.ts
+   7:11  warning  'db' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  14:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/paint-products/route.ts
+   53:19  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  278:11  warning  'result' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/[id]/route.ts
+  73:7  warning  'id' is assigned a value but never used          @typescript-eslint/no-unused-vars
+  74:7  warning  'quote_id' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  75:7  warning  'company_id' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  76:7  warning  'created_at' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  77:7  warning  'updated_at' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/[id]/track/route.ts
+  17:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/_archive/route-complex.ts
+  184:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  312:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  312:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  313:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/_archive/route-old.ts
+   21:13  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   32:61  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   59:42  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+  127:36  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+  241:11  warning  'formatted' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/_archive/route-production-safe.ts
+   22:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   33:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   60:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/_archive/route-scalable.ts
+   23:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   34:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   61:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  129:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/quotes/route.ts
+   24:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   26:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   27:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  240:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/settings/route.ts
+  86:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/test-ai/route.ts
+  1:10  warning  'NextRequest' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/test-openrouter/route.ts
+   4:27  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+  30:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  62:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/test-quote-creation/route.ts
+    5:28  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+  104:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  105:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  108:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  116:27  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/api/test/ai/route.ts
+   4:27  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+  12:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/test/db/route.ts
+   4:27  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+  13:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  14:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  44:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/test/route.ts
+  21:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/api/verify-code/route.ts
+  5:11  warning  'Company' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/case-studies/commercial-office-building/page.tsx
+    3:22  warning  'Calendar' is defined but never used                             @typescript-eslint/no-unused-vars
+  377:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  382:60  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  417:22  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/case-studies/historic-restoration/page.tsx
+    3:54  warning  'MapPin' is defined but never used                               @typescript-eslint/no-unused-vars
+  256:92  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  379:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  380:51  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  383:37  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  383:94  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:56  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  411:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  417:62  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  435:22  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  435:66  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/case-studies/hoa-community-project/page.tsx
+    3:50  warning  'MapPin' is defined but never used                               @typescript-eslint/no-unused-vars
+  248:37  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  387:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  391:64  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  402:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  404:94  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  472:22  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/case-studies/luxury-home-transformation/page.tsx
+    5:8   warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+  360:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  363:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  364:80  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  418:22  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  418:61  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/case-studies/page.tsx
+    4:8   warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+  102:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  104:45  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  137:50  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  171:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  173:80  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  207:71  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  241:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  241:24  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  243:68  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  271:90  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  309:22  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  318:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  319:94  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  348:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  349:79  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  378:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  379:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  405:47  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/commercial-painting-estimating-software/page.tsx
+    3:37  warning  'Calculator' is defined but never used                           @typescript-eslint/no-unused-vars
+    3:49  warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+    3:81  warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+  283:69  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  595:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  597:23  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  597:77  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/create-quote/page.tsx
+    6:29  warning  'CardHeader' is defined but never used                           @typescript-eslint/no-unused-vars
+    6:41  warning  'CardTitle' is defined but never used                            @typescript-eslint/no-unused-vars
+   10:21  warning  'MessageSquare' is defined but never used                        @typescript-eslint/no-unused-vars
+   10:36  warning  'List' is defined but never used                                 @typescript-eslint/no-unused-vars
+   17:50  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   36:42  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  151:24  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  187:26  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/dashboard/client-dashboard.tsx
+   4:113  warning  'TrendingDown' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+   5:10   warning  'UpgradeModal' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  26:17   warning  Unexpected any. Specify a different type                                                                               @typescript-eslint/no-explicit-any
+  65:6    warning  React Hook useEffect has a missing dependency: 'fetchDashboardData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/app/dashboard/customers/[id]/page.tsx
+  52:6   warning  React Hook useEffect has a missing dependency: 'fetchCustomer'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  54:41  warning  Unexpected any. Specify a different type                                                                          @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/dashboard/customers/page.tsx
+   8:60  warning  'TrendingUp' is defined but never used            @typescript-eslint/no-unused-vars
+  28:10  warning  'companyData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  28:50  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  40:42  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/dashboard/layout.tsx
+   5:49  warning  'BarChart3' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+   5:60  warning  'Calculator' is defined but never used                                                                       @typescript-eslint/no-unused-vars
+  55:6   warning  React Hook useEffect has a missing dependency: 'pathname'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/app/dashboard/products/page.tsx
+  7:37  warning  'Trash2' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/dashboard/quotes/[id]/edit/page.tsx
+  49:6  warning  React Hook useEffect has a missing dependency: 'fetchQuote'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/app/dashboard/quotes/[id]/page.tsx
+   5:10  warning  'Card' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+   5:16  warning  'CardContent' is defined but never used                                                                        @typescript-eslint/no-unused-vars
+   5:29  warning  'CardDescription' is defined but never used                                                                    @typescript-eslint/no-unused-vars
+   5:46  warning  'CardHeader' is defined but never used                                                                         @typescript-eslint/no-unused-vars
+   5:58  warning  'CardTitle' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+   7:33  warning  'Download' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  48:6   warning  React Hook useEffect has a missing dependency: 'fetchQuote'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/app/dashboard/quotes/[id]/preview/page.tsx
+   9:52  warning  'Check' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+  52:6   warning  React Hook useEffect has a missing dependency: 'fetchQuote'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/app/dashboard/quotes/page.tsx
+   9:52  warning  'XCircle' is defined but never used       @typescript-eslint/no-unused-vars
+   9:61  warning  'Send' is defined but never used          @typescript-eslint/no-unused-vars
+  46:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/dashboard/settings/billing/page.tsx
+   14:3   warning  'CreditCard' is defined but never used                                                                              @typescript-eslint/no-unused-vars
+   16:3   warning  'X' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+   19:3   warning  'Clock' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+   40:42  warning  Unexpected any. Specify a different type                                                                            @typescript-eslint/no-explicit-any
+   53:6   warning  React Hook useEffect has a missing dependency: 'fetchUsageStats'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  168:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                     react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/dashboard/settings/page.tsx
+   11:33  warning  'Upload' is defined but never used        @typescript-eslint/no-unused-vars
+   11:41  warning  'Building2' is defined but never used     @typescript-eslint/no-unused-vars
+  265:82  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/demo/page.tsx
+   16:3   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   17:3   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+   19:3   warning  'ArrowRight' is defined but never used                           @typescript-eslint/no-unused-vars
+  241:58  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  241:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/exterior-painting-estimate-calculator/calculator-client.tsx
+  33:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  55:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/exterior-painting-estimate-calculator/page.tsx
+    3:65  warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+  844:36  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/features/page.tsx
+  6:3  warning  'Clock' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/feedback/page.tsx
+   10:3   warning  'ThumbsUp' is defined but never used                             @typescript-eslint/no-unused-vars
+   14:3   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   16:3   warning  'Star' is defined but never used                                 @typescript-eslint/no-unused-vars
+   18:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   20:3   warning  'GitBranch' is defined but never used                            @typescript-eslint/no-unused-vars
+   22:3   warning  'Target' is defined but never used                               @typescript-eslint/no-unused-vars
+   23:3   warning  'Sparkles' is defined but never used                             @typescript-eslint/no-unused-vars
+  201:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  341:53  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/cabinet-painting-quotes/page.tsx
+   12:3   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+   13:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   14:3   warning  'CheckCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+   20:3   warning  'Wrench' is defined but never used                               @typescript-eslint/no-unused-vars
+  564:79  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  590:78  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  598:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  606:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/commercial-painting-quotes/page.tsx
+   11:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   15:3   warning  'Ruler' is defined but never used                                @typescript-eslint/no-unused-vars
+   20:3   warning  'Calendar' is defined but never used                             @typescript-eslint/no-unused-vars
+  415:34  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  429:37  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/common-quoting-mistakes/page.tsx
+   11:3   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+  188:63  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  188:87  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/exterior-painting-quotes/page.tsx
+  11:3  warning  'Paintbrush' is defined but never used   @typescript-eslint/no-unused-vars
+  12:3  warning  'DollarSign' is defined but never used   @typescript-eslint/no-unused-vars
+  14:3  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+  17:3  warning  'Ruler' is defined but never used        @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/guides/follow-up-strategies/page.tsx
+   12:3    warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   19:3    warning  'Calendar' is defined but never used                             @typescript-eslint/no-unused-vars
+  173:80   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  178:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  179:87   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  205:56   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  209:89   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  213:72   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  233:29   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  234:63   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  234:98   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  237:29   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  237:32   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  238:66   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  238:86   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  241:29   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  241:38   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  242:64   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  312:30   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  312:39   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  462:78   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  462:81   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  462:105  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  466:23   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  466:28   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  466:47   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  466:66   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  467:24   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  468:108  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  474:78   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  474:100  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  478:23   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  478:109  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  480:27   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  480:85   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  486:78   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  486:104  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  490:23   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  490:37   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  491:24   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  492:86   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/how-to-quote-painting-jobs/page.tsx
+     3:8    warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+   351:95   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   522:104  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   578:32   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   604:76   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   926:72   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1266:25   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/interior-painting-quotes/page.tsx
+   15:3   warning  'CheckCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+   18:3   warning  'Ruler' is defined but never used                                @typescript-eslint/no-unused-vars
+  658:25  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  718:25  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  774:25  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/labor-cost-estimation/page.tsx
+   14:3   warning  'AlertCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+   15:3   warning  'CheckCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+   19:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+   20:3   warning  'Wrench' is defined but never used                               @typescript-eslint/no-unused-vars
+  553:79  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  579:78  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/measurement-techniques/page.tsx
+  386:51  warning  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+  388:55  warning  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+  391:55  warning  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+
+/Users/sepg/Desktop/painttest4/app/guides/page.tsx
+  14:3  warning  'Paintbrush' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/guides/paint-calculator/page.tsx
+    12:3   warning  'Droplets' is defined but never used                             @typescript-eslint/no-unused-vars
+    18:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+    23:3   warning  'Info' is defined but never used                                 @typescript-eslint/no-unused-vars
+   156:7   warning  'coverageRates' is assigned a value but never used               @typescript-eslint/no-unused-vars
+  1022:89  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1094:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/paint-coverage-rates/page.tsx
+    9:3   warning  'Paintbrush' is defined but never used                           @typescript-eslint/no-unused-vars
+   15:3   warning  'AlertCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+  480:47  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/paint-quantity-calculations/page.tsx
+   14:3    warning  'CheckCircle' is defined but never used                                 @typescript-eslint/no-unused-vars
+   19:3    warning  'Info' is defined but never used                                        @typescript-eslint/no-unused-vars
+  327:117  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`         react/no-unescaped-entities
+  351:59   warning  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+
+/Users/sepg/Desktop/painttest4/app/guides/painting-business-guide/page.tsx
+   174:7   warning  'revenueBenchmarks' is assigned a value but never used           @typescript-eslint/no-unused-vars
+   287:93  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   288:67  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   294:24  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   354:47  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   440:34  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   563:46  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   765:36  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   885:77  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   892:55  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   900:55  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   908:55  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   916:55  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   987:84  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1437:37  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1440:34  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1471:25  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1546:41  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/painting-estimate-software/page.tsx
+     3:8   warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+    10:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+    17:3   warning  'Shield' is defined but never used                               @typescript-eslint/no-unused-vars
+    20:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+    28:3   warning  'Settings' is defined but never used                             @typescript-eslint/no-unused-vars
+    29:3   warning  'Cloud' is defined but never used                                @typescript-eslint/no-unused-vars
+    30:3   warning  'Globe' is defined but never used                                @typescript-eslint/no-unused-vars
+   243:7   warning  'comparisonFeatures' is assigned a value but never used          @typescript-eslint/no-unused-vars
+   736:35  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   738:35  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1142:25  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1189:53  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/pricing-psychology/page.tsx
+   10:3    warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+   13:3    warning  'Award' is defined but never used                                @typescript-eslint/no-unused-vars
+   14:3    warning  'CheckCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+  207:116  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  212:33   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  212:95   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  213:33   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  213:91   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  214:33   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  214:85   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  215:33   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  215:91   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  235:35   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  235:79   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  236:35   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  236:75   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  338:57   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  338:98   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  346:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  346:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  347:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  347:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  348:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  348:61   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  349:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  349:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  370:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  370:65   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  371:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  371:68   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  372:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  372:54   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  373:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  373:50   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  403:99   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  435:70   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  435:103  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/guides/quote-presentation-tips/page.tsx
+   15:3    warning  'AlertCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+  283:31   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  283:62   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  332:31   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  332:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  483:44   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  495:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  495:45   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  495:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  496:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  496:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  497:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  497:57   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  498:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  498:56   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  499:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  499:57   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  500:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  500:29   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  500:51   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  501:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  501:31   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  501:57   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  516:29   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  516:32   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  516:54   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  516:58   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  523:29   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  523:55   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  543:78   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  543:101  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  546:28   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  546:113  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  547:46   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  547:67   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  547:104  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  548:49   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  548:105  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  553:76   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  553:104  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  556:28   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  556:33   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  556:109  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  557:28   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  557:38   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  557:100  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  558:28   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  558:101  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  563:78   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  563:104  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  566:28   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  566:94   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  568:28   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  568:124  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  585:67   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  587:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  587:60   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  588:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  588:60   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  589:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  589:67   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  590:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  590:29   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  590:63   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  598:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  598:65   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  599:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  599:67   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  600:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  600:70   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  601:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  601:70   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  609:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  609:57   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  610:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  610:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  611:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  611:59   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  612:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  612:60   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  623:27   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  623:64   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/help/page.tsx
+  349:18  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  349:34  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/how-to-quote-painting-jobs/page.tsx
+    3:57  warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+  290:97  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  305:47  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  342:41  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  360:42  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  446:87  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  541:38  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  570:99  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  600:78  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  637:74  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  637:95  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/integrations/page.tsx
+  15:3  warning  'FileText' is defined but never used    @typescript-eslint/no-unused-vars
+  16:3  warning  'Calculator' is defined but never used  @typescript-eslint/no-unused-vars
+  18:3  warning  'Users' is defined but never used       @typescript-eslint/no-unused-vars
+  19:3  warning  'Mail' is defined but never used        @typescript-eslint/no-unused-vars
+  23:3  warning  'Database' is defined but never used    @typescript-eslint/no-unused-vars
+  25:3  warning  'Smartphone' is defined but never used  @typescript-eslint/no-unused-vars
+  28:3  warning  'Palette' is defined but never used     @typescript-eslint/no-unused-vars
+  29:3  warning  'Settings' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/interior-painting-quote-calculator/calculator-client.tsx
+  42:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/app/interior-painting-quote-calculator/page.tsx
+    3:37  warning  'Ruler' is defined but never used                                @typescript-eslint/no-unused-vars
+    3:44  warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+    3:64  warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+  686:36  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  687:70  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/austin/page.tsx
+  124:67  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:68  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:48  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:55  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:40  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  297:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  299:77  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:75  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:41  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:68  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:53  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/charlotte/page.tsx
+  124:66  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:71  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  227:39  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:51  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  245:44  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:58  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:43  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  297:31  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  299:77  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:34  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:65  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:80  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:36  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/denver/page.tsx
+  124:70  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:68  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:53  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:40  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  245:51  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:61  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:40  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  297:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  299:72  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:74  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:79  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  483:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  486:53  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/las-vegas/page.tsx
+  124:72  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:71  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:52  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:54  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:39  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:61  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:58  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:93  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:36  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/miami/page.tsx
+  124:66  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:67  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:47  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  245:40  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:54  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:39  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:80  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:44  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:73  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:26  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:90  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:52  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/nashville/page.tsx
+  124:66  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:71  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:54  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:58  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:43  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:76  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:85  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:80  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/orlando/page.tsx
+  124:71  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:69  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:49  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  227:45  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:52  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:62  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:41  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:37  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:65  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:76  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:36  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/phoenix/page.tsx
+  124:62  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:69  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:54  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:49  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  245:42  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:41  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:61  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:38  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:66  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:75  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  483:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  486:54  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/san-diego/page.tsx
+  124:72  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:71  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:68  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:43  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:81  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:50  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:77  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:77  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/locations/tampa/page.tsx
+  124:65  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  214:67  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  225:52  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  235:51  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  245:40  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  247:28  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  256:58  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  275:39  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  297:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  299:80  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  314:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  316:35  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  316:66  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  396:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:26  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  478:95  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  484:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  487:46  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/mobile-painting-estimate-app/page.tsx
+  420:45  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  437:43  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  516:27  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  516:49  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  522:27  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  523:52  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/mobile/page.tsx
+  14:3  warning  'Shield' is defined but never used      @typescript-eslint/no-unused-vars
+  17:3  warning  'Download' is defined but never used    @typescript-eslint/no-unused-vars
+  25:3  warning  'Users' is defined but never used       @typescript-eslint/no-unused-vars
+  26:3  warning  'TrendingUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/onboarding/page.tsx
+  15:3  warning  'Palette' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/page.tsx
+   10:3    warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+  119:74   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  244:128  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  260:73   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  355:23   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  379:19   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  379:128  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  394:19   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  394:110  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  409:19   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  409:99   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/paint-contractor-app/page.tsx
+  477:35  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  488:60  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  534:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  534:90  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  535:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  552:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  553:63  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  553:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  570:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  571:89  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/paint-cost-calculator/page.tsx
+  3:22  warning  'DollarSign' is defined but never used   @typescript-eslint/no-unused-vars
+  3:85  warning  'AlertCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/paint-estimate-templates/page.tsx
+  3:56  warning  'Users' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/painting-business-software/page.tsx
+  453:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  453:76  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  454:64  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  458:70  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  471:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  472:38  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  472:62  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  489:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  490:50  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-contractor-software/page.tsx
+   11:3    warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   22:3    warning  'Palette' is defined but never used                              @typescript-eslint/no-unused-vars
+  362:33   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  561:47   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  574:21   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  574:71   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  574:147  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  594:21   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  594:138  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  600:64   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  614:21   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  614:131  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  712:110  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  730:23   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-contractors/page.tsx
+  186:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  253:60  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  303:23  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  305:25  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  305:67  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  453:94  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-estimate-calculator-free/page.tsx
+  215:59  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-estimate-software/page.tsx
+    4:8    warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+    5:8    warning  'Breadcrumbs' is defined but never used                          @typescript-eslint/no-unused-vars
+  532:25   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  534:100  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  551:25   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  553:67   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  570:25   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  572:68   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  589:25   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  590:103  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-estimating-software/page.tsx
+    3:22   warning  'Smartphone' is defined but never used                           @typescript-eslint/no-unused-vars
+    3:50   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+    3:57   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+    3:69   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+    3:95   warning  'ArrowRight' is defined but never used                           @typescript-eslint/no-unused-vars
+    3:129  warning  'Shield' is defined but never used                               @typescript-eslint/no-unused-vars
+  648:72   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  648:91   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  731:42   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-projects/page.tsx
+  274:57  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  283:33  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-quote-generator/page.tsx
+  225:29  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  228:47  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  405:52  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  405:71  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-quote-software/page.tsx
+   11:3    warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   12:3    warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   13:3    warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+   23:3    warning  'Palette' is defined but never used                              @typescript-eslint/no-unused-vars
+   32:3    warning  'MessageSquare' is defined but never used                        @typescript-eslint/no-unused-vars
+   33:3    warning  'Repeat' is defined but never used                               @typescript-eslint/no-unused-vars
+   34:3    warning  'PaintBucket' is defined but never used                          @typescript-eslint/no-unused-vars
+   37:3    warning  'Settings' is defined but never used                             @typescript-eslint/no-unused-vars
+  679:23   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  679:70   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  679:161  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  685:68   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  699:23   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  699:97   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  699:168  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  719:23   warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  719:170  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  725:68   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  819:186  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/painting-quote-templates/page.tsx
+    3:49  warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+    3:56  warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+  287:54  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  294:64  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  294:93  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  401:84  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  416:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/pricing/page.tsx
+    8:16   warning  'TabsContent' is defined but never used                          @typescript-eslint/no-unused-vars
+  173:28   warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  176:27   warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  187:29   warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  189:33   warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  245:32   warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  313:23   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  330:114  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  358:87   warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/quote/[id]/page.tsx
+   14:3   warning  'Calendar' is defined but never used                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+   15:3   warning  'DollarSign' is defined but never used                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+   17:3   warning  'Globe' is defined but never used                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+   71:6   warning  React Hook useEffect has a missing dependency: 'fetchQuote'. Either include it or remove the dependency array                                                                                                                                                   react-hooks/exhaustive-deps
+  174:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/sepg/Desktop/painttest4/app/roi-calculator/page.tsx
+    7:8   warning  'Breadcrumbs' is defined but never used                          @typescript-eslint/no-unused-vars
+  221:65  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  221:82  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  461:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  461:50  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  462:34  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  462:93  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  490:63  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/sitemap.ts
+  13:9  warning  'lastWeek' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  14:9  warning  'lastMonth' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/solutions/commercial/page.tsx
+   11:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   12:3   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+   13:3   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+   14:3   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   16:3   warning  'Calculator' is defined but never used                           @typescript-eslint/no-unused-vars
+   17:3   warning  'Star' is defined but never used                                 @typescript-eslint/no-unused-vars
+   21:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   25:3   warning  'Briefcase' is defined but never used                            @typescript-eslint/no-unused-vars
+  337:59  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  337:79  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/solutions/enterprise/page.tsx
+   11:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   12:3   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+   13:3   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   14:3   warning  'FileText' is defined but never used                             @typescript-eslint/no-unused-vars
+   16:3   warning  'Sparkles' is defined but never used                             @typescript-eslint/no-unused-vars
+   18:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   19:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+   21:3   warning  'Settings' is defined but never used                             @typescript-eslint/no-unused-vars
+   24:3   warning  'Cloud' is defined but never used                                @typescript-eslint/no-unused-vars
+  328:64  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  328:79  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  418:18  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/solutions/franchise/page.tsx
+   11:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   13:3   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   14:3   warning  'FileText' is defined but never used                             @typescript-eslint/no-unused-vars
+   15:3   warning  'Calculator' is defined but never used                           @typescript-eslint/no-unused-vars
+   16:3   warning  'Star' is defined but never used                                 @typescript-eslint/no-unused-vars
+   20:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   26:3   warning  'Layers' is defined but never used                               @typescript-eslint/no-unused-vars
+  329:58  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  329:80  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/solutions/residential/page.tsx
+   12:3   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+   13:3   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+   14:3   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+   23:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   24:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+  309:58  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  309:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/solutions/startups/page.tsx
+   11:3   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   12:3   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+   13:3   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+   21:3   warning  'Zap' is defined but never used                                  @typescript-eslint/no-unused-vars
+   22:3   warning  'BarChart3' is defined but never used                            @typescript-eslint/no-unused-vars
+  372:66  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  372:78  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/status/page.tsx
+   2:8  warning  'Link' is defined but never used        @typescript-eslint/no-unused-vars
+  19:3  warning  'TrendingUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/app/trial-signup/page.tsx
+   11:16  warning  'TabsContent' is defined but never used                          @typescript-eslint/no-unused-vars
+   22:9   warning  'router' is assigned a value but never used                      @typescript-eslint/no-unused-vars
+  106:61  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  121:58  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/app/unlock-analytics/page.tsx
+    8:17  warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+    8:80  warning  'Lock' is defined but never used                                 @typescript-eslint/no-unused-vars
+  255:55  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  255:74  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/components/WebVitalsMonitor.tsx
+  141:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/components/achievements/achievement-display.tsx
+  12:9  warning  'totalPossiblePoints' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/components/achievements/achievement-notification.tsx
+  78:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/components/billing/billing-overview.tsx
+   59:9   warning  'getUsageColor' is assigned a value but never used               @typescript-eslint/no-unused-vars
+  202:22  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/components/calculators/paint-estimate-calculator.tsx
+   9:28  warning  'DollarSign' is defined but never used    @typescript-eslint/no-unused-vars
+  10:10  warning  'Badge' is defined but never used         @typescript-eslint/no-unused-vars
+  24:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/components/calculators/roi-calculator.tsx
+   8:41  warning  'Users' is defined but never used         @typescript-eslint/no-unused-vars
+   8:48  warning  'Calculator' is defined but never used    @typescript-eslint/no-unused-vars
+   9:10  warning  'Badge' is defined but never used         @typescript-eslint/no-unused-vars
+  21:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/components/chat/chat-input.tsx
+   6:10  warning  'Input' is defined but never used                                                                            @typescript-eslint/no-unused-vars
+  79:11  warning  Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+/Users/sepg/Desktop/painttest4/components/chat/chat-interface.tsx
+   7:10  warning  'Card' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+   9:10  warning  'AlertCircle' is defined but never used                                                                             @typescript-eslint/no-unused-vars
+  35:46  warning  Unexpected any. Specify a different type                                                                            @typescript-eslint/no-explicit-any
+  73:6   warning  React Hook useEffect has a missing dependency: 'handleDemoStart'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/sepg/Desktop/painttest4/components/enhanced-hero.tsx
+  192:19  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  192:60  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/components/logo-upload-with-extraction.tsx
+  193:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/sepg/Desktop/painttest4/components/modern-features.tsx
+  65:10  warning  'activeFeature' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  65:25  warning  'setActiveFeature' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/components/modern-footer.tsx
+  2:65   warning  'MapPin' is defined but never used      @typescript-eslint/no-unused-vars
+  2:129  warning  'BarChart3' is defined but never used   @typescript-eslint/no-unused-vars
+  2:140  warning  'Paintbrush' is defined but never used  @typescript-eslint/no-unused-vars
+  2:152  warning  'Calculator' is defined but never used  @typescript-eslint/no-unused-vars
+  2:164  warning  'FileText' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/components/onboarding-modal.tsx
+   27:16  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  141:16  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/components/quote-usage-indicator-client.tsx
+    4:10  warning  'Progress' is defined but never used                             @typescript-eslint/no-unused-vars
+   55:96  warning  'plan' is assigned a value but never used                        @typescript-eslint/no-unused-vars
+   97:16  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  109:16  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/sepg/Desktop/painttest4/components/roi-widget.tsx
+   5:48  warning  'DollarSign' is defined but never used                  @typescript-eslint/no-unused-vars
+  16:3   warning  'companyName' is assigned a value but never used        @typescript-eslint/no-unused-vars
+  26:9   warning  'closeRateIncrease' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/hooks/use-achievements.ts
+  72:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/ai/intelligent-quote-parser.ts
+   31:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  249:39  warning  'index' is defined but never used         @typescript-eslint/no-unused-vars
+  348:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  348:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/ai/openrouter-client.ts
+    1:10  warning  'NextRequest' is defined but never used   @typescript-eslint/no-unused-vars
+  105:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/ai/quote-assistant.ts
+   11:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   57:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   78:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  145:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  344:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/auth/admin.ts
+  78:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/auth/client.ts
+   4:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  30:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/auth/middleware.ts
+  105:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  132:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/auth/simple-session.ts
+   5:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   7:69  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  22:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/calculators/quote-calculator.ts
+  100:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  185:65  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  262:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/chat/conversation-manager.ts
+    8:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    9:18  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   14:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  154:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  174:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  262:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  274:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  287:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  307:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  348:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  349:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/database/adapter.ts
+    7:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    8:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    9:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   10:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   11:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   11:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   12:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   12:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   15:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   15:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   16:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   22:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   22:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   23:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   24:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   27:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   27:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   28:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   28:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   48:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   67:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   78:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   87:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   87:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  143:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  154:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  180:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  180:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  192:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  192:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  203:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  214:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  223:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  223:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  235:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  235:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/database/memory-adapter.ts
+    5:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    6:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    7:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   44:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   53:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   57:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   62:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   66:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   66:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   79:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   79:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  111:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  111:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  124:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  133:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  170:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  170:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  182:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  191:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  195:15  warning  'sql' is defined but never used           @typescript-eslint/no-unused-vars
+  195:28  warning  'params' is defined but never used        @typescript-eslint/no-unused-vars
+  195:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  195:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  200:16  warning  'query' is defined but never used         @typescript-eslint/no-unused-vars
+  200:31  warning  'params' is defined but never used        @typescript-eslint/no-unused-vars
+  200:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  200:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/database/sqlite-adapter.ts
+   14:61  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   24:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   29:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   29:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   42:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   42:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   55:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   55:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   75:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   80:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  107:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  112:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  112:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  125:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  125:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  138:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  143:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  148:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  148:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/debug-logger.ts
+   5:83  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  12:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  31:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  35:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  39:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  53:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/quote-number-generator-adapter.ts
+  1:10  warning  'getDatabaseAdapter' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/lib/quote-number-generator.ts
+    7:43  warning  'companyId' is defined but never used     @typescript-eslint/no-unused-vars
+   20:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   22:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  127:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  139:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/services/subscription.ts
+  190:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/sepg/Desktop/painttest4/lib/stripe/subscription-service.ts
+  104:53  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  105:51  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  106:43  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  213:58  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  224:58  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  270:11  warning  'company' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/middleware.ts
+   5:7  warning  'protectedRoutes' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  16:7  warning  'adminRoutes' is assigned a value but never used      @typescript-eslint/no-unused-vars
+
+/Users/sepg/Desktop/painttest4/scripts/jina-reader.js
+  6:15  warning  Require statement not part of import statement  @typescript-eslint/no-var-requires
+
+/Users/sepg/Desktop/painttest4/scripts/update-navigation.js
+  1:12  warning  Require statement not part of import statement  @typescript-eslint/no-var-requires
+  2:14  warning  Require statement not part of import statement  @typescript-eslint/no-var-requires
+
+/Users/sepg/Desktop/painttest4/test-styling-issues.ts
+   1:20  warning  'Browser' is defined but never used  @typescript-eslint/no-unused-vars
+  42:85  warning  'e' is defined but never used        @typescript-eslint/no-unused-vars
+
+✖ 1027 problems (0 errors, 1027 warnings)
+

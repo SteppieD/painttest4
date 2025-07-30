@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   };
 
   // Test OpenRouter connection
-  let connectionTest = { status: 'not-tested', error: null };
+  let connectionTest: any = { status: 'not-tested', error: null };
   if (process.env.OPENROUTER_API_KEY && process.env.OPENROUTER_API_KEY !== 'your_openrouter_key') {
     try {
       const response = await fetch('https://openrouter.ai/api/v1/models', {

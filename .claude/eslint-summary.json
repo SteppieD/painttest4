@@ -1,0 +1,38 @@
+[
+  {
+    "rule": "react/no-unescaped-entities",
+    "count": 562
+  },
+  {
+    "rule": "@typescript-eslint/no-unused-vars",
+    "count": 230
+  },
+  {
+    "rule": "@typescript-eslint/no-explicit-any",
+    "count": 220
+  },
+  {
+    "rule": "react-hooks/exhaustive-deps",
+    "count": 9
+  },
+  {
+    "rule": "react/jsx-no-comment-textnodes",
+    "count": 4
+  },
+  {
+    "rule": "@typescript-eslint/no-var-requires",
+    "count": 3
+  },
+  {
+    "rule": "@next/next/no-img-element",
+    "count": 2
+  },
+  {
+    "rule": null,
+    "count": 2
+  },
+  {
+    "rule": "jsx-a11y/alt-text",
+    "count": 1
+  }
+]
