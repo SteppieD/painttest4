@@ -37,13 +37,11 @@ export async function POST(request: NextRequest) {
     
     // Check subscription for AI features (skip for demo)
     if (!isDemo && company.id !== 1) { // Don't check for demo company
-      const companyData = await db.query(
-        'SELECT subscription_tier, monthly_quote_count, monthly_quote_limit FROM companies WHERE id = ?',
-        [company.id]
-      );
+      // Use getCompany instead of query to avoid execute_sql dependency
+      const companyData = await db.getCompany(company.id);
       
-      if (companyData.length > 0) {
-        const tier = companyData[0];
+      if (companyData) {
+        const tier = companyData;
         if (tier.subscription_tier === 'free' && 
             tier.monthly_quote_limit > 0 && 
             tier.monthly_quote_count >= tier.monthly_quote_limit) {

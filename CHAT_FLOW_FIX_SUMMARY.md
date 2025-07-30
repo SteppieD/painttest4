@@ -119,3 +119,53 @@ access_code: company.accessCode,
 ```
 
 The `CompanyAuth` type only has `accessCode` (camelCase), not `access_code` (snake_case).
+
+## Supabase RPC Function Error (Update 2)
+
+### Issue
+Chat API error: `Could not find the function public.execute_sql(params, query) in the schema cache`
+
+### Root Cause
+The Supabase adapter was trying to use an RPC function `execute_sql` that doesn't exist in the production database. This function is defined in `supabase-create-execute-sql-function.sql` but hasn't been applied to Supabase yet.
+
+### Fix Applied
+Changed `/app/api/chat/route.ts` to use `db.getCompany()` instead of `db.query()`:
+
+**Before:**
+```typescript
+const companyData = await db.query(
+  'SELECT subscription_tier, monthly_quote_count, monthly_quote_limit FROM companies WHERE id = ?',
+  [company.id]
+);
+```
+
+**After:**
+```typescript
+const companyData = await db.getCompany(company.id);
+```
+
+This avoids the dependency on the `execute_sql` RPC function.
+
+### Alternative Solution
+If you need the full query functionality, run this SQL in your Supabase SQL editor:
+```sql
+-- From supabase-create-execute-sql-function.sql
+CREATE OR REPLACE FUNCTION execute_sql(query text, params json DEFAULT '[]'::json)
+RETURNS json
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  result json;
+BEGIN
+  EXECUTE format('SELECT json_agg(row_to_json(t)) FROM (%s) t', query) INTO result;
+  RETURN COALESCE(result, '[]'::json);
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE WARNING 'execute_sql error: %', SQLERRM;
+    RETURN '[]'::json;
+END;
+$$;
+
+GRANT EXECUTE ON FUNCTION execute_sql(text, json) TO authenticated, anon;
+```
