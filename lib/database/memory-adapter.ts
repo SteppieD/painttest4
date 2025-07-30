@@ -69,10 +69,18 @@ export class MemoryAdapter implements DatabaseAdapter {
     const company = {
       ...data,
       id,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString()
+      created_at: data.created_at || new Date().toISOString(),
+      updated_at: data.updated_at || new Date().toISOString(),
+      // Ensure all required fields have defaults
+      tax_rate: data.tax_rate || 0,
+      onboarding_completed: data.onboarding_completed || false,
+      onboarding_step: data.onboarding_step || 0,
+      subscription_tier: data.subscription_tier || 'free',
+      monthly_quote_count: data.monthly_quote_count || 0,
+      monthly_quote_limit: data.monthly_quote_limit || 5
     };
     memoryStore.companies.set(id, company);
+    console.log('[MemoryAdapter] Company created:', { id, access_code: company.access_code });
     return company;
   }
 

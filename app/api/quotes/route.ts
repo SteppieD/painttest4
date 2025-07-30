@@ -83,7 +83,42 @@ export async function POST(request: NextRequest) {
     }
     
     // Get company data to fetch tax rate
-    const companyData = await db.getCompany(numericCompanyId);
+    let companyData = await db.getCompany(numericCompanyId);
+    
+    // If company doesn't exist in memory adapter, create it from auth data
+    if (!companyData && company) {
+      console.log('[QUOTES API] Company not found in DB, creating from auth data:', {
+        id: numericCompanyId,
+        accessCode: company.accessCode,
+        name: company.name
+      });
+      
+      try {
+        // Create the company in the database
+        companyData = await db.createCompany({
+          id: numericCompanyId,
+          access_code: company.accessCode || company.access_code,
+          company_name: company.name || 'Unknown Company',
+          name: company.name || 'Unknown Company',
+          email: company.email || `company${numericCompanyId}@example.com`,
+          phone: '',
+          tax_rate: 0,
+          onboarding_completed: false,
+          onboarding_step: 0,
+          subscription_tier: 'free',
+          monthly_quote_count: 0,
+          monthly_quote_limit: 5,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        });
+        console.log('[QUOTES API] Company created successfully:', companyData);
+      } catch (createError) {
+        console.error('[QUOTES API] Failed to create company:', createError);
+        // Continue with default values if creation fails
+        companyData = { tax_rate: 0 };
+      }
+    }
+    
     const companyTaxRate = companyData?.tax_rate || 0;
     
     // Generate unique quote ID

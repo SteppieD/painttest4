@@ -244,9 +244,8 @@ export function getDatabaseAdapter(): DatabaseAdapter {
   const hasSupabase = process.env.NEXT_PUBLIC_SUPABASE_URL && 
                       (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
-  // Temporarily disable Supabase until execute_sql function is created
-  // Always use Memory adapter for now
-  if (hasSupabase && false) {
+  // Use Supabase if available
+  if (hasSupabase) {
     console.log('Using Supabase database adapter');
     return new SupabaseAdapter();
   }
