@@ -353,6 +353,8 @@ export async function POST(request: NextRequest) {
         // Include full error details for debugging
         response = `I apologize, but I'm experiencing issues with the AI service. Error details: ${errorDetails}`;
         console.error('[CHAT] Full error object:', processError);
+        console.error('[CHAT] Error type:', processError?.constructor?.name);
+        console.error('[CHAT] Error keys:', processError && typeof processError === 'object' ? Object.keys(processError) : 'Not an object');
       }
       
       // Reset conversation on error
@@ -393,13 +395,25 @@ export async function POST(request: NextRequest) {
     
   } catch (error) {
     console.error('[CHAT] Fatal error:', error);
+    
+    // Properly extract error message
+    let errorMessage = 'Unknown error';
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    } else if (typeof error === 'object' && error !== null) {
+      errorMessage = JSON.stringify(error);
+    } else {
+      errorMessage = String(error);
+    }
+    
     console.error('[CHAT] Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined
+      message: errorMessage,
+      stack: error instanceof Error ? error.stack : undefined,
+      type: error?.constructor?.name,
+      fullError: error
     });
     
     // Check if it's an API key error
-    const errorMessage = error instanceof Error ? error.message : String(error);
     if (errorMessage.includes('OpenRouter API key is required')) {
       return NextResponse.json({
         response: "OpenRouter API key is not configured. Please set OPENROUTER_API_KEY in your environment variables.",
