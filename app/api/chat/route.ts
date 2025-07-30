@@ -143,7 +143,14 @@ export async function POST(request: NextRequest) {
         console.log('[CHAT] Using AI assistant with enhanced context');
         
         // Get company rates from database
-        const companyData = await db.getCompany(company.id);
+        let companyData;
+        try {
+          companyData = await db.getCompany(company.id);
+        } catch (dbError) {
+          console.error('[CHAT] Database error getting company:', dbError);
+          throw new Error('Database connection error');
+        }
+        
         const companyRates = {
           paintingRate: companyData?.default_painting_rate || 2.50,
           primingRate: companyData?.default_priming_rate || 0.40,
@@ -407,16 +414,24 @@ export async function POST(request: NextRequest) {
       }, { status: 200 });
     }
     
+    // Log the full error for debugging
+    console.error('[CHAT] Uncaught error in route:', {
+      error: errorMessage,
+      stack: error instanceof Error ? error.stack : undefined,
+      type: error?.constructor?.name
+    });
+    
     // Return user-friendly error with fallback response
     return NextResponse.json({
-      response: "I apologize, but I'm experiencing issues with the AI service. Please ensure your OpenRouter API key is valid and has credits.",
+      response: `I apologize, but I'm experiencing a technical issue. Error: ${errorMessage}. Please try again or contact support if the issue persists.`,
       sessionId: `error-${Date.now()}`,
       suggestedReplies: ['Try again'],
       isComplete: false,
       quoteData: null,
       error: {
         message: 'AI service error',
-        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
+        details: errorMessage,
+        stack: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.stack : undefined) : undefined
       }
     }, { status: 200 }); // Return 200 with error in body to prevent UI errors
   }
