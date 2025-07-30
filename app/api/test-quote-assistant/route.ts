@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     });
 
     let response;
-    let error;
+    let error: any;
     
     try {
       response = await quoteAssistant.processMessage(
