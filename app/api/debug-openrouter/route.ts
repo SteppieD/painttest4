@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Test 2: Chat completion test
-  let chatTest = { status: 'not-tested' };
+  let chatTest: any = { status: 'not-tested' };
   if (process.env.OPENROUTER_API_KEY && directApiTest.status === 'success') {
     try {
       const chatResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
