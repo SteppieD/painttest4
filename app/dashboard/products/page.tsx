@@ -17,14 +17,17 @@ interface AuthPayload {
 }
 
 async function getProducts(companyId: number) {
-  const products = await db.getAll(
-    `SELECT * FROM paint_products 
-     WHERE user_id = (SELECT id FROM users WHERE company_name = 
-       (SELECT company_name FROM companies WHERE id = ?))
-     ORDER BY created_at DESC`,
-    [companyId]
-  )
-
+  // Use the new adapter method
+  let products = []
+  try {
+    if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
+      products = await (db as any).getPaintProductsByCompanyId(companyId)
+    } else {
+      console.log('[DASHBOARD] Paint products method not available')
+    }
+  } catch (error) {
+    console.error('[DASHBOARD] Error fetching paint products:', error)
+  }
   return products || []
 }
 
@@ -37,9 +40,9 @@ export default async function ProductsPage() {
 
   const totalProducts = products.length
   const averageCost = products.length > 0 
-    ? products.reduce((sum, p) => sum + p.costPerGallon.toNumber(), 0) / products.length
+    ? products.reduce((sum, p) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
     : 0
-  const uniqueBrands = [...new Set(products.map(p => p.brand))].length
+  const uniqueBrands = [...new Set(products.map(p => p.brand).filter(Boolean))].length
 
   return (
     <div className="space-y-8">
@@ -127,18 +130,16 @@ export default async function ProductsPage() {
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-lg">{product.name}</h3>
-                        <Badge variant="secondary">{product.brand}</Badge>
+                        <h3 className="font-semibold text-lg">{product.product_name}</h3>
+                        {product.brand && <Badge variant="secondary">{product.brand}</Badge>}
                       </div>
                       
                       <div className="flex flex-wrap gap-4 text-base text-gray-200">
-                        <span>Type: {product.type}</span>
-                        <span>•</span>
-                        <span>Sheen: {product.sheen}</span>
-                        {product.color && (
+                        <span>Use Case: {product.use_case}</span>
+                        {product.sheen && (
                           <>
                             <span>•</span>
-                            <span>Color: {product.color}</span>
+                            <span>Sheen: {product.sheen}</span>
                           </>
                         )}
                       </div>
@@ -146,18 +147,12 @@ export default async function ProductsPage() {
                       <div className="flex gap-6 mt-2">
                         <div>
                           <span className="text-base text-gray-200">Cost: </span>
-                          <span className="font-medium">${product.costPerGallon.toFixed(2)}/gal</span>
+                          <span className="font-medium">${(typeof product.cost_per_gallon === 'number' ? product.cost_per_gallon : Number(product.cost_per_gallon)).toFixed(2)}/gal</span>
                         </div>
                         <div>
                           <span className="text-base text-gray-200">Coverage: </span>
-                          <span className="font-medium">{product.coveragePerGallon} sq ft/gal</span>
+                          <span className="font-medium">{product.coverage_rate || 350} sq ft/gal</span>
                         </div>
-                        {product.recommendedCoats && (
-                          <div>
-                            <span className="text-base text-gray-200">Coats: </span>
-                            <span className="font-medium">{product.recommendedCoats}</span>
-                          </div>
-                        )}
                       </div>
                     </div>
                     

@@ -1,5 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { MemoryAdapter } from './memory-adapter';
+import { SupabaseAdapterFixed } from './supabase-adapter-fixed';
 
 // Database adapter interface
 export interface DatabaseAdapter {
@@ -246,8 +247,8 @@ export function getDatabaseAdapter(): DatabaseAdapter {
 
   // Use Supabase if available
   if (hasSupabase) {
-    console.log('Using Supabase database adapter');
-    return new SupabaseAdapter();
+    console.log('Using Supabase database adapter (fixed version)');
+    return new SupabaseAdapterFixed();
   }
 
   // In production or serverless environments, use Memory adapter as fallback

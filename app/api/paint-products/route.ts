@@ -37,34 +37,24 @@ export async function GET(request: NextRequest) {
     const useCase = searchParams.get('use_case');
     const isActive = searchParams.get('is_active');
 
-    // Get user ID for the company
-    const user = await db.query(
-      'SELECT id FROM users WHERE company_name = (SELECT company_name FROM companies WHERE id = ?)',
-      [auth.company!.id]
-    );
-
-    if (!user || user.length === 0) {
-      // Return default products if no user found
-      return NextResponse.json({ products: DEFAULT_PAINT_PRODUCTS });
+    // Get paint products for the company using Supabase-compatible method
+    let products = [];
+    try {
+      if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
+        const allProducts = await (db as any).getPaintProductsByCompanyId(auth.company!.id);
+        
+        // Filter based on query params
+        products = allProducts.filter((p: any) => {
+          if (useCase && p.use_case !== useCase) return false;
+          if (isActive !== null && p.is_active !== (isActive === 'true')) return false;
+          return true;
+        });
+      } else {
+        console.log('[PAINT_PRODUCTS] getPaintProductsByCompanyId not available');
+      }
+    } catch (err) {
+      console.error('[PAINT_PRODUCTS] Error fetching products:', err);
     }
-
-    // Build query
-    let query = 'SELECT * FROM paint_products WHERE user_id = ?';
-    const params: any[] = [user[0].id];
-
-    if (useCase) {
-      query += ' AND use_case = ?';
-      params.push(useCase);
-    }
-
-    if (isActive !== null) {
-      query += ' AND is_active = ?';
-      params.push(isActive === 'true');
-    }
-
-    query += ' ORDER BY use_case, product_name';
-
-    const products = await db.query(query, params);
 
     // If no products found, return defaults
     if (!products || products.length === 0) {
@@ -100,39 +90,47 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get user ID for the company
-    const user = await db.query(
-      'SELECT id FROM users WHERE company_name = (SELECT company_name FROM companies WHERE id = ?)',
-      [auth.company!.id]
-    );
+    // Get user for the company
+    const company = await db.getCompany(auth.company!.id);
+    if (!company) {
+      return NextResponse.json(
+        { error: 'Company not found' },
+        { status: 404 }
+      );
+    }
 
-    if (!user || user.length === 0) {
+    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
         { status: 404 }
       );
     }
 
-    // Create the product
-    const productId = crypto.randomUUID();
-    await db.query(
-      `INSERT INTO paint_products (id, user_id, product_name, use_case, cost_per_gallon, sheen, is_active)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [
-        productId,
-        user[0].id,
-        data.product_name,
-        data.use_case,
-        data.cost_per_gallon,
-        data.sheen || null,
-        data.is_active !== false
-      ]
-    );
+    // Create the product using Supabase adapter method
+    const productData = {
+      id: crypto.randomUUID(),
+      user_id: user.id,
+      product_name: data.product_name,
+      use_case: data.use_case,
+      cost_per_gallon: data.cost_per_gallon,
+      sheen: data.sheen || null,
+      is_active: data.is_active !== false,
+      brand: data.brand || null,
+      coverage_rate: data.coverage_rate || 350,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
 
-    const product = await db.query(
-      'SELECT * FROM paint_products WHERE id = ?',
-      [productId]
-    );
+    let product;
+    if (typeof (db as any).createPaintProduct === 'function') {
+      product = await (db as any).createPaintProduct(productData);
+    } else {
+      return NextResponse.json(
+        { error: 'Paint product creation not supported with current adapter' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -165,69 +163,45 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    // Get user ID for the company
-    const user = await db.query(
-      'SELECT id FROM users WHERE company_name = (SELECT company_name FROM companies WHERE id = ?)',
-      [auth.company!.id]
-    );
+    // Get user for the company
+    const company = await db.getCompany(auth.company!.id);
+    if (!company) {
+      return NextResponse.json(
+        { error: 'Company not found' },
+        { status: 404 }
+      );
+    }
 
-    if (!user || user.length === 0) {
+    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
         { status: 404 }
       );
     }
 
-    // Verify ownership
-    const existing = await db.query(
-      'SELECT * FROM paint_products WHERE id = ? AND user_id = ?',
-      [id, user[0].id]
-    );
+    // Update the product using Supabase adapter method
+    const updateData = {
+      ...updates,
+      updated_at: new Date().toISOString()
+    };
 
-    if (!existing || existing.length === 0) {
+    let product;
+    if (typeof (db as any).updatePaintProduct === 'function') {
+      try {
+        product = await (db as any).updatePaintProduct(id, updateData);
+      } catch (error) {
+        return NextResponse.json(
+          { error: 'Product not found or unauthorized' },
+          { status: 404 }
+        );
+      }
+    } else {
       return NextResponse.json(
-        { error: 'Product not found or unauthorized' },
-        { status: 404 }
+        { error: 'Paint product update not supported with current adapter' },
+        { status: 500 }
       );
     }
-
-    // Build update query
-    const updateFields = [];
-    const values = [];
-    
-    if (updates.product_name !== undefined) {
-      updateFields.push('product_name = ?');
-      values.push(updates.product_name);
-    }
-    if (updates.use_case !== undefined) {
-      updateFields.push('use_case = ?');
-      values.push(updates.use_case);
-    }
-    if (updates.cost_per_gallon !== undefined) {
-      updateFields.push('cost_per_gallon = ?');
-      values.push(updates.cost_per_gallon);
-    }
-    if (updates.sheen !== undefined) {
-      updateFields.push('sheen = ?');
-      values.push(updates.sheen);
-    }
-    if (updates.is_active !== undefined) {
-      updateFields.push('is_active = ?');
-      values.push(updates.is_active);
-    }
-
-    updateFields.push('updated_at = CURRENT_TIMESTAMP');
-    values.push(id);
-
-    await db.query(
-      `UPDATE paint_products SET ${updateFields.join(', ')} WHERE id = ?`,
-      values
-    );
-
-    const product = await db.query(
-      'SELECT * FROM paint_products WHERE id = ?',
-      [id]
-    );
 
     return NextResponse.json({
       success: true,
@@ -261,24 +235,39 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    // Get user ID for the company
-    const user = await db.query(
-      'SELECT id FROM users WHERE company_name = (SELECT company_name FROM companies WHERE id = ?)',
-      [auth.company!.id]
-    );
+    // Get user for the company
+    const company = await db.getCompany(auth.company!.id);
+    if (!company) {
+      return NextResponse.json(
+        { error: 'Company not found' },
+        { status: 404 }
+      );
+    }
 
-    if (!user || user.length === 0) {
+    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
         { status: 404 }
       );
     }
 
-    // Delete the product (only if owned by user)
-    const result = await db.query(
-      'DELETE FROM paint_products WHERE id = ? AND user_id = ?',
-      [id, user[0].id]
-    );
+    // Delete the product using Supabase adapter method
+    if (typeof (db as any).deletePaintProduct === 'function') {
+      try {
+        await (db as any).deletePaintProduct(id, user.id);
+      } catch (error) {
+        return NextResponse.json(
+          { error: 'Product not found or unauthorized' },
+          { status: 404 }
+        );
+      }
+    } else {
+      return NextResponse.json(
+        { error: 'Paint product deletion not supported with current adapter' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,

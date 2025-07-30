@@ -160,19 +160,18 @@ export async function POST(request: NextRequest) {
           hourlyRate: companyData?.default_hourly_rate || 45
         };
         
-        // Get preferred paint products
+        // Get preferred paint products using Supabase-compatible method
         let paintProducts = [];
         try {
-          paintProducts = await db.getAll(
-            `SELECT * FROM paint_products 
-             WHERE user_id = (SELECT id FROM users WHERE company_name = ?) 
-             AND is_active = TRUE
-             LIMIT 3`,
-            [company.name]
-          );
+          // Check if db has the new method
+          if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
+            paintProducts = await (db as any).getPaintProductsByCompanyId(company.id);
+          } else {
+            console.log('[CHAT] Paint products method not available, using defaults');
+          }
         } catch (err) {
           console.log('[CHAT] Paint products query failed:', err);
-          // Continue without paint products
+          // Continue without paint products - use defaults
         }
         
         const preferredPaints = paintProducts?.map(p => ({
