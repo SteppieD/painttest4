@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  // Only allow in development for security
-  if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'preview') {
-    return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
-  }
+  // Temporarily allow in production for debugging
+  // TODO: Remove this after debugging is complete
+  // if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'preview') {
+  //   return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
+  // }
 
   const envVars = {
     openrouter: {
