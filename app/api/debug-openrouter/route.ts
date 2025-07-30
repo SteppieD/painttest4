@@ -116,7 +116,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Test 3: Import and instantiate the client
-  let clientTest = { status: 'not-tested' };
+  let clientTest: any = { status: 'not-tested' };
   try {
     const { OpenRouterClient } = await import('@/lib/ai/openrouter-client');
     const client = new OpenRouterClient();
