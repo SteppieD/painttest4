@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
   };
 
   // Test 1: Direct API call to OpenRouter
-  let directApiTest = { status: 'not-tested' };
+  let directApiTest: any = { status: 'not-tested' };
   if (process.env.OPENROUTER_API_KEY) {
     try {
       const response = await fetch('https://openrouter.ai/api/v1/models', {
