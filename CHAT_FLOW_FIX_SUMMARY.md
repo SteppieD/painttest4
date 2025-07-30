@@ -102,3 +102,20 @@ Check browser console and server logs for detailed debugging info.
 - `/components/chat/quote-chat.tsx` - Chat component
 
 This fix ensures robust quote creation even in edge cases where company data might be missing or database connections fail.
+
+## Build Fix (Update 1)
+
+### Issue
+TypeScript build error: `Property 'access_code' does not exist on type 'CompanyAuth'`
+
+### Fix Applied
+Changed line 100 in `/app/api/quotes/route.ts` from:
+```typescript
+access_code: company.accessCode || company.access_code,
+```
+to:
+```typescript
+access_code: company.accessCode,
+```
+
+The `CompanyAuth` type only has `accessCode` (camelCase), not `access_code` (snake_case).

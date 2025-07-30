@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
         // Create the company in the database
         companyData = await db.createCompany({
           id: numericCompanyId,
-          access_code: company.accessCode || company.access_code,
+          access_code: company.accessCode,
           company_name: company.name || 'Unknown Company',
           name: company.name || 'Unknown Company',
           email: company.email || `company${numericCompanyId}@example.com`,
