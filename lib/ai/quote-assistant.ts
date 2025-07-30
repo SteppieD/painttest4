@@ -58,6 +58,7 @@ export interface ConversationMessage {
 }
 
 export class QuoteAssistant {
+  // Use the exact model ID that worked in the test
   private model = 'anthropic/claude-3.5-sonnet';
   
   async processMessage(
@@ -65,23 +66,45 @@ export class QuoteAssistant {
     context: QuoteContext,
     conversationHistory: ConversationMessage[] = []
   ): Promise<string> {
+    console.log('[QuoteAssistant] Processing message with context:', {
+      hasApiKey: !!process.env.OPENROUTER_API_KEY,
+      apiKeyLength: process.env.OPENROUTER_API_KEY?.length || 0,
+      contextKeys: Object.keys(context),
+      historyLength: conversationHistory.length,
+      userMessage: userMessage.substring(0, 50) + '...'
+    });
+    
     const messages = this.buildMessages(userMessage, context, conversationHistory);
     
     try {
+      console.log('[QuoteAssistant] Calling OpenRouter with', messages.length, 'messages');
       const response = await openRouterClient.createChatCompletion(messages, {
         model: this.model,
         temperature: 0.7,
         max_tokens: 1500
       });
       
+      console.log('[QuoteAssistant] Got response:', response.substring(0, 100) + '...');
       return response;
     } catch (error: any) {
-      console.error('Quote assistant error:', error);
-      console.error('Error details:', {
+      console.error('[QuoteAssistant] Error calling OpenRouter:', error);
+      console.error('[QuoteAssistant] Error details:', {
         message: error.message,
+        stack: error.stack,
         response: error.response?.data,
-        status: error.response?.status
+        status: error.response?.status,
+        errorType: error.constructor.name
       });
+      
+      // Provide more specific error messages
+      if (error.message?.includes('401')) {
+        throw new Error('OpenRouter API key is invalid or unauthorized');
+      } else if (error.message?.includes('402')) {
+        throw new Error('OpenRouter account has insufficient credits');
+      } else if (error.message?.includes('API key')) {
+        throw new Error('OpenRouter API key is required');
+      }
+      
       throw error; // Re-throw to let the chat route handle it
     }
   }

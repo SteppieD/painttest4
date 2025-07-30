@@ -340,8 +340,12 @@ export async function POST(request: NextRequest) {
         response = "OpenRouter API quota exceeded. Please check your OpenRouter account credits.";
       } else if (errorDetails.includes('OpenRouter API key is required')) {
         response = "OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in environment variables.";
+      } else if (errorDetails.includes('invalid_api_key')) {
+        response = "The OpenRouter API key appears to be invalid. Please verify it's correct in your environment variables.";
       } else {
-        response = `I apologize, but I'm having trouble processing your request. Error: ${errorDetails}. Let me help you create a quote step by step. What's the customer's name?`;
+        // Include full error details for debugging
+        response = `I apologize, but I'm experiencing issues with the AI service. Error details: ${errorDetails}`;
+        console.error('[CHAT] Full error object:', processError);
       }
       
       // Reset conversation on error
