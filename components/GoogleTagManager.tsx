@@ -6,9 +6,24 @@ interface GoogleTagManagerProps {
   gtmId: string;
 }
 
+// Initialize dataLayer as early as possible
+if (typeof window !== 'undefined') {
+  window.dataLayer = window.dataLayer || [];
+}
+
 export default function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
   return (
     <>
+      {/* Google Tag Manager - Initialize dataLayer */}
+      <Script
+        id="gtm-base"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+          `,
+        }}
+      />
       {/* Google Tag Manager */}
       <Script
         id="gtm-script"

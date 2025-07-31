@@ -3,7 +3,7 @@
 ## Currently Configured ✅
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Stripe public key (client-side)
 - `STRIPE_WEBHOOK_SECRET` - For validating webhook signatures
-- `NEXT_PUBLIC_GTM_ID` - Google Tag Manager
+- `NEXT_PUBLIC_GTM_ID` - Google Tag Manager (GTM-563BQKRH)
 - `SUPABASE_SERVICE_ROLE_KEY` - Supabase backend access
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Supabase public key
 - `NEXT_PUBLIC_SUPABASE_URL` - Supabase project URL

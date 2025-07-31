@@ -219,14 +219,25 @@ export async function POST(request: NextRequest) {
       throw new Error('Failed to create quote - no result returned');
     }
 
-    return NextResponse.json({
+    // Return response with GTM tracking data
+    const response = {
       success: true,
       quoteId,
       quote: {
         ...quote,
         id: result.id
+      },
+      // Include tracking data for client-side GTM
+      trackingData: {
+        event: 'quote_created',
+        quote_id: quoteId,
+        quote_value: quote.final_price || quote.subtotal || 0,
+        project_type: quote.project_type,
+        customer_name: quote.customer_name
       }
-    });
+    };
+
+    return NextResponse.json(response);
 
   } catch (error) {
     console.error('[QUOTES API] Error creating quote:', error);

@@ -71,6 +71,16 @@ const nextConfig = {
             value: 'origin-when-cross-origin'
           }
         ]
+      },
+      {
+        // Preconnect to Google Tag Manager for better performance
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Link',
+            value: '<https://www.googletagmanager.com>; rel=preconnect'
+          }
+        ]
       }
     ];
   },

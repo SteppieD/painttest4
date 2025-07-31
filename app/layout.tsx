@@ -6,6 +6,7 @@ import '../styles/modern-design-system.css'
 import { Toaster } from '@/components/ui/toaster-fixed'
 import { CacheClearer } from '@/components/cache-clearer'
 import GoogleTagManager, { GoogleTagManagerNoscript } from '@/components/GoogleTagManager'
+import GTMProvider from '@/components/analytics/GTMProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -94,6 +95,9 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" href="https://paintquotepro.com" hrefLang="en-US" />
         <link rel="alternate" href="https://paintquotepro.com" hrefLang="x-default" />
+        {/* Preconnect to Google Tag Manager for performance */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         {/* Google Tag Manager - Head */}
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
@@ -105,7 +109,9 @@ export default function RootLayout({
           <GoogleTagManagerNoscript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
         <CacheClearer />
-        {children}
+        <GTMProvider>
+          {children}
+        </GTMProvider>
         <Toaster />
       </body>
     </html>
