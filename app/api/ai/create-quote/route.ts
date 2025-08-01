@@ -82,7 +82,13 @@ export async function POST(request: NextRequest) {
     const company = await db.query(
       'SELECT default_labor_percentage, tax_rate, subscription_tier, monthly_quote_count, monthly_quote_limit FROM companies WHERE id = ?',
       [auth.company!.id]
-    );
+    ) as Array<{
+      default_labor_percentage: number;
+      tax_rate: number;
+      subscription_tier: string;
+      monthly_quote_count: number;
+      monthly_quote_limit: number;
+    }>;
     
     // Check if company has reached their quote limit (for free tier)
     if (company.length > 0) {
