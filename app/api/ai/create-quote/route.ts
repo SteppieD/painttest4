@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAuthContext } from '@/lib/auth/middleware';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
-import { db } from '@/lib/database/adapter';
+import { db, CreateQuoteData } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator';
 
 export const dynamic = 'force-dynamic';
@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     // Create the quote
     const quoteId = await generateQuoteNumber(auth.company!.id);
     
-    const quote = {
+    const quote: CreateQuoteData = {
       company_id: auth.company!.id,
       quote_id: quoteId,
       customer_name: quoteContext.customerName,
@@ -129,24 +129,31 @@ export async function POST(request: NextRequest) {
       customer_phone: quoteContext.customerPhone || null,
       address: quoteContext.address || null,
       project_type: quoteContext.projectType || 'interior',
-      rooms: JSON.stringify(quoteContext.rooms || []),
-      room_count: quoteContext.rooms?.length || 0,
-      paint_quality: quoteContext.paintQuality || 'better',
-      prep_work: quoteContext.prepWork || null,
+      surfaces: Object.keys(calculatorInput.surfaces).filter(key => calculatorInput.surfaces[key] > 0),
+      measurements: {
+        walls_sqft: calculatorInput.surfaces.walls || 0,
+        ceilings_sqft: calculatorInput.surfaces.ceilings || 0,
+        trim_sqft: calculatorInput.surfaces.trim || 0,
+        doors_count: calculatorInput.surfaces.doors || 0,
+        windows_count: calculatorInput.surfaces.windows || 0,
+        rooms: quoteContext.rooms || [],
+        room_count: quoteContext.rooms?.length || 0
+      },
+      pricing: {
+        total_revenue: calculation.total,
+        total_materials: calculation.materials.total,
+        projected_labor: calculation.labor.total,
+        base_cost: calculation.subtotal,
+        markup_percentage: calculatorInput.markupPercentage || 30,
+        final_price: calculation.total,
+        paint_quality: quoteContext.paintQuality || 'better',
+        prep_work: quoteContext.prepWork || null
+      },
+      labor_cost: calculation.labor.total,
+      material_cost: calculation.materials.total,
+      total_cost: calculation.total,
       timeline: quoteContext.timeline || null,
       special_requests: quoteContext.specialRequests || null,
-      walls_sqft: calculatorInput.surfaces.walls || 0,
-      ceilings_sqft: calculatorInput.surfaces.ceilings || 0,
-      trim_sqft: calculatorInput.surfaces.trim || 0,
-      doors_count: calculatorInput.surfaces.doors || 0,
-      windows_count: calculatorInput.surfaces.windows || 0,
-      total_revenue: calculation.total,
-      total_materials: calculation.materials.total,
-      projected_labor: calculation.labor.total,
-      base_cost: calculation.subtotal,
-      markup_percentage: calculatorInput.markupPercentage || 30,
-      final_price: calculation.total,
-      conversation_summary: JSON.stringify(conversationHistory || []),
       status: 'draft'
     };
 
