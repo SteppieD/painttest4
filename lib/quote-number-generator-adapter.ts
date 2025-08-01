@@ -1,4 +1,3 @@
-import { getDatabaseAdapter } from '@/lib/database/adapter'
 
 /**
  * Generate a unique quote number without database dependencies

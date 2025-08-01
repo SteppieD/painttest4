@@ -291,7 +291,7 @@ export default function PaintingQuoteTemplates() {
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold">Painting Quotes</h3>
                     <p className="mt-3 text-gray-200">
-                      A quote is a fixed price offer that doesn't change. Once accepted, you're 
+                      A quote is a fixed price offer that doesn{'''}t change. Once accepted, you{'''}re 
                       committed to that price regardless of actual costs.
                     </p>
                     <ul className="mt-4 space-y-2 text-base">
@@ -398,7 +398,7 @@ export default function PaintingQuoteTemplates() {
                       <h3 className="text-xl font-semibold">Price Accurately & Transparently</h3>
                       <p className="mt-2 text-gray-200">
                         Break down costs clearly: labor, materials, prep work, and any extras. Include 
-                        your overhead and profit margins. Be transparent about what's included and what 
+                        your overhead and profit margins. Be transparent about what{'''}s included and what 
                         would cost extra.
                       </p>
                     </div>

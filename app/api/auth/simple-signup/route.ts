@@ -105,15 +105,19 @@ export async function POST(request: NextRequest) {
       message: `Welcome to PaintQuote Pro! Your access code is: ${accessCode}`
     })
 
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorStack = error instanceof Error ? error.stack : undefined
+    const errorName = error instanceof Error ? error.name : 'Unknown'
+    
     console.error('Simple signup error:', error)
     console.error('Error details:', {
-      message: error.message,
-      stack: error.stack,
-      name: error.name,
-      code: error.code,
-      details: error.details,
-      hint: error.hint
+      message: errorMessage,
+      stack: errorStack,
+      name: errorName,
+      code: (error as Record<string, unknown>)?.code,
+      details: (error as Record<string, unknown>)?.details,
+      hint: (error as Record<string, unknown>)?.hint
     })
     
     // Log which database adapter we're using
@@ -125,14 +129,14 @@ export async function POST(request: NextRequest) {
     })
     
     // Provide more specific error messages
-    if (error.message?.includes('duplicate') || error.message?.includes('unique')) {
+    if (errorMessage?.includes('duplicate') || errorMessage?.includes('unique')) {
       return NextResponse.json(
         { error: 'This company name may already be taken. Please try another name.' },
         { status: 400 }
       )
     }
     
-    if (error.message?.includes('column') || error.message?.includes('field')) {
+    if (errorMessage?.includes('column') || errorMessage?.includes('field')) {
       console.error('Database schema mismatch error - likely missing column in production database')
       return NextResponse.json(
         { error: 'Database configuration error. Our team has been notified.' },
@@ -140,7 +144,7 @@ export async function POST(request: NextRequest) {
       )
     }
     
-    if (error.message?.includes('Supabase')) {
+    if (errorMessage?.includes('Supabase')) {
       return NextResponse.json(
         { error: 'Database connection error. Please try again later.' },
         { status: 503 }

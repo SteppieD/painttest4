@@ -313,7 +313,7 @@ export default function TampaPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The salt-air templates are perfect for waterfront properties. Every quote 
                     includes marine-grade protection automatically. Won 6 Bayshore condos this 
-                    quarter - that's $312,000 in guaranteed work."
+                    quarter - that{'''}s $312,000 in guaranteed work."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Lisa Garcia</strong>
@@ -481,7 +481,7 @@ export default function TampaPaintingSoftware() {
                     factors these into your quotes.
                   </p>
                   <p>
-                    Whether you're quoting a waterfront condo on Bayshore, a historic building 
+                    Whether you{'''}re quoting a waterfront condo on Bayshore, a historic building 
                     in Ybor City, or a suburban home in Wesley Chapel, PaintQuote Pro gives you 
                     the tools to create accurate, professional quotes in minutes. Join the 240+ 
                     Tampa Bay contractors who've already transformed their business with our software.

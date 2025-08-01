@@ -480,10 +480,10 @@ export default function DenverPaintingSoftware() {
                     high-altitude UV exposure. The software automatically factors these into your quotes.
                   </p>
                   <p>
-                    Whether you're quoting a Victorian in Capitol Hill, a modern home in 
+                    Whether you{'''}re quoting a Victorian in Capitol Hill, a modern home in 
                     Stapleton, or a commercial property in LoDo, PaintQuote Pro gives you 
                     the tools to create accurate, professional quotes in minutes. Join the 
-                    180+ Denver area contractors who've already transformed their business 
+                    180+ Denver area contractors who{'''}ve already transformed their business 
                     with our software.
                   </p>
                 </div>

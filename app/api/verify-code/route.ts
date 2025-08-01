@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDatabaseAdapter } from "@/lib/database/adapter";
 
-// Type definitions
-interface Company {
-  id: number;
-  access_code: string;
-  company_name: string;
-  phone: string | null;
-  email: string | null;
-  logo_url?: string | null;
-}
 
 export async function POST(request: NextRequest) {
   try {

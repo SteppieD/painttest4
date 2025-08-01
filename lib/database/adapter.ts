@@ -2,31 +2,126 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { MemoryAdapter } from './memory-adapter';
 import { SupabaseAdapterFixed } from './supabase-adapter-fixed';
 
+// Database entity types
+export interface Company {
+  id: number;
+  access_code: string;
+  company_name: string;
+  name?: string;
+  email: string;
+  phone?: string;
+  address?: string;
+  onboarding_completed: boolean | number;
+  onboarding_step: number;
+  tax_rate: number;
+  subscription_tier: string;
+  monthly_quote_count: number;
+  monthly_quote_limit: number;
+  default_hourly_rate?: number;
+  default_labor_percentage?: number;
+  setup_completed_at?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface Quote {
+  id?: number;
+  quote_id: string;
+  company_id: number;
+  customer_name: string;
+  customer_email?: string;
+  customer_phone?: string;
+  address?: string;
+  project_type: string;
+  surfaces: string[];
+  measurements: Record<string, unknown>;
+  paint_products?: Record<string, unknown>;
+  pricing: Record<string, unknown>;
+  labor_cost: number;
+  material_cost: number;
+  total_cost: number;
+  status: string;
+  created_at: string;
+  updated_at?: string;
+  timeline?: string;
+  special_requests?: string;
+}
+
+export interface User {
+  id?: number;
+  email: string;
+  password_hash: string;
+  company_id: number;
+  role: string;
+  first_name?: string;
+  last_name?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PaintProduct {
+  id: string;
+  company_id: number;
+  product_name: string;
+  brand?: string;
+  use_case: string;
+  sheen?: string;
+  cost_per_gallon: number;
+  coverage_rate: number;
+  recommended_coats?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+// Type for create operations (without generated fields)
+export type CreateCompanyData = Omit<Company, 'created_at' | 'updated_at'> & {
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type CreateQuoteData = Omit<Quote, 'id' | 'created_at' | 'updated_at'> & {
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type CreateUserData = Omit<User, 'id' | 'created_at' | 'updated_at'> & {
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type UpdateCompanyData = Partial<Omit<Company, 'id' | 'access_code' | 'created_at'>> & {
+  updated_at?: string;
+};
+
+export type UpdateQuoteData = Partial<Omit<Quote, 'id' | 'quote_id' | 'created_at'>> & {
+  updated_at?: string;
+};
+
 // Database adapter interface
 export interface DatabaseAdapter {
   // Company operations
-  getCompanyByAccessCode(accessCode: string): Promise<any>;
-  getCompany(id: number): Promise<any>;
-  getAllCompanies(): Promise<any[]>;
-  getCompanies?(): Promise<any[]>; // Alias for getAllCompanies
-  createCompany(data: any): Promise<any>;
-  updateCompany(id: number, data: any): Promise<any>;
+  getCompanyByAccessCode(accessCode: string): Promise<Company | null>;
+  getCompany(id: number): Promise<Company | null>;
+  getAllCompanies(): Promise<Company[]>;
+  getCompanies?(): Promise<Company[]>; // Alias for getAllCompanies
+  createCompany(data: CreateCompanyData): Promise<Company>;
+  updateCompany(id: number, data: UpdateCompanyData): Promise<Company>;
   
   // Quote operations
-  createQuote(data: any): Promise<any>;
-  getQuote(quoteId: string): Promise<any>;
-  getQuotesByCompanyId(companyId: number): Promise<any[]>;
+  createQuote(data: CreateQuoteData): Promise<Quote>;
+  getQuote(quoteId: string): Promise<Quote | null>;
+  getQuotesByCompanyId(companyId: number): Promise<Quote[]>;
   getQuotesCount(companyId: number, since?: Date): Promise<number>;
-  updateQuote(id: number, data: any): Promise<any>;
+  updateQuote(id: number, data: UpdateQuoteData): Promise<Quote>;
   
   // User operations
-  createUser(data: any): Promise<any>;
-  getUserByEmail(email: string): Promise<any>;
-  getAllUsers(): Promise<any[]>;
+  createUser(data: CreateUserData): Promise<User>;
+  getUserByEmail(email: string): Promise<User | null>;
+  getAllUsers(): Promise<User[]>;
   
   // Generic query method
-  query(sql: string, params?: any[]): Promise<any>;
-  getAll(query: string, params?: any[]): Promise<any[]>;
+  query(sql: string, params?: unknown[]): Promise<unknown>;
+  getAll(query: string, params?: unknown[]): Promise<unknown[]>;
 }
 
 
@@ -46,7 +141,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     this.client = createClient(supabaseUrl, supabaseKey);
   }
 
-  async getCompanyByAccessCode(accessCode: string): Promise<any> {
+  async getCompanyByAccessCode(accessCode: string): Promise<Company | null> {
     try {
       const { data, error } = await this.client
         .from('companies')
@@ -65,7 +160,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     }
   }
 
-  async getCompany(id: number): Promise<any> {
+  async getCompany(id: number): Promise<Company | null> {
     const { data, error } = await this.client
       .from('companies')
       .select('*')
@@ -76,7 +171,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return data;
   }
 
-  async getAllCompanies(): Promise<any[]> {
+  async getAllCompanies(): Promise<Company[]> {
     const { data, error } = await this.client
       .from('companies')
       .select('*');
@@ -85,7 +180,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return data || [];
   }
 
-  async createCompany(data: any): Promise<any> {
+  async createCompany(data: CreateCompanyData): Promise<Company> {
     const { data: result, error } = await this.client
       .from('companies')
       .insert(data)
@@ -96,7 +191,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return result;
   }
 
-  async updateCompany(id: number, data: any): Promise<any> {
+  async updateCompany(id: number, data: UpdateCompanyData): Promise<Company> {
     const { data: result, error } = await this.client
       .from('companies')
       .update(data)
@@ -108,7 +203,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return result;
   }
 
-  async createQuote(data: any): Promise<any> {
+  async createQuote(data: CreateQuoteData): Promise<Quote> {
     try {
       console.log('[SupabaseAdapter] Creating quote with data:', {
         company_id: data.company_id,
@@ -141,7 +236,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     }
   }
 
-  async getQuote(quoteId: string): Promise<any> {
+  async getQuote(quoteId: string): Promise<Quote | null> {
     const { data, error } = await this.client
       .from('quotes')
       .select('*')
@@ -152,7 +247,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return data;
   }
 
-  async getQuotesByCompanyId(companyId: number): Promise<any[]> {
+  async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
     const { data, error } = await this.client
       .from('quotes')
       .select('*')
@@ -178,7 +273,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return count || 0;
   }
 
-  async updateQuote(id: number, data: any): Promise<any> {
+  async updateQuote(id: number, data: UpdateQuoteData): Promise<Quote> {
     const { data: result, error } = await this.client
       .from('quotes')
       .update(data)
@@ -190,7 +285,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return result;
   }
 
-  async createUser(data: any): Promise<any> {
+  async createUser(data: CreateUserData): Promise<User> {
     const { data: result, error } = await this.client
       .from('users')
       .insert(data)
@@ -201,7 +296,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return result;
   }
 
-  async getUserByEmail(email: string): Promise<any> {
+  async getUserByEmail(email: string): Promise<User | null> {
     const { data, error } = await this.client
       .from('users')
       .select('*')
@@ -212,7 +307,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return data;
   }
 
-  async getAllUsers(): Promise<any[]> {
+  async getAllUsers(): Promise<User[]> {
     const { data, error } = await this.client
       .from('users')
       .select('*');
@@ -221,7 +316,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return data || [];
   }
 
-  async query(sql: string, params: any[] = []): Promise<any> {
+  async query(sql: string, params: unknown[] = []): Promise<unknown> {
     // For Supabase, we use RPC functions or direct table operations
     // This is a fallback for complex queries
     const { data, error } = await this.client.rpc('execute_sql', {
@@ -233,7 +328,7 @@ export class SupabaseAdapter implements DatabaseAdapter {
     return data;
   }
 
-  async getAll(query: string, params: any[] = []): Promise<any[]> {
+  async getAll(query: string, params: unknown[] = []): Promise<unknown[]> {
     // This method is required by the interface but not typically used with Supabase
     // For Supabase, use the specific table methods instead
     return this.query(query, params);

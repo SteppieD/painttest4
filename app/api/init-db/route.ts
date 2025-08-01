@@ -11,7 +11,7 @@ export async function GET() {
       status: 'success',
       message: 'Database initialized'
     })
-  } catch (error: any) {
+  } catch (error) {
     console.error('Database initialization error:', error)
     return NextResponse.json({
       status: 'error',

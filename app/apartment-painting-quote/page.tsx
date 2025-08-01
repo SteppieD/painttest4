@@ -697,7 +697,7 @@ export default function ApartmentPaintingQuote() {
                 Get Your Apartment Painted Fast & Professional
               </h2>
               <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
-                Whether you're a tenant, landlord, or property manager, get accurate quotes 
+                Whether you&apos;re a tenant, landlord, or property manager, get accurate quotes 
                 and professional results with quick turnaround times.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

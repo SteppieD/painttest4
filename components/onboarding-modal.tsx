@@ -138,7 +138,7 @@ export function OnboardingModal({ isOpen, onClose, companyData }: OnboardingModa
               variant="outline"
               className="flex-1 bg-gray-800 border-gray-700 text-gray-100 hover:bg-gray-700 hover:text-white"
             >
-              I'll Do This Later
+              I{'''}ll Do This Later
             </Button>
           </div>
           

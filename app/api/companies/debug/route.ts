@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Only allow in development
     if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {

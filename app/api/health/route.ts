@@ -19,7 +19,7 @@ export async function GET() {
       environment: process.env.NODE_ENV,
       timestamp: new Date().toISOString()
     })
-  } catch (error: any) {
+  } catch (error) {
     console.error('Health check error:', error)
     return NextResponse.json({
       status: 'error',

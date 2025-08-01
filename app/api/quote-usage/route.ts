@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDatabaseAdapter } from '@/lib/database/adapter';
-import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,12 +27,12 @@ export async function GET(request: NextRequest) {
     }
     
     // Handle missing columns gracefully
-    const quotesUsed = 0; // We'll count from quotes table later
+    const _quotesUsed = 0; // We'll count from quotes table later
     const quotesLimit = companyData.quote_limit || 5;
     const hasUnlimitedQuotes = !quotesLimit || quotesLimit === -1;
-    const percentageUsed = hasUnlimitedQuotes ? 0 : (quotesUsed / quotesLimit) * 100;
-    const isNearLimit = !hasUnlimitedQuotes && percentageUsed >= 80;
-    const isAtLimit = !hasUnlimitedQuotes && quotesUsed >= quotesLimit;
+    const _percentageUsed = hasUnlimitedQuotes ? 0 : (_quotesUsed / quotesLimit) * 100;
+    const _isNearLimit = !hasUnlimitedQuotes && _percentageUsed >= 80;
+    const _isAtLimit = !hasUnlimitedQuotes && _quotesUsed >= quotesLimit;
     
     // Count actual quotes if needed
     try {
@@ -51,12 +50,12 @@ export async function GET(request: NextRequest) {
       console.log('[QUOTE-USAGE] Could not count quotes:', error);
       // Return default response if quote counting fails
       return NextResponse.json({
-        quotesUsed,
+        quotesUsed: _quotesUsed,
         quotesLimit,
         hasUnlimitedQuotes,
-        percentageUsed,
-        isNearLimit,
-        isAtLimit,
+        percentageUsed: _percentageUsed,
+        isNearLimit: _isNearLimit,
+        isAtLimit: _isAtLimit,
         plan: companyData.is_trial ? 'trial' : 'free'
       });
     }

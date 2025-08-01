@@ -132,7 +132,7 @@ export default function AboutPage() {
                 <span className="text-primary"> Grow Their Business</span>
               </h1>
               <p className="mt-6 text-xl text-gray-200">
-                Since 2018, we{'\''}ve been on a mission to help painting contractors save time, 
+                Since 2018, we&apos;ve been on a mission to help painting contractors save time, 
                 win more jobs, and build successful businesses with professional estimating software.
               </p>
             </div>
@@ -155,10 +155,10 @@ export default function AboutPage() {
                       with one problem: creating accurate quotes quickly.
                     </p>
                     <p>
-                      "I was spending 3-6 hours on every quote, often working late into the night 
-                      just to keep up. I knew there had to be a better way," Michael recalls. 
-                      "When I couldn{'\''}t find software that truly understood a painter{'\''}s workflow, 
-                      I decided to build it myself."
+                      &ldquo;I was spending 3-6 hours on every quote, often working late into the night 
+                      just to keep up. I knew there had to be a better way,&rdquo; Michael recalls. 
+                      &ldquo;When I couldn&apos;t find software that truly understood a painter&apos;s workflow, 
+                      I decided to build it myself.&rdquo;
                     </p>
                     <p>
                       What started as a simple calculator for personal use quickly grew as other 
@@ -167,7 +167,7 @@ export default function AboutPage() {
                     </p>
                     <p className="font-medium text-foreground">
                       Our mission remains the same: give painting contractors the tools they need 
-                      to compete and succeed in today{'\''}s market.
+                      to compete and succeed in today{'\\''}s market.
                     </p>
                   </div>
                 </div>
@@ -337,10 +337,10 @@ export default function AboutPage() {
           <div className="container">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-bold mb-4">
-                Have Questions? We{'\''}d Love to Hear From You
+                Have Questions? We{'\\''}d Love to Hear From You
               </h2>
               <p className="text-gray-200 mb-8">
-                Whether you{'\''}re a current customer or considering PaintQuote Pro, 
+                Whether you{'\\''}re a current customer or considering PaintQuote Pro, 
                 our team is here to help you succeed.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

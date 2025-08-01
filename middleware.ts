@@ -1,23 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Protected routes that require authentication
-const protectedRoutes = [
-  '/dashboard',
-  '/quotes',
-  '/customers',
-  '/dashboard/settings',
-  '/api/quotes',
-  '/api/customers',
-  '/api/companies'
-];
-
-// Admin-only routes
-const adminRoutes = [
-  '/admin',
-  '/api/admin'
-];
-
 // Public routes that don't require auth
 const publicRoutes = [
   '/',

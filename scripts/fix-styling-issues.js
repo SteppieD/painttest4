@@ -74,7 +74,7 @@ function shouldReplaceFontSize(line, className) {
 
 function processFile(filePath) {
   console.log(`Processing: ${filePath}`);
-  let content = fs.readFileSync(filePath, 'utf8');
+  const content = fs.readFileSync(filePath, 'utf8');
   let changes = 0;
   const lines = content.split('\n');
   

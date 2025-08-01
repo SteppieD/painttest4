@@ -508,7 +508,7 @@ Your Painting Company
             size="icon"
             className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
             onClick={() => {
-              const message = `Hi ${quote.customer_name}, here's your painting quote #${quote.quote_id}: $${quote.final_price?.toFixed(2)}. Let me know if you have any questions!`
+              const message = `Hi ${quote.customer_name}, here{''}s your painting quote #${quote.quote_id}: $${quote.final_price?.toFixed(2)}. Let me know if you have any questions!`
               if (quote.customer_phone) {
                 window.location.href = `sms:${quote.customer_phone}?body=${encodeURIComponent(message)}`
               } else {

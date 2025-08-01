@@ -77,8 +77,8 @@ export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProp
         <div className="mt-3 p-2 rounded-md bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800">
           <p className="text-base text-amber-800 dark:text-amber-200">
             {percentageUsed >= 100 
-              ? "You've used all your free quotes this month."
-              : `You're running low on quotes.`
+              ? "You{'''}ve used all your free quotes this month."
+              : `You{'''}re running low on quotes.`
             }
             {' '}
             <Link href="/pricing" className="font-medium underline hover:no-underline">

@@ -1053,7 +1053,7 @@ export default function PaintingEstimateSoftwareGuide() {
                       },
                       {
                         "@type": "Question",
-                        "name": "Do I need painting software if I'm a solo painter?",
+                        "name": "Do I need painting software if I{'''}m a solo painter?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "Yes, solo painters benefit significantly from painting software. It saves 5-10 hours weekly on quoting, looks more professional than handwritten estimates, reduces calculation errors, and enables faster responses to leads. The time saved allows solo painters to complete more billable work."
@@ -1186,7 +1186,7 @@ export default function PaintingEstimateSoftwareGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <User className="h-5 w-5 text-purple-400 mr-2" />
-                    Do I need painting software if I'm a solo painter?
+                    Do I need painting software if I{'''}m a solo painter?
                   </h3>
                   <p className="text-gray-100 mb-3">
                     <strong>Yes! Solo painters benefit even more because:</strong>

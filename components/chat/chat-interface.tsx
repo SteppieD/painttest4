@@ -51,7 +51,7 @@ export function ChatInterface({
       setMessages([
         {
           role: 'assistant',
-          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I'll walk you through a typical residential project.",
+          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I{'''}ll walk you through a typical residential project.",
           timestamp: new Date()
         }
       ]);
@@ -63,7 +63,7 @@ export function ChatInterface({
       setMessages([
         {
           role: 'assistant',
-          content: "Hi! I'll help you create a professional quote for your customer. What type of painting project are you quoting today?",
+          content: "Hi! I{'''}ll help you create a professional quote for your customer. What type of painting project are you quoting today?",
           timestamp: new Date()
         }
       ]);
@@ -92,7 +92,7 @@ export function ChatInterface({
       setTimeout(() => {
         setMessages(prev => [...prev, {
           role: 'assistant',
-          content: "Great! I'll help you create a quote for Sarah Johnson's interior painting project. Let me gather a few more details. What's the approximate square footage of the home?",
+          content: "Great! I{'''}ll help you create a quote for Sarah Johnson{'''}s interior painting project. Let me gather a few more details. What{'''}s the approximate square footage of the home?",
           timestamp: new Date()
         }]);
         setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
@@ -102,7 +102,7 @@ export function ChatInterface({
 
     // Auto-continue demo
     setTimeout(() => {
-      sendMessage("It's about 2,000 sq ft with standard 8-foot ceilings");
+      sendMessage("It{'''}s about 2,000 sq ft with standard 8-foot ceilings");
     }, 5000);
   };
 
@@ -150,7 +150,7 @@ export function ChatInterface({
       }
 
       if (!response.ok) {
-        // Check if it's a subscription upgrade required error
+        // Check if it{'''}s a subscription upgrade required error
         if (response.status === 403 && data.requiresUpgrade) {
           toast({
             title: 'Upgrade Required',
@@ -212,7 +212,7 @@ export function ChatInterface({
     console.log('[CHAT] Quote data from AI:', quoteData);
     console.log('[CHAT] Pricing structure:', quoteData.pricing);
     
-    // Debug: Show what we're about to send
+    // Debug: Show what we{'''}re about to send
     console.log('[CHAT DEBUG] Creating quote with data:', {
       customerName: quoteData.customerName,
       hasPricing: !!quoteData.pricing,
@@ -238,7 +238,7 @@ export function ChatInterface({
       }
       
       const requestBody = {
-        companyId: Number(companyId), // Ensure it's a number
+        companyId: Number(companyId), // Ensure it{'''}s a number
         quoteData: {
           customerName: quoteData.customerName || 'Unknown Customer',
           customerEmail: quoteData.customerEmail || null,
@@ -456,7 +456,7 @@ export function ChatInterface({
         suggestedReplies={suggestedReplies}
         placeholder={
           quoteData 
-            ? "Quote is ready! Click 'Create Quote' above."
+            ? "Quote is ready! Click {'}Create Quote{'} above."
             : "Type your message..."
         }
       />

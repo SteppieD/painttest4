@@ -33,7 +33,7 @@ export function LogoUploadWithExtraction({
 
   const extractColors = async (imageUrl: string): Promise<ExtractedColors> => {
     // In production, this would use a library like Vibrant.js or Color Thief
-    // For now, we'll simulate color extraction
+    // For now, we{'''}ll simulate color extraction
     return new Promise((resolve) => {
       const img = new Image()
       img.crossOrigin = 'anonymous'
@@ -132,12 +132,12 @@ export function LogoUploadWithExtraction({
         setExtractedColors(colors)
         
         // In production, upload to cloud storage here
-        // For now, we'll use the base64 URL
+        // For now, we{'''}ll use the base64 URL
         onLogoChange(base64, colors)
         
         toast({
           title: 'Logo uploaded successfully!',
-          description: 'We\'ve extracted your brand colors from the logo.',
+          description: 'We{'''}ve extracted your brand colors from the logo.',
         })
       }
       

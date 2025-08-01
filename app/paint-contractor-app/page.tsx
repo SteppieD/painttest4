@@ -550,7 +550,7 @@ export default function PaintContractorApp() {
                   </div>
                   <p className="mt-4 text-gray-200">
                     "Managing 3 crews from my phone seemed impossible until PaintQuote Pro. 
-                    Now I know where everyone is and what they're working on."
+                    Now I know where everyone is and what they{'''}re working on."
                   </p>
                   <div className="mt-4">
                     <p className="font-semibold">Angela Foster</p>

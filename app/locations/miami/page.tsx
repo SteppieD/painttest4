@@ -313,7 +313,7 @@ export default function MiamiPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The Art Deco templates are perfect for Ocean Drive projects. Every quote 
                     includes proper historic preservation specs automatically. Won 8 boutique 
-                    hotels this year - that's $425,000 in heritage work."
+                    hotels this year - that{'''}s $425,000 in heritage work."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Isabella Fernandez</strong>
@@ -481,7 +481,7 @@ export default function MiamiPaintingSoftware() {
                     The software automatically factors these into your quotes.
                   </p>
                   <p>
-                    Whether you're quoting a luxury condo in Brickell, an Art Deco restoration 
+                    Whether you{'''}re quoting a luxury condo in Brickell, an Art Deco restoration 
                     on Ocean Drive, or a waterfront estate in Key Biscayne, PaintQuote Pro gives 
                     you the tools to create accurate, professional quotes in minutes. Join the 
                     280+ Miami area contractors who've already transformed their business with 

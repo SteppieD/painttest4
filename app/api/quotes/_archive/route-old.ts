@@ -222,8 +222,6 @@ export async function POST(request: NextRequest) {
 
     // Calculate quote
     const calculation = QuoteCalculatorV2.calculate(calculatorInput)
-    console.log('Calculation input:', JSON.stringify(calculatorInput, null, 2))
-    console.log('Calculation result:', JSON.stringify(calculation, null, 2))
     
     // Apply overhead, profit, and tax
     const subtotal = calculation.total
@@ -237,11 +235,6 @@ export async function POST(request: NextRequest) {
     const subtotalWithProfit = subtotalWithOverhead + profit
     const tax = subtotalWithProfit * (taxRate / 100)
     const totalAmount = subtotalWithProfit + tax
-    
-    const formatted = QuoteCalculatorV2.formatOutput({
-      ...calculation,
-      total: totalAmount
-    })
 
     // Create or update customer
     let customer = data.customer.id ? 

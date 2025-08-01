@@ -676,13 +676,13 @@ export default function PaintingQuoteSoftwarePage() {
                       ))}
                     </div>
                     <p className="text-gray-100 mb-6">
-                      "This painting quote app changed my business. I'm responding to leads in 15 minutes instead of 2 days. My close rate went from 25% to 45%!"
+                      {"This painting quote app changed my business. I"}{''}m responding to leads in 15 minutes instead of 2 days. My close rate went from 25% to 45%!{""}
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500"></div>
                       <div>
                         <p className="font-semibold text-white">Maria Garcia</p>
-                        <p className="text-base text-gray-200">Garcia's Professional Painting</p>
+                        <p className="text-base text-gray-200">Garcia{'''}s Professional Painting</p>
                       </div>
                     </div>
                   </CardContent>
@@ -696,7 +696,7 @@ export default function PaintingQuoteSoftwarePage() {
                       ))}
                     </div>
                     <p className="text-gray-100 mb-6">
-                      "The painting calculator is spot-on accurate. No more underquoting jobs. I've increased my profit margins by 20% just by having better estimates."
+                      {"The painting calculator is spot-on accurate. No more underquoting jobs. I"}{''}ve increased my profit margins by 20% just by having better estimates.{""}
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-500"></div>
@@ -816,7 +816,7 @@ export default function PaintingQuoteSoftwarePage() {
                     <ChevronDown className="h-5 w-5 text-gray-200" />
                   </button>
                   <p className="text-gray-100 mt-4">
-                    Absolutely! Our mobile app works on iPhone and Android. Create quotes on-site, take photos, and send to customers instantly. It even works offline and syncs when you're back online.
+                    Absolutely! Our mobile app works on iPhone and Android. Create quotes on-site, take photos, and send to customers instantly. It even works offline and syncs when you{'''}re back online.
                   </p>
                 </div>
 

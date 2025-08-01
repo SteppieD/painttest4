@@ -22,7 +22,7 @@ export default function AccessCodePage() {
   const [forgotCodeLoading, setForgotCodeLoading] = useState(false);
   const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
 
-  // Handle autofill detection
+  // Handle autofill detection - run only once on mount
   useEffect(() => {
     const checkAutofill = () => {
       const input = document.getElementById('accessCode') as HTMLInputElement;
@@ -42,7 +42,8 @@ export default function AccessCodePage() {
       clearTimeout(timeoutId);
       cancelAnimationFrame(rafId);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Intentionally empty - we only want this to run once on mount
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -166,7 +167,7 @@ export default function AccessCodePage() {
                     setAccessCode(newValue);
                   }}
                   onInput={(e) => {
-                    // Fallback for cases where onChange doesn't fire
+                    // Fallback for cases where onChange doesn{'''}t fire
                     const target = e.target as HTMLInputElement;
                     setAccessCode(target.value);
                   }}

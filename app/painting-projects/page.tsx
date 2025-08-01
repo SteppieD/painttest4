@@ -280,7 +280,7 @@ export default function PaintingProjectsPage() {
                     </div>
                     <h3 className="text-xl font-semibold mb-3">Scale & Expertise</h3>
                     <p className="text-gray-200">
-                      Whether it's a single estate or 156 homes, we have the resources 
+                      Whether it{'''}s a single estate or 156 homes, we have the resources 
                       and systems to deliver consistent quality at any scale.
                     </p>
                   </div>

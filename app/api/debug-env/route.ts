@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   // Only allow in development for security
   if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'preview') {
     return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   };
 
   // Test OpenRouter connection
-  let connectionTest: any = { status: 'not-tested', error: null };
+  let connectionTest: Record<string, unknown> = { status: 'not-tested', error: null };
   if (process.env.OPENROUTER_API_KEY && process.env.OPENROUTER_API_KEY !== 'your_openrouter_key') {
     try {
       const response = await fetch('https://openrouter.ai/api/v1/models', {
@@ -60,26 +60,26 @@ export async function GET(request: NextRequest) {
   });
 }
 
-function getRecommendations(envVars: any, connectionTest: any): string[] {
+function getRecommendations(envVars: Record<string, unknown>, connectionTest: Record<string, unknown>): string[] {
   const recommendations = [];
   
-  if (!envVars.openrouter.hasKey) {
+  if (!(envVars.openrouter as any).hasKey) {
     recommendations.push('OPENROUTER_API_KEY is not set in environment variables');
-  } else if (envVars.openrouter.isPlaceholder) {
+  } else if ((envVars.openrouter as any).isPlaceholder) {
     recommendations.push('OPENROUTER_API_KEY still has placeholder value "your_openrouter_key"');
-  } else if (envVars.openrouter.isEmptyString) {
+  } else if ((envVars.openrouter as any).isEmptyString) {
     recommendations.push('OPENROUTER_API_KEY is an empty string');
-  } else if (envVars.openrouter.keyLength < 20) {
+  } else if ((envVars.openrouter as any).keyLength < 20) {
     recommendations.push('OPENROUTER_API_KEY seems too short to be valid');
   }
   
-  if (connectionTest.status === 'failed' && connectionTest.statusCode === 401) {
+  if (connectionTest.status === 'failed' && (connectionTest as any).statusCode === 401) {
     recommendations.push('OpenRouter API key is invalid (401 Unauthorized)');
-  } else if (connectionTest.status === 'failed' && connectionTest.statusCode === 402) {
+  } else if (connectionTest.status === 'failed' && (connectionTest as any).statusCode === 402) {
     recommendations.push('OpenRouter account has insufficient credits (402 Payment Required)');
   }
   
-  if (envVars.environment.VERCEL && !envVars.openrouter.hasKey) {
+  if ((envVars.environment as any).VERCEL && !(envVars.openrouter as any).hasKey) {
     recommendations.push('Running on Vercel but OPENROUTER_API_KEY not found - check Vercel dashboard > Settings > Environment Variables');
   }
   

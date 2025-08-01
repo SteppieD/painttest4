@@ -346,7 +346,7 @@ export default function HelpPage() {
               Get Support
             </h2>
             <p className="text-gray-100 max-w-2xl mx-auto">
-              Can't find what you're looking for? Our support team is here to help.
+              Can{'''}t find what you{'''}re looking for? Our support team is here to help.
             </p>
           </div>
 

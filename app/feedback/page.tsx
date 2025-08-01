@@ -198,7 +198,7 @@ export default function FeedbackPage() {
             
             <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               Your ideas drive our roadmap. Vote on features, submit requests, 
-              and see what we're building next.
+              and see what we{'''}re building next.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -338,7 +338,7 @@ export default function FeedbackPage() {
             <h2 className="text-3xl font-bold text-white mb-4">
               Product Roadmap
             </h2>
-            <p className="text-gray-100">See what we're working on next</p>
+            <p className="text-gray-100">See what we{'''}re working on next</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">

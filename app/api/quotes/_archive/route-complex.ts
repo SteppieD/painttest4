@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
+import { getAuthContext } from '@/lib/auth/middleware';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { generateQuoteNumber } from '@/lib/quote-number-generator';
 
@@ -93,7 +94,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify company access
-    if (auth.type === 'company' && auth.company?.id !== parseInt(companyId)) {
+    if (company.id !== parseInt(companyId)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
     }
 

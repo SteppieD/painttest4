@@ -313,7 +313,7 @@ export default function PhoenixPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The HOA templates are game-changing. I can quote entire complexes with 
                     accurate pricing in minutes. Won 3 major HOA contracts in Chandler this 
-                    year alone - that's $180,000 in new business."
+                    year alone - that{'''}s $180,000 in new business."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Rebecca Thompson</strong>
@@ -480,10 +480,10 @@ export default function PhoenixPaintingSoftware() {
                     moisture concerns. The software automatically factors these into your quotes.
                   </p>
                   <p>
-                    Whether you're quoting a stucco home in Scottsdale, an HOA complex in 
+                    Whether you{'''}re quoting a stucco home in Scottsdale, an HOA complex in 
                     Chandler, or a commercial property in Downtown Phoenix, PaintQuote Pro gives 
                     you the tools to create accurate, professional quotes in minutes. Join the 
-                    250+ Phoenix area contractors who've already transformed their business 
+                    250+ Phoenix area contractors who{'''}ve already transformed their business 
                     with our software.
                   </p>
                 </div>
