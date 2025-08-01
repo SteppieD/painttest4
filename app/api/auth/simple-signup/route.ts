@@ -55,14 +55,17 @@ export async function POST(request: NextRequest) {
     const accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase()
 
     // Create company with simple data
-    const isSupabase = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
     const company = await db.createCompany({
       company_name: companyName.trim(),
       access_code: accessCode,
       email: email.trim().toLowerCase(),
       phone: '',
-      is_trial: isSupabase ? false : 0, // Handle boolean/integer difference
-      quote_limit: 5
+      subscription_tier: 'free',
+      monthly_quote_limit: 5,
+      monthly_quote_count: 0,
+      onboarding_completed: false,
+      onboarding_step: 0,
+      tax_rate: 0
     })
 
     // Create session cookie
