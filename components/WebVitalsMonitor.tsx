@@ -36,7 +36,7 @@ export default function WebVitalsMonitor({
       enableRealTime = false
     } = config
 
-    // Skip if sampling rate doesn{'''}t match
+    // Skip if sampling rate doesn&apos;t match
     if (Math.random() > sampleRate) {
       return
     }
@@ -104,7 +104,7 @@ export default function WebVitalsMonitor({
         onFCP(sendVital)
         onTTFB(sendVital)
       } catch (error) {
-        // Silently fail if web-vitals can{'''}t be loaded
+        // Silently fail if web-vitals can&apos;t be loaded
         if (debug) {
           console.error('Failed to load web-vitals:', error)
         }
@@ -123,7 +123,7 @@ export default function WebVitalsMonitor({
     }
   }, [config])
 
-  return null // This component doesn{'''}t render anything
+  return null // This component doesn&apos;t render anything
 }
 
 function getDeviceType(): string {

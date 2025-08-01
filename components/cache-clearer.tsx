@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 export function CacheClearer() {
   useEffect(() => {
-    // Only clear caches if there{'''}s a known issue
+    // Only clear caches if there&apos;s a known issue
     const hasWebpackError = sessionStorage.getItem('webpack-error-detected')
     
     if (hasWebpackError) {

@@ -529,7 +529,7 @@ export default function PaintingEstimateSoftware() {
                     </div>
                     <blockquote className="mt-4">
                       <p className="text-gray-200">
-                        "Switched from manual estimates to PaintQuote Pro 6 months ago. We{'\''}re now 
+                        "Switched from manual estimates to PaintQuote Pro 6 months ago. We&apos;re now 
                         sending 3x more quotes and our close rate went from 20% to 35%. The AI 
                         chat feature is incredible - it understands painting terminology perfectly."
                       </p>
@@ -550,11 +550,11 @@ export default function PaintingEstimateSoftware() {
                       <p className="text-gray-200">
                         "As a solo contractor, time is everything. PaintQuote Pro lets me create 
                         estimates on-site in 15 minutes. Clients are impressed by the professional 
-                        quotes and I{'\''}m booking 50% more jobs."
+                        quotes and I&apos;m booking 50% more jobs."
                       </p>
                       <footer className="mt-4">
                         <strong>Tom Martinez</strong>
-                        <p className="text-base text-gray-200">Tom{'\''}s Quality Painting, Chicago</p>
+                        <p className="text-base text-gray-200">Tom&apos;s Quality Painting, Chicago</p>
                       </footer>
                     </blockquote>
                   </div>

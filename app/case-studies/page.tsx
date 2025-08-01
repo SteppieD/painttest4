@@ -402,7 +402,7 @@ export default function CaseStudies() {
               Calculate Your Potential ROI
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-xl opacity-100">
-              Based on our customer data, here{'''}s what you could achieve with PaintQuote Pro
+              Based on our customer data, here&apos;s what you could achieve with PaintQuote Pro
             </p>
             
             <div className="mx-auto mt-12 max-w-2xl rounded-lg bg-background p-8 text-foreground">

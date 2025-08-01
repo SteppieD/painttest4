@@ -327,7 +327,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Can I change plans anytime?</h3>
                 <p className="text-gray-100">
-                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we{'''}ll prorate any payments.
+                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we&apos;ll prorate any payments.
                 </p>
               </div>
               
@@ -355,7 +355,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Do you offer discounts for annual billing?</h3>
                 <p className="text-gray-100">
-                  Yes! Annual billing saves you 17% compared to monthly billing - that{'''}s 2 months free every year.
+                  Yes! Annual billing saves you 17% compared to monthly billing - that&apos;s 2 months free every year.
                 </p>
               </div>
             </div>

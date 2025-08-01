@@ -148,7 +148,7 @@ function CreateQuoteContent() {
                 <div className="flex-1">
                   <h3 className="font-medium text-white mb-1">Monthly Quote Limit Reached</h3>
                   <p className="text-base text-gray-100 mb-3">
-                    You{'''}ve used all {quotaInfo.limit} quotes in your free plan this month. 
+                    You&apos;ve used all {quotaInfo.limit} quotes in your free plan this month. 
                     Upgrade to Pro for unlimited quotes and advanced features.
                   </p>
                   <Link href="/dashboard/settings/billing">
@@ -184,7 +184,7 @@ function CreateQuoteContent() {
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">Quote Limit Reached</h3>
                     <p className="text-gray-200 mb-6 max-w-md">
-                      You{'''}ve reached your monthly limit of {quotaInfo.limit} quotes. 
+                      You&apos;ve reached your monthly limit of {quotaInfo.limit} quotes. 
                       Upgrade to Pro for unlimited quotes and continue growing your business.
                     </p>
                     <Link href="/dashboard/settings/billing">

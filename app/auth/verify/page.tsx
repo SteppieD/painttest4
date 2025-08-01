@@ -98,7 +98,7 @@ function VerifyContent() {
                   <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                     <p className="text-base text-gray-200 mb-2">Your access code:</p>
                     <p className="text-2xl font-mono font-bold text-white">{accessCode}</p>
-                    <p className="text-base text-gray-200 mt-2">Save this code - you{'\''}ll need it to log in</p>
+                    <p className="text-base text-gray-200 mt-2">Save this code - you&apos;ll need it to log in</p>
                   </div>
                 )}
                 

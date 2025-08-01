@@ -167,7 +167,7 @@ export default function AboutPage() {
                     </p>
                     <p className="font-medium text-foreground">
                       Our mission remains the same: give painting contractors the tools they need 
-                      to compete and succeed in today{'\\''}s market.
+                      to compete and succeed in today&apos;s market.
                     </p>
                   </div>
                 </div>
@@ -337,10 +337,10 @@ export default function AboutPage() {
           <div className="container">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-bold mb-4">
-                Have Questions? We{'\\''}d Love to Hear From You
+                Have Questions? We&apos;d Love to Hear From You
               </h2>
               <p className="text-gray-200 mb-8">
-                Whether you{'\\''}re a current customer or considering PaintQuote Pro, 
+                Whether you&apos;re a current customer or considering PaintQuote Pro, 
                 our team is here to help you succeed.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
