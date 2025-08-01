@@ -21,7 +21,7 @@ interface CompanyRecord {
   onboarding_completed?: boolean;
   default_walls_rate?: string;
   default_ceilings_rate?: string;
-  tax_rate?: string;
+  tax_rate?: number;
 }
 
 // Map old schema to new schema format
@@ -51,7 +51,7 @@ const mapCompanyData = (company: CompanyRecord) => ({
     },
     overheadPercent: 15,
     profitMargin: 30,
-    taxRate: parseFloat(company.tax_rate || '8.25'),
+    taxRate: company.tax_rate || 8.25,
     defaultTerms: 'Payment due within 30 days.'
   }
 })
