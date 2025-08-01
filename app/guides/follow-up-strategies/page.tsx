@@ -170,7 +170,7 @@ export default function FollowUpStrategiesGuide() {
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-3">2 Days: Quick Check-in</h3>
                       <p className="text-gray-100 mb-4">
-                        Confirm receipt and offer to answer questions while you{'''}re top of mind.
+                        Confirm receipt and offer to answer questions while you&apos;re top of mind.
                       </p>
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-blue-400 mb-3">Text Template (90% open rate):</h4>
@@ -231,14 +231,14 @@ export default function FollowUpStrategiesGuide() {
                         <div className="space-y-3 text-gray-100">
                           <p>
                             "Hi [Name], this is [Your name] from [Company]. I quoted your [project] back in 
-                            [month] and wanted to check if you{'''}re still planning to move forward."
+                            [month] and wanted to check if you&apos;re still planning to move forward."
                           </p>
                           <p>
                             "We're booking [upcoming season] projects now and I remembered your home. 
                             I can honor the original price if you'd like to schedule."
                           </p>
                           <p>
-                            "Also, we{'''}re offering [specific incentive] for projects booked this month. 
+                            "Also, we&apos;re offering [specific incentive] for projects booked this month. 
                             Would that help with your decision?"
                           </p>
                         </div>
@@ -463,8 +463,8 @@ export default function FollowUpStrategiesGuide() {
                   <div className="bg-gray-900/50 rounded p-4">
                     <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
                     <p className="text-gray-100 italic">
-                      "That{'''}s smart! While you{'''}re comparing, here{'''}s what to look for: [share comparison checklist]. 
-                      I{'''}m confident our value stands out, but I want you to make the best decision. 
+                      "That&apos;s smart! While you&apos;re comparing, here&apos;s what to look for: [share comparison checklist]. 
+                      I&apos;m confident our value stands out, but I want you to make the best decision. 
                       May I follow up next week to see if you have questions after reviewing other options?"
                     </p>
                   </div>
@@ -475,7 +475,7 @@ export default function FollowUpStrategiesGuide() {
                   <div className="bg-gray-900/50 rounded p-4">
                     <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
                     <p className="text-gray-100 italic">
-                      "I understand price is important. Let me show you where the value is: [break down what{'''}s included]. 
+                      "I understand price is important. Let me show you where the value is: [break down what&apos;s included]. 
                       We could also look at adjusting the scope or offer payment plans. 
                       What's your ideal budget so I can create an option that works?"
                     </p>

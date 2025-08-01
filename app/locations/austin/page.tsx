@@ -313,7 +313,7 @@ export default function AustinPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The new construction templates are perfect for Austin's building boom. 
                     I can quote entire subdivisions accurately. Won 3 major builder contracts 
-                    in Round Rock - that{'''}s $240,000 in steady work."
+                    in Round Rock - that&apos;s $240,000 in steady work."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Sarah Chen</strong>
@@ -481,7 +481,7 @@ export default function AustinPaintingSoftware() {
                     automatically factors these into your quotes.
                   </p>
                   <p>
-                    Whether you{'''}re quoting a tech office in the Domain, a historic home in 
+                    Whether you&apos;re quoting a tech office in the Domain, a historic home in 
                     Hyde Park, or a new subdivision in Round Rock, PaintQuote Pro gives you 
                     the tools to create accurate, professional quotes in minutes. Join the 
                     210+ Austin area contractors who've already transformed their business 

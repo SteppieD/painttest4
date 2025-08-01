@@ -313,7 +313,7 @@ export default function OrlandoPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The HOA templates save me hours. I can quote entire communities with 
                     accurate bulk pricing instantly. Won 5 HOA contracts in Celebration 
-                    this year - that{'''}s $220,000 in new business."
+                    this year - that&apos;s $220,000 in new business."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Jennifer Walsh</strong>
@@ -481,10 +481,10 @@ export default function OrlandoPaintingSoftware() {
                     factors these into your quotes.
                   </p>
                   <p>
-                    Whether you{'''}re quoting a resort near the theme parks, an HOA in Celebration, 
+                    Whether you&apos;re quoting a resort near the theme parks, an HOA in Celebration, 
                     or a medical facility in Lake Nona, PaintQuote Pro gives you the tools to 
                     create accurate, professional quotes in minutes. Join the 220+ Orlando area 
-                    contractors who{'''}ve already transformed their business with our software.
+                    contractors who&apos;ve already transformed their business with our software.
                   </p>
                 </div>
 

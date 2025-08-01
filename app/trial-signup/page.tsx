@@ -251,8 +251,8 @@ export default function TrialSignupPage() {
                   />
                   <p className="text-base text-gray-200">
                     {signupMethod === 'magic'
-                      ? "We{'''}ll send a secure login link to your email"
-                      : "We{'''}ll send your access code and important updates here"}
+                      ? "We&apos;ll send a secure login link to your email"
+                      : "We&apos;ll send your access code and important updates here"}
                   </p>
                 </div>
 

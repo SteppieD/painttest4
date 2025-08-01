@@ -313,7 +313,7 @@ export default function SanDiegoPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The historic templates are amazing for Gaslamp Quarter projects. I can 
                     include all preservation requirements instantly. Won 4 major Victorian 
-                    restorations this year - that{'''}s $280,000 in new business."
+                    restorations this year - that&apos;s $280,000 in new business."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Maria Rodriguez</strong>
@@ -481,7 +481,7 @@ export default function SanDiegoPaintingSoftware() {
                     automatically factors these into your quotes.
                   </p>
                   <p>
-                    Whether you{'''}re quoting an oceanfront estate in La Jolla, a historic 
+                    Whether you&apos;re quoting an oceanfront estate in La Jolla, a historic 
                     Victorian in the Gaslamp Quarter, or a sprawling ranch in Rancho Santa Fe, 
                     PaintQuote Pro gives you the tools to create accurate, professional quotes 
                     in minutes. Join the 280+ San Diego area contractors who've already 

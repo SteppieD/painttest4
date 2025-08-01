@@ -173,7 +173,7 @@ const faqData = [
   },
   {
     question: 'How accurate are the pricing calculations?',
-    answer: 'The templates provide formulas and structure, but you{'''}ll need to input your local labor rates and material costs. The calculations are accurate based on the data you provide.'
+    answer: 'The templates provide formulas and structure, but you&apos;ll need to input your local labor rates and material costs. The calculations are accurate based on the data you provide.'
   },
   {
     question: 'Can I use these templates on mobile devices?',

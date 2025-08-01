@@ -357,7 +357,7 @@ export default function HowToQuotePaintingJobs() {
                     <h4 className="font-semibold text-primary mb-2">Pro Tip: The 15% Rule</h4>
                     <p className="text-base">
                       Always add a 10-15% waste factor to your measurements. This covers touch-ups, overspray, 
-                      and ensures you don{'''}t run short on materials. Better to have leftover paint than an angry customer.
+                      and ensures you don&apos;t run short on materials. Better to have leftover paint than an angry customer.
                     </p>
                   </div>
                 </section>
@@ -634,7 +634,7 @@ export default function HowToQuotePaintingJobs() {
                         <li className="flex items-start">
                           <FileText className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                           <div>
-                            <strong>Detailed scope:</strong> Exactly what{'''}s included (and what{'''}s not)
+                            <strong>Detailed scope:</strong> Exactly what&apos;s included (and what&apos;s not)
                           </div>
                         </li>
                         <li className="flex items-start">

@@ -167,7 +167,7 @@ export default function AccessCodePage() {
                     setAccessCode(newValue);
                   }}
                   onInput={(e) => {
-                    // Fallback for cases where onChange doesn{'''}t fire
+                    // Fallback for cases where onChange doesn&apos;t fire
                     const target = e.target as HTMLInputElement;
                     setAccessCode(target.value);
                   }}

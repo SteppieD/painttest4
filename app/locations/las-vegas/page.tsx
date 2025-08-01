@@ -313,7 +313,7 @@ export default function LasVegasPaintingSoftware() {
                   <blockquote className="text-lg">
                     "The desert climate templates are game-changing. Every quote includes 
                     heat-reflective options automatically. Won 4 HOA contracts in Summerlin 
-                    - that{'''}s $310,000 in guaranteed work."
+                    - that&apos;s $310,000 in guaranteed work."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Sandra Kim</strong>
@@ -481,10 +481,10 @@ export default function LasVegasPaintingSoftware() {
                     automatically factors these into your quotes.
                   </p>
                   <p>
-                    Whether you{'''}re quoting a casino on the Strip, a luxury home in Summerlin, 
+                    Whether you&apos;re quoting a casino on the Strip, a luxury home in Summerlin, 
                     or an HOA in Henderson, PaintQuote Pro gives you the tools to create 
                     accurate, professional quotes in minutes. Join the 260+ Las Vegas area 
-                    contractors who{'''}ve already transformed their business with our software.
+                    contractors who&apos;ve already transformed their business with our software.
                   </p>
                 </div>
 

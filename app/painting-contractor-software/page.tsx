@@ -359,7 +359,7 @@ export default function PaintingContractorSoftwarePage() {
           <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                See How Much You{'''}ll Save
+                See How Much You&apos;ll Save
               </h2>
               <p className="text-xl text-gray-100 mb-8">
                 Most painting contractors save 40+ hours per month and win 35% more jobs with our software.
@@ -558,7 +558,7 @@ export default function PaintingContractorSoftwarePage() {
                 Trusted by Painting Contractors Nationwide
               </h2>
               <p className="text-xl text-gray-100">
-                Join thousands of painters who{'''}ve transformed their business with our software
+                Join thousands of painters who&apos;ve transformed their business with our software
               </p>
             </div>
 
@@ -709,7 +709,7 @@ export default function PaintingContractorSoftwarePage() {
                     Does the paint contractor app work offline?
                   </h3>
                   <p className="text-gray-100">
-                    Yes! You can create quotes on-site without internet. The app syncs automatically when you{'''}re back online. Perfect for estimates at properties with poor cell service.
+                    Yes! You can create quotes on-site without internet. The app syncs automatically when you&apos;re back online. Perfect for estimates at properties with poor cell service.
                   </p>
                 </div>
 

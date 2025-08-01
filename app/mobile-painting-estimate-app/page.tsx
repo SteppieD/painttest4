@@ -417,7 +417,7 @@ export default function MobilePaintingEstimateApp() {
                   <h3 className="mt-4 text-lg font-semibold">Close the Deal</h3>
                   <p className="mt-2 text-base text-gray-200">
                     Collect a digital signature and deposit right from the app. 
-                    Schedule the job and you{'''}re done!
+                    Schedule the job and you&apos;re done!
                   </p>
                 </div>
               </div>
@@ -434,7 +434,7 @@ export default function MobilePaintingEstimateApp() {
                   </h2>
                   <p className="mt-4 text-lg text-gray-200">
                     Create estimates anywhere with full offline functionality. Everything syncs 
-                    automatically when you{'''}re back online
+                    automatically when you&apos;re back online
                   </p>
                   
                   <div className="mt-8 space-y-6">

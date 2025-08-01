@@ -481,10 +481,10 @@ export default function NashvillePaintingSoftware() {
                     quotes.
                   </p>
                   <p>
-                    Whether you{'''}re quoting a historic home in Belle Meade, a new build in 
+                    Whether you&apos;re quoting a historic home in Belle Meade, a new build in 
                     Franklin, or a commercial property on Broadway, PaintQuote Pro gives you 
                     the tools to create accurate, professional quotes in minutes. Join the 
-                    200+ Nashville area contractors who{'''}ve already transformed their business 
+                    200+ Nashville area contractors who&apos;ve already transformed their business 
                     with our software.
                   </p>
                 </div>

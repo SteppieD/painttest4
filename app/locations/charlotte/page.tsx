@@ -313,7 +313,7 @@ export default function CharlottePaintingSoftware() {
                   <blockquote className="text-lg">
                     "The humidity templates are perfect for Charlotte. Every quote includes 
                     proper mildew protection automatically. Won 5 Lake Norman estates this 
-                    summer - that{'''}s $210,000 in guaranteed work."
+                    summer - that&apos;s $210,000 in guaranteed work."
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Jennifer Davis</strong>
@@ -481,10 +481,10 @@ export default function CharlottePaintingSoftware() {
                     these into your quotes.
                   </p>
                   <p>
-                    Whether you{'''}re quoting a bank tower in Uptown, a historic home in Dilworth, 
+                    Whether you&apos;re quoting a bank tower in Uptown, a historic home in Dilworth, 
                     or a lakefront estate in Cornelius, PaintQuote Pro gives you the tools to 
                     create accurate, professional quotes in minutes. Join the 220+ Charlotte area 
-                    contractors who{'''}ve already transformed their business with our software.
+                    contractors who&apos;ve already transformed their business with our software.
                   </p>
                 </div>
 

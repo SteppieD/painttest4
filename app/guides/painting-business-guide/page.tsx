@@ -284,14 +284,14 @@ export default function PaintingBusinessGuide() {
               <Card className="bg-blue-500/10 border-blue-500/30 p-8">
                 <h3 className="text-xl font-semibold text-blue-400 mb-4">Where Are You Now?</h3>
                 <p className="text-gray-100 mb-4">
-                  This guide covers every stage of building a painting business. Whether you{'''}re just 
-                  starting out or looking to scale beyond $1M, you{'''}ll find actionable strategies for 
+                  This guide covers every stage of building a painting business. Whether you&apos;re just 
+                  starting out or looking to scale beyond $1M, you&apos;ll find actionable strategies for 
                   your current situation.
                 </p>
                 <div className="flex gap-4">
                   <Link href="#getting-started">
                     <Button variant="outline" className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10">
-                      I{'''}m Starting Out
+                      I&apos;m Starting Out
                     </Button>
                   </Link>
                   <Link href="#scaling">
@@ -437,7 +437,7 @@ export default function PaintingBusinessGuide() {
                       <Card className="bg-yellow-500/10 border-yellow-500/30 p-6">
                         <h4 className="text-lg font-semibold text-yellow-400 mb-2">Pro Tip: Start Lean</h4>
                         <p className="text-gray-100 text-base">
-                          You don{'''}t need everything on day one. Start with essential tools and quality 
+                          You don&apos;t need everything on day one. Start with essential tools and quality 
                           <Link href="/guides/painting-estimate-software" className="text-blue-400 hover:text-blue-300"> estimating software</Link> to 
                           look professional. Reinvest profits into better equipment as you grow.
                         </p>

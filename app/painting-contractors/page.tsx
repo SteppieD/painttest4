@@ -183,7 +183,7 @@ export default function PaintingContractors() {
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="mr-3 h-5 w-5 flex-shrink-0 text-primary" />
-                      <span>Analytics show exactly what{'''}s profitable</span>
+                      <span>Analytics show exactly what&apos;s profitable</span>
                     </li>
                   </ul>
                 </div>
@@ -250,7 +250,7 @@ export default function PaintingContractors() {
                   <BarChart className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Business Analytics</h3>
                   <p className="mt-2 text-gray-200">
-                    See which jobs make money and which don{'''}t. Track conversion rates, revenue 
+                    See which jobs make money and which don&apos;t. Track conversion rates, revenue 
                     trends, and customer patterns.
                   </p>
                   <ul className="mt-4 space-y-2 text-base">
@@ -302,7 +302,7 @@ export default function PaintingContractors() {
                     <p className="text-xl italic">
                       "PaintQuote Pro transformed our painting business. We went from spending hours 
                       on quotes to creating them in 15 minutes. Our close rate increased by 40% and 
-                      we{'''}re now doing $126K monthly, up from $80K."
+                      we&apos;re now doing $126K monthly, up from $80K."
                     </p>
                     <footer className="mt-4">
                       <strong>Mike Rodriguez</strong>
@@ -450,7 +450,7 @@ export default function PaintingContractors() {
                       Does it work for both residential and commercial painting?
                     </h3>
                     <p className="mt-3 text-gray-200">
-                      Yes! PaintQuote Pro handles all types of painting projects. Whether you{'''}re quoting 
+                      Yes! PaintQuote Pro handles all types of painting projects. Whether you&apos;re quoting 
                       a single room repaint or a multi-building commercial project, our software scales 
                       to meet your needs with appropriate pricing and scope management.
                     </p>
