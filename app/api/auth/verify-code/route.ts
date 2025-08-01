@@ -35,9 +35,9 @@ export async function POST(request: NextRequest) {
         name: company.company_name,
         phone: company.phone,
         email: company.email,
-        logoUrl: company.logo_url,
-        isTrial: company.is_trial,
-        quoteLimit: company.quote_limit,
+        logoUrl: null,
+        isTrial: company.subscription_tier === 'free',
+        quoteLimit: company.monthly_quote_limit,
         needsOnboarding: false,
         onboarding_completed: company.onboarding_completed || false
       }

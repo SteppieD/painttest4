@@ -10,7 +10,7 @@ export interface Company {
   subscription_tier?: string;
   monthly_quote_limit?: number;
   monthly_quote_count?: number;
-  onboarding_completed?: boolean;
+  onboarding_completed?: boolean | number;
 }
 
 export interface Session {
@@ -39,7 +39,7 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
         subscription_tier: company.subscription_tier,
         monthly_quote_limit: company.monthly_quote_limit,
         monthly_quote_count: company.monthly_quote_count,
-        onboarding_completed: company.onboarding_completed
+        onboarding_completed: !!company.onboarding_completed
       };
     }
     
