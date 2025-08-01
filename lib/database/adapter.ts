@@ -74,7 +74,7 @@ export interface PaintProduct {
 }
 
 // Type for create operations (without generated fields)
-export type CreateCompanyData = Omit<Company, 'created_at' | 'updated_at'> & {
+export type CreateCompanyData = Omit<Company, 'id' | 'created_at' | 'updated_at'> & {
   created_at?: string;
   updated_at?: string;
 };
