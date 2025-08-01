@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/adapter';
+import { db, type Company } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 import { SubscriptionService } from '@/lib/services/subscription';
@@ -96,10 +96,8 @@ export async function POST(request: NextRequest) {
       try {
         // Create the company in the database
         companyData = await db.createCompany({
-          id: numericCompanyId,
           access_code: company.access_code,
           company_name: company.name || 'Unknown Company',
-          name: company.name || 'Unknown Company',
           email: company.email || `company${numericCompanyId}@example.com`,
           phone: '',
           tax_rate: 0,
@@ -107,15 +105,24 @@ export async function POST(request: NextRequest) {
           onboarding_step: 0,
           subscription_tier: 'free',
           monthly_quote_count: 0,
-          monthly_quote_limit: 5,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
+          monthly_quote_limit: 5
         });
         console.log('[QUOTES API] Company created successfully:', companyData);
       } catch (createError) {
         console.error('[QUOTES API] Failed to create company:', createError);
-        // Continue with default values if creation fails
-        companyData = { tax_rate: 0 };
+        // Continue with minimal company data if creation fails
+        companyData = {
+          id: numericCompanyId,
+          access_code: company.access_code,
+          company_name: company.name || 'Unknown Company',
+          email: company.email || '',
+          tax_rate: 0,
+          onboarding_completed: false,
+          onboarding_step: 0,
+          subscription_tier: 'free',
+          monthly_quote_count: 0,
+          monthly_quote_limit: 5
+        } as Company;
       }
     }
     
@@ -124,7 +131,11 @@ export async function POST(request: NextRequest) {
     // Generate unique quote ID
     const quoteId = await generateQuoteNumber(numericCompanyId);
 
-    // Prepare quote data for database with all required fields
+    // Prepare quote data for database using Quote interface fields
+    const materialCost = quoteData.breakdown?.materials || 0;
+    const laborCost = quoteData.breakdown?.labor || 0;
+    const totalCost = quoteData.finalPrice || quoteData.totalCost || materialCost + laborCost;
+    
     const quote = {
       company_id: numericCompanyId,
       quote_id: quoteId,
@@ -133,61 +144,31 @@ export async function POST(request: NextRequest) {
       customer_phone: quoteData.customerPhone || null,
       address: quoteData.address || null,
       project_type: quoteData.projectType || 'interior',
-      rooms: typeof quoteData.rooms === 'string' ? quoteData.rooms : JSON.stringify(quoteData.rooms || []),
-      paint_quality: quoteData.paintQuality || null,
-      prep_work: quoteData.prepWork || null,
+      surfaces: quoteData.surfaces || ['walls', 'ceilings'],
+      measurements: {
+        walls: quoteData.sqft || 0,
+        ceilings: quoteData.ceilings_sqft || 0,
+        trim: quoteData.trim_sqft || 0,
+        rooms: quoteData.rooms || []
+      },
+      pricing: {
+        materials: materialCost,
+        labor: laborCost,
+        markup: quoteData.breakdown?.markup || 0,
+        tax: (totalCost * companyTaxRate / 100),
+        total: totalCost,
+        breakdown: quoteData.breakdown || {}
+      },
+      labor_cost: laborCost,
+      material_cost: materialCost,
+      total_cost: totalCost,
       timeline: quoteData.timeEstimate || quoteData.timeline || null,
       special_requests: Array.isArray(quoteData.specialRequests) 
         ? quoteData.specialRequests.join(', ') 
         : quoteData.specialRequests || null,
-      walls_sqft: quoteData.sqft || 0,
-      ceilings_sqft: quoteData.ceilings_sqft || 0,
-      trim_sqft: quoteData.trim_sqft || 0,
-      doors_count: 0,
-      windows_count: 0,
-      priming_sqft: 0,
-      painting_rate: 0,
-      priming_rate: 0,
-      trim_rate: 0,
-      door_rate: 0,
-      window_rate: 0,
-      walls_rate: 0,
-      ceilings_rate: 0,
-      walls_paint_cost: 0,
-      ceilings_paint_cost: 0,
-      trim_paint_cost: 0,
-      total_revenue: quoteData.finalPrice || quoteData.totalCost || 0,
-      total_materials: quoteData.breakdown?.materials || 0,
-      paint_cost: quoteData.breakdown?.materials || 0,
-      sundries_cost: 0,
-      sundries_percentage: 12,
-      projected_labor: quoteData.breakdown?.labor || 0,
-      labor_percentage: 0,
-      projected_profit: quoteData.breakdown?.markup || 0,
-      paint_coverage: 350,
-      tax_rate: companyTaxRate,
-      tax_amount: 0, // Will be calculated below
-      subtotal: quoteData.totalCost || 0,
-      base_cost: quoteData.totalCost || 0,
-      markup_percentage: quoteData.markupPercentage || 30,
-      final_price: quoteData.finalPrice || quoteData.totalCost || 0,
-      room_data: JSON.stringify(quoteData.rooms || []),
-      room_count: quoteData.roomCount || 0,
-      confirmed_rates: JSON.stringify({}),
       status: 'pending',
-      conversation_summary: typeof conversationHistory === 'string' 
-        ? conversationHistory 
-        : JSON.stringify(conversationHistory || [{ quoteData }])
+      created_at: new Date().toISOString()
     };
-
-    // Calculate tax amount if tax rate is set
-    if (companyTaxRate > 0) {
-      // Tax is applied to the subtotal (base cost + markup)
-      const beforeTax = quote.base_cost * (1 + quote.markup_percentage / 100);
-      quote.tax_amount = beforeTax * (companyTaxRate / 100);
-      quote.final_price = beforeTax + quote.tax_amount;
-      quote.total_revenue = quote.final_price;
-    }
 
     // Save quote to database
     console.log('[QUOTES API] Quote data to save:', quote);
@@ -196,8 +177,8 @@ export async function POST(request: NextRequest) {
       company_id: quote.company_id,
       quote_id: quote.quote_id,
       customer_name: quote.customer_name,
-      final_price: quote.final_price,
-      rooms: quote.rooms?.substring(0, 100) + '...'
+      total_cost: quote.total_cost,
+      surfaces: quote.surfaces
     });
     
     let result;
@@ -231,7 +212,7 @@ export async function POST(request: NextRequest) {
       trackingData: {
         event: 'quote_created',
         quote_id: quoteId,
-        quote_value: quote.final_price || quote.subtotal || 0,
+        quote_value: quote.total_cost || 0,
         project_type: quote.project_type,
         customer_name: quote.customer_name
       }

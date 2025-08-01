@@ -16,7 +16,7 @@ export async function GET() {
     const dbCompany = await db.query(
       'SELECT * FROM companies WHERE id = ?',
       [companyData.id]
-    )
+    ) as Array<Record<string, unknown>>
 
     if (!dbCompany || dbCompany.length === 0) {
       return NextResponse.json({ error: 'Company not found' }, { status: 404 })
@@ -28,7 +28,7 @@ export async function GET() {
     const paintProducts = await db.query(
       'SELECT * FROM paint_products WHERE user_id = ?',
       [companyData.id.toString()]
-    )
+    ) as Array<Record<string, unknown>>
 
     return NextResponse.json({
       // Company info
@@ -41,7 +41,7 @@ export async function GET() {
       license: companyInfo.license || '',
       
       // Financial settings
-      taxRate: parseFloat(companyInfo.tax_rate) || 8.25,
+      taxRate: parseFloat(String(companyInfo.tax_rate || '0')) || 8.25,
       taxLabel: companyInfo.tax_label || 'Sales Tax',
       taxOnMaterialsOnly: companyInfo.tax_on_materials_only || false,
       overheadPercent: companyInfo.overhead_percent || 15,
@@ -55,30 +55,30 @@ export async function GET() {
       // Charge rates
       chargeRates: {
         // Interior
-        walls: parseFloat(companyInfo.default_walls_rate) || 3.50,
-        ceilings: parseFloat(companyInfo.default_ceilings_rate) || 4.00,
-        baseboards: parseFloat(companyInfo.default_baseboard_rate) || 2.50,
-        crownMolding: parseFloat(companyInfo.default_crown_rate) || 5.00,
-        doors: parseFloat(companyInfo.default_door_rate) || 125.00,
-        windows: parseFloat(companyInfo.default_window_rate) || 75.00,
+        walls: parseFloat(String(companyInfo.default_walls_rate || '0')) || 3.50,
+        ceilings: parseFloat(String(companyInfo.default_ceilings_rate || '0')) || 4.00,
+        baseboards: parseFloat(String(companyInfo.default_baseboard_rate || '0')) || 2.50,
+        crownMolding: parseFloat(String(companyInfo.default_crown_rate || '0')) || 5.00,
+        doors: parseFloat(String(companyInfo.default_door_rate || '0')) || 125.00,
+        windows: parseFloat(String(companyInfo.default_window_rate || '0')) || 75.00,
         // Exterior
-        exteriorWalls: parseFloat(companyInfo.default_exterior_walls_rate) || 4.50,
-        fascia: parseFloat(companyInfo.default_fascia_rate) || 6.00,
-        soffits: parseFloat(companyInfo.default_soffits_rate) || 5.00,
-        exteriorDoors: parseFloat(companyInfo.default_exterior_door_rate) || 150.00,
-        exteriorWindows: parseFloat(companyInfo.default_exterior_window_rate) || 100.00,
+        exteriorWalls: parseFloat(String(companyInfo.default_exterior_walls_rate || '0')) || 4.50,
+        fascia: parseFloat(String(companyInfo.default_fascia_rate || '0')) || 6.00,
+        soffits: parseFloat(String(companyInfo.default_soffits_rate || '0')) || 5.00,
+        exteriorDoors: parseFloat(String(companyInfo.default_exterior_door_rate || '0')) || 150.00,
+        exteriorWindows: parseFloat(String(companyInfo.default_exterior_window_rate || '0')) || 100.00,
       },
       
       // Labor settings
       laborSettings: {
-        hourlyRate: parseFloat(companyInfo.default_hourly_rate) || 45,
-        overheadMultiplier: parseFloat(companyInfo.default_overhead_multiplier) || 1.35,
+        hourlyRate: parseFloat(String(companyInfo.default_hourly_rate || '0')) || 45,
+        overheadMultiplier: parseFloat(String(companyInfo.default_overhead_multiplier || '0')) || 1.35,
         productivityRates: {
-          walls: parseFloat(companyInfo.productivity_walls) || 150,
-          ceilings: parseFloat(companyInfo.productivity_ceilings) || 100,
-          baseboards: parseFloat(companyInfo.productivity_baseboards) || 60,
-          doors: parseFloat(companyInfo.productivity_doors) || 2,
-          windows: parseFloat(companyInfo.productivity_windows) || 3,
+          walls: parseFloat(String(companyInfo.productivity_walls || '0')) || 150,
+          ceilings: parseFloat(String(companyInfo.productivity_ceilings || '0')) || 100,
+          baseboards: parseFloat(String(companyInfo.productivity_baseboards || '0')) || 60,
+          doors: parseFloat(String(companyInfo.productivity_doors || '0')) || 2,
+          windows: parseFloat(String(companyInfo.productivity_windows || '0')) || 3,
         }
       },
       
@@ -88,9 +88,9 @@ export async function GET() {
         name: p.product_name,
         manufacturer: p.manufacturer || '',
         type: p.use_case || 'wall',
-        costPerGallon: parseFloat(p.cost_per_gallon),
-        retailPrice: parseFloat(p.retail_price) || parseFloat(p.cost_per_gallon) * 1.5,
-        coveragePerGallon: parseFloat(p.coverage_per_gallon) || 350,
+        costPerGallon: parseFloat(String(p.cost_per_gallon || '0')),
+        retailPrice: parseFloat(String(p.retail_price || '0')) || parseFloat(String(p.cost_per_gallon || '0')) * 1.5,
+        coveragePerGallon: parseFloat(String(p.coverage_per_gallon || '0')) || 350,
         isPreferred: p.is_preferred || false,
       }))
     })

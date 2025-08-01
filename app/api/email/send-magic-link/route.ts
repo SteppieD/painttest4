@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
       if (error) {
         console.error('Resend error:', error);
-        throw new Error(error.message);
+        throw new Error(error instanceof Error ? error.message : 'Unknown error');
       }
 
       console.log('Email sent successfully:', data?.id);

@@ -150,13 +150,13 @@ export async function POST(request: NextRequest) {
         }
         
         const companyRates = {
-          paintingRate: companyData?.default_painting_rate || 2.50,
-          primingRate: companyData?.default_priming_rate || 0.40,
-          trimRate: companyData?.default_trim_rate || 1.92,
-          doorRate: companyData?.default_door_rate || 100,
-          windowRate: companyData?.default_window_rate || 25,
-          overheadPercent: companyData?.overhead_percent || 15,
-          profitMargin: companyData?.profit_margin || 30,
+          paintingRate: 2.50,
+          primingRate: 0.40,
+          trimRate: 1.92,
+          doorRate: 100,
+          windowRate: 25,
+          overheadPercent: 15,
+          profitMargin: 30,
           hourlyRate: companyData?.default_hourly_rate || 45
         };
         

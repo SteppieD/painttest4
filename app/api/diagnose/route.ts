@@ -75,12 +75,15 @@ export async function GET() {
         customer_phone: '(555) 000-0000',
         address: '123 Test Street',
         project_type: 'interior',
-        rooms: JSON.stringify(['Test Room']),
-        paint_quality: 'test',
-        timeline: 'test',
-        final_price: 100,
+        surfaces: ['walls', 'ceilings'],
+        measurements: { walls: 100, ceilings: 50 },
+        pricing: { total: 100, materials: 40, labor: 60 },
+        labor_cost: 60,
+        material_cost: 40,
+        total_cost: 100,
         status: 'test',
-        conversation_summary: 'Diagnostic test quote'
+        timeline: 'test',
+        special_requests: 'Diagnostic test quote'
       };
       
       const result = await db.createQuote(testQuote);

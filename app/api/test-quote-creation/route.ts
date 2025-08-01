@@ -4,7 +4,7 @@ import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 
 export async function POST(request: NextRequest) {
   try {
-    // Test data for debugging
+    // Test data for debugging - using Quote interface format
     const testQuoteData = {
       company_id: 1,
       quote_id: 'TEST-' + Date.now(),
@@ -13,47 +13,26 @@ export async function POST(request: NextRequest) {
       customer_phone: '555-1234',
       address: '123 Test St',
       project_type: 'interior',
-      rooms: JSON.stringify(['Living Room']),
-      paint_quality: 'standard',
-      prep_work: 'minimal',
+      surfaces: ['walls', 'ceilings'],
+      measurements: {
+        walls: 500,
+        ceilings: 0,
+        rooms: ['Living Room']
+      },
+      pricing: {
+        materials: 200,
+        labor: 400,
+        markup: 400,
+        tax: 0,
+        total: 1000
+      },
+      labor_cost: 400,
+      material_cost: 200,
+      total_cost: 1000,
       timeline: '1 week',
-      special_requests: null,
-      walls_sqft: 500,
-      ceilings_sqft: 0,
-      trim_sqft: 0,
-      doors_count: 0,
-      windows_count: 0,
-      priming_sqft: 0,
-      painting_rate: 0,
-      priming_rate: 0,
-      trim_rate: 0,
-      door_rate: 0,
-      window_rate: 0,
-      walls_rate: 0,
-      ceilings_rate: 0,
-      walls_paint_cost: 0,
-      ceilings_paint_cost: 0,
-      trim_paint_cost: 0,
-      total_revenue: 1000,
-      total_materials: 200,
-      paint_cost: 150,
-      sundries_cost: 50,
-      sundries_percentage: 12,
-      projected_labor: 400,
-      labor_percentage: 40,
-      projected_profit: 400,
-      paint_coverage: 350,
-      tax_rate: 0,
-      tax_amount: 0,
-      subtotal: 1000,
-      base_cost: 1000,
-      markup_percentage: 30,
-      final_price: 1000,
-      room_data: JSON.stringify(['Living Room']),
-      room_count: 1,
-      confirmed_rates: JSON.stringify({}),
+      special_requests: undefined,
       status: 'pending',
-      conversation_summary: JSON.stringify([{ message: 'Test quote' }])
+      created_at: new Date().toISOString()
     };
 
     console.log('[TEST-QUOTE] Starting test quote creation');

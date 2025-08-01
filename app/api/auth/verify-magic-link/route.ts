@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
         const pendingData = await db.query(
           'SELECT company_name FROM pending_signups WHERE email = ? AND expires_at > datetime("now")',
           [email]
-        );
+        ) as Array<{ company_name: string }>;
         if (pendingData.length > 0) {
           companyName = pendingData[0].company_name;
         }
@@ -68,15 +68,17 @@ export async function POST(request: NextRequest) {
       accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase();
 
       // Create company
-      const isSupabase = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
       company = await db.createCompany({
         company_name: companyName,
         access_code: accessCode,
         email: email,
         phone: '',
-        is_trial: isSupabase ? false : 0,
-        quote_limit: 5,
-        onboarding_completed: false
+        onboarding_completed: false,
+        onboarding_step: 0,
+        tax_rate: 0,
+        subscription_tier: 'free',
+        monthly_quote_count: 0,
+        monthly_quote_limit: 5
       });
 
       // Clean up pending signup

@@ -13,7 +13,7 @@ export async function GET() {
     const firstUser = users.length > 0 ? {
       id: users[0].id,
       email: users[0].email,
-      name: users[0].name,
+      name: `${users[0].first_name || ''} ${users[0].last_name || ''}`.trim() || 'Unknown',
       company: companies.find(c => c.id === users[0].company_id)
     } : null
 

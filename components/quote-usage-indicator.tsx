@@ -15,20 +15,13 @@ async function getQuoteUsage(companyId: number) {
     throw new Error('Company not found')
   }
 
-  // Check if we need to reset the quotes
-  if (company.plan === 'free' && company.quotesResetAt && new Date() > new Date(company.quotesResetAt)) {
-    // Reset quotes for the new month
-    const nextMonth = new Date()
-    nextMonth.setMonth(nextMonth.getMonth() + 1)
-    
-    await db.updateCompany(companyId, {
-      quotesUsed: 0,
-      quotesResetAt: nextMonth.toISOString(),
-    })
-    company.quotesUsed = 0
+  // Return quote usage data in the expected format
+  return {
+    quotesUsed: company.monthly_quote_count || 0,
+    quotesLimit: company.monthly_quote_limit || 5,
+    quotesResetAt: null, // We don't track reset dates in the current schema
+    subscription_tier: company.subscription_tier || 'free'
   }
-
-  return company
 }
 
 export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProps) {
@@ -41,9 +34,7 @@ export async function QuoteUsageIndicator({ companyId }: QuoteUsageIndicatorProp
 
   const percentageUsed = (usage.quotesUsed / usage.quotesLimit) * 100
   const remainingQuotes = usage.quotesLimit - usage.quotesUsed
-  const daysUntilReset = usage.quotesResetAt 
-    ? Math.ceil((new Date(usage.quotesResetAt).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
-    : 30
+  const daysUntilReset = 30 // Default to monthly reset
 
   return (
     <div className="rounded-lg border bg-card p-4">

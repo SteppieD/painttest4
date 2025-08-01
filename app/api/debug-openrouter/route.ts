@@ -197,7 +197,7 @@ function getDetailedRecommendations(debug: any, directTest: any, chatTest: any, 
   }
   
   if (chatTest.status === 'failed' && chatTest.response?.error) {
-    recs.push(`❌ Chat API error: ${chatTest.response.error.message || chatTest.response.error}`);
+    recs.push(`❌ Chat API error: ${chatTest.response.error instanceof Error ? chatTest.response.error.message : chatTest.response.error}`);
   }
   
   if (clientTest.apiCall?.status === 'failed') {

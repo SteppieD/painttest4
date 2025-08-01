@@ -7,9 +7,9 @@ export interface Company {
   company_name: string;
   phone?: string;
   email?: string;
-  logo_url?: string;
-  is_trial?: boolean;
-  quote_limit?: number;
+  subscription_tier?: string;
+  monthly_quote_limit?: number;
+  monthly_quote_count?: number;
   onboarding_completed?: boolean;
 }
 
@@ -36,9 +36,9 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
         company_name: company.company_name,
         phone: company.phone,
         email: company.email,
-        logo_url: company.logo_url,
-        is_trial: company.is_trial,
-        quote_limit: company.quote_limit,
+        subscription_tier: company.subscription_tier,
+        monthly_quote_limit: company.monthly_quote_limit,
+        monthly_quote_count: company.monthly_quote_count,
         onboarding_completed: company.onboarding_completed
       };
     }
@@ -51,8 +51,12 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
         access_code: normalizedCode,
         company_name: `Company ${normalizedCode}`,
         email: `${normalizedCode.toLowerCase()}@example.com`,
-        is_trial: true,
-        quote_limit: 1
+        subscription_tier: 'free',
+        monthly_quote_limit: 5,
+        monthly_quote_count: 0,
+        tax_rate: 0,
+        onboarding_completed: false,
+        onboarding_step: 0
       });
       
       return {
@@ -61,9 +65,9 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
         company_name: newCompany.company_name,
         phone: newCompany.phone,
         email: newCompany.email,
-        logo_url: newCompany.logo_url,
-        is_trial: true,
-        quote_limit: 1,
+        subscription_tier: 'free',
+        monthly_quote_limit: 5,
+        monthly_quote_count: 0,
         onboarding_completed: false
       };
     }

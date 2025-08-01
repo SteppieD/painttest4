@@ -1,0 +1,38 @@
+# Base stage with all dependencies
+FROM node:18-alpine AS base
+WORKDIR /app
+RUN apk add --no-cache libc6-compat openssl python3 make g++ sqlite chromium
+
+# Development/Test stage
+FROM base AS test
+COPY package*.json ./
+RUN npm ci
+COPY . .
+
+# Build environment variables
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=development
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+ENV PLAYWRIGHT_BROWSERS_PATH=/usr/bin
+
+# Add dummy environment variables for build time
+ENV STRIPE_SECRET_KEY=sk_test_dummy
+ENV NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_dummy
+ENV STRIPE_WEBHOOK_SECRET=whsec_dummy
+ENV JWT_SECRET=test-jwt-secret
+ENV OPENROUTER_API_KEY=dummy-openrouter-key
+
+# Create data directory for SQLite database
+RUN mkdir -p /app/data
+
+# Build the application
+RUN npm run build
+
+# Playwright stage
+FROM test AS playwright
+# Install Playwright with dependencies
+RUN npx playwright install chromium
+RUN npx playwright install-deps chromium
+
+EXPOSE 3000
+CMD ["npm", "run", "dev"]

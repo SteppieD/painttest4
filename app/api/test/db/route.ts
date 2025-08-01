@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     
     // Test 3: Check table structure
     try {
-      const tableInfo = await db.query('PRAGMA table_info(companies)');
+      const tableInfo = await db.query('PRAGMA table_info(companies)') as Array<Record<string, unknown>>;
       results.tests.tableStructure = true;
       results.data.companyColumns = tableInfo.map((col: any) => col.name);
     } catch (error) {

@@ -14,39 +14,32 @@ export async function POST(
     }
 
     // Update tracking fields based on event type
-    const updates: any = {};
+    const updates: any = {
+      updated_at: new Date().toISOString()
+    };
     
     switch (event) {
       case 'sent':
-        updates.sent_at = timestamp || new Date().toISOString();
-        // Calculate response time if quote was created
-        if (quote.created_at) {
-          const createdAt = new Date(quote.created_at);
-          const sentAt = new Date(updates.sent_at);
-          const hoursElapsed = Math.round((sentAt.getTime() - createdAt.getTime()) / (1000 * 60 * 60));
-          updates.response_time_hours = hoursElapsed;
-        }
+        updates.status = 'sent';
         break;
         
       case 'viewed':
-        if (!quote.viewed_at) { // Only track first view
-          updates.viewed_at = timestamp || new Date().toISOString();
-        }
+        updates.status = 'viewed';
         break;
         
       case 'accepted':
-        updates.accepted_at = timestamp || new Date().toISOString();
         updates.status = 'accepted';
         break;
         
       case 'follow_up':
-        updates.follow_up_count = (quote.follow_up_count || 0) + 1;
-        updates.last_follow_up_at = timestamp || new Date().toISOString();
+        // Just update the timestamp
         break;
     }
 
     if (Object.keys(updates).length > 0) {
-      await db.updateQuote(parseInt(params.id), updates);
+      if (quote.id) {
+        await db.updateQuote(quote.id, updates);
+      }
       
       // Update company analytics
       await updateCompanyAnalytics(quote.company_id, event);

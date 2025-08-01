@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
           name: company.company_name,
           phone: company.phone,
           email: company.email,
-          logoUrl: company.logo_url || null,
+          logoUrl: null,
         },
       });
     } else {
@@ -49,7 +49,13 @@ export async function POST(request: NextRequest) {
           access_code: normalizedCode,
           company_name: companyName,
           phone: "",
-          email: `${normalizedCode.toLowerCase()}@example.com`
+          email: `${normalizedCode.toLowerCase()}@example.com`,
+          tax_rate: 0,
+          onboarding_completed: false,
+          onboarding_step: 0,
+          subscription_tier: 'free',
+          monthly_quote_count: 0,
+          monthly_quote_limit: 5
         });
 
         console.log(

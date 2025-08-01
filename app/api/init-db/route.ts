@@ -15,7 +15,7 @@ export async function GET() {
     console.error('Database initialization error:', error)
     return NextResponse.json({
       status: 'error',
-      error: error.message || 'Unknown error'
+      error: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 })
   }
 }

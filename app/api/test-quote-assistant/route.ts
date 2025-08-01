@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
       result: {
         success: !!response,
         response: response ? response.substring(0, 200) + '...' : null,
-        error: error ? {
+        error: error && error instanceof Error ? {
           message: error.message,
           stack: error.stack,
           type: error.constructor.name

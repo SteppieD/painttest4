@@ -24,7 +24,7 @@ export async function GET() {
     return NextResponse.json({
       status: 'error',
       database: 'disconnected',
-      error: error.message || 'Unknown error',
+      error: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString()
     }, { status: 500 })
   }

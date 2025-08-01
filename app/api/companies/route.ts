@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
         const company = await db.query(
           'SELECT * FROM companies WHERE id = ?',
           [parseInt(companyId)]
-        );
+        ) as Array<Record<string, unknown>>;
         
         if (company.length === 0) {
           return NextResponse.json({ error: 'Company not found' }, { status: 404 });
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
         const company = await db.query(
           'SELECT * FROM companies WHERE id = ?',
           [parseInt(companyId)]
-        );
+        ) as Array<Record<string, unknown>>;
         
         if (company.length === 0) {
           return NextResponse.json({ error: 'Company not found' }, { status: 404 });
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
       const company = await db.query(
         'SELECT * FROM companies WHERE id = ?',
         [auth.company!.id]
-      );
+      ) as Array<Record<string, unknown>>;
       
       if (company.length === 0) {
         return NextResponse.json({ error: 'Company not found' }, { status: 404 });
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
 
     // Admin can get all companies
     if (auth.type === 'admin') {
-      const companies = await db.query('SELECT * FROM companies ORDER BY company_name');
+      const companies = await db.query('SELECT * FROM companies ORDER BY company_name') as Array<Record<string, unknown>>;
       return NextResponse.json({ companies });
     }
 
@@ -149,10 +149,14 @@ export async function POST(request: NextRequest) {
     const company = await db.createCompany({
       access_code: data.access_code.toUpperCase(),
       company_name: data.company_name,
-      phone: data.phone || null,
-      email: data.email || null,
-      is_trial: data.is_trial || false,
-      quote_limit: data.quote_limit || null
+      phone: data.phone || '',
+      email: data.email || '',
+      onboarding_completed: false,
+      onboarding_step: 0,
+      tax_rate: 0,
+      subscription_tier: data.is_trial ? 'free' : 'pro',
+      monthly_quote_count: 0,
+      monthly_quote_limit: data.quote_limit || 5
     });
 
     return NextResponse.json({

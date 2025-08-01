@@ -105,8 +105,8 @@ export async function POST(request: NextRequest) {
     const db = getDatabaseAdapter()
     const company = await db.getCompany(auth.companyId)
     
-    const companySettings = company?.settings ? JSON.parse(company.settings) : {}
-    const chargeRates = companySettings.chargeRates || {
+    // Use default charge rates (Company interface doesn't have settings field)
+    const chargeRates = {
       walls: 3.50,
       ceilings: 3.00,
       baseboards: 2.50,

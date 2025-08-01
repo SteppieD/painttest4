@@ -108,7 +108,7 @@ The PaintQuote Pro Team`
 
       if (error) {
         console.error('Resend error:', error)
-        throw new Error(error.message)
+        throw new Error(error instanceof Error ? error.message : 'Unknown error')
       }
 
       console.log('Welcome email sent successfully:', data?.id)

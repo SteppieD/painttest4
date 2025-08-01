@@ -21,17 +21,7 @@ export async function GET(
       return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
     }
 
-    // Parse JSON fields if they exist
-    try {
-      if (quote.rooms && typeof quote.rooms === 'string') {
-        quote.rooms = JSON.parse(quote.rooms);
-      }
-      if (quote.conversation_summary && typeof quote.conversation_summary === 'string') {
-        quote.conversation_summary = JSON.parse(quote.conversation_summary);
-      }
-    } catch (e) {
-      // If parsing fails, leave as string
-    }
+    // No JSON parsing needed for current Quote interface
 
     return NextResponse.json({ 
       success: true,
@@ -82,6 +72,12 @@ export async function PUT(
     updateData.updated_at = new Date().toISOString();
 
     // Use the updateQuote method with the database id
+    if (!existingQuote.id) {
+      return NextResponse.json(
+        { error: 'Quote ID is missing' },
+        { status: 400 }
+      );
+    }
     const updatedQuote = await db.updateQuote(existingQuote.id, updateData);
 
     return NextResponse.json({ 

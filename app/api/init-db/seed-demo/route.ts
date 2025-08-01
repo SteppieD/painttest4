@@ -11,24 +11,36 @@ export async function GET() {
         access_code: 'DEMO2024',
         email: 'demo@paintquote.com',
         phone: '555-0100',
-        is_trial: 0,
-        quote_limit: 10
+        onboarding_completed: true,
+        onboarding_step: 3,
+        tax_rate: 8.25,
+        subscription_tier: 'free',
+        monthly_quote_count: 0,
+        monthly_quote_limit: 10
       },
       {
         company_name: 'Smith Painting LLC',
         access_code: 'PAINTER001',
         email: 'smith@paintquote.com',
         phone: '555-0101',
-        is_trial: 0,
-        quote_limit: 5
+        onboarding_completed: true,
+        onboarding_step: 3,
+        tax_rate: 8.25,
+        subscription_tier: 'free',
+        monthly_quote_count: 0,
+        monthly_quote_limit: 5
       },
       {
         company_name: 'Elite Contractors',
         access_code: 'CONTRACTOR123',
         email: 'elite@paintquote.com',
         phone: '555-0102',
-        is_trial: 0,
-        quote_limit: 20
+        onboarding_completed: true,
+        onboarding_step: 3,
+        tax_rate: 8.25,
+        subscription_tier: 'pro',
+        monthly_quote_count: 0,
+        monthly_quote_limit: 20
       }
     ];
 
