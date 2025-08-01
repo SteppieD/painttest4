@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 
 export interface CompanyAuth {
   id: number;
-  accessCode: string;
+  access_code: string;
   name: string;
   email?: string;
 }
@@ -23,7 +23,7 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth {
       if (data.id && accessCode) {
         return {
           id: data.id,
-          accessCode: accessCode,
+          access_code: accessCode,
           name: data.name || 'Unknown Company',
           email: data.email
         };
@@ -36,7 +36,7 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth {
   // Return demo company as fallback
   return {
     id: 1,
-    accessCode: 'DEMO2024',
+    access_code: 'DEMO2024',
     name: 'Demo Painting Company',
     email: 'demo@paintquote.com'
   };
@@ -46,7 +46,7 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth {
  * Validate if a company is authenticated
  */
 export function isAuthenticated(company: CompanyAuth | null): boolean {
-  return company !== null && company.id > 0 && !!company.accessCode;
+  return company !== null && company.id > 0 && !!company.access_code;
 }
 
 /**
@@ -73,7 +73,7 @@ export function getCompanyFromLocalStorage(): CompanyAuth | null {
     
     return {
       id: data.id,
-      accessCode: data.accessCode,
+      access_code: data.access_code,
       name: data.name,
       email: data.email
     };

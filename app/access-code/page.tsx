@@ -70,7 +70,7 @@ export default function AccessCodePage() {
           'paintquote_company',
           JSON.stringify({
             id: data.company.id,
-            accessCode: data.company.accessCode,
+            access_code: data.company.access_code,
             name: data.company.name,
             phone: data.company.phone || '',
             email: data.company.email || '',

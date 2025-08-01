@@ -78,7 +78,7 @@ export function useAchievements() {
         headers: {
           'x-company-data': JSON.stringify({ 
             id: companyData.id,
-            access_code: companyData.accessCode 
+            access_code: companyData.access_code 
           })
         }
       })

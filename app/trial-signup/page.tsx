@@ -57,14 +57,14 @@ export default function TrialSignupPage() {
         }
 
         setSuccess(true);
-        setAccessCode(data.accessCode);
+        setAccessCode(data.access_code);
         
         // Store company data in localStorage for authentication
         localStorage.setItem(
           'paintquote_company',
           JSON.stringify({
             id: data.company.id,
-            accessCode: data.accessCode,
+            access_code: data.access_code,
             name: data.company.name,
             phone: '',
             email: data.company.email || email,

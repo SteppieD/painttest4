@@ -128,7 +128,7 @@ export function ChatInterface({
           'Content-Type': 'application/json',
           'x-company-data': JSON.stringify({ 
             id: companyId,
-            access_code: company?.accessCode || ''
+            access_code: company?.access_code || ''
           })
         },
         body: JSON.stringify({
@@ -281,7 +281,7 @@ export function ChatInterface({
           'Content-Type': 'application/json',
           'x-company-data': JSON.stringify({ 
             id: companyId,
-            access_code: company?.accessCode || ''
+            access_code: company?.access_code || ''
           })
         },
         body: JSON.stringify(finalRequestBody)

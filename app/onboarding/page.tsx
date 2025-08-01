@@ -121,8 +121,7 @@ export default function OnboardingPage() {
         'Content-Type': 'application/json',
         'x-company-data': JSON.stringify({ 
           id: companyData.id,
-          accessCode: companyData.accessCode,
-          access_code: companyData.accessCode,
+          access_code: companyData.access_code,
           name: companyData.name || data.companyName,
           email: companyData.email || data.email
         })

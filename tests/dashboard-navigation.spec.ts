@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const TEST_COMPANY = {
   name: 'Test Painting Co',
   email: 'test@example.com',
-  accessCode: 'TEST123'
+  access_code: 'TEST123'
 };
 
 test.describe('Dashboard Navigation Tests', () => {
@@ -13,7 +13,7 @@ test.describe('Dashboard Navigation Tests', () => {
     await page.addInitScript(() => {
       localStorage.setItem('paintquote_company', JSON.stringify({
         id: 1,
-        accessCode: 'TEST123',
+        access_code: 'TEST123',
         name: 'Test Painting Co',
         email: 'test@example.com',
         loginTime: Date.now(),
@@ -141,7 +141,7 @@ test.describe('Dashboard Navigation Tests', () => {
     
     // Fill in login form
     await page.fill('input[placeholder="Enter your company name"]', TEST_COMPANY.name);
-    await page.fill('input[placeholder="Enter your access code"]', TEST_COMPANY.accessCode);
+    await page.fill('input[placeholder="Enter your access code"]', TEST_COMPANY.access_code);
     
     // Click sign in
     await page.click('button:has-text("Sign In")');

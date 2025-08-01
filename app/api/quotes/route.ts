@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     if (!companyData && company) {
       console.log('[QUOTES API] Company not found in DB, creating from auth data:', {
         id: numericCompanyId,
-        accessCode: company.accessCode,
+        accessCode: company.access_code,
         name: company.name
       });
       
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
         // Create the company in the database
         companyData = await db.createCompany({
           id: numericCompanyId,
-          access_code: company.accessCode,
+          access_code: company.access_code,
           company_name: company.name || 'Unknown Company',
           name: company.name || 'Unknown Company',
           email: company.email || `company${numericCompanyId}@example.com`,

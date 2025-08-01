@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       try {
         const createData = {
           id: company.id,
-          access_code: company.accessCode,
+          access_code: company.access_code,
           company_name: data.companyName || company.name || 'Unknown Company',
           name: data.companyName || company.name || 'Unknown Company',
           email: data.email || company.email || '',
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
       try {
         const createData = {
           id: company.id,
-          access_code: company.accessCode,
+          access_code: company.access_code,
           ...updateData
         };
         logger.info('Fallback create data', createData);
@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
         success: true,
         company: {
           id: company.id,
-          access_code: company.accessCode,
+          access_code: company.access_code,
           company_name: updateData.company_name || company.name,
           email: updateData.email || company.email,
           phone: updateData.phone || '',

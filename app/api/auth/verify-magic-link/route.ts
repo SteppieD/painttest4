@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
         );
       }
       
-      accessCode = company.access_code || company.accessCode;
+      accessCode = company.access_code;
     } else if (type === 'signup' && email) {
       // Handle signup - create new company
       isNewSignup = true;

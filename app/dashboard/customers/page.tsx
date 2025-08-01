@@ -43,7 +43,7 @@ export default function CustomersPage() {
         headers: {
           'x-company-data': JSON.stringify({
             id: company.id,
-            access_code: company.accessCode
+            access_code: company.access_code
           })
         }
       })

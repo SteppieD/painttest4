@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 interface CompanyData {
   id: number;
-  accessCode: string;
+  access_code: string;
   name: string;
   phone: string;
   email: string;

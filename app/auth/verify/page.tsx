@@ -27,7 +27,7 @@ function VerifyContent() {
       if (response.ok && data.success) {
         setStatus('success');
         setMessage(data.message);
-        setAccessCode(data.accessCode);
+        setAccessCode(data.access_code);
         
         // Store company data in localStorage
         if (data.company) {
@@ -35,7 +35,7 @@ function VerifyContent() {
             'paintquote_company',
             JSON.stringify({
               id: data.company.id,
-              accessCode: data.accessCode,
+              access_code: data.access_code,
               name: data.company.name || data.company.company_name,
               email: data.company.email,
               phone: data.company.phone || '',

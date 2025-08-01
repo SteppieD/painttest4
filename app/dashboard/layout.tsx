@@ -10,7 +10,7 @@ interface CompanyData {
   id: number
   name: string
   email: string
-  accessCode: string
+  access_code: string
   onboarding_completed?: boolean
 }
 
@@ -38,7 +38,7 @@ export default function DashboardLayout({
         id: data.id,
         name: data.name,
         email: data.email,
-        accessCode: data.accessCode,
+        access_code: data.access_code,
         onboarding_completed: data.onboarding_completed
       })
       

@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
             <div style="text-align: center; margin-bottom: 30px;">
               <div style="background: #f8fafc; border: 2px dashed #e2e8f0; border-radius: 12px; padding: 30px; margin: 20px 0;">
                 <p style="margin: 0 0 10px 0; font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Your Access Code</p>
-                <div style="font-size: 36px; font-weight: 700; font-family: 'Monaco', 'Menlo', monospace; color: #1e293b; letter-spacing: 4px; background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">${company.accessCode}</div>
+                <div style="font-size: 36px; font-weight: 700; font-family: 'Monaco', 'Menlo', monospace; color: #1e293b; letter-spacing: 4px; background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">${company.access_code}</div>
               </div>
             </div>
             
