@@ -100,6 +100,13 @@ export async function POST(request: NextRequest) {
 
     // Get company data
     const company = await db.getCompany(user.company_id)
+    
+    if (!company) {
+      return NextResponse.json(
+        { error: 'Company not found' },
+        { status: 404 }
+      )
+    }
 
     // Create JWT token
     const token = jwt.sign(
@@ -129,7 +136,7 @@ export async function POST(request: NextRequest) {
         email: user.email,
         name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || user.email,
         role: user.role,
-        company: mapCompanyData(company),
+        company: mapCompanyData(company as CompanyRecord),
       },
     })
   } catch (error) {
