@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getDatabaseAdapter } from '@/lib/database/adapter'
+import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 
 export const dynamic = 'force-dynamic';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
+
+// Initialize Supabase client with service role key for admin operations
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+)
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,10 +41,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const db = getDatabaseAdapter()
-
     // Check if user already exists
-    const existingUser = await db.getUserByEmail(email)
+    const { data: existingUser } = await supabase
+      .from('auth.users')
+      .select('email')
+      .eq('email', email)
+      .single()
 
     if (existingUser) {
       return NextResponse.json(
@@ -47,29 +55,76 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create company
-    const company = await db.createCompany({
-      company_name: companyName,
-      email: email,
-      phone: '',
-      access_code: Math.random().toString(36).substr(2, 9).toUpperCase(),
-      is_trial: true,
-      quote_limit: 5, // Free trial gets 5 quotes per month
-    })
+    // Generate a unique access code
+    const accessCode = Math.random().toString(36).substr(2, 9).toUpperCase()
 
-    // Create user (simplified schema)
-    const user = await db.createUser({
+    // Create company first
+    const { data: company, error: companyError } = await supabase
+      .from('companies')
+      .insert({
+        company_name: companyName,
+        email: email,
+        phone: '',
+        access_code: accessCode,
+        subscription_tier: 'free',
+        monthly_quote_limit: 5,
+        monthly_quote_count: 0,
+        tax_rate: 0,
+        default_labor_percentage: 30,
+        onboarding_completed: false,
+        onboarding_step: 0,
+      })
+      .select()
+      .single()
+
+    if (companyError || !company) {
+      console.error('Failed to create company:', companyError)
+      return NextResponse.json(
+        { error: 'Failed to create company' },
+        { status: 500 }
+      )
+    }
+
+    // Parse name into first and last name
+    const nameParts = name.trim().split(' ')
+    const firstName = nameParts[0] || ''
+    const lastName = nameParts.slice(1).join(' ') || ''
+
+    // Create user in auth.users with company metadata
+    const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
-      company_name: companyName,
+      password,
+      options: {
+        data: {
+          company_id: company.id,
+          role: 'admin', // First user is always admin
+          first_name: firstName,
+          last_name: lastName,
+        }
+      }
     })
 
-    // Create JWT token
+    if (authError || !authData.user) {
+      // Rollback company creation
+      await supabase
+        .from('companies')
+        .delete()
+        .eq('id', company.id)
+
+      console.error('Failed to create user:', authError)
+      return NextResponse.json(
+        { error: 'Failed to create user account' },
+        { status: 500 }
+      )
+    }
+
+    // Create JWT token for immediate login
     const token = jwt.sign(
       {
-        userId: user.id,
+        userId: authData.user.id,
         companyId: company.id,
-        email: user.email,
-        role: user.role,
+        email: authData.user.email,
+        role: 'admin',
       },
       JWT_SECRET,
       { expiresIn: '7d' }
@@ -86,8 +141,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       user: {
-        id: user.id,
-        email: user.email,
+        id: authData.user.id,
+        email: authData.user.email!,
         name: name,
         role: 'admin',
         company: {
