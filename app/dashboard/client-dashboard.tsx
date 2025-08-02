@@ -4,7 +4,7 @@
 import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
 // import { UpgradeModal } from '@/components/stripe/upgrade-modal' // TODO: Check if this import is needed
 import Link from 'next/link'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 // import { QuoteUsageIndicator } from '@/components/quote-usage-indicator-client' // TODO: Check if this import is needed
 // import { ClientDate } from '@/components/client-date' // TODO: Check if this import is needed

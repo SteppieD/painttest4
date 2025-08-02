@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Calculator, Home, Palette, Ruler, Clock, CheckCircle, DollarSign, Zap } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-// import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
  // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Interior Painting Quote Calculator | Free Room & House Interior Estimates',

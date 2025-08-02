@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
+import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
 // import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator' // TODO: Check if this import is needed

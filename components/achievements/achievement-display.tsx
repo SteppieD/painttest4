@@ -2,7 +2,7 @@
 
 // import { useAchievements } from '@/hooks/use-achievements' // TODO: Check if this import is needed
 // import { achievements } from './achievement-notification' // TODO: Check if this import is needed
-// import { Progress } from '@/components/ui/progress' // TODO: Check if this import is needed
+import { Progress } from '@/components/ui/progress'
 import { Trophy, Lock, Star } from 'lucide-react'
 // import { cn } from '@/lib/utils'
  // TODO: Check if this import is needed

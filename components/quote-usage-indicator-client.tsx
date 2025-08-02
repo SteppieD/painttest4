@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-// import { Progress } from '@/components/ui/progress' // TODO: Check if this import is needed
+import { Progress } from '@/components/ui/progress'
 import { AlertCircle, Zap } from 'lucide-react'
 import Link from 'next/link'
 

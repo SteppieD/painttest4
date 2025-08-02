@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Calculator, Smartphone, Zap, BarChart3, Clock, DollarSign, Users, CheckCircle, Star, ArrowRight, FileText, TrendingUp, Shield, Building } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-// import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
  // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Best Painting Estimating Software 2025 | Compare Top Tools for Contractors',

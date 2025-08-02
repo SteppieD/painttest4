@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Calculator, Home, CloudRain, Sun, Shield, CheckCircle, DollarSign, Zap, AlertTriangle } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-// import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
  // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Exterior Painting Estimate Calculator | Free House Exterior Cost Calculator',

@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-// import { Button } from '@/components/ui/button'; // TODO: Check if this import is needed
-// import { Input } from '@/components/ui/input'; // TODO: Check if this import is needed
-// import { Label } from '@/components/ui/label'; // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { ArrowLeft, CheckCircle, Sparkles, Mail, Key } from 'lucide-react';
 import Link from 'next/link';
 import ModernNavigation from '@/components/modern-navigation';

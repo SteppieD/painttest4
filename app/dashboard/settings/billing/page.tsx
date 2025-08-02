@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
-// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
-// import { Progress } from '@/components/ui/progress' // TODO: Check if this import is needed
-// import { toast } from '@/components/ui/use-toast' // TODO: Check if this import is needed
-// import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth' // TODO: Check if this import is needed
-// import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription' // TODO: Check if this import is needed
-// import { redirectToStripePayment } from '@/lib/config/stripe-links' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Progress } from '@/components/ui/progress'
+import { toast } from '@/components/ui/use-toast'
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
+import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription'
+import { redirectToStripePayment } from '@/lib/config/stripe-links'
 import { 
   CreditCard, 
   Check, 

@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
+import { Badge } from '@/components/ui/badge'
 import ModernNavigation from '@/components/modern-navigation'
-// import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator' // TODO: Check if this import is needed
-// import { ROICalculator } from '@/components/calculators/roi-calculator' // TODO: Check if this import is needed
+import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
+import { ROICalculator } from '@/components/calculators/roi-calculator'
 import { 
   Clock, 
   TrendingUp, 
@@ -591,7 +591,7 @@ export default function PaintingContractorSoftwarePage() {
                     ))}
                   </div>
                   <p className="text-gray-100 mb-4">
-                    {"\"The AI feature is incredible. I describe the job and it creates a perfect quote. My close rate went from 30% to 48%!\""
+                    &quot;The AI feature is incredible. I describe the job and it creates a perfect quote. My close rate went from 30% to 48%!&quot;
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-500"></div>

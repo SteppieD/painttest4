@@ -3,11 +3,10 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
 import { ArrowLeft, Copy, Mail, Download, CheckCircle, Edit } from 'lucide-react'
 import Link from 'next/link'
-// import { toast } from '@/components/ui/use-toast'
- // TODO: Check if this import is needed
+import { toast } from '@/components/ui/use-toast'
 interface Quote {
   quote_id: string
   customer_name: string

@@ -1,12 +1,11 @@
-// import { db } from '@/lib/database/adapter' // TODO: Check if this import is needed
+import { db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
 import { PlusCircle, Palette, Edit, Trash2, DollarSign } from 'lucide-react'
-// import { Badge } from '@/components/ui/badge'
- // TODO: Check if this import is needed
+import { Badge } from '@/components/ui/badge'
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
 interface AuthPayload {

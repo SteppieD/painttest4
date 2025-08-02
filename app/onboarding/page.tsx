@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
-// import { Input } from '@/components/ui/input' // TODO: Check if this import is needed
-// import { Label } from '@/components/ui/label' // TODO: Check if this import is needed
-// import { Progress } from '@/components/ui/progress' // TODO: Check if this import is needed
-// import { toast } from '@/components/ui/use-toast' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Progress } from '@/components/ui/progress'
+import { toast } from '@/components/ui/use-toast'
 // import { useCompanyAuth } from '@/components/auth-wrapper' // TODO: Check if this import is needed
 // import { DebugLogger } from '@/lib/debug-logger' // TODO: Check if this import is needed
 import { 

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
-// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 

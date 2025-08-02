@@ -1,9 +1,9 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// import { Button } from '@/components/ui/button'; // TODO: Check if this import is needed
-// import { Badge } from '@/components/ui/badge'; // TODO: Check if this import is needed
-// import { Progress } from '@/components/ui/progress'; // TODO: Check if this import is needed
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { 
   Calendar, 
   CreditCard, 
@@ -13,8 +13,7 @@ import {
   Settings,
   ExternalLink
 } from 'lucide-react';
-// import { format } from 'date-fns';
- // TODO: Check if this import is needed
+import { format } from 'date-fns';
 interface BillingOverviewProps {
   subscription: {
     id: string;

@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Input } from '@/components/ui/input' // TODO: Check if this import is needed
-// import { Label } from '@/components/ui/label' // TODO: Check if this import is needed
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-// import { useToast } from '@/components/ui/use-toast' // TODO: Check if this import is needed
+import { useToast } from '@/components/ui/use-toast'
 import { Plus, Trash2, Palette, Upload, Building2, Phone, Mail, Globe } from 'lucide-react'
-// import { Switch } from '@/components/ui/switch' // TODO: Check if this import is needed
+import { Switch } from '@/components/ui/switch'
 import {
   Select,
   SelectContent,
@@ -17,9 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-// import { LogoUploadWithExtraction } from '@/components/logo-upload-with-extraction' // TODO: Check if this import is needed
-// import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
- // TODO: Check if this import is needed
+import { LogoUploadWithExtraction } from '@/components/logo-upload-with-extraction'
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 interface ChargeRates {
   // Interior
   walls: number

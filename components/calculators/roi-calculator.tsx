@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Input } from '@/components/ui/input' // TODO: Check if this import is needed
-// import { Label } from '@/components/ui/label' // TODO: Check if this import is needed
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
 import { TrendingUp, DollarSign, Clock, Users, Calculator } from 'lucide-react'
-// import { Badge } from '@/components/ui/badge'
- // TODO: Check if this import is needed
+import { Badge } from '@/components/ui/badge'
 interface ROICalculatorProps {
   className?: string
   variant?: 'default' | 'glass'

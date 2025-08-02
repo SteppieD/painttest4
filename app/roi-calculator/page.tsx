@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Calculator, TrendingUp, Clock, DollarSign, Users, ChevronRight, ArrowRight } from 'lucide-react'
-import Breadcrumbs from '@/components/Breadcrumbs'
 import ModernNavigation from '@/components/modern-navigation'
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 export default function ROICalculator() {

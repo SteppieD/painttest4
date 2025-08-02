@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { BookOpen, ArrowRight, CheckCircle, TrendingUp, Users, FileText, Calculator, Clock, DollarSign, AlertTriangle, Ruler, PaintBucket, Zap } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-// import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
  // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'How to Quote Painting Jobs: Complete 2025 Guide for Professional Contractors',

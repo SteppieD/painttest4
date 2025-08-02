@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { FileText, DollarSign, Clock, CheckCircle, XCircle, Send, Plus } from 'lucide-react'
-// import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth' // TODO: Check if this import is needed
-// import { cn } from '@/lib/utils'
- // TODO: Check if this import is needed
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
+import { cn } from '@/lib/utils'
 interface Quote {
   id: number
   quote_number: string

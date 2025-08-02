@@ -2,13 +2,12 @@
 
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-// import { Input } from '@/components/ui/input' // TODO: Check if this import is needed
-// import { Label } from '@/components/ui/label' // TODO: Check if this import is needed
-// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Calculator, Info, DollarSign, Clock, Paintbrush } from 'lucide-react'
-// import { Badge } from '@/components/ui/badge'
- // TODO: Check if this import is needed
+import { Badge } from '@/components/ui/badge'
 interface CalculatorProps {
   className?: string
   variant?: 'default' | 'glass'
