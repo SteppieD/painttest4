@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import { IntelligentQuoteParser } from '@/lib/ai/intelligent-quote-parser'
-import { getDatabaseAdapter } from '@/lib/database/adapter'
 export const dynamic = 'force-dynamic';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
@@ -99,9 +98,6 @@ export async function POST(request: NextRequest) {
     
     // Try to parse the conversation for quote data if parser is available
     const parsingResult = parser ? await parser.parseConversation(messages) : null
-    
-    // Get company settings for charge rates
-    const db = getDatabaseAdapter()
     
     // Use default charge rates (Company interface doesn't have settings field)
     const chargeRates = {

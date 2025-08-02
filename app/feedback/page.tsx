@@ -162,7 +162,7 @@ export default function FeedbackPage() {
     }
   ]
 
-  const getStatusColor = (_status: string) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case 'In Development':
         return 'bg-blue-500/20 text-blue-300 border-blue-500/30'

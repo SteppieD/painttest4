@@ -5,7 +5,7 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
-    const { event, timestamp } = await request.json();
+    const { event, timestamp: _timestamp } = await request.json();
     
     const quote = await db.getQuote(params.id);
     if (!quote) {

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { openRouterClient } from '@/lib/ai/openrouter-client';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 export async function GET() {

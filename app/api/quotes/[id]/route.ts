@@ -59,11 +59,11 @@ export async function PUT(
 
     // Prepare update data - remove fields that shouldn't be updated
     const { 
-      id, 
-      quote_id, 
-      company_id, 
-      created_at, 
-      updated_at,
+      id: _id, 
+      quote_id: _quote_id, 
+      company_id: _company_id, 
+      created_at: _created_at, 
+      updated_at: _updated_at,
       ...updateData 
     } = quoteData;
 
@@ -96,4 +96,3 @@ export async function PUT(
     );
   }
 }
-

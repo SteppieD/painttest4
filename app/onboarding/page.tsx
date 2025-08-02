@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
-// import { useCompanyAuth } from '@/components/auth-wrapper' // TODO: Check if this import is needed
+import { useCompanyAuth } from '@/components/auth-wrapper'
 // import { DebugLogger } from '@/lib/debug-logger' // TODO: Check if this import is needed
 import { 
   Building2, 

@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
-// import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator' // TODO: Check if this import is needed
-// import { ROICalculator } from '@/components/calculators/roi-calculator' // TODO: Check if this import is needed
+import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
+import { ROICalculator } from '@/components/calculators/roi-calculator'
 import { 
   Clock, 
   TrendingUp, 

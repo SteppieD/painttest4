@@ -3,7 +3,7 @@ import { initDatabase } from '@/lib/database/init'
 export async function GET() {
   try {
     console.log('Manually initializing database...')
-    const db = initDatabase()
+    initDatabase()
     console.log('Database initialized successfully')
     
     return NextResponse.json({

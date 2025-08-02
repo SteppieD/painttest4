@@ -379,7 +379,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                     Their night crews were professional, quiet, and left each floor immaculate 
                     for our morning arrivals. The low-VOC products meant no complaints about odors, 
                     and the quality is exceptional. They finished early and under budget. This is 
-                    how commercial painting should be done."
+                    how commercial painting should be done.how commercial painting should be done.how commercial painting should be done."quot;quot;
                   </blockquote>
                   <footer>
                     <strong>David Thompson</strong>

@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
     
     companyId = requestBody.companyId;
     quoteData = requestBody.quoteData;
-    const conversationHistory = requestBody.conversationHistory;
+    const _conversationHistory = requestBody.conversationHistory;
     
     console.log('[QUOTES API] Request data:', { companyId, quoteData });
     console.log('[QUOTES API] Company from auth:', company);
