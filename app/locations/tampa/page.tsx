@@ -121,7 +121,7 @@ export default function TampaPaintingSoftware() {
                     Painting Quote Software for Tampa Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 240+ Tampa Bay painting contractors who've transformed their business 
+                    Join 240+ Tampa Bay painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function TampaPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Tampa's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Tampa&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Tampa Bay painting contractors
                 </p>
@@ -222,7 +222,7 @@ export default function TampaPaintingSoftware() {
                   <CloudLightning className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Hurricane-Ready Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in calculations for Tampa's hurricane season. Automatically includes 
+                    Built-in calculations for Tampa&apos;s hurricane season. Automatically includes 
                     storm-rated adhesion, impact-resistant formulas, and wind-tested coatings 
                     that withstand 150+ mph winds.
                   </p>
@@ -232,7 +232,7 @@ export default function TampaPaintingSoftware() {
                   <Droplets className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Salt Air & Moisture Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Pre-built quotes for Tampa Bay's coastal humidity. Includes marine-grade 
+                    Pre-built quotes for Tampa Bay&apos;s coastal humidity. Includes marine-grade 
                     primers, anti-corrosion barriers, and mold prevention systems for our 
                     90% morning humidity levels.
                   </p>
@@ -242,9 +242,9 @@ export default function TampaPaintingSoftware() {
                   <Palmtree className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Florida Sun Protection</h3>
                   <p className="mt-2 text-gray-200">
-                    Templates for Tampa's 244 sunny days. Includes UV-stable pigments, 
+                    Templates for Tampa&apos;s 244 sunny days. Includes UV-stable pigments, 
                     heat-reflective technology, and 20-year fade warranties to handle 
-                    Florida's intense tropical sun.
+                    Florida&apos;s intense tropical sun.
                   </p>
                 </div>
 
@@ -253,7 +253,7 @@ export default function TampaPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Hyde Park to Wesley Chapel. Works offline and syncs 
-                    when connected. Perfect for Tampa Bay's sprawling metro area from 
+                    when connected. Perfect for Tampa Bay&apos;s sprawling metro area from 
                     St. Pete to Plant City.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function TampaPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Tampa's competitive market with professional quotes 
+                    Stand out in Tampa&apos;s competitive market with professional quotes 
                     that build trust. Include your Florida license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function TampaPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "After Hurricane Ian, everyone needed repainting. With hurricane-rated 
+                    &quot;After Hurricane Ian, everyone needed repainting. With hurricane-rated 
                     product templates built-in, I quoted 45 homes in a week. Closed $185,000 
                     in storm recovery work. Game changer for Tampa contractors."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function TampaPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The salt-air templates are perfect for waterfront properties. Every quote 
+                    &quot;The salt-air templates are perfect for waterfront properties. Every quote 
                     includes marine-grade protection automatically. Won 6 Bayshore condos this 
                     quarter - that&apos;s $312,000 in guaranteed work."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function TampaPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$179,168</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 3,733x return on your PaintQuote Pro investment
+                      That&apos;s 3,733x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function TampaPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Tampa Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Tampa's painting market is unique. With over 800 painting contractors 
+                    Tampa&apos;s painting market is unique. With over 800 painting contractors 
                     serving Tampa Bay, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Tampa where 
-                    tropical weather and coastal conditions matter. Our AI understands Florida's 
+                    tropical weather and coastal conditions matter. Our AI understands Florida&apos;s 
                     challenges, from hurricane-force winds that test every coating to salt air 
                     corrosion that can destroy inferior paints. The software automatically 
                     factors these into your quotes.
@@ -484,7 +484,7 @@ export default function TampaPaintingSoftware() {
                     Whether you&apos;re quoting a waterfront condo on Bayshore, a historic building 
                     in Ybor City, or a suburban home in Wesley Chapel, PaintQuote Pro gives you 
                     the tools to create accurate, professional quotes in minutes. Join the 240+ 
-                    Tampa Bay contractors who've already transformed their business with our software.
+                    Tampa Bay contractors who&apos;ve already transformed their business with our software.
                   </p>
                 </div>
 

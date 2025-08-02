@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { LayoutGrid, FileText, Users, Settings, BarChart3, Calculator, LogOut, Sparkles, CreditCard, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { OnboardingModal } from '@/components/onboarding-modal'
-
+// import { OnboardingModal } from '@/components/onboarding-modal'
+ // TODO: Check if this import is needed
 interface CompanyData {
   id: number
   name: string

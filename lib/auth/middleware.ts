@@ -102,7 +102,16 @@ export async function requireAdminAuth(request: NextRequest): Promise<AuthContex
 }
 
 // Client-side helper to get company data
-export function getClientCompanyData(): any | null {
+interface ClientCompanyData {
+  id?: number;
+  access_code?: string;
+  name?: string;
+  email?: string;
+  loginTime?: number;
+  [key: string]: unknown;
+}
+
+export function getClientCompanyData(): ClientCompanyData | null {
   if (typeof window === 'undefined') return null;
   
   const stored = localStorage.getItem('paintquote_company');
@@ -129,7 +138,7 @@ export function getClientCompanyData(): any | null {
 }
 
 // Client-side helper to set company data
-export function setClientCompanyData(data: any): void {
+export function setClientCompanyData(data: Record<string, unknown>): void {
   if (typeof window === 'undefined') return;
   
   localStorage.setItem('paintquote_company', JSON.stringify({

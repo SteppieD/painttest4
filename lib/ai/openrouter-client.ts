@@ -15,6 +15,20 @@ export interface CompletionOptions {
   top_p?: number;
 }
 
+export interface OpenRouterModel {
+  id: string;
+  name: string;
+  description?: string;
+  context_length?: number;
+  pricing?: {
+    prompt: number;
+    completion: number;
+  };
+  top_provider?: {
+    max_completion_tokens?: number;
+  };
+}
+
 export class OpenRouterClient {
   private apiKey: string;
   private baseUrl = 'https://openrouter.ai/api/v1';
@@ -115,7 +129,7 @@ export class OpenRouterClient {
     return response.body!;
   }
 
-  async getAvailableModels(): Promise<any[]> {
+  async getAvailableModels(): Promise<OpenRouterModel[]> {
     try {
       const response = await fetch(`${this.baseUrl}/models`, {
         headers: {
@@ -137,30 +151,30 @@ export class OpenRouterClient {
 }
 
 // Export singleton instance with lazy initialization
-let _openRouterClient: OpenRouterClient | null = null;
+let _clientInstance: OpenRouterClient | null = null;
 
 export const openRouterClient = {
   createChatCompletion: async (...args: Parameters<OpenRouterClient['createChatCompletion']>) => {
-    if (!_openRouterClient) {
+    if (!_clientInstance) {
       console.log('[OpenRouter] Creating new client instance at runtime');
-      _openRouterClient = new OpenRouterClient();
+      _clientInstance = new OpenRouterClient();
     }
-    return _openRouterClient.createChatCompletion(...args);
+    return _clientInstance.createChatCompletion(...args);
   },
   
   createStreamingCompletion: async (...args: Parameters<OpenRouterClient['createStreamingCompletion']>) => {
-    if (!_openRouterClient) {
+    if (!_clientInstance) {
       console.log('[OpenRouter] Creating new client instance at runtime');
-      _openRouterClient = new OpenRouterClient();
+      _clientInstance = new OpenRouterClient();
     }
-    return _openRouterClient.createStreamingCompletion(...args);
+    return _clientInstance.createStreamingCompletion(...args);
   },
   
   getAvailableModels: async (...args: Parameters<OpenRouterClient['getAvailableModels']>) => {
-    if (!_openRouterClient) {
+    if (!_clientInstance) {
       console.log('[OpenRouter] Creating new client instance at runtime');
-      _openRouterClient = new OpenRouterClient();
+      _clientInstance = new OpenRouterClient();
     }
-    return _openRouterClient.getAvailableModels(...args);
+    return _clientInstance.getAvailableModels(...args);
   }
 };

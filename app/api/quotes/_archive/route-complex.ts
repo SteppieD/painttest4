@@ -182,7 +182,7 @@ export async function GET(request: NextRequest) {
       // Filter by status if provided
       let filteredQuotes = quotes;
       if (status) {
-        filteredQuotes = quotes.filter((q: any) => q.status === status);
+        filteredQuotes = quotes.filter((q: unknown) => q.status === status);
       }
       
       // Limit results
@@ -310,8 +310,8 @@ export async function DELETE(request: NextRequest) {
 }
 
 // Helper function to format quotes for response
-function formatQuotes(quotes: any[]): any[] {
-  return quotes.map((quote: any) => {
+function formatQuotes(quotes: unknown[]): unknown[] {
+  return quotes.map((quote: unknown) => {
     // Parse JSON fields
     let rooms = [];
     let breakdown = null;

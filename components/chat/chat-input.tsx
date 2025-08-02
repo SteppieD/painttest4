@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { Send, Mic, Image } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
-
+// import { Button } from '@/components/ui/button'; // TODO: Check if this import is needed
+// import { Input } from '@/components/ui/input'; // TODO: Check if this import is needed
+// import { cn } from '@/lib/utils';
+ // TODO: Check if this import is needed
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
   isLoading?: boolean;
@@ -21,7 +21,7 @@ export function ChatInput({
 }: ChatInputProps) {
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (_e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim() && !isLoading) {
       onSendMessage(message.trim());
@@ -29,7 +29,7 @@ export function ChatInput({
     }
   };
 
-  const handleSuggestedReply = (reply: string) => {
+  const handleSuggestedReply = (_reply: string) => {
     if (!isLoading) {
       onSendMessage(reply);
     }

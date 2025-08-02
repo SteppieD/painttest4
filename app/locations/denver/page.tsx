@@ -121,7 +121,7 @@ export default function DenverPaintingSoftware() {
                     Painting Quote Software for Denver Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 180+ Mile High City painting contractors who've transformed their business 
+                    Join 180+ Mile High City painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function DenverPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Denver's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Denver&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Colorado painting contractors
                 </p>
@@ -222,7 +222,7 @@ export default function DenverPaintingSoftware() {
                   <Snowflake className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Weather-Based Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in calculations for Denver's extreme weather. Automatically adjusts 
+                    Built-in calculations for Denver&apos;s extreme weather. Automatically adjusts 
                     for seasonal work, includes weather-resistant product options, and factors 
                     in temperature-based drying times.
                   </p>
@@ -232,7 +232,7 @@ export default function DenverPaintingSoftware() {
                   <Mountain className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">High-Altitude Adjustments</h3>
                   <p className="mt-2 text-gray-200">
-                    Accounts for Denver's 5,280-foot elevation. UV protection calculations, 
+                    Accounts for Denver&apos;s 5,280-foot elevation. UV protection calculations, 
                     adjusted drying times, and high-altitude product recommendations built 
                     into every quote.
                   </p>
@@ -242,7 +242,7 @@ export default function DenverPaintingSoftware() {
                   <Home className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Historic Home Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Pre-built templates for Denver's historic neighborhoods like Capitol Hill 
+                    Pre-built templates for Denver&apos;s historic neighborhoods like Capitol Hill 
                     and Wash Park. Includes lead-safe work calculations and preservation 
                     requirements.
                   </p>
@@ -253,7 +253,7 @@ export default function DenverPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Cherry Creek to Highlands Ranch. Works offline and 
-                    syncs when connected. Perfect for Denver's sprawling metro area from 
+                    syncs when connected. Perfect for Denver&apos;s sprawling metro area from 
                     Aurora to Lakewood.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function DenverPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Denver's competitive market with professional quotes 
+                    Stand out in Denver&apos;s competitive market with professional quotes 
                     that build trust. Include your Colorado license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function DenverPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "Denver's weather is unpredictable. Now I can quote jobs quickly between 
+                    &quot;Denver&apos;s weather is unpredictable. Now I can quote jobs quickly between 
                     storms and adjust pricing for weather delays automatically. Closed $35,000 
                     in new business last month just from faster quotes."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function DenverPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The historic home templates are perfect for Capitol Hill projects. I can 
+                    &quot;The historic home templates are perfect for Capitol Hill projects. I can 
                     include all the lead-safe requirements automatically. My professional quotes 
                     helped me win 3 major restoration projects this year."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function DenverPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$117,600</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 2,450x return on your PaintQuote Pro investment
+                      That&apos;s 2,450x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function DenverPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Denver Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Denver's painting market is unique. With over 500 painting contractors 
+                    Denver&apos;s painting market is unique. With over 500 painting contractors 
                     serving Metro Denver, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Denver where 
-                    weather and efficiency matter. Our AI understands Colorado's climate 
+                    weather and efficiency matter. Our AI understands Colorado&apos;s climate 
                     challenges, from extreme temperature swings that can vary 40°F in a day to 
                     high-altitude UV exposure. The software automatically factors these into your quotes.
                   </p>

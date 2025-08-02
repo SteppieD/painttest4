@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { TrendingUp, Calculator, ChevronRight, DollarSign } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 interface ROIWidgetProps {
   companyName?: string
   avgQuoteValue?: number
@@ -23,7 +23,7 @@ export function ROIWidget({
   const timePerQuoteNow = 2 // hours
   const timePerQuoteWithApp = 0.25 // 15 minutes
   const quotesIncreaseMultiplier = 2.5
-  const closeRateIncrease = 1.4 // 40% increase
+  const _closeRateIncrease = 1.4 // 40% increase
   
   const timeSavedPerMonth = (quotesPerMonth * timePerQuoteNow) - (quotesPerMonth * timePerQuoteWithApp)
   const additionalQuotes = Math.floor(quotesPerMonth * (quotesIncreaseMultiplier - 1))

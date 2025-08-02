@@ -1,7 +1,17 @@
 // Client-side auth helpers that don't import server-side dependencies
 
 // Client-side helper to get company data
-export function getClientCompanyData(): any | null {
+interface ClientCompanyData {
+  id?: number;
+  access_code?: string;
+  name?: string;
+  email?: string;
+  loginTime?: number;
+  skipOnboarding?: boolean;
+  [key: string]: unknown;
+}
+
+export function getClientCompanyData(): ClientCompanyData | null {
   if (typeof window === 'undefined') return null;
   
   const stored = localStorage.getItem('paintquote_company');
@@ -27,7 +37,7 @@ export function getClientCompanyData(): any | null {
 }
 
 // Client-side helper to save company data
-export function saveClientCompanyData(data: any): void {
+export function saveClientCompanyData(data: Record<string, unknown>): void {
   if (typeof window === 'undefined') return;
   
   const toSave = {

@@ -72,7 +72,7 @@ function shouldReplaceFontSize(line, className) {
   return !fontSizeExceptions.some(exception => lowerLine.includes(exception));
 }
 
-function processFile(filePath) {
+function processFile(_filePath) {
   console.log(`Processing: ${filePath}`);
   const content = fs.readFileSync(filePath, 'utf8');
   let changes = 0;

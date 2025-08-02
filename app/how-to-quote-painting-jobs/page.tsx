@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { BookOpen, ArrowRight, CheckCircle, TrendingUp, Users, FileText, Calculator, Clock, DollarSign, AlertTriangle, Ruler, PaintBucket, Zap } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'How to Quote Painting Jobs: Complete 2025 Guide for Professional Contractors',
   description: 'Learn how to quote painting jobs professionally. Complete step-by-step guide covering pricing, measurements, labor costs, and winning more contracts. Used by 3,000+ contractors.',
@@ -287,7 +287,7 @@ export default function HowToQuotePaintingJobs() {
                   </div>
                   
                   <p className="text-lg text-gray-200 mb-8">
-                    Accurate measurements are the foundation of profitable painting quotes. Here's how to measure 
+                    Accurate measurements are the foundation of profitable painting quotes. Here&apos;s how to measure 
                     different surfaces correctly:
                   </p>
                   
@@ -302,7 +302,7 @@ export default function HowToQuotePaintingJobs() {
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                           <div className="text-base">
                             <strong>Walls:</strong> Measure height × width for each wall. Subtract doors and windows 
-                            over 15 sq ft. Don't forget closets and hallways.
+                            over 15 sq ft. Don&apos;t forget closets and hallways.
                           </div>
                         </li>
                         <li className="flex items-start">
@@ -339,7 +339,7 @@ export default function HowToQuotePaintingJobs() {
                           <CheckCircle className="mr-3 h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                           <div className="text-base">
                             <strong>Fascia & Soffits:</strong> Linear feet for fascia boards, square feet for 
-                            soffits. Don't forget to check accessibility.
+                            soffits. Don&apos;t forget to check accessibility.
                           </div>
                         </li>
                         <li className="flex items-start">
@@ -443,7 +443,7 @@ export default function HowToQuotePaintingJobs() {
                   </div>
                   
                   <p className="text-lg text-gray-200 mb-8">
-                    Labor typically represents 25-35% of your total project cost. Here's how to calculate it accurately:
+                    Labor typically represents 25-35% of your total project cost. Here&apos;s how to calculate it accurately:
                   </p>
 
                   <div className="grid gap-8 lg:grid-cols-2">
@@ -538,7 +538,7 @@ export default function HowToQuotePaintingJobs() {
                         <li>• Primer (when needed)</li>
                         <li>• Brushes and roller covers</li>
                         <li>• Drop cloths and plastic sheeting</li>
-                        <li>• Painter's tape and masking supplies</li>
+                        <li>• Painter&apos;s tape and masking supplies</li>
                         <li>• Caulk and patching compounds</li>
                         <li>• Sandpaper and prep materials</li>
                         <li>• Cleaning supplies and rags</li>
@@ -567,7 +567,7 @@ export default function HowToQuotePaintingJobs() {
                   </div>
                   
                   <p className="text-lg text-gray-200 mb-8">
-                    Your quote must include adequate profit to sustain and grow your business. Don't work for free!
+                    Your quote must include adequate profit to sustain and grow your business. Don&apos;t work for free!
                   </p>
 
                   <div className="space-y-6">
@@ -597,7 +597,7 @@ export default function HowToQuotePaintingJobs() {
                   </div>
 
                   <div className="mt-8 rounded-lg bg-orange-50 border border-orange-200 p-6">
-                    <h4 className="font-semibold text-orange-800 mb-2">⚠️ Don't Race to the Bottom</h4>
+                    <h4 className="font-semibold text-orange-800 mb-2">⚠️ Don&apos;t Race to the Bottom</h4>
                     <p className="text-base text-orange-700">
                       Charging too little hurts the entire industry and makes it impossible to provide quality service. 
                       Price for value, not just to win jobs. Quality customers will pay for professional work.

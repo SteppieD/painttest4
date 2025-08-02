@@ -6,15 +6,15 @@ const anthropic = process.env.ANTHROPIC_API_KEY ? new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY!,
 }) : null;
 
-// Define the steps and what data to collect
-const ONBOARDING_STEPS = [
-  { step: 0, field: 'companyName', nextQuestion: 'business email' },
-  { step: 1, field: 'email', nextQuestion: 'phone number' },
-  { step: 2, field: 'phone', nextQuestion: 'location (city and state)' },
-  { step: 3, field: 'location', nextQuestion: 'local sales tax rate' },
-  { step: 4, field: 'taxRate', nextQuestion: 'pricing preferences' },
-  { step: 5, field: 'pricing', nextQuestion: null }
-];
+// Define the steps and what data to collect (used for reference but not directly accessed)
+// const ONBOARDING_STEPS = [
+//   { step: 0, field: 'companyName', nextQuestion: 'business email' },
+//   { step: 1, field: 'email', nextQuestion: 'phone number' },
+//   { step: 2, field: 'phone', nextQuestion: 'location (city and state)' },
+//   { step: 3, field: 'location', nextQuestion: 'local sales tax rate' },
+//   { step: 4, field: 'taxRate', nextQuestion: 'pricing preferences' },
+//   { step: 5, field: 'pricing', nextQuestion: null }
+// ];
 
 export async function POST(request: NextRequest) {
   try {
@@ -156,7 +156,7 @@ Important: You must respond with a JSON object containing:
   }
 }
 
-function generateFallbackResponse(currentStep: number, message: string, collectedData: any) {
+function generateFallbackResponse(currentStep: number, message: string, collectedData: unknown) {
   // Log for debugging
   console.log('[FALLBACK] Step:', currentStep, 'Message:', message, 'CollectedData:', collectedData);
   
@@ -214,10 +214,10 @@ You're all set! Let me save these settings and get you started with PaintQuote P
     }
   };
 
-  return (responses as any)[currentStep] || (responses as any)[0];
+  return (responses as unknown)[currentStep] || (responses as unknown)[0];
 }
 
-function extractLocationFromMessage(message: string): any {
+function extractLocationFromMessage(message: string): unknown {
   // Simple extraction - in production, you'd use more sophisticated parsing
   const parts = message.split(',').map(s => s.trim());
   if (parts.length >= 2) {
@@ -229,7 +229,7 @@ function extractLocationFromMessage(message: string): any {
   return { city: message.trim(), state: '' };
 }
 
-function extractPricingFromMessage(message: string): any {
+function extractPricingFromMessage(message: string): unknown {
   const numbers = message.match(/\d+(\.\d+)?/g) || [];
   
   // Try to intelligently parse the numbers

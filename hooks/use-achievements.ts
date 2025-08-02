@@ -69,7 +69,13 @@ export function useAchievements() {
   }
 
   // Check various achievement conditions
-  const checkQuoteAchievements = async (quoteData: any, timeToCreate?: number) => {
+  const checkQuoteAchievements = async (quoteData: {
+    customLineItems?: Array<{ name: string; cost: number; description?: string }>;
+    customerName?: string;
+    totalCost?: number;
+    projectType?: string;
+    [key: string]: unknown;
+  }, timeToCreate?: number) => {
     if (!companyData) return
 
     // First Quote Achievement

@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import {
@@ -162,7 +162,7 @@ export default function FeedbackPage() {
     }
   ]
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (_status: string) => {
     switch (status) {
       case 'In Development':
         return 'bg-blue-500/20 text-blue-300 border-blue-500/30'

@@ -513,7 +513,7 @@ export default function MobilePaintingEstimateApp() {
                           <span className="font-semibold text-primary">4.9/5.0</span>
                         </div>
                         <div className="mt-2 text-base text-gray-200">
-                          "Professional and fast" - most common feedback
+                          "Professional and fast - most common feedback
                         </div>
                       </div>
 

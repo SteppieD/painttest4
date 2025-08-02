@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -67,7 +67,7 @@ const structuredData = {
         },
         {
           "@type": "Question",
-          "name": "What's the best way to follow up on quotes?",
+          "name": "What&apos;s the best way to follow up on quotes?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Mix communication channels: 1st follow-up via text (90% open rate), 2nd via email with added value, 3rd via phone call. Always provide new information or value in each follow-up, not just 'checking in'."
@@ -175,7 +175,7 @@ export default function FollowUpStrategiesGuide() {
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-blue-400 mb-3">Text Template (90% open rate):</h4>
                         <p className="text-gray-100 italic mb-4">
-                          "Hi [Name], just making sure you received the quote I sent Tuesday for your 
+                          &quot;Hi [Name], just making sure you received the quote I sent Tuesday for your 
                           [project type]. Happy to answer any questions! - [Your name]"
                         </p>
                         <div className="mt-4 p-3 bg-blue-500/10 rounded">
@@ -202,15 +202,15 @@ export default function FollowUpStrategiesGuide() {
                           <p><strong>Subject:</strong> Color trends + your painting quote</p>
                           <p>Hi [Name],</p>
                           <p>
-                            I wanted to share this year's trending colors that would look great on your [project]. 
+                            I wanted to share this year&apos;s trending colors that would look great on your [project]. 
                             [Attach color guide or link]
                           </p>
                           <p>
-                            Also, I noticed our quote is set to expire next week. If you'd like to lock in 
+                            Also, I noticed our quote is set to expire next week. If you&apos;d like to lock in 
                             current pricing, just let me know. Happy to adjust anything based on your needs.
                           </p>
                           <p>
-                            P.S. We have 2 spots open in [month] if you'd like to get this done before [season/event].
+                            P.S. We have 2 spots open in [month] if you&apos;d like to get this done before [season/event].
                           </p>
                         </div>
                       </div>
@@ -230,15 +230,15 @@ export default function FollowUpStrategiesGuide() {
                         <h4 className="text-lg font-semibold text-green-400 mb-3">Phone Script:</h4>
                         <div className="space-y-3 text-gray-100">
                           <p>
-                            "Hi [Name], this is [Your name] from [Company]. I quoted your [project] back in 
+                            &quot;Hi [Name], this is [Your name] from [Company]. I quoted your [project] back in 
                             [month] and wanted to check if you&apos;re still planning to move forward."
                           </p>
                           <p>
-                            "We're booking [upcoming season] projects now and I remembered your home. 
-                            I can honor the original price if you'd like to schedule."
+                            &quot;We&apos;re booking [upcoming season] projects now and I remembered your home. 
+                            I can honor the original price if you&apos;d like to schedule."
                           </p>
                           <p>
-                            "Also, we&apos;re offering [specific incentive] for projects booked this month. 
+                            &quot;Also, we&apos;re offering [specific incentive] for projects booked this month. 
                             Would that help with your decision?"
                           </p>
                         </div>
@@ -309,7 +309,7 @@ export default function FollowUpStrategiesGuide() {
               
               <Card className="bg-gray-800/30 border-gray-700 p-8">
                 <p className="text-lg text-gray-100 mb-6">
-                  Never just "check in" - always provide value to stay relevant and helpful.
+                  Never just &quot;check in - always provide value to stay relevant and helpful.
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -459,11 +459,11 @@ export default function FollowUpStrategiesGuide() {
               
               <div className="space-y-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">"We're getting other quotes"</h3>
+                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">&quot;We&apos;re getting other quotes&quot;</h3>
                   <div className="bg-gray-900/50 rounded p-4">
                     <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
                     <p className="text-gray-100 italic">
-                      "That&apos;s smart! While you&apos;re comparing, here&apos;s what to look for: [share comparison checklist]. 
+                      &quot;That&apos;s smart! While you&apos;re comparing, here&apos;s what to look for: [share comparison checklist]. 
                       I&apos;m confident our value stands out, but I want you to make the best decision. 
                       May I follow up next week to see if you have questions after reviewing other options?"
                     </p>
@@ -471,24 +471,24 @@ export default function FollowUpStrategiesGuide() {
                 </Card>
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">"The price is too high"</h3>
+                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">&quot;The price is too high&quot;</h3>
                   <div className="bg-gray-900/50 rounded p-4">
                     <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
                     <p className="text-gray-100 italic">
-                      "I understand price is important. Let me show you where the value is: [break down what&apos;s included]. 
+                      &quot;I understand price is important. Let me show you where the value is: [break down what&apos;s included]. 
                       We could also look at adjusting the scope or offer payment plans. 
-                      What's your ideal budget so I can create an option that works?"
+                      What&apos;s your ideal budget so I can create an option that works?"
                     </p>
                   </div>
                 </Card>
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">"We need to think about it"</h3>
+                  <h3 className="text-xl font-semibold text-yellow-400 mb-4">&quot;We need to think about it&quot;</h3>
                   <div className="bg-gray-900/50 rounded p-4">
                     <p className="text-gray-100 mb-3"><strong>Response:</strong></p>
                     <p className="text-gray-100 italic">
-                      "Of course! It's a big decision. What specific concerns can I address to help you decide? 
-                      I'll send over our project gallery and warranty details. 
+                      &quot;Of course! It&apos;s a big decision. What specific concerns can I address to help you decide? 
+                      I&apos;ll send over our project gallery and warranty details. 
                       When would be a good time to reconnect - maybe early next week?"
                     </p>
                   </div>

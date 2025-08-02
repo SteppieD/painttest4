@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import {
@@ -132,7 +132,7 @@ export default function StatusPage() {
     { label: 'Error Rate', value: '0.02%', target: '<0.1%', status: 'good' }
   ]
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (_status: string) => {
     switch (status) {
       case 'operational':
         return 'text-green-400'
@@ -147,7 +147,7 @@ export default function StatusPage() {
     }
   }
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (_status: string) => {
     switch (status) {
       case 'operational':
         return CheckCircle

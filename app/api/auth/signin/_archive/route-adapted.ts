@@ -8,8 +8,24 @@ const prisma = new PrismaClient()
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
+// Interface for company data from old schema
+interface OldCompanyData {
+  id: string
+  company_name: string
+  email: string
+  phone?: string
+  plan?: string
+  quotes_used?: number
+  quote_limit?: number
+  quotes_reset_at?: Date
+  quotes_generated?: number
+  default_walls_rate?: string
+  default_ceilings_rate?: string
+  tax_rate?: string
+}
+
 // Map old schema to new schema format
-const mapCompanyData = (company: any) => ({
+const mapCompanyData = (company: OldCompanyData) => ({
   id: company.id,
   name: company.company_name,
   email: company.email,

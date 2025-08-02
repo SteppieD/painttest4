@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { Calculator, DollarSign, PaintBucket, Home, Clock, TrendingUp, CheckCircle, AlertCircle, Zap } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Paint Cost Calculator | Calculate Total Painting Costs & Budget',
   description: 'Calculate total painting costs with our free paint cost calculator. Get accurate estimates for paint, materials, and labor costs for interior and exterior painting projects.',

@@ -2,14 +2,14 @@
 export class DebugLogger {
   private context: string;
   private startTime: number;
-  private logs: Array<{ timestamp: number; level: string; message: string; data?: any }> = [];
+  private logs: Array<{ timestamp: number; level: string; message: string; data?: Record<string, unknown> }> = [];
 
   constructor(context: string) {
     this.context = context;
     this.startTime = Date.now();
   }
 
-  private log(level: string, message: string, data?: any) {
+  private log(level: string, message: string, data?: Record<string, unknown>) {
     const timestamp = Date.now() - this.startTime;
     const logEntry = { timestamp, level, message, data };
     this.logs.push(logEntry);
@@ -28,19 +28,19 @@ export class DebugLogger {
     }
   }
 
-  info(message: string, data?: any) {
+  info(message: string, data?: Record<string, unknown>) {
     this.log('INFO', message, data);
   }
 
-  success(message: string, data?: any) {
+  success(message: string, data?: Record<string, unknown>) {
     this.log('SUCCESS', message, data);
   }
 
-  warn(message: string, data?: any) {
+  warn(message: string, data?: Record<string, unknown>) {
     this.log('WARN', message, data);
   }
 
-  error(message: string, error?: any) {
+  error(message: string, error?: Error | unknown) {
     const errorData = error instanceof Error ? {
       name: error.name,
       message: error.message,
@@ -50,7 +50,7 @@ export class DebugLogger {
     this.log('ERROR', message, errorData);
   }
 
-  checkpoint(name: string, data?: any) {
+  checkpoint(name: string, data?: Record<string, unknown>) {
     this.log('CHECKPOINT', name, data);
   }
 

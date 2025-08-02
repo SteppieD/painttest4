@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -280,7 +280,7 @@ export default function QuotePresentationTipsGuide() {
                         <li>• Thank them for their time</li>
                         <li>• Recap their project goals</li>
                         <li>• Set agenda for meeting</li>
-                        <li>• "Any questions before we begin?"</li>
+                        <li>• {"\"Any questions before we begin?\""}                        </li>
                       </ul>
                     </div>
                   </div>
@@ -329,7 +329,7 @@ export default function QuotePresentationTipsGuide() {
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">Questions & Close (5-10 min)</h4>
                       <ul className="space-y-2 text-gray-100">
-                        <li>• "What questions do you have?"</li>
+                        <li>• {"\"What questions do you have?\""}                        </li>
                         <li>• Address concerns</li>
                         <li>• Assumptive close</li>
                         <li>• Next steps clear</li>
@@ -480,7 +480,7 @@ export default function QuotePresentationTipsGuide() {
                     </li>
                     <li className="flex items-start gap-2">
                       <Target className="h-5 w-5 text-green-400 mt-0.5" />
-                      <span>Mirror customer's energy level</span>
+                      <span>Mirror customer&apos;s energy level</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
@@ -492,13 +492,13 @@ export default function QuotePresentationTipsGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Power Phrases</h3>
                   <ul className="space-y-3 text-gray-100">
-                    <li>• "Based on what you've told me..."</li>
-                    <li>• "Many of your neighbors chose..."</li>
-                    <li>• "To protect your investment..."</li>
-                    <li>• "The smart choice would be..."</li>
-                    <li>• "When would you like to start?"</li>
+                    <li>• {"\"Based on what you"}ve told me...{"\""}</li>
+                    <li>• &quot;Many of your neighbors chose...&quot;</li>
+                    <li>• &quot;To protect your investment...&quot;</li>
+                    <li>• &quot;The smart choice would be...&quot;</li>
+                    <li>• {"\"When would you like to start?\""}                    </li>
                     <li>• {"I"}{''}m confident we can...{""}</li>
-                    <li>• "You'll love how this looks..."</li>
+                    <li>• &quot;You&apos;ll love how this looks...&quot;</li>
                   </ul>
                 </Card>
               </div>
@@ -513,14 +513,14 @@ export default function QuotePresentationTipsGuide() {
                       <li>• Discussing payment options</li>
                       <li>• Mentioning color preferences</li>
                       <li>• Leaning forward, engaged</li>
-                      <li>• "We" language instead of "you"</li>
+                      <li>• &quot;We&quot; language instead of &quot;you&quot;</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="text-red-400 font-semibold mb-3">Resistance Signals</h4>
                     <ul className="space-y-2 text-gray-100 text-base">
                       <li>• Arms crossed, leaning back</li>
-                      <li>• "We need to think about it"</li>
+                      <li>• &quot;We need to think about it&quot;</li>
                       <li>• Focusing only on price</li>
                       <li>• Checking phone frequently</li>
                       <li>• Short, closed answers</li>
@@ -540,32 +540,32 @@ export default function QuotePresentationTipsGuide() {
               
               <div className="space-y-6">
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">"Your price is too high"</h3>
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">&quot;Your price is too high&quot;</h3>
                   <p className="text-gray-100 mb-3">Response framework:</p>
                   <ul className="space-y-2 text-gray-100">
-                    <li>1. "I understand price is important. Can you help me understand what you were expecting?"</li>
-                    <li>2. Reframe to value: "Let me show you what's included that others might skip..."</li>
-                    <li>3. Offer middle option: "Would the standard package work better for your budget?"</li>
+                    <li>1. &quot;I understand price is important. Can you help me understand what you were expecting?&quot;</li>
+                    <li>2. Reframe to value: &quot;Let me show you what&apos;s included that others might skip...&quot;</li>
+                    <li>3. Offer middle option: &quot;Would the standard package work better for your budget?&quot;</li>
                   </ul>
                 </Card>
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-blue-400 mb-3">"We need to get other quotes"</h3>
+                  <h3 className="text-lg font-semibold text-blue-400 mb-3">&quot;We need to get other quotes&quot;</h3>
                   <p className="text-gray-100 mb-3">Response framework:</p>
                   <ul className="space-y-2 text-gray-100">
                     <li>1. {"That"}{''}s smart - you should compare. What will you be looking for in other quotes?{""}</li>
                     <li>2. {"While you"}{''}re comparing, make sure they include [unique value you offer]{""}</li>
-                    <li>3. "I can hold this price for 7 days. After that, material costs may change."</li>
+                    <li>3. &quot;I can hold this price for 7 days. After that, material costs may change.&quot;</li>
                   </ul>
                 </Card>
 
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-purple-400 mb-3">"We need to think about it"</h3>
+                  <h3 className="text-lg font-semibold text-purple-400 mb-3">&quot;We need to think about it&quot;</h3>
                   <p className="text-gray-100 mb-3">Response framework:</p>
                   <ul className="space-y-2 text-gray-100">
-                    <li>1. "Of course! What specific aspects would you like to think through?"</li>
+                    <li>1. &quot;Of course! What specific aspects would you like to think through?&quot;</li>
                     <li>2. Address specific concerns they mention</li>
-                    <li>3. "When would be a good time for me to follow up? I want to make sure your questions are answered."</li>
+                    <li>3. &quot;When would be a good time for me to follow up? I want to make sure your questions are answered.&quot;</li>
                   </ul>
                 </Card>
               </div>
@@ -582,12 +582,12 @@ export default function QuotePresentationTipsGuide() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
                   <h3 className="text-xl font-semibold text-green-400 mb-4">Assumptive Close</h3>
-                  <p className="text-gray-100 mb-3">Act as if they've already decided:</p>
+                  <p className="text-gray-100 mb-3">Act as if they&apos;ve already decided:</p>
                   <ul className="space-y-2 text-gray-100 text-base">
-                    <li>• "Which option works best for you?"</li>
-                    <li>• "When would you like us to start?"</li>
-                    <li>• "Would morning or afternoon work better?"</li>
-                    <li>• "I'll get you on the schedule for..."</li>
+                    <li>• &quot;Which option works best for you?&quot;</li>
+                    <li>• &quot;When would you like us to start?&quot;</li>
+                    <li>• &quot;Would morning or afternoon work better?&quot;</li>
+                    <li>• &quot;I&apos;ll get you on the schedule for...&quot;</li>
                   </ul>
                 </Card>
 
@@ -595,10 +595,10 @@ export default function QuotePresentationTipsGuide() {
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Alternative Close</h3>
                   <p className="text-gray-100 mb-3">Give them control with limits:</p>
                   <ul className="space-y-2 text-gray-100 text-base">
-                    <li>• "Would April 15th or 22nd work better?"</li>
-                    <li>• "Do you prefer the 5 or 7-year warranty?"</li>
-                    <li>• "Will you use our financing or pay upfront?"</li>
-                    <li>• "Should we start with interior or exterior?"</li>
+                    <li>• &quot;Would April 15th or 22nd work better?&quot;</li>
+                    <li>• &quot;Do you prefer the 5 or 7-year warranty?&quot;</li>
+                    <li>• &quot;Will you use our financing or pay upfront?&quot;</li>
+                    <li>• &quot;Should we start with interior or exterior?&quot;</li>
                   </ul>
                 </Card>
 
@@ -606,10 +606,10 @@ export default function QuotePresentationTipsGuide() {
                   <h3 className="text-xl font-semibold text-purple-400 mb-4">Urgency Close</h3>
                   <p className="text-gray-100 mb-3">Create ethical urgency:</p>
                   <ul className="space-y-2 text-gray-100 text-base">
-                    <li>• "This price is good for 7 days"</li>
-                    <li>• "We have 2 spots left this month"</li>
-                    <li>• "Spring schedule is filling fast"</li>
-                    <li>• "Material prices increase May 1st"</li>
+                    <li>• &quot;This price is good for 7 days&quot;</li>
+                    <li>• &quot;We have 2 spots left this month&quot;</li>
+                    <li>• &quot;Spring schedule is filling fast&quot;</li>
+                    <li>• &quot;Material prices increase May 1st&quot;</li>
                   </ul>
                 </Card>
 
@@ -620,7 +620,7 @@ export default function QuotePresentationTipsGuide() {
                     <li>• Summarize all included value</li>
                     <li>• Remind them of their goals</li>
                     <li>• Highlight unique benefits</li>
-                    <li>• "Does this cover everything you need?"</li>
+                    <li>• &quot;Does this cover everything you need?&quot;</li>
                   </ul>
                 </Card>
               </div>

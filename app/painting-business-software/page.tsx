@@ -469,7 +469,7 @@ export default function PaintingBusinessSoftware() {
                   </div>
                   <p className="mt-4 text-gray-200">
                     "The scheduling and invoicing features alone save me 10+ hours per week. 
-                    Best investment I've made in my business."
+                    Best investment I{"'"}ve made in my business.{"\""}
                   </p>
                   <div className="mt-4">
                     <p className="font-semibold">Lisa Martinez</p>

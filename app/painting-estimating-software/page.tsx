@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { Calculator, Smartphone, Zap, BarChart3, Clock, DollarSign, Users, CheckCircle, Star, ArrowRight, FileText, TrendingUp, Shield, Building } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Best Painting Estimating Software 2025 | Compare Top Tools for Contractors',
   description: 'Compare the best painting estimating software for contractors. Reviews, pricing, and features of top tools including PaintQuote Pro, JobNimbus, and more.',
@@ -728,7 +728,7 @@ export default function PaintingEstimatingSoftware() {
                 Ready to Transform Your Painting Business?
               </h2>
               <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
-                Start with PaintQuote Pro's free plan and experience the difference professional 
+                Start with PaintQuote Pro&apos;s free plan and experience the difference professional 
                 estimating software makes for your painting business.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

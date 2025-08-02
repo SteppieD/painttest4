@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
+// import { Input } from '@/components/ui/input' // TODO: Check if this import is needed
+// import { Label } from '@/components/ui/label' // TODO: Check if this import is needed
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Calculator, Info, DollarSign, Clock, Paintbrush } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
-
+// import { Badge } from '@/components/ui/badge'
+ // TODO: Check if this import is needed
 interface CalculatorProps {
   className?: string
   variant?: 'default' | 'glass'
@@ -21,7 +21,23 @@ export function PaintEstimateCalculator({ className = '', variant = 'glass' }: C
   const [coats, setCoats] = useState<string>('2')
   const [paintQuality, setPaintQuality] = useState<string>('mid')
   const [laborRate, setLaborRate] = useState<string>('45')
-  const [results, setResults] = useState<any>(null)
+  interface CalculationResults {
+    roomType: string;
+    sqft: number;
+    wallArea: number;
+    gallonsNeeded: number;
+    paintCost: number;
+    hoursNeeded: number;
+    laborCost: number;
+    materialsCost: number;
+    subtotal: number;
+    overhead: number;
+    profit: number;
+    total: number;
+    pricePerSqft: string;
+  }
+
+  const [results, setResults] = useState<CalculationResults | null>(null)
 
   const roomDefaults: Record<string, { sqft: number; name: string }> = {
     bedroom: { sqft: 150, name: 'Bedroom' },

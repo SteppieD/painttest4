@@ -33,7 +33,7 @@ export async function GET(_request: NextRequest) {
   };
 
   // Test 1: Direct API call to OpenRouter
-  let directApiTest: any = { status: 'not-tested' };
+  let directApiTest: unknown = { status: 'not-tested' };
   if (process.env.OPENROUTER_API_KEY) {
     try {
       const response = await fetch('https://openrouter.ai/api/v1/models', {
@@ -71,7 +71,7 @@ export async function GET(_request: NextRequest) {
   }
 
   // Test 2: Chat completion test
-  let chatTest: any = { status: 'not-tested' };
+  let chatTest: unknown = { status: 'not-tested' };
   if (process.env.OPENROUTER_API_KEY && directApiTest.status === 'success') {
     try {
       const chatResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -116,7 +116,7 @@ export async function GET(_request: NextRequest) {
   }
 
   // Test 3: Import and instantiate the client
-  let clientTest: any = { status: 'not-tested' };
+  let clientTest: unknown = { status: 'not-tested' };
   try {
     const { OpenRouterClient } = await import('@/lib/ai/openrouter-client');
     const client = new OpenRouterClient();
@@ -165,7 +165,36 @@ export async function GET(_request: NextRequest) {
   });
 }
 
-function getDetailedRecommendations(debug: any, directTest: any, chatTest: any, clientTest: any): string[] {
+interface DebugInfo {
+  apiKeyCheck: {
+    exists: boolean;
+    isEmptyString: boolean;
+    isPlaceholder: boolean;
+    startsWithSk: boolean;
+    startsWithOr: boolean;
+  };
+  environment: {
+    VERCEL?: string;
+    VERCEL_ENV?: string;
+  };
+}
+
+interface TestResult {
+  status: string;
+  statusCode?: number;
+  response?: {
+    error?: string | Error;
+  };
+}
+
+interface ClientTest {
+  apiCall?: {
+    status: string;
+    error?: string;
+  };
+}
+
+function getDetailedRecommendations(debug: DebugInfo, directTest: TestResult, chatTest: TestResult, clientTest: ClientTest): string[] {
   const recs = [];
   
   if (!debug.apiKeyCheck.exists) {

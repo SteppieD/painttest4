@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
-import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
-import { ROICalculator } from '@/components/calculators/roi-calculator'
+// import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator' // TODO: Check if this import is needed
+// import { ROICalculator } from '@/components/calculators/roi-calculator' // TODO: Check if this import is needed
 import { 
   Clock, 
   TrendingUp, 
@@ -716,13 +716,13 @@ export default function PaintingQuoteSoftwarePage() {
                       ))}
                     </div>
                     <p className="text-gray-100 mb-6">
-                      "Being able to create quotes on my phone at the job site is incredible. Customers love getting professional quotes before I even leave their house."
+                      {"\"Being able to create quotes on my phone at the job site is incredible. Customers love getting professional quotes before I even leave their house.\""}
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
                       <div>
                         <p className="font-semibold text-white">James Wilson</p>
-                        <p className="text-base text-gray-200">Wilson's Painting Services</p>
+                        <p className="text-base text-gray-200">Wilson&apos;s Painting Services</p>
                       </div>
                     </div>
                   </CardContent>

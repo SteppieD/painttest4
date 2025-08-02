@@ -1,6 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { DatabaseAdapter } from './adapter';
-
+// import { DatabaseAdapter } from './adapter';
+ // TODO: Check if this import is needed
 /**
  * Fixed Supabase adapter that doesn't rely on execute_sql RPC function
  * Uses Supabase's native query builder for all operations
@@ -20,7 +20,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // Company operations
-  async getCompanyByAccessCode(accessCode: string): Promise<any> {
+  async getCompanyByAccessCode(accessCode: string): Promise<unknown> {
     try {
       const { data, error } = await this.client
         .from('companies')
@@ -39,7 +39,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     }
   }
 
-  async getCompany(id: number): Promise<any> {
+  async getCompany(id: number): Promise<unknown> {
     const { data, error } = await this.client
       .from('companies')
       .select('*')
@@ -50,7 +50,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return data;
   }
 
-  async getAllCompanies(): Promise<any[]> {
+  async getAllCompanies(): Promise<Record<string, unknown>[]> {
     const { data, error } = await this.client
       .from('companies')
       .select('*')
@@ -61,11 +61,11 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // Alias for getAllCompanies
-  async getCompanies(): Promise<any[]> {
+  async getCompanies(): Promise<Record<string, unknown>[]> {
     return this.getAllCompanies();
   }
 
-  async createCompany(data: any): Promise<any> {
+  async createCompany(data: Record<string, unknown>): Promise<unknown> {
     const { data: result, error } = await this.client
       .from('companies')
       .insert(data)
@@ -76,7 +76,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return result;
   }
 
-  async updateCompany(id: number, data: any): Promise<any> {
+  async updateCompany(id: number, data: Record<string, unknown>): Promise<unknown> {
     const { data: result, error } = await this.client
       .from('companies')
       .update(data)
@@ -89,7 +89,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // Quote operations
-  async createQuote(data: any): Promise<any> {
+  async createQuote(data: Record<string, unknown>): Promise<unknown> {
     try {
       console.log('[SupabaseAdapterFixed] Creating quote with data:', {
         company_id: data.company_id,
@@ -116,7 +116,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     }
   }
 
-  async getQuote(quoteId: string): Promise<any> {
+  async getQuote(quoteId: string): Promise<unknown> {
     const { data, error } = await this.client
       .from('quotes')
       .select('*')
@@ -127,7 +127,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return data;
   }
 
-  async getQuotesByCompanyId(companyId: number): Promise<any[]> {
+  async getQuotesByCompanyId(companyId: number): Promise<Record<string, unknown>[]> {
     const { data, error } = await this.client
       .from('quotes')
       .select('*')
@@ -153,7 +153,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return count || 0;
   }
 
-  async updateQuote(id: number, data: any): Promise<any> {
+  async updateQuote(id: number, data: Record<string, unknown>): Promise<unknown> {
     const { data: result, error } = await this.client
       .from('quotes')
       .update(data)
@@ -166,7 +166,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // User operations
-  async createUser(data: any): Promise<any> {
+  async createUser(data: Record<string, unknown>): Promise<unknown> {
     const { data: result, error } = await this.client
       .from('users')
       .insert(data)
@@ -177,7 +177,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return result;
   }
 
-  async getUserByEmail(email: string): Promise<any> {
+  async getUserByEmail(email: string): Promise<unknown> {
     const { data, error } = await this.client
       .from('users')
       .select('*')
@@ -188,7 +188,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return data;
   }
 
-  async getAllUsers(): Promise<any[]> {
+  async getAllUsers(): Promise<Record<string, unknown>[]> {
     const { data, error } = await this.client
       .from('users')
       .select('*');
@@ -198,7 +198,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // Paint products operations (new methods to avoid raw SQL)
-  async getPaintProductsByUserId(userId: string): Promise<any[]> {
+  async getPaintProductsByUserId(userId: string): Promise<Record<string, unknown>[]> {
     const { data, error } = await this.client
       .from('paint_products')
       .select('*')
@@ -215,7 +215,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return data || [];
   }
 
-  async getPaintProductsByCompanyId(companyId: number): Promise<any[]> {
+  async getPaintProductsByCompanyId(companyId: number): Promise<Record<string, unknown>[]> {
     try {
       // Use the RPC function we created in the migration
       const { data, error } = await this.client
@@ -232,7 +232,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     }
   }
 
-  async getUserByCompanyName(companyName: string): Promise<any> {
+  async getUserByCompanyName(companyName: string): Promise<unknown> {
     try {
       // Use the RPC function we created in the migration
       const { data, error } = await this.client
@@ -249,7 +249,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     }
   }
 
-  async createPaintProduct(data: any): Promise<any> {
+  async createPaintProduct(data: Record<string, unknown>): Promise<unknown> {
     const { data: result, error } = await this.client
       .from('paint_products')
       .insert(data)
@@ -260,7 +260,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return result;
   }
 
-  async updatePaintProduct(id: string, data: any): Promise<any> {
+  async updatePaintProduct(id: string, data: Record<string, unknown>): Promise<unknown> {
     const { data: result, error } = await this.client
       .from('paint_products')
       .update(data)
@@ -272,7 +272,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return result;
   }
 
-  async deletePaintProduct(id: string, userId: string): Promise<any> {
+  async deletePaintProduct(id: string, userId: string): Promise<unknown> {
     const { error } = await this.client
       .from('paint_products')
       .delete()
@@ -284,7 +284,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // Subscription operations
-  async getCompanySubscription(companyId: number): Promise<any> {
+  async getCompanySubscription(companyId: number): Promise<unknown> {
     const { data, error } = await this.client
       .from('company_subscriptions')
       .select('*, subscription_plans(*)')
@@ -296,7 +296,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return data;
   }
 
-  async createQuoteUsage(companyId: number, quoteId: string): Promise<any> {
+  async createQuoteUsage(companyId: number, quoteId: string): Promise<unknown> {
     const { data, error } = await this.client
       .from('quote_usage')
       .insert({ company_id: companyId, quote_id: quoteId })
@@ -319,7 +319,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // These methods throw errors to force migration to Supabase-specific methods
-  async query(sql: string, params?: any[]): Promise<any> {
+  async query(sql: string, params?: unknown[]): Promise<unknown> {
     console.error('[SupabaseAdapterFixed] Raw SQL query attempted:', sql);
     throw new Error(
       'Raw SQL queries are not supported with Supabase. ' +
@@ -328,7 +328,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     );
   }
 
-  async getAll(query: string, params?: any[]): Promise<any[]> {
+  async getAll(query: string, params?: unknown[]): Promise<Record<string, unknown>[]> {
     console.error('[SupabaseAdapterFixed] Raw SQL query attempted:', query);
     throw new Error(
       'Raw SQL queries are not supported with Supabase. ' +

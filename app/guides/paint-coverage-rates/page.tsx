@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -477,7 +477,7 @@ export default function PaintCoverageRatesGuide() {
                   <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
-                      <span>Using manufacturer's max coverage</span>
+                      <span>Using manufacturer&apos;s max coverage</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>

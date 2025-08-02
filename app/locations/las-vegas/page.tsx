@@ -121,7 +121,7 @@ export default function LasVegasPaintingSoftware() {
                     Painting Quote Software for Las Vegas Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 260+ Las Vegas Valley painting contractors who've transformed their business 
+                    Join 260+ Las Vegas Valley painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function LasVegasPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Las Vegas's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Las Vegas&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Nevada painting contractors
                 </p>
@@ -222,7 +222,7 @@ export default function LasVegasPaintingSoftware() {
                   <Sun className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Desert Climate Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in calculations for Vegas's extreme heat. Automatically includes 
+                    Built-in calculations for Vegas&apos;s extreme heat. Automatically includes 
                     heat-reflective coatings, UV protection, and dust-resistant finishes 
                     to handle 115°F+ summers and sandstorms.
                   </p>
@@ -253,7 +253,7 @@ export default function LasVegasPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from the Strip to Henderson. Works offline and syncs 
-                    when connected. Perfect for Vegas's sprawling valley from Summerlin 
+                    when connected. Perfect for Vegas&apos;s sprawling valley from Summerlin 
                     to Green Valley.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function LasVegasPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Vegas's competitive market with professional quotes 
+                    Stand out in Vegas&apos;s competitive market with professional quotes 
                     that build trust. Include your Nevada license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function LasVegasPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "Vegas never sleeps and neither does my business. Now I quote casino 
+                    &quot;Vegas never sleeps and neither does my business. Now I quote casino 
                     projects at 2 AM and have them signed by morning. Added $75,000 in 
                     commercial contracts this quarter alone."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function LasVegasPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The desert climate templates are game-changing. Every quote includes 
+                    &quot;The desert climate templates are game-changing. Every quote includes 
                     heat-reflective options automatically. Won 4 HOA contracts in Summerlin 
                     - that&apos;s $310,000 in guaranteed work."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function LasVegasPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$240,000</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 5,000x return on your PaintQuote Pro investment
+                      That&apos;s 5,000x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function LasVegasPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Las Vegas Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Las Vegas's painting market is unique. With over 750 painting contractors 
+                    Las Vegas&apos;s painting market is unique. With over 750 painting contractors 
                     serving the Las Vegas Valley, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Las Vegas where 
-                    extreme conditions and 24/7 operations matter. Our AI understands Nevada's 
+                    extreme conditions and 24/7 operations matter. Our AI understands Nevada&apos;s 
                     desert challenges, from 115°F heat that can blister standard paint to 
                     sandstorms that require special protective coatings. The software 
                     automatically factors these into your quotes.

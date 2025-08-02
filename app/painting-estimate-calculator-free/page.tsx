@@ -212,7 +212,7 @@ export default function PaintingEstimateCalculator() {
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold">What's included in the painting cost estimate?</h3>
+                <h3 className="text-xl font-semibold">What&apos;s included in the painting cost estimate?</h3>
                 <p className="mt-2 text-gray-200">
                   Estimates include paint materials, supplies, labor costs (30% of total), prep work, and 
                   standard profit margins. You can customize rates in your account settings.

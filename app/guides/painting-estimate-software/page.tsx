@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -74,7 +74,7 @@ const structuredData = {
           "name": "What is the best painting estimate software?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PaintQuote Pro is rated the best painting estimate software for 2024, with AI-powered quotes in 10-15 minutes, painting-specific features, and 283x average ROI. It's designed specifically for painters, unlike general contractor software."
+            "text": "PaintQuote Pro is rated the best painting estimate software for 2024, with AI-powered quotes in 10-15 minutes, painting-specific features, and 283x average ROI. It&apos;s designed specifically for painters, unlike general contractor software."
           }
         },
         {
@@ -240,7 +240,7 @@ const softwareComparison = [
   }
 ]
 
-const comparisonFeatures = [
+const _comparisonFeatures = [
   { name: 'Quote Creation Time', key: 'quoteTime' },
   { name: 'Painting-Specific Features', key: 'paintingFeatures' },
   { name: 'Mobile App Quality', key: 'mobileApp' },
@@ -733,9 +733,9 @@ export default function PaintingEstimateSoftwareGuide() {
                       <h4 className="text-lg font-semibold text-blue-400 mb-3">Questions to Ask</h4>
                       <ul className="space-y-2 text-gray-100 text-base">
                         <li>• How many quotes do you create monthly?</li>
-                        <li>• What's your current win rate?</li>
+                        <li>• What&apos;s your current win rate?</li>
                         <li>• Do you quote on-site or at the office?</li>
-                        <li>• What's your average job size?</li>
+                        <li>• What&apos;s your average job size?</li>
                         <li>• How tech-savvy is your team?</li>
                       </ul>
                     </div>
@@ -1037,7 +1037,7 @@ export default function PaintingEstimateSoftwareGuide() {
                       },
                       {
                         "@type": "Question",
-                        "name": "What's the difference between painting software and general contractor software?",
+                        "name": "What&apos;s the difference between painting software and general contractor software?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "Painting software includes industry-specific features like paint calculators, surface-based pricing, spray vs. brush labor rates, color matching tools, and paint brand databases. General contractor software lacks these specialized tools, requiring manual workarounds that slow down painting quotes significantly."
@@ -1139,7 +1139,7 @@ export default function PaintingEstimateSoftwareGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <Paintbrush className="h-5 w-5 text-blue-400 mr-2" />
-                    What's the difference between painting software and general contractor software?
+                    What&apos;s the difference between painting software and general contractor software?
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-100">
                     <div>

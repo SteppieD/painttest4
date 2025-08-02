@@ -121,7 +121,7 @@ export default function PhoenixPaintingSoftware() {
                     Painting Quote Software for Phoenix Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 250+ Valley painting contractors who've transformed their business 
+                    Join 250+ Valley painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function PhoenixPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Phoenix's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Phoenix&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Valley painting contractors
                 </p>
@@ -222,7 +222,7 @@ export default function PhoenixPaintingSoftware() {
                   <Sun className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Heat-Factor Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in calculations for Phoenix's extreme heat. Automatically adjusts 
+                    Built-in calculations for Phoenix&apos;s extreme heat. Automatically adjusts 
                     labor time for summer work, includes heat-resistant product recommendations, 
                     and factors in early morning scheduling.
                   </p>
@@ -232,7 +232,7 @@ export default function PhoenixPaintingSoftware() {
                   <Thermometer className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Stucco & Elastomeric Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Pre-built quotes for Phoenix's predominant stucco homes. Includes crack 
+                    Pre-built quotes for Phoenix&apos;s predominant stucco homes. Includes crack 
                     repair calculations, elastomeric coating options, and monsoon-season 
                     scheduling adjustments.
                   </p>
@@ -242,7 +242,7 @@ export default function PhoenixPaintingSoftware() {
                   <Home className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">HOA Quote Library</h3>
                   <p className="mt-2 text-gray-200">
-                    Templates for Phoenix's 2,000+ HOA communities. Pre-loaded with common 
+                    Templates for Phoenix&apos;s 2,000+ HOA communities. Pre-loaded with common 
                     HOA color schemes, compliance requirements, and bulk pricing structures 
                     for multi-unit projects.
                   </p>
@@ -253,7 +253,7 @@ export default function PhoenixPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Scottsdale to Surprise. Works offline and syncs 
-                    when connected. Perfect for Phoenix's sprawling service areas from 
+                    when connected. Perfect for Phoenix&apos;s sprawling service areas from 
                     Ahwatukee to Anthem.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function PhoenixPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Phoenix's competitive market with professional quotes 
+                    Stand out in Phoenix&apos;s competitive market with professional quotes 
                     that build trust. Include your ROC license, insurance details, and 
                     customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function PhoenixPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "With 300+ painting contractors in Phoenix, speed wins. I quote on-site 
+                    &quot;With 300+ painting contractors in Phoenix, speed wins. I quote on-site 
                     in 15 minutes while competitors take days. Last month I closed $45,000 
                     in new business just from faster quotes."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function PhoenixPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The HOA templates are game-changing. I can quote entire complexes with 
+                    &quot;The HOA templates are game-changing. I can quote entire complexes with 
                     accurate pricing in minutes. Won 3 major HOA contracts in Chandler this 
                     year alone - that&apos;s $180,000 in new business."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function PhoenixPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$104,500</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 2,100x return on your PaintQuote Pro investment
+                      That&apos;s 2,100x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function PhoenixPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Phoenix Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Phoenix's painting market is unique. With over 600 painting contractors 
+                    Phoenix&apos;s painting market is unique. With over 600 painting contractors 
                     serving the Valley, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Phoenix where 
-                    heat and efficiency matter. Our AI understands Arizona's climate challenges, 
+                    heat and efficiency matter. Our AI understands Arizona&apos;s climate challenges, 
                     from extreme UV exposure that affects paint durability to monsoon season 
                     moisture concerns. The software automatically factors these into your quotes.
                   </p>

@@ -357,10 +357,10 @@ export default function LuxuryHomeTransformation() {
                     ))}
                   </div>
                   <blockquote className="text-lg italic mb-4">
-                    "The PaintQuote Pro team exceeded every expectation. They managed the extreme 
+                    &quot;The PaintQuote Pro team exceeded every expectation. They managed the extreme 
                     heat professionally, treated our home with incredible care, and the attention 
                     to detail was extraordinary. The custom color matching on our stone work is 
-                    perfect. We've received countless compliments, and our property value increased 
+                    perfect. We&apos;ve received countless compliments, and our property value increased 
                     significantly. This was an investment that paid for itself."
                   </blockquote>
                   <footer>
@@ -415,7 +415,7 @@ export default function LuxuryHomeTransformation() {
                   Ready to Transform Your Luxury Property?
                 </h2>
                 <p className="text-xl mb-8 opacity-100">
-                  Let's discuss how we can enhance your home's beauty and value with our 
+                  Let&apos;s discuss how we can enhance your home&apos;s beauty and value with our 
                   premium painting services.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

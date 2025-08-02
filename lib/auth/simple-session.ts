@@ -2,9 +2,16 @@
 import crypto from 'crypto';
 
 // In-memory session store for development
-const sessions = new Map<string, any>();
+interface SessionData {
+  companyId: number;
+  companyData: unknown;
+  createdAt: Date;
+  expiresAt: Date;
+}
 
-export function createSimpleSession(companyId: number, companyData: any): string {
+const sessions = new Map<string, SessionData>();
+
+export function createSimpleSession(companyId: number, companyData: unknown): string {
   const sessionId = crypto.randomBytes(32).toString('hex');
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() + 7); // 7 days
@@ -19,7 +26,7 @@ export function createSimpleSession(companyId: number, companyData: any): string
   return sessionId;
 }
 
-export function validateSimpleSession(sessionId: string): any {
+export function validateSimpleSession(sessionId: string): unknown {
   const session = sessions.get(sessionId);
   if (!session) return null;
   

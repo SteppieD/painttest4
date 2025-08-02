@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -87,7 +87,7 @@ const structuredData = {
           "name": "Do I need a license to start a painting business?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most states require a business license and contractor's license for painting. Requirements vary: some states need licensing for jobs over $500-1,000, others have no threshold. Always need general liability insurance ($1-2M minimum) and workers' comp if hiring employees."
+            "text": "Most states require a business license and contractor&apos;s license for painting. Requirements vary: some states need licensing for jobs over $500-1,000, others have no threshold. Always need general liability insurance ($1-2M minimum) and workers' comp if hiring employees."
           }
         }
       ]
@@ -116,7 +116,7 @@ const structuredData = {
         {
           "@type": "HowToStep",
           "name": "Get licensed and insured",
-          "text": "Obtain contractor's license, general liability insurance, and any required bonds"
+          "text": "Obtain contractor&apos;s license, general liability insurance, and any required bonds"
         },
         {
           "@type": "HowToStep",
@@ -171,7 +171,7 @@ const businessStages = [
 ]
 
 // Revenue benchmarks
-const revenueBenchmarks = {
+const _revenueBenchmarks = {
   solo: { monthly: '$8,000-15,000', yearly: '$96,000-180,000', margin: '40-50%' },
   small: { monthly: '$25,000-50,000', yearly: '$300,000-600,000', margin: '35-45%' },
   medium: { monthly: '$50,000-100,000', yearly: '$600,000-1.2M', margin: '30-40%' },
@@ -351,7 +351,7 @@ export default function PaintingBusinessGuide() {
                             </li>
                             <li className="flex items-start gap-2">
                               <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                              <span>Contractor's license (varies)</span>
+                              <span>Contractor&apos;s license (varies)</span>
                             </li>
                             <li className="flex items-start gap-2">
                               <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -560,7 +560,7 @@ export default function PaintingBusinessGuide() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-green-400">✓</span>
-                        <span>Track every job's profitability</span>
+                        <span>Track every job&apos;s profitability</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-green-400">✓</span>
@@ -762,7 +762,7 @@ export default function PaintingBusinessGuide() {
                   <Card className="bg-red-500/10 border-red-500/30 p-6 mt-6">
                     <h4 className="text-lg font-semibold text-red-400 mb-2">Critical: Protect Your Business</h4>
                     <ul className="space-y-2 text-base text-gray-100">
-                      <li>• Workers' comp insurance is mandatory in most states</li>
+                      <li>• Workers&apos; comp insurance is mandatory in most states</li>
                       <li>• Proper classification (W2 vs 1099) to avoid penalties</li>
                       <li>• Written agreements and quality standards</li>
                       <li>• Background checks and references</li>
@@ -882,14 +882,14 @@ export default function PaintingBusinessGuide() {
               </div>
 
               <Card className="bg-gray-800/30 border-gray-700 p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">The Owner's Evolution</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">The Owner&apos;s Evolution</h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">$0-250k: Painter Who Owns a Business</h4>
-                      <p className="text-gray-100">You're doing the work, managing jobs, and handling sales. Working IN the business 80% of the time.</p>
+                      <p className="text-gray-100">You&apos;re doing the work, managing jobs, and handling sales. Working IN the business 80% of the time.</p>
                     </div>
                   </div>
                   
@@ -897,7 +897,7 @@ export default function PaintingBusinessGuide() {
                     <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">$250-500k: Manager of Painters</h4>
-                      <p className="text-gray-100">You're estimating, managing crews, and handling customer issues. Painting occasionally.</p>
+                      <p className="text-gray-100">You&apos;re estimating, managing crews, and handling customer issues. Painting occasionally.</p>
                     </div>
                   </div>
                   
@@ -905,7 +905,7 @@ export default function PaintingBusinessGuide() {
                     <div className="flex-shrink-0 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">$500k-1M: Business Owner</h4>
-                      <p className="text-gray-100">You're focused on strategy, marketing, and systems. Others handle daily operations.</p>
+                      <p className="text-gray-100">You&apos;re focused on strategy, marketing, and systems. Others handle daily operations.</p>
                     </div>
                   </div>
                   
@@ -913,7 +913,7 @@ export default function PaintingBusinessGuide() {
                     <div className="flex-shrink-0 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold">4</div>
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-white mb-2">$1M+: CEO</h4>
-                      <p className="text-gray-100">You're working ON the business: vision, culture, and growth. Business runs without you.</p>
+                      <p className="text-gray-100">You&apos;re working ON the business: vision, culture, and growth. Business runs without you.</p>
                     </div>
                   </div>
                 </div>
@@ -984,7 +984,7 @@ export default function PaintingBusinessGuide() {
                 </h2>
                 
                 <p className="text-xl text-gray-100 mb-8 text-center">
-                  The right tools can 10x your efficiency and professionalism. Here's what 
+                  The right tools can 10x your efficiency and professionalism. Here&apos;s what 
                   successful painting businesses use:
                 </p>
                 
@@ -1332,7 +1332,7 @@ export default function PaintingBusinessGuide() {
                         "name": "Do I need a license to start a painting business?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "Licensing requirements vary by location. Most states require a business license ($50-400) and contractor's license for jobs over $500-5,000. Some states require specific painting contractor licenses. Always check your state and local requirements. Insurance is essential regardless of licensing - general liability ($1M minimum) and workers' comp if you have employees."
+                          "text": "Licensing requirements vary by location. Most states require a business license ($50-400) and contractor&apos;s license for jobs over $500-5,000. Some states require specific painting contractor licenses. Always check your state and local requirements. Insurance is essential regardless of licensing - general liability ($1M minimum) and workers' comp if you have employees."
                         }
                       },
                       {
@@ -1345,7 +1345,7 @@ export default function PaintingBusinessGuide() {
                       },
                       {
                         "@type": "Question",
-                        "name": "What's the best business structure for a painting company?",
+                        "name": "What&apos;s the best business structure for a painting company?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "LLC (Limited Liability Company) is best for most painting businesses - provides personal asset protection, tax flexibility, and professional credibility. Sole proprietorship works for starting out but offers no liability protection. S-Corp becomes beneficial around $60,000+ net profit for tax savings. Consult a business attorney for your specific situation."
@@ -1434,10 +1434,10 @@ export default function PaintingBusinessGuide() {
                   </p>
                   <ul className="space-y-2 text-gray-100 ml-4">
                     <li>• Business license ($50-400)</li>
-                    <li>• Contractor's license (jobs over $500-5,000)</li>
+                    <li>• Contractor&apos;s license (jobs over $500-5,000)</li>
                     <li>• Some states require painting-specific licenses</li>
                     <li>• General liability insurance (always required)</li>
-                    <li>• Workers' comp (if you have employees)</li>
+                    <li>• Workers&apos; comp (if you have employees)</li>
                   </ul>
                   <p className="text-gray-200 text-base mt-3">
                     Check your state and local requirements before starting.
@@ -1468,7 +1468,7 @@ export default function PaintingBusinessGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <Building className="h-5 w-5 text-blue-400 mr-2" />
-                    What's the best business structure for a painting company?
+                    What&apos;s the best business structure for a painting company?
                   </h3>
                   <div className="space-y-3 text-gray-100">
                     <div><strong>LLC (Recommended):</strong> Personal asset protection + tax flexibility</div>
@@ -1543,7 +1543,7 @@ export default function PaintingBusinessGuide() {
                   <div className="space-y-2 text-gray-100">
                     <div><strong>General Liability:</strong> $1-2M minimum ($800-2,000/year)</div>
                     <div><strong>Commercial Auto:</strong> Per vehicle ($1,500-3,000/year)</div>
-                    <div><strong>Workers' Comp:</strong> If employees (3-8% of payroll)</div>
+                    <div><strong>Workers&apos; Comp:</strong> If employees (3-8% of payroll)</div>
                     <div><strong>Tools/Equipment:</strong> Theft/damage ($500-1,000/year)</div>
                     <div><strong>Umbrella Policy:</strong> Extra protection ($500-1,500/year)</div>
                   </div>

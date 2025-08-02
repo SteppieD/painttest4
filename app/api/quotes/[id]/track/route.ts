@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
-
 export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -14,7 +13,7 @@ export async function POST(
     }
 
     // Update tracking fields based on event type
-    const updates: any = {
+    const updates: unknown = {
       updated_at: new Date().toISOString()
     };
     

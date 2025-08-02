@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import {
@@ -415,7 +415,7 @@ export default function EnterprisePage() {
               Ready for Enterprise-Scale Quoting?
             </h2>
             <p className="text-xl text-gray-100 mb-8">
-              Let's discuss how PaintQuote Pro can transform your operations
+              Let&apos;s discuss how PaintQuote Pro can transform your operations
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

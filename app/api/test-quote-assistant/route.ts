@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Test basic quote assistant functionality
     const testContext = {
@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     });
 
     let response;
-    let error: any;
+    let error: Error | unknown;
     
     try {
       response = await quoteAssistant.processMessage(

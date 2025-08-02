@@ -28,7 +28,7 @@ interface ParsedQuoteData {
   }>
   
   // Charge Rates (from company settings)
-  chargeRates?: any
+  chargeRates?: Record<string, number | string>
   
   // Quote Settings
   settings: {
@@ -345,7 +345,14 @@ Return JSON in this exact structure:
   }
   
   // Convert parsed data to quote input format
-  toQuoteInput(data: ParsedQuoteData, chargeRates: any): any {
+  toQuoteInput(data: ParsedQuoteData, chargeRates: Record<string, unknown>): {
+    customer: ParsedQuoteData['customer'];
+    projectType: string;
+    description?: string;
+    surfaces: ParsedQuoteData['surfaces'];
+    chargeRates: Record<string, unknown>;
+    settings: ParsedQuoteData['settings'];
+  } {
     return {
       customer: data.customer,
       projectType: data.projectType,

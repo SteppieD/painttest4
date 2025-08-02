@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
-import { BreadcrumbSchema } from '@/components/seo/breadcrumb-schema'
+// import { BreadcrumbSchema } from '@/components/seo/breadcrumb-schema' // TODO: Check if this import is needed
 import { 
   Home,
   Calculator,
@@ -566,7 +566,7 @@ export default function InteriorPaintingQuotesGuide() {
                       },
                       {
                         "@type": "Question",
-                        "name": "What's included in an interior painting estimate?",
+                        "name": "What&apos;s included in an interior painting estimate?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "A complete interior painting estimate includes: wall preparation (patching, sanding, priming), paint costs (brand, type, sheen), labor hours, protection of floors/furniture, number of coats, trim/ceiling work if applicable, cleanup, and warranty terms."
@@ -585,12 +585,12 @@ export default function InteriorPaintingQuotesGuide() {
                         "name": "Should I paint ceilings when painting walls?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "Yes, painting ceilings when doing walls is recommended because: 1) It's more cost-effective when painters are already set up, 2) Ensures color coordination, 3) Fresh ceiling paint brightens the entire room, 4) Typically adds only 20-30% to room cost."
+                          "text": "Yes, painting ceilings when doing walls is recommended because: 1) It&apos;s more cost-effective when painters are already set up, 2) Ensures color coordination, 3) Fresh ceiling paint brightens the entire room, 4) Typically adds only 20-30% to room cost."
                         }
                       },
                       {
                         "@type": "Question",
-                        "name": "What's the best paint sheen for interior walls?",
+                        "name": "What&apos;s the best paint sheen for interior walls?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "Eggshell or satin finish is best for most interior walls - durable and washable with subtle sheen. Use flat/matte for ceilings and low-traffic areas, semi-gloss for trim and high-moisture areas, and high-gloss for cabinets and doors."
@@ -614,7 +614,7 @@ export default function InteriorPaintingQuotesGuide() {
                       },
                       {
                         "@type": "Question",
-                        "name": "What's the cost difference between DIY and professional interior painting?",
+                        "name": "What&apos;s the cost difference between DIY and professional interior painting?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "DIY painting saves 50-75% on labor but consider: professionals complete work 3-4x faster, achieve better finishes, include warranty, handle repairs properly, and have commercial-grade equipment. DIY materials alone cost $150-$400 per room."
@@ -651,11 +651,11 @@ export default function InteriorPaintingQuotesGuide() {
                   </div>
                 </Card>
 
-                {/* What's included */}
+                {/* What&apos;s included */}
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <FileText className="h-5 w-5 text-purple-400 mr-2" />
-                    What's included in an interior painting estimate?
+                    What&apos;s included in an interior painting estimate?
                   </h3>
                   <p className="text-gray-100 mb-3">
                     A complete interior painting estimate includes:
@@ -715,7 +715,7 @@ export default function InteriorPaintingQuotesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <Paintbrush className="h-5 w-5 text-purple-400 mr-2" />
-                    What's the best paint sheen for interior walls?
+                    What&apos;s the best paint sheen for interior walls?
                   </h3>
                   <div className="space-y-2 text-gray-100">
                     <div><strong>Flat/Matte:</strong> Ceilings, low-traffic areas</div>
@@ -771,7 +771,7 @@ export default function InteriorPaintingQuotesGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <TrendingUp className="h-5 w-5 text-amber-400 mr-2" />
-                    What's the cost difference between DIY and professional interior painting?
+                    What&apos;s the cost difference between DIY and professional interior painting?
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4 text-gray-100">
                     <div>

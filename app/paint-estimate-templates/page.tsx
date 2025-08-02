@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { FileText, Download, CheckCircle, Star, Clock, Users, Calculator, Zap, Building } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Free Paint Estimate Templates | Professional Painting Quote Forms 2025',
   description: 'Download free painting estimate templates for contractors. Professional quote forms for interior, exterior, commercial painting jobs. Excel, PDF, and Word formats.',

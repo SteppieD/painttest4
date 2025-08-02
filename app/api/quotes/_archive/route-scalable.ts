@@ -20,7 +20,7 @@ interface ChargeRates {
 }
 
 interface QuoteInputV2 {
-  surfaces: any[]
+  surfaces: unknown[]
   chargeRates: ChargeRates
 }
 
@@ -31,7 +31,7 @@ class QuoteCalculatorV2 {
     let materialsTotal = 0
     
     // Calculate cost for each surface
-    const calculatedSurfaces = input.surfaces.map((surface: any) => {
+    const calculatedSurfaces = input.surfaces.map((surface: unknown) => {
       let surfaceCost = 0
       let surfaceLabor = 0
       let surfaceMaterials = 0
@@ -58,7 +58,7 @@ class QuoteCalculatorV2 {
       }
       
       const rateKey = rateMap[surface.type] || surface.type
-      const rate = (input.chargeRates as any)[rateKey] || 0
+      const rate = (input.chargeRates as unknown)[rateKey] || 0
       
       // Calculate based on measurement type
       if (surface.area && surface.area > 0) {
@@ -126,7 +126,7 @@ class QuoteCalculatorV2 {
     }
   }
   
-  static formatOutput(calculation: any) {
+  static formatOutput(calculation: unknown) {
     return {
       formattedTotal: `$${calculation.total.toFixed(2)}`,
       formattedLabor: `$${calculation.labor.toFixed(2)}`,

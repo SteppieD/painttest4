@@ -121,7 +121,7 @@ export default function OrlandoPaintingSoftware() {
                     Painting Quote Software for Orlando Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 220+ Central Florida painting contractors who've transformed their business 
+                    Join 220+ Central Florida painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function OrlandoPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Orlando's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Orlando&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Central Florida painting contractors
                 </p>
@@ -222,9 +222,9 @@ export default function OrlandoPaintingSoftware() {
                   <Droplets className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Humidity & Mold Calculations</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in pricing for Orlando's 75% humidity. Automatically includes 
+                    Built-in pricing for Orlando&apos;s 75% humidity. Automatically includes 
                     anti-microbial treatments, moisture barriers, and extended drying time 
-                    calculations for Florida's tropical climate.
+                    calculations for Florida&apos;s tropical climate.
                   </p>
                 </div>
 
@@ -232,7 +232,7 @@ export default function OrlandoPaintingSoftware() {
                   <Sun className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Weather Window Scheduling</h3>
                   <p className="mt-2 text-gray-200">
-                    Smart scheduling around Orlando's daily afternoon storms. Includes 
+                    Smart scheduling around Orlando&apos;s daily afternoon storms. Includes 
                     quick-dry product options and rain delay calculations to keep 
                     projects on track May through October.
                   </p>
@@ -253,7 +253,7 @@ export default function OrlandoPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Lake Nona to Windermere. Works offline and 
-                    syncs when connected. Perfect for Orlando's spread-out service 
+                    syncs when connected. Perfect for Orlando&apos;s spread-out service 
                     areas from Apopka to Kissimmee.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function OrlandoPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Orlando's competitive market with professional quotes 
+                    Stand out in Orlando&apos;s competitive market with professional quotes 
                     that build trust. Include your Florida license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function OrlandoPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "Florida weather used to kill my productivity. Now I quote between 
+                    &quot;Florida weather used to kill my productivity. Now I quote between 
                     rain storms and close deals before competitors even show up. Added 
                     $40,000 in revenue last quarter from faster quotes alone."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function OrlandoPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The HOA templates save me hours. I can quote entire communities with 
+                    &quot;The HOA templates save me hours. I can quote entire communities with 
                     accurate bulk pricing instantly. Won 5 HOA contracts in Celebration 
                     this year - that&apos;s $220,000 in new business."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function OrlandoPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$106,750</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 2,220x return on your PaintQuote Pro investment
+                      That&apos;s 2,220x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function OrlandoPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Orlando Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Orlando's painting market is unique. With over 700 painting contractors 
+                    Orlando&apos;s painting market is unique. With over 700 painting contractors 
                     serving Central Florida, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Orlando where 
-                    humidity and weather matter. Our AI understands Florida's climate challenges, 
+                    humidity and weather matter. Our AI understands Florida&apos;s climate challenges, 
                     from 75% average humidity that requires mold-resistant products to daily 
                     afternoon thunderstorms that can delay projects. The software automatically 
                     factors these into your quotes.

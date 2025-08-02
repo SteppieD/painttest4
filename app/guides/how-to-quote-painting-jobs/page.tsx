@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -126,7 +126,7 @@ export default function HowToQuotePaintingJobsGuide() {
           },
           {
             "@type": "Question",
-            "name": "What's the average cost to paint a house interior?",
+            "name": "What&apos;s the average cost to paint a house interior?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Interior painting typically costs $2-6 per square foot, or $2,000-6,000 for a 2,000 sq ft home. Factors include paint quality, wall condition, and regional labor rates."
@@ -348,7 +348,7 @@ export default function HowToQuotePaintingJobsGuide() {
               
               <div className="prose prose-invert max-w-none">
                 <p className="text-lg text-gray-100 mb-6">
-                  Accurate measurements are the foundation of profitable painting quotes. Here's how to measure 
+                  Accurate measurements are the foundation of profitable painting quotes. Here&apos;s how to measure 
                   different surfaces correctly:
                 </p>
 
@@ -519,7 +519,7 @@ export default function HowToQuotePaintingJobsGuide() {
               
               <div className="prose prose-invert max-w-none">
                 <p className="text-lg text-gray-100 mb-6">
-                  Accurate material estimation prevents costly overruns and ensures profitability. Here's how 
+                  Accurate material estimation prevents costly overruns and ensures profitability. Here&apos;s how 
                   to calculate exactly what you need:
                 </p>
 
@@ -575,7 +575,7 @@ export default function HowToQuotePaintingJobsGuide() {
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-green-400" />
-                        Painter's tape (1 roll per room)
+                        Painter&apos;s tape (1 roll per room)
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-green-400" />
@@ -601,7 +601,7 @@ export default function HowToQuotePaintingJobsGuide() {
               
               <div className="prose prose-invert max-w-none">
                 <p className="text-lg text-gray-100 mb-6">
-                  Labor typically accounts for 70-85% of a painting project's cost. Accurate labor estimation 
+                  Labor typically accounts for 70-85% of a painting project&apos;s cost. Accurate labor estimation 
                   is critical for profitability.
                 </p>
 
@@ -923,7 +923,7 @@ export default function HowToQuotePaintingJobsGuide() {
               
               <div className="prose prose-invert max-w-none">
                 <p className="text-lg text-gray-100 mb-6">
-                  Creating accurate quotes is just the first step. Here's how top contractors convert more 
+                  Creating accurate quotes is just the first step. Here&apos;s how top contractors convert more 
                   quotes into paying customers:
                 </p>
 
@@ -1151,7 +1151,7 @@ export default function HowToQuotePaintingJobsGuide() {
                       },
                       {
                         "@type": "Question",
-                        "name": "What's the average profit margin for painting contractors?",
+                        "name": "What&apos;s the average profit margin for painting contractors?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "Successful painting contractors typically maintain profit margins between 20-50%. Residential repaint projects average 35-50% margins, while new construction and commercial projects often range from 20-35% due to increased competition and scale."
@@ -1162,7 +1162,7 @@ export default function HowToQuotePaintingJobsGuide() {
                         "name": "How much paint do I need for a 2000 square foot house?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "For a 2,000 square foot house interior, you'll typically need 10-15 gallons of paint (assuming 8-foot ceilings and two coats). This includes 8-10 gallons for walls and 2-5 gallons for ceilings, trim, and doors. Always add 10-15% extra for touch-ups."
+                          "text": "For a 2,000 square foot house interior, you&apos;ll typically need 10-15 gallons of paint (assuming 8-foot ceilings and two coats). This includes 8-10 gallons for walls and 2-5 gallons for ceilings, trim, and doors. Always add 10-15% extra for touch-ups."
                         }
                       },
                       {
@@ -1263,7 +1263,7 @@ export default function HowToQuotePaintingJobsGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
                     <TrendingUp className="h-5 w-5 text-green-400 mr-2" />
-                    What's the average profit margin for painting contractors?
+                    What&apos;s the average profit margin for painting contractors?
                   </h3>
                   <p className="text-gray-100">
                     Successful painting contractors maintain these profit margins:

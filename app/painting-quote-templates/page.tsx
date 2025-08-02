@@ -284,7 +284,7 @@ export default function PaintingQuoteTemplates() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
-                  Painting Quotes vs. Estimates: What's the Difference?
+                  Painting Quotes vs. Estimates: What&apos;s the Difference?
                 </h2>
                 
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -413,7 +413,7 @@ export default function PaintingQuoteTemplates() {
                       <p className="mt-2 text-gray-200">
                         Send the quote promptly (within 24-48 hours). Include a personalized cover message. 
                         Highlight your unique value: experience, warranty, insurance, and quality. Follow 
-                        up within 3-5 days if you haven't heard back.
+                        up within 3-5 days if you haven&apos;t heard back.
                       </p>
                     </div>
                   </div>

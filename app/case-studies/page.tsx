@@ -99,7 +99,7 @@ export default function CaseStudies() {
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
-                    "PaintQuote Pro transformed our business. We went from spending 2-3 hours per quote 
+                    &quot;PaintQuote Pro transformed our business. We went from spending 2-3 hours per quote 
                     to just 15 minutes. The AI understands painting terminology perfectly and catches 
                     details we used to miss."
                   </p>
@@ -134,7 +134,7 @@ export default function CaseStudies() {
 
                 <h3 className="mt-6 text-xl font-semibold">The Solution</h3>
                 <p className="mt-4 text-gray-200">
-                  They implemented PaintQuote Pro's AI chat system, allowing them to generate quotes 
+                  They implemented PaintQuote Pro&apos;s AI chat system, allowing them to generate quotes 
                   during the initial site visit. The charge rate calculator ensured consistent, 
                   profitable pricing on every job.
                 </p>
@@ -168,7 +168,7 @@ export default function CaseStudies() {
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
-                    "The charge rate system is brilliant. No more complex calculations trying to 
+                    &quot;The charge rate system is brilliant. No more complex calculations trying to 
                     separate materials and labor. We set our rates once and the system handles 
                     everything. Our profit margins improved by 15% immediately."
                   </p>
@@ -204,7 +204,7 @@ export default function CaseStudies() {
 
                 <h3 className="mt-6 text-xl font-semibold">The Solution</h3>
                 <p className="mt-4 text-gray-200">
-                  They standardized their pricing using PaintQuote Pro's charge rate system. All 
+                  They standardized their pricing using PaintQuote Pro&apos;s charge rate system. All 
                   estimators now use the same rates, ensuring consistency. The analytics dashboard 
                   helps them track which types of jobs are most profitable.
                 </p>
@@ -238,7 +238,7 @@ export default function CaseStudies() {
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
-                    "We've increased our quote acceptance rate by 40% since switching to PaintQuote Pro. 
+                    &quot;We&apos;ve increased our quote acceptance rate by 40% since switching to PaintQuote Pro. 
                     Professional quotes make all the difference. Clients trust us more when they see 
                     detailed, accurate proposals delivered quickly."
                   </p>
@@ -268,7 +268,7 @@ export default function CaseStudies() {
                 <h3 className="mt-8 text-xl font-semibold">The Challenge</h3>
                 <p className="mt-4 text-gray-200">
                   As a larger operation focusing on commercial projects, Wilson & Sons needed to 
-                  process high volumes of quote requests quickly. Their old system couldn't scale, 
+                  process high volumes of quote requests quickly. Their old system couldn&apos;t scale, 
                   causing them to miss opportunities.
                 </p>
 
@@ -306,7 +306,7 @@ export default function CaseStudies() {
               <div className="rounded-lg border bg-background p-6">
                 <h3 className="text-xl font-semibold">Solo Contractor</h3>
                 <p className="mt-2 font-medium text-gray-200">
-                  Tom's Quality Painting • Chicago, IL
+                  Tom&apos;s Quality Painting • Chicago, IL
                 </p>
                 <div className="mt-4">
                   <div className="flex">
@@ -315,7 +315,7 @@ export default function CaseStudies() {
                     ))}
                   </div>
                   <p className="mt-4 text-base italic">
-                    "As a one-man operation, time is everything. PaintQuote Pro lets me quote jobs 
+                    &quot;As a one-man operation, time is everything. PaintQuote Pro lets me quote jobs 
                     on-site and close deals immediately. My income doubled in the first year."
                   </p>
                   <p className="mt-2 text-base font-semibold">— Tom Martinez</p>
@@ -345,7 +345,7 @@ export default function CaseStudies() {
                     ))}
                   </div>
                   <p className="mt-4 text-base italic">
-                    "We were drowning in paperwork. Now our crew leader can create quotes in the 
+                    &quot;We were drowning in paperwork. Now our crew leader can create quotes in the 
                     field while I focus on growing the business. Game changer!"
                   </p>
                   <p className="mt-2 text-base font-semibold">— Lisa Park</p>
@@ -375,7 +375,7 @@ export default function CaseStudies() {
                     ))}
                   </div>
                   <p className="mt-4 text-base italic">
-                    "PaintQuote Pro scaled with us perfectly. From 5 to 15 employees, the system 
+                    &quot;PaintQuote Pro scaled with us perfectly. From 5 to 15 employees, the system 
                     handled our growth and helped maintain quality standards."
                   </p>
                   <p className="mt-2 text-base font-semibold">— Robert Lee</p>

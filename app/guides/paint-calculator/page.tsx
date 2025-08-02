@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -153,7 +153,7 @@ const calculatorTypes = [
 ]
 
 // Paint coverage rates
-const coverageRates = {
+const _coverageRates = {
   smooth: { primer: 300, paint: 400 },
   textured: { primer: 250, paint: 300 },
   rough: { primer: 200, paint: 250 },
@@ -1019,7 +1019,7 @@ export default function PaintCalculatorGuide() {
                   Need More Advanced Calculations?
                 </h2>
                 <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                  Our free calculators are great for basic estimates, but PaintQuote Pro's 
+                  Our free calculators are great for basic estimates, but PaintQuote Pro&apos;s 
                   AI-powered software handles complex projects with multiple surfaces, custom 
                   pricing, and instant professional quotes.
                 </p>
@@ -1091,7 +1091,7 @@ export default function PaintCalculatorGuide() {
                     <li>• Order all paint from same batch</li>
                     <li>• Keep 1 gallon for touch-ups</li>
                     <li>• Factor in primer needs</li>
-                    <li>• Don't forget specialty paints</li>
+                    <li>• Don&apos;t forget specialty paints</li>
                     <li>• Account for multiple coats</li>
                   </ul>
                 </Card>

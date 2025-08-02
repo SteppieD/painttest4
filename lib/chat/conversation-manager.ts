@@ -5,13 +5,13 @@ export interface ConversationStep {
   type: 'text' | 'number' | 'select' | 'multiselect';
   options?: string[];
   required: boolean;
-  validation?: (value: any) => boolean;
-  next?: (value: any) => string | null;
+  validation?: (value: unknown) => boolean;
+  next?: (value: unknown) => string | null;
 }
 
 export interface ConversationState {
   currentStep: string;
-  collectedData: Record<string, any>;
+  collectedData: Record<string, unknown>;
   messages: Array<{
     role: 'user' | 'assistant';
     content: string;
@@ -151,7 +151,7 @@ export class ConversationManager {
   processUserInput(input: string): { 
     response: string; 
     isComplete: boolean;
-    collectedData: Record<string, any>;
+    collectedData: Record<string, unknown>;
   } {
     const currentStep = this.steps.get(this.state.currentStep);
     
@@ -171,7 +171,7 @@ export class ConversationManager {
     });
 
     // Process input based on type
-    let processedValue: any = input;
+    let processedValue: unknown = input;
     
     if (currentStep.type === 'number') {
       processedValue = parseFloat(input);
@@ -271,7 +271,7 @@ export class ConversationManager {
     return this.state.isComplete;
   }
 
-  getState(): any {
+  getState(): unknown {
     return {
       currentStep: this.state.currentStep,
       isComplete: this.state.isComplete,
@@ -289,7 +289,7 @@ export class ConversationManager {
   }
 
   // Helper to parse contact info
-  parseContactInfo(data: Record<string, any>): { email?: string; phone?: string } {
+  parseContactInfo(data: Record<string, unknown>): { email?: string; phone?: string } {
     const contact = data.contactInfo || '';
     const emailMatch = contact.match(/[\w.-]+@[\w.-]+\.\w+/);
     const phoneMatch = contact.match(/[\d\s()+-]+/);
@@ -309,7 +309,7 @@ export class ConversationManager {
     wallSqft?: number;
     ceilingSqft?: number;
   } {
-    const measurements: any = {};
+    const measurements: unknown = {};
     
     // Look for linear feet
     const linearMatch = input.match(/(\d+)\s*(?:linear\s*)?(?:feet|ft)/i);
@@ -351,7 +351,7 @@ export class ConversationManager {
 
   // Quick quote mode parser - handles comprehensive messages
   parseQuickQuote(input: string): Record<string, any> | null {
-    const data: any = {
+    const data: unknown = {
       measurements: {},
       surfaces: [],
       paintProducts: {}

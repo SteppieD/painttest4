@@ -187,7 +187,7 @@ export class SubscriptionService {
     eventType: string, 
     fromTier: string, 
     toTier: string,
-    metadata?: any
+    metadata?: Record<string, unknown>
   ): Promise<void> {
     // In a real implementation, this would write to the subscription_events table
     console.log('Subscription event:', {

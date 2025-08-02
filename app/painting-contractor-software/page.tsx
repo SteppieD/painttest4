@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
-import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator'
-import { ROICalculator } from '@/components/calculators/roi-calculator'
+// import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate-calculator' // TODO: Check if this import is needed
+// import { ROICalculator } from '@/components/calculators/roi-calculator' // TODO: Check if this import is needed
 import { 
   Clock, 
   TrendingUp, 
@@ -591,13 +591,13 @@ export default function PaintingContractorSoftwarePage() {
                     ))}
                   </div>
                   <p className="text-gray-100 mb-4">
-                    "The AI feature is incredible. I describe the job and it creates a perfect quote. My close rate went from 30% to 48%!"
+                    {"\"The AI feature is incredible. I describe the job and it creates a perfect quote. My close rate went from 30% to 48%!\""
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-500"></div>
                     <div>
                       <p className="font-semibold text-white">Sarah Chen</p>
-                      <p className="text-base text-gray-200">Chen's Custom Painting</p>
+                      <p className="text-base text-gray-200">Chen&apos;s Custom Painting</p>
                     </div>
                   </div>
                 </CardContent>
@@ -611,7 +611,7 @@ export default function PaintingContractorSoftwarePage() {
                     ))}
                   </div>
                   <p className="text-gray-100 mb-4">
-                    "Finally, software built for painters! Handles everything from cabinets to commercial jobs. Worth every penny."
+                    {"\"Finally, software built for painters! Handles everything from cabinets to commercial jobs. Worth every penny.\""}
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
@@ -727,7 +727,7 @@ export default function PaintingContractorSoftwarePage() {
                     What makes this better than other contractor software?
                   </h3>
                   <p className="text-gray-100">
-                    We're built specifically for painters. While generic contractor software tries to serve everyone, we focus on painting-specific features like surface calculators, paint quantity estimates, and coating specifications.
+                    We&apos;re built specifically for painters. While generic contractor software tries to serve everyone, we focus on painting-specific features like surface calculators, paint quantity estimates, and coating specifications.
                   </p>
                 </div>
               </div>

@@ -222,7 +222,7 @@ export default function PaintingQuoteGenerator() {
                         <div className="space-y-4">
                           <div className="text-base font-medium text-gray-200">Project Description:</div>
                           <div className="rounded-lg bg-background p-4 border text-base">
-                            "I need to paint the interior of a 12x14 living room with 9-foot ceilings. 
+                            &quot;I need to paint the interior of a 12x14 living room with 9-foot ceilings. 
                             There are 2 windows and 1 door. The walls are currently white and in good 
                             condition. I want to use premium paint in a light gray color. Include primer 
                             and all prep work."

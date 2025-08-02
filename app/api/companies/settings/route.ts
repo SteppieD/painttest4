@@ -52,7 +52,7 @@ export async function PUT(request: NextRequest) {
     const updates = await request.json();
     
     // Prepare update data
-    const updateData: any = {};
+    const updateData: unknown = {};
     
     if (updates.company_name !== undefined) {
       updateData.company_name = updates.company_name;

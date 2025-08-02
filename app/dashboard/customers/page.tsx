@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
 import { Phone, Mail, MapPin, FileText, Users, DollarSign, TrendingUp } from 'lucide-react'
-import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
-
+// import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
+ // TODO: Check if this import is needed
 interface Customer {
   id: number
   name: string
@@ -37,7 +37,7 @@ export default function CustomersPage() {
     fetchCustomers(company)
   }, [router])
 
-  const fetchCustomers = async (company: any) => {
+  const fetchCustomers = async (company: unknown) => {
     try {
       const response = await fetch('/api/customers', {
         headers: {

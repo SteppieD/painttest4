@@ -75,7 +75,14 @@ export function createAdminToken(user: AdminUser): string {
 // Verify admin token
 export function verifyAdminToken(token: string): AdminUser | null {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    interface JWTPayload {
+      id: string;
+      email: string;
+      role: string;
+      type: string;
+    }
+
+    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
     
     if (decoded.type === 'admin') {
       return {

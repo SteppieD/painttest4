@@ -121,7 +121,7 @@ export default function CharlottePaintingSoftware() {
                     Painting Quote Software for Charlotte Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 220+ Queen City painting contractors who've transformed their business 
+                    Join 220+ Queen City painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function CharlottePaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Charlotte's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Charlotte&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Queen City painting contractors
                 </p>
@@ -222,9 +222,9 @@ export default function CharlottePaintingSoftware() {
                   <Cloud className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Humidity & Mildew Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in calculations for Charlotte's 70% humidity. Automatically includes 
+                    Built-in calculations for Charlotte&apos;s 70% humidity. Automatically includes 
                     mildew-resistant primers, moisture barriers, and breathable topcoats 
-                    to handle Carolina's humid climate.
+                    to handle Carolina&apos;s humid climate.
                   </p>
                 </div>
 
@@ -232,7 +232,7 @@ export default function CharlottePaintingSoftware() {
                   <TreePine className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Pine Pollen Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Pre-built quotes for Charlotte's yellow pollen season. Includes 
+                    Pre-built quotes for Charlotte&apos;s yellow pollen season. Includes 
                     pollen-resistant sealers, easy-clean surfaces, and strategic scheduling 
                     recommendations for optimal results.
                   </p>
@@ -242,7 +242,7 @@ export default function CharlottePaintingSoftware() {
                   <Building className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Banking Center Specs</h3>
                   <p className="mt-2 text-gray-200">
-                    Templates for Charlotte's corporate headquarters. Includes after-hours 
+                    Templates for Charlotte&apos;s corporate headquarters. Includes after-hours 
                     pricing, low-VOC products, security compliance, and minimal disruption 
                     strategies for busy offices.
                   </p>
@@ -253,7 +253,7 @@ export default function CharlottePaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Myers Park to Ballantyne. Works offline and syncs 
-                    when connected. Perfect for Charlotte's sprawling metro area from 
+                    when connected. Perfect for Charlotte&apos;s sprawling metro area from 
                     Lake Norman to Fort Mill.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function CharlottePaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Charlotte's competitive market with professional quotes 
+                    Stand out in Charlotte&apos;s competitive market with professional quotes 
                     that build trust. Include your NC license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function CharlottePaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "Charlotte's banking sector demands speed and professionalism. Now I 
+                    &quot;Charlotte&apos;s banking sector demands speed and professionalism. Now I 
                     quote Uptown offices in 15 minutes with all compliance specs included. 
                     Closed $85,000 in corporate contracts just this quarter."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function CharlottePaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The humidity templates are perfect for Charlotte. Every quote includes 
+                    &quot;The humidity templates are perfect for Charlotte. Every quote includes 
                     proper mildew protection automatically. Won 5 Lake Norman estates this 
                     summer - that&apos;s $210,000 in guaranteed work."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function CharlottePaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$180,810</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 3,767x return on your PaintQuote Pro investment
+                      That&apos;s 3,767x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function CharlottePaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Charlotte Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Charlotte's painting market is unique. With over 700 painting contractors 
+                    Charlotte&apos;s painting market is unique. With over 700 painting contractors 
                     serving the Queen City, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Charlotte where 
-                    humidity and efficiency matter. Our AI understands Carolina's climate challenges, 
+                    humidity and efficiency matter. Our AI understands Carolina&apos;s climate challenges, 
                     from 70% humidity that breeds mildew to the infamous yellow pollen season 
                     that can impact exterior paint jobs. The software automatically factors 
                     these into your quotes.

@@ -30,7 +30,7 @@ export default function ExteriorPaintingCalculatorClient() {
     }])
   }
 
-  const updateSurface = (id: number, field: string, value: any) => {
+  const updateSurface = (id: number, field: string, value: unknown) => {
     setSurfaces(surfaces.map(surface => 
       surface.id === id ? { ...surface, [field]: value } : surface
     ))
@@ -52,7 +52,7 @@ export default function ExteriorPaintingCalculatorClient() {
     }
   }
 
-  const calculateSurfaceTotal = (surface: any) => {
+  const calculateSurfaceTotal = (surface: unknown) => {
     const conditionMultiplier = getConditionMultiplier(surface.condition)
     
     switch (surface.type) {

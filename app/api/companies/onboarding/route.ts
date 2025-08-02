@@ -8,8 +8,8 @@ export const dynamic = 'force-dynamic';
 // POST - Complete onboarding
 export async function POST(request: NextRequest) {
   const logger = new DebugLogger('ONBOARDING_API');
-  let updateData: any = {};
-  let company: any = null;
+  let updateData: unknown = {};
+  let company: unknown = null;
   
   try {
     logger.checkpoint('Starting onboarding process');

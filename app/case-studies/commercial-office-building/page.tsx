@@ -374,7 +374,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                 {/* Client Testimonial */}
                 <div className="bg-primary/5 rounded-lg p-8">
                   <blockquote className="text-lg italic mb-4">
-                    "PaintQuote Pro delivered exactly what they promised - a complete transformation 
+                    &quot;PaintQuote Pro delivered exactly what they promised - a complete transformation 
                     of our 15-story headquarters without a single disruption to our operations. 
                     Their night crews were professional, quiet, and left each floor immaculate 
                     for our morning arrivals. The low-VOC products meant no complaints about odors, 
@@ -414,7 +414,7 @@ export default function CommercialOfficeBuildingCaseStudy() {
                   Need Zero-Disruption Commercial Painting?
                 </h2>
                 <p className="text-xl mb-8 opacity-100">
-                  Let's discuss how we can transform your commercial space without impacting 
+                  Let&apos;s discuss how we can transform your commercial space without impacting 
                   your business operations.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

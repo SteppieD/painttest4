@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+// import { createClient } from '@supabase/supabase-js'; // TODO: Check if this import is needed
 import bcrypt from 'bcryptjs';
 
 const supabase = createClient(

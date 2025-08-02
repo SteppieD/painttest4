@@ -121,7 +121,7 @@ export default function SanDiegoPaintingSoftware() {
                     Painting Quote Software for San Diego Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 280+ San Diego County painting contractors who've transformed their business 
+                    Join 280+ San Diego County painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function SanDiegoPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for San Diego's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for San Diego&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for San Diego County painting contractors
                 </p>
@@ -253,7 +253,7 @@ export default function SanDiegoPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Rancho Santa Fe to Chula Vista. Works offline 
-                    and syncs when connected. Perfect for San Diego's sprawling county 
+                    and syncs when connected. Perfect for San Diego&apos;s sprawling county 
                     from coastal to inland communities.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function SanDiegoPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in San Diego's competitive market with professional quotes 
+                    Stand out in San Diego&apos;s competitive market with professional quotes 
                     that build trust. Include your California license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function SanDiegoPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "Living near the coast, my clients expect fast, accurate quotes. Now I 
+                    &quot;Living near the coast, my clients expect fast, accurate quotes. Now I 
                     quote beachfront properties in 15 minutes with all the marine-grade 
                     specifications included. Revenue up $50,000 this year alone."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function SanDiegoPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The historic templates are amazing for Gaslamp Quarter projects. I can 
+                    &quot;The historic templates are amazing for Gaslamp Quarter projects. I can 
                     include all preservation requirements instantly. Won 4 major Victorian 
                     restorations this year - that&apos;s $280,000 in new business."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function SanDiegoPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$191,250</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 3,980x return on your PaintQuote Pro investment
+                      That&apos;s 3,980x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function SanDiegoPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why San Diego Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    San Diego's painting market is unique. With over 800 painting contractors 
+                    San Diego&apos;s painting market is unique. With over 800 painting contractors 
                     serving San Diego County, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like San Diego where 
-                    coastal conditions matter. Our AI understands California's diverse climate 
+                    coastal conditions matter. Our AI understands California&apos;s diverse climate 
                     challenges, from salt air corrosion that affects beachfront properties to 
                     marine layer moisture that can impact paint adhesion. The software 
                     automatically factors these into your quotes.
@@ -484,7 +484,7 @@ export default function SanDiegoPaintingSoftware() {
                     Whether you&apos;re quoting an oceanfront estate in La Jolla, a historic 
                     Victorian in the Gaslamp Quarter, or a sprawling ranch in Rancho Santa Fe, 
                     PaintQuote Pro gives you the tools to create accurate, professional quotes 
-                    in minutes. Join the 280+ San Diego area contractors who've already 
+                    in minutes. Join the 280+ San Diego area contractors who&apos;ve already 
                     transformed their business with our software.
                   </p>
                 </div>

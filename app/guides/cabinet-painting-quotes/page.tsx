@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -67,7 +67,7 @@ const structuredData = {
         },
         {
           "@type": "Question",
-          "name": "What's included in cabinet painting?",
+          "name": "What&apos;s included in cabinet painting?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Professional cabinet painting includes thorough cleaning and degreasing, sanding all surfaces, priming with bonding primer, applying 2-3 finish coats, and reinstalling hardware. Quality jobs also include filling grain on oak cabinets and fixing minor damage."
@@ -561,7 +561,7 @@ export default function CabinetPaintingQuotesGuide() {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="bg-green-500/10 border-green-500/30 p-6">
-                  <h3 className="text-xl font-semibold text-green-400 mb-4">Do's</h3>
+                  <h3 className="text-xl font-semibold text-green-400 mb-4">Do&apos;s</h3>
                   <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
@@ -587,7 +587,7 @@ export default function CabinetPaintingQuotesGuide() {
                 </Card>
 
                 <Card className="bg-red-500/10 border-red-500/30 p-6">
-                  <h3 className="text-xl font-semibold text-red-400 mb-4">Don'ts</h3>
+                  <h3 className="text-xl font-semibold text-red-400 mb-4">Don&apos;ts</h3>
                   <ul className="space-y-3 text-gray-100">
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
@@ -595,7 +595,7 @@ export default function CabinetPaintingQuotesGuide() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
-                      <span>Don't promise unrealistic timelines</span>
+                      <span>Don&apos;t promise unrealistic timelines</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
@@ -603,7 +603,7 @@ export default function CabinetPaintingQuotesGuide() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>
-                      <span>Don't use wall paint on cabinets</span>
+                      <span>Don&apos;t use wall paint on cabinets</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-400 mt-1">✗</span>

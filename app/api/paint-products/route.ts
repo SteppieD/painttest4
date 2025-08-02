@@ -40,11 +40,11 @@ export async function GET(request: NextRequest) {
     // Get paint products for the company using Supabase-compatible method
     let products = [];
     try {
-      if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
-        const allProducts = await (db as any).getPaintProductsByCompanyId(auth.company!.id);
+      if (typeof (db as unknown).getPaintProductsByCompanyId === 'function') {
+        const allProducts = await (db as unknown).getPaintProductsByCompanyId(auth.company!.id);
         
         // Filter based on query params
-        products = allProducts.filter((p: any) => {
+        products = allProducts.filter((p: unknown) => {
           if (useCase && p.use_case !== useCase) return false;
           if (isActive !== null && p.is_active !== (isActive === 'true')) return false;
           return true;
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    const user = await (db as unknown).getUserByCompanyName?.(company.company_name);
     if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
@@ -123,8 +123,8 @@ export async function POST(request: NextRequest) {
     };
 
     let product;
-    if (typeof (db as any).createPaintProduct === 'function') {
-      product = await (db as any).createPaintProduct(productData);
+    if (typeof (db as unknown).createPaintProduct === 'function') {
+      product = await (db as unknown).createPaintProduct(productData);
     } else {
       return NextResponse.json(
         { error: 'Paint product creation not supported with current adapter' },
@@ -172,7 +172,7 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    const user = await (db as unknown).getUserByCompanyName?.(company.company_name);
     if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
@@ -187,9 +187,9 @@ export async function PUT(request: NextRequest) {
     };
 
     let product;
-    if (typeof (db as any).updatePaintProduct === 'function') {
+    if (typeof (db as unknown).updatePaintProduct === 'function') {
       try {
-        product = await (db as any).updatePaintProduct(id, updateData);
+        product = await (db as unknown).updatePaintProduct(id, updateData);
       } catch (error) {
         return NextResponse.json(
           { error: 'Product not found or unauthorized' },
@@ -244,7 +244,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    const user = await (db as unknown).getUserByCompanyName?.(company.company_name);
     if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
@@ -253,9 +253,9 @@ export async function DELETE(request: NextRequest) {
     }
 
     // Delete the product using Supabase adapter method
-    if (typeof (db as any).deletePaintProduct === 'function') {
+    if (typeof (db as unknown).deletePaintProduct === 'function') {
       try {
-        await (db as any).deletePaintProduct(id, user.id);
+        await (db as unknown).deletePaintProduct(id, user.id);
       } catch (error) {
         return NextResponse.json(
           { error: 'Product not found or unauthorized' },

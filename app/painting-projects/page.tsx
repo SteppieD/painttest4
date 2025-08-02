@@ -271,7 +271,7 @@ export default function PaintingProjectsPage() {
                     <h3 className="text-xl font-semibold mb-3">Client-Centric Approach</h3>
                     <p className="text-gray-200">
                       From luxury homeowners to Fortune 500 facilities managers, we adapt 
-                      our process to exceed every client's unique needs.
+                      our process to exceed every client&apos;s unique needs.
                     </p>
                   </div>
                   <div className="text-center">

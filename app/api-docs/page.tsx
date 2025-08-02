@@ -169,7 +169,7 @@ export default function ApiDocsPage() {
             </h1>
             
             <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
-              Build powerful integrations with PaintQuote Pro's RESTful API. 
+              Build powerful integrations with PaintQuote Pro&apos;s RESTful API. 
               Create quotes, manage customers, and automate your workflow.
             </p>
 

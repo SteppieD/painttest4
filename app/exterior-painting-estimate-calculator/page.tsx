@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { Calculator, Home, CloudRain, Sun, Shield, CheckCircle, DollarSign, Zap, AlertTriangle } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Exterior Painting Estimate Calculator | Free House Exterior Cost Calculator',
   description: 'Calculate exterior painting costs instantly. Get accurate estimates for siding, trim, doors, and windows. Professional exterior house painting cost calculator.',
@@ -841,7 +841,7 @@ export default function ExteriorPaintingEstimateCalculator() {
           <section className="bg-primary py-16 text-primary-foreground">
             <div className="container text-center">
               <h2 className="text-3xl font-bold mb-4">
-                Transform Your Home's Exterior
+                Transform Your Home&apos;s Exterior
               </h2>
               <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Protect and beautify your home with professional exterior painting. Get accurate estimates, 

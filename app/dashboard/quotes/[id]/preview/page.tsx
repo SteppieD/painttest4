@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Input } from '@/components/ui/input' // TODO: Check if this import is needed
+// import { Label } from '@/components/ui/label' // TODO: Check if this import is needed
 import { ArrowLeft, Save, Send, Mail, Copy, Edit3, Check, X, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
-import { toast } from '@/components/ui/use-toast'
-
+// import { toast } from '@/components/ui/use-toast'
+ // TODO: Check if this import is needed
 interface Quote {
   id: number
   quote_id: string
@@ -172,7 +172,7 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
     }
   }
 
-  const formatEmailBody = (quote: Quote) => {
+  const formatEmailBody = (_quote: Quote) => {
     const publicUrl = `${window.location.origin}/quote/${params.id}`
     return `Dear ${quote.customer_name},
 

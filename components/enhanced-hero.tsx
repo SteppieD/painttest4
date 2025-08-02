@@ -189,8 +189,7 @@ export function EnhancedHero() {
                 </div>
                 
                 <blockquote className="text-lg text-gray-100 leading-relaxed italic">
-                  "{testimonials[currentTestimonial].quote}"
-                </blockquote>
+                  {"\""}{testimonials[currentTestimonial].quote}{"\""}                </blockquote>
                 
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-500/10 to-green-500/10 rounded-xl border border-emerald-500/20">
                   <span className="text-base text-gray-100">Revenue Increase</span>

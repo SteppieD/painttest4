@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { openRouterClient } from '@/lib/ai/openrouter-client';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Check if API key exists
     const hasApiKey = !!process.env.OPENROUTER_API_KEY;
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     ];
     
     let workingModel = null;
-    const testResults: any = {};
+    const testResults: unknown = {};
     
     for (const model of modelTests) {
       try {
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
       models: {
         available: availableModels.slice(0, 20), // First 20 models
         error: modelsError,
-        anthropicModels: availableModels.filter((m: any) => 
+        anthropicModels: availableModels.filter((m: unknown) => 
           m.id && m.id.toLowerCase().includes('claude')
         )
       },

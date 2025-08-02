@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -67,7 +67,7 @@ const structuredData = {
         },
         {
           "@type": "Question",
-          "name": "What's included in a commercial painting bid?",
+          "name": "What&apos;s included in a commercial painting bid?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Commercial painting bids include detailed scope of work, surface preparation specifications, product data sheets, project timeline with phases, insurance certificates, safety compliance plan, warranty terms, and payment schedule. Union requirements and prevailing wage rates may also apply."
@@ -412,7 +412,7 @@ export default function CommercialPaintingQuotesGuide() {
                   </div>
                   <ul className="space-y-2 text-gray-100">
                     <li>• General Liability: $1-5 million</li>
-                    <li>• Workers' Comp: State required</li>
+                    <li>• Workers&apos; Comp: State required</li>
                     <li>• Commercial Auto: $1 million</li>
                     <li>• Umbrella Policy: $2-10 million</li>
                     <li>• Additional Insured endorsements</li>
@@ -426,7 +426,7 @@ export default function CommercialPaintingQuotesGuide() {
                   </div>
                   <ul className="space-y-2 text-gray-100">
                     <li>• Business license</li>
-                    <li>• Contractor's license</li>
+                    <li>• Contractor&apos;s license</li>
                     <li>• Safety certifications</li>
                     <li>• Union compliance (if applicable)</li>
                     <li>• Environmental permits</li>

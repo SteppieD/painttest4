@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // Test data for debugging - using Quote interface format
     const testQuoteData = {
@@ -80,11 +80,11 @@ export async function POST(request: NextRequest) {
 
     // Add specific error details for Supabase errors
     if (error && typeof error === 'object' && 'code' in error) {
-      (errorInfo as any)['supabaseError'] = {
-        code: (error as any).code,
-        message: (error as any).message,
-        details: (error as any).details,
-        hint: (error as any).hint
+      (errorInfo as unknown)['supabaseError'] = {
+        code: (error as unknown).code,
+        message: (error as unknown).message,
+        details: (error as unknown).details,
+        hint: (error as unknown).hint
       };
     }
 
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Test database connection
     const testCompanies = await db.getAllCompanies();

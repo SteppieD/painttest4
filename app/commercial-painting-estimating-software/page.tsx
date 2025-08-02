@@ -280,7 +280,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                   Built for Every Type of Commercial Project
                 </h2>
                 <p className="mt-4 text-lg text-gray-200">
-                  From office buildings to industrial facilities, we've got you covered
+                  From office buildings to industrial facilities, we{"'"}ve got you covered
                 </p>
               </div>
 
@@ -594,7 +594,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                   <blockquote className="mt-6 text-xl font-medium">
                     "PaintQuote Pro helped us win a $12M university project. The detailed 
                     breakdown and professional presentation set us apart from competitors. 
-                    It's now essential to our commercial estimating process."
+                    It{"'"}s now essential to our commercial estimating process.{"\""}
                   </blockquote>
                   <div className="mt-6">
                     <p className="font-semibold">Michael Torres</p>

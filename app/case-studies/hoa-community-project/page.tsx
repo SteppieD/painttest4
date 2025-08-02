@@ -245,7 +245,7 @@ export default function HOACommunityProjectCaseStudy() {
                 <h2 className="text-3xl font-bold mb-8">The Challenge</h2>
                 <p className="text-lg text-gray-200 mb-8">
                   Desert Winds HOA needed all 156 homes painted before the brutal Arizona summer. 
-                  The challenge wasn't just the scale - it was coordinating with residents, 
+                  The challenge wasn&apos;t just the scale - it was coordinating with residents, 
                   maintaining consistent quality across multiple crews, and meeting strict HOA 
                   architectural standards while staying on budget.
                 </p>
@@ -384,7 +384,7 @@ export default function HOACommunityProjectCaseStudy() {
                 {/* HOA Board Testimonial */}
                 <div className="bg-primary/5 rounded-lg p-8 mb-8">
                   <blockquote className="text-lg italic mb-4">
-                    "Managing a painting project of this scale seemed impossible, but PaintQuote Pro 
+                    &quot;Managing a painting project of this scale seemed impossible, but PaintQuote Pro 
                     made it seamless. Their zone-based approach meant residents always knew what to 
                     expect. The quality was consistent from the first home to the 156th. Most 
                     impressively, they finished early and under budget. Our community looks brand new, 
@@ -399,7 +399,7 @@ export default function HOACommunityProjectCaseStudy() {
                 {/* Resident Testimonial */}
                 <div className="bg-primary/5 rounded-lg p-8">
                   <blockquote className="text-lg italic mb-4">
-                    "I was skeptical about having painters while working from home, but they were 
+                    &quot;I was skeptical about having painters while working from home, but they were 
                     incredibly professional. The app notifications kept me informed, they worked 
                     around my schedule, and the results are stunning. Best HOA decision ever!"
                   </blockquote>
@@ -469,7 +469,7 @@ export default function HOACommunityProjectCaseStudy() {
                   Planning an HOA Painting Project?
                 </h2>
                 <p className="text-xl mb-8 opacity-100">
-                  Let's discuss how we can transform your community with volume pricing, 
+                  Let&apos;s discuss how we can transform your community with volume pricing, 
                   seamless coordination, and guaranteed satisfaction for every homeowner.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

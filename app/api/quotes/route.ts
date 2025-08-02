@@ -3,7 +3,6 @@ import { db, type Company } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 import { SubscriptionService } from '@/lib/services/subscription';
-
 export const dynamic = 'force-dynamic';
 
 // Helper function to clean customer names
@@ -20,11 +19,40 @@ const cleanCustomerName = (name: string) => {
 };
 
 // POST - Create a new quote
+interface RequestBody {
+  companyId: number | string;
+  quoteData: {
+    customerName?: string;
+    customerEmail?: string;
+    customerPhone?: string;
+    address?: string;
+    projectType?: string;
+    surfaces?: string[];
+    sqft?: number;
+    ceilings_sqft?: number;
+    trim_sqft?: number;
+    rooms?: Array<{ name: string; length?: number; width?: number }>;
+    breakdown?: {
+      materials?: number;
+      labor?: number;
+      markup?: number;
+      [key: string]: unknown;
+    };
+    finalPrice?: number;
+    totalCost?: number;
+    timeEstimate?: string;
+    timeline?: string;
+    specialRequests?: string | string[];
+    [key: string]: unknown;
+  };
+  conversationHistory?: Array<{ role: string; content: string }>;
+}
+
 export async function POST(request: NextRequest) {
-  let requestBody: any;
+  let requestBody: RequestBody;
   try {
-    let companyId: any;
-    let quoteData: any;
+    let companyId: number | string;
+    let quoteData: RequestBody['quoteData'];
     
     try {
     const company = getCompanyFromRequest(request);
@@ -264,7 +292,7 @@ export async function POST(request: NextRequest) {
     
     // Add stack trace in development
     if (process.env.NODE_ENV === 'development' && error instanceof Error) {
-      (errorResponse as any)['stack'] = error.stack;
+      (errorResponse as unknown)['stack'] = error.stack;
     }
     
     return NextResponse.json(errorResponse, { status: 500 });

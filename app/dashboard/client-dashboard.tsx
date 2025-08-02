@@ -1,19 +1,19 @@
 "use client"
 
-import { MobileQuoteButton } from '@/components/mobile-quote-button'
+// import { MobileQuoteButton } from '@/components/mobile-quote-button' // TODO: Check if this import is needed
 import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
-import { UpgradeModal } from '@/components/stripe/upgrade-modal'
+// import { UpgradeModal } from '@/components/stripe/upgrade-modal' // TODO: Check if this import is needed
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
 import { Card, CardContent } from '@/components/ui/card'
-import { QuoteUsageIndicator } from '@/components/quote-usage-indicator-client'
-import { ClientDate } from '@/components/client-date'
-import { useCompanyAuth } from '@/components/auth-wrapper'
+// import { QuoteUsageIndicator } from '@/components/quote-usage-indicator-client' // TODO: Check if this import is needed
+// import { ClientDate } from '@/components/client-date' // TODO: Check if this import is needed
+// import { useCompanyAuth } from '@/components/auth-wrapper' // TODO: Check if this import is needed
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { AchievementDisplay } from '@/components/achievements/achievement-display'
-import { ROIWidget } from '@/components/roi-widget'
-
+// import { AchievementDisplay } from '@/components/achievements/achievement-display' // TODO: Check if this import is needed
+// import { ROIWidget } from '@/components/roi-widget'
+ // TODO: Check if this import is needed
 interface DashboardData {
   companyName: string
   totalQuotes: number
@@ -23,7 +23,7 @@ interface DashboardData {
   acceptanceRate: number
   monthlyQuotes: number
   monthlyQuotedAmount: number
-  recentQuotes: any[]
+  recentQuotes: unknown[]
   quotesUsed: number
   quotesLimit: number
   hasUnlimitedQuotes: boolean

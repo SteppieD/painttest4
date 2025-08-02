@@ -90,7 +90,7 @@ export async function createSession(companyId: number, accessCode: string): Prom
     const codeResult = await db.query(
       `SELECT id FROM access_codes WHERE code = ?`,
       [accessCode]
-    );
+    ) as Array<{id: number}>;
     
     let accessCodeId;
     if (!codeResult || codeResult.length === 0) {
@@ -98,7 +98,7 @@ export async function createSession(companyId: number, accessCode: string): Prom
       const insertResult = await db.query(
         `INSERT INTO access_codes (code, created_at) VALUES (?, datetime('now'))`,
         [accessCode]
-      );
+      ) as {lastInsertRowid: number};
       accessCodeId = insertResult.lastInsertRowid;
     } else {
       accessCodeId = codeResult[0].id;
@@ -129,7 +129,7 @@ export async function validateSession(sessionId: string): Promise<Session | null
        JOIN access_codes ac ON s.access_code_id = ac.id
        WHERE s.id = ? AND s.expires_at > datetime('now')`,
       [sessionId]
-    );
+    ) as Array<{id: string; company_id: number; access_code: string; created_at: string; expires_at: string}>;
     
     if (result && result.length > 0) {
       const session = result[0];
@@ -156,7 +156,7 @@ export async function checkNeedsOnboarding(companyId: number): Promise<boolean> 
     const result = await db.query(
       `SELECT COUNT(*) as count FROM cost_settings WHERE user_id IN (SELECT id FROM users WHERE company_name IN (SELECT company_name FROM companies WHERE id = ?))`,
       [companyId]
-    );
+    ) as Array<{count: number}>;
     
     return result[0].count === 0;
   } catch (error) {

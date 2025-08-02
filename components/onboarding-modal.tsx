@@ -21,10 +21,18 @@ import {
   ChevronRight
 } from 'lucide-react';
 
+interface CompanyData {
+  name?: string;
+  email?: string;
+  id?: number;
+  access_code?: string;
+  skipOnboarding?: boolean;
+}
+
 interface OnboardingModalProps {
   isOpen: boolean;
   onClose: () => void;
-  companyData: any;
+  companyData: CompanyData;
 }
 
 export function OnboardingModal({ isOpen, onClose, companyData }: OnboardingModalProps) {

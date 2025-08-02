@@ -63,23 +63,23 @@ export async function GET() {
 function getRecommendations(envVars: Record<string, unknown>, connectionTest: Record<string, unknown>): string[] {
   const recommendations = [];
   
-  if (!(envVars.openrouter as any).hasKey) {
+  if (!(envVars.openrouter as unknown).hasKey) {
     recommendations.push('OPENROUTER_API_KEY is not set in environment variables');
-  } else if ((envVars.openrouter as any).isPlaceholder) {
+  } else if ((envVars.openrouter as unknown).isPlaceholder) {
     recommendations.push('OPENROUTER_API_KEY still has placeholder value "your_openrouter_key"');
-  } else if ((envVars.openrouter as any).isEmptyString) {
+  } else if ((envVars.openrouter as unknown).isEmptyString) {
     recommendations.push('OPENROUTER_API_KEY is an empty string');
-  } else if ((envVars.openrouter as any).keyLength < 20) {
+  } else if ((envVars.openrouter as unknown).keyLength < 20) {
     recommendations.push('OPENROUTER_API_KEY seems too short to be valid');
   }
   
-  if (connectionTest.status === 'failed' && (connectionTest as any).statusCode === 401) {
+  if (connectionTest.status === 'failed' && (connectionTest as unknown).statusCode === 401) {
     recommendations.push('OpenRouter API key is invalid (401 Unauthorized)');
-  } else if (connectionTest.status === 'failed' && (connectionTest as any).statusCode === 402) {
+  } else if (connectionTest.status === 'failed' && (connectionTest as unknown).statusCode === 402) {
     recommendations.push('OpenRouter account has insufficient credits (402 Payment Required)');
   }
   
-  if ((envVars.environment as any).VERCEL && !(envVars.openrouter as any).hasKey) {
+  if ((envVars.environment as unknown).VERCEL && !(envVars.openrouter as unknown).hasKey) {
     recommendations.push('Running on Vercel but OPENROUTER_API_KEY not found - check Vercel dashboard > Settings > Environment Variables');
   }
   

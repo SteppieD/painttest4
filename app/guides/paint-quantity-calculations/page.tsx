@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -324,7 +324,7 @@ export default function PaintQuantityCalculationsGuide() {
                 
                 <div className="mt-6 p-4 bg-cyan-500/10 rounded-lg">
                   <p className="text-base text-gray-100">
-                    <strong className="text-cyan-400">Pro Tip:</strong> Always check the specific paint manufacturer's 
+                    <strong className="text-cyan-400">Pro Tip:</strong> Always check the specific paint manufacturer&apos;s 
                     coverage rates as premium paints often cover more area. Spray application typically uses 30-40% more paint than brush/roll.
                   </p>
                 </div>

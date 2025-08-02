@@ -97,7 +97,7 @@ export class QuoteCalculator {
   private static readonly RUSH_ADJUSTMENT = 0.15; // 15% additional labor
 
   static calculate(input: CalculatorInput): CalculatorOutput {
-    const breakdown: any = {};
+    const breakdown: unknown = {};
     let materialsCost = 0;
     let laborHours = 0;
     
@@ -182,7 +182,7 @@ export class QuoteCalculator {
     
     // Calculate painting labor cost
     const paintingHours = laborHours;
-    const laborRate = input.laborRate || (input.companyRates as any)?.hourlyRate || this.DEFAULT_LABOR_RATE;
+    const laborRate = input.laborRate || (input.companyRates as unknown)?.hourlyRate || this.DEFAULT_LABOR_RATE;
     const paintingLaborCost = paintingHours * laborRate;
     const prepLaborCost = prepHours * laborRate;
     const totalLaborCost = paintingLaborCost + prepLaborCost;
@@ -259,7 +259,7 @@ export class QuoteCalculator {
     };
   }
 
-  static estimateFromRooms(rooms: any[], paintQuality?: 'good' | 'better' | 'best'): CalculatorInput {
+  static estimateFromRooms(rooms: unknown[], paintQuality?: 'good' | 'better' | 'best'): CalculatorInput {
     let totalWalls = 0;
     let totalCeilings = 0;
     let totalDoors = 0;

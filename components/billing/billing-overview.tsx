@@ -1,9 +1,9 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// import { Button } from '@/components/ui/button'; // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge'; // TODO: Check if this import is needed
+// import { Progress } from '@/components/ui/progress'; // TODO: Check if this import is needed
 import { 
   Calendar, 
   CreditCard, 
@@ -13,8 +13,8 @@ import {
   Settings,
   ExternalLink
 } from 'lucide-react';
-import { format } from 'date-fns';
-
+// import { format } from 'date-fns';
+ // TODO: Check if this import is needed
 interface BillingOverviewProps {
   subscription: {
     id: string;
@@ -42,7 +42,7 @@ export function BillingOverview({
   onUpgrade, 
   isLoading 
 }: BillingOverviewProps) {
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (_status: string) => {
     switch (status) {
       case 'active': return 'bg-green-100 text-green-800';
       case 'past_due': return 'bg-yellow-100 text-yellow-800';
@@ -56,7 +56,7 @@ export function BillingOverview({
     return (usage.quotesThisMonth / usage.quotesLimit) * 100;
   };
 
-  const getUsageColor = () => {
+  const _getUsageColor = () => {
     const percentage = getUsagePercentage();
     if (percentage >= 90) return 'bg-red-500';
     if (percentage >= 75) return 'bg-yellow-500';
@@ -199,7 +199,7 @@ export function BillingOverview({
               <div className="flex items-center gap-2 p-3 bg-yellow-50 rounded-lg">
                 <AlertCircle className="w-4 h-4 text-yellow-600" />
                 <span className="text-base text-yellow-800">
-                  You're approaching your monthly limit. Consider upgrading for unlimited quotes.
+                  You{"'"}re approaching your monthly limit. Consider upgrading for unlimited quotes.
                 </span>
               </div>
             )}

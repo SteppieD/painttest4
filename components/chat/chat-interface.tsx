@@ -2,16 +2,16 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { MessageBubble } from './message-bubble';
-import { ChatInput } from './chat-input';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+// import { MessageBubble } from './message-bubble'; // TODO: Check if this import is needed
+// import { ChatInput } from './chat-input'; // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card'; // TODO: Check if this import is needed
+// import { Button } from '@/components/ui/button'; // TODO: Check if this import is needed
 import { AlertCircle, CheckCircle } from 'lucide-react';
-import { toast } from '@/components/ui/use-toast';
-import { useAchievements } from '@/hooks/use-achievements';
-import { AchievementNotification } from '@/components/achievements/achievement-notification';
-import { redirectToStripePayment } from '@/lib/config/stripe-links';
-
+// import { toast } from '@/components/ui/use-toast'; // TODO: Check if this import is needed
+// import { useAchievements } from '@/hooks/use-achievements'; // TODO: Check if this import is needed
+// import { AchievementNotification } from '@/components/achievements/achievement-notification'; // TODO: Check if this import is needed
+// import { redirectToStripePayment } from '@/lib/config/stripe-links';
+ // TODO: Check if this import is needed
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -32,7 +32,22 @@ export function ChatInterface({
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
-  const [quoteData, setQuoteData] = useState<any>(null);
+  interface QuoteData {
+    customerName?: string;
+    customerEmail?: string;
+    address?: string;
+    projectType?: string;
+    finalPrice?: number;
+    totalCost?: number;
+    breakdown?: {
+      materials?: number;
+      labor?: number;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  }
+
+  const [quoteData, setQuoteData] = useState<QuoteData | null>(null);
   const [suggestedReplies, setSuggestedReplies] = useState<string[]>([]);
   const [startTime] = useState(Date.now());
   const messagesEndRef = useRef<HTMLDivElement>(null);

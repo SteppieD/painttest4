@@ -4,7 +4,7 @@
 /**
  * @deprecated Use quote-number-generator-adapter.ts instead
  */
-export async function generateQuoteNumber(companyId: number): Promise<string> {
+export async function generateQuoteNumber(_companyId: number): Promise<string> {
   const year = new Date().getFullYear()
   const timestamp = Date.now().toString(36).substring(4, 8).toUpperCase()
   const random = Math.random().toString(36).substring(2, 4).toUpperCase()
@@ -17,9 +17,9 @@ export async function generateQuoteNumber(companyId: number): Promise<string> {
  */
 
 export class QuoteNumberGenerator {
-  private prisma: any
+  private prisma: unknown
 
-  constructor(prisma: any) {
+  constructor(prisma: unknown) {
     this.prisma = prisma
   }
 
@@ -109,7 +109,7 @@ export class QuoteRateLimiter {
  * Connection pool configuration for scalability
  * @deprecated Use database adapter instead
  */
-export const getScalablePrismaClient = () => {
+export const _getScalablePrismaClient = () => {
   throw new Error('Use database adapter instead')
 }
 
@@ -117,14 +117,14 @@ export const getScalablePrismaClient = () => {
  * Caching layer for frequently accessed data
  */
 export class QuoteCache {
-  private cache: Map<string, { data: any; expiresAt: number }> = new Map()
+  private cache: Map<string, { data: unknown; expiresAt: number }> = new Map()
   private readonly ttlMs: number
 
   constructor(ttlMinutes: number = 5) {
     this.ttlMs = ttlMinutes * 60 * 1000
   }
 
-  get(key: string): any | null {
+  get(key: string): unknown | null {
     const cached = this.cache.get(key)
     if (!cached) return null
 
@@ -136,7 +136,7 @@ export class QuoteCache {
     return cached.data
   }
 
-  set(key: string, data: any): void {
+  set(key: string, data: Record<string, unknown>): void {
     this.cache.set(key, {
       data,
       expiresAt: Date.now() + this.ttlMs

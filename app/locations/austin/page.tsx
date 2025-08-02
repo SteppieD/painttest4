@@ -121,7 +121,7 @@ export default function AustinPaintingSoftware() {
                     Painting Quote Software for Austin Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 210+ Austin area painting contractors who've transformed their business 
+                    Join 210+ Austin area painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function AustinPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Austin's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Austin&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Central Texas painting contractors
                 </p>
@@ -222,7 +222,7 @@ export default function AustinPaintingSoftware() {
                   <Music className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Tech Hub Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in pricing for Austin's booming tech sector. Includes templates 
+                    Built-in pricing for Austin&apos;s booming tech sector. Includes templates 
                     for modern offices, startup spaces, and high-end residential properties 
                     in areas like Domain and Downtown.
                   </p>
@@ -232,7 +232,7 @@ export default function AustinPaintingSoftware() {
                   <Building className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">New Construction Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    With Austin's rapid growth, quote new builds quickly. Pre-loaded 
+                    With Austin&apos;s rapid growth, quote new builds quickly. Pre-loaded 
                     templates for tract homes, custom builds, and multi-family developments 
                     throughout Travis and Williamson counties.
                   </p>
@@ -253,7 +253,7 @@ export default function AustinPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Lakeway to Manor. Works offline and syncs 
-                    when connected. Perfect for Austin's growing metro area from 
+                    when connected. Perfect for Austin&apos;s growing metro area from 
                     Cedar Park to Buda.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function AustinPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Austin's competitive market with professional quotes 
+                    Stand out in Austin&apos;s competitive market with professional quotes 
                     that build trust. Include your Texas license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function AustinPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "Austin's growth means competition. Now I can quote tech office 
+                    &quot;Austin&apos;s growth means competition. Now I can quote tech office 
                     repaints in 15 minutes with all the right specs. Closed $65,000 
                     in Domain area projects last quarter from faster quotes."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function AustinPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The new construction templates are perfect for Austin's building boom. 
+                    &quot;The new construction templates are perfect for Austin&apos;s building boom. 
                     I can quote entire subdivisions accurately. Won 3 major builder contracts 
                     in Round Rock - that&apos;s $240,000 in steady work."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function AustinPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$150,800</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 3,141x return on your PaintQuote Pro investment
+                      That&apos;s 3,141x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,7 +468,7 @@ export default function AustinPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Austin Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Austin's painting market is unique. With over 650 painting contractors 
+                    Austin&apos;s painting market is unique. With over 650 painting contractors 
                     serving the Greater Austin area, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
@@ -484,7 +484,7 @@ export default function AustinPaintingSoftware() {
                     Whether you&apos;re quoting a tech office in the Domain, a historic home in 
                     Hyde Park, or a new subdivision in Round Rock, PaintQuote Pro gives you 
                     the tools to create accurate, professional quotes in minutes. Join the 
-                    210+ Austin area contractors who've already transformed their business 
+                    210+ Austin area contractors who&apos;ve already transformed their business 
                     with our software.
                   </p>
                 </div>

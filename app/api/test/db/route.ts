@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDatabaseAdapter } from '@/lib/database/adapter';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   const results = {
     success: true,
     tests: {
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
     try {
       const tableInfo = await db.query('PRAGMA table_info(companies)') as Array<Record<string, unknown>>;
       results.tests.tableStructure = true;
-      results.data.companyColumns = tableInfo.map((col: any) => col.name);
+      results.data.companyColumns = tableInfo.map((col: unknown) => col.name);
     } catch (error) {
       results.errors.tableStructure = error instanceof Error ? error.message : 'Unknown error';
     }

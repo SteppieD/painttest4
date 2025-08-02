@@ -300,7 +300,7 @@ export default function PaintingContractors() {
                   
                   <blockquote className="mt-8 border-l-4 border-primary pl-6">
                     <p className="text-xl italic">
-                      "PaintQuote Pro transformed our painting business. We went from spending hours 
+                      &quot;PaintQuote Pro transformed our painting business. We went from spending hours 
                       on quotes to creating them in 15 minutes. Our close rate increased by 40% and 
                       we&apos;re now doing $126K monthly, up from $80K."
                     </p>

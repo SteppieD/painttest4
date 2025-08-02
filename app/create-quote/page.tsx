@@ -2,19 +2,27 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ChatInterface } from '@/components/chat/chat-interface';
+// import { ChatInterface } from '@/components/chat/chat-interface'; // TODO: Check if this import is needed
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// import { Button } from '@/components/ui/button'; // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge'; // TODO: Check if this import is needed
+// import { Progress } from '@/components/ui/progress'; // TODO: Check if this import is needed
 import { ArrowLeft, MessageSquare, List, AlertCircle, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
-
+// import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
+ // TODO: Check if this import is needed
 function CreateQuoteContent() {
   const searchParams = useSearchParams();
   const isDemo = searchParams.get('demo') === 'true';
-  const [companyData, setCompanyData] = useState<any>(null);
+  interface CompanyData {
+    id: number;
+    access_code: string;
+    name?: string;
+    email?: string;
+    [key: string]: unknown;
+  }
+
+  const [companyData, setCompanyData] = useState<CompanyData | null>(null);
   const [quotaInfo, setQuotaInfo] = useState<{
     used: number;
     limit: number;
@@ -33,7 +41,7 @@ function CreateQuoteContent() {
     fetchQuotaInfo(data);
   }, [router]);
 
-  const fetchQuotaInfo = async (company: any) => {
+  const fetchQuotaInfo = async (company: CompanyData) => {
     try {
       const response = await fetch('/api/companies/usage', {
         headers: {

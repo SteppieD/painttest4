@@ -121,7 +121,7 @@ export default function MiamiPaintingSoftware() {
                     Painting Quote Software for Miami Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 280+ Magic City painting contractors who've transformed their business 
+                    Join 280+ Magic City painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function MiamiPaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Miami's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Miami&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Magic City painting contractors
                 </p>
@@ -232,7 +232,7 @@ export default function MiamiPaintingSoftware() {
                   <Sun className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Tropical Climate Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Pre-built quotes for Miami's tropical conditions. Includes UV-resistant 
+                    Pre-built quotes for Miami&apos;s tropical conditions. Includes UV-resistant 
                     formulas, salt-air protection, and heat-reflective technology to handle 
                     year-round 85°F heat and ocean exposure.
                   </p>
@@ -242,7 +242,7 @@ export default function MiamiPaintingSoftware() {
                   <Building2 className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Art Deco & High-Rise Specs</h3>
                   <p className="mt-2 text-gray-200">
-                    Templates for Miami's unique architecture. Includes historic preservation 
+                    Templates for Miami&apos;s unique architecture. Includes historic preservation 
                     requirements for South Beach, high-rise safety protocols for Brickell, 
                     and luxury finishes for waterfront properties.
                   </p>
@@ -253,7 +253,7 @@ export default function MiamiPaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Key Biscayne to Aventura. Works offline and syncs 
-                    when connected. Perfect for Miami's sprawling metro area from 
+                    when connected. Perfect for Miami&apos;s sprawling metro area from 
                     Homestead to Doral.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function MiamiPaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Miami's competitive market with professional quotes 
+                    Stand out in Miami&apos;s competitive market with professional quotes 
                     that build trust. Include your Florida license, insurance details, 
                     and customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function MiamiPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "After Hurricane Irma, everyone needed hurricane-grade repainting. With 
+                    &quot;After Hurricane Irma, everyone needed hurricane-grade repainting. With 
                     Miami-Dade approved templates built-in, I quoted 50 oceanfront condos 
                     in a week. Closed $320,000 in storm-resistant coating work."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function MiamiPaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The Art Deco templates are perfect for Ocean Drive projects. Every quote 
+                    &quot;The Art Deco templates are perfect for Ocean Drive projects. Every quote 
                     includes proper historic preservation specs automatically. Won 8 boutique 
                     hotels this year - that&apos;s $425,000 in heritage work."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function MiamiPaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$259,545</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 5,407x return on your PaintQuote Pro investment
+                      That&apos;s 5,407x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function MiamiPaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Miami Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Miami's painting market is unique. With over 900 painting contractors 
+                    Miami&apos;s painting market is unique. With over 900 painting contractors 
                     serving Greater Miami, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Miami where 
-                    tropical conditions and efficiency matter. Our AI understands Florida's 
+                    tropical conditions and efficiency matter. Our AI understands Florida&apos;s 
                     challenges, from Category 5 hurricanes that test every coating to salt air 
                     corrosion and year-round UV exposure that can destroy inferior paints. 
                     The software automatically factors these into your quotes.
@@ -484,7 +484,7 @@ export default function MiamiPaintingSoftware() {
                     Whether you&apos;re quoting a luxury condo in Brickell, an Art Deco restoration 
                     on Ocean Drive, or a waterfront estate in Key Biscayne, PaintQuote Pro gives 
                     you the tools to create accurate, professional quotes in minutes. Join the 
-                    280+ Miami area contractors who've already transformed their business with 
+                    280+ Miami area contractors who&apos;ve already transformed their business with 
                     our software.
                   </p>
                 </div>

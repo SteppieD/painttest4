@@ -2,14 +2,14 @@
 
 declare global {
   interface Window {
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 
 /**
  * Push an event to Google Tag Manager's dataLayer
  */
-export function pushToDataLayer(event: Record<string, any>) {
+export function pushToDataLayer(event: Record<string, unknown>) {
   if (typeof window !== 'undefined' && window.dataLayer) {
     window.dataLayer.push(event);
   }
@@ -18,7 +18,7 @@ export function pushToDataLayer(event: Record<string, any>) {
 /**
  * Track a custom event
  */
-export function trackEvent(eventName: string, parameters?: Record<string, any>) {
+export function trackEvent(eventName: string, parameters?: Record<string, unknown>) {
   pushToDataLayer({
     event: eventName,
     ...parameters,

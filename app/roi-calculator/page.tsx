@@ -7,7 +7,6 @@ import { Calculator, TrendingUp, Clock, DollarSign, Users, ChevronRight, ArrowRi
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ModernNavigation from '@/components/modern-navigation'
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
-
 export default function ROICalculator() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
@@ -458,8 +457,8 @@ export default function ROICalculator() {
               <div className="mx-auto max-w-3xl">
                 <div className="rounded-lg bg-primary/5 p-8 text-center">
                   <blockquote className="text-xl italic">
-                    "The ROI calculator showed we'd save 30 hours monthly. In reality, we saved 
-                    even more. We're now doing $180K/month, up from $110K, and working less."
+                    &quot;The ROI calculator showed we&apos;d save 30 hours monthly. In reality, we saved 
+                    even more. We&apos;re now doing $180K/month, up from $110K, and working less.&quot;
                   </blockquote>
                   <footer className="mt-4">
                     <strong>Sarah Chen</strong>
@@ -487,7 +486,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-semibold">What's included in the ROI calculation?</h3>
+                    <h3 className="text-xl font-semibold">What{"'"}s included in the ROI calculation?</h3>
                     <p className="mt-3 text-gray-200">
                       We calculate time saved on quoting, increased quote volume, improved close rates, 
                       and the resulting revenue increase. We subtract the software cost ($79/month for 

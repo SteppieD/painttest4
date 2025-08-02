@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -45,7 +45,7 @@ const structuredData = {
         "@type": "WebPage",
         "@id": "https://paintquotepro.com/guides/common-quoting-mistakes"
       },
-      "headline": "Common Painting Quote Mistakes: What's Costing You Jobs",
+      "headline": "Common Painting Quote Mistakes: What&apos;s Costing You Jobs",
       "description": "Identify and fix the quoting mistakes that cause painters to lose 40% of potential jobs. Expert solutions included.",
       "datePublished": "2024-01-25",
       "dateModified": "2024-01-25",
@@ -185,7 +185,7 @@ export default function CommonQuotingMistakesGuide() {
                           <h4 className="text-lg font-semibold text-red-400 mb-3">❌ Wrong Way</h4>
                           <div className="bg-gray-900/50 rounded p-3 font-mono text-base">
                             <p className="text-gray-100">Interior Painting: $3,500</p>
-                            <p className="text-gray-200 mt-2">"What does this include?"</p>
+                            <p className="text-gray-200 mt-2">&quot;What does this include?&quot;</p>
                           </div>
                         </div>
                         <div className="bg-green-500/10 rounded p-4">

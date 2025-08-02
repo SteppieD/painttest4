@@ -253,7 +253,7 @@ export default function HistoricRestorationCaseStudy() {
                 <p className="text-lg text-gray-200 mb-8">
                   This Queen Anne Victorian mansion, a designated city landmark, had suffered 
                   133 years of weathering and multiple inappropriate paint jobs. The building 
-                  required complete restoration while adhering to the Secretary of Interior's 
+                  required complete restoration while adhering to the Secretary of Interior&apos;s 
                   Standards for the Treatment of Historic Properties.
                 </p>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -376,11 +376,11 @@ export default function HistoricRestorationCaseStudy() {
                 {/* Client Testimonial */}
                 <div className="bg-primary/5 rounded-lg p-8">
                   <blockquote className="text-lg italic mb-4">
-                    "The transformation is breathtaking. They uncovered colors we never knew 
-                    existed and brought our family's Victorian mansion back to life. The lead 
+                    &quot;The transformation is breathtaking. They uncovered colors we never knew 
+                    existed and brought our family&apos;s Victorian mansion back to life. The lead 
                     abatement was handled flawlessly, and their attention to historical detail 
                     was extraordinary. The city preservation society called it the best 
-                    restoration they've seen in 20 years. This team saved a piece of history."
+                    restoration they&apos;ve seen in 20 years. This team saved a piece of history."
                   </blockquote>
                   <footer>
                     <strong>Margaret Whitmore</strong>
@@ -393,7 +393,7 @@ export default function HistoricRestorationCaseStudy() {
                   <Award className="h-16 w-16 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold mb-2">City Preservation Award Winner</h3>
                   <p className="text-lg opacity-100">
-                    "Excellence in Historic Restoration" - San Francisco Landmarks Preservation Advisory Board
+                    &quot;Excellence in Historic Restoration - San Francisco Landmarks Preservation Advisory Board
                   </p>
                 </div>
               </div>
@@ -408,13 +408,13 @@ export default function HistoricRestorationCaseStudy() {
                 <div className="prose prose-lg mx-auto">
                   <p className="text-gray-200">
                     During our paint archaeology, we discovered fascinating details about the 
-                    mansion's history. The original 1891 paint scheme featured 14 different 
+                    mansion&apos;s history. The original 1891 paint scheme featured 14 different 
                     colors, far more elaborate than the monochrome white applied in the 1950s. 
                     We found evidence of gold leaf on the tower finial and hand-painted 
                     faux wood graining on the porch ceiling.
                   </p>
                   <p className="text-gray-200 mt-4">
-                    Most remarkably, we uncovered the builder's signature and date hidden 
+                    Most remarkably, we uncovered the builder&apos;s signature and date hidden 
                     beneath 12 layers of paint on a protected section of trim. This discovery 
                     allowed us to precisely date the original construction and identify the 
                     craftsmen who built this architectural treasure.
@@ -432,7 +432,7 @@ export default function HistoricRestorationCaseStudy() {
                   Have a Historic Property That Needs Expert Restoration?
                 </h2>
                 <p className="text-xl mb-8 opacity-100">
-                  Let's discuss how we can preserve your building's heritage while providing 
+                  Let&apos;s discuss how we can preserve your building&apos;s heritage while providing 
                   modern protection. Our preservation specialists are ready to help.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

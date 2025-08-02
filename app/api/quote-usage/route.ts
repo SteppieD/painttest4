@@ -28,12 +28,12 @@ export async function GET(request: NextRequest) {
     }
     
     // Handle missing columns gracefully
-    const _quotesUsed = 0; // We'll count from quotes table later
+    const fallbackQuotesUsed = 0; // We'll count from quotes table later
     const quotesLimit = companyData.monthly_quote_limit || 5;
     const hasUnlimitedQuotes = !quotesLimit || quotesLimit === -1;
-    const _percentageUsed = hasUnlimitedQuotes ? 0 : (_quotesUsed / quotesLimit) * 100;
-    const _isNearLimit = !hasUnlimitedQuotes && _percentageUsed >= 80;
-    const _isAtLimit = !hasUnlimitedQuotes && _quotesUsed >= quotesLimit;
+    const fallbackPercentageUsed = hasUnlimitedQuotes ? 0 : (fallbackQuotesUsed / quotesLimit) * 100;
+    const fallbackIsNearLimit = !hasUnlimitedQuotes && fallbackPercentageUsed >= 80;
+    const fallbackIsAtLimit = !hasUnlimitedQuotes && fallbackQuotesUsed >= quotesLimit;
     
     // Count actual quotes if needed
     try {
@@ -51,12 +51,12 @@ export async function GET(request: NextRequest) {
       console.log('[QUOTE-USAGE] Could not count quotes:', error);
       // Return default response if quote counting fails
       return NextResponse.json({
-        quotesUsed: _quotesUsed,
+        quotesUsed: fallbackQuotesUsed,
         quotesLimit,
         hasUnlimitedQuotes,
-        percentageUsed: _percentageUsed,
-        isNearLimit: _isNearLimit,
-        isAtLimit: _isAtLimit,
+        percentageUsed: fallbackPercentageUsed,
+        isNearLimit: fallbackIsNearLimit,
+        isAtLimit: fallbackIsAtLimit,
         plan: companyData.subscription_tier || 'free'
       });
     }

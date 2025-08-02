@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Button } from '@/components/ui/button' // TODO: Check if this import is needed
+// import { Card } from '@/components/ui/card' // TODO: Check if this import is needed
+// import { Badge } from '@/components/ui/badge' // TODO: Check if this import is needed
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
 import { 
@@ -204,15 +204,15 @@ export default function PricingPsychologyGuide() {
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-3">2. Loss Aversion</h3>
                       <p className="text-gray-100 mb-4">
-                        People fear losing value more than they enjoy gaining it. Frame your offer around what they'll lose without you.
+                        People fear losing value more than they enjoy gaining it. Frame your offer around what they&apos;ll lose without you.
                       </p>
                       <div className="bg-gray-900/50 rounded p-6">
                         <h4 className="text-lg font-semibold text-yellow-400 mb-3">Effective Loss Framing:</h4>
                         <ul className="space-y-3 text-gray-100">
-                          <li>• "Without proper prep, paint fails in 2-3 years instead of 7-10"</li>
-                          <li>• "Cheap paint costs 3x more over 10 years due to repainting"</li>
-                          <li>• "DIY mistakes can reduce home value by $5,000-10,000"</li>
-                          <li>• "This price is only valid for 7 days due to material costs"</li>
+                          <li>• &quot;Without proper prep, paint fails in 2-3 years instead of 7-10&quot;</li>
+                          <li>• &quot;Cheap paint costs 3x more over 10 years due to repainting&quot;</li>
+                          <li>• &quot;DIY mistakes can reduce home value by $5,000-10,000&quot;</li>
+                          <li>• &quot;This price is only valid for 7 days due to material costs&quot;</li>
                         </ul>
                       </div>
                     </div>
@@ -232,8 +232,8 @@ export default function PricingPsychologyGuide() {
                         <div className="bg-pink-500/10 rounded p-4">
                           <h4 className="text-pink-400 font-semibold mb-2">Quote Inclusions:</h4>
                           <ul className="text-base space-y-2 text-gray-100">
-                            <li>• "Trusted by 127 homeowners in [neighborhood]"</li>
-                            <li>• "82% of our customers upgrade to premium"</li>
+                            <li>• &quot;Trusted by 127 homeowners in [neighborhood]&quot;</li>
+                            <li>• &quot;82% of our customers upgrade to premium&quot;</li>
                             <li>• Include 2-3 relevant testimonials</li>
                             <li>• Show before/after photos</li>
                           </ul>
@@ -335,7 +335,7 @@ export default function PricingPsychologyGuide() {
                   <div className="bg-gray-900/50 rounded p-4 font-mono text-base">
                     <p className="text-gray-200">{"// $3,000 over 5 years"}</p>
                     <p className="text-green-400">$3,000 ÷ (5 × 365) = $1.64/day</p>
-                    <p className="text-yellow-400 mt-3">"For less than a cup of coffee per day..."</p>
+                    <p className="text-yellow-400 mt-3">&quot;For less than a cup of coffee per day...&quot;</p>
                   </div>
                 </Card>
 
@@ -343,10 +343,10 @@ export default function PricingPsychologyGuide() {
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">ROI Positioning</h3>
                   <p className="text-gray-100 mb-4">Show paint as an investment:</p>
                   <ul className="space-y-2 text-gray-100 text-base">
-                    <li>• "Adds $5,000-8,000 to home value"</li>
-                    <li>• "267% average ROI on curb appeal"</li>
-                    <li>• "Protects your $400,000 investment"</li>
-                    <li>• "Saves $10,000 in siding repairs"</li>
+                    <li>• &quot;Adds $5,000-8,000 to home value&quot;</li>
+                    <li>• &quot;267% average ROI on curb appeal&quot;</li>
+                    <li>• &quot;Protects your $400,000 investment&quot;</li>
+                    <li>• &quot;Saves $10,000 in siding repairs&quot;</li>
                   </ul>
                 </Card>
 
@@ -367,10 +367,10 @@ export default function PricingPsychologyGuide() {
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">Urgency Creation</h3>
                   <p className="text-gray-100 mb-4">Ethical ways to encourage decisions:</p>
                   <ul className="space-y-2 text-gray-100 text-base">
-                    <li>• "Material prices increasing next month"</li>
-                    <li>• "Schedule filling - 3 spots left in April"</li>
-                    <li>• "Spring special ends Friday"</li>
-                    <li>• "Lock in 2024 rates now"</li>
+                    <li>• &quot;Material prices increasing next month&quot;</li>
+                    <li>• &quot;Schedule filling - 3 spots left in April&quot;</li>
+                    <li>• &quot;Spring special ends Friday&quot;</li>
+                    <li>• &quot;Lock in 2024 rates now&quot;</li>
                   </ul>
                 </Card>
               </div>
@@ -400,7 +400,7 @@ export default function PricingPsychologyGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">Diagnose Problems (10 min)</h4>
-                      <p className="text-gray-100">Show expertise by pointing out issues they hadn't noticed. Create value before price.</p>
+                      <p className="text-gray-100">Show expertise by pointing out issues they hadn&apos;t noticed. Create value before price.</p>
                     </div>
                   </div>
 
@@ -432,7 +432,7 @@ export default function PricingPsychologyGuide() {
                     <div className="flex-shrink-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">6</div>
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">Close the Deal (5 min)</h4>
-                      <p className="text-gray-100">Assumptive close: "When would you like us to start?" Create urgency ethically.</p>
+                      <p className="text-gray-100">Assumptive close: &quot;When would you like us to start?&quot; Create urgency ethically.</p>
                     </div>
                   </div>
                 </div>

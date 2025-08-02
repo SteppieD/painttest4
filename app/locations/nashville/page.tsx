@@ -121,7 +121,7 @@ export default function NashvillePaintingSoftware() {
                     Painting Quote Software for Nashville Contractors
                   </h1>
                   <p className="mt-6 text-xl text-gray-200">
-                    Join 200+ Music City painting contractors who've transformed their business 
+                    Join 200+ Music City painting contractors who&apos;ve transformed their business 
                     with AI-powered quotes. Quote jobs in 10-15 minutes instead of hours and 
                     win 40-60% more projects.
                   </p>
@@ -211,7 +211,7 @@ export default function NashvillePaintingSoftware() {
           <section className="bg-muted/50 py-16 md:py-24">
             <div className="container">
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold">Built for Nashville's Unique Market</h2>
+                <h2 className="text-3xl font-bold">Built for Nashville&apos;s Unique Market</h2>
                 <p className="mt-4 text-lg text-gray-200">
                   Features designed specifically for Middle Tennessee painting contractors
                 </p>
@@ -222,7 +222,7 @@ export default function NashvillePaintingSoftware() {
                   <CloudRain className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Weather-Aware Pricing</h3>
                   <p className="mt-2 text-gray-200">
-                    Built-in calculations for Nashville's humidity and weather challenges. 
+                    Built-in calculations for Nashville&apos;s humidity and weather challenges. 
                     Automatically adjusts labor time for seasonal conditions and includes 
                     moisture-resistant product recommendations.
                   </p>
@@ -232,7 +232,7 @@ export default function NashvillePaintingSoftware() {
                   <Home className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Historic Home Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Pre-built templates for Nashville's historic properties including 
+                    Pre-built templates for Nashville&apos;s historic properties including 
                     Belle Meade estates and East Nashville craftsmans. Includes lead-safe 
                     work calculations and preservation requirements.
                   </p>
@@ -253,7 +253,7 @@ export default function NashvillePaintingSoftware() {
                   <h3 className="mt-4 text-xl font-semibold">Mobile-First Design</h3>
                   <p className="mt-2 text-gray-200">
                     Quote on-site from Belle Meade to Broadway. Works offline and syncs 
-                    when connected. Perfect for Nashville's spread-out service areas from 
+                    when connected. Perfect for Nashville&apos;s spread-out service areas from 
                     Franklin to Mount Juliet.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function NashvillePaintingSoftware() {
                   <CheckCircle className="h-12 w-12 text-primary" />
                   <h3 className="mt-4 text-xl font-semibold">Professional Templates</h3>
                   <p className="mt-2 text-gray-200">
-                    Stand out in Nashville's competitive market with professional quotes 
+                    Stand out in Nashville&apos;s competitive market with professional quotes 
                     that build trust. Include your license info, insurance details, and 
                     customer testimonials automatically.
                   </p>
@@ -294,7 +294,7 @@ export default function NashvillePaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "I was losing jobs to faster competitors. Now I quote on-site in 15 minutes 
+                    &quot;I was losing jobs to faster competitors. Now I quote on-site in 15 minutes 
                     and close 60% more deals. Last month I added $18,000 in revenue just from 
                     faster quotes. This software paid for itself in 3 days."
                   </blockquote>
@@ -311,7 +311,7 @@ export default function NashvillePaintingSoftware() {
                     ))}
                   </div>
                   <blockquote className="text-lg">
-                    "The historic home templates are perfect for Belle Meade properties. I can 
+                    &quot;The historic home templates are perfect for Belle Meade properties. I can 
                     include all the specialty work like lead containment automatically. My 
                     high-end clients are impressed by the professional presentation."
                   </blockquote>
@@ -393,7 +393,7 @@ export default function NashvillePaintingSoftware() {
                     <p className="text-lg mb-2">Additional Monthly Revenue</p>
                     <p className="text-4xl font-bold text-green-600">+$76,800</p>
                     <p className="text-base text-gray-200 mt-2">
-                      That's 1,600x return on your PaintQuote Pro investment
+                      That&apos;s 1,600x return on your PaintQuote Pro investment
                     </p>
                   </div>
 
@@ -468,14 +468,14 @@ export default function NashvillePaintingSoftware() {
                 <h2 className="text-2xl font-bold">Why Nashville Painting Contractors Choose PaintQuote Pro</h2>
                 <div className="mt-6 space-y-4 text-gray-200">
                   <p>
-                    Nashville's painting market is unique. With over 600 painting contractors 
+                    Nashville&apos;s painting market is unique. With over 600 painting contractors 
                     serving Middle Tennessee, standing out requires more than just quality work. 
                     The contractors winning the most jobs are those who respond fastest with 
                     professional quotes.
                   </p>
                   <p>
                     PaintQuote Pro was designed specifically for markets like Nashville where 
-                    speed and professionalism win. Our AI understands Tennessee's climate 
+                    speed and professionalism win. Our AI understands Tennessee&apos;s climate 
                     challenges, from humid summers that affect drying times to sudden storms 
                     that can delay projects. The software automatically factors these into your 
                     quotes.

@@ -8,7 +8,7 @@ export interface QuoteContext {
   address?: string;
   projectType?: 'interior' | 'exterior';
   surfaces?: string[];
-  rooms?: any[];
+  rooms?: unknown[];
   paintQuality?: string;
   prepWork?: string;
   timeline?: string;
@@ -54,7 +54,7 @@ export interface ConversationMessage {
   role: 'user' | 'assistant';
   content: string;
   timestamp?: Date;
-  metadata?: any;
+  metadata?: Record<string, unknown>;
 }
 
 export class QuoteAssistant {
@@ -86,7 +86,7 @@ export class QuoteAssistant {
       
       console.log('[QuoteAssistant] Got response:', response.substring(0, 100) + '...');
       return response;
-    } catch (error: any) {
+    } catch (error: Error | unknown) {
       console.error('[QuoteAssistant] Error calling OpenRouter:', error);
       console.error('[QuoteAssistant] Error details:', {
         message: error.message,
@@ -165,7 +165,19 @@ export class QuoteAssistant {
 
   async generateQuoteSummary(
     context: QuoteContext,
-    pricing: any
+    pricing: {
+      total: number;
+      materials?: { total: number };
+      labor?: { total: number };
+      breakdown?: {
+        primer?: { gallons: number; product: string; cost: number };
+        wallPaint?: { gallons: number; product: string; cost: number };
+        ceilingPaint?: { gallons: number; product: string; cost: number };
+        supplies?: number;
+        prepWork?: { hours: number; cost: number };
+        painting: { hours: number; cost: number };
+      };
+    }
   ): Promise<string> {
     const messages: Message[] = [
       {
@@ -364,7 +376,20 @@ Keep responses under 2 sentences when possible. Be conversational but efficient.
     }
   }
 
-  formatQuotePresentation(quoteData: any): string {
+  formatQuotePresentation(quoteData: {
+    materials: { total: number };
+    labor: { total: number };
+    total: number;
+    timeline: string;
+    breakdown: {
+      primer?: { gallons: number; product: string; cost: number };
+      wallPaint?: { gallons: number; product: string; cost: number };
+      ceilingPaint?: { gallons: number; product: string; cost: number };
+      supplies?: number;
+      prepWork?: { hours: number; cost: number };
+      painting: { hours: number; cost: number };
+    };
+  }): string {
     const { materials, labor, total, timeline, breakdown } = quoteData;
     
     return `Here's your quote breakdown:

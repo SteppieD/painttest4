@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Progress } from '@/components/ui/progress'
+// import { Progress } from '@/components/ui/progress' // TODO: Check if this import is needed
 import { AlertCircle, Zap } from 'lucide-react'
 import Link from 'next/link'
 
@@ -94,7 +94,7 @@ export function QuoteUsageIndicator() {
       {isAtLimit && (
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-red-400">
-            You've reached your monthly quote limit.{' '}
+            You{"'"}ve reached your monthly quote limit.{' '}
             <Link href="/billing" className="font-medium text-red-300 underline hover:no-underline">
               Upgrade to Pro
             </Link>{' '}
@@ -106,7 +106,7 @@ export function QuoteUsageIndicator() {
       {isNearLimit && !isAtLimit && (
         <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-yellow-400">
-            You're approaching your quote limit.{' '}
+            You{"'"}re approaching your quote limit.{' '}
             <Link href="/billing" className="font-medium text-yellow-300 underline hover:no-underline">
               Upgrade now
             </Link>{' '}

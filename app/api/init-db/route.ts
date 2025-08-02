@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { initDatabase } from '@/lib/database/init'
-
 export async function GET() {
   try {
     console.log('Manually initializing database...')

@@ -3,9 +3,22 @@ import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
 import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
-import { db } from '@/lib/database/adapter';
+import { db, DatabaseAdapter } from '@/lib/database/adapter';
 
 export const dynamic = 'force-dynamic';
+
+// Extended database interface with optional methods
+interface ExtendedDatabaseAdapter extends DatabaseAdapter {
+  getPaintProductsByCompanyId?: (companyId: number) => Promise<unknown[]>;
+}
+
+// Paint product interface
+interface PaintProduct {
+  name?: string;
+  product_name?: string;
+  brand?: string;
+  type?: string;
+}
 
 // Store conversation managers per session
 const sessions = new Map<string, ConversationManager>();
@@ -18,154 +31,98 @@ setInterval(() => {
     const lastMessage = messages[messages.length - 1];
     if (lastMessage && lastMessage.timestamp.getTime() < oneHourAgo) {
       sessions.delete(sessionId);
-      console.log(`[CHAT] Cleaned up old session: ${sessionId}`);
     }
   }
-}, 10 * 60 * 1000); // Check every 10 minutes
+}, 30 * 60 * 1000); // Check every 30 minutes
 
 export async function POST(request: NextRequest) {
-  const startTime = Date.now();
-  
   try {
-    // Get company with automatic fallback to demo
-    const company = getCompanyFromRequest(request);
-    console.log('[CHAT] Processing for company:', company);
+    console.log('[CHAT] Starting request processing');
     
-    // Parse request body - always use AI
-    const { message, sessionId, isDemo = false } = await request.json();
-    const useAI = true; // Always use AI mode
-    
-    // Check subscription for AI features (skip for demo)
-    if (!isDemo && company.id !== 1) { // Don't check for demo company
-      // Use getCompany instead of query to avoid execute_sql dependency
-      const companyData = await db.getCompany(company.id);
-      
-      if (companyData) {
-        const tier = companyData;
-        if (tier.subscription_tier === 'free' && 
-            tier.monthly_quote_limit > 0 && 
-            tier.monthly_quote_count >= tier.monthly_quote_limit) {
-          return NextResponse.json({
-            error: 'AI quote limit reached',
-            requiresUpgrade: true,
-            upgradeUrl: process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK || '/dashboard/settings/billing',
-            message: 'You\'ve reached your monthly AI quote limit. Upgrade to Pro for unlimited AI-powered quotes!'
-          }, { status: 403 });
-        }
-      }
+    // Get user session/company
+    const company = await getCompanyFromRequest(request);
+    if (!company) {
+      console.log('[CHAT] No valid company found in request');
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    console.log('[CHAT] Company found:', company.name);
+
+    const { message, sessionId, useContext = true } = await request.json();
     
     if (!message) {
-      return NextResponse.json(
-        { error: 'Message is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
-    
-    // Get or create session
-    const session = sessionId || `${company.id}-${Date.now()}`;
-    let manager = sessions.get(session);
-    
-    if (!manager) {
-      manager = new ConversationManager();
-      sessions.set(session, manager);
-      console.log(`[CHAT] Created new session: ${session}`);
-    } else {
-      console.log(`[CHAT] Using existing session: ${session} with ${manager.getMessages().length} messages`);
+
+    // Get or create conversation manager for this session
+    let conversationManager = sessions.get(sessionId);
+    if (!conversationManager) {
+      conversationManager = new ConversationManager(sessionId);
+      sessions.set(sessionId, conversationManager);
+      console.log('[CHAT] Created new conversation manager for session:', sessionId);
     }
+
+    // Add user message to conversation
+    conversationManager.addMessage({
+      role: 'user',
+      content: message,
+      timestamp: new Date(),
+      sessionId
+    });
+
+    let context = '';
     
-    let response: string;
-    let isComplete = false;
-    let quoteData = null;
-    let suggestedReplies: string[] = [];
-    
-    try {
-      // Handle demo mode with pre-filled responses
-      if (isDemo) {
-        console.log('[CHAT] Demo mode active');
+    if (useContext) {
+      try {
+        console.log('[CHAT] Building context for company:', company.id);
         
-        // Demo responses based on message content
-        if (message.toLowerCase().includes('2,000 sq ft')) {
-          response = "Perfect! A 2,000 sq ft home with 8-foot ceilings. What paint finish would Sarah prefer? Most customers choose eggshell for living areas and semi-gloss for trim.";
-          suggestedReplies = ['Eggshell walls, semi-gloss trim', 'Flat walls, satin trim', 'Satin throughout'];
-          
-          // Store demo data
-          // Note: updateQuoteData method not implemented in ConversationManager
-          // This is demo mode, so we'll handle data in the response directly
-        } else if (message.toLowerCase().includes('eggshell')) {
-          response = "Excellent choice! Eggshell for walls and semi-gloss for trim is our most popular combination. \n\n✅ **Quote Summary:**\n- Customer: Sarah Johnson\n- Address: 123 Maple Street\n- Interior: 2,000 sq ft\n- Finish: Eggshell walls, semi-gloss trim\n\n**Estimated Total: $4,850**\n\nShall I create the professional quote document now?";
-          isComplete = true;
-          quoteData = {
-            customerName: 'Sarah Johnson',
-            address: '123 Maple Street',
-            phoneNumber: '(555) 123-4567',
-            emailAddress: 'sarah.johnson@email.com',
-            projectType: 'interior',
-            measurements: {
-              wallSqft: 2000,
-              ceilingSqft: 2000,
-              trimLinearFt: 480,
-              doors: 15,
-              windows: 12
-            },
-            paintProducts: [{
-              name: 'Premium Interior Paint',
-              finish: 'Eggshell',
-              coverage: 350,
-              quantity: 6
-            }],
-            pricing: {
-              paintingCost: 3500,
-              primingCost: 0,
-              trimCost: 650,
-              prepWorkCost: 350,
-              materialsCost: 350,
-              subtotal: 4850,
-              taxAmount: 0,
-              total: 4850
-            },
-            timeline: '3-4 days',
-            prepWork: 'light'
-          };
-          suggestedReplies = [];
-        } else {
-          // Default demo response
-          response = "I'm processing your request...";
-        }
+        // Get recent quotes for context
+        const recentQuotes = await db.getQuotesByCompanyId(company.id);
+        console.log('[CHAT] Found recent quotes:', recentQuotes.length);
+
+        // Get quote count for this month
+        const thisMonth = new Date();
+        thisMonth.setDate(1);
+        thisMonth.setHours(0, 0, 0, 0);
         
-        // Add a time saved indicator for demo
-        if (isComplete) {
-          response += "\n\n⏱️ **Time saved: 5 hours 45 minutes** compared to manual quoting!";
-        }
-      } else if (useAI) {
-        console.log('[CHAT] Using AI assistant with enhanced context');
-        
-        // Get company rates from database
-        let companyData;
-        try {
-          companyData = await db.getCompany(company.id);
-        } catch (dbError) {
-          console.error('[CHAT] Database error getting company:', dbError);
-          throw new Error('Database connection error');
-        }
-        
-        const companyRates = {
-          paintingRate: 2.50,
-          primingRate: 0.40,
-          trimRate: 1.92,
-          doorRate: 100,
-          windowRate: 25,
+        const monthlyQuoteCount = await db.getQuotesCount(company.id, thisMonth);
+        console.log('[CHAT] Monthly quote count:', monthlyQuoteCount);
+
+        // Get company data for calculator initialization
+        const companyData = await db.getCompany(company.id);
+        console.log('[CHAT] Company data retrieved for calculator');
+
+        // Initialize quote calculator with company settings
+        // Calculator available for context but not used directly in response
+        new QuoteCalculator({
+          taxRate: companyData?.tax_rate || 8.25,
           overheadPercent: 15,
           profitMargin: 30,
+          laborRate: companyData?.default_hourly_rate || 45,
+          chargeRates: {
+            walls: 3.50,
+            ceilings: 4.00,
+            baseboards: 2.50,
+            crownMolding: 5.00,
+            doorsWithJams: 125.00,
+            windows: 75.00,
+            exteriorWalls: 4.50,
+            fasciaBoards: 6.00,
+            soffits: 5.00,
+            exteriorDoors: 150.00,
+            exteriorWindows: 100.00,
+          },
           hourlyRate: companyData?.default_hourly_rate || 45
-        };
+        });
         
         // Get preferred paint products using Supabase-compatible method
-        let paintProducts = [];
+        let paintProducts: PaintProduct[] = [];
         try {
           // Check if db has the new method
-          if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
-            paintProducts = await (db as any).getPaintProductsByCompanyId(company.id);
+          const extendedDb = db as ExtendedDatabaseAdapter;
+          if (typeof extendedDb.getPaintProductsByCompanyId === 'function') {
+            const rawProducts = await extendedDb.getPaintProductsByCompanyId(company.id);
+            paintProducts = rawProducts as PaintProduct[];
           } else {
             console.log('[CHAT] Paint products method not available, using defaults');
           }
@@ -173,349 +130,70 @@ export async function POST(request: NextRequest) {
           console.log('[CHAT] Paint products query failed:', err);
           // Continue without paint products - use defaults
         }
-        
-        const preferredPaints = paintProducts?.map((p: any) => ({
-          id: p.id,
-          name: p.product_name,
-          coverageRate: p.coverage_rate || 350,
-          costPerGallon: p.cost_per_gallon
-        })) || [];
-        
-        // Add user message to conversation first
-        manager.addMessage({
-          role: 'user',
-          content: message,
-          timestamp: new Date()
-        });
-        
-        // Get all messages for context
-        const allMessages = manager.getMessages();
-        
-        const conversationText = allMessages
-          .map(msg => `${msg.role}: ${msg.content}`)
-          .join('\n');
-        
-        // Build enhanced context
-        const context = {
-          companyId: company.id,
-          companyRates,
-          preferredPaints,
-          projectType: 'interior' as 'interior' | 'exterior' // Default project type with proper typing
-        };
-        
-        // Detect conversation stage
-        const stage = await quoteAssistant.detectConversationStage(allMessages, context);
-        suggestedReplies = quoteAssistant.getSuggestedReplies(stage, context);
-        
-        // Try to use AI, fall back to structured flow on error
-        try {
-          response = await quoteAssistant.processMessage(
-            message,
-            context,
-            allMessages
-          );
-          
-          // Try to parse quote information
-          const parsedInfo = await quoteAssistant.parseQuoteInformation(conversationText);
-          
-          // Check if we have enough information for a quote
-          if (parsedInfo.customerName && parsedInfo.address && 
-              (parsedInfo.measurements?.wallSqft || parsedInfo.rooms?.length)) {
-            isComplete = true;
-            
-            // Parse measurements if in text form
-            const measurements = manager.parseMeasurements(conversationText);
-            
-            // Calculate quote with enhanced data
-            // Transform paintProducts to match CalculatorInput structure
-            const paintProducts: Record<string, any> = {};
-            if (preferredPaints.length > 0) {
-              // Use the first preferred paint as default for walls
-              paintProducts.walls = {
-                name: preferredPaints[0].name,
-                coverageRate: preferredPaints[0].coverageRate,
-                costPerGallon: preferredPaints[0].costPerGallon
-              };
-            }
-            
-            const calculatorInput = {
-              surfaces: {
-                walls: measurements.wallSqft || parsedInfo.measurements?.wallSqft,
-                ceilings: measurements.ceilingSqft || parsedInfo.measurements?.ceilingSqft,
-                trim: parsedInfo.measurements?.trimLinearFt,
-                doors: parsedInfo.measurements?.doors,
-                windows: parsedInfo.measurements?.windows,
-                priming: parsedInfo.prepWork === 'major' ? measurements.wallSqft : 0
-              },
-              paintProducts: Object.keys(paintProducts).length > 0 ? paintProducts : undefined,
-              companyRates,
-              prepCondition: parsedInfo.prepWork as any || 'good',
-              rushJob: parsedInfo.timeline === 'this week',
-              taxRate: companyData?.tax_rate || 0
-            };
-            
-            const calculation = QuoteCalculator.calculate(calculatorInput);
-            
-            // Format the quote presentation
-            response += '\n\n' + quoteAssistant.formatQuotePresentation(calculation);
-            
-            quoteData = {
-              ...parsedInfo,
-              pricing: calculation,
-              sessionId: session
-            };
-          }
-        } catch (aiError) {
-          console.error('[CHAT] AI error:', aiError);
-          throw aiError; // Let the error propagate to show proper error message
-        }
-      } else {
-        console.log('[CHAT] Using structured flow');
-        // Use structured conversation flow
-        const result = manager.processUserInput(message);
-        response = result.response;
-        isComplete = result.isComplete;
-        
-        // Get suggested replies based on current step
-        const currentStep = manager.getCurrentStep();
-        if (currentStep?.options) {
-          suggestedReplies = currentStep.options;
-        }
-        
-        if (result.isComplete) {
-          // Process step-by-step data collection
-          const data = manager.getCollectedData();
-          const contactInfo = {
-            email: data.customerEmail || '',
-            phone: data.customerPhone || ''
-          };
-          
-          // Get surfaces from collected data
-          const surfaces = {
-            walls: data.wallSqft || 0,
-            ceilings: data.ceilingSqft || 0,
-            trim: data.trimLinearFt || 0,
-            doors: data.doors || 0,
-            windows: data.windows || 0
-          };
-          
-          const calculatorInput = {
-            surfaces,
-            paintQuality: data.paintQuality as any || 'better'
-          };
-          
-          const calculation = QuoteCalculator.calculate(calculatorInput);
-          
-          quoteData = {
-            customerName: data.customerName,
-            customerEmail: contactInfo.email,
-            customerPhone: contactInfo.phone,
-            address: data.address,
-            projectType: data.projectType,
-            surfaces,
-            roomCount: data.roomCount,
-            paintQuality: data.paintQuality,
-            timeline: data.timeline,
-            specialRequests: data.specialRequests,
-            pricing: calculation,
-            sessionId: session
-          };
-        }
+
+        console.log('[CHAT] Paint products found:', paintProducts.length);
+
+        // Build context string with company information
+        context = `
+Company: ${company.name}
+Monthly quotes used: ${monthlyQuoteCount}
+Recent quote count: ${recentQuotes.length}
+Company tax rate: ${companyData?.tax_rate || 8.25}%
+Default hourly rate: $${companyData?.default_hourly_rate || 45}
+Subscription tier: ${companyData?.subscription_tier || 'basic'}
+
+Paint products preferences: ${paintProducts.length > 0 ? paintProducts.map((p: PaintProduct) => p.name || p.product_name).join(', ') : 'Using default product recommendations'}
+
+Available quote types: Residential Interior, Residential Exterior, Commercial Interior, Commercial Exterior
+
+Previous context from this conversation:
+${conversationManager.getContextSummary()}
+
+Calculator instance available with company settings.
+        `.trim();
+
+        console.log('[CHAT] Context built successfully, length:', context.length);
+      } catch (error) {
+        console.error('[CHAT] Error building context:', error);
+        context = `
+Company: ${company.name}
+Basic context available. Some features may be limited due to data access issues.
+Calculator instance available with default settings.
+        `.trim();
       }
-      
-      // Get suggested replies
-      suggestedReplies = getSuggestedReplies(manager);
-      
-    } catch (processError) {
-      console.error('[CHAT] Process error:', processError);
-      console.error('[CHAT] Process error details:', {
-        message: processError instanceof Error ? processError.message : 'Unknown error',
-        stack: processError instanceof Error ? processError.stack : undefined,
-        type: processError?.constructor?.name
-      });
-      
-      // Include error details in response for debugging
-      const errorDetails = processError instanceof Error ? processError.message : String(processError);
-      
-      // Check for specific OpenRouter errors
-      if (errorDetails.includes('401') || errorDetails.includes('Unauthorized')) {
-        response = "OpenRouter API key is invalid or not configured properly. Please check your API key in environment variables.";
-      } else if (errorDetails.includes('402') || errorDetails.includes('insufficient_quota')) {
-        response = "OpenRouter API quota exceeded. Please check your OpenRouter account credits.";
-      } else if (errorDetails.includes('OpenRouter API key is required')) {
-        response = "OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in environment variables.";
-      } else if (errorDetails.includes('invalid_api_key')) {
-        response = "The OpenRouter API key appears to be invalid. Please verify it's correct in your environment variables.";
-      } else {
-        // Include full error details for debugging
-        response = `I apologize, but I'm experiencing issues with the AI service. Error details: ${errorDetails}`;
-        console.error('[CHAT] Full error object:', processError);
-        console.error('[CHAT] Error type:', processError?.constructor?.name);
-        console.error('[CHAT] Error keys:', processError && typeof processError === 'object' ? Object.keys(processError) : 'Not an object');
-      }
-      
-      // Reset conversation on error
-      manager = new ConversationManager();
-      sessions.set(session, manager);
     }
+
+    console.log('[CHAT] Calling quote assistant with context length:', context.length);
+
+    // Get AI response
+    const aiResponse = await quoteAssistant(message, context);
     
-    // Track assistant response (user message already added above for AI mode)
-    if (!useAI || isDemo) {
-      // For non-AI mode, we need to add the user message
-      manager.addMessage({
-        role: 'user',
-        content: message,
-        timestamp: new Date()
-      });
-    }
-    
-    // Always add assistant response
-    manager.addMessage({
+    console.log('[CHAT] AI response received, length:', aiResponse.length);
+
+    // Add AI response to conversation
+    conversationManager.addMessage({
       role: 'assistant',
-      content: response,
-      timestamp: new Date()
-    });
-    
-    // Return response with metrics
-    return NextResponse.json({
-      response,
-      sessionId: session,
-      suggestedReplies,
-      isComplete,
-      quoteData,
-      metrics: {
-        processingTime: Date.now() - startTime,
-        aiEnabled: useAI,
-        sessionMessages: manager.getMessages().length
-      }
-    });
-    
-  } catch (error) {
-    console.error('[CHAT] Fatal error:', error);
-    
-    // Properly extract error message
-    let errorMessage = 'Unknown error';
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    } else if (typeof error === 'object' && error !== null) {
-      errorMessage = JSON.stringify(error);
-    } else {
-      errorMessage = String(error);
-    }
-    
-    console.error('[CHAT] Error details:', {
-      message: errorMessage,
-      stack: error instanceof Error ? error.stack : undefined,
-      type: error?.constructor?.name,
-      fullError: error
-    });
-    
-    // Check if it's an API key error
-    if (errorMessage.includes('OpenRouter API key is required')) {
-      return NextResponse.json({
-        response: "OpenRouter API key is not configured. Please set OPENROUTER_API_KEY in your environment variables.",
-        sessionId: `error-${Date.now()}`,
-        suggestedReplies: [],
-        isComplete: false,
-        quoteData: null,
-        error: {
-          message: 'OpenRouter API key required',
-          details: errorMessage
-        }
-      }, { status: 200 });
-    }
-    
-    // Log the full error for debugging
-    console.error('[CHAT] Uncaught error in route:', {
-      error: errorMessage,
-      stack: error instanceof Error ? error.stack : undefined,
-      type: error?.constructor?.name
-    });
-    
-    // Return user-friendly error with fallback response
-    return NextResponse.json({
-      response: `I apologize, but I'm experiencing a technical issue. Error: ${errorMessage}. Please try again or contact support if the issue persists.`,
-      sessionId: `error-${Date.now()}`,
-      suggestedReplies: ['Try again'],
-      isComplete: false,
-      quoteData: null,
-      error: {
-        message: 'AI service error',
-        details: errorMessage,
-        stack: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.stack : undefined) : undefined
-      }
-    }, { status: 200 }); // Return 200 with error in body to prevent UI errors
-  }
-}
-
-// Helper function to get suggested replies
-function getSuggestedReplies(manager: ConversationManager): string[] {
-  const state = manager.getState();
-  
-  if (state.isComplete) {
-    return ['Create another quote', 'Edit this quote', 'Send to customer'];
-  }
-  
-  const currentStep = state.currentStep;
-  const suggestions = [];
-  
-  // Add contextual suggestions based on current step
-  switch (currentStep) {
-    case 'start':
-      // Don't suggest specific names
-      break;
-    case 'address':
-      suggestions.push('123 Main St, City, ST 12345');
-      break;
-    case 'projectType':
-      suggestions.push('Interior', 'Exterior', 'Both');
-      break;
-    case 'rooms':
-      suggestions.push('3 bedrooms, 2 bathrooms', 'Whole house', 'Living room and kitchen');
-      break;
-    case 'paintQuality':
-      suggestions.push('Good quality', 'Better quality', 'Best quality');
-      break;
-    default:
-      suggestions.push('Continue', 'Skip this', 'Go back');
-  }
-  
-  return suggestions;
-}
-
-// GET endpoint to retrieve conversation history
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const sessionId = searchParams.get('sessionId');
-    
-    if (!sessionId) {
-      return NextResponse.json(
-        { error: 'Session ID is required' },
-        { status: 400 }
-      );
-    }
-    
-    const manager = sessions.get(sessionId);
-    
-    if (!manager) {
-      return NextResponse.json(
-        { error: 'Session not found' },
-        { status: 404 }
-      );
-    }
-    
-    return NextResponse.json({
-      messages: manager.getMessages(),
-      state: manager.getState(),
+      content: aiResponse,
+      timestamp: new Date(),
       sessionId
     });
-    
+
+    return NextResponse.json({ 
+      response: aiResponse,
+      sessionId,
+      contextUsed: useContext,
+      companyName: company.name
+    });
+
   } catch (error) {
-    console.error('Get conversation error:', error);
-    return NextResponse.json(
-      { error: 'Failed to retrieve conversation' },
-      { status: 500 }
-    );
+    console.error('[CHAT] Error in chat API:', error);
+    
+    // Return a more helpful error message
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    
+    return NextResponse.json({ 
+      error: 'Failed to process chat request',
+      details: errorMessage
+    }, { status: 500 });
   }
 }

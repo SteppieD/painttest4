@@ -474,7 +474,7 @@ export default function PaintContractorApp() {
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="mr-2 h-4 w-4 text-primary" />
-                          Tomorrow's jobs assigned
+                          Tomorrow{"'"}s jobs assigned
                         </li>
                         <li className="flex items-center">
                           <CheckCircle className="mr-2 h-4 w-4 text-primary" />
@@ -485,7 +485,7 @@ export default function PaintContractorApp() {
 
                     <div className="rounded-lg border bg-card p-6 sm:col-span-2">
                       <div className="flex items-center justify-between">
-                        <h4 className="font-semibold">Today's Dashboard</h4>
+                        <h4 className="font-semibold">Today{"'"}s Dashboard</h4>
                         <span className="text-base text-gray-200">Live</span>
                       </div>
                       <div className="mt-4 grid grid-cols-3 gap-4 text-center">
@@ -531,7 +531,7 @@ export default function PaintContractorApp() {
                     ))}
                   </div>
                   <p className="mt-4 text-gray-200">
-                    "The app changed everything. I create estimates right at the customer's 
+                    {"\"The app changed everything. I create estimates right at the customer"}s 
                     house and close deals on the spot. Doubled my close rate!"
                   </p>
                   <div className="mt-4">

@@ -43,7 +43,7 @@ export const trackRouteChange = (url: string) => {
 };
 
 // Enhanced ecommerce helper
-export const pushEcommerceEvent = (eventData: any) => {
+export const pushEcommerceEvent = (eventData: unknown) => {
   if (!isGTMEnabled()) return;
   
   window.dataLayer.push({ ecommerce: null }); // Clear previous ecommerce data

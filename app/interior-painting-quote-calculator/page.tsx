@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { Calculator, Home, Palette, Ruler, Clock, CheckCircle, DollarSign, Zap } from 'lucide-react'
 import SharedNavigation from '@/components/shared-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Button } from '@/components/ui/button'
-
+// import { Button } from '@/components/ui/button'
+ // TODO: Check if this import is needed
 export const metadata: Metadata = {
   title: 'Interior Painting Quote Calculator | Free Room & House Interior Estimates',
   description: 'Calculate accurate interior painting quotes instantly. Get professional estimates for bedrooms, living rooms, kitchens, and entire houses with our specialized interior paint calculator.',
@@ -684,7 +684,7 @@ export default function InteriorPaintingQuoteCalculator() {
               </h2>
               <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Transform your home's interior with professional painting. Get accurate quotes, 
-                choose the perfect finishes, and create the space you've always wanted.
+                choose the perfect finishes, and create the space you{"'"}ve always wanted.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link

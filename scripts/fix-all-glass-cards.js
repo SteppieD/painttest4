@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-function processFile(filePath) {
+function processFile(_filePath) {
   console.log(`Processing: ${filePath}`);
   let content = fs.readFileSync(filePath, 'utf8');
   let changes = 0;
