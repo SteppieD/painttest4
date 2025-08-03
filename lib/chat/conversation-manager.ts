@@ -66,7 +66,7 @@ export class ConversationManager {
         field: 'surfaces',
         type: 'text',
         required: true,
-        next: (value) => {
+        next: (value: any) => {
           const lower = value.toLowerCase();
           if (lower.includes('trim') || lower.includes('door')) {
             return 'trimDetails';
@@ -175,7 +175,7 @@ export class ConversationManager {
     
     if (currentStep.type === 'number') {
       processedValue = parseFloat(input);
-      if (isNaN(processedValue)) {
+      if (isNaN(processedValue as number)) {
         return {
           response: "Please provide a valid number.",
           isComplete: false,
@@ -206,7 +206,7 @@ export class ConversationManager {
         currentStep.options?.includes(item)
       );
       
-      if (processedValue.length === 0) {
+      if ((processedValue as any[]).length === 0) {
         return {
           response: `Please select from: ${currentStep.options?.join(', ')}`,
           isComplete: false,
@@ -290,7 +290,7 @@ export class ConversationManager {
 
   // Helper to parse contact info
   parseContactInfo(data: Record<string, unknown>): { email?: string; phone?: string } {
-    const contact = data.contactInfo || '';
+    const contact = String(data.contactInfo || '');
     const emailMatch = contact.match(/[\w.-]+@[\w.-]+\.\w+/);
     const phoneMatch = contact.match(/[\d\s()+-]+/);
     
@@ -309,7 +309,14 @@ export class ConversationManager {
     wallSqft?: number;
     ceilingSqft?: number;
   } {
-    const measurements: unknown = {};
+    const measurements: {
+      linearFeetWalls?: number;
+      ceilingHeight?: number;
+      roomLength?: number;
+      roomWidth?: number;
+      wallSqft?: number;
+      ceilingSqft?: number;
+    } = {};
     
     // Look for linear feet
     const linearMatch = input.match(/(\d+)\s*(?:linear\s*)?(?:feet|ft)/i);
@@ -351,7 +358,7 @@ export class ConversationManager {
 
   // Quick quote mode parser - handles comprehensive messages
   parseQuickQuote(input: string): Record<string, any> | null {
-    const data: unknown = {
+    const data: Record<string, any> = {
       measurements: {},
       surfaces: [],
       paintProducts: {}

@@ -1,5 +1,5 @@
 # Base stage
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 WORKDIR /app
 RUN apk add --no-cache libc6-compat openssl python3 make g++ sqlite
 
@@ -51,9 +51,11 @@ COPY --from=builder /app/public ./public
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
 
-# Automatically leverage output traces to reduce image size
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy built application - handle both standalone and regular builds
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./next.config.js
 
 # Copy database schema and initialization files
 COPY --from=builder --chown=nextjs:nodejs /app/lib/database ./lib/database
@@ -61,16 +63,14 @@ COPY --from=builder --chown=nextjs:nodejs /app/lib/database ./lib/database
 # Create data directory for SQLite database
 RUN mkdir -p /app/data && chown -R nextjs:nodejs /app/data
 
-# Create a startup script
-COPY --from=builder --chown=nextjs:nodejs /app/docker-entrypoint.sh ./docker-entrypoint.sh
-RUN chmod +x ./docker-entrypoint.sh
+# Copy environment file if exists
+COPY --from=builder --chown=nextjs:nodejs /app/.env.local* ./
 
 USER nextjs
 
-EXPOSE 3001
-ENV PORT=3001
+EXPOSE 3000
+ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV DATABASE_PATH="/app/data/painting_quotes_app.db"
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
-CMD ["node", "server.js"]
+CMD ["npm", "start"]

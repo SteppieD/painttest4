@@ -21,7 +21,7 @@ export function ChatInput({
   const [message, setMessage] = useState('');
 
   const handleSubmit = (_e: React.FormEvent) => {
-    e.preventDefault();
+    _e.preventDefault();
     if (message.trim() && !isLoading) {
       onSendMessage(message.trim());
       setMessage('');
@@ -30,7 +30,7 @@ export function ChatInput({
 
   const handleSuggestedReply = (_reply: string) => {
     if (!isLoading) {
-      onSendMessage(reply);
+      onSendMessage(_reply);
     }
   };
 

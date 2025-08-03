@@ -309,7 +309,7 @@ export default function SettingsPage() {
   const removePaintProduct = (_id: string) => {
     setSettings(prev => ({
       ...prev,
-      paintProducts: prev.paintProducts.filter(p => p.id !== id)
+      paintProducts: prev.paintProducts.filter(p => p.id !== _id)
     }))
   }
 
@@ -317,7 +317,7 @@ export default function SettingsPage() {
     setSettings(prev => ({
       ...prev,
       paintProducts: prev.paintProducts.map(p => 
-        p.id === id ? { ...p, isPreferred: !p.isPreferred } : p
+        p.id === _id ? { ...p, isPreferred: !p.isPreferred } : p
       )
     }))
   }

@@ -44,7 +44,7 @@ export async function verifyAdminCredentials(email: string, password: string): P
       
       if (isValid) {
         return {
-          id: user.id,
+          id: user.id?.toString() || '',
           email: user.email,
           role: user.role
         };
@@ -88,7 +88,7 @@ export function verifyAdminToken(token: string): AdminUser | null {
       return {
         id: decoded.id,
         email: decoded.email,
-        role: decoded.role
+        role: decoded.role as 'admin' | 'super_admin'
       };
     }
     
@@ -108,11 +108,11 @@ export async function createAdminUser(email: string, password: string): Promise<
       email,
       password_hash: hashedPassword,
       role: 'admin',
-      company_name: 'Admin'
+      company_id: 0, // Admin users don't belong to a specific company
     });
     
     return {
-      id: user.id,
+      id: user.id?.toString() || '',
       email: user.email,
       role: 'admin'
     };

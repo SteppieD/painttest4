@@ -6,7 +6,7 @@ import { SubscriptionService } from '@/lib/services/subscription';
 export const dynamic = 'force-dynamic';
 
 // Helper function to clean customer names
-const cleanCustomerName = (name: string) => {
+const cleanCustomerName = (name: string | undefined) => {
   if (!name) return 'Customer';
   
   // Handle "It's for [Name]" pattern
@@ -49,10 +49,11 @@ interface RequestBody {
 }
 
 export async function POST(request: NextRequest) {
-  let requestBody: RequestBody;
+  let requestBody: RequestBody | undefined;
+  let companyId: number | string | undefined;
+  let quoteData: RequestBody['quoteData'] | undefined;
+  
   try {
-    let companyId: number | string;
-    let quoteData: RequestBody['quoteData'];
     
     try {
     const company = getCompanyFromRequest(request);
@@ -68,6 +69,10 @@ export async function POST(request: NextRequest) {
         { error: 'Invalid request body', details: 'Failed to parse JSON' },
         { status: 400 }
       );
+    }
+    
+    if (!requestBody) {
+      throw new Error('Request body is undefined after parsing');
     }
     
     companyId = requestBody.companyId;
@@ -168,9 +173,9 @@ export async function POST(request: NextRequest) {
       company_id: numericCompanyId,
       quote_id: quoteId,
       customer_name: cleanCustomerName(quoteData.customerName) || 'Unknown Customer',
-      customer_email: quoteData.customerEmail || null,
-      customer_phone: quoteData.customerPhone || null,
-      address: quoteData.address || null,
+      customer_email: quoteData.customerEmail || undefined,
+      customer_phone: quoteData.customerPhone || undefined,
+      address: quoteData.address || undefined,
       project_type: quoteData.projectType || 'interior',
       surfaces: quoteData.surfaces || ['walls', 'ceilings'],
       measurements: {
@@ -190,12 +195,11 @@ export async function POST(request: NextRequest) {
       labor_cost: laborCost,
       material_cost: materialCost,
       total_cost: totalCost,
-      timeline: quoteData.timeEstimate || quoteData.timeline || null,
+      timeline: quoteData.timeEstimate || quoteData.timeline || undefined,
       special_requests: Array.isArray(quoteData.specialRequests) 
         ? quoteData.specialRequests.join(', ') 
-        : quoteData.specialRequests || null,
-      status: 'pending',
-      created_at: new Date().toISOString()
+        : quoteData.specialRequests || undefined,
+      status: 'pending'
     };
 
     // Save quote to database
@@ -254,7 +258,7 @@ export async function POST(request: NextRequest) {
     console.error('[QUOTES API] Error constructor:', error?.constructor?.name);
     console.error('[QUOTES API] Error stack:', error instanceof Error ? error.stack : 'No stack');
     console.error('[QUOTES API] Request data that caused error:', { 
-      companyId, 
+      companyId: companyId || 'undefined', 
       quoteDataKeys: quoteData ? Object.keys(quoteData) : 'no quoteData',
       hasConversationHistory: !!requestBody?.conversationHistory
     });
@@ -292,7 +296,7 @@ export async function POST(request: NextRequest) {
     
     // Add stack trace in development
     if (process.env.NODE_ENV === 'development' && error instanceof Error) {
-      (errorResponse as unknown)['stack'] = error.stack;
+      (errorResponse as any)['stack'] = error.stack;
     }
     
     return NextResponse.json(errorResponse, { status: 500 });

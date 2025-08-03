@@ -39,7 +39,7 @@ export default function InteriorPaintingCalculatorClient() {
     }
   }
 
-  const calculateRoomTotal = (room: unknown) => {
+  const calculateRoomTotal = (room: any) => {
     return (room.walls * wallRate) + 
            (room.ceilings * ceilingRate) + 
            (room.trim * trimRate) + 

@@ -36,8 +36,18 @@ function CreateQuoteContent() {
       router.push('/access-code');
       return;
     }
-    setCompanyData(data);
-    fetchQuotaInfo(data);
+    setCompanyData({
+      id: data.id,
+      access_code: data.access_code,
+      name: data.name,
+      email: data.email
+    });
+    fetchQuotaInfo({
+      id: data.id,
+      access_code: data.access_code,
+      name: data.name,
+      email: data.email
+    });
   }, [router]);
 
   const fetchQuotaInfo = async (company: CompanyData) => {

@@ -133,7 +133,7 @@ export default function StatusPage() {
   ]
 
   const getStatusColor = (_status: string) => {
-    switch (status) {
+    switch (_status) {
       case 'operational':
         return 'text-green-400'
       case 'degraded':
@@ -148,7 +148,7 @@ export default function StatusPage() {
   }
 
   const getStatusIcon = (_status: string) => {
-    switch (status) {
+    switch (_status) {
       case 'operational':
         return CheckCircle
       case 'degraded':

@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Check, TrendingUp, DollarSign, Users, BarChart, Sparkles, ArrowRight, Lock, Activity, Percent, Clock } from 'lucide-react'
-// import { redirectToStripePayment } from '@/lib/config/stripe-links' // TODO: Check if this import is needed
-// import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
+import { redirectToStripePayment } from '@/lib/config/stripe-links'
+import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
  // TODO: Check if this import is needed
 export default function UnlockAnalyticsPage() {
   const router = useRouter()

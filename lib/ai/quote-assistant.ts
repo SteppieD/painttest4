@@ -89,19 +89,19 @@ export class QuoteAssistant {
     } catch (error: Error | unknown) {
       console.error('[QuoteAssistant] Error calling OpenRouter:', error);
       console.error('[QuoteAssistant] Error details:', {
-        message: error.message,
-        stack: error.stack,
-        response: error.response?.data,
-        status: error.response?.status,
-        errorType: error.constructor.name
+        message: (error as any).message,
+        stack: (error as any).stack,
+        response: (error as any).response?.data,
+        status: (error as any).response?.status,
+        errorType: (error as any).constructor?.name
       });
       
       // Provide more specific error messages
-      if (error.message?.includes('401')) {
+      if ((error as any).message?.includes('401')) {
         throw new Error('OpenRouter API key is invalid or unauthorized');
-      } else if (error.message?.includes('402')) {
+      } else if ((error as any).message?.includes('402')) {
         throw new Error('OpenRouter account has insufficient credits');
-      } else if (error.message?.includes('API key')) {
+      } else if ((error as any).message?.includes('API key')) {
         throw new Error('OpenRouter API key is required');
       }
       

@@ -1,7 +1,7 @@
 // This file is only for local development and should not be imported in production
 import Database from 'better-sqlite3';
 import { initDatabase } from './init';
-import type { DatabaseAdapter } from './adapter';
+import type { DatabaseAdapter, Company, Quote, User, CreateCompanyData, CreateQuoteData, CreateUserData, UpdateCompanyData, UpdateQuoteData } from './adapter';
 
 // SQLite adapter for local development only
 export class SQLiteAdapter implements DatabaseAdapter {
@@ -11,22 +11,24 @@ export class SQLiteAdapter implements DatabaseAdapter {
     this.db = initDatabase();
   }
 
-  async getCompanyByAccessCode(accessCode: string): Promise<unknown> {
+  async getCompanyByAccessCode(accessCode: string): Promise<Company | null> {
     const stmt = this.db.prepare('SELECT * FROM companies WHERE access_code = ?');
-    return stmt.get(accessCode);
+    const result = stmt.get(accessCode);
+    return result ? result as unknown as Company : null;
   }
 
-  async getCompany(id: number): Promise<unknown> {
+  async getCompany(id: number): Promise<Company | null> {
     const stmt = this.db.prepare('SELECT * FROM companies WHERE id = ?');
-    return stmt.get(id);
+    const result = stmt.get(id);
+    return result ? result as unknown as Company : null;
   }
 
-  async getAllCompanies(): Promise<Record<string, unknown>[]> {
+  async getAllCompanies(): Promise<Company[]> {
     const stmt = this.db.prepare('SELECT * FROM companies');
-    return stmt.all();
+    return stmt.all() as unknown as Company[];
   }
 
-  async createCompany(data: Record<string, unknown>): Promise<unknown> {
+  async createCompany(data: CreateCompanyData): Promise<Company> {
     const keys = Object.keys(data);
     const values = Object.values(data);
     const placeholders = keys.map(() => '?').join(', ');
@@ -36,10 +38,10 @@ export class SQLiteAdapter implements DatabaseAdapter {
     );
     const result = stmt.run(...values);
     
-    return this.db.prepare('SELECT * FROM companies WHERE id = ?').get(result.lastInsertRowid);
+    return this.db.prepare('SELECT * FROM companies WHERE id = ?').get(result.lastInsertRowid) as unknown as Company;
   }
 
-  async updateCompany(id: number, data: Record<string, unknown>): Promise<unknown> {
+  async updateCompany(id: number, data: UpdateCompanyData): Promise<Company> {
     const keys = Object.keys(data);
     const values = Object.values(data);
     const setClause = keys.map(key => `${key} = ?`).join(', ');
@@ -49,10 +51,10 @@ export class SQLiteAdapter implements DatabaseAdapter {
     );
     stmt.run(...values, id);
     
-    return this.db.prepare('SELECT * FROM companies WHERE id = ?').get(id);
+    return this.db.prepare('SELECT * FROM companies WHERE id = ?').get(id) as unknown as Company;
   }
 
-  async createQuote(data: Record<string, unknown>): Promise<unknown> {
+  async createQuote(data: CreateQuoteData): Promise<Quote> {
     const keys = Object.keys(data);
     const values = Object.values(data);
     const placeholders = keys.map(() => '?').join(', ');
@@ -65,21 +67,22 @@ export class SQLiteAdapter implements DatabaseAdapter {
       );
       const result = stmt.run(...values);
       
-      return this.db.prepare('SELECT * FROM quotes WHERE id = ?').get(result.lastInsertRowid);
+      return this.db.prepare('SELECT * FROM quotes WHERE id = ?').get(result.lastInsertRowid) as unknown as Quote;
     } catch (error) {
       console.error('[SQLiteAdapter] Error creating quote:', error);
       throw error;
     }
   }
 
-  async getQuote(quoteId: string): Promise<unknown> {
+  async getQuote(quoteId: string): Promise<Quote | null> {
     const stmt = this.db.prepare('SELECT * FROM quotes WHERE quote_id = ?');
-    return stmt.get(quoteId);
+    const result = stmt.get(quoteId);
+    return result ? result as unknown as Quote : null;
   }
 
-  async getQuotesByCompanyId(companyId: number): Promise<Record<string, unknown>[]> {
+  async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
     const stmt = this.db.prepare('SELECT * FROM quotes WHERE company_id = ? ORDER BY created_at DESC');
-    return stmt.all(companyId);
+    return stmt.all(companyId) as unknown as Quote[];
   }
 
   async getQuotesCount(companyId: number, since?: Date): Promise<number> {
@@ -96,7 +99,7 @@ export class SQLiteAdapter implements DatabaseAdapter {
 
   async getAll(query: string, params: unknown[] = []): Promise<Record<string, unknown>[]> {
     const stmt = this.db.prepare(query);
-    return stmt.all(...params);
+    return stmt.all(...params) as Record<string, unknown>[];
   }
 
   async get(query: string, params: unknown[] = []): Promise<unknown> {
@@ -109,7 +112,7 @@ export class SQLiteAdapter implements DatabaseAdapter {
     return stmt.run(...params);
   }
 
-  async updateQuote(id: number, data: Record<string, unknown>): Promise<unknown> {
+  async updateQuote(id: number, data: UpdateQuoteData): Promise<Quote> {
     const keys = Object.keys(data);
     const values = Object.values(data);
     const setClause = keys.map(key => `${key} = ?`).join(', ');
@@ -119,10 +122,10 @@ export class SQLiteAdapter implements DatabaseAdapter {
     );
     stmt.run(...values, id);
     
-    return this.db.prepare('SELECT * FROM quotes WHERE id = ?').get(id);
+    return this.db.prepare('SELECT * FROM quotes WHERE id = ?').get(id) as unknown as Quote;
   }
 
-  async createUser(data: Record<string, unknown>): Promise<unknown> {
+  async createUser(data: CreateUserData): Promise<User> {
     const keys = Object.keys(data);
     const values = Object.values(data);
     const placeholders = keys.map(() => '?').join(', ');
@@ -132,17 +135,18 @@ export class SQLiteAdapter implements DatabaseAdapter {
     );
     const result = stmt.run(...values);
     
-    return this.db.prepare('SELECT * FROM users WHERE rowid = ?').get(result.lastInsertRowid);
+    return this.db.prepare('SELECT * FROM users WHERE rowid = ?').get(result.lastInsertRowid) as unknown as User;
   }
 
-  async getUserByEmail(email: string): Promise<unknown> {
+  async getUserByEmail(email: string): Promise<User | null> {
     const stmt = this.db.prepare('SELECT * FROM users WHERE email = ?');
-    return stmt.get(email);
+    const result = stmt.get(email);
+    return result ? result as unknown as User : null;
   }
 
-  async getAllUsers(): Promise<Record<string, unknown>[]> {
+  async getAllUsers(): Promise<User[]> {
     const stmt = this.db.prepare('SELECT * FROM users');
-    return stmt.all();
+    return stmt.all() as unknown as User[];
   }
 
   async query(sql: string, params: unknown[] = []): Promise<unknown> {

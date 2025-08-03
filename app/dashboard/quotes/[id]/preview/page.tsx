@@ -173,28 +173,28 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
 
   const formatEmailBody = (_quote: Quote) => {
     const publicUrl = `${window.location.origin}/quote/${params.id}`
-    return `Dear ${quote.customer_name},
+    return `Dear ${_quote.customer_name},
 
 Thank you for considering us for your painting project. Please find your quote details below:
 
-QUOTE #${quote.quote_id}
-Date: ${new Date(quote.created_at).toLocaleDateString()}
+QUOTE #${_quote.quote_id}
+Date: ${new Date(_quote.created_at).toLocaleDateString()}
 
 PROJECT DETAILS:
-- Type: ${quote.project_type} painting
-- Total area: ${quote.walls_sqft || 0} sq ft
-- Paint quality: ${quote.paint_quality || 'Standard'}
-- Timeline: ${quote.timeline || 'Standard'}
-${quote.special_requests ? `- Special requests: ${quote.special_requests}` : ''}
+- Type: ${_quote.project_type} painting
+- Total area: ${_quote.walls_sqft || 0} sq ft
+- Paint quality: ${_quote.paint_quality || 'Standard'}
+- Timeline: ${_quote.timeline || 'Standard'}
+${_quote.special_requests ? `- Special requests: ${_quote.special_requests}` : ''}
 
 COST BREAKDOWN:
-- Materials: $${quote.total_materials?.toFixed(2) || '0.00'}
-- Labor: $${quote.projected_labor?.toFixed(2) || '0.00'}
-- Subtotal: $${quote.subtotal?.toFixed(2) || '0.00'}
-- Markup (${quote.markup_percentage}%): $${((quote.subtotal || 0) * quote.markup_percentage / 100).toFixed(2)}
-${quote.tax_rate ? `- Tax (${quote.tax_rate}%): $${quote.tax_amount?.toFixed(2) || '0.00'}` : ''}
+- Materials: $${_quote.total_materials?.toFixed(2) || '0.00'}
+- Labor: $${_quote.projected_labor?.toFixed(2) || '0.00'}
+- Subtotal: $${_quote.subtotal?.toFixed(2) || '0.00'}
+- Markup (${_quote.markup_percentage}%): $${((_quote.subtotal || 0) * _quote.markup_percentage / 100).toFixed(2)}
+${_quote.tax_rate ? `- Tax (${_quote.tax_rate}%): $${_quote.tax_amount?.toFixed(2) || '0.00'}` : ''}
 
-TOTAL: $${quote.final_price?.toFixed(2) || '0.00'}
+TOTAL: $${_quote.final_price?.toFixed(2) || '0.00'}
 
 This quote is valid for 30 days from the date above.
 

@@ -47,7 +47,7 @@ export class DebugLogger {
       stack: error.stack?.split('\n').slice(0, 5).join('\n')
     } : error;
     
-    this.log('ERROR', message, errorData);
+    this.log('ERROR', message, errorData as Record<string, unknown> | undefined);
   }
 
   checkpoint(name: string, data?: Record<string, unknown>) {

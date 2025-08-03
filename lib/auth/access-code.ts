@@ -135,7 +135,7 @@ export async function validateSession(sessionId: string): Promise<Session | null
       const session = result[0];
       return {
         id: session.id,
-        company_id: parseInt(session.company_id),
+        company_id: typeof session.company_id === 'string' ? parseInt(session.company_id) : session.company_id,
         access_code: session.access_code,
         created_at: new Date(session.created_at),
         expires_at: new Date(session.expires_at)

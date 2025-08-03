@@ -138,7 +138,7 @@ function getDeviceType(): string {
 function getConnectionType(): string {
   if (typeof navigator === 'undefined') return 'unknown'
   
-  const connection = (navigator as unknown).connection
+  const connection = (navigator as any).connection
   if (!connection) return 'unknown'
   
   return connection.effectiveType || 'unknown'

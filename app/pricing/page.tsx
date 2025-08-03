@@ -107,12 +107,12 @@ export default function PricingPage() {
   const router = useRouter()
 
   const handleSelectPlan = (_planKey: string) => {
-    if (planKey === 'free') {
+    if (_planKey === 'free') {
       router.push('/auth/signup?plan=free')
-    } else if (planKey === 'enterprise') {
+    } else if (_planKey === 'enterprise') {
       router.push('/contact?interest=enterprise')
     } else {
-      router.push(`/auth/signup?plan=${planKey}&billing=${billingPeriod}`)
+      router.push(`/auth/signup?plan=${_planKey}&billing=${billingPeriod}`)
     }
   }
 
@@ -170,10 +170,10 @@ export default function PricingPage() {
               <Card 
                 key={key} 
                 className={`relative flex flex-col glass-card ${
-                  (plan as unknown).popular ? 'border-blue-500/50 shadow-lg scale-105' : 'border-white/10'
+                  (plan as any).popular ? 'border-blue-500/50 shadow-lg scale-105' : 'border-white/10'
                 }`}
               >
-                {(plan as unknown).popular && (
+                {(plan as any).popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
                     <span className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-1 text-base font-medium text-white">
                       Most Popular
@@ -184,9 +184,9 @@ export default function PricingPage() {
                 <CardHeader>
                   <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
                   <CardDescription className="text-gray-100">{plan.description}</CardDescription>
-                  {(plan as unknown).highlight && (
+                  {(plan as any).highlight && (
                     <p className="mt-2 text-base font-medium text-blue-400">
-                      {(plan as unknown).highlight}
+                      {(plan as any).highlight}
                     </p>
                   )}
                 </CardHeader>
@@ -242,7 +242,7 @@ export default function PricingPage() {
                 <CardFooter>
                   <Button 
                     className={`w-full ${
-                      (plan as unknown).popular 
+                      (plan as any).popular 
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white' 
                         : 'glass-card border-white/20 text-white hover:bg-gray-900/70'
                     }`}

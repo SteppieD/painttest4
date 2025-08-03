@@ -72,7 +72,8 @@ export async function GET() {
 
   // Test 2: Chat completion test
   let chatTest: unknown = { status: 'not-tested' };
-  if (process.env.OPENROUTER_API_KEY && directApiTest.status === 'success') {
+  const apiTest = directApiTest as { status: string };
+  if (process.env.OPENROUTER_API_KEY && apiTest.status === 'success') {
     try {
       const chatResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
@@ -126,7 +127,8 @@ export async function GET() {
       status: 'imported',
       clientExists: !!client,
       // Try to use the client
-      testMessage: 'Client imported successfully'
+      testMessage: 'Client imported successfully',
+      apiCall: { status: 'not-tested' }
     };
     
     // Try to make a call
@@ -136,12 +138,12 @@ export async function GET() {
           { role: 'user', content: 'Say OK' }
         ], { max_tokens: 10 });
         
-        clientTest.apiCall = {
+        (clientTest as any).apiCall = {
           status: 'success',
           response: result
         };
       } catch (error) {
-        clientTest.apiCall = {
+        (clientTest as any).apiCall = {
           status: 'failed',
           error: error instanceof Error ? error.message : 'Unknown error'
         };
@@ -161,7 +163,7 @@ export async function GET() {
       chatTest,
       clientTest
     },
-    recommendations: getDetailedRecommendations(debug, directApiTest, chatTest, clientTest)
+    recommendations: getDetailedRecommendations(debug, directApiTest as TestResult, chatTest as TestResult, clientTest as ClientTest)
   });
 }
 

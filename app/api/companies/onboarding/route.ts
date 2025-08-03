@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/adapter';
-import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
+import { db, UpdateCompanyData, CreateCompanyData } from '@/lib/database/adapter';
+import { getCompanyFromRequest, CompanyAuth } from '@/lib/auth/simple-auth';
 import { DebugLogger } from '@/lib/debug-logger';
 
 export const dynamic = 'force-dynamic';
@@ -8,8 +8,8 @@ export const dynamic = 'force-dynamic';
 // POST - Complete onboarding
 export async function POST(request: NextRequest) {
   const logger = new DebugLogger('ONBOARDING_API');
-  let updateData: unknown = {};
-  let company: unknown = null;
+  let updateData: UpdateCompanyData = {};
+  let company: CompanyAuth | null = null;
   
   try {
     logger.checkpoint('Starting onboarding process');
@@ -124,10 +124,18 @@ export async function POST(request: NextRequest) {
       // Try to recover by creating the company if update failed
       logger.warn('Attempting to create company after update failure');
       try {
-        const createData = {
-          id: company.id,
+        const createData: CreateCompanyData = {
           access_code: company.access_code,
-          ...updateData
+          company_name: updateData.company_name || data.companyName || company.name || 'Unknown Company',
+          name: updateData.name || data.companyName || company.name || 'Unknown Company',
+          email: updateData.email || data.email || company.email || '',
+          phone: updateData.phone || data.phone || '',
+          tax_rate: updateData.tax_rate || data.taxRate || 0,
+          onboarding_completed: updateData.onboarding_completed || (isMemoryAdapter ? true : 1),
+          onboarding_step: updateData.onboarding_step || 4,
+          subscription_tier: 'free',
+          monthly_quote_count: 0,
+          monthly_quote_limit: 10
         };
         logger.info('Fallback create data', createData);
         updatedCompany = await db.createCompany(createData);

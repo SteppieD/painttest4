@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { db } from '@/lib/database/adapter';
 import { Resend } from 'resend';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -16,13 +16,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Find company by email
-    const { data: company, error } = await supabase
-      .from('companies')
-      .select('*')
-      .eq('email', email.toLowerCase())
-      .single();
+    const companies = await db.getAllCompanies();
+    const company = companies.find(c => c.email?.toLowerCase() === email.toLowerCase());
 
-    if (error || !company) {
+    if (!company) {
       return NextResponse.json(
         { error: 'No account found with this email address' },
         { status: 404 }

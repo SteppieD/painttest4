@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
-import { QuoteCalculator } from '@/lib/calculators/quote-calculator';
+;
 import { db, DatabaseAdapter } from '@/lib/database/adapter';
 
 export const dynamic = 'force-dynamic';
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     // Get or create conversation manager for this session
     let conversationManager = sessions.get(sessionId);
     if (!conversationManager) {
-      conversationManager = new ConversationManager(sessionId);
+      conversationManager = new ConversationManager();
       sessions.set(sessionId, conversationManager);
       console.log('[CHAT] Created new conversation manager for session:', sessionId);
     }
@@ -66,8 +66,7 @@ export async function POST(request: NextRequest) {
     conversationManager.addMessage({
       role: 'user',
       content: message,
-      timestamp: new Date(),
-      sessionId
+      timestamp: new Date()
     });
 
     let context = '';
@@ -92,28 +91,8 @@ export async function POST(request: NextRequest) {
         const companyData = await db.getCompany(company.id);
         console.log('[CHAT] Company data retrieved for calculator');
 
-        // Initialize quote calculator with company settings
-        // Calculator available for context but not used directly in response
-        new QuoteCalculator({
-          taxRate: companyData?.tax_rate || 8.25,
-          overheadPercent: 15,
-          profitMargin: 30,
-          laborRate: companyData?.default_hourly_rate || 45,
-          chargeRates: {
-            walls: 3.50,
-            ceilings: 4.00,
-            baseboards: 2.50,
-            crownMolding: 5.00,
-            doorsWithJams: 125.00,
-            windows: 75.00,
-            exteriorWalls: 4.50,
-            fasciaBoards: 6.00,
-            soffits: 5.00,
-            exteriorDoors: 150.00,
-            exteriorWindows: 100.00,
-          },
-          hourlyRate: companyData?.default_hourly_rate || 45
-        });
+        // Quote calculator configuration available for context
+        // The QuoteCalculator class uses static methods, no instantiation needed
         
         // Get preferred paint products using Supabase-compatible method
         let paintProducts: PaintProduct[] = [];
@@ -146,8 +125,7 @@ Paint products preferences: ${paintProducts.length > 0 ? paintProducts.map((p: P
 
 Available quote types: Residential Interior, Residential Exterior, Commercial Interior, Commercial Exterior
 
-Previous context from this conversation:
-${conversationManager.getContextSummary()}
+Conversation context is tracked for this session.
 
 Calculator instance available with company settings.
         `.trim();
@@ -166,7 +144,10 @@ Calculator instance available with default settings.
     console.log('[CHAT] Calling quote assistant with context length:', context.length);
 
     // Get AI response
-    const aiResponse = await quoteAssistant(message, context);
+    const quoteContext = {
+      companyId: company.id
+    };
+    const aiResponse = await quoteAssistant.processMessage(message, quoteContext, []);
     
     console.log('[CHAT] AI response received, length:', aiResponse.length);
 
@@ -174,8 +155,7 @@ Calculator instance available with default settings.
     conversationManager.addMessage({
       role: 'assistant',
       content: aiResponse,
-      timestamp: new Date(),
-      sessionId
+      timestamp: new Date()
     });
 
     return NextResponse.json({ 

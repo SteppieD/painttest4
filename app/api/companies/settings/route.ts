@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/database/adapter';
+import { db, UpdateCompanyData } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 
 export const dynamic = 'force-dynamic';
@@ -52,7 +52,7 @@ export async function PUT(request: NextRequest) {
     const updates = await request.json();
     
     // Prepare update data
-    const updateData: unknown = {};
+    const updateData: UpdateCompanyData = {};
     
     if (updates.company_name !== undefined) {
       updateData.company_name = updates.company_name;

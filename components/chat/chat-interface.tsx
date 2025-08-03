@@ -43,6 +43,7 @@ export function ChatInterface({
       labor?: number;
       [key: string]: unknown;
     };
+    pricing?: any;
     [key: string]: unknown;
   }
 
@@ -265,14 +266,14 @@ export function ChatInterface({
           prepWork: quoteData.prepWork || null,
           timeEstimate: quoteData.timeline || null,
           specialRequests: quoteData.specialRequests || null,
-          totalCost: quoteData.pricing?.subtotal || quoteData.pricing?.total || 0,
-          finalPrice: quoteData.pricing?.total || quoteData.pricing?.subtotal || 0,
+          totalCost: (quoteData.pricing as any)?.subtotal || (quoteData.pricing as any)?.total || 0,
+          finalPrice: (quoteData.pricing as any)?.total || (quoteData.pricing as any)?.subtotal || 0,
           markupPercentage: quoteData.markupPercentage || 30,
-          sqft: quoteData.surfaces?.walls || quoteData.measurements?.wallSqft || quoteData.sqft || 0,
+          sqft: (quoteData.surfaces as any)?.walls || (quoteData.measurements as any)?.wallSqft || quoteData.sqft || 0,
           breakdown: {
-            materials: quoteData.pricing?.materials?.total || quoteData.pricing?.materials || 0,
-            labor: quoteData.pricing?.labor?.total || quoteData.pricing?.labor || 0,
-            markup: quoteData.pricing?.markup || 0
+            materials: (quoteData.pricing as any)?.materials?.total || (quoteData.pricing as any)?.materials || 0,
+            labor: (quoteData.pricing as any)?.labor?.total || (quoteData.pricing as any)?.labor || 0,
+            markup: (quoteData.pricing as any)?.markup || 0
           }
         },
         conversationHistory: messages

@@ -83,7 +83,7 @@ export async function GET() {
       },
       
       // Paint products
-      paintProducts: paintProducts.map((p: unknown) => ({
+      paintProducts: paintProducts.map((p: any) => ({
         id: p.id,
         name: p.product_name,
         manufacturer: p.manufacturer || '',

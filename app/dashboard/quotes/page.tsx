@@ -42,7 +42,7 @@ export default function QuotesPage() {
     fetchQuotes(company)
   }, [router])
 
-  const fetchQuotes = async (company: unknown) => {
+  const fetchQuotes = async (company: any) => {
     try {
       const response = await fetch('/api/quotes', {
         headers: {

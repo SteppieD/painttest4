@@ -331,7 +331,8 @@ export class SupabaseAdapter implements DatabaseAdapter {
   async getAll(query: string, params: unknown[] = []): Promise<unknown[]> {
     // This method is required by the interface but not typically used with Supabase
     // For Supabase, use the specific table methods instead
-    return this.query(query, params);
+    const result = await this.query(query, params);
+    return Array.isArray(result) ? result : [];
   }
 }
 

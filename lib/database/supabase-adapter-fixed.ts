@@ -1,6 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-// import { DatabaseAdapter } from './adapter';
- // TODO: Check if this import is needed
+import { DatabaseAdapter, Company, Quote, User, CreateCompanyData, CreateQuoteData, CreateUserData, UpdateCompanyData, UpdateQuoteData } from './adapter';
+
 /**
  * Fixed Supabase adapter that doesn't rely on execute_sql RPC function
  * Uses Supabase's native query builder for all operations
@@ -20,7 +20,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
   }
 
   // Company operations
-  async getCompanyByAccessCode(accessCode: string): Promise<unknown> {
+  async getCompanyByAccessCode(accessCode: string): Promise<Company | null> {
     try {
       const { data, error } = await this.client
         .from('companies')
@@ -30,16 +30,16 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
 
       if (error) {
         console.error('[SupabaseAdapterFixed] Error fetching company:', error);
-        throw error;
+        return null;
       }
-      return data;
+      return data as Company;
     } catch (error) {
       console.error('[SupabaseAdapterFixed] getCompanyByAccessCode failed:', error);
-      throw error;
+      return null;
     }
   }
 
-  async getCompany(id: number): Promise<unknown> {
+  async getCompany(id: number): Promise<Company | null> {
     const { data, error } = await this.client
       .from('companies')
       .select('*')
@@ -47,25 +47,25 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error && error.code !== 'PGRST116') throw error; // PGRST116 = not found
-    return data;
+    return data as Company | null;
   }
 
-  async getAllCompanies(): Promise<Record<string, unknown>[]> {
+  async getAllCompanies(): Promise<Company[]> {
     const { data, error } = await this.client
       .from('companies')
       .select('*')
       .order('company_name');
 
     if (error) throw error;
-    return data || [];
+    return (data as Company[]) || [];
   }
 
   // Alias for getAllCompanies
-  async getCompanies(): Promise<Record<string, unknown>[]> {
+  async getCompanies(): Promise<Company[]> {
     return this.getAllCompanies();
   }
 
-  async createCompany(data: Record<string, unknown>): Promise<unknown> {
+  async createCompany(data: CreateCompanyData): Promise<Company> {
     const { data: result, error } = await this.client
       .from('companies')
       .insert(data)
@@ -73,10 +73,10 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error) throw error;
-    return result;
+    return result as Company;
   }
 
-  async updateCompany(id: number, data: Record<string, unknown>): Promise<unknown> {
+  async updateCompany(id: number, data: UpdateCompanyData): Promise<Company> {
     const { data: result, error } = await this.client
       .from('companies')
       .update(data)
@@ -85,11 +85,11 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error) throw error;
-    return result;
+    return result as Company;
   }
 
   // Quote operations
-  async createQuote(data: Record<string, unknown>): Promise<unknown> {
+  async createQuote(data: CreateQuoteData): Promise<Quote> {
     try {
       console.log('[SupabaseAdapterFixed] Creating quote with data:', {
         company_id: data.company_id,
@@ -109,14 +109,14 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       }
       
       console.log('[SupabaseAdapterFixed] Quote created successfully:', result?.id);
-      return result;
+      return result as Quote;
     } catch (error) {
       console.error('[SupabaseAdapterFixed] createQuote failed:', error);
       throw error;
     }
   }
 
-  async getQuote(quoteId: string): Promise<unknown> {
+  async getQuote(quoteId: string): Promise<Quote | null> {
     const { data, error } = await this.client
       .from('quotes')
       .select('*')
@@ -124,10 +124,10 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error) throw error;
-    return data;
+    return data as Quote | null;
   }
 
-  async getQuotesByCompanyId(companyId: number): Promise<Record<string, unknown>[]> {
+  async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
     const { data, error } = await this.client
       .from('quotes')
       .select('*')
@@ -135,7 +135,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .order('created_at', { ascending: false });
 
     if (error) throw error;
-    return data || [];
+    return (data as Quote[]) || [];
   }
 
   async getQuotesCount(companyId: number, since?: Date): Promise<number> {
@@ -153,7 +153,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return count || 0;
   }
 
-  async updateQuote(id: number, data: Record<string, unknown>): Promise<unknown> {
+  async updateQuote(id: number, data: UpdateQuoteData): Promise<Quote> {
     const { data: result, error } = await this.client
       .from('quotes')
       .update(data)
@@ -162,11 +162,11 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error) throw error;
-    return result;
+    return result as Quote;
   }
 
   // User operations
-  async createUser(data: Record<string, unknown>): Promise<unknown> {
+  async createUser(data: CreateUserData): Promise<User> {
     const { data: result, error } = await this.client
       .from('users')
       .insert(data)
@@ -174,10 +174,10 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error) throw error;
-    return result;
+    return result as User;
   }
 
-  async getUserByEmail(email: string): Promise<unknown> {
+  async getUserByEmail(email: string): Promise<User | null> {
     const { data, error } = await this.client
       .from('users')
       .select('*')
@@ -185,16 +185,16 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
       .single();
 
     if (error && error.code !== 'PGRST116') throw error; // PGRST116 = not found
-    return data;
+    return data as User | null;
   }
 
-  async getAllUsers(): Promise<Record<string, unknown>[]> {
+  async getAllUsers(): Promise<User[]> {
     const { data, error } = await this.client
       .from('users')
       .select('*');
 
     if (error) throw error;
-    return data || [];
+    return (data as User[]) || [];
   }
 
   // Paint products operations (new methods to avoid raw SQL)
@@ -232,7 +232,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     }
   }
 
-  async getUserByCompanyName(companyName: string): Promise<unknown> {
+  async getUserByCompanyName(companyName: string): Promise<User | null> {
     try {
       // Use the RPC function we created in the migration
       const { data, error } = await this.client
@@ -242,7 +242,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
         console.error('[SupabaseAdapterFixed] Error fetching user by company name:', error);
         return null;
       }
-      return data?.[0] || null;
+      return (data?.[0] as User) || null;
     } catch (error) {
       console.error('[SupabaseAdapterFixed] getUserByCompanyName failed:', error);
       return null;

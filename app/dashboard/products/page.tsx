@@ -19,8 +19,8 @@ async function getProducts(_companyId: number) {
   // Use the new adapter method
   let products = []
   try {
-    if (typeof (db as unknown).getPaintProductsByCompanyId === 'function') {
-      products = await (db as unknown).getPaintProductsByCompanyId(companyId)
+    if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
+      products = await (db as any).getPaintProductsByCompanyId(_companyId)
     } else {
       console.log('[DASHBOARD] Paint products method not available')
     }
@@ -39,9 +39,9 @@ export default async function ProductsPage() {
 
   const totalProducts = products.length
   const averageCost = products.length > 0 
-    ? products.reduce((sum: number, p: unknown) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
+    ? products.reduce((sum: number, p: any) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
     : 0
-  const uniqueBrands = [...new Set(products.map((p: unknown) => p.brand).filter(Boolean))].length
+  const uniqueBrands = [...new Set(products.map((p: any) => p.brand).filter(Boolean))].length
 
   return (
     <div className="space-y-8">
@@ -121,7 +121,7 @@ export default async function ProductsPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {products.map((product: unknown) => (
+              {products.map((product: any) => (
                 <div
                   key={product.id}
                   className="border rounded-lg p-4 hover:bg-muted/50 transition-colors"

@@ -1,10 +1,10 @@
 'use client'
 
-// import { useAchievements } from '@/hooks/use-achievements' // TODO: Check if this import is needed
-// import { achievements } from './achievement-notification' // TODO: Check if this import is needed
+import { useAchievements } from '@/hooks/use-achievements'
+import { achievements } from './achievement-notification'
 import { Progress } from '@/components/ui/progress'
 import { Trophy, Lock, Star } from 'lucide-react'
-// import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
  // TODO: Check if this import is needed
 export function AchievementDisplay() {
   const { achievements: unlockedAchievements, totalPoints, hasAchievement } = useAchievements()

@@ -156,9 +156,24 @@ Important: You must respond with a JSON object containing:
   }
 }
 
+interface OnboardingData {
+  companyName?: string;
+  email?: string;
+  phone?: string;
+  city?: string;
+  state?: string;
+  taxRate?: number;
+  hourlyRate?: number;
+  markupPercentage?: number;
+  minimumJobSize?: number;
+}
+
 function generateFallbackResponse(currentStep: number, message: string, collectedData: unknown) {
   // Log for debugging
   console.log('[FALLBACK] Step:', currentStep, 'Message:', message, 'CollectedData:', collectedData);
+  
+  // Type guard for collectedData
+  const data = collectedData as OnboardingData || {};
   
   const responses = {
     0: {
@@ -200,11 +215,11 @@ You can tell me all three at once, like: "$50/hour, 35% markup, $600 minimum"`,
       response: `Excellent! I've set up your pricing preferences. 
 
 Here's a summary of your business setup:
-✅ Company: ${collectedData.companyName || 'Your Company'}
-✅ Email: ${collectedData.email || 'Not provided'}
-✅ Phone: ${collectedData.phone || 'Not provided'}
-✅ Location: ${collectedData.city || 'City'}, ${collectedData.state || 'State'}
-✅ Tax Rate: ${collectedData.taxRate || 0}%
+✅ Company: ${data.companyName || 'Your Company'}
+✅ Email: ${data.email || 'Not provided'}
+✅ Phone: ${data.phone || 'Not provided'}
+✅ Location: ${data.city || 'City'}, ${data.state || 'State'}
+✅ Tax Rate: ${data.taxRate || 0}%
 ✅ Pricing: Set up and ready!
 
 You're all set! Let me save these settings and get you started with PaintQuote Pro! 🎉`,
@@ -214,7 +229,15 @@ You're all set! Let me save these settings and get you started with PaintQuote P
     }
   };
 
-  return (responses as unknown)[currentStep] || (responses as unknown)[0];
+  type ResponseType = {
+    response: string;
+    extractedData: Record<string, unknown>;
+    nextStep: number;
+    isComplete: boolean;
+  };
+  
+  const responseMap = responses as Record<number, ResponseType>;
+  return responseMap[currentStep] || responseMap[0];
 }
 
 function extractLocationFromMessage(message: string): unknown {

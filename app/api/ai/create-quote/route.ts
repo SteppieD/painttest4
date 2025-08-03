@@ -113,9 +113,23 @@ export async function POST(request: NextRequest) {
     const calculation = QuoteCalculator.calculate(calculatorInput);
 
     // Generate quote summary
+    const summaryInput = {
+      total: calculation.total,
+      materials: calculation.materials,
+      labor: calculation.labor,
+      breakdown: calculation.breakdown ? {
+        primer: calculation.breakdown.primer,
+        wallPaint: calculation.breakdown.wallPaint,
+        ceilingPaint: calculation.breakdown.ceilingPaint,
+        supplies: calculation.breakdown.supplies,
+        prepWork: calculation.breakdown.prepWork,
+        painting: calculation.breakdown.painting || { hours: 0, cost: 0 }
+      } : undefined
+    };
+    
     const summary = await quoteAssistant.generateQuoteSummary(
       quoteContext,
-      calculation
+      summaryInput
     );
 
     // Create the quote

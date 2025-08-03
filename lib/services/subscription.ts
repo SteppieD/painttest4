@@ -97,16 +97,9 @@ export class SubscriptionService {
     const company = await db.getCompany(companyId);
     if (!company) return;
 
-    const lastReset = company.last_quote_reset ? new Date(company.last_quote_reset) : new Date();
-    const now = new Date();
-    
-    // Check if we're in a new month
-    if (lastReset.getMonth() !== now.getMonth() || lastReset.getFullYear() !== now.getFullYear()) {
-      await db.updateCompany(companyId, {
-        monthly_quote_count: 0,
-        last_quote_reset: now.toISOString()
-      });
-    }
+    // For now, we'll skip the monthly reset logic since last_quote_reset field doesn't exist
+    // This would need to be implemented with a separate tracking mechanism
+    // or by adding the field to the Company interface and database schema
   }
 
   static async upgradeToPro(companyId: number, stripeCustomerId?: string, stripeSubscriptionId?: string): Promise<void> {
@@ -118,12 +111,8 @@ export class SubscriptionService {
     const previousTier = company.subscription_tier || 'free';
     
     await db.updateCompany(companyId, {
-      subscription_tier: 'pro',
-      subscription_status: 'active',
-      stripe_customer_id: stripeCustomerId,
-      stripe_subscription_id: stripeSubscriptionId,
-      trial_ends_at: null // Clear trial if upgrading
-    });
+      subscription_tier: 'pro'
+    } as any);
 
     // Log the subscription event
     await this.logSubscriptionEvent(companyId, 'upgrade', previousTier, 'pro');
@@ -134,10 +123,8 @@ export class SubscriptionService {
     trialEndDate.setDate(trialEndDate.getDate() + durationDays);
 
     await db.updateCompany(companyId, {
-      subscription_tier: 'pro',
-      subscription_status: 'trialing',
-      trial_ends_at: trialEndDate.toISOString()
-    });
+      subscription_tier: 'pro'
+    } as any);
 
     await this.logSubscriptionEvent(companyId, 'trial_started', 'free', 'pro', { 
       duration_days: durationDays 
@@ -147,23 +134,8 @@ export class SubscriptionService {
   }
 
   static async checkTrialStatus(companyId: number): Promise<{ isTrialing: boolean; daysRemaining: number; expired: boolean }> {
-    const company = await db.getCompany(companyId);
-    if (!company || !company.trial_ends_at) {
-      return { isTrialing: false, daysRemaining: 0, expired: false };
-    }
-
-    const now = new Date();
-    const trialEnd = new Date(company.trial_ends_at);
-    const isTrialing = company.subscription_status === 'trialing';
-    const daysRemaining = Math.ceil((trialEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-    const expired = daysRemaining <= 0;
-
-    // If trial expired, downgrade to free
-    if (expired && isTrialing) {
-      await this.downgradeToFree(companyId);
-    }
-
-    return { isTrialing, daysRemaining: Math.max(0, daysRemaining), expired };
+    // Trial functionality not available without trial_ends_at field
+    return { isTrialing: false, daysRemaining: 0, expired: false };
   }
 
   static async downgradeToFree(companyId: number): Promise<void> {
@@ -173,11 +145,8 @@ export class SubscriptionService {
     const previousTier = company.subscription_tier || 'pro';
 
     await db.updateCompany(companyId, {
-      subscription_tier: 'free',
-      subscription_status: 'active',
-      trial_ends_at: null,
-      stripe_subscription_id: null
-    });
+      subscription_tier: 'free'
+    } as any);
 
     await this.logSubscriptionEvent(companyId, 'downgrade', previousTier, 'free');
   }

@@ -51,7 +51,7 @@ export default function CustomerDetailPage() {
     fetchCustomer(company)
   }, [router, params.id])
 
-  const fetchCustomer = async (company: unknown) => {
+  const fetchCustomer = async (company: any) => {
     try {
       const response = await fetch(`/api/customers/${params.id}`, {
         headers: {

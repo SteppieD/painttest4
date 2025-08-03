@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   paintquote:
     build:
@@ -5,7 +7,7 @@ services:
       dockerfile: Dockerfile
       target: production
     ports:
-      - "3001:3001"
+      - "3000:3000"
     environment:
       # Database
       DATABASE_PATH: /app/data/painting_quotes_app.db
@@ -28,8 +30,8 @@ services:
       
       # Application
       NODE_ENV: production
-      PORT: 3001
-      NEXT_PUBLIC_SITE_URL: http://localhost:3001
+      PORT: 3000
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
       NEXT_PUBLIC_APP_NAME: PaintQuote Pro
       
       # Features
@@ -47,7 +49,7 @@ services:
       - paintquote_data:/app/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3001/api/health"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
