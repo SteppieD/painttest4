@@ -849,9 +849,9 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               {/* Add new paint form */}
-              <div className="border rounded-lg p-4 space-y-4">
-                <h4 className="font-medium flex items-center gap-2">
-                  <Palette className="h-4 w-4" />
+              <div className="border border-gray-600 rounded-lg p-4 space-y-4 bg-gray-800/30">
+                <h4 className="font-medium flex items-center gap-2 text-white">
+                  <Palette className="h-4 w-4 text-blue-400" />
                   Add New Paint Product
                 </h4>
                 <div className="grid gap-4 md:grid-cols-2">
@@ -939,18 +939,18 @@ export default function SettingsPage() {
 
               {/* Paint products list */}
               <div className="space-y-2">
-                <h4 className="font-medium">Your Paint Products</h4>
+                <h4 className="font-medium text-white">Your Paint Products</h4>
                 {settings.paintProducts.length === 0 ? (
                   <p className="text-base text-gray-200">No paint products added yet.</p>
                 ) : (
                   <div className="space-y-2">
                     {settings.paintProducts.map((paint) => (
-                      <div key={paint.id} className="flex items-center justify-between p-3 border rounded-lg">
+                      <div key={paint.id} className="flex items-center justify-between p-3 border border-gray-600 bg-gray-800/30 rounded-lg">
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="font-medium">{paint.name}</span>
+                            <span className="font-medium text-white">{paint.name}</span>
                             {paint.isPreferred && (
-                              <span className="text-base bg-primary/10 text-primary px-2 py-1 rounded">Preferred</span>
+                              <span className="text-base bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Preferred</span>
                             )}
                           </div>
                           <div className="text-base text-gray-200">
