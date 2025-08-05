@@ -352,7 +352,7 @@ Your Painting Company
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-base">
             <div className="flex items-center gap-2 p-2 bg-gray-900/70 rounded-lg">
               <span>👥</span>
-              <span className="text-gray-100">Crew: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</span>
+              <span className="text-gray-100">Crew: {(quote.walls_sqft || 0) > 3000 ? {'2-3 painters'} : {'1-2 painters'}}</span>
             </div>
             <div className="flex items-center gap-2 p-2 bg-gray-900/70 rounded-lg">
               <span>⚡</span>

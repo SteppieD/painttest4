@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h2>Icon Generator for PaintQuote Pro</h2>
+    <p>Open this file in a browser and right-click to save each canvas as PNG</p>
+    
+    <div id="icons"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const container = document.getElementById('icons');
+        
+        sizes.forEach(size => {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#3b82f6');
+            gradient.addColorStop(1, '#8b5cf6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // White circle
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/3, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // P letter
+            ctx.fillStyle = '#3b82f6';
+            ctx.font = `bold ${size/2}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('P', size/2, size/2);
+            
+            // Add to page
+            const div = document.createElement('div');
+            div.style.marginBottom = '20px';
+            div.innerHTML = `<h3>icon-${size}x${size}.png</h3>`;
+            div.appendChild(canvas);
+            
+            // Add download link
+            const link = document.createElement('a');
+            link.download = `icon-${size}x${size}.png`;
+            link.href = canvas.toDataURL();
+            link.textContent = 'Download';
+            link.style.marginLeft = '10px';
+            div.appendChild(link);
+            
+            container.appendChild(div);
+        });
+        
+        // Generate special icons
+        const specialIcons = [
+            { name: 'new-quote', text: '+' },
+            { name: 'quotes', text: '≡' }
+        ];
+        
+        specialIcons.forEach(icon => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 96;
+            canvas.height = 96;
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            const gradient = ctx.createLinearGradient(0, 0, 96, 96);
+            gradient.addColorStop(0, '#3b82f6');
+            gradient.addColorStop(1, '#8b5cf6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 96, 96);
+            
+            // Icon
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(icon.text, 48, 48);
+            
+            // Add to page
+            const div = document.createElement('div');
+            div.style.marginBottom = '20px';
+            div.innerHTML = `<h3>${icon.name}.png</h3>`;
+            div.appendChild(canvas);
+            
+            // Add download link
+            const link = document.createElement('a');
+            link.download = `${icon.name}.png`;
+            link.href = canvas.toDataURL();
+            link.textContent = 'Download';
+            link.style.marginLeft = '10px';
+            div.appendChild(link);
+            
+            container.appendChild(div);
+        });
+    </script>
+</body>
+</html>

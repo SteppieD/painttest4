@@ -165,7 +165,7 @@ export default function BillingPage() {
               {usagePercentage >= 80 && (
                 <div className="flex items-center gap-2 text-amber-400 text-base">
                   <AlertCircle className="h-4 w-4" />
-                  <span>You're approaching your monthly limit</span>
+                  <span>You{'re} approaching your monthly limit</span>
                 </div>
               )}
             </div>

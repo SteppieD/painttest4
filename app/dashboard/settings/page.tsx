@@ -336,14 +336,14 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gradient-modern">Settings</h1>
-        <p className="text-medium-contrast">
+        <h1 className="text-3xl font-bold text-white">Settings</h1>
+        <p className="text-gray-200">
           Manage your company settings, rates, and paint products
         </p>
       </div>
 
       <Tabs defaultValue="company" className="space-y-4">
-        <TabsList className="glass-card bg-surface/50 border-white/20 grid w-full grid-cols-6">
+        <TabsList className="bg-gray-800/90 backdrop-filter backdrop-blur-md border-gray-600 grid w-full grid-cols-6">
           <TabsTrigger value="company">Company</TabsTrigger>
           <TabsTrigger value="financial">Financial</TabsTrigger>
           <TabsTrigger value="labor">Labor</TabsTrigger>
@@ -355,8 +355,8 @@ export default function SettingsPage() {
         <TabsContent value="company" className="space-y-4">
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Company Profile</CardTitle>
-              <CardDescription>Your company information and branding</CardDescription>
+              <CardTitle className="text-white">Company Profile</CardTitle>
+              <CardDescription className="text-gray-300">Your company information and branding</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Logo Upload with Color Extraction */}
@@ -375,7 +375,7 @@ export default function SettingsPage() {
               {/* Company Details */}
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="companyName">Company Name</Label>
+                  <Label htmlFor="companyName" className="text-gray-200">Company Name</Label>
                   <Input
                     id="companyName"
                     value={settings.companyName}
@@ -383,7 +383,7 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="license">License Number</Label>
+                  <Label htmlFor="license" className="text-gray-200">License Number</Label>
                   <Input
                     id="license"
                     placeholder="e.g., CA-123456"
@@ -395,10 +395,10 @@ export default function SettingsPage() {
 
               {/* Contact Information */}
               <div>
-                <h4 className="font-medium mb-3">Contact Information</h4>
+                <h4 className="font-medium mb-3 text-white">Contact Information</h4>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-gray-200">Email</Label>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-200" />
                       <Input
@@ -411,7 +411,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="phone">Phone</Label>
+                    <Label htmlFor="phone" className="text-gray-200">Phone</Label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-200" />
                       <Input
@@ -424,7 +424,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="website">Website</Label>
+                    <Label htmlFor="website" className="text-gray-200">Website</Label>
                     <div className="relative">
                       <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-200" />
                       <Input
@@ -438,7 +438,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="address">Business Address</Label>
+                    <Label htmlFor="address" className="text-gray-200">Business Address</Label>
                     <Input
                       id="address"
                       placeholder="123 Main St, City, State 12345"
@@ -455,13 +455,13 @@ export default function SettingsPage() {
         <TabsContent value="financial" className="space-y-4">
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Tax Settings</CardTitle>
-              <CardDescription>Configure tax calculations for quotes</CardDescription>
+              <CardTitle className="text-white">Tax Settings</CardTitle>
+              <CardDescription className="text-gray-300">Configure tax calculations for quotes</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="taxRate">Tax Rate (%)</Label>
+                  <Label htmlFor="taxRate" className="text-gray-200">Tax Rate (%)</Label>
                   <Input
                     id="taxRate"
                     type="number"
@@ -471,7 +471,7 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="taxLabel">Tax Label</Label>
+                  <Label htmlFor="taxLabel" className="text-gray-200">Tax Label</Label>
                   <Input
                     id="taxLabel"
                     placeholder="e.g., Sales Tax, GST, VAT"
@@ -486,20 +486,20 @@ export default function SettingsPage() {
                   checked={settings.taxOnMaterialsOnly}
                   onCheckedChange={(checked) => setSettings({ ...settings, taxOnMaterialsOnly: checked })}
                 />
-                <Label htmlFor="taxOnMaterials">Apply tax to materials only (not labor)</Label>
+                <Label htmlFor="taxOnMaterials" className="text-gray-200">Apply tax to materials only (not labor)</Label>
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Profit & Overhead</CardTitle>
-              <CardDescription>Default margins and markups</CardDescription>
+              <CardTitle className="text-white">Profit & Overhead</CardTitle>
+              <CardDescription className="text-gray-300">Default margins and markups</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="overhead">Overhead (%)</Label>
+                  <Label htmlFor="overhead" className="text-gray-200">Overhead (%)</Label>
                   <Input
                     id="overhead"
                     type="number"
@@ -510,7 +510,7 @@ export default function SettingsPage() {
                   <p className="text-base text-gray-200 mt-1">Covers business operating expenses</p>
                 </div>
                 <div>
-                  <Label htmlFor="profit">Profit Margin (%)</Label>
+                  <Label htmlFor="profit" className="text-gray-200">Profit Margin (%)</Label>
                   <Input
                     id="profit"
                     type="number"
@@ -526,13 +526,13 @@ export default function SettingsPage() {
 
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Default Calculation Settings</CardTitle>
-              <CardDescription>Standard values used in quotes</CardDescription>
+              <CardTitle className="text-white">Default Calculation Settings</CardTitle>
+              <CardDescription className="text-gray-300">Standard values used in quotes</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-3">
                 <div>
-                  <Label htmlFor="paintCoverage">Paint Coverage (sq ft/gallon)</Label>
+                  <Label htmlFor="paintCoverage" className="text-gray-200">Paint Coverage (sq ft/gallon)</Label>
                   <Input
                     id="paintCoverage"
                     type="number"
@@ -541,7 +541,7 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="laborPercentage">Labor % of Total</Label>
+                  <Label htmlFor="laborPercentage" className="text-gray-200">Labor % of Total</Label>
                   <Input
                     id="laborPercentage"
                     type="number"
@@ -550,7 +550,7 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="sundriesPercentage">Sundries/Supplies %</Label>
+                  <Label htmlFor="sundriesPercentage" className="text-gray-200">Sundries/Supplies %</Label>
                   <Input
                     id="sundriesPercentage"
                     type="number"
@@ -566,13 +566,13 @@ export default function SettingsPage() {
         <TabsContent value="labor" className="space-y-4">
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Labor Rates & Productivity</CardTitle>
-              <CardDescription>Configure your labor costs and productivity standards</CardDescription>
+              <CardTitle className="text-white">Labor Rates & Productivity</CardTitle>
+              <CardDescription className="text-gray-300">Configure your labor costs and productivity standards</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="hourlyRate">Base Hourly Rate</Label>
+                  <Label htmlFor="hourlyRate" className="text-gray-200">Base Hourly Rate</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -587,7 +587,7 @@ export default function SettingsPage() {
                   <p className="text-base text-gray-200 mt-1">What you pay your painters per hour</p>
                 </div>
                 <div>
-                  <Label htmlFor="overheadMultiplier">Overhead Multiplier</Label>
+                  <Label htmlFor="overheadMultiplier" className="text-gray-200">Overhead Multiplier</Label>
                   <Input
                     id="overheadMultiplier"
                     type="number"
@@ -603,7 +603,7 @@ export default function SettingsPage() {
                 <h4 className="font-medium mb-3">Productivity Rates</h4>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
-                    <Label htmlFor="wallProductivity">Walls (sq ft/hour)</Label>
+                    <Label htmlFor="wallProductivity" className="text-gray-200">Walls (sq ft/hour)</Label>
                     <Input
                       id="wallProductivity"
                       type="number"
@@ -612,7 +612,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="ceilingProductivity">Ceilings (sq ft/hour)</Label>
+                    <Label htmlFor="ceilingProductivity" className="text-gray-200">Ceilings (sq ft/hour)</Label>
                     <Input
                       id="ceilingProductivity"
                       type="number"
@@ -621,7 +621,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="baseboardProductivity">Baseboards (linear ft/hour)</Label>
+                    <Label htmlFor="baseboardProductivity" className="text-gray-200">Baseboards (linear ft/hour)</Label>
                     <Input
                       id="baseboardProductivity"
                       type="number"
@@ -630,7 +630,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="doorProductivity">Doors (units/hour)</Label>
+                    <Label htmlFor="doorProductivity" className="text-gray-200">Doors (units/hour)</Label>
                     <Input
                       id="doorProductivity"
                       type="number"
@@ -640,7 +640,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="windowProductivity">Windows (units/hour)</Label>
+                    <Label htmlFor="windowProductivity" className="text-gray-200">Windows (units/hour)</Label>
                     <Input
                       id="windowProductivity"
                       type="number"
@@ -658,15 +658,15 @@ export default function SettingsPage() {
         <TabsContent value="interior" className="space-y-4">
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Interior Charge Rates</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-white">Interior Charge Rates</CardTitle>
+              <CardDescription className="text-gray-300">
                 Set your charge rates for interior surfaces. These are your total charges to customers.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="walls">Walls (per sq ft)</Label>
+                  <Label htmlFor="walls" className="text-gray-200">Walls (per sq ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -680,7 +680,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="ceilings">Ceilings (per sq ft)</Label>
+                  <Label htmlFor="ceilings" className="text-gray-200">Ceilings (per sq ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -694,7 +694,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="baseboards">Baseboards (per linear ft)</Label>
+                  <Label htmlFor="baseboards" className="text-gray-200">Baseboards (per linear ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -708,7 +708,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="crownMolding">Crown Molding (per linear ft)</Label>
+                  <Label htmlFor="crownMolding" className="text-gray-200">Crown Molding (per linear ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -722,7 +722,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="doors">Doors & Door Jams (per unit)</Label>
+                  <Label htmlFor="doors" className="text-gray-200">Doors & Door Jams (per unit)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -736,7 +736,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="windows">Windows (per unit)</Label>
+                  <Label htmlFor="windows" className="text-gray-200">Windows (per unit)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -757,15 +757,15 @@ export default function SettingsPage() {
         <TabsContent value="exterior" className="space-y-4">
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Exterior Charge Rates</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-white">Exterior Charge Rates</CardTitle>
+              <CardDescription className="text-gray-300">
                 Set your charge rates for exterior surfaces. These are your total charges to customers.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="exteriorWalls">Exterior Walls (per sq ft)</Label>
+                  <Label htmlFor="exteriorWalls" className="text-gray-200">Exterior Walls (per sq ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -779,7 +779,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="fascia">Fascia Boards (per linear ft)</Label>
+                  <Label htmlFor="fascia" className="text-gray-200">Fascia Boards (per linear ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -793,7 +793,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="soffits">Soffits (per sq ft)</Label>
+                  <Label htmlFor="soffits" className="text-gray-200">Soffits (per sq ft)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -807,7 +807,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="exteriorDoors">Exterior Doors (per unit)</Label>
+                  <Label htmlFor="exteriorDoors" className="text-gray-200">Exterior Doors (per unit)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -821,7 +821,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="exteriorWindows">Exterior Windows (per unit)</Label>
+                  <Label htmlFor="exteriorWindows" className="text-gray-200">Exterior Windows (per unit)</Label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                     <Input
@@ -842,8 +842,8 @@ export default function SettingsPage() {
         <TabsContent value="paints" className="space-y-4">
           <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle>Paint Products Library</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-white">Paint Products Library</CardTitle>
+              <CardDescription className="text-gray-300">
                 Manage your commonly used paint products and their costs
               </CardDescription>
             </CardHeader>
@@ -856,7 +856,7 @@ export default function SettingsPage() {
                 </h4>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
-                    <Label htmlFor="paintName">Product Name</Label>
+                    <Label htmlFor="paintName" className="text-gray-200">Product Name</Label>
                     <Input
                       id="paintName"
                       placeholder="e.g., Regal Select Interior"
@@ -865,7 +865,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="manufacturer">Manufacturer</Label>
+                    <Label htmlFor="manufacturer" className="text-gray-200">Manufacturer</Label>
                     <Input
                       id="manufacturer"
                       placeholder="e.g., Benjamin Moore"
@@ -874,7 +874,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="paintType">Type</Label>
+                    <Label htmlFor="paintType" className="text-gray-200">Type</Label>
                     <Select
                       value={newPaint.type}
                       onValueChange={(value) => setNewPaint({ ...newPaint, type: value as PaintProduct['type'] })}
@@ -892,7 +892,7 @@ export default function SettingsPage() {
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="coverage">Coverage (sq ft/gallon)</Label>
+                    <Label htmlFor="coverage" className="text-gray-200">Coverage (sq ft/gallon)</Label>
                     <Input
                       id="coverage"
                       type="number"
@@ -901,7 +901,7 @@ export default function SettingsPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="costPerGallon">Your Cost per Gallon</Label>
+                    <Label htmlFor="costPerGallon" className="text-gray-200">Your Cost per Gallon</Label>
                     <div className="relative">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                       <Input
@@ -916,7 +916,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="retailPrice">Retail Price per Gallon</Label>
+                    <Label htmlFor="retailPrice" className="text-gray-200">Retail Price per Gallon</Label>
                     <div className="relative">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2">$</span>
                       <Input

@@ -76,10 +76,11 @@ export async function POST(request: NextRequest) {
     }
     
     // Determine which adapter we're using
-    const isMemoryAdapter = !process.env.SUPABASE_URL && (process.env.NODE_ENV === 'production' || process.env.VERCEL);
+    const isMemoryAdapter = !process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.DATABASE_ADAPTER === 'memory';
     logger.info('Database adapter type', { 
       isMemoryAdapter, 
-      hasSupabaseUrl: !!process.env.SUPABASE_URL,
+      hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+      databaseAdapter: process.env.DATABASE_ADAPTER,
       nodeEnv: process.env.NODE_ENV,
       isVercel: !!process.env.VERCEL
     });
