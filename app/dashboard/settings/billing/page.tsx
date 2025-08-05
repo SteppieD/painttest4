@@ -104,12 +104,14 @@ export default function BillingPage() {
   const tierInfo = SUBSCRIPTION_TIERS[currentTier]
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-[400px]">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-gray-200">Loading billing information...</p>
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-gray-200">Loading billing information...</p>
+        </div>
       </div>
-    </div>
+    )
   }
 
   const usagePercentage = usage && usage.currentMonth.limit !== -1 

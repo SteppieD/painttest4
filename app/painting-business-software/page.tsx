@@ -455,7 +455,7 @@ export default function PaintingBusinessSoftware() {
                   </p>
                   <div className="mt-4">
                     <p className="font-semibold">Robert Chen</p>
-                    <p className="text-base text-gray-200">Chen{'s} Quality Painting</p>
+                    <p className="text-base text-gray-200">Chen&apos;s Quality Painting</p>
                   </div>
                 </div>
 
