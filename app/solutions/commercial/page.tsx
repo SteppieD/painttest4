@@ -334,7 +334,7 @@ export default function CommercialPage() {
                   <div className="flex items-center">
                     <div>
                       <Award className="h-8 w-8 text-yellow-400 mb-3" />
-                      <p className="text-gray-100 italic">{['"']}{study.testimonial}{['"']}</p>
+                      <p className="text-gray-100 italic">"{study.testimonial}"</p>
                     </div>
                   </div>
                 </div>

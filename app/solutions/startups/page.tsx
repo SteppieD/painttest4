@@ -369,7 +369,7 @@ export default function StartupsPage() {
                 
                 <p className="text-gray-100 mb-3">{story.story}</p>
                 
-                <p className="text-base text-gray-200 italic mb-3">{['"']}{story.key}{['"']}</p>
+                <p className="text-base text-gray-200 italic mb-3">"{story.key}"</p>
                 
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                   {story.timeline}

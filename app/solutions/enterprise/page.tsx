@@ -325,7 +325,7 @@ export default function EnterprisePage() {
                   
                   <div className="flex items-center">
                     <div>
-                      <p className="text-gray-100 italic mb-2">{['"']}{client.quote}{['"']}</p>
+                      <p className="text-gray-100 italic mb-2">"{client.quote}"</p>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />

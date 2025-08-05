@@ -306,7 +306,7 @@ export default function ResidentialPage() {
                     <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-100 mb-4 italic">{['"']}{testimonial.quote}{['"']}</p>
+                <p className="text-gray-100 mb-4 italic">"{testimonial.quote}"</p>
                 <div className="border-t border-gray-700 pt-4">
                   <div className="font-semibold text-white">{testimonial.author}</div>
                   <div className="text-base text-gray-200">{testimonial.company}</div>

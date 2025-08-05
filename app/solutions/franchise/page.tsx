@@ -326,7 +326,7 @@ export default function FranchisePage() {
                   <p className="text-gray-200">{partner.locations}</p>
                 </div>
                 
-                <p className="text-gray-100 mb-4 italic">{['"']}{partner.testimonial}{['"']}</p>
+                <p className="text-gray-100 mb-4 italic">"{partner.testimonial}"</p>
                 
                 <div className="border-t border-gray-700 pt-4">
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30 mb-2">

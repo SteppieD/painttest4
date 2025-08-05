@@ -252,7 +252,7 @@ export default function UnlockAnalyticsPage() {
                       <p className="text-lg font-bold text-emerald-400">{testimonial.metric}</p>
                     </div>
                   </div>
-                  <p className="text-gray-100 italic">{['"']}{testimonial.text}{['"']}</p>
+                  <p className="text-gray-100 italic">"{testimonial.text}"</p>
                 </CardContent>
               </Card>
             ))}

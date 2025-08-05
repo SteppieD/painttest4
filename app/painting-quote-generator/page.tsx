@@ -402,7 +402,7 @@ export default function PaintingQuoteGenerator() {
                           <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
                         ))}
                       </div>
-                      <blockquote className="mb-4">{['"']}{testimonial.text}{['"']}</blockquote>
+                      <blockquote className="mb-4">"{testimonial.text}"</blockquote>
                       <footer>
                         <div className="font-semibold">{testimonial.name}</div>
                         <div className="text-base text-gray-200">{testimonial.company}</div>
