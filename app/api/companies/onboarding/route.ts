@@ -175,7 +175,7 @@ export async function POST(request: NextRequest) {
     // Return success even if database operations failed
     // The client will update localStorage which is sufficient for the app to work
     const responseCompany = updatedCompany || existingCompany || {
-      id: existingCompany?.id || company.id,
+      id: company.id,
       access_code: company.access_code,
       company_name: updateData.company_name || data.companyName || company.name,
       name: updateData.name || data.companyName || company.name,
