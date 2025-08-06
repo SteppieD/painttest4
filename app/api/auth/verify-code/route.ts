@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       success: true,
       company: {
         id: company.id,
-        accessCode: company.access_code,
+        access_code: company.access_code,  // Changed from accessCode to access_code for consistency
         name: company.company_name,
         phone: company.phone,
         email: company.email,

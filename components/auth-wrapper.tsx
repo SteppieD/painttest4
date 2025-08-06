@@ -45,10 +45,14 @@ export function AuthWrapper({ children }: { children: React.ReactNode | ((compan
           return;
         }
         
-        // Set a default access_code if missing (for backwards compatibility)
-        if (!data.access_code) {
-          console.log("Session missing access_code, using default");
-          data.access_code = 'DEMO2024';
+        // Set an access_code if missing (for backwards compatibility)
+        if (!data.access_code && data.id) {
+          const companyAbbr = (data.name || 'CO').substring(0, 2).toUpperCase();
+          data.access_code = `${companyAbbr}${data.id}`;
+          console.log("Session missing access_code, generated:", data.access_code);
+          
+          // Update localStorage with the access_code
+          localStorage.setItem("paintquote_company", JSON.stringify(data));
         }
         
         setCompanyData(data);
@@ -101,6 +105,18 @@ export function useCompanyAuth() {
         try {
           const parsed = JSON.parse(storedData);
           console.log('useCompanyAuth - parsed data:', parsed);
+          
+          // Ensure access_code is present for backwards compatibility
+          if (!parsed.access_code && parsed.id) {
+            // Generate an access code based on company name if missing
+            const companyAbbr = (parsed.name || 'CO').substring(0, 2).toUpperCase();
+            parsed.access_code = `${companyAbbr}${parsed.id}`;
+            
+            // Update localStorage with the access_code
+            localStorage.setItem("paintquote_company", JSON.stringify(parsed));
+            console.log('Added missing access_code:', parsed.access_code);
+          }
+          
           setCompanyData(parsed);
         } catch (error) {
           console.error("Error parsing company data:", error);
