@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ChatInterface } from '@/components/chat/chat-interface';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, MessageSquare, List, AlertCircle, Sparkles } from 'lucide-react';
+import { ArrowLeft, AlertCircle, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 function CreateQuoteContent() {
@@ -48,9 +48,9 @@ function CreateQuoteContent() {
       name: data.name,
       email: data.email
     });
-  }, [router]);
+  }, [router, fetchQuotaInfo]);
 
-  const fetchQuotaInfo = async (company: CompanyData) => {
+  const fetchQuotaInfo = useCallback(async (company: CompanyData) => {
     try {
       const response = await fetch('/api/companies/usage', {
         headers: {
@@ -73,7 +73,7 @@ function CreateQuoteContent() {
     } catch (error) {
       console.error('Error fetching quota:', error);
     }
-  };
+  }, []);
 
   if (!companyData) {
     return (
@@ -165,7 +165,7 @@ function CreateQuoteContent() {
                 <div className="flex-1">
                   <h3 className="font-medium text-white mb-1">Monthly Quote Limit Reached</h3>
                   <p className="text-base text-gray-100 mb-3">
-                    You&apos;ve used all {quotaInfo.limit} quotes in your free plan this month. 
+                    You{'ve'} used all {quotaInfo.limit} quotes in your free plan this month. 
                     Upgrade to Pro for unlimited quotes and advanced features.
                   </p>
                   <Link href="/dashboard/settings/billing">
@@ -201,7 +201,7 @@ function CreateQuoteContent() {
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">Quote Limit Reached</h3>
                     <p className="text-gray-200 mb-6 max-w-md">
-                      You&apos;ve reached your monthly limit of {quotaInfo.limit} quotes. 
+                      You{'ve'} reached your monthly limit of {quotaInfo.limit} quotes. 
                       Upgrade to Pro for unlimited quotes and continue growing your business.
                     </p>
                     <Link href="/dashboard/settings/billing">

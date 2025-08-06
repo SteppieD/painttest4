@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { ArrowLeft, CheckCircle, Sparkles, Mail, Key } from 'lucide-react';
 import Link from 'next/link';
 import ModernNavigation from '@/components/modern-navigation';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function TrialSignupPage() {
   const [companyName, setCompanyName] = useState('');
@@ -19,7 +19,7 @@ export default function TrialSignupPage() {
   const [accessCode, setAccessCode] = useState('');
   const [signupMethod, setSignupMethod] = useState<'instant' | 'magic'>('magic');
   const [magicLinkSent, setMagicLinkSent] = useState(false);
-  const _router = useRouter();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +78,7 @@ export default function TrialSignupPage() {
         
         // Redirect to onboarding for new companies
         setTimeout(() => {
-          window.location.href = '/onboarding';
+          router.push('/onboarding');
         }, 3000);
       }
     } catch (err) {
@@ -163,7 +163,7 @@ export default function TrialSignupPage() {
               </div>
               <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-emerald-500/20 p-4">
                 <p className="text-base text-gray-100">
-                  We&apos;ve sent a welcome email to <strong className="text-white">{email}</strong> with your access code
+                  We{'ve'} sent a welcome email to <strong className="text-white">{email}</strong> with your access code
                 </p>
               </div>
               <p className="text-base text-gray-200 text-center">
@@ -251,8 +251,8 @@ export default function TrialSignupPage() {
                   />
                   <p className="text-base text-gray-200">
                     {signupMethod === 'magic'
-                      ? "We&apos;ll send a secure login link to your email"
-                      : "We&apos;ll send your access code and important updates here"}
+                      ? "We{'ll'} send a secure login link to your email"
+                      : "We{'ll'} send your access code and important updates here"}
                   </p>
                 </div>
 
@@ -287,7 +287,7 @@ export default function TrialSignupPage() {
             </div>
 
             <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
-              <p className="text-base font-medium text-white">What&apos;s included:</p>
+              <p className="text-base font-medium text-white">What{'s'} included:</p>
               <ul className="space-y-2 text-base text-gray-100">
                 <li className="flex items-center">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />

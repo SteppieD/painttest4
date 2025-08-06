@@ -16,7 +16,7 @@ export async function GET() {
       databaseType: null as string | null,
       companiesTable: { exists: false, error: null as string | null, count: 0 },
       quotesTable: { exists: false, error: null as string | null, count: 0 },
-      demoCompany: { exists: false, error: null as string | null, data: null as any },
+      demoCompany: { exists: false, error: null as string | null, data: null as DemoCompanyData | null },
       canCreateQuote: { success: false, error: null as string | null }
     }
   };
@@ -56,7 +56,7 @@ export async function GET() {
       diagnostics.tests.demoCompany.exists = true;
       diagnostics.tests.demoCompany.data = {
         id: demoCompany.id,
-        name: demoCompany.company_name || demoCompany.name,
+        name: demoCompany.company_name || demoCompany.name || 'Unknown Company',
         accessCode: demoCompany.access_code
       };
     }
@@ -120,4 +120,10 @@ export async function GET() {
       'Check Vercel function logs for detailed error messages'
     ] : []
   });
+}
+
+interface DemoCompanyData {
+  id: number;
+  name: string;
+  accessCode: string;
 }

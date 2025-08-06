@@ -117,7 +117,7 @@ export async function GET() {
   }
 
   // Test 3: Import and instantiate the client
-  let clientTest: unknown = { status: 'not-tested' };
+  let clientTest: ClientTest = { status: 'not-tested' };
   try {
     const { OpenRouterClient } = await import('@/lib/ai/openrouter-client');
     const client = new OpenRouterClient();
@@ -126,7 +126,6 @@ export async function GET() {
     clientTest = {
       status: 'imported',
       clientExists: !!client,
-      // Try to use the client
       testMessage: 'Client imported successfully',
       apiCall: { status: 'not-tested' }
     };
@@ -138,12 +137,12 @@ export async function GET() {
           { role: 'user', content: 'Say OK' }
         ], { max_tokens: 10 });
         
-        (clientTest as any).apiCall = {
+        clientTest.apiCall = {
           status: 'success',
           response: result
         };
       } catch (error) {
-        (clientTest as any).apiCall = {
+        clientTest.apiCall = {
           status: 'failed',
           error: error instanceof Error ? error.message : 'Unknown error'
         };
@@ -163,7 +162,7 @@ export async function GET() {
       chatTest,
       clientTest
     },
-    recommendations: getDetailedRecommendations(debug, directApiTest as TestResult, chatTest as TestResult, clientTest as ClientTest)
+    recommendations: getDetailedRecommendations(debug, directApiTest as TestResult, chatTest as TestResult, clientTest)
   });
 }
 
@@ -190,9 +189,14 @@ interface TestResult {
 }
 
 interface ClientTest {
+  status: string;
+  clientExists?: boolean;
+  testMessage?: string;
+  error?: string;
   apiCall?: {
     status: string;
     error?: string;
+    response?: unknown;
   };
 }
 

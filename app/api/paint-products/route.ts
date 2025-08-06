@@ -40,12 +40,12 @@ export async function GET(request: NextRequest) {
     // Get paint products for the company using Supabase-compatible method
     let products = [];
     try {
-      const extendedDb = db as any;
+      const extendedDb = db as typeof db & { getPaintProductsByCompanyId?: (companyId: number) => Promise<{ use_case: string; is_active: boolean }[]> };
       if (typeof extendedDb.getPaintProductsByCompanyId === 'function') {
         const allProducts = await extendedDb.getPaintProductsByCompanyId(auth.company!.id);
         
         // Filter based on query params
-        products = allProducts.filter((p: any) => {
+        products = allProducts.filter((p: { use_case: string; is_active: boolean }) => {
           if (useCase && p.use_case !== useCase) return false;
           if (isActive !== null && p.is_active !== (isActive === 'true')) return false;
           return true;

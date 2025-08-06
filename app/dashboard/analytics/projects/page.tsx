@@ -67,7 +67,7 @@ export default function ProjectAnalyticsPage() {
     fetchProjectData(company)
   }, [router])
 
-  const fetchProjectData = async (company: any) => {
+  const fetchProjectData = async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch('/api/analytics/projects', {
         headers: {

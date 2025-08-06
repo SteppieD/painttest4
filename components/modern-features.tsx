@@ -62,7 +62,6 @@ const features = [
 ]
 
 export function ModernFeatures() {
-  const [activeFeature, setActiveFeature] = useState(0)
   const [inView, setInView] = useState(false)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement>(null)

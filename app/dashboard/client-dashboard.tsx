@@ -1,8 +1,7 @@
 "use client"
 
 import { MobileQuoteButton } from '@/components/mobile-quote-button'
-import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, TrendingDown, BarChart, AlertCircle } from 'lucide-react'
-// import { UpgradeModal } from '@/components/stripe/upgrade-modal' // TODO: Check if this import is needed
+import { TrendingUp, Clock, DollarSign, Users, FileText, Percent, Lock, ArrowRight, Sparkles, Target, Activity, BarChart, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -412,7 +411,7 @@ export function ClientDashboard() {
           
           <div className="space-y-3">
             {dashboardData.recentQuotes.length > 0 ? (
-              dashboardData.recentQuotes.map((quote: any) => (
+              dashboardData.recentQuotes.map((quote: { id: number; customer: string; date: string; amount: number; status: string }) => (
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}

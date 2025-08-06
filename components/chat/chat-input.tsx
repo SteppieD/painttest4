@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Send, Mic, Image } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 interface ChatInputProps {
   onSendMessage: (message: string) => void;

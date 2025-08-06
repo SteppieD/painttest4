@@ -8,6 +8,16 @@ import { PlusCircle, Palette, Edit, Trash2, DollarSign } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
+interface PaintProduct {
+  id: string;
+  product_name: string;
+  brand?: string;
+  use_case: string;
+  sheen?: string;
+  cost_per_gallon: number;
+  coverage_rate?: number;
+}
+
 interface AuthPayload {
   userId: number
   companyId: number
@@ -19,8 +29,9 @@ async function getProducts(_companyId: number) {
   // Use the new adapter method
   let products = []
   try {
-    if (typeof (db as any).getPaintProductsByCompanyId === 'function') {
-      products = await (db as any).getPaintProductsByCompanyId(_companyId)
+    const extendedDb = db as typeof db & { getPaintProductsByCompanyId?: (companyId: number) => Promise<PaintProduct[]> };
+    if (typeof extendedDb.getPaintProductsByCompanyId === 'function') {
+      products = await extendedDb.getPaintProductsByCompanyId(_companyId)
     } else {
       console.log('[DASHBOARD] Paint products method not available')
     }
@@ -39,9 +50,9 @@ export default async function ProductsPage() {
 
   const totalProducts = products.length
   const averageCost = products.length > 0 
-    ? products.reduce((sum: number, p: any) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
+    ? products.reduce((sum: number, p: PaintProduct) => sum + (typeof p.cost_per_gallon === 'number' ? p.cost_per_gallon : Number(p.cost_per_gallon)), 0) / products.length
     : 0
-  const uniqueBrands = [...new Set(products.map((p: any) => p.brand).filter(Boolean))].length
+  const uniqueBrands = [...new Set(products.map((p: PaintProduct) => p.brand).filter(Boolean))].length
 
   return (
     <div className="space-y-8">
@@ -121,7 +132,7 @@ export default async function ProductsPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {products.map((product: any) => (
+              {products.map((product: PaintProduct) => (
                 <div
                   key={product.id}
                   className="border rounded-lg p-4 hover:bg-muted/50 transition-colors"

@@ -66,7 +66,7 @@ export class ConversationManager {
         field: 'surfaces',
         type: 'text',
         required: true,
-        next: (value: any) => {
+        next: (value: unknown) => {
           const lower = value.toLowerCase();
           if (lower.includes('trim') || lower.includes('door')) {
             return 'trimDetails';
@@ -259,7 +259,7 @@ export class ConversationManager {
     }
   }
 
-  getCollectedData(): Record<string, any> {
+  getCollectedData(): Record<string, unknown> {
     return { ...this.state.collectedData };
   }
 
@@ -358,7 +358,7 @@ export class ConversationManager {
 
   // Quick quote mode parser - handles comprehensive messages
   parseQuickQuote(input: string): Record<string, any> | null {
-    const data: Record<string, any> = {
+    const data: Record<string, unknown> = {
       measurements: {},
       surfaces: [],
       paintProducts: {}

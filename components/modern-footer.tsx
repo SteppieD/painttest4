@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Youtube, Instagram, Mail, MapPin, Sparkles, Shield, Star, Zap, Clock, CheckCircle, Award, BarChart3, Paintbrush, Calculator, FileText, Users } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Youtube, Instagram, Mail, Sparkles, Shield, Star, Zap, Clock, CheckCircle, Award, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 const footerLinks = {
   product: {

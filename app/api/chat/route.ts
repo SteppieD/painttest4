@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
-;
 import { db, DatabaseAdapter } from '@/lib/database/adapter';
 
 export const dynamic = 'force-dynamic';

@@ -71,11 +71,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Parse name into first and last name
-    const nameParts = name.trim().split(' ')
-    const firstName = nameParts[0] || ''
-    const lastName = nameParts.slice(1).join(' ') || ''
-
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10)
 

@@ -18,7 +18,7 @@ export function StripeBuyButton({ buyButtonId, publishableKey }: StripeBuyButton
     if (!document.querySelector('script[src="https://js.stripe.com/v3/buy-button.js"]')) {
       document.body.appendChild(script);
     }
-  }, []);
+  }, [buyButtonId, publishableKey]);
 
   return (
     <stripe-buy-button

@@ -10,8 +10,6 @@ interface SitemapEntry {
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://paintquotepro.com'
   const now = new Date()
-  const _lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
-  const _lastMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
 
   // Static pages with high priority
   const staticPages: SitemapEntry[] = [

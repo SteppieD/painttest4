@@ -45,7 +45,7 @@ export default function CustomersPage() {
   const [customers, setCustomers] = useState<Customer[]>([])
   const [filteredCustomers, setFilteredCustomers] = useState<Customer[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [companyData, setCompanyData] = useState<any>(null)
+  const [companyData, setCompanyData] = useState<{ id: number; access_code: string } | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'inactive' | 'prospect'>('all')
   const [sortBy, setSortBy] = useState<'name' | 'value' | 'recent'>('recent')
@@ -92,7 +92,7 @@ export default function CustomersPage() {
     setFilteredCustomers(filtered)
   }, [customers, searchTerm, filterStatus, sortBy])
 
-  const fetchCustomers = async (company: any) => {
+  const fetchCustomers = async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch('/api/customers', {
         headers: {
@@ -222,7 +222,7 @@ export default function CustomersPage() {
           <select
             className="px-4 py-2 bg-gray-900/80 border border-white/10 rounded-lg text-white"
             value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value as any)}
+            onChange={(e) => setFilterStatus(e.target.value as 'all' | 'active' | 'inactive' | 'prospect')}
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -232,7 +232,7 @@ export default function CustomersPage() {
           <select
             className="px-4 py-2 bg-gray-900/80 border border-white/10 rounded-lg text-white"
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
+            onChange={(e) => setSortBy(e.target.value as 'name' | 'value' | 'recent')}
           >
             <option value="recent">Most Recent</option>
             <option value="value">Highest Value</option>

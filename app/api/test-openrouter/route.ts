@@ -9,7 +9,7 @@ export async function GET() {
     const apiKeyPrefix = process.env.OPENROUTER_API_KEY?.substring(0, 10) || 'not-set';
     
     // Try to get available models first
-    let availableModels: any[] = [];
+    let availableModels: { id?: string }[] = [];
     let modelsError = null;
     try {
       availableModels = await openRouterClient.getAvailableModels();
@@ -27,7 +27,7 @@ export async function GET() {
     ];
     
     let workingModel = null;
-    const testResults: any = {};
+    const testResults: Record<string, { success: boolean; response?: string; error?: string }> = {};
     
     for (const model of modelTests) {
       try {
@@ -59,7 +59,7 @@ export async function GET() {
       models: {
         available: availableModels.slice(0, 20), // First 20 models
         error: modelsError,
-        anthropicModels: availableModels.filter((m: any) => 
+        anthropicModels: availableModels.filter((m: { id?: string }) => 
           m.id && m.id.toLowerCase().includes('claude')
         )
       },

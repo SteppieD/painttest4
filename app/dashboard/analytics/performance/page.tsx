@@ -66,7 +66,7 @@ export default function PerformanceAnalyticsPage() {
     fetchPerformanceData(company)
   }, [router, selectedPeriod])
 
-  const fetchPerformanceData = async (company: any) => {
+  const fetchPerformanceData = async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/analytics/performance?period=${selectedPeriod}`, {
         headers: {

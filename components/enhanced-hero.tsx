@@ -46,7 +46,7 @@ export function EnhancedHero() {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
     }, 4000)
     return () => clearInterval(interval)
-  }, [])
+  }, []) // testimonials.length is a constant, safe to omit
 
   useEffect(() => {
     if (!mounted) return

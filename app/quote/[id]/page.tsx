@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -68,9 +68,9 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
 
   useEffect(() => {
     fetchQuote()
-  }, [])
+  }, [fetchQuote])  // Include fetchQuote as dependency
 
-  const fetchQuote = async () => {
+  const fetchQuote = useCallback(async () => {
     try {
       const response = await fetch(`/api/quotes/${params.id}/public`)
       if (response.ok) {
@@ -88,9 +88,9 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
     } finally {
       setLoading(false)
     }
-  }
+  }, [params.id, tracked, trackEvent])  // Add trackEvent as dependency
 
-  const trackEvent = async (event: string) => {
+  const trackEvent = useCallback(async (event: string) => {
     try {
       await fetch(`/api/quotes/${params.id}/track`, {
         method: 'POST',
@@ -100,7 +100,7 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
     } catch (error) {
       console.error('Error tracking event:', error)
     }
-  }
+  }, [params.id])
 
   const handleAccept = async () => {
     await trackEvent('accepted')

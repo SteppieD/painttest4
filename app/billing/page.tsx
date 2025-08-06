@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -45,7 +45,7 @@ function BillingContent() {
       return;
     }
     fetchSubscriptionInfo();
-  }, [router]);
+  }, [router, fetchSubscriptionInfo]);
 
   useEffect(() => {
     // Handle success/cancel from Stripe checkout
@@ -68,9 +68,9 @@ function BillingContent() {
       // Remove search params from URL
       window.history.replaceState({}, '', '/billing');
     }
-  }, [searchParams]);
+  }, [searchParams, toast]);
 
-  const fetchSubscriptionInfo = async () => {
+  const fetchSubscriptionInfo = useCallback(async () => {
     try {
       const response = await fetch('/api/stripe/subscription-info');
       if (response.ok) {
@@ -87,7 +87,7 @@ function BillingContent() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   const handleSelectPlan = async (plan: string, billingPeriod: 'monthly' | 'yearly') => {
     setIsProcessing(true);

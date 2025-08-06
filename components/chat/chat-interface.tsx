@@ -43,7 +43,22 @@ export function ChatInterface({
       labor?: number;
       [key: string]: unknown;
     };
-    pricing?: any;
+    pricing?: {
+      total?: number;
+      subtotal?: number;
+      materials?: { total?: number } | number;
+      labor?: { total?: number } | number;
+      markup?: number;
+      breakdown?: {
+        primer?: { gallons: number; cost: number };
+        wallPaint?: { gallons: number; cost: number };
+        ceilingPaint?: { gallons: number; cost: number };
+        supplies?: number;
+        prepWork?: { hours: number; cost: number };
+        painting?: { hours: number; cost: number };
+      };
+      timeline?: string;
+    };
     [key: string]: unknown;
   }
 
@@ -59,8 +74,42 @@ export function ChatInterface({
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Initial greeting
+  // Move handleDemoStart inside useEffect to avoid dependency issues
   useEffect(() => {
+    const handleDemoStartInternal = async () => {
+      // Simulate typing indicator
+      setIsLoading(true);
+      
+      // First user message
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'user',
+          content: "I need a quote for painting a 3-bedroom house interior. The client is Sarah Johnson at 123 Maple Street.",
+          timestamp: new Date()
+        }]);
+        setIsLoading(false);
+      }, 500);
+
+      // Assistant response
+      setTimeout(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+          setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: "Great! I&apos;ll help you create a quote for Sarah Johnson&apos;s interior painting project. Let me gather a few more details. What&apos;s the approximate square footage of the home?",
+            timestamp: new Date()
+          }]);
+          setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
+          setIsLoading(false);
+        }, 1000);
+      }, 1500);
+
+      // Auto-continue demo
+      setTimeout(() => {
+        sendMessage("It&apos;s about 2,000 sq ft with standard 8-foot ceilings");
+      }, 5000);
+    };
+
     if (isDemo) {
       // Demo mode - pre-fill with demo data
       setMessages([
@@ -72,7 +121,7 @@ export function ChatInterface({
       ]);
       // Auto-start the demo after a short delay
       setTimeout(() => {
-        handleDemoStart();
+        handleDemoStartInternal();
       }, 1500);
     } else {
       setMessages([
@@ -87,39 +136,6 @@ export function ChatInterface({
     }
   }, [isDemo]);
 
-  const handleDemoStart = async () => {
-    // Simulate typing indicator
-    setIsLoading(true);
-    
-    // First user message
-    setTimeout(() => {
-      setMessages(prev => [...prev, {
-        role: 'user',
-        content: "I need a quote for painting a 3-bedroom house interior. The client is Sarah Johnson at 123 Maple Street.",
-        timestamp: new Date()
-      }]);
-      setIsLoading(false);
-    }, 500);
-
-    // Assistant response
-    setTimeout(() => {
-      setIsLoading(true);
-      setTimeout(() => {
-        setMessages(prev => [...prev, {
-          role: 'assistant',
-          content: "Great! I&apos;ll help you create a quote for Sarah Johnson&apos;s interior painting project. Let me gather a few more details. What&apos;s the approximate square footage of the home?",
-          timestamp: new Date()
-        }]);
-        setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
-        setIsLoading(false);
-      }, 1000);
-    }, 1500);
-
-    // Auto-continue demo
-    setTimeout(() => {
-      sendMessage("It&apos;s about 2,000 sq ft with standard 8-foot ceilings");
-    }, 5000);
-  };
 
   const sendMessage = async (content: string) => {
     // Add user message
@@ -266,14 +282,14 @@ export function ChatInterface({
           prepWork: quoteData.prepWork || null,
           timeEstimate: quoteData.timeline || null,
           specialRequests: quoteData.specialRequests || null,
-          totalCost: (quoteData.pricing as any)?.subtotal || (quoteData.pricing as any)?.total || 0,
-          finalPrice: (quoteData.pricing as any)?.total || (quoteData.pricing as any)?.subtotal || 0,
+          totalCost: quoteData.pricing?.subtotal || quoteData.pricing?.total || 0,
+          finalPrice: quoteData.pricing?.total || quoteData.pricing?.subtotal || 0,
           markupPercentage: quoteData.markupPercentage || 30,
-          sqft: (quoteData.surfaces as any)?.walls || (quoteData.measurements as any)?.wallSqft || quoteData.sqft || 0,
+          sqft: (quoteData.surfaces as { walls?: number })?.walls || (quoteData.measurements as { wallSqft?: number })?.wallSqft || quoteData.sqft || 0,
           breakdown: {
-            materials: (quoteData.pricing as any)?.materials?.total || (quoteData.pricing as any)?.materials || 0,
-            labor: (quoteData.pricing as any)?.labor?.total || (quoteData.pricing as any)?.labor || 0,
-            markup: (quoteData.pricing as any)?.markup || 0
+            materials: typeof quoteData.pricing?.materials === 'object' ? quoteData.pricing.materials.total || 0 : quoteData.pricing?.materials || 0,
+            labor: typeof quoteData.pricing?.labor === 'object' ? quoteData.pricing.labor.total || 0 : quoteData.pricing?.labor || 0,
+            markup: quoteData.pricing?.markup || 0
           }
         },
         conversationHistory: messages

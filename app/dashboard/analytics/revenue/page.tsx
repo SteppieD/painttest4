@@ -46,7 +46,7 @@ export default function RevenueAnalyticsPage() {
     fetchRevenueData(company)
   }, [router, timeRange])
 
-  const fetchRevenueData = async (company: any) => {
+  const fetchRevenueData = async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/analytics/revenue?range=${timeRange}`, {
         headers: {

@@ -4,6 +4,16 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Home, Plus, Minus, Info, Download, ArrowRight, Sun, Shield } from 'lucide-react'
 
+interface Surface {
+  id: number;
+  name: string;
+  type: 'siding' | 'trim' | 'shutters' | 'doors' | 'deck' | 'garage';
+  area: number;
+  length: number;
+  count: number;
+  condition: 'excellent' | 'good' | 'fair' | 'poor';
+}
+
 export default function ExteriorPaintingCalculatorClient() {
   const [surfaces, setSurfaces] = useState([
     { id: 1, name: 'Front Siding', type: 'siding', area: 800, length: 0, count: 0, condition: 'good' },
@@ -30,7 +40,7 @@ export default function ExteriorPaintingCalculatorClient() {
     }])
   }
 
-  const updateSurface = (id: number, field: string, value: any) => {
+  const updateSurface = (id: number, field: keyof Surface, value: string | number) => {
     setSurfaces(surfaces.map(surface => 
       surface.id === id ? { ...surface, [field]: value } : surface
     ))
@@ -52,7 +62,7 @@ export default function ExteriorPaintingCalculatorClient() {
     }
   }
 
-  const calculateSurfaceTotal = (surface: any) => {
+  const calculateSurfaceTotal = (surface: Surface) => {
     const conditionMultiplier = getConditionMultiplier(surface.condition)
     
     switch (surface.type) {

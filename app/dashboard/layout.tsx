@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutGrid, FileText, Users, Settings, BarChart3, Calculator, LogOut, Sparkles, CreditCard, Zap } from 'lucide-react'
+import { LayoutGrid, FileText, Users, Settings, LogOut, Sparkles, CreditCard, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { OnboardingModal } from '@/components/onboarding-modal'
 interface CompanyData {

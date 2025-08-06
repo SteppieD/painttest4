@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import React from 'react'
 
 export const metadata: Metadata = {
   title: 'ROI Calculator for Painting Contractors | See Your Growth | PaintQuote Pro',

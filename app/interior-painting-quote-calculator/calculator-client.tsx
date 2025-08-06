@@ -5,6 +5,16 @@ import Link from 'next/link'
 import { Plus, Minus, Info, Download, ArrowRight } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 
+interface Room {
+  id: number;
+  name: string;
+  walls: number;
+  ceilings: number;
+  trim: number;
+  doors: number;
+  windows: number;
+}
+
 export default function InteriorPaintingCalculatorClient() {
   const [rooms, setRooms] = useState([
     { id: 1, name: 'Living Room', walls: 400, ceilings: 200, trim: 60, doors: 2, windows: 3 }
@@ -39,7 +49,7 @@ export default function InteriorPaintingCalculatorClient() {
     }
   }
 
-  const calculateRoomTotal = (room: any) => {
+  const calculateRoomTotal = (room: Room) => {
     return (room.walls * wallRate) + 
            (room.ceilings * ceilingRate) + 
            (room.trim * trimRate) + 

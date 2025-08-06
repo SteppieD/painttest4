@@ -1,14 +1,25 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Check, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
 
-const plans = {
+interface PlanFeatures {
+  name: string;
+  description: string;
+  monthlyPrice: number | null;
+  yearlyPrice: number | null;
+  features: string[];
+  limitations: string[];
+  popular?: boolean;
+  highlight?: string;
+}
+
+const plans: Record<string, PlanFeatures> = {
   free: {
     name: 'Free Forever',
     description: 'Perfect for solo painters getting started',
@@ -170,10 +181,10 @@ export default function PricingPage() {
               <Card 
                 key={key} 
                 className={`relative flex flex-col glass-card ${
-                  (plan as any).popular ? 'border-blue-500/50 shadow-lg scale-105' : 'border-white/10'
+                  plan.popular ? 'border-blue-500/50 shadow-lg scale-105' : 'border-white/10'
                 }`}
               >
-                {(plan as any).popular && (
+                {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
                     <span className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-1 text-base font-medium text-white">
                       Most Popular
@@ -184,9 +195,9 @@ export default function PricingPage() {
                 <CardHeader>
                   <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
                   <CardDescription className="text-gray-100">{plan.description}</CardDescription>
-                  {(plan as any).highlight && (
+                  {plan.highlight && (
                     <p className="mt-2 text-base font-medium text-blue-400">
-                      {(plan as any).highlight}
+                      {plan.highlight}
                     </p>
                   )}
                 </CardHeader>
@@ -242,7 +253,7 @@ export default function PricingPage() {
                 <CardFooter>
                   <Button 
                     className={`w-full ${
-                      (plan as any).popular 
+                      plan.popular 
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white' 
                         : 'glass-card border-white/20 text-white hover:bg-gray-900/70'
                     }`}
@@ -310,7 +321,7 @@ export default function PricingPage() {
                 <p className="text-lg mb-2 text-gray-100">Your Additional Monthly Revenue</p>
                 <p className="text-4xl font-bold text-emerald-400 mb-4">+$8,400</p>
                 <p className="text-base text-gray-100 mb-4">
-                  That{"'"}s a <strong className="text-white">100x return</strong> on your PaintQuote Pro investment
+                  That{'s'} a <strong className="text-white">100x return</strong> on your PaintQuote Pro investment
                 </p>
                 <p className="text-base text-gray-200">
                   Based on research showing 40-60% win rate improvement from faster response times 
@@ -327,7 +338,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Can I change plans anytime?</h3>
                 <p className="text-gray-100">
-                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we&apos;ll prorate any payments.
+                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we{'ll'} prorate any payments.
                 </p>
               </div>
               
@@ -355,7 +366,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Do you offer discounts for annual billing?</h3>
                 <p className="text-gray-100">
-                  Yes! Annual billing saves you 17% compared to monthly billing - that&apos;s 2 months free every year.
+                  Yes! Annual billing saves you 17% compared to monthly billing - that{'s'} 2 months free every year.
                 </p>
               </div>
             </div>

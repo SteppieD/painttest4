@@ -75,7 +75,7 @@ export function AchievementNotification({ achievementId, onClose }: AchievementN
         origin: { y: 0.7 }
       }
 
-      function fire(particleRatio: number, opts: any) {
+      function fire(particleRatio: number, opts: { spread?: number; startVelocity?: number; decay?: number; scalar?: number }) {
         confetti({
           ...defaults,
           ...opts,

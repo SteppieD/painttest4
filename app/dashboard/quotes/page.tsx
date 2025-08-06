@@ -42,7 +42,7 @@ export default function QuotesPage() {
     fetchQuotes(company)
   }, [router])
 
-  const fetchQuotes = async (company: any) => {
+  const fetchQuotes = async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch('/api/quotes', {
         headers: {
@@ -76,7 +76,7 @@ export default function QuotesPage() {
     }
   }
 
-  const getStatusBadge = (_status: string) => {
+  const getStatusBadge = (status: string) => {
     const statusConfig = {
       draft: { label: 'Draft', className: 'bg-gray-500/20 text-gray-200 border-gray-500/50' },
       sent: { label: 'Sent', className: 'bg-blue-500/20 text-blue-400 border-blue-500/50' },

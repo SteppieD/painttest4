@@ -30,6 +30,14 @@ export interface CalculatorInput {
   taxRate?: number;
 }
 
+interface Room {
+  length?: number;
+  width?: number;
+  height?: number;
+  doors?: number;
+  windows?: number;
+}
+
 export interface CalculatorOutput {
   materials: {
     paint: number;
@@ -182,7 +190,7 @@ export class QuoteCalculator {
     
     // Calculate painting labor cost
     const paintingHours = laborHours;
-    const laborRate = input.laborRate || (input.companyRates as any)?.hourlyRate || this.DEFAULT_LABOR_RATE;
+    const laborRate = input.laborRate || this.DEFAULT_LABOR_RATE;
     const paintingLaborCost = paintingHours * laborRate;
     const prepLaborCost = prepHours * laborRate;
     const totalLaborCost = paintingLaborCost + prepLaborCost;
@@ -266,7 +274,7 @@ export class QuoteCalculator {
     let totalWindows = 0;
     let totalTrim = 0;
     
-    rooms.forEach((room: any) => {
+    rooms.forEach((room: Room) => {
       // Estimate wall area (perimeter * height)
       if (room.length && room.width && room.height) {
         const perimeter = 2 * (room.length + room.width);

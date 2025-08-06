@@ -55,7 +55,7 @@ export default function CustomerAnalyticsPage() {
     fetchCustomerData(company)
   }, [router])
 
-  const fetchCustomerData = async (company: any) => {
+  const fetchCustomerData = async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch('/api/analytics/customers', {
         headers: {

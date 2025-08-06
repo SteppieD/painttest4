@@ -284,14 +284,14 @@ export default function PaintingQuoteTemplates() {
             <div className="container">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
-                  Painting Quotes vs. Estimates: What&apos;s the Difference?
+                  Painting Quotes vs. Estimates: What's the Difference?
                 </h2>
                 
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
                   <div className="rounded-lg bg-background p-6">
                     <h3 className="text-xl font-semibold">Painting Quotes</h3>
                     <p className="mt-3 text-gray-200">
-                      A quote is a fixed price offer that doesn&apos;t change. Once accepted, you&apos;re 
+                      A quote is a fixed price offer that doesn't change. Once accepted, you're 
                       committed to that price regardless of actual costs.
                     </p>
                     <ul className="mt-4 space-y-2 text-base">
@@ -398,7 +398,7 @@ export default function PaintingQuoteTemplates() {
                       <h3 className="text-xl font-semibold">Price Accurately & Transparently</h3>
                       <p className="mt-2 text-gray-200">
                         Break down costs clearly: labor, materials, prep work, and any extras. Include 
-                        your overhead and profit margins. Be transparent about what&apos;s included and what 
+                        your overhead and profit margins. Be transparent about what's included and what 
                         would cost extra.
                       </p>
                     </div>
@@ -413,7 +413,7 @@ export default function PaintingQuoteTemplates() {
                       <p className="mt-2 text-gray-200">
                         Send the quote promptly (within 24-48 hours). Include a personalized cover message. 
                         Highlight your unique value: experience, warranty, insurance, and quality. Follow 
-                        up within 3-5 days if you haven&apos;t heard back.
+                        up within 3-5 days if you haven't heard back.
                       </p>
                     </div>
                   </div>
