@@ -42,14 +42,15 @@ export async function POST(request: NextRequest) {
       });
       
       // If not found by ID, try to find by access code
-      if (!existingCompany && company.access_code) {
+      if (!existingCompany && company && company.access_code) {
         logger.info('Company not found by ID, trying access code lookup');
         const allCompanies = await db.getAllCompanies();
-        existingCompany = allCompanies.find(c => c.access_code === company.access_code);
+        const accessCode = company.access_code; // Store in variable to avoid null check issue
+        existingCompany = allCompanies.find(c => c.access_code === accessCode);
         if (existingCompany) {
           logger.info('Company found by access code', { 
             companyId: existingCompany.id,
-            accessCode: company.access_code 
+            accessCode: accessCode 
           });
         }
       }
