@@ -143,11 +143,14 @@ Calculator instance available with default settings.
 
     console.log('[CHAT] Calling quote assistant with context length:', context.length);
 
-    // Get AI response
+    // Get AI response with full conversation history
     const quoteContext = {
       companyId: company.id
     };
-    const aiResponse = await quoteAssistant.processMessage(message, quoteContext, []);
+    
+    // Pass the full conversation history to maintain memory
+    const conversationHistory = conversationManager.getMessages();
+    const aiResponse = await quoteAssistant.processMessage(message, quoteContext, conversationHistory);
     
     console.log('[CHAT] AI response received, length:', aiResponse.length);
 
