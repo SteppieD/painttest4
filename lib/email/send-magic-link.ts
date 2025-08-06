@@ -5,13 +5,15 @@ interface SendMagicLinkParams {
   magicLink: string;
   type: 'signup' | 'login';
   companyName?: string;
+  accessCode?: string;
 }
 
 export async function sendMagicLinkEmail({
   email,
   magicLink,
   type,
-  companyName
+  companyName,
+  accessCode
 }: SendMagicLinkParams): Promise<boolean> {
   try {
     const subject = type === 'signup' 
@@ -68,6 +70,18 @@ export async function sendMagicLinkEmail({
                 ${magicLink}
               </p>
               
+              ${accessCode ? `
+                <div style="background: #E0F2FE; border: 2px solid #0284C7; padding: 20px; border-radius: 8px; margin: 30px 0; text-align: center;">
+                  <h3 style="margin: 0 0 10px 0; color: #0C4A6E;">Your Access Code</h3>
+                  <p style="font-size: 32px; font-weight: bold; font-family: monospace; color: #0284C7; margin: 10px 0;">
+                    ${accessCode}
+                  </p>
+                  <p style="margin: 10px 0 0 0; font-size: 14px; color: #475569;">
+                    Save this code - you'll need it to log in directly without email verification
+                  </p>
+                </div>
+              ` : ''}
+              
               ${type === 'signup' ? `
                 <h3>What happens next?</h3>
                 <ol>
@@ -94,6 +108,11 @@ Click this link to ${action}:
 ${magicLink}
 
 This link expires in 15 minutes for security reasons.
+
+${accessCode ? `
+YOUR ACCESS CODE: ${accessCode}
+Save this code - you'll need it to log in directly without email verification
+` : ''}
 
 ${type === 'signup' ? `What happens next?
 1. Click the link to verify your email

@@ -50,22 +50,28 @@ export async function POST(request: NextRequest) {
       // Handle signup - create new company
       isNewSignup = true;
       
-      // Check for pending signup data to get company name
+      // Check for pending signup data to get company name AND access code
       let companyName = 'My Company';
       try {
         const pendingData = await db.query(
-          'SELECT company_name FROM pending_signups WHERE email = ? AND expires_at > datetime("now")',
+          'SELECT company_name, access_code FROM pending_signups WHERE email = ? AND expires_at > datetime("now")',
           [email]
-        ) as Array<{ company_name: string }>;
+        ) as Array<{ company_name: string; access_code?: string }>;
         if (pendingData.length > 0) {
           companyName = pendingData[0].company_name;
+          // Use the pre-generated access code if available
+          if (pendingData[0].access_code) {
+            accessCode = pendingData[0].access_code;
+          }
         }
       } catch (error) {
         // Use default company name if query fails
       }
 
-      // Generate access code
-      accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase();
+      // Only generate access code if we didn't get one from pending_signups
+      if (!accessCode) {
+        accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase();
+      }
 
       // Create company
       company = await db.createCompany({

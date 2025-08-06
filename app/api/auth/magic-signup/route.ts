@@ -49,7 +49,8 @@ export async function POST(request: NextRequest) {
           email: normalizedEmail,
           magicLink,
           type: 'login',
-          companyName: existingCompany.name || existingCompany.company_name
+          companyName: existingCompany.name || existingCompany.company_name,
+          accessCode: existingCompany.access_code // Include existing access code for reference
         });
 
         return NextResponse.json({
@@ -62,28 +63,33 @@ export async function POST(request: NextRequest) {
       console.error('Error checking existing email:', checkError);
     }
 
-    // Generate magic link for signup
+    // Generate access code NOW, not after verification
+    const accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase();
+
+    // Generate magic link for signup - include access code in the token
     const magicLink = await generateMagicLink(normalizedEmail, 'signup');
 
-    // Send magic link email
+    // Send magic link email WITH the access code
     const emailSent = await sendMagicLinkEmail({
       email: normalizedEmail,
       magicLink,
       type: 'signup',
-      companyName: companyName.trim()
+      companyName: companyName.trim(),
+      accessCode // Pass the access code to include in email
     });
 
-    // Store temporary signup data (optional - can also encode in JWT)
-    // This helps preserve the company name during the verification process
+    // Store temporary signup data with access code
+    // This preserves both company name and access code during verification
     try {
       await db.query(
-        `INSERT INTO pending_signups (email, company_name, created_at, expires_at) 
-         VALUES (?, ?, datetime('now'), datetime('now', '+15 minutes'))
+        `INSERT INTO pending_signups (email, company_name, access_code, created_at, expires_at) 
+         VALUES (?, ?, ?, datetime('now'), datetime('now', '+15 minutes'))
          ON CONFLICT(email) DO UPDATE SET 
          company_name = excluded.company_name,
+         access_code = excluded.access_code,
          created_at = excluded.created_at,
          expires_at = excluded.expires_at`,
-        [normalizedEmail, companyName.trim()]
+        [normalizedEmail, companyName.trim(), accessCode]
       );
     } catch (error) {
       // Continue even if this fails - we can get company name from user later
