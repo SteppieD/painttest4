@@ -148,7 +148,9 @@ export function ClientDashboard() {
       icon: FileText,
       color: 'from-blue-400 to-cyan-400',
       locked: false,
-      emptyMessage: 'Create your first quote!'
+      emptyMessage: 'Create your first quote!',
+      href: '/dashboard/quotes',
+      description: 'View all quotes'
     },
     {
       title: 'Win Rate',
@@ -157,7 +159,9 @@ export function ClientDashboard() {
       icon: Percent,
       color: 'from-emerald-400 to-green-400',
       locked: !isPro,
-      lockedText: 'Unlock win rate analytics'
+      lockedText: 'Unlock win rate analytics',
+      href: '/dashboard/analytics/performance',
+      description: 'Performance metrics'
     },
     {
       title: 'Total Revenue',
@@ -166,7 +170,9 @@ export function ClientDashboard() {
       icon: DollarSign,
       color: 'from-purple-400 to-pink-400',
       locked: !isPro,
-      lockedText: 'Track revenue metrics'
+      lockedText: 'Track revenue metrics',
+      href: '/dashboard/analytics/revenue',
+      description: 'Revenue insights'
     },
     {
       title: 'Active Customers',
@@ -174,7 +180,9 @@ export function ClientDashboard() {
       change: dashboardData.uniqueCustomers > 0 ? '+8%' : '',
       icon: Users,
       color: 'from-amber-400 to-orange-400',
-      locked: false
+      locked: false,
+      href: '/dashboard/analytics/customers',
+      description: 'Customer insights'
     }
   ]
 
@@ -335,8 +343,8 @@ export function ClientDashboard() {
             )
           }
           
-          return (
-            <div key={index} className="glass-card p-6 group card-hover-modern">
+          const StatContent = (
+            <>
               <div className="flex items-start justify-between mb-4">
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} group-hover:scale-110 transition-transform`}>
                   <Icon className="h-6 w-6 text-white" />
@@ -357,7 +365,32 @@ export function ClientDashboard() {
                 {stat.emptyMessage && dashboardData.totalQuotes === 0 && (
                   <p className="text-base text-blue-400 mt-1">{stat.emptyMessage}</p>
                 )}
+                {stat.description && (
+                  <p className="text-xs text-gray-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {stat.description} →
+                  </p>
+                )}
               </div>
+            </>
+          )
+          
+          if (stat.href) {
+            return (
+              <Link
+                key={index}
+                href={stat.href}
+                className="block"
+              >
+                <div className="glass-card p-6 group card-hover-modern cursor-pointer hover:border-blue-500/30 transition-all">
+                  {StatContent}
+                </div>
+              </Link>
+            )
+          }
+          
+          return (
+            <div key={index} className="glass-card p-6 group card-hover-modern">
+              {StatContent}
             </div>
           )
         })}
