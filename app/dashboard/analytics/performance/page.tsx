@@ -62,7 +62,7 @@ export default function PerformanceAnalyticsPage() {
     if (!company) {
       router.push('/access-code')
       return
-    }, [selectedPeriod])
+    }
     fetchPerformanceData(company)
   }, [router, selectedPeriod])
 
@@ -74,13 +74,13 @@ export default function PerformanceAnalyticsPage() {
             id: company.id,
             access_code: company.access_code
           })
-        }, [selectedPeriod])
+        }
       })
 
       if (response.ok) {
         const data = await response.json()
         setPerformanceData(data)
-      }, [selectedPeriod])
+      }
     } catch (error) {
       console.error('Error fetching performance data:', error)
       // Use mock data for now
@@ -120,8 +120,8 @@ export default function PerformanceAnalyticsPage() {
       })
     } finally {
       setLoading(false)
-    }, [selectedPeriod])
-  }
+    }
+  }, [selectedPeriod])
 
   if (loading || !performanceData) {
     return (
