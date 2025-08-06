@@ -48,8 +48,25 @@ export default function QuoteDetailPage({ params }: { params: { id: string } }) 
 
   const fetchQuote = async () => {
     try {
-      const response = await fetch(`/api/quotes/${params.id}`)
+      // Get company data from localStorage for authentication
+      const companyData = localStorage.getItem('paintquote_company')
+      const company = companyData ? JSON.parse(companyData) : null
+      
+      const response = await fetch(`/api/quotes/${params.id}`, {
+        headers: {
+          'x-company-data': JSON.stringify({
+            id: company?.id,
+            access_code: company?.access_code || '',
+            name: company?.name
+          })
+        }
+      })
+      
       if (!response.ok) {
+        if (response.status === 401) {
+          router.push('/access-code')
+          return
+        }
         if (response.status === 404) {
           router.push('/dashboard/quotes')
           return
