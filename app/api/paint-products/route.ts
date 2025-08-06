@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     const isActive = searchParams.get('is_active');
 
     // Get paint products for the company using Supabase-compatible method
-    let products = [];
+    let products: { use_case: string; is_active: boolean }[] = [];
     try {
       const extendedDb = db as typeof db & { getPaintProductsByCompanyId?: (companyId: number) => Promise<{ use_case: string; is_active: boolean }[]> };
       if (typeof extendedDb.getPaintProductsByCompanyId === 'function') {
@@ -100,7 +100,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    const extendedDbUser = db as typeof db & { getUserByCompanyName?: (name: string) => Promise<{ id: string }> };
+    const user = await extendedDbUser.getUserByCompanyName?.(company.company_name);
     if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
@@ -123,9 +124,10 @@ export async function POST(request: NextRequest) {
       updated_at: new Date().toISOString()
     };
 
-    let product;
-    if (typeof (db as any).createPaintProduct === 'function') {
-      product = await (db as any).createPaintProduct(productData);
+    let product: typeof productData | undefined;
+    const extendedDbCreate = db as typeof db & { createPaintProduct?: (data: typeof productData) => Promise<typeof productData> };
+    if (typeof extendedDbCreate.createPaintProduct === 'function') {
+      product = await extendedDbCreate.createPaintProduct(productData);
     } else {
       return NextResponse.json(
         { error: 'Paint product creation not supported with current adapter' },
@@ -173,7 +175,8 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    const extendedDbUser = db as typeof db & { getUserByCompanyName?: (name: string) => Promise<{ id: string }> };
+    const user = await extendedDbUser.getUserByCompanyName?.(company.company_name);
     if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
@@ -187,10 +190,11 @@ export async function PUT(request: NextRequest) {
       updated_at: new Date().toISOString()
     };
 
-    let product;
-    if (typeof (db as any).updatePaintProduct === 'function') {
+    let product: typeof updateData | undefined;
+    const extendedDbUpdate = db as typeof db & { updatePaintProduct?: (id: string, data: typeof updateData) => Promise<typeof updateData> };
+    if (typeof extendedDbUpdate.updatePaintProduct === 'function') {
       try {
-        product = await (db as any).updatePaintProduct(id, updateData);
+        product = await extendedDbUpdate.updatePaintProduct(id, updateData);
       } catch (error) {
         return NextResponse.json(
           { error: 'Product not found or unauthorized' },
@@ -245,7 +249,8 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const user = await (db as any).getUserByCompanyName?.(company.company_name);
+    const extendedDbUser = db as typeof db & { getUserByCompanyName?: (name: string) => Promise<{ id: string }> };
+    const user = await extendedDbUser.getUserByCompanyName?.(company.company_name);
     if (!user) {
       return NextResponse.json(
         { error: 'User not found for company' },
@@ -254,9 +259,10 @@ export async function DELETE(request: NextRequest) {
     }
 
     // Delete the product using Supabase adapter method
-    if (typeof (db as any).deletePaintProduct === 'function') {
+    const extendedDbDelete = db as typeof db & { deletePaintProduct?: (id: string, userId: string) => Promise<void> };
+    if (typeof extendedDbDelete.deletePaintProduct === 'function') {
       try {
-        await (db as any).deletePaintProduct(id, user.id);
+        await extendedDbDelete.deletePaintProduct(id, user.id);
       } catch (error) {
         return NextResponse.json(
           { error: 'Product not found or unauthorized' },
