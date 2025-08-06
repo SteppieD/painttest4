@@ -352,7 +352,7 @@ Your Painting Company
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-base">
             <div className="flex items-center gap-2 p-2 bg-gray-900/70 rounded-lg">
               <span>👥</span>
-              <span className="text-gray-100">Crew: {(quote.walls_sqft || 0) > 3000 ? '2-3 painters' : '1-2 painters'}</span>
+              <span className="text-gray-100">Crew: {(quote.walls_sqft || 0) > 3000 ? {`2-3 painters`} : {`1-2 painters`}}</span>
             </div>
             <div className="flex items-center gap-2 p-2 bg-gray-900/70 rounded-lg">
               <span>⚡</span>
@@ -507,7 +507,7 @@ Your Painting Company
             size="icon"
             className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
             onClick={() => {
-              const message = `Hi ${quote.customer_name}, here{''}s your painting quote #${quote.quote_id}: $${quote.final_price?.toFixed(2)}. Let me know if you have any questions!`
+              const message = `Hi ${quote.customer_name}, here${String.fromCharCode(39)}s your painting quote #${quote.quote_id}: $${quote.final_price?.toFixed(2)}. Let me know if you have any questions!`
               if (quote.customer_phone) {
                 window.location.href = `sms:${quote.customer_phone}?body=${encodeURIComponent(message)}`
               } else {
