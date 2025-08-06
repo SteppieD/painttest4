@@ -115,16 +115,27 @@ export default function OnboardingPage() {
     logger.checkpoint('Preparing request');
     
     try {
-      // If access_code is missing, we need to prompt for re-login
+      // If access_code is missing, just mark onboarding as complete locally
       if (!companyData.access_code) {
-        logger.error('Access code missing from stored data');
+        logger.warn('Access code missing - completing onboarding locally only');
+        
+        // Update local storage to mark onboarding as complete
+        const existingData = localStorage.getItem('paintquote_company')
+        if (existingData) {
+          const parsedData = JSON.parse(existingData)
+          localStorage.setItem('paintquote_company', JSON.stringify({
+            ...parsedData,
+            onboarding_completed: true,
+            ...data
+          }))
+        }
+        
         toast({
-          title: 'Session Expired',
-          description: 'Please log in again to continue.',
-          variant: 'destructive'
+          title: 'Setup Complete',
+          description: 'Your preferences have been saved locally.',
         })
-        localStorage.removeItem('paintquote_company');
-        router.push('/access-code');
+        
+        router.push('/dashboard');
         return;
       }
       
