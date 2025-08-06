@@ -207,7 +207,7 @@ export default function PricingPage() {
                     {plan.monthlyPrice !== null ? (
                       <div>
                         <span className="text-4xl font-bold text-white">
-                          ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round(plan.yearlyPrice / 12)}
+                          ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round((plan.yearlyPrice || 0) / 12)}
                         </span>
                         <span className="text-gray-200">/month</span>
                         {billingPeriod === 'yearly' && plan.yearlyPrice > 0 && (

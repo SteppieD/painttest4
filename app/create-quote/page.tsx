@@ -30,26 +30,6 @@ function CreateQuoteContent() {
   } | null>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const data = getCompanyFromLocalStorage();
-    if (!data) {
-      router.push('/access-code');
-      return;
-    }
-    setCompanyData({
-      id: data.id,
-      access_code: data.access_code,
-      name: data.name,
-      email: data.email
-    });
-    fetchQuotaInfo({
-      id: data.id,
-      access_code: data.access_code,
-      name: data.name,
-      email: data.email
-    });
-  }, [router, fetchQuotaInfo]);
-
   const fetchQuotaInfo = useCallback(async (company: CompanyData) => {
     try {
       const response = await fetch('/api/companies/usage', {
@@ -74,6 +54,26 @@ function CreateQuoteContent() {
       console.error('Error fetching quota:', error);
     }
   }, []);
+
+  useEffect(() => {
+    const data = getCompanyFromLocalStorage();
+    if (!data) {
+      router.push('/access-code');
+      return;
+    }
+    setCompanyData({
+      id: data.id,
+      access_code: data.access_code,
+      name: data.name,
+      email: data.email
+    });
+    fetchQuotaInfo({
+      id: data.id,
+      access_code: data.access_code,
+      name: data.name,
+      email: data.email
+    });
+  }, [router, fetchQuotaInfo]);
 
   if (!companyData) {
     return (

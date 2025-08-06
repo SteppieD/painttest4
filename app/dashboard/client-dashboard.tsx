@@ -411,7 +411,7 @@ export function ClientDashboard() {
           
           <div className="space-y-3">
             {dashboardData.recentQuotes.length > 0 ? (
-              dashboardData.recentQuotes.map((quote: { id: number; customer: string; date: string; amount: number; status: string }) => (
+              dashboardData.recentQuotes.map((quote: any) => (
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}
@@ -428,7 +428,7 @@ export function ClientDashboard() {
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-white">
-                        ${quote.amount.toLocaleString()}
+                        ${(quote.amount || 0).toLocaleString()}
                       </p>
                       <span className={`inline-flex items-center px-2 py-1 rounded-full text-base font-medium ${
                         quote.status === 'accepted' 

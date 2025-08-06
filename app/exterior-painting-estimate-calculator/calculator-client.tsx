@@ -15,7 +15,7 @@ interface Surface {
 }
 
 export default function ExteriorPaintingCalculatorClient() {
-  const [surfaces, setSurfaces] = useState([
+  const [surfaces, setSurfaces] = useState<Surface[]>([
     { id: 1, name: 'Front Siding', type: 'siding', area: 800, length: 0, count: 0, condition: 'good' },
     { id: 2, name: 'Trim & Fascia', type: 'trim', area: 0, length: 200, count: 0, condition: 'fair' }
   ])
@@ -37,12 +37,12 @@ export default function ExteriorPaintingCalculatorClient() {
       length: 0,
       count: 0,
       condition: 'good'
-    }])
+    } as Surface])
   }
 
   const updateSurface = (id: number, field: keyof Surface, value: string | number) => {
     setSurfaces(surfaces.map(surface => 
-      surface.id === id ? { ...surface, [field]: value } : surface
+      surface.id === id ? { ...surface, [field]: value } as Surface : surface
     ))
   }
 

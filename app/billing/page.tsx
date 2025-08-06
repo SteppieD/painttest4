@@ -37,6 +37,25 @@ function BillingContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const fetchSubscriptionInfo = useCallback(async () => {
+    try {
+      const response = await fetch('/api/stripe/subscription-info');
+      if (response.ok) {
+        const data = await response.json();
+        setSubscriptionInfo(data.subscription ? {
+          ...data.subscription,
+          currentPeriodStart: new Date(data.subscription.currentPeriodStart),
+          currentPeriodEnd: new Date(data.subscription.currentPeriodEnd)
+        } : null);
+        setUsageStats(data.usage);
+      }
+    } catch (error) {
+      console.error('Failed to fetch subscription info:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     // Check for session cookie
     const hasSession = document.cookie.includes('pq_session');
@@ -69,25 +88,6 @@ function BillingContent() {
       window.history.replaceState({}, '', '/billing');
     }
   }, [searchParams, toast]);
-
-  const fetchSubscriptionInfo = useCallback(async () => {
-    try {
-      const response = await fetch('/api/stripe/subscription-info');
-      if (response.ok) {
-        const data = await response.json();
-        setSubscriptionInfo(data.subscription ? {
-          ...data.subscription,
-          currentPeriodStart: new Date(data.subscription.currentPeriodStart),
-          currentPeriodEnd: new Date(data.subscription.currentPeriodEnd)
-        } : null);
-        setUsageStats(data.usage);
-      }
-    } catch (error) {
-      console.error('Failed to fetch subscription info:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
 
   const handleSelectPlan = async (plan: string, billingPeriod: 'monthly' | 'yearly') => {
     setIsProcessing(true);

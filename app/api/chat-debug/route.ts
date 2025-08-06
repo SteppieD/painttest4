@@ -38,6 +38,14 @@ export async function POST(request: NextRequest) {
       const { quoteAssistant } = await import('@/lib/ai/quote-assistant');
       console.log('[CHAT-DEBUG] Quote assistant imported successfully');
       
+      // Check if company exists before using it
+      if (!company) {
+        return NextResponse.json({ 
+          error: 'No company data available',
+          debug: { company: null, envCheck }
+        }, { status: 401 });
+      }
+      
       // Simple test
       const testResponse = await quoteAssistant.processMessage(
         body.message || 'Hello',

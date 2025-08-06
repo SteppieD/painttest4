@@ -10,6 +10,19 @@ export async function GET(request: NextRequest) {
     const company = getCompanyFromRequest(request);
     console.log('[QUOTE-USAGE] Company:', company);
     
+    if (!company) {
+      console.log('[QUOTE-USAGE] No company in request');
+      return NextResponse.json({
+        quotesUsed: 0,
+        quotesLimit: 5,
+        hasUnlimitedQuotes: false,
+        percentageUsed: 0,
+        isNearLimit: false,
+        isAtLimit: false,
+        plan: 'free'
+      });
+    }
+    
     const db = getDatabaseAdapter();
     const companyData = await db.getCompany(company.id);
     

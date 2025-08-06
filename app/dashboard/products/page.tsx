@@ -27,7 +27,7 @@ interface AuthPayload {
 
 async function getProducts(_companyId: number) {
   // Use the new adapter method
-  let products = []
+  let products: PaintProduct[] = []
   try {
     const extendedDb = db as typeof db & { getPaintProductsByCompanyId?: (companyId: number) => Promise<PaintProduct[]> };
     if (typeof extendedDb.getPaintProductsByCompanyId === 'function') {

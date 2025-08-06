@@ -41,7 +41,7 @@ export async function GET(_request: NextRequest) {
     try {
       const tableInfo = await db.query('PRAGMA table_info(companies)') as Array<Record<string, unknown>>;
       results.tests.tableStructure = true;
-      results.data.companyColumns = tableInfo.map((col: { name: string }) => col.name);
+      results.data.companyColumns = tableInfo.map((col) => col.name as string);
     } catch (error) {
       results.errors.tableStructure = error instanceof Error ? error.message : 'Unknown error';
     }

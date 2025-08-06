@@ -102,6 +102,10 @@ export const POST = createSecureRoute(async ({ companyId, accessCode, request })
       customer_phone: validation.sanitized.customerPhone,
       address: validation.sanitized.address,
       project_type: validation.sanitized.projectType || 'interior',
+      surfaces: [],
+      measurements: {},
+      labor_cost: 0,
+      material_cost: 0,
       total_cost: validation.sanitized.totalCost || 0,
       status: 'pending' as const,
       

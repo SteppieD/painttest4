@@ -27,8 +27,13 @@ export async function GET(request: NextRequest) {
   // Test Auth
   try {
     const company = getCompanyFromRequest(request);
-    health.services.auth.status = 'healthy';
-    health.services.auth.message = `Authenticated as: ${company.name}`;
+    if (company) {
+      health.services.auth.status = 'healthy';
+      health.services.auth.message = `Authenticated as: ${company.name}`;
+    } else {
+      health.services.auth.status = 'degraded';
+      health.services.auth.message = 'No authentication data';
+    }
   } catch (error) {
     health.services.auth.status = 'unhealthy';
     health.services.auth.message = error instanceof Error ? error.message : 'Unknown error';
