@@ -44,7 +44,7 @@ export async function GET() {
     if (demoCompany) {
       diagnostics.database.demoCompany = {
         id: demoCompany.id,
-        name: demoCompany.company_name || demoCompany.name,
+        name: demoCompany.company_name || demoCompany.name || '',
         accessCode: demoCompany.access_code
       }
     }

@@ -142,13 +142,18 @@ export async function POST(request: NextRequest) {
       
       const newCompanyData: Company = {
         id: numericCompanyId,
+        company_name: company.name,  // Use company_name as per the interface
         name: company.name,
-        email: company.email,
+        email: company.email || '',  // Provide empty string as default if email is undefined
         access_code: company.access_code,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         onboarding_completed: true,
+        onboarding_step: 0,
         tax_rate: 0,
+        subscription_tier: 'free',
+        monthly_quote_count: 0,
+        monthly_quote_limit: 5,
         default_hourly_rate: 45,
         default_labor_percentage: 35
       };
