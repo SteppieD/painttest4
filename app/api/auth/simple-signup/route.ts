@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDatabaseAdapter, db } from '@/lib/database/adapter'
 import { cookies } from 'next/headers'
+import { generateAccessCode } from '@/lib/utils/access-code-generator'
 
 export const dynamic = 'force-dynamic';
 
@@ -51,8 +52,8 @@ export async function POST(request: NextRequest) {
       // Continue with signup if check fails
     }
 
-    // Generate a unique access code
-    const accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase()
+    // Generate a user-friendly access code using company name
+    const accessCode = generateAccessCode(companyName.trim())
 
     // Create company with simple data
     const company = await db.createCompany({

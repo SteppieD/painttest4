@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateMagicLink } from '@/lib/auth/magic-link';
 import { sendMagicLinkEmail } from '@/lib/email/send-magic-link';
 import { getDatabaseAdapter } from '@/lib/database/adapter';
+import { generateAccessCode } from '@/lib/utils/access-code-generator';
 
 export async function POST(request: NextRequest) {
   try {
@@ -63,8 +64,8 @@ export async function POST(request: NextRequest) {
       console.error('Error checking existing email:', checkError);
     }
 
-    // Generate access code NOW, not after verification
-    const accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase();
+    // Generate user-friendly access code using company name
+    const accessCode = generateAccessCode(companyName.trim());
 
     // Generate magic link for signup - include access code in the token
     const magicLink = await generateMagicLink(normalizedEmail, 'signup');

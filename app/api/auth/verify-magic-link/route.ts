@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyMagicLink, invalidateMagicLink } from '@/lib/auth/magic-link';
 import { getDatabaseAdapter } from '@/lib/database/adapter';
 import { cookies } from 'next/headers';
+import { generateAccessCode } from '@/lib/utils/access-code-generator';
 
 export const dynamic = 'force-dynamic';
 
@@ -70,7 +71,7 @@ export async function POST(request: NextRequest) {
 
       // Only generate access code if we didn't get one from pending_signups
       if (!accessCode) {
-        accessCode = 'PQ' + Math.random().toString(36).substr(2, 8).toUpperCase();
+        accessCode = generateAccessCode(companyName);
       }
 
       // Create company

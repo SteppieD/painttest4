@@ -115,16 +115,21 @@ export default function OnboardingPage() {
     logger.checkpoint('Preparing request');
     
     try {
-      // If access_code is missing, just mark onboarding as complete locally
+      // If access_code is missing, generate one for the company
       if (!companyData.access_code) {
-        logger.warn('Access code missing - completing onboarding locally only');
+        logger.warn('Access code missing - generating one for local use');
         
-        // Update local storage to mark onboarding as complete
+        // Generate an access code based on company name
+        const { generateAccessCode } = await import('@/lib/utils/access-code-generator');
+        const newAccessCode = generateAccessCode(data.companyName || companyData.name || 'My Company');
+        
+        // Update local storage with the new access code and mark onboarding as complete
         const existingData = localStorage.getItem('paintquote_company')
         if (existingData) {
           const parsedData = JSON.parse(existingData)
           localStorage.setItem('paintquote_company', JSON.stringify({
             ...parsedData,
+            access_code: newAccessCode, // Add the generated access code
             onboarding_completed: true,
             ...data
           }))
@@ -132,7 +137,7 @@ export default function OnboardingPage() {
         
         toast({
           title: 'Setup Complete',
-          description: 'Your preferences have been saved locally.',
+          description: `Your access code is: ${newAccessCode}`,
         })
         
         router.push('/dashboard');
