@@ -33,7 +33,8 @@ export function QuoteUsageIndicator() {
       headers: {
         'x-company-data': JSON.stringify({
           id: company.id,
-          access_code: company.access_code
+          access_code: company.access_code || '',
+          name: company.name
         })
       }
     })
