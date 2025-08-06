@@ -12,6 +12,18 @@ export default function DashboardPage() {
     const companyData = localStorage.getItem('paintquote_company');
     if (!companyData) {
       router.push('/access-code');
+      return;
+    }
+    
+    // Parse company data and check onboarding status
+    try {
+      const parsedData = JSON.parse(companyData);
+      // Redirect new companies to onboarding if not completed
+      if (parsedData.isNewCompany && !parsedData.onboarding_completed) {
+        router.push('/onboarding');
+      }
+    } catch (error) {
+      console.error('Error parsing company data:', error);
     }
   }, [router]);
 

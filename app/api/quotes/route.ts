@@ -169,6 +169,45 @@ export async function POST(request: NextRequest) {
     const laborCost = quoteData.breakdown?.labor || 0;
     const totalCost = quoteData.finalPrice || quoteData.totalCost || materialCost + laborCost;
     
+    // Capture current company rates as a "receipt" snapshot
+    const ratesSnapshot = {
+      // Tax settings
+      tax_rate: companyData?.tax_rate || 0,
+      tax_on_materials_only: companyData?.tax_on_materials_only || false,
+      
+      // Labor rates
+      hourly_rate: companyData?.default_hourly_rate || 45,
+      labor_percentage: companyData?.default_labor_percentage || 30,
+      overhead_percent: companyData?.overhead_percent || 15,
+      profit_margin: companyData?.profit_margin || 30,
+      
+      // Interior painting rates
+      walls_rate: companyData?.default_walls_rate || 2.50,
+      ceilings_rate: companyData?.default_ceilings_rate || 2.50,
+      trim_rate: companyData?.default_trim_rate || 1.92,
+      door_rate: companyData?.default_door_rate || 100,
+      window_rate: companyData?.default_window_rate || 25,
+      
+      // Paint costs
+      walls_paint_cost: companyData?.default_walls_paint_cost || 26,
+      ceilings_paint_cost: companyData?.default_ceilings_paint_cost || 25,
+      trim_paint_cost: companyData?.default_trim_paint_cost || 35,
+      
+      // Other settings
+      paint_coverage: companyData?.default_paint_coverage || 350,
+      sundries_percentage: companyData?.default_sundries_percentage || 12,
+      
+      // Productivity rates
+      productivity_walls: companyData?.productivity_walls || 150,
+      productivity_ceilings: companyData?.productivity_ceilings || 100,
+      productivity_baseboards: companyData?.productivity_baseboards || 60,
+      productivity_doors: companyData?.productivity_doors || 2,
+      productivity_windows: companyData?.productivity_windows || 3,
+      
+      // Capture timestamp of when these rates were locked in
+      captured_at: new Date().toISOString()
+    };
+    
     const quote = {
       company_id: numericCompanyId,
       quote_id: quoteId,
@@ -190,7 +229,9 @@ export async function POST(request: NextRequest) {
         markup: quoteData.breakdown?.markup || 0,
         tax: (totalCost * companyTaxRate / 100),
         total: totalCost,
-        breakdown: quoteData.breakdown || {}
+        breakdown: quoteData.breakdown || {},
+        // Store the rates snapshot in the pricing object
+        rates_snapshot: ratesSnapshot
       },
       labor_cost: laborCost,
       material_cost: materialCost,

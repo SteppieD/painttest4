@@ -174,13 +174,14 @@ export default function OnboardingPage() {
         hasWarning: !!successData.warning
       });
 
-      // Update local storage
+      // Update local storage with the correct company ID from the response
       logger.checkpoint('Updating local storage');
       const existingData = localStorage.getItem('paintquote_company')
       if (existingData) {
         const parsedData = JSON.parse(existingData)
         localStorage.setItem('paintquote_company', JSON.stringify({
           ...parsedData,
+          id: successData.company.id || parsedData.id, // Use the ID from the server response
           onboarding_completed: true,
           ...data
         }))

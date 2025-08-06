@@ -76,9 +76,9 @@ export default function TrialSignupPage() {
           })
         );
         
-        // Redirect to dashboard after 3 seconds
+        // Redirect to onboarding for new companies
         setTimeout(() => {
-          window.location.href = '/dashboard';
+          window.location.href = '/onboarding';
         }, 3000);
       }
     } catch (err) {
