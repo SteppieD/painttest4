@@ -9,9 +9,9 @@ export interface CompanyAuth {
 
 /**
  * Get company data from request headers
- * Falls back to demo company if not found
+ * Returns null if not found
  */
-export function getCompanyFromRequest(request: NextRequest): CompanyAuth {
+export function getCompanyFromRequest(request: NextRequest): CompanyAuth | null {
   const header = request.headers.get('x-company-data');
   
   if (header) {
@@ -33,13 +33,8 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth {
     }
   }
   
-  // Return demo company as fallback
-  return {
-    id: 1,
-    access_code: 'DEMO2024',
-    name: 'Demo Painting Company',
-    email: 'demo@paintquote.com'
-  };
+  // Return null if no valid company data
+  return null;
 }
 
 /**

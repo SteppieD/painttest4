@@ -85,7 +85,7 @@ export const POST = createSecureRoute(async ({ companyId, accessCode, request })
     }
     
     // Get company data
-    const companyData = await db.getCompanyById(companyId);
+    const companyData = await db.getCompany(companyId);
     if (!companyData) {
       return createErrorResponse('Company not found', 404);
     }
@@ -109,26 +109,26 @@ export const POST = createSecureRoute(async ({ companyId, accessCode, request })
       pricing: {
         rates_snapshot: {
           tax_rate: companyData.tax_rate || 0,
-          tax_on_materials_only: companyData.tax_on_materials_only || false,
+          tax_on_materials_only: false,
           hourly_rate: companyData.default_hourly_rate || 60,
           labor_percentage: companyData.default_labor_percentage || 40,
-          overhead_percent: companyData.overhead_percent || 15,
-          profit_margin: companyData.profit_margin || 30,
-          walls_rate: companyData.default_walls_rate || 3,
-          ceilings_rate: companyData.default_ceilings_rate || 2,
-          trim_rate: companyData.default_trim_rate || 1.92,
-          door_rate: companyData.default_door_rate || 100,
-          window_rate: companyData.default_window_rate || 25,
-          walls_paint_cost: companyData.default_walls_paint_cost || 26,
-          ceilings_paint_cost: companyData.default_ceilings_paint_cost || 25,
-          trim_paint_cost: companyData.default_trim_paint_cost || 35,
-          paint_coverage: companyData.default_paint_coverage || 350,
-          sundries_percentage: companyData.default_sundries_percentage || 12,
-          productivity_walls: companyData.productivity_walls || 150,
-          productivity_ceilings: companyData.productivity_ceilings || 100,
-          productivity_baseboards: companyData.productivity_baseboards || 60,
-          productivity_doors: companyData.productivity_doors || 2,
-          productivity_windows: companyData.productivity_windows || 3,
+          overhead_percent: 15,
+          profit_margin: 30,
+          walls_rate: 3,
+          ceilings_rate: 2,
+          trim_rate: 1.92,
+          door_rate: 100,
+          window_rate: 25,
+          walls_paint_cost: 26,
+          ceilings_paint_cost: 25,
+          trim_paint_cost: 35,
+          paint_coverage: 350,
+          sundries_percentage: 12,
+          productivity_walls: 150,
+          productivity_ceilings: 100,
+          productivity_baseboards: 60,
+          productivity_doors: 2,
+          productivity_windows: 3,
           captured_at: new Date().toISOString()
         }
       }

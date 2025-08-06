@@ -24,7 +24,7 @@ export function StripeBuyButton({ buyButtonId, publishableKey }: StripeBuyButton
     <stripe-buy-button
       buy-button-id={buyButtonId}
       publishable-key={publishableKey}
-    />
+    ></stripe-buy-button>
   );
 }
 

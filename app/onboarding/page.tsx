@@ -115,6 +115,19 @@ export default function OnboardingPage() {
     logger.checkpoint('Preparing request');
     
     try {
+      // If access_code is missing, we need to prompt for re-login
+      if (!companyData.access_code) {
+        logger.error('Access code missing from stored data');
+        toast({
+          title: 'Session Expired',
+          description: 'Please log in again to continue.',
+          variant: 'destructive'
+        })
+        localStorage.removeItem('paintquote_company');
+        router.push('/access-code');
+        return;
+      }
+      
       // Log the data being sent
       const requestHeaders = {
         'Content-Type': 'application/json',

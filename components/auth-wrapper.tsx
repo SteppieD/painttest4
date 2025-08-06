@@ -45,6 +45,14 @@ export function AuthWrapper({ children }: { children: React.ReactNode | ((compan
           return;
         }
         
+        // Check if access_code exists (for backwards compatibility)
+        if (!data.access_code) {
+          console.log("Session missing access_code, redirecting to login");
+          localStorage.removeItem("paintquote_company");
+          router.push("/access-code");
+          return;
+        }
+        
         setCompanyData(data);
         setIsAuthenticated(true);
       } catch (error) {
