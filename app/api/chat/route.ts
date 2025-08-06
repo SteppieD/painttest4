@@ -160,11 +160,64 @@ Calculator instance available with default settings.
       timestamp: new Date()
     });
 
+    // Check if the quote is complete by looking for key indicators
+    const isQuoteComplete = aiResponse.toLowerCase().includes('total project cost') || 
+                          aiResponse.toLowerCase().includes('total: $') ||
+                          (aiResponse.toLowerCase().includes('finalize') && aiResponse.toLowerCase().includes('quote'));
+    
+    let quoteData = null;
+    if (isQuoteComplete) {
+      // Parse the conversation to extract quote data
+      const fullConversation = conversationManager.getMessages()
+        .map(m => `${m.role}: ${m.content}`)
+        .join('\n');
+      
+      try {
+        const parsedData = await quoteAssistant.parseQuoteInformation(fullConversation);
+        console.log('[CHAT] Parsed quote data:', parsedData);
+        
+        // Only set quoteData if we have enough information
+        if (parsedData.customerName && (parsedData.measurements?.wallSqft || parsedData.measurements?.linearFeetWalls)) {
+          quoteData = {
+            ...parsedData,
+            pricing: {
+              total: 0, // This will be calculated based on the conversation
+              materials: { total: 0 },
+              labor: { total: 0 }
+            }
+          };
+          
+          // Extract pricing from the conversation
+          const priceMatch = aiResponse.match(/\$[\d,]+(?:\.\d{2})?/g);
+          if (priceMatch && priceMatch.length > 0) {
+            // Get the last/largest price as the total
+            const prices = priceMatch.map(p => parseFloat(p.replace(/[$,]/g, '')));
+            quoteData.pricing.total = Math.max(...prices);
+            
+            // Try to extract materials and labor
+            const materialMatch = aiResponse.match(/(?:materials?|paint)[:\s]+\$?([\d,]+(?:\.\d{2})?)/i);
+            const laborMatch = aiResponse.match(/(?:labor)[:\s]+\$?([\d,]+(?:\.\d{2})?)/i);
+            
+            if (materialMatch) {
+              quoteData.pricing.materials.total = parseFloat(materialMatch[1].replace(/,/g, ''));
+            }
+            if (laborMatch) {
+              quoteData.pricing.labor.total = parseFloat(laborMatch[1].replace(/,/g, ''));
+            }
+          }
+        }
+      } catch (error) {
+        console.error('[CHAT] Error parsing quote data:', error);
+      }
+    }
+
     return NextResponse.json({ 
       response: aiResponse,
       sessionId,
       contextUsed: useContext,
-      companyName: company.name
+      companyName: company.name,
+      isComplete: isQuoteComplete,
+      quoteData
     });
 
   } catch (error) {
