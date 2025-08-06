@@ -246,7 +246,8 @@ export function ClientDashboard() {
                           ...data,
                           skipOnboarding: true
                         }));
-                        window.location.reload();
+                        // Use router instead of window.location.reload to avoid hydration issues
+                        router.refresh();
                       }
                     }}
                   >
