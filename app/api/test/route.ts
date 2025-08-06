@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/database/adapter'
 
+// Interface for demo company info
+interface DemoCompanyInfo {
+  id: number;
+  name: string;
+  accessCode: string;
+}
+
 export async function GET() {
   const diagnostics = {
     status: 'ok',
@@ -18,7 +25,7 @@ export async function GET() {
     database: {
       type: 'unknown',
       error: null as string | null,
-      demoCompany: null as any
+      demoCompany: null as DemoCompanyInfo | null
     }
   }
 
@@ -28,7 +35,7 @@ export async function GET() {
   } else if (diagnostics.env.isVercel || diagnostics.env.nodeEnv === 'production') {
     diagnostics.database.type = 'Memory'
   } else {
-    diagnostics.database.type = 'SQLite'
+    diagnostics.database.type = 'Development'
   }
 
   // Test database connection

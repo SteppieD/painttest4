@@ -48,6 +48,19 @@ interface RequestBody {
   conversationHistory?: Array<{ role: string; content: string }>;
 }
 
+// Error response interface
+interface ErrorResponse {
+  error: string;
+  details: string;
+  timestamp: string;
+  environment: {
+    hasSupabase: boolean;
+    isVercel: boolean;
+    nodeEnv: string | undefined;
+  };
+  stack?: string; // Optional stack trace for development
+}
+
 export async function POST(request: NextRequest) {
   let requestBody: RequestBody | undefined;
   let companyId: number | string | undefined;
@@ -122,201 +135,146 @@ export async function POST(request: NextRequest) {
     if (!companyData && company) {
       console.log('[QUOTES API] Company not found in DB, creating from auth data:', {
         id: numericCompanyId,
-        accessCode: company.access_code,
-        name: company.name
+        name: company.name,
+        email: company.email,
+        access_code: company.access_code
       });
       
-      try {
-        // Create the company in the database
-        companyData = await db.createCompany({
-          access_code: company.access_code,
-          company_name: company.name || 'Unknown Company',
-          email: company.email || `company${numericCompanyId}@example.com`,
-          phone: '',
-          tax_rate: 0,
-          onboarding_completed: false,
-          onboarding_step: 0,
-          subscription_tier: 'free',
-          monthly_quote_count: 0,
-          monthly_quote_limit: 5
-        });
-        console.log('[QUOTES API] Company created successfully:', companyData);
-      } catch (createError) {
-        console.error('[QUOTES API] Failed to create company:', createError);
-        // Continue with minimal company data if creation fails
-        companyData = {
-          id: numericCompanyId,
-          access_code: company.access_code,
-          company_name: company.name || 'Unknown Company',
-          email: company.email || '',
-          tax_rate: 0,
-          onboarding_completed: false,
-          onboarding_step: 0,
-          subscription_tier: 'free',
-          monthly_quote_count: 0,
-          monthly_quote_limit: 5
-        } as Company;
-      }
+      const newCompanyData: Company = {
+        id: numericCompanyId,
+        name: company.name,
+        email: company.email,
+        access_code: company.access_code,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        onboarding_completed: true,
+        tax_rate: 0,
+        default_hourly_rate: 45,
+        default_labor_percentage: 35
+      };
+      
+      companyData = await db.createCompany(newCompanyData);
+      console.log('[QUOTES API] Created new company:', companyData);
     }
     
-    const companyTaxRate = companyData?.tax_rate || 0;
-    
-    // Generate unique quote ID
-    const quoteId = await generateQuoteNumber(numericCompanyId);
+    if (!companyData) {
+      return NextResponse.json(
+        { error: 'Company not found' },
+        { status: 404 }
+      );
+    }
 
-    // Prepare quote data for database using Quote interface fields
-    const materialCost = quoteData.breakdown?.materials || 0;
-    const laborCost = quoteData.breakdown?.labor || 0;
-    const totalCost = quoteData.finalPrice || quoteData.totalCost || materialCost + laborCost;
+    // Generate quote number for this company
+    const quoteNumber = await generateQuoteNumber(numericCompanyId);
     
-    // Capture current company rates as a "receipt" snapshot
-    // Using default values since most fields don't exist in Company type yet
-    const ratesSnapshot = {
-      // Tax settings
-      tax_rate: companyData?.tax_rate || 0,
-      tax_on_materials_only: false,
-      
-      // Labor rates (using defaults as these fields don't exist in Company yet)
-      hourly_rate: companyData?.default_hourly_rate || 60,
-      labor_percentage: companyData?.default_labor_percentage || 40,
-      overhead_percent: 15,
-      profit_margin: 30,
-      
-      // Interior painting rates (using defaults)
-      walls_rate: 3,
-      ceilings_rate: 2,
-      trim_rate: 1.92,
-      door_rate: 100,
-      window_rate: 25,
-      
-      // Paint costs (using defaults)
-      walls_paint_cost: 26,
-      ceilings_paint_cost: 25,
-      trim_paint_cost: 35,
-      
-      // Other settings (using defaults)
-      paint_coverage: 350,
-      sundries_percentage: 12,
-      
-      // Productivity rates (using defaults)
-      productivity_walls: 150,
-      productivity_ceilings: 100,
-      productivity_baseboards: 60,
-      productivity_doors: 2,
-      productivity_windows: 3,
-      
-      // Capture timestamp of when these rates were locked in
-      captured_at: new Date().toISOString()
-    };
+    // Clean up customer name
+    const cleanedCustomerName = cleanCustomerName(quoteData.customerName);
     
-    const quote = {
+    // Create quote data with all required fields
+    const newQuoteData = {
       company_id: numericCompanyId,
-      quote_id: quoteId,
-      customer_name: cleanCustomerName(quoteData.customerName) || 'Unknown Customer',
-      customer_email: quoteData.customerEmail || undefined,
-      customer_phone: quoteData.customerPhone || undefined,
-      address: quoteData.address || undefined,
+      quote_id: quoteNumber,
+      customer_name: cleanedCustomerName,
+      customer_email: quoteData.customerEmail || '',
+      customer_phone: quoteData.customerPhone || '',
+      address: quoteData.address || '',
       project_type: quoteData.projectType || 'interior',
-      surfaces: quoteData.surfaces || ['walls', 'ceilings'],
+      surfaces: quoteData.surfaces || ['walls'],
       measurements: {
-        walls: quoteData.sqft || 0,
-        ceilings: quoteData.ceilings_sqft || 0,
-        trim: quoteData.trim_sqft || 0,
+        sqft: quoteData.sqft || 0,
+        ceilings_sqft: quoteData.ceilings_sqft || 0,
+        trim_sqft: quoteData.trim_sqft || 0,
         rooms: quoteData.rooms || []
       },
-      pricing: {
-        materials: materialCost,
-        labor: laborCost,
-        markup: quoteData.breakdown?.markup || 0,
-        tax: (totalCost * companyTaxRate / 100),
-        total: totalCost,
-        breakdown: quoteData.breakdown || {},
-        // Store the rates snapshot in the pricing object
-        rates_snapshot: ratesSnapshot
+      pricing: quoteData.breakdown ? {
+        materials: quoteData.breakdown.materials || 0,
+        labor: quoteData.breakdown.labor || 0,
+        markup: quoteData.breakdown.markup || 0,
+        tax: 0,
+        total: quoteData.finalPrice || quoteData.totalCost || 0
+      } : {
+        materials: 0,
+        labor: 0,
+        markup: 0,
+        tax: 0,
+        total: quoteData.finalPrice || quoteData.totalCost || 0
       },
-      labor_cost: laborCost,
-      material_cost: materialCost,
-      total_cost: totalCost,
-      timeline: quoteData.timeEstimate || quoteData.timeline || undefined,
+      labor_cost: quoteData.breakdown?.labor || 0,
+      material_cost: quoteData.breakdown?.materials || 0,
+      total_cost: quoteData.finalPrice || quoteData.totalCost || 0,
+      status: 'pending' as const,
+      
+      // Store current tax rate with quote for historical accuracy
+      tax_rate: companyData.tax_rate || 0,
+      time_estimate: quoteData.timeEstimate,
+      timeline: quoteData.timeline,
       special_requests: Array.isArray(quoteData.specialRequests) 
         ? quoteData.specialRequests.join(', ') 
-        : quoteData.specialRequests || undefined,
-      status: 'pending'
-    };
-
-    // Save quote to database
-    console.log('[QUOTES API] Quote data to save:', quote);
-    console.log('[QUOTES API] Quote data keys:', Object.keys(quote));
-    console.log('[QUOTES API] Sample values:', {
-      company_id: quote.company_id,
-      quote_id: quote.quote_id,
-      customer_name: quote.customer_name,
-      total_cost: quote.total_cost,
-      surfaces: quote.surfaces
-    });
-    
-    let result;
-    try {
-      result = await db.createQuote(quote);
-      console.log('[QUOTES API] Quote created successfully:', result);
+        : quoteData.specialRequests || '',
       
-      // Increment quote count for subscription tracking
-      await SubscriptionService.incrementQuoteCount(numericCompanyId);
-    } catch (dbError) {
-      console.error('[QUOTES API] Database error:', dbError);
-      console.error('[QUOTES API] Error message:', dbError instanceof Error ? dbError.message : 'Unknown error');
-      console.error('[QUOTES API] Error stack:', dbError instanceof Error ? dbError.stack : 'No stack');
-      throw dbError;
-    }
-
-    if (!result) {
-      console.error('[QUOTES API] No result returned from createQuote');
-      throw new Error('Failed to create quote - no result returned');
-    }
-
-    // Return response with GTM tracking data
-    const response = {
-      success: true,
-      quoteId,
-      quote: {
-        ...quote,
-        id: result.id
-      },
-      // Include tracking data for client-side GTM
-      trackingData: {
-        event: 'quote_created',
-        quote_id: quoteId,
-        quote_value: quote.total_cost || 0,
-        project_type: quote.project_type,
-        customer_name: quote.customer_name
-      }
+      // Add timestamps
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
-    return NextResponse.json(response);
+    console.log('[QUOTES API] Creating quote with data:', {
+      ...newQuoteData,
+      // Don't log sensitive data, just structure
+      customer_email: newQuoteData.customer_email ? '[email provided]' : '[no email]',
+      customer_phone: newQuoteData.customer_phone ? '[phone provided]' : '[no phone]'
+    });
+
+    // Create the quote
+    const createdQuote = await db.createQuote(newQuoteData);
+
+    // Track usage for subscription
+    await SubscriptionService.incrementQuoteCount(numericCompanyId);
+
+    console.log('[QUOTES API] Quote created successfully:', {
+      id: createdQuote.id,
+      quote_id: createdQuote.quote_id,
+      customer: createdQuote.customer_name,
+      total: createdQuote.total_cost
+    });
+
+    return NextResponse.json({
+      success: true,
+      quote: createdQuote,
+      quoteId: quoteNumber,
+      message: 'Quote created successfully',
+      debugInfo: process.env.NODE_ENV === 'development' ? {
+        companyFound: !!companyData,
+        quoteNumber,
+        numericCompanyId,
+        hasBreakdown: !!quoteData.breakdown
+      } : undefined
+    }, { status: 201 });
 
   } catch (error) {
-    console.error('[QUOTES API] Error creating quote:', error);
-    console.error('[QUOTES API] Error type:', typeof error);
-    console.error('[QUOTES API] Error constructor:', error?.constructor?.name);
-    console.error('[QUOTES API] Error stack:', error instanceof Error ? error.stack : 'No stack');
-    console.error('[QUOTES API] Request data that caused error:', { 
-      companyId: companyId || 'undefined', 
-      quoteDataKeys: quoteData ? Object.keys(quoteData) : 'no quoteData',
-      hasConversationHistory: !!requestBody?.conversationHistory
+    console.error('[QUOTES API] Error in create quote:', error);
+    console.error('[QUOTES API] Request context:', {
+      companyId,
+      hasQuoteData: !!quoteData,
+      quoteDataKeys: quoteData ? Object.keys(quoteData) : [],
+      errorType: error?.constructor?.name,
+      errorMessage: error instanceof Error ? error.message : 'Unknown error'
     });
     
-    // More detailed error info
-    if (error instanceof Error) {
-      console.error('[QUOTES API] Error name:', error.name);
-      console.error('[QUOTES API] Error message:', error.message);
+    // Check for Supabase connection issues
+    if (error instanceof Error && error.message.includes('fetch')) {
+      console.error('[QUOTES API] Possible network/database connection error');
       
-      // Check for specific database errors
-      if (error.message.includes('relation') && error.message.includes('does not exist')) {
-        console.error('[QUOTES API] Database tables might not exist. Run the Supabase migration.');
+      if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
         return NextResponse.json(
           { 
-            error: 'Database not initialized', 
-            details: 'Database tables not found. Please run the Supabase migration script.',
+            error: 'Database configuration missing',
+            details: 'Supabase URL not configured. Please check environment variables.',
+            debugInfo: process.env.NODE_ENV === 'development' ? {
+              missingVars: {
+                SUPABASE_URL: !process.env.NEXT_PUBLIC_SUPABASE_URL,
+                SUPABASE_ANON_KEY: !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+              }
+            } : undefined,
             helpUrl: '/supabase-setup.sql'
           },
           { status: 500 }
@@ -325,7 +283,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Return error response with more details
-    const errorResponse = {
+    const errorResponse: ErrorResponse = {
       error: 'Failed to create quote',
       details: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString(),
@@ -338,7 +296,7 @@ export async function POST(request: NextRequest) {
     
     // Add stack trace in development
     if (process.env.NODE_ENV === 'development' && error instanceof Error) {
-      (errorResponse as any)['stack'] = error.stack;
+      errorResponse.stack = error.stack;
     }
     
     return NextResponse.json(errorResponse, { status: 500 });
@@ -371,25 +329,31 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET - Retrieve quotes
+// GET - Fetch all quotes for a company
 export async function GET(request: NextRequest) {
   try {
     const company = getCompanyFromRequest(request);
+    
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    // Get all quotes for this company
     const quotes = await db.getQuotesByCompanyId(company.id);
-    
-    return NextResponse.json({ 
+
+    return NextResponse.json({
       success: true,
-      quotes: quotes || [] 
+      quotes,
+      count: quotes.length
     });
 
   } catch (error) {
     console.error('Error fetching quotes:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch quotes' },
+      { 
+        error: 'Failed to fetch quotes',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }

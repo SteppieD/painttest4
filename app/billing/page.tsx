@@ -87,7 +87,7 @@ function BillingContent() {
       // Remove search params from URL
       window.history.replaceState({}, '', '/billing');
     }
-  }, [searchParams, toast]);
+  }, [searchParams]);
 
   const handleSelectPlan = async (plan: string, billingPeriod: 'monthly' | 'yearly') => {
     setIsProcessing(true);

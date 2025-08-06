@@ -58,13 +58,13 @@ export async function PUT(
     }
 
     // Prepare update data - remove fields that shouldn't be updated
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { 
-      id, 
-      quote_id, 
-      company_id, 
-      created_at, 
-      updated_at,
+      // These destructured variables are intentionally unused - they're being removed from updateData
+      id: _id, 
+      quote_id: _quoteId, 
+      company_id: _companyId, 
+      created_at: _createdAt, 
+      updated_at: _updatedAt,
       ...updateData 
     } = quoteData;
 

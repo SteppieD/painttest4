@@ -2,6 +2,29 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 
+// Interface for Supabase errors
+interface SupabaseError {
+  code?: string;
+  message?: string;
+  details?: string;
+  hint?: string;
+}
+
+// Interface for error info with optional supabase error
+interface ErrorInfo {
+  error: string;
+  message: string;
+  errorType?: string;
+  stack?: string[];
+  databaseType?: string;
+  environment: {
+    hasSupabase: boolean;
+    isVercel: boolean;
+    nodeEnv: string | undefined;
+  };
+  supabaseError?: SupabaseError;
+}
+
 export async function POST(_request: NextRequest) {
   try {
     // Test data for debugging - using Quote interface format
@@ -29,44 +52,48 @@ export async function POST(_request: NextRequest) {
       labor_cost: 400,
       material_cost: 200,
       total_cost: 1000,
-      timeline: '1 week',
-      special_requests: undefined,
-      status: 'pending',
-      created_at: new Date().toISOString()
+      status: 'pending' as const,
+      tax_rate: 8.25,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
-    console.log('[TEST-QUOTE] Starting test quote creation');
-    console.log('[TEST-QUOTE] Database adapter type:', db.constructor.name);
+    console.log('[TestQuoteCreation] Starting test with data:', testQuoteData);
     
-    // Try to generate quote number
-    let quoteNumber;
-    try {
-      quoteNumber = await generateQuoteNumber(1);
-      console.log('[TEST-QUOTE] Generated quote number:', quoteNumber);
-      testQuoteData.quote_id = quoteNumber;
-    } catch (error) {
-      console.error('[TEST-QUOTE] Error generating quote number:', error);
-      console.error('[TEST-QUOTE] Using fallback quote number');
-    }
+    // Try to generate a quote number
+    const quoteNumber = await generateQuoteNumber(testQuoteData.company_id);
+    testQuoteData.quote_id = quoteNumber;
+    
+    console.log('[TestQuoteCreation] Generated quote number:', quoteNumber);
 
-    // Try to create quote
-    console.log('[TEST-QUOTE] Attempting to create quote');
+    // Try to create the quote
     const result = await db.createQuote(testQuoteData);
-    console.log('[TEST-QUOTE] Quote created successfully:', result);
+    
+    console.log('[TestQuoteCreation] Quote created successfully:', result);
 
     return NextResponse.json({
+      test: 'quote-creation',
       success: true,
-      message: 'Test quote created successfully',
-      quoteId: result.quote_id,
-      id: result.id,
-      databaseType: db.constructor.name
+      result: {
+        id: result.id,
+        quote_id: result.quote_id,
+        customer_name: result.customer_name,
+        total_cost: result.total_cost,
+        status: result.status
+      },
+      testData: testQuoteData,
+      environment: {
+        hasSupabase: !!(process.env.NEXT_PUBLIC_SUPABASE_URL),
+        isVercel: process.env.VERCEL === '1',
+        nodeEnv: process.env.NODE_ENV
+      }
     });
 
   } catch (error) {
-    console.error('[TEST-QUOTE] Error in test:', error);
+    console.error('[TestQuoteCreation] Error:', error);
     
-    const errorInfo = {
-      error: 'Test quote creation failed',
+    const errorInfo: ErrorInfo = {
+      error: 'Test failed',
       message: error instanceof Error ? error.message : 'Unknown error',
       errorType: error?.constructor?.name,
       stack: error instanceof Error ? error.stack?.split('\n').slice(0, 10) : undefined,
@@ -80,11 +107,12 @@ export async function POST(_request: NextRequest) {
 
     // Add specific error details for Supabase errors
     if (error && typeof error === 'object' && 'code' in error) {
-      (errorInfo as any)['supabaseError'] = {
-        code: (error as any).code,
-        message: (error as any).message,
-        details: (error as any).details,
-        hint: (error as any).hint
+      const supabaseError = error as SupabaseError;
+      errorInfo.supabaseError = {
+        code: supabaseError.code,
+        message: supabaseError.message,
+        details: supabaseError.details,
+        hint: supabaseError.hint
       };
     }
 
@@ -93,42 +121,9 @@ export async function POST(_request: NextRequest) {
 }
 
 export async function GET(_request: NextRequest) {
-  try {
-    // Test database connection
-    const testCompanies = await db.getAllCompanies();
-    
-    return NextResponse.json({
-      message: 'Test endpoint ready',
-      databaseType: db?.constructor?.name || 'Unknown',
-      databaseCheck: {
-        canConnect: true,
-        companiesCount: testCompanies?.length || 0
-      },
-      environment: {
-        hasSupabase: !!(process.env.NEXT_PUBLIC_SUPABASE_URL),
-        supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Configured' : 'Not configured',
-        hasServiceKey: !!(process.env.SUPABASE_SERVICE_ROLE_KEY),
-        hasAnonKey: !!(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
-        isVercel: process.env.VERCEL === '1',
-        nodeEnv: process.env.NODE_ENV
-      }
-    });
-  } catch (error) {
-    return NextResponse.json({
-      message: 'Test endpoint error',
-      databaseType: db?.constructor?.name || 'Unknown',
-      databaseCheck: {
-        canConnect: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
-      },
-      environment: {
-        hasSupabase: !!(process.env.NEXT_PUBLIC_SUPABASE_URL),
-        supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Configured' : 'Not configured',
-        hasServiceKey: !!(process.env.SUPABASE_SERVICE_ROLE_KEY),
-        hasAnonKey: !!(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
-        isVercel: process.env.VERCEL === '1',
-        nodeEnv: process.env.NODE_ENV
-      }
-    });
-  }
+  return NextResponse.json({
+    message: 'Use POST to test quote creation',
+    endpoint: '/api/test-quote-creation',
+    method: 'POST'
+  });
 }

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 const TEST_COMPANY = {
   name: 'Test Painting Co',
@@ -8,7 +8,7 @@ const TEST_COMPANY = {
 
 test.describe('Dashboard Navigation Tests', () => {
   // Helper to set up authentication
-  async function setupAuth(page) {
+  async function setupAuth(page: Page) {
     // Set up localStorage with valid auth
     await page.addInitScript(() => {
       localStorage.setItem('paintquote_company', JSON.stringify({

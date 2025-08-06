@@ -1,4 +1,3 @@
-import { NextRequest } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 import { SubscriptionService } from '@/lib/services/subscription';
@@ -16,7 +15,7 @@ export const dynamic = 'force-dynamic';
 /**
  * GET /api/quotes - Get all quotes for company (secured)
  */
-export const GET = createSecureRoute(async ({ companyId, accessCode, request }) => {
+export const GET = createSecureRoute(async ({ companyId }) => {
   try {
     // Check permission
     if (!await checkPermission(companyId, 'view_quote')) {
@@ -46,7 +45,7 @@ export const GET = createSecureRoute(async ({ companyId, accessCode, request }) 
 /**
  * POST /api/quotes - Create new quote (secured)
  */
-export const POST = createSecureRoute(async ({ companyId, accessCode, request }) => {
+export const POST = createSecureRoute(async ({ companyId, request }) => {
   try {
     // Check permission
     if (!await checkPermission(companyId, 'create_quote')) {

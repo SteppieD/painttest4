@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -62,11 +62,11 @@ export default function PerformanceAnalyticsPage() {
     if (!company) {
       router.push('/access-code')
       return
-    }
+    }, [selectedPeriod])
     fetchPerformanceData(company)
   }, [router, selectedPeriod])
 
-  const fetchPerformanceData = async (company: { id: number; access_code: string }) => {
+  const fetchPerformanceData = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/analytics/performance?period=${selectedPeriod}`, {
         headers: {
@@ -74,13 +74,13 @@ export default function PerformanceAnalyticsPage() {
             id: company.id,
             access_code: company.access_code
           })
-        }
+        }, [selectedPeriod])
       })
 
       if (response.ok) {
         const data = await response.json()
         setPerformanceData(data)
-      }
+      }, [selectedPeriod])
     } catch (error) {
       console.error('Error fetching performance data:', error)
       // Use mock data for now
@@ -120,7 +120,7 @@ export default function PerformanceAnalyticsPage() {
       })
     } finally {
       setLoading(false)
-    }
+    }, [selectedPeriod])
   }
 
   if (loading || !performanceData) {
