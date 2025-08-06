@@ -294,7 +294,7 @@ export async function withSecurity(
             [companyData.id, companyData.access_code]
           );
           
-          if (company && company.length > 0) {
+          if (Array.isArray(company) && company.length > 0) {
             // Create session for backward compatibility
             const token = createSession(
               companyData.id,

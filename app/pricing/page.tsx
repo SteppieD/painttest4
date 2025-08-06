@@ -210,7 +210,7 @@ export default function PricingPage() {
                           ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round((plan.yearlyPrice || 0) / 12)}
                         </span>
                         <span className="text-gray-200">/month</span>
-                        {billingPeriod === 'yearly' && plan.yearlyPrice > 0 && (
+                        {billingPeriod === 'yearly' && plan.yearlyPrice && plan.yearlyPrice > 0 && (
                           <p className="mt-1 text-base text-gray-200">
                             ${plan.yearlyPrice} billed annually
                           </p>
@@ -321,7 +321,7 @@ export default function PricingPage() {
                 <p className="text-lg mb-2 text-gray-100">Your Additional Monthly Revenue</p>
                 <p className="text-4xl font-bold text-emerald-400 mb-4">+$8,400</p>
                 <p className="text-base text-gray-100 mb-4">
-                  That{'s'} a <strong className="text-white">100x return</strong> on your PaintQuote Pro investment
+                  That&apos;s a <strong className="text-white">100x return</strong> on your PaintQuote Pro investment
                 </p>
                 <p className="text-base text-gray-200">
                   Based on research showing 40-60% win rate improvement from faster response times 
@@ -338,7 +338,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Can I change plans anytime?</h3>
                 <p className="text-gray-100">
-                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we{'ll'} prorate any payments.
+                  Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we&apos;ll prorate any payments.
                 </p>
               </div>
               
@@ -366,7 +366,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-white">Do you offer discounts for annual billing?</h3>
                 <p className="text-gray-100">
-                  Yes! Annual billing saves you 17% compared to monthly billing - that{'s'} 2 months free every year.
+                  Yes! Annual billing saves you 17% compared to monthly billing - that&apos;s 2 months free every year.
                 </p>
               </div>
             </div>

@@ -66,9 +66,17 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
   const [loading, setLoading] = useState(true)
   const [tracked, setTracked] = useState(false)
 
-  useEffect(() => {
-    fetchQuote()
-  }, [fetchQuote])  // Include fetchQuote as dependency
+  const trackEvent = useCallback(async (event: string) => {
+    try {
+      await fetch(`/api/quotes/${params.id}/track`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event })
+      })
+    } catch (error) {
+      console.error('Error tracking event:', error)
+    }
+  }, [params.id])
 
   const fetchQuote = useCallback(async () => {
     try {
@@ -88,19 +96,11 @@ export default function PublicQuotePage({ params }: { params: { id: string } }) 
     } finally {
       setLoading(false)
     }
-  }, [params.id, tracked, trackEvent])  // Add trackEvent as dependency
+  }, [params.id, tracked, trackEvent])
 
-  const trackEvent = useCallback(async (event: string) => {
-    try {
-      await fetch(`/api/quotes/${params.id}/track`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event })
-      })
-    } catch (error) {
-      console.error('Error tracking event:', error)
-    }
-  }, [params.id])
+  useEffect(() => {
+    fetchQuote()
+  }, [fetchQuote])
 
   const handleAccept = async () => {
     await trackEvent('accepted')

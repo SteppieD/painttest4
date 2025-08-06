@@ -67,7 +67,7 @@ export class ConversationManager {
         type: 'text',
         required: true,
         next: (value: unknown) => {
-          const lower = value.toLowerCase();
+          const lower = String(value).toLowerCase();
           if (lower.includes('trim') || lower.includes('door')) {
             return 'trimDetails';
           }
@@ -358,7 +358,7 @@ export class ConversationManager {
 
   // Quick quote mode parser - handles comprehensive messages
   parseQuickQuote(input: string): Record<string, any> | null {
-    const data: Record<string, unknown> = {
+    const data: any = {
       measurements: {},
       surfaces: [],
       paintProducts: {}

@@ -104,12 +104,23 @@ export function validateQuoteData(data: unknown): {
     return { valid: false, errors };
   }
   
+  // Type the sanitized result properly
+  const typedSanitized = {
+    customerName: sanitized.customerName as string,
+    customerEmail: sanitized.customerEmail as string | undefined,
+    customerPhone: sanitized.customerPhone as string | undefined,
+    address: sanitized.address as string | undefined,
+    projectType: sanitized.projectType as string | undefined,
+    totalCost: sanitized.totalCost as number | undefined,
+    sqft: sanitized.sqft as number | undefined,
+  };
+  
   // Additional validation
-  if (sanitized.customerEmail && !isValidEmail(sanitized.customerEmail)) {
+  if (typedSanitized.customerEmail && !isValidEmail(typedSanitized.customerEmail)) {
     errors.push('Invalid email format');
   }
   
-  if (sanitized.customerPhone && !isValidPhone(sanitized.customerPhone)) {
+  if (typedSanitized.customerPhone && !isValidPhone(typedSanitized.customerPhone)) {
     errors.push('Invalid phone number format');
   }
   
@@ -117,7 +128,7 @@ export function validateQuoteData(data: unknown): {
     return { valid: false, errors };
   }
   
-  return { valid: true, sanitized };
+  return { valid: true, sanitized: typedSanitized };
 }
 
 /**

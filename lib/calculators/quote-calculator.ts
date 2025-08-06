@@ -274,15 +274,16 @@ export class QuoteCalculator {
     let totalWindows = 0;
     let totalTrim = 0;
     
-    rooms.forEach((room: Room) => {
+    rooms.forEach((room) => {
+      const r = room as Room;
       // Estimate wall area (perimeter * height)
-      if (room.length && room.width && room.height) {
-        const perimeter = 2 * (room.length + room.width);
-        const wallArea = perimeter * room.height;
+      if (r.length && r.width && r.height) {
+        const perimeter = 2 * (r.length + r.width);
+        const wallArea = perimeter * r.height;
         totalWalls += wallArea;
         
         // Ceiling area
-        const ceilingArea = room.length * room.width;
+        const ceilingArea = r.length * r.width;
         totalCeilings += ceilingArea;
         
         // Estimate trim (baseboard)
@@ -290,8 +291,8 @@ export class QuoteCalculator {
       }
       
       // Count doors and windows
-      totalDoors += room.doors || 1;
-      totalWindows += room.windows || 2;
+      totalDoors += r.doors || 1;
+      totalWindows += r.windows || 2;
     });
     
     // Subtract door and window area from walls

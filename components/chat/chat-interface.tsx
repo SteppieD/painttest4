@@ -69,6 +69,13 @@ export function ChatInterface({
   const router = useRouter();
   const { latestAchievement, checkQuoteAchievements } = useAchievements();
 
+  // Helper function to safely extract total values
+  const getTotal = (value: { total?: number } | number | undefined): number => {
+    if (typeof value === 'number') return value;
+    if (typeof value === 'object' && value && 'total' in value) return value.total || 0;
+    return 0;
+  };
+
   // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -422,7 +429,7 @@ export function ChatInterface({
               {quoteData.pricing?.breakdown && (
                 <div className="mt-4 space-y-3">
                   <div className="bg-gray-900/70 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                    <h4 className="font-semibold text-base mb-2 text-white">MATERIALS: ${quoteData.pricing.materials?.total?.toFixed(2)}</h4>
+                    <h4 className="font-semibold text-base mb-2 text-white">MATERIALS: ${getTotal(quoteData.pricing.materials).toFixed(2)}</h4>
                     <div className="space-y-1 text-base text-gray-100">
                       {quoteData.pricing.breakdown.primer && (
                         <div>• Primer: {quoteData.pricing.breakdown.primer.gallons} gallons - ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}</div>
@@ -440,7 +447,7 @@ export function ChatInterface({
                   </div>
                   
                   <div className="bg-gray-900/70 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                    <h4 className="font-semibold text-base mb-2 text-white">LABOR: ${quoteData.pricing.labor?.total?.toFixed(2)}</h4>
+                    <h4 className="font-semibold text-base mb-2 text-white">LABOR: ${getTotal(quoteData.pricing.labor).toFixed(2)}</h4>
                     <div className="space-y-1 text-base text-gray-100">
                       {quoteData.pricing.breakdown.prepWork && (
                         <div>• Prep work: {quoteData.pricing.breakdown.prepWork.hours} hours - ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}</div>
@@ -487,7 +494,7 @@ export function ChatInterface({
         suggestedReplies={suggestedReplies}
         placeholder={
           quoteData 
-            ? "Quote is ready! Click {'}Create Quote{'} above."
+            ? "Quote is ready! Click Create Quote above."
             : "Type your message..."
         }
       />
