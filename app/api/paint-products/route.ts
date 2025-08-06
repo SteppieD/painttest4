@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      product: product[0]
+      product: product
     });
 
   } catch (error) {
@@ -210,7 +210,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      product: product[0]
+      product: product
     });
 
   } catch (error) {

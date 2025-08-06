@@ -75,10 +75,9 @@ export const POST = createSecureRoute(async ({ companyId, accessCode, request })
     }
     
     // Check subscription limits
-    const subscriptionService = new SubscriptionService(db);
-    const canCreate = await subscriptionService.canCreateQuote(companyId);
+    const quoteLimitCheck = await SubscriptionService.checkQuoteLimit(companyId);
     
-    if (!canCreate) {
+    if (!quoteLimitCheck.allowed) {
       return createErrorResponse(
         'Quote limit reached. Please upgrade your subscription.',
         402
@@ -139,7 +138,7 @@ export const POST = createSecureRoute(async ({ companyId, accessCode, request })
     const newQuote = await db.createQuote(quoteData);
     
     // Track usage
-    await subscriptionService.trackQuoteUsage(companyId, quoteNumber);
+    await SubscriptionService.incrementQuoteCount(companyId);
     
     // Log successful creation
     logSecurityEvent('auth_success', {
