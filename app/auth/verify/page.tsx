@@ -27,7 +27,9 @@ function VerifyContent() {
       if (response.ok && data.success) {
         setStatus('success');
         setMessage(data.message);
-        setAccessCode(data.access_code);
+        // Handle both access_code and accessCode formats
+        const accessCodeValue = data.accessCode || data.access_code;
+        setAccessCode(accessCodeValue);
         
         // Store company data in localStorage
         if (data.company) {
@@ -35,7 +37,7 @@ function VerifyContent() {
             'paintquote_company',
             JSON.stringify({
               id: data.company.id,
-              access_code: data.access_code,
+              access_code: accessCodeValue, // Use the correct access code
               name: data.company.name || data.company.company_name,
               email: data.company.email,
               phone: data.company.phone || '',
