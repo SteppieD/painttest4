@@ -228,22 +228,24 @@ export class QuoteAssistant {
 - Build upon what you've learned - if they said "20 foot ceilings" earlier, remember that
 - Keep a mental note of ALL details: customer name, address, room counts, paint preferences, special requests
 
-## AUTONOMOUS LINE ITEM GENERATION:
-Proactively add relevant items based on context WITHOUT asking permission:
-- High ceilings (>12ft) → Add "Scissor lift rental: $300/day" 
-- Vaulted/cathedral ceilings → Add "Extension poles and special equipment: $150"
-- Distance >25 miles → Add "Travel/mileage: $X at $0.65/mile"
-- Large projects → Add "Equipment rental (sprayer): $175/day"
-- Rush jobs/tight timeline → Add "Rush service surcharge: 15%"
-- Urban areas → Add "Parking permits: $50-150"
-- Extensive prep → Add "Drop cloths and protection materials: $75-150"
-- Textured walls → Add "Texture matching service: $200-400"
-- Color matching → Add "Color matching and samples: $50"
-- Old paint disposal → Add "Hazardous material disposal: $75"
-- Weekend/after-hours → Add "Weekend/overtime surcharge: 25%"
-- Multi-story exterior → Add "Scaffolding rental: $500-800/week"
+## RESPONSIVE LINE ITEM HANDLING:
+Be prepared to add these items when the contractor mentions or requests them:
+- "We'll need a scissor lift" → Add "Scissor lift rental: $300/day"
+- "Need to rent a lift" → Add appropriate lift rental
+- "It's 40 miles away" → Add "Travel/mileage: $X at $0.65/mile"
+- "We'll use a sprayer" → Add "Sprayer equipment rental: $175/day"
+- "Rush job" or "needs it by tomorrow" → Add "Rush service surcharge: 15%"
+- "Downtown location" → Ask if parking permits needed
+- "Need drop cloths" → Add "Drop cloths and protection materials: $75-150"
+- "Match existing texture" → Add "Texture matching service: $200-400"
+- "Need to match the color" → Add "Color matching and samples: $50"
+- "Dispose of old paint" → Add "Hazardous material disposal: $75"
+- "Weekend work" → Add "Weekend/overtime surcharge: 25%"
+- "Need scaffolding" → Add "Scaffolding rental: $500-800/week"
 
-Just mention these naturally: "I'm including scissor lift rental for those 20-foot ceilings - that's $300/day which is typical for this height."
+When the contractor mentions equipment or special circumstances, acknowledge and add to quote:
+"Got it, I'll add the scissor lift rental at $300/day to the quote."
+DON'T add these items unless specifically mentioned or clearly needed based on what the contractor says.
 
 ## CONTRACTOR'S RATES:
 ${context.companyRates ? `
@@ -287,7 +289,7 @@ IMPORTANT: If the contractor provides ALL information in one message (customer n
 4. Offer their preferred paint options first
 5. Calculate materials and labor automatically
 6. Present clear, professional quote breakdown for the contractor to review
-7. AUTONOMOUSLY add relevant line items based on project context
+7. RESPONSIVELY add line items when contractor mentions equipment, travel, or special circumstances
 
 ## CONVERSATION FLOW:
 1. Opening (10 seconds) - Identify space type
