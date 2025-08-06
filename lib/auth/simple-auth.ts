@@ -20,11 +20,10 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth | null 
       // Handle both formats: accessCode and access_code
       const accessCode = data.accessCode || data.access_code;
       
-      // Allow companies with ID even without access_code (for local onboarding)
-      if (data.id) {
+      if (data.id && accessCode) {
         return {
           id: data.id,
-          access_code: accessCode || '', // Allow empty access_code
+          access_code: accessCode,
           name: data.name || 'Unknown Company',
           email: data.email
         };
@@ -42,8 +41,7 @@ export function getCompanyFromRequest(request: NextRequest): CompanyAuth | null 
  * Validate if a company is authenticated
  */
 export function isAuthenticated(company: CompanyAuth | null): boolean {
-  // Allow authentication with just ID for local companies
-  return company !== null && company.id > 0;
+  return company !== null && company.id > 0 && !!company.access_code;
 }
 
 /**

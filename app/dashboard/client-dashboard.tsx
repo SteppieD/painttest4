@@ -69,8 +69,7 @@ export function ClientDashboard() {
         headers: {
           'x-company-data': JSON.stringify({ 
             id: companyData?.id,
-            access_code: companyData?.access_code || '',
-            name: companyData?.name
+            access_code: companyData?.access_code 
           })
         }
       });
