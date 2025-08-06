@@ -9,7 +9,7 @@ import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription'
-import { redirectToStripePayment } from '@/lib/config/stripe-links'
+// Removed redirectToStripePayment - now using router.push to pricing page
 import { 
   CreditCard, 
   Check, 
@@ -82,13 +82,9 @@ export default function BillingPage() {
         description: 'You will be redirected to complete your purchase...'
       })
       
-      // Redirect to Stripe payment link
+      // Redirect to pricing page
       setTimeout(() => {
-        if (tier === 'pro') {
-          redirectToStripePayment('professional', 'monthly')
-        } else if (tier === 'business') {
-          redirectToStripePayment('business', 'monthly')
-        }
+        router.push('/pricing')
       }, 1000)
     } catch (error) {
       toast({
