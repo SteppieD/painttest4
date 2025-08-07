@@ -198,122 +198,128 @@ function QuoteReviewContent() {
       try {
         const parsed = JSON.parse(decodeURIComponent(data))
         
-        // Calculate proper materials and labor costs
-        const calculateMaterialsCost = () => {
-          let totalMaterials = 0
+        // Calculate the total base cost (before markup)
+        // Rates already include everything: materials, labor, supplies
+        const calculateTotalBaseCost = () => {
+          // If total cost was provided, work backwards from it
+          if (parsed.totalCost) {
+            const markupPercentage = parsed.markupPercentage || 30
+            return parsed.totalCost / (1 + markupPercentage / 100)
+          }
           
-          // Calculate paint cost
+          let totalBaseCost = 0
+          
+          // Calculate from measurements and rates
+          if (parsed.measurements) {
+            const wallSqft = parsed.measurements.wallSqft || 0
+            const ceilingSqft = parsed.measurements.ceilingSqft || 0
+            const ratePerSqft = parsed.ratePerSqft || 1.20 // Composite rate
+            
+            totalBaseCost = (wallSqft + ceilingSqft) * ratePerSqft
+          }
+          
+          // Add any additional line items
+          if (parsed.lineItems && parsed.lineItems.length > 0) {
+            parsed.lineItems.forEach((item: any) => {
+              totalBaseCost += item.total || 0
+            })
+          }
+          
+          return totalBaseCost
+        }
+        
+        // Get the base cost first
+        const baseCost = calculateTotalBaseCost()
+        
+        // Labor is 30% of the base cost (internal calculation)
+        const laborCost = baseCost * 0.3
+        
+        // Materials is 70% of the base cost (internal calculation)  
+        const materialsCost = baseCost * 0.7
+        
+        // Calculate breakdown for display (proportional to the 70/30 split)
+        // This is just for showing itemized details, not for calculating totals
+        const calculateBreakdown = () => {
+          if (!parsed.pricing) parsed.pricing = {}
+          if (!parsed.pricing.breakdown) parsed.pricing.breakdown = {}
+          
+          // For materials breakdown (70% of base cost)
           if (parsed.paintProducts && parsed.measurements) {
             const wallSqft = parsed.measurements.wallSqft || 0
             const ceilingSqft = parsed.measurements.ceilingSqft || 0
             
-            // Wall paint calculation
-            if (parsed.paintProducts.walls && wallSqft > 0) {
-              const coverageRate = parsed.paintProducts.walls.coverageRate || 350
-              const costPerGallon = parsed.paintProducts.walls.costPerGallon || 50
-              const gallonsNeeded = Math.ceil(wallSqft / coverageRate)
-              const wallPaintCost = gallonsNeeded * costPerGallon
-              totalMaterials += wallPaintCost
-              
-              // Update parsed data with breakdown
-              if (!parsed.pricing) parsed.pricing = {}
-              if (!parsed.pricing.breakdown) parsed.pricing.breakdown = {}
-              parsed.pricing.breakdown.wallPaint = {
-                gallons: gallonsNeeded,
-                costPerGallon: costPerGallon,
-                cost: wallPaintCost,
-                product: parsed.paintProducts.walls.name,
-                finish: parsed.paintProducts.walls.finish
+            // Proportionally allocate the materials cost
+            const totalSqft = wallSqft + ceilingSqft
+            if (totalSqft > 0) {
+              // Wall paint gets proportional share of materials
+              if (wallSqft > 0) {
+                const wallShare = (wallSqft / totalSqft) * materialsCost * 0.6 // 60% for paint
+                const gallonsNeeded = Math.ceil(wallSqft / 350)
+                parsed.pricing.breakdown.wallPaint = {
+                  gallons: gallonsNeeded,
+                  costPerGallon: wallShare / gallonsNeeded,
+                  cost: wallShare,
+                  product: parsed.paintProducts.walls?.name || 'Premium Wall Paint',
+                  finish: parsed.paintProducts.walls?.finish || 'Eggshell'
+                }
               }
-            }
-            
-            // Ceiling paint calculation
-            if (parsed.paintProducts.ceiling && ceilingSqft > 0) {
-              const coverageRate = parsed.paintProducts.ceiling.coverageRate || 400
-              const costPerGallon = parsed.paintProducts.ceiling.costPerGallon || 45
-              const gallonsNeeded = Math.ceil(ceilingSqft / coverageRate)
-              const ceilingPaintCost = gallonsNeeded * costPerGallon
-              totalMaterials += ceilingPaintCost
               
-              parsed.pricing.breakdown.ceilingPaint = {
-                gallons: gallonsNeeded,
-                costPerGallon: costPerGallon,
-                cost: ceilingPaintCost,
-                product: parsed.paintProducts.ceiling.name,
-                finish: parsed.paintProducts.ceiling.finish
+              // Ceiling paint
+              if (ceilingSqft > 0) {
+                const ceilingShare = (ceilingSqft / totalSqft) * materialsCost * 0.3 // 30% for ceiling
+                const gallonsNeeded = Math.ceil(ceilingSqft / 400)
+                parsed.pricing.breakdown.ceilingPaint = {
+                  gallons: gallonsNeeded,
+                  costPerGallon: ceilingShare / gallonsNeeded,
+                  cost: ceilingShare,
+                  product: parsed.paintProducts.ceiling?.name || 'Ceiling Paint',
+                  finish: 'Flat'
+                }
               }
-            }
-            
-            // Add primer if needed
-            if (parsed.prepWork === 'extensive' || parsed.prepWork === 'moderate') {
-              const primerSqft = wallSqft + ceilingSqft
-              const primerCoverageRate = 400
-              const primerCostPerGallon = 35
-              const primerGallons = Math.ceil(primerSqft / primerCoverageRate)
-              const primerCost = primerGallons * primerCostPerGallon
-              totalMaterials += primerCost
               
-              parsed.pricing.breakdown.primer = {
-                gallons: primerGallons,
-                costPerGallon: primerCostPerGallon,
-                cost: primerCost
-              }
+              // Supplies always get 10% of materials
+              parsed.pricing.breakdown.supplies = materialsCost * 0.1
             }
           }
           
-          // Add supplies cost
-          const suppliesCost = parsed.supplies?.basicSupplies || 150
-          totalMaterials += suppliesCost
-          if (parsed.pricing?.breakdown) {
-            parsed.pricing.breakdown.supplies = suppliesCost
-          }
-          
-          return totalMaterials
-        }
-        
-        // Calculate labor cost
-        const calculateLaborCost = () => {
-          if (parsed.laborCost?.totalLabor) {
-            return parsed.laborCost.totalLabor
-          }
-          
-          // Fallback calculation
-          const sqft = parsed.measurements?.wallSqft || 0
-          const ratePerSqft = parsed.laborCost?.ratePerSqft || 1.5
-          const laborCost = sqft * ratePerSqft
-          
-          // Add prep work hours
-          if (parsed.pricing?.breakdown) {
+          // For labor breakdown (30% of base cost)
+          const sqft = (parsed.measurements?.wallSqft || 0) + (parsed.measurements?.ceilingSqft || 0)
+          if (sqft > 0) {
             const hourlyRate = 50
-            let prepHours = 0
             
+            // Calculate prep work hours based on prep level
+            let prepHours = 0
             if (parsed.prepWork === 'extensive') prepHours = 16
             else if (parsed.prepWork === 'moderate') prepHours = 8
             else if (parsed.prepWork === 'minor') prepHours = 4
             
-            if (prepHours > 0) {
-              parsed.pricing.breakdown.prepWork = {
-                hours: prepHours,
-                rate: hourlyRate,
-                cost: prepHours * hourlyRate
+            // Calculate painting hours (200 sqft per 8-hour day)
+            const paintingHours = Math.ceil(sqft / 200) * 8
+            const totalHours = prepHours + paintingHours
+            
+            // Distribute labor cost proportionally
+            if (totalHours > 0) {
+              if (prepHours > 0) {
+                parsed.pricing.breakdown.prepWork = {
+                  hours: prepHours,
+                  rate: hourlyRate,
+                  cost: (prepHours / totalHours) * laborCost
+                }
+              }
+              
+              if (paintingHours > 0) {
+                parsed.pricing.breakdown.painting = {
+                  hours: paintingHours,
+                  rate: hourlyRate,
+                  cost: (paintingHours / totalHours) * laborCost
+                }
               }
             }
-            
-            // Calculate painting hours
-            const paintingHours = Math.ceil(sqft / 200) * 8 // 200 sqft per 8-hour day
-            parsed.pricing.breakdown.painting = {
-              hours: paintingHours,
-              rate: hourlyRate,
-              cost: paintingHours * hourlyRate
-            }
           }
-          
-          return laborCost
         }
         
-        // Calculate costs
-        const materialsCost = calculateMaterialsCost()
-        const laborCost = calculateLaborCost()
+        // Calculate breakdown for display
+        calculateBreakdown()
         const subtotal = materialsCost + laborCost
         const markupPercentage = parsed.markupPercentage || 30
         const markup = subtotal * (markupPercentage / 100)
