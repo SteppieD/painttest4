@@ -139,11 +139,24 @@ export function BillingOverview({
               </div>
             </div>
           ) : (
-            <div className="text-center py-6">
-              <p className="text-gray-600 mb-4">No active subscription</p>
-              <Button onClick={onUpgrade} disabled={isLoading}>
-                Choose a Plan
-              </Button>
+            <div className="text-center py-8 space-y-4">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Unlock Professional Features
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  You&apos;re currently on the Free plan with 5 quotes per month. Upgrade for unlimited quotes, 
+                  custom branding, and advanced analytics.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Button onClick={onUpgrade} disabled={isLoading} size="lg" className="bg-blue-600 hover:bg-blue-700">
+                    View Plans & Pricing
+                  </Button>
+                  <Button variant="outline" size="lg" onClick={() => window.open('/demo', '_blank')}>
+                    See Demo
+                  </Button>
+                </div>
+              </div>
             </div>
           )}
         </CardContent>

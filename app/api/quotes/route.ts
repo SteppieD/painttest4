@@ -119,10 +119,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           error: 'Quote limit reached',
-          message: `You've reached your monthly limit of ${quoteLimitCheck.limit} quotes. Upgrade to Pro for unlimited quotes.`,
+          message: `You've reached your monthly limit of ${quoteLimitCheck.limit} quotes. Your limit resets next month, or upgrade now for unlimited quotes.`,
           limit: quoteLimitCheck.limit,
           remaining: 0,
-          upgradeUrl: '/dashboard/settings/billing'
+          upgradeUrl: '/pricing',
+          resetDate: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toISOString(),
+          upgradeMessage: 'Upgrade to Professional plan for unlimited quotes, custom branding, and advanced features starting at $79/month.'
         },
         { status: 403 }
       );

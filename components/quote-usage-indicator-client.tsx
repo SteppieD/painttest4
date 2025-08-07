@@ -53,6 +53,7 @@ export function QuoteUsageIndicator() {
   }
 
   const { quotesUsed, quotesLimit, hasUnlimitedQuotes, percentageUsed, isNearLimit, isAtLimit, plan } = data
+  const isApproachingLimit = percentageUsed >= 60 && percentageUsed < 80
 
   if (hasUnlimitedQuotes) {
     return (
@@ -94,11 +95,11 @@ export function QuoteUsageIndicator() {
       {isAtLimit && (
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-red-400">
-            You{"'"}ve reached your monthly quote limit.{' '}
-            <Link href="/billing" className="font-medium text-red-300 underline hover:no-underline">
+            You{"'"}ve reached your monthly quote limit ({quotesLimit} quotes). Your limit resets next month.{' '}
+            <Link href="/pricing" className="font-medium text-red-300 underline hover:no-underline">
               Upgrade to Pro
             </Link>{' '}
-            for unlimited quotes.
+            for unlimited quotes starting immediately.
           </p>
         </div>
       )}
@@ -106,11 +107,23 @@ export function QuoteUsageIndicator() {
       {isNearLimit && !isAtLimit && (
         <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-yellow-400">
-            You{"'"}re approaching your quote limit.{' '}
-            <Link href="/billing" className="font-medium text-yellow-300 underline hover:no-underline">
-              Upgrade now
+            You{"'"}re approaching your quote limit. Only {quotesLimit - quotesUsed} quotes remaining this month.{' '}
+            <Link href="/pricing" className="font-medium text-yellow-300 underline hover:no-underline">
+              Upgrade to Pro
             </Link>{' '}
-            to avoid interruptions.
+            for unlimited quotes.
+          </p>
+        </div>
+      )}
+      
+      {isApproachingLimit && !isNearLimit && !isAtLimit && (
+        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 backdrop-blur-sm">
+          <p className="text-base text-blue-400">
+            You{"'"}ve used {quotesUsed} of {quotesLimit} quotes this month. Consider upgrading to{' '}
+            <Link href="/pricing" className="font-medium text-blue-300 underline hover:no-underline">
+              Professional plan
+            </Link>{' '}
+            for unlimited quotes and advanced features.
           </p>
         </div>
       )}

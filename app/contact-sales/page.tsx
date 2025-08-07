@@ -101,10 +101,31 @@ export default function ContactSalesPage() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 Scale Your Painting Business with Enterprise Features
               </h2>
-              <p className="text-lg text-gray-300">
+              <p className="text-lg text-gray-300 mb-4">
                 The Business plan is designed for established painting contractors who need advanced features, 
                 team collaboration, and custom integrations to manage their growing operations.
               </p>
+              <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-lg border border-purple-500/30 p-6">
+                <h3 className="text-xl font-bold text-white mb-2">Why Choose Business Plan?</h3>
+                <ul className="space-y-2 text-gray-200">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span>Save 10+ hours per week on quote creation and management</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span>Increase win rates by 40-60% with faster response times</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span>Manage unlimited team members with role-based access</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span>Custom integrations with QuickBooks, CRM systems, and more</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <Card className="bg-gray-900/80 border-white/10 backdrop-blur-md">

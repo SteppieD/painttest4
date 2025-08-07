@@ -193,7 +193,7 @@ export default function PricingPage() {
             </Tabs>
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-4">
+          <div className="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {Object.entries(plans).map(([key, plan]) => (
               <Card 
                 key={key} 
@@ -209,34 +209,34 @@ export default function PricingPage() {
                   </div>
                 )}
                 
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
-                  <CardDescription className="text-gray-300 text-base">{plan.description}</CardDescription>
+                <CardHeader className="text-center">
+                  <CardTitle className="text-2xl text-white mb-2">{plan.name}</CardTitle>
+                  <CardDescription className="text-gray-300 text-base mb-4">{plan.description}</CardDescription>
+                  <div className="mb-4">
+                    {plan.monthlyPrice !== null ? (
+                      <div>
+                        <span className="text-5xl font-bold text-white">
+                          ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round((plan.yearlyPrice || 0) / 12)}
+                        </span>
+                        <span className="text-gray-200 ml-1 text-lg">/month</span>
+                        {billingPeriod === 'yearly' && plan.yearlyPrice && plan.yearlyPrice > 0 && (
+                          <p className="mt-1 text-sm text-emerald-400 font-medium">
+                            Save ${(plan.monthlyPrice * 12) - plan.yearlyPrice} annually
+                          </p>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-4xl font-bold text-white">Custom Pricing</div>
+                    )}
+                  </div>
                   {plan.highlight && (
-                    <p className="mt-2 text-base font-medium text-blue-400">
+                    <p className="text-base font-medium text-blue-400 bg-blue-900/30 rounded-lg p-3">
                       {plan.highlight}
                     </p>
                   )}
                 </CardHeader>
                 
                 <CardContent className="flex-1">
-                  <div className="mb-8">
-                    {plan.monthlyPrice !== null ? (
-                      <div>
-                        <span className="text-4xl font-bold text-white">
-                          ${billingPeriod === 'monthly' ? plan.monthlyPrice : Math.round((plan.yearlyPrice || 0) / 12)}
-                        </span>
-                        <span className="text-gray-200 ml-1">/month</span>
-                        {billingPeriod === 'yearly' && plan.yearlyPrice && plan.yearlyPrice > 0 && (
-                          <p className="mt-1 text-sm text-gray-300">
-                            ${plan.yearlyPrice} billed annually
-                          </p>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="text-3xl font-bold text-white">Custom Pricing</div>
-                    )}
-                  </div>
 
                   <div className="space-y-4">
                     <div>
@@ -289,7 +289,7 @@ export default function PricingPage() {
             <h2 className="text-3xl font-bold text-center mb-8 text-white">Your ROI Calculator</h2>
             
             <div className="mx-auto max-w-3xl">
-              <div className="grid gap-6 md:grid-cols-2 mb-8">
+              <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 mb-8">
                 <div className="bg-slate-900/80 backdrop-filter backdrop-blur-md rounded-lg border border-slate-700 p-6">
                   <h3 className="font-semibold mb-4 text-white">Current Situation</h3>
                   <ul className="space-y-3 text-base">
