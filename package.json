@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev --port 3005",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 3005",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "setup-db": "node -e \"console.log('Database auto-initialized on first run')\"",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "test:links": "node tests/link-audit.js",
+    "test:accessibility": "node tests/accessibility-audit.js",
+    "test:payments": "node tests/payment-flow-test.js",
+    "test:tiers": "node tests/dashboard-tier-test.js",
+    "test:all": "node tests/run-all-tests.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",

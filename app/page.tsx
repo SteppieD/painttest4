@@ -94,7 +94,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
       <ModernNavigation />
-      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+      <main className="min-h-screen bg-gradient-to-br from-gray-950 via-slate-950 to-gray-950">
         {/* Hero Section */}
       <section className="relative overflow-hidden pt-16">
         <div className="absolute inset-0">
@@ -115,7 +115,7 @@ export default function Home() {
               Not Hours
             </h1>
             
-            <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-50 mb-8 max-w-2xl mx-auto">
               While your competitors take 3-6 hours to create quotes, you{'ll'} deliver professional estimates in 10-15 minutes. 
               <span className="text-white font-semibold"> Win 40-60% more jobs</span> with speed and professionalism.
             </p>
@@ -150,7 +150,7 @@ export default function Home() {
             </div>
             
             {/* Social Proof */}
-            <div className="flex items-center justify-center gap-8 text-gray-200">
+            <div className="flex items-center justify-center gap-8 text-gray-50">
               <div className="flex items-center gap-2">
                 <Star className="h-5 w-5 text-yellow-400 fill-current" />
                 <span>4.9/5 Rating</span>
@@ -169,7 +169,7 @@ export default function Home() {
       </section>
       
       {/* Testimonials Section */}
-      <section className="py-20 bg-gray-900/50">
+      <section className="py-20 bg-gray-950/60">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
@@ -179,20 +179,20 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Real Results from Real Contractors
             </h2>
-            <p className="text-xl text-gray-200">
+            <p className="text-xl text-gray-50">
               See how PaintQuote Pro transforms painting businesses
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Testimonial 1 */}
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <p className="text-gray-100 mb-6 italic">
+              <p className="text-gray-50 mb-6 italic">
                 "We went from 7 to 12 jobs won per month. The speed of creating quotes is incredible - what used to take 3 hours now takes 15 minutes. Our close rate jumped from 35% to 52%."
               </p>
               <div className="flex items-center gap-3">
@@ -201,20 +201,20 @@ export default function Home() {
                 </div>
                 <div>
                   <div className="font-semibold text-white">John Rodriguez</div>
-                  <div className="text-sm text-gray-400">Rodriguez Painting Co.</div>
+                  <div className="text-sm text-gray-200">Rodriguez Painting Co.</div>
                   <div className="text-sm text-green-400">+$18,000/month revenue</div>
                 </div>
               </div>
             </div>
             
             {/* Testimonial 2 */}
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <p className="text-gray-100 mb-6 italic">
+              <p className="text-gray-50 mb-6 italic">
                 "The professional look of the quotes alone wins us more jobs. Customers are impressed when they receive a detailed quote within hours, not days."
               </p>
               <div className="flex items-center gap-3">
@@ -223,20 +223,20 @@ export default function Home() {
                 </div>
                 <div>
                   <div className="font-semibold text-white">Sarah Chen</div>
-                  <div className="text-sm text-gray-400">Premier Paint Solutions</div>
+                  <div className="text-sm text-gray-200">Premier Paint Solutions</div>
                   <div className="text-sm text-green-400">200+ quotes/month</div>
                 </div>
               </div>
             </div>
             
             {/* Testimonial 3 */}
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <p className="text-gray-100 mb-6 italic">
+              <p className="text-gray-50 mb-6 italic">
                 "Best investment for my business. The AI understands painting projects better than any software I've tried. ROI in the first month!"
               </p>
               <div className="flex items-center gap-3">
@@ -245,7 +245,7 @@ export default function Home() {
                 </div>
                 <div>
                   <div className="font-semibold text-white">Mike Thompson</div>
-                  <div className="text-sm text-gray-400">Thompson & Sons Painting</div>
+                  <div className="text-sm text-gray-200">Thompson & Sons Painting</div>
                   <div className="text-sm text-green-400">60% win rate increase</div>
                 </div>
               </div>
@@ -255,22 +255,22 @@ export default function Home() {
           {/* Trust Indicators */}
           <div className="mt-12 pt-12 border-t border-gray-800">
             <div className="text-center mb-8">
-              <p className="text-gray-400 text-sm uppercase tracking-wider mb-4">Trusted by Industry Leaders</p>
+              <p className="text-gray-200 text-sm uppercase tracking-wider mb-4">Trusted by Industry Leaders</p>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-              <div className="text-gray-400">
+              <div className="text-gray-200">
                 <div className="text-2xl font-bold">Sherwin-Williams</div>
                 <p className="text-xs">Preferred Partner</p>
               </div>
-              <div className="text-gray-400">
+              <div className="text-gray-200">
                 <div className="text-2xl font-bold">Benjamin Moore</div>
                 <p className="text-xs">Certified Integration</p>
               </div>
-              <div className="text-gray-400">
+              <div className="text-gray-200">
                 <div className="text-2xl font-bold">PPG Paints</div>
                 <p className="text-xs">Recommended Software</p>
               </div>
-              <div className="text-gray-400">
+              <div className="text-gray-200">
                 <div className="text-2xl font-bold">PDCA</div>
                 <p className="text-xs">Member Benefit</p>
               </div>
@@ -286,34 +286,34 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Stop Losing Jobs to Faster Competitors
             </h2>
-            <p className="text-xl text-gray-200">
+            <p className="text-xl text-gray-50">
               Industry research shows these are the top reasons contractors lose jobs:
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-red-500/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-red-500/20 rounded-lg p-6">
               <div className="text-red-400 text-3xl font-bold mb-2">40-60%</div>
               <h3 className="text-white font-semibold mb-2">Lost to Slow Response</h3>
-              <p className="text-gray-200 text-base">Jobs lost because quotes take too long to deliver</p>
+              <p className="text-gray-50 text-base">Jobs lost because quotes take too long to deliver</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-orange-500/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-orange-500/20 rounded-lg p-6">
               <div className="text-orange-400 text-3xl font-bold mb-2">25-35%</div>
               <h3 className="text-white font-semibold mb-2">Unprofessional Look</h3>
-              <p className="text-gray-200 text-base">Lost due to handwritten or basic quotes</p>
+              <p className="text-gray-50 text-base">Lost due to handwritten or basic quotes</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-yellow-500/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-yellow-500/20 rounded-lg p-6">
               <div className="text-yellow-400 text-3xl font-bold mb-2">30-40%</div>
               <h3 className="text-white font-semibold mb-2">Poor Follow-up</h3>
-              <p className="text-gray-200 text-base">Jobs lost from inconsistent communication</p>
+              <p className="text-gray-50 text-base">Jobs lost from inconsistent communication</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-purple-500/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-purple-500/20 rounded-lg p-6">
               <div className="text-purple-400 text-3xl font-bold mb-2">20-30%</div>
               <h3 className="text-white font-semibold mb-2">Pricing Errors</h3>
-              <p className="text-gray-200 text-base">Lost from calculation mistakes</p>
+              <p className="text-gray-50 text-base">Lost from calculation mistakes</p>
             </div>
           </div>
 
@@ -344,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-black/20">
+      <section className="py-20 bg-black/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -353,52 +353,52 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-blue-500/50 transition-all p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-blue-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Zap className="h-6 w-6 text-blue-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">AI-Powered Speed</h3>
-                <p className="text-gray-200">Create accurate quotes in minutes with our intelligent assistant that understands painting projects</p>
+                <p className="text-gray-50">Create accurate quotes in minutes with our intelligent assistant that understands painting projects</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-purple-500/50 transition-all p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-purple-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Smartphone className="h-6 w-6 text-purple-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Quote On-Site</h3>
-                <p className="text-gray-200">Mobile-first design lets you create and deliver quotes before leaving the customer{'s'} property</p>
+                <p className="text-gray-50">Mobile-first design lets you create and deliver quotes before leaving the customer{'s'} property</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-green-500/50 transition-all p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-green-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Award className="h-6 w-6 text-green-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Professional Templates</h3>
-                <p className="text-gray-200">Branded, professional quotes that make you look like a $10M company</p>
+                <p className="text-gray-50">Branded, professional quotes that make you look like a $10M company</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-orange-500/50 transition-all p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-orange-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Clock className="h-6 w-6 text-orange-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Beat the 24hr Window</h3>
-                <p className="text-gray-200">Respond to leads while they{'re'} hot - quote delivery in minutes, not days</p>
+                <p className="text-gray-50">Respond to leads while they{'re'} hot - quote delivery in minutes, not days</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-yellow-500/50 transition-all p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-yellow-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <BarChart3 className="h-6 w-6 text-yellow-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Track Win Rates</h3>
-                <p className="text-gray-200">See which quotes convert and optimize your pricing for maximum profit</p>
+                <p className="text-gray-50">See which quotes convert and optimize your pricing for maximum profit</p>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-cyan-500/50 transition-all p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-cyan-500/50 transition-all p-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Shield className="h-6 w-6 text-cyan-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Never Lose Data</h3>
-                <p className="text-gray-200">Cloud storage ensures your quotes are always accessible and never lost</p>
+                <p className="text-gray-50">Cloud storage ensures your quotes are always accessible and never lost</p>
             </div>
           </div>
         </div>
@@ -407,12 +407,12 @@ export default function Home() {
       {/* ROI Calculator Section */}
       <section id="roi" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg max-w-4xl mx-auto p-8 md:p-12">
+          <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg max-w-4xl mx-auto p-8 md:p-12">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Your ROI with PaintQuote Pro
                 </h2>
-                <p className="text-xl text-gray-200">
+                <p className="text-xl text-gray-50">
                   Based on industry averages for painting contractors
                 </p>
               </div>
@@ -485,7 +485,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-black/20">
+      <section className="py-20 bg-black/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -494,7 +494,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -509,7 +509,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -524,7 +524,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -556,7 +556,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Free Plan */}
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Free</h3>
                   <div className="text-4xl font-bold text-white mb-2">$0</div>
@@ -588,7 +588,7 @@ export default function Home() {
             </div>
 
             {/* Pro Plan */}
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-blue-500/50 rounded-lg relative p-8">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-blue-500/50 rounded-lg relative p-8">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
                   Most Popular
@@ -629,7 +629,7 @@ export default function Home() {
             </div>
 
             {/* Enterprise Plan */}
-            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
+            <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-8">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-2">Enterprise</h3>
                   <div className="text-4xl font-bold text-white mb-2">Custom</div>
@@ -668,7 +668,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg max-w-3xl mx-auto border-gradient p-8 md:p-12 text-center">
+          <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg max-w-3xl mx-auto border-gradient p-8 md:p-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Win More Jobs?
               </h2>

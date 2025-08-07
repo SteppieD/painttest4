@@ -75,53 +75,56 @@
   }
 }
 
-/* Trial Signup Input Overrides */
+/* Trial Signup Input Overrides - Better contrast */
 #company,
 #email {
-  background-color: rgba(31, 41, 55, 0.8) !important;
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: white !important;
 }
 
 #company:hover,
 #email:hover {
-  background-color: rgba(31, 41, 55, 0.8) !important;
+  background-color: rgba(15, 23, 42, 0.95) !important;
 }
 
 #company:focus,
 #email:focus {
-  background-color: rgba(31, 41, 55, 0.9) !important;
+  background-color: rgba(15, 23, 42, 1) !important;
   outline: none !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Glass Card Styles */
+/* Glass Card Styles - Improved for better contrast */
 .glass-card {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(0, 0, 0, 0.4) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Override default card styles when glass-card is used */
 .glass-card.bg-card {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Button fixes for white-on-white issues */
+/* Button fixes for better contrast */
 .btn-primary-modern {
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
   color: white !important;
 }
 
 .btn-secondary-modern {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
   color: white !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 .btn-secondary-modern:hover {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
