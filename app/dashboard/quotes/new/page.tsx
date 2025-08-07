@@ -82,7 +82,7 @@ export default function NewQuotePage() {
               area: data.surfaces?.walls || data.measurements?.wallSqft || 0,
               coats: 2,
               condition: 'good' as const,
-              prepWork: ['patch_nail_holes' as 'patch_nail_holes']
+              prepWork: ['patch_nail_holes'] as const
             })
           }
           if (data.surfaces?.ceilings || data.measurements?.ceilingSqft) {
