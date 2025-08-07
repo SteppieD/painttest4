@@ -1,5 +1,6 @@
 'use client'
 
+// Quote Review Page - Professional invoice-style quote with subscription tiers
 import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
