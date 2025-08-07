@@ -13,10 +13,9 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { 
   ArrowLeft, Send, Download, Save, Edit2, Check, X, Eye, Settings, 
-  Lock, Crown, Zap, Building2, Phone, Mail, MapPin, Calendar, 
-  CheckCircle2, FileText, Sparkles, TrendingUp, DollarSign,
-  Clock, Shield, CreditCard, Star, Palette, Image, Globe,
-  BarChart3, MessageSquare, Users, Briefcase, Upload
+  Lock, Crown, Phone, Mail, MapPin, 
+  CheckCircle2, Sparkles, 
+  CreditCard, Image, Globe, Upload
 } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
 import Link from 'next/link'
@@ -116,7 +115,7 @@ function QuoteReviewContent() {
   const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
   const [editMode, setEditMode] = useState<string | null>(null)
-  const [quoteData, setQuoteData] = useState<any>(null)
+  const [quoteData, setQuoteData] = useState<Record<string, unknown> | null>(null)
   const [editedValue, setEditedValue] = useState('')
   const [isSending, setIsSending] = useState(false)
   const [sendSuccess, setSendSuccess] = useState(false)
@@ -354,7 +353,7 @@ function QuoteReviewContent() {
     }
   }, [searchParams, router])
 
-  const handleEdit = (field: string, value: any) => {
+  const handleEdit = (field: string, value: string | number | boolean) => {
     setEditMode(field)
     setEditedValue(value || '')
   }
@@ -566,7 +565,7 @@ function QuoteReviewContent() {
     )
   }
 
-  const getTotal = (value: any): number => {
+  const getTotal = (value: string | number | undefined): number => {
     if (typeof value === 'number') return value
     if (typeof value === 'object' && value && 'total' in value) return value.total || 0
     return 0
@@ -681,7 +680,7 @@ function QuoteReviewContent() {
                         ) : (
                           <div className="h-20 w-20 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
                             <div className="text-center">
-                              <Image className="h-6 w-6 text-gray-400 mx-auto" />
+                              <Image className="h-6 w-6 text-gray-400 mx-auto" aria-label="Logo placeholder" />
                               <p className="text-xs text-gray-500 mt-1">Logo</p>
                             </div>
                           </div>
@@ -1525,7 +1524,7 @@ function QuoteReviewContent() {
                         </div>
                       ) : (
                         <div className="h-16 w-16 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
-                          <Image className="h-6 w-6 text-gray-400" />
+                          <Image className="h-6 w-6 text-gray-400" aria-label="Logo placeholder" />
                         </div>
                       )}
                       <div className="flex-1">
