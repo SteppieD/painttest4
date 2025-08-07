@@ -2,10 +2,13 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Download, FileText, Calculator, Sparkles } from 'lucide-react'
+import ModernNavigation from '@/components/modern-navigation'
 
 export default function PaintingEstimateTemplatesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <>
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4 max-w-6xl text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -71,5 +74,6 @@ export default function PaintingEstimateTemplatesPage() {
         </Card>
       </div>
     </div>
+    </>
   )
 }

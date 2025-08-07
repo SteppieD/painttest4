@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
+import ModernNavigation from '@/components/modern-navigation'
 import { 
   Calculator, 
   Home, 
@@ -243,7 +244,9 @@ export default function PaintingCostCalculatorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <>
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
       {/* Schema Markup */}
       <script
         type="application/ld+json"
@@ -1031,5 +1034,6 @@ export default function PaintingCostCalculatorPage() {
         </section>
       </div>
     </div>
+    </>
   )
 }

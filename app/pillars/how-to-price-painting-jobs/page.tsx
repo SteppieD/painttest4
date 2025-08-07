@@ -8,6 +8,7 @@ import { Calculator, Clock, DollarSign, FileText, Home, Paintbrush, TrendingUp, 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import ModernNavigation from '@/components/modern-navigation'
 
 export default function HowToPricePaintingJobsPage() {
   const [sqft, setSqft] = useState('')
@@ -98,7 +99,9 @@ export default function HowToPricePaintingJobsPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <>
+      <ModernNavigation />
+      <div className="min-h-screen bg-white pt-20">
       {/* Hero Section with Schema Markup */}
       <script
         type="application/ld+json"
@@ -993,6 +996,7 @@ export default function HowToPricePaintingJobsPage() {
           </section>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

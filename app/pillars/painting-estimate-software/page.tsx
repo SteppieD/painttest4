@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import ModernNavigation from '@/components/modern-navigation'
 import { 
   Calculator, 
   Clock, 
@@ -298,7 +299,9 @@ export default function PaintingEstimateSoftwarePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <>
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
       {/* Schema Markup */}
       <script
         type="application/ld+json"
@@ -1002,6 +1005,7 @@ export default function PaintingEstimateSoftwarePage() {
         </section>
       </div>
     </div>
+    </>
   )
 }
 
