@@ -57,9 +57,9 @@ function BillingContent() {
   }, []);
 
   useEffect(() => {
-    // Check for session cookie
-    const hasSession = document.cookie.includes('pq_session');
-    if (!hasSession) {
+    // Check for authentication in localStorage
+    const companyData = localStorage.getItem('paintquote_company');
+    if (!companyData) {
       router.push('/access-code');
       return;
     }
