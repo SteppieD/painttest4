@@ -31,7 +31,7 @@ function ModernNavigation() {
             className="flex items-center space-x-3 group"
           >
             <Image 
-              src="/Paint App Logo.png" 
+              src="/Paint Quote App Logo Transparent.png" 
               alt="PaintQuote Pro Logo" 
               width={40} 
               height={40}

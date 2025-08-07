@@ -77,9 +77,9 @@ export const metadata: Metadata = {
   //   yahoo: 'your-yahoo-site-verification-code',
   // },
   icons: {
-    icon: '/Paint App Logo.png',
-    shortcut: '/Paint App Logo.png',
-    apple: '/Paint App Logo.png',
+    icon: '/Paint Quote App Logo Transparent.png',
+    shortcut: '/Paint Quote App Logo Transparent.png',
+    apple: '/Paint Quote App Logo Transparent.png',
   },
   other: {
     'msapplication-TileColor': '#3b82f6',
