@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { validateCompanyId } from '@/lib/validation/schemas'
 
 export async function GET() {
   try {
@@ -21,11 +22,20 @@ export async function GET() {
       return NextResponse.json({ error: 'No company found' }, { status: 404 })
     }
 
+    // Validate company ID to prevent SQL injection
+    let validatedCompanyId: number;
+    try {
+      validatedCompanyId = validateCompanyId(profile.company_id);
+    } catch (error) {
+      console.error('Invalid company ID in profile:', profile.company_id);
+      return NextResponse.json({ error: 'Invalid company data' }, { status: 400 })
+    }
+
     // Get customers data
     const { data: customers, error: customersError } = await supabase
       .from('customers')
       .select('*')
-      .eq('company_id', profile.company_id)
+      .eq('company_id', validatedCompanyId)
       .order('created_at', { ascending: false })
 
     if (customersError) {
@@ -37,7 +47,7 @@ export async function GET() {
     const { data: quotes } = await supabase
       .from('quotes')
       .select('customer_id, total_price, status')
-      .eq('company_id', profile.company_id)
+      .eq('company_id', validatedCompanyId)
 
     // Calculate metrics
     const totalCustomers = customers?.length || 0

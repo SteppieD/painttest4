@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

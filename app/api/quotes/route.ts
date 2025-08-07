@@ -3,6 +3,7 @@ import { db, type Company } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { generateQuoteNumber } from '@/lib/quote-number-generator-adapter';
 import { SubscriptionService } from '@/lib/services/subscription';
+import { CreateQuoteSchema, validateCompanyId, sanitizeString } from '@/lib/validation/schemas';
 export const dynamic = 'force-dynamic';
 
 // Helper function to clean customer names
@@ -19,34 +20,7 @@ const cleanCustomerName = (name: string | undefined) => {
 };
 
 // POST - Create a new quote
-interface RequestBody {
-  companyId: number | string;
-  quoteData: {
-    customerName?: string;
-    customerEmail?: string;
-    customerPhone?: string;
-    address?: string;
-    projectType?: string;
-    surfaces?: string[];
-    sqft?: number;
-    ceilings_sqft?: number;
-    trim_sqft?: number;
-    rooms?: Array<{ name: string; length?: number; width?: number }>;
-    breakdown?: {
-      materials?: number;
-      labor?: number;
-      markup?: number;
-      [key: string]: unknown;
-    };
-    finalPrice?: number;
-    totalCost?: number;
-    timeEstimate?: string;
-    timeline?: string;
-    specialRequests?: string | string[];
-    [key: string]: unknown;
-  };
-  conversationHistory?: Array<{ role: string; content: string }>;
-}
+// Request body type is now handled by Zod validation
 
 // Error response interface
 interface ErrorResponse {
@@ -62,14 +36,14 @@ interface ErrorResponse {
 }
 
 export async function POST(request: NextRequest) {
-  let requestBody: RequestBody | undefined;
-  let companyId: number | string | undefined;
-  let quoteData: RequestBody['quoteData'] | undefined;
+  let requestBody: unknown;
+  let validatedData: ReturnType<typeof CreateQuoteSchema.parse>;
+  let numericCompanyId: number;
   
   try {
     
     try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -84,34 +58,28 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    if (!requestBody) {
-      throw new Error('Request body is undefined after parsing');
+    // Validate and sanitize the request body
+    try {
+      validatedData = CreateQuoteSchema.parse(requestBody);
+    } catch (validationError) {
+      console.error('[QUOTES API] Request validation failed:', validationError);
+      return NextResponse.json(
+        { 
+          error: 'Invalid request data', 
+          details: validationError instanceof Error ? validationError.message : 'Validation failed',
+          validationErrors: validationError
+        },
+        { status: 400 }
+      );
     }
     
-    companyId = requestBody.companyId;
-    quoteData = requestBody.quoteData;
-    const _conversationHistory = requestBody.conversationHistory;
+    const { companyId, quoteData, conversationHistory } = validatedData;
     
-    console.log('[QUOTES API] Request data:', { companyId, quoteData });
+    console.log('[QUOTES API] Request data (validated):', { companyId, customerName: quoteData.customerName });
     console.log('[QUOTES API] Company from auth:', company);
     
-    // Validate required fields
-    if (!companyId) {
-      return NextResponse.json(
-        { error: 'Missing companyId' },
-        { status: 400 }
-      );
-    }
-    
-    if (!quoteData) {
-      return NextResponse.json(
-        { error: 'Missing quoteData' },
-        { status: 400 }
-      );
-    }
-
-    // Ensure companyId is a number
-    const numericCompanyId = typeof companyId === 'string' ? parseInt(companyId) : companyId;
+    // companyId is now guaranteed to be a valid positive integer from validation
+    numericCompanyId = companyId;
     
     // Check subscription limits before creating quote
     const quoteLimitCheck = await SubscriptionService.checkQuoteLimit(numericCompanyId);
@@ -174,17 +142,17 @@ export async function POST(request: NextRequest) {
     // Generate quote number for this company
     const quoteNumber = await generateQuoteNumber(numericCompanyId);
     
-    // Clean up customer name
-    const cleanedCustomerName = cleanCustomerName(quoteData.customerName);
+    // Clean up and sanitize customer name
+    const cleanedCustomerName = sanitizeString(cleanCustomerName(quoteData.customerName));
     
     // Create quote data with all required fields
     const newQuoteData = {
       company_id: numericCompanyId,
       quote_id: quoteNumber,
       customer_name: cleanedCustomerName,
-      customer_email: quoteData.customerEmail || '',
-      customer_phone: quoteData.customerPhone || '',
-      address: quoteData.address || '',
+      customer_email: quoteData.customerEmail ? sanitizeString(quoteData.customerEmail) : '',
+      customer_phone: quoteData.customerPhone ? sanitizeString(quoteData.customerPhone) : '',
+      address: quoteData.address ? sanitizeString(quoteData.address) : '',
       project_type: quoteData.projectType || 'interior',
       surfaces: quoteData.surfaces || ['walls'],
       measurements: {
@@ -213,11 +181,11 @@ export async function POST(request: NextRequest) {
       
       // Store current tax rate with quote for historical accuracy
       tax_rate: companyData.tax_rate || 0,
-      time_estimate: quoteData.timeEstimate,
-      timeline: quoteData.timeline,
+      time_estimate: quoteData.timeEstimate ? sanitizeString(quoteData.timeEstimate) : undefined,
+      timeline: quoteData.timeline ? sanitizeString(quoteData.timeline) : undefined,
       special_requests: Array.isArray(quoteData.specialRequests) 
-        ? quoteData.specialRequests.join(', ') 
-        : quoteData.specialRequests || '',
+        ? sanitizeString(quoteData.specialRequests.map(r => sanitizeString(r)).join(', ')) 
+        : sanitizeString(quoteData.specialRequests || ''),
       
       // Add timestamps
       created_at: new Date().toISOString(),
@@ -260,9 +228,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[QUOTES API] Error in create quote:', error);
     console.error('[QUOTES API] Request context:', {
-      companyId,
-      hasQuoteData: !!quoteData,
-      quoteDataKeys: quoteData ? Object.keys(quoteData) : [],
       errorType: error?.constructor?.name,
       errorMessage: error instanceof Error ? error.message : 'Unknown error'
     });
@@ -339,14 +304,17 @@ export async function POST(request: NextRequest) {
 // GET - Fetch all quotes for a company
 export async function GET(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    // Validate company ID before database query
+    const validatedCompanyId = validateCompanyId(company.id);
+    
     // Get all quotes for this company
-    const quotes = await db.getQuotesByCompanyId(company.id);
+    const quotes = await db.getQuotesByCompanyId(validatedCompanyId);
 
     return NextResponse.json({
       success: true,

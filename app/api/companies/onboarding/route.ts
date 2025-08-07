@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   
   try {
     logger.checkpoint('Starting onboarding process');
-    company = getCompanyFromRequest(request);
+    company = await getCompanyFromRequest(request);
     logger.info('Retrieved company from request', { companyId: company?.id, hasCompany: !!company });
     
     if (!company || !company.access_code || company.access_code === 'DEMO2024') {
@@ -244,7 +244,7 @@ export async function POST(request: NextRequest) {
 // GET - Get onboarding status
 export async function GET(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

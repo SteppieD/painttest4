@@ -117,29 +117,54 @@ export default function PricingPage() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
   const router = useRouter()
 
-  const handleSelectPlan = (planKey: string) => {
+  const handleSelectPlan = async (planKey: string) => {
     if (planKey === 'free') {
       router.push('/access-code')
     } else if (planKey === 'enterprise') {
       router.push('/contact?interest=enterprise')
-    } else if (planKey === 'professional') {
-      // Professional plan Stripe links
-      if (billingPeriod === 'monthly') {
-        // Use environment variable if available, otherwise fallback to hardcoded link
-        const link = process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK || 'https://buy.stripe.com/test_cN2bJ13Ombnu7io144'
-        window.location.href = link
-      } else {
-        const link = process.env.NEXT_PUBLIC_STRIPE_PRO_YEARLY_LINK || 'https://buy.stripe.com/test_28o28r5Ww4T67io8wx'
-        window.location.href = link
-      }
-    } else if (planKey === 'business') {
-      // Business plan Stripe links
-      if (billingPeriod === 'monthly') {
-        const link = process.env.NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_LINK || 'https://buy.stripe.com/test_8wM9AVdoY9769qA8wy'
-        window.location.href = link
-      } else {
-        const link = process.env.NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_LINK || 'https://buy.stripe.com/test_3cs9AV0Cc3OW5ag9AD'
-        window.location.href = link
+    } else if (planKey === 'professional' || planKey === 'business') {
+      try {
+        // Get company data from localStorage for authentication
+        const companyData = typeof window !== 'undefined' ? localStorage.getItem('paintquote_company') : null;
+        if (!companyData) {
+          // Redirect to access code page if not authenticated
+          router.push('/access-code')
+          return;
+        }
+
+        // Call secure API endpoint to get payment link
+        const response = await fetch('/api/stripe/get-payment-link', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-company-data': companyData
+          },
+          body: JSON.stringify({
+            plan: planKey,
+            billingPeriod: billingPeriod
+          })
+        });
+
+        if (!response.ok) {
+          if (response.status === 401) {
+            // Redirect to access code page if unauthorized
+            router.push('/access-code');
+            return;
+          }
+          throw new Error('Failed to get payment link');
+        }
+
+        const data = await response.json();
+        
+        if (data.success && data.paymentUrl) {
+          window.location.href = data.paymentUrl;
+        } else {
+          throw new Error('Invalid response from payment link API');
+        }
+      } catch (error) {
+        console.error('Error getting payment link:', error);
+        // Fallback to access code page on error
+        router.push('/access-code');
       }
     }
   }

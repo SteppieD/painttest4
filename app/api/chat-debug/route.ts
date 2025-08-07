@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     // Test 2: Get company
     let company;
     try {
-      company = getCompanyFromRequest(request);
+      company = await getCompanyFromRequest(request);
       console.log('[CHAT-DEBUG] Company:', company);
     } catch (err) {
       console.error('[CHAT-DEBUG] Failed to get company:', err);

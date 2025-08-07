@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     // Get company from request with fallback to demo
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     console.log('[QUOTE-USAGE] Company:', company);
     
     if (!company) {

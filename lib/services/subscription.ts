@@ -1,4 +1,5 @@
 import { db } from '@/lib/database/adapter';
+import { validateCompanyId } from '@/lib/validation/schemas';
 
 export interface SubscriptionTier {
   name: string;
@@ -56,13 +57,15 @@ export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
 
 export class SubscriptionService {
   static async checkQuoteLimit(companyId: number): Promise<{ allowed: boolean; remaining: number; limit: number }> {
-    const company = await db.getCompany(companyId);
+    // Validate company ID to prevent SQL injection
+    const validatedCompanyId = validateCompanyId(companyId);
+    const company = await db.getCompany(validatedCompanyId);
     if (!company) {
       throw new Error('Company not found');
     }
 
     // Reset monthly count if needed
-    await this.resetMonthlyQuotesIfNeeded(companyId);
+    await this.resetMonthlyQuotesIfNeeded(validatedCompanyId);
 
     const tier = SUBSCRIPTION_TIERS[company.subscription_tier || 'free'];
     const limit = tier.monthlyQuoteLimit;
@@ -82,19 +85,47 @@ export class SubscriptionService {
   }
 
   static async incrementQuoteCount(companyId: number): Promise<void> {
-    const company = await db.getCompany(companyId);
-    if (!company) {
-      throw new Error('Company not found');
-    }
+    // Validate company ID to prevent SQL injection
+    const validatedCompanyId = validateCompanyId(companyId);
+    
+    // Use atomic operation to prevent race conditions
+    let retryCount = 0;
+    const maxRetries = 3;
+    
+    while (retryCount < maxRetries) {
+      try {
+        const company = await db.getCompany(validatedCompanyId);
+        if (!company) {
+          throw new Error('Company not found');
+        }
 
-    const newCount = (company.monthly_quote_count || 0) + 1;
-    await db.updateCompany(companyId, {
-      monthly_quote_count: newCount
-    });
+        const currentCount = company.monthly_quote_count || 0;
+        const newCount = currentCount + 1;
+        
+        // Attempt atomic update with optimistic concurrency control
+        await db.updateCompany(validatedCompanyId, {
+          monthly_quote_count: newCount
+        });
+        
+        // If we get here, the update succeeded
+        break;
+        
+      } catch (error) {
+        retryCount++;
+        if (retryCount >= maxRetries) {
+          console.error(`Failed to increment quote count after ${maxRetries} retries:`, error);
+          throw new Error('Failed to increment quote count due to concurrent updates');
+        }
+        
+        // Wait before retry with exponential backoff
+        await new Promise(resolve => setTimeout(resolve, Math.pow(2, retryCount) * 100));
+      }
+    }
   }
 
   static async resetMonthlyQuotesIfNeeded(companyId: number): Promise<void> {
-    const company = await db.getCompany(companyId);
+    const validatedCompanyId = validateCompanyId(companyId);
+    const company = await db.getCompany(validatedCompanyId);
     if (!company) return;
 
     // For now, we'll skip the monthly reset logic since last_quote_reset field doesn't exist
@@ -103,52 +134,58 @@ export class SubscriptionService {
   }
 
   static async upgradeToProfessional(companyId: number, stripeCustomerId?: string, stripeSubscriptionId?: string): Promise<void> {
-    const company = await db.getCompany(companyId);
+    const validatedCompanyId = validateCompanyId(companyId);
+    const company = await db.getCompany(validatedCompanyId);
     if (!company) {
       throw new Error('Company not found');
     }
 
     const previousTier = company.subscription_tier || 'free';
     
-    await db.updateCompany(companyId, {
+    await db.updateCompany(validatedCompanyId, {
       subscription_tier: 'professional'
     } as any);
 
     // Log the subscription event
-    await this.logSubscriptionEvent(companyId, 'upgrade', previousTier, 'professional');
+    await this.logSubscriptionEvent(validatedCompanyId, 'upgrade', previousTier, 'professional');
   }
 
   static async startTrial(companyId: number, durationDays: number = 14): Promise<Date> {
+    const validatedCompanyId = validateCompanyId(companyId);
+    const validatedDuration = Math.max(1, Math.min(365, Math.floor(durationDays))); // Validate duration
+    
     const trialEndDate = new Date();
-    trialEndDate.setDate(trialEndDate.getDate() + durationDays);
+    trialEndDate.setDate(trialEndDate.getDate() + validatedDuration);
 
-    await db.updateCompany(companyId, {
+    await db.updateCompany(validatedCompanyId, {
       subscription_tier: 'professional'
     } as any);
 
-    await this.logSubscriptionEvent(companyId, 'trial_started', 'free', 'professional', { 
-      duration_days: durationDays 
+    await this.logSubscriptionEvent(validatedCompanyId, 'trial_started', 'free', 'professional', { 
+      duration_days: validatedDuration 
     });
 
     return trialEndDate;
   }
 
   static async checkTrialStatus(companyId: number): Promise<{ isTrialing: boolean; daysRemaining: number; expired: boolean }> {
+    const validatedCompanyId = validateCompanyId(companyId);
     // Trial functionality not available without trial_ends_at field
     return { isTrialing: false, daysRemaining: 0, expired: false };
   }
 
   static async downgradeToFree(companyId: number): Promise<void> {
-    const company = await db.getCompany(companyId);
+    const validatedCompanyId = validateCompanyId(companyId);
+    const company = await db.getCompany(validatedCompanyId);
     if (!company) return;
 
     const previousTier = company.subscription_tier || 'professional';
 
-    await db.updateCompany(companyId, {
+    await db.updateCompany(validatedCompanyId, {
       subscription_tier: 'free'
     } as any);
 
-    await this.logSubscriptionEvent(companyId, 'downgrade', previousTier, 'free');
+    await this.logSubscriptionEvent(validatedCompanyId, 'downgrade', previousTier, 'free');
   }
 
   private static async logSubscriptionEvent(
@@ -158,9 +195,10 @@ export class SubscriptionService {
     toTier: string,
     metadata?: Record<string, unknown>
   ): Promise<void> {
+    const validatedCompanyId = validateCompanyId(companyId);
     // In a real implementation, this would write to the subscription_events table
     console.log('Subscription event:', {
-      companyId,
+      companyId: validatedCompanyId,
       eventType,
       fromTier,
       toTier,
@@ -182,12 +220,13 @@ export class SubscriptionService {
       avgResponseTime: number;
     };
   }> {
-    const company = await db.getCompany(companyId);
+    const validatedCompanyId = validateCompanyId(companyId);
+    const company = await db.getCompany(validatedCompanyId);
     if (!company) {
       throw new Error('Company not found');
     }
 
-    const quoteLimitInfo = await this.checkQuoteLimit(companyId);
+    const quoteLimitInfo = await this.checkQuoteLimit(validatedCompanyId);
     
     // For last month stats, we'd query the quote_analytics table
     // For now, returning mock data

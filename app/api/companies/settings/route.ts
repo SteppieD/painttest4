@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 // GET company settings
 export async function GET(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
 // PUT - Update company settings
 export async function PUT(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

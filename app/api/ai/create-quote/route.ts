@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           error: 'Quote limit reached',
           requiresUpgrade: true,
-          upgradeUrl: process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK || '/dashboard/settings/billing'
+          upgradeUrl: '/pricing'
         }, { status: 403 });
       }
     }

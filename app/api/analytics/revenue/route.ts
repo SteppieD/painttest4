@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { validateCompanyId } from '@/lib/validation/schemas'
 
 export async function GET() {
   try {
@@ -21,11 +22,20 @@ export async function GET() {
       return NextResponse.json({ error: 'No company found' }, { status: 404 })
     }
 
+    // Validate company ID to prevent SQL injection
+    let validatedCompanyId: number;
+    try {
+      validatedCompanyId = validateCompanyId(profile.company_id);
+    } catch (error) {
+      console.error('Invalid company ID in profile:', profile.company_id);
+      return NextResponse.json({ error: 'Invalid company data' }, { status: 400 })
+    }
+
     // Get revenue data from quotes
     const { data: quotes, error: quotesError } = await supabase
       .from('quotes')
       .select('total_price, created_at, status')
-      .eq('company_id', profile.company_id)
+      .eq('company_id', validatedCompanyId)
       .gte('created_at', new Date(Date.now() - 365 * 24 * 60 * 60 * 1000).toISOString())
       .order('created_at', { ascending: true })
 

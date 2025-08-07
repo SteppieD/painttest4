@@ -1,22 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/database/adapter';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
+import { QuoteIdSchema, sanitizeString, validateCompanyId } from '@/lib/validation/schemas';
 // GET single quote by quote_id
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Get quote by quote_id using the adapter method
-    const quote = await db.getQuote(params.id);
+    // Validate quote ID parameter
+    let validatedQuoteId: string;
+    try {
+      validatedQuoteId = QuoteIdSchema.parse(params.id);
+    } catch (error) {
+      return NextResponse.json({ 
+        error: 'Invalid quote ID format',
+        details: error instanceof Error ? error.message : 'Quote ID validation failed'
+      }, { status: 400 });
+    }
 
-    if (!quote || quote.company_id !== company.id) {
+    // Get quote by quote_id using the adapter method
+    const quote = await db.getQuote(validatedQuoteId);
+
+    if (!quote) {
+      return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
+    }
+
+    // Validate company ID and check ownership
+    const validatedCompanyId = validateCompanyId(company.id);
+    if (quote.company_id !== validatedCompanyId) {
       return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
     }
 
@@ -42,18 +60,60 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const quoteData = await request.json();
+    let quoteData: any;
+    try {
+      quoteData = await request.json();
+    } catch (parseError) {
+      return NextResponse.json(
+        { error: 'Invalid request body', details: 'Failed to parse JSON' },
+        { status: 400 }
+      );
+    }
+
+    // Sanitize string fields to prevent XSS
+    if (quoteData.customer_name) {
+      quoteData.customer_name = sanitizeString(quoteData.customer_name);
+    }
+    if (quoteData.customer_email) {
+      quoteData.customer_email = sanitizeString(quoteData.customer_email);
+    }
+    if (quoteData.customer_phone) {
+      quoteData.customer_phone = sanitizeString(quoteData.customer_phone);
+    }
+    if (quoteData.address) {
+      quoteData.address = sanitizeString(quoteData.address);
+    }
+    if (quoteData.special_requests) {
+      quoteData.special_requests = sanitizeString(quoteData.special_requests);
+    }
     
+    // Validate quote ID parameter
+    let validatedQuoteId: string;
+    try {
+      validatedQuoteId = QuoteIdSchema.parse(params.id);
+    } catch (error) {
+      return NextResponse.json({ 
+        error: 'Invalid quote ID format',
+        details: error instanceof Error ? error.message : 'Quote ID validation failed'
+      }, { status: 400 });
+    }
+
     // First, get the existing quote to get its id
-    const existingQuote = await db.getQuote(params.id);
+    const existingQuote = await db.getQuote(validatedQuoteId);
     
-    if (!existingQuote || existingQuote.company_id !== company.id) {
+    if (!existingQuote) {
+      return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
+    }
+
+    // Validate company ID and check ownership
+    const validatedCompanyId = validateCompanyId(company.id);
+    if (existingQuote.company_id !== validatedCompanyId) {
       return NextResponse.json({ error: 'Quote not found' }, { status: 404 });
     }
 

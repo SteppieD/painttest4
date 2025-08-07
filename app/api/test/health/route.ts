@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   
   // Test Auth
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     if (company) {
       health.services.auth.status = 'healthy';
       health.services.auth.message = `Authenticated as: ${company.name}`;

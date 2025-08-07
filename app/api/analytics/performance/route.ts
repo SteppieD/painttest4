@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { validateCompanyId } from '@/lib/validation/schemas'
 
 export async function GET() {
   try {
@@ -21,6 +22,15 @@ export async function GET() {
       return NextResponse.json({ error: 'No company found' }, { status: 404 })
     }
 
+    // Validate company ID to prevent SQL injection
+    let validatedCompanyId: number;
+    try {
+      validatedCompanyId = validateCompanyId(profile.company_id);
+    } catch (error) {
+      console.error('Invalid company ID in profile:', profile.company_id);
+      return NextResponse.json({ error: 'Invalid company data' }, { status: 400 })
+    }
+
     // Get performance metrics
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()
     const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
@@ -29,13 +39,13 @@ export async function GET() {
     const { data: recentQuotes } = await supabase
       .from('quotes')
       .select('*')
-      .eq('company_id', profile.company_id)
+      .eq('company_id', validatedCompanyId)
       .gte('created_at', thirtyDaysAgo)
 
     const { data: allQuotes } = await supabase
       .from('quotes')
       .select('*')
-      .eq('company_id', profile.company_id)
+      .eq('company_id', validatedCompanyId)
       .gte('created_at', ninetyDaysAgo)
 
     // Calculate metrics

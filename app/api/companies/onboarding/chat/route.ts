@@ -18,7 +18,7 @@ const anthropic = process.env.ANTHROPIC_API_KEY ? new Anthropic({
 
 export async function POST(request: NextRequest) {
   try {
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

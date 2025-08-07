@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     // Test auth extraction
-    const company = getCompanyFromRequest(request);
+    const company = await getCompanyFromRequest(request);
     
     // Get headers for debugging
     const headers = Object.fromEntries(request.headers.entries());
