@@ -473,12 +473,18 @@ export function ChatInterface({
                     )}
                   </div>
                   <Button
-                    onClick={createQuote}
+                    onClick={() => {
+                      // Navigate to quote review page with the generated data
+                      router.push(`/create-quote/review?data=${encodeURIComponent(JSON.stringify(quoteData))}`);
+                    }}
                     disabled={isLoading}
                     size="lg"
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg shadow-green-500/25"
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg shadow-green-500/25 group"
                   >
-                    Create Quote
+                    Continue to Review
+                    <svg className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
                   </Button>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { quoteFormSchema, type QuoteFormData } from '@/lib/validations/quote'
@@ -23,6 +23,7 @@ const steps = [
 
 export default function NewQuotePage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState(0)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -40,6 +41,80 @@ export default function NewQuotePage() {
       },
     },
   })
+
+  // Handle prefilled data from query parameters
+  useEffect(() => {
+    const prefillData = searchParams.get('prefill')
+    if (prefillData) {
+      try {
+        const data = JSON.parse(decodeURIComponent(prefillData))
+        
+        // Map the AI-generated quote data to the form structure
+        if (data.customerName) {
+          form.setValue('customer.name', data.customerName)
+        }
+        if (data.customerEmail) {
+          form.setValue('customer.email', data.customerEmail)
+        }
+        if (data.customerPhone) {
+          form.setValue('customer.phone', data.customerPhone)
+        }
+        if (data.address) {
+          form.setValue('customer.address', data.address)
+        }
+        if (data.projectType) {
+          form.setValue('projectType', data.projectType)
+        }
+        
+        // Set project description based on AI conversation
+        if (data.description || data.projectDescription) {
+          form.setValue('description', data.description || data.projectDescription)
+        }
+        
+        // Handle surfaces/measurements
+        if (data.surfaces || data.measurements) {
+          const surfaces = []
+          if (data.surfaces?.walls || data.measurements?.wallSqft) {
+            surfaces.push({
+              id: 'wall-1',
+              name: 'Interior Walls',
+              type: 'wall' as const,
+              area: data.surfaces?.walls || data.measurements?.wallSqft || 0,
+              coats: 2,
+              condition: 'good' as const,
+              prepWork: ['patch_nail_holes' as 'patch_nail_holes']
+            })
+          }
+          if (data.surfaces?.ceilings || data.measurements?.ceilingSqft) {
+            surfaces.push({
+              id: 'ceiling-1',
+              name: 'Ceilings',
+              type: 'ceiling' as const,
+              area: data.surfaces?.ceilings || data.measurements?.ceilingSqft || 0,
+              coats: 2,
+              condition: 'good' as const,
+              prepWork: []
+            })
+          }
+          if (surfaces.length > 0) {
+            form.setValue('surfaces', surfaces)
+          }
+        }
+        
+        // Handle pricing/settings if available
+        if (data.pricing) {
+          if (data.pricing.markup) {
+            form.setValue('settings.profitMargin', data.pricing.markup)
+          }
+        }
+        
+        // Jump to review step since we have prefilled data
+        setCurrentStep(4)
+      } catch (error) {
+        console.error('Error parsing prefilled data:', error)
+      }
+    }
+  }, [searchParams, form])
 
   const nextStep = async () => {
     const fields = getFieldsForStep(currentStep)
