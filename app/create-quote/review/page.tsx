@@ -355,7 +355,7 @@ function QuoteReviewContent() {
 
   const handleEdit = (field: string, value: string | number | boolean) => {
     setEditMode(field)
-    setEditedValue(value || '')
+    setEditedValue(String(value || ''))
   }
 
   const saveEdit = (field: string) => {
