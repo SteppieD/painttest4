@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 import { 
   Phone, 
   Mail, 
@@ -48,6 +51,13 @@ export default function CustomersPage() {
   const [companyData, setCompanyData] = useState<{ id: number; access_code: string } | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'inactive' | 'prospect'>('all')
+  const [showAddCustomer, setShowAddCustomer] = useState(false)
+  const [newCustomer, setNewCustomer] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: ''
+  })
   const [sortBy, setSortBy] = useState<'name' | 'value' | 'recent'>('recent')
 
   useEffect(() => {
@@ -163,7 +173,10 @@ export default function CustomersPage() {
             Manage your customer relationships and quote history
           </p>
         </div>
-        <Button className="btn-primary-modern">
+        <Button 
+          className="btn-primary-modern"
+          onClick={() => setShowAddCustomer(true)}
+        >
           <Plus className="h-4 w-4 mr-2" />
           Add Customer
         </Button>
@@ -335,6 +348,127 @@ export default function CustomersPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* Add Customer Dialog */}
+      <Dialog open={showAddCustomer} onOpenChange={setShowAddCustomer}>
+        <DialogContent className="glass-card bg-surface border-white/20">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold text-gradient-modern">Add New Customer</DialogTitle>
+            <DialogDescription className="text-medium-contrast">
+              Enter the customer's information to add them to your database
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name" className="text-base font-medium text-high-contrast">
+                Name *
+              </Label>
+              <Input
+                id="name"
+                value={newCustomer.name}
+                onChange={(e) => setNewCustomer({ ...newCustomer, name: e.target.value })}
+                placeholder="John Smith"
+                className="input-modern"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-base font-medium text-high-contrast">
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                value={newCustomer.email}
+                onChange={(e) => setNewCustomer({ ...newCustomer, email: e.target.value })}
+                placeholder="john@example.com"
+                className="input-modern"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="text-base font-medium text-high-contrast">
+                Phone
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={newCustomer.phone}
+                onChange={(e) => setNewCustomer({ ...newCustomer, phone: e.target.value })}
+                placeholder="(555) 123-4567"
+                className="input-modern"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="address" className="text-base font-medium text-high-contrast">
+                Address
+              </Label>
+              <Textarea
+                id="address"
+                value={newCustomer.address}
+                onChange={(e) => setNewCustomer({ ...newCustomer, address: e.target.value })}
+                placeholder="123 Main St, City, State 12345"
+                className="input-modern"
+                rows={3}
+              />
+            </div>
+          </div>
+          
+          <DialogFooter>
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                setShowAddCustomer(false)
+                setNewCustomer({ name: '', email: '', phone: '', address: '' })
+              }}
+            >
+              Cancel
+            </Button>
+            <Button 
+              className="btn-primary-modern"
+              onClick={async () => {
+                if (!newCustomer.name.trim()) {
+                  alert('Please enter a customer name')
+                  return
+                }
+                
+                try {
+                  const response = await fetch('/api/customers', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      ...newCustomer,
+                      company_id: companyData?.id
+                    })
+                  })
+                  
+                  if (response.ok) {
+                    const data = await response.json()
+                    // Refresh the customers list
+                    setCustomers([...customers, data.customer])
+                    setFilteredCustomers([...customers, data.customer])
+                    setShowAddCustomer(false)
+                    setNewCustomer({ name: '', email: '', phone: '', address: '' })
+                  } else {
+                    alert('Failed to add customer. Please try again.')
+                  }
+                } catch (error) {
+                  console.error('Error adding customer:', error)
+                  alert('Failed to add customer. Please try again.')
+                }
+              }}
+              disabled={!newCustomer.name.trim()}
+            >
+              Add Customer
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
