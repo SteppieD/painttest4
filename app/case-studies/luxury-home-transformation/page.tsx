@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { ArrowRight, Calendar, DollarSign, Home, MapPin, CheckCircle, Clock, Star } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Luxury Home Transformation Case Study | $8.5M Estate Painting Project',
@@ -361,7 +360,7 @@ export default function LuxuryHomeTransformation() {
                     heat professionally, treated our home with incredible care, and the attention 
                     to detail was extraordinary. The custom color matching on our stone work is 
                     perfect. We&apos;ve received countless compliments, and our property value increased 
-                    significantly. This was an investment that paid for itself."
+                    significantly. This was an investment that paid for itself.&quot;
                   </blockquote>
                   <footer>
                     <strong>Robert & Jennifer Morrison</strong>

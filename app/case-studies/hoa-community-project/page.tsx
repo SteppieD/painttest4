@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { ArrowRight, Calendar, DollarSign, Home, MapPin, CheckCircle, Clock, Users, TrendingUp } from 'lucide-react'
+import { ArrowRight, Calendar, DollarSign, Home, CheckCircle, Clock, Users, TrendingUp } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
@@ -388,7 +388,7 @@ export default function HOACommunityProjectCaseStudy() {
                     made it seamless. Their zone-based approach meant residents always knew what to 
                     expect. The quality was consistent from the first home to the 156th. Most 
                     impressively, they finished early and under budget. Our community looks brand new, 
-                    and property values have already increased."
+                    and property values have already increased.&quot;
                   </blockquote>
                   <footer>
                     <strong>Richard Chen</strong>
@@ -401,7 +401,7 @@ export default function HOACommunityProjectCaseStudy() {
                   <blockquote className="text-lg italic mb-4">
                     &quot;I was skeptical about having painters while working from home, but they were 
                     incredibly professional. The app notifications kept me informed, they worked 
-                    around my schedule, and the results are stunning. Best HOA decision ever!"
+                    around my schedule, and the results are stunning. Best HOA decision ever!&quot;
                   </blockquote>
                   <footer>
                     <strong>Sarah Mitchell</strong>

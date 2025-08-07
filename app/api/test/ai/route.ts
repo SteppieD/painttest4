@@ -1,16 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { openRouterClient } from '@/lib/ai/openrouter-client';
 
+interface TestResults {
+  success: boolean;
+  tests: {
+    apiKeyLoaded: boolean;
+    mockResponse: boolean;
+    liveResponse: boolean;
+  };
+  data: {
+    mockResponse?: string;
+    liveResponse?: string;
+  };
+  errors: {
+    mockResponse?: string;
+    liveResponse?: string;
+  };
+  env: {
+    hasOpenRouterKey: boolean;
+    hasOpenAIKey: boolean;
+    hasAnthropicKey: boolean;
+    nodeEnv: string | undefined;
+  };
+}
+
 export async function GET(_request: NextRequest) {
-  const results = {
+  const results: TestResults = {
     success: true,
     tests: {
       apiKeyLoaded: false,
       mockResponse: false,
       liveResponse: false
     },
-    data: {} as any,
-    errors: {} as any,
+    data: {},
+    errors: {},
     env: {
       hasOpenRouterKey: !!process.env.OPENROUTER_API_KEY,
       hasOpenAIKey: !!process.env.OPENAI_API_KEY,

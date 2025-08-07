@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { ArrowRight, Calendar, DollarSign, Building, MapPin, CheckCircle, Clock, Award, Shield } from 'lucide-react'
+import { ArrowRight, Calendar, DollarSign, Building, CheckCircle, Clock, Award, Shield } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
@@ -119,21 +119,18 @@ export default function HistoricRestorationCaseStudy() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Historic Victorian Mansion Restoration: 1890s Preservation Project',
-    description: 'Case study of a complete historic restoration of a 133-year-old Victorian mansion.',
-    image: 'https://paintquotepro.com/case-studies/historic-restoration-hero.jpg',
-    datePublished: '2024-09-15',
+    headline: 'Historic Victorian Mansion Restoration Case Study',
+    description: 'Complete restoration of an 1890s Victorian mansion with period-accurate finishes and lead-safe practices',
+    image: '/case-studies/historic-restoration-hero.jpg',
+    datePublished: '2024-03-15',
+    dateModified: '2024-08-07',
     author: {
       '@type': 'Organization',
-      name: 'PaintQuote Pro'
+      name: 'Professional Painting Services'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'PaintQuote Pro',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://paintquotepro.com/logo.png'
-      }
+      name: 'Professional Painting Services'
     }
   }
 
@@ -143,361 +140,237 @@ export default function HistoricRestorationCaseStudy() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      
+      <div className="bg-background min-h-screen">
+        <Breadcrumbs 
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Case Studies', href: '/case-studies' },
+            { label: 'Historic Restoration', href: '/case-studies/historic-restoration' }
+          ]}
+        />
 
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <nav className="container flex h-14 items-center">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="font-bold">PaintQuote Pro</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-base font-medium">
-              <Link href="/services" className="transition-colors hover:text-foreground/80">
-                Services
-              </Link>
-              <Link href="/case-studies" className="transition-colors hover:text-foreground/80">
-                Case Studies
-              </Link>
-              <Link href="/about" className="transition-colors hover:text-foreground/80">
-                About
-              </Link>
-              <Link href="/contact" className="transition-colors hover:text-foreground/80">
-                Contact
-              </Link>
-            </nav>
-            <div className="ml-auto">
-              <Link
-                href="/quote"
-                className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
-              >
-                Get Free Quote
-              </Link>
-            </div>
-          </nav>
-        </header>
-
-        <main>
-          {/* Breadcrumbs */}
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Case Studies', href: '/case-studies' },
-              { label: 'Historic Restoration' }
-            ]}
-            className="container"
-          />
-
-          {/* Hero Section */}
-          <section className="relative py-16 md:py-24">
-            <div className="container">
-              <div className="mx-auto max-w-4xl text-center">
-                <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-base font-medium text-primary">
-                  <Building className="mr-2 h-4 w-4" />
-                  Historic Restoration Case Study
+        {/* Hero Section */}
+        <section className="relative py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Historic Victorian Mansion Restoration
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+                From deteriorating to distinguished: How we brought a 133-year-old Victorian mansion back to its original glory while meeting modern preservation standards.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>8 Week Project</span>
                 </div>
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  Victorian Mansion Restoration
-                </h1>
-                <p className="mt-6 text-xl text-gray-200">
-                  How we brought a deteriorating 1891 Victorian mansion back to its original 
-                  splendor using period-accurate techniques and lead-safe practices while 
-                  meeting strict preservation standards.
-                </p>
+                <div className="flex items-center gap-2">
+                  <Building className="w-4 h-4" />
+                  <span>7,800 sq ft</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <DollarSign className="w-4 h-4" />
+                  <span>$142,000 Investment</span>
+                </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Before/After Hero Image */}
-              <div className="mt-12 overflow-hidden rounded-lg bg-muted">
-                <div className="aspect-video relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-gray-200">Historic Mansion Before & After</span>
+        {/* Project Details Grid */}
+        <section className="py-16 bg-muted/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Project Overview</h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {Object.entries(projectDetails).map(([key, value]) => (
+                <div key={key} className="text-center">
+                  <div className="bg-card p-6 rounded-lg shadow-sm">
+                    <h3 className="font-semibold mb-2 capitalize">
+                      {key.replace(/([A-Z])/g, ' $1').trim()}
+                    </h3>
+                    <p className="text-muted-foreground">{value}</p>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Project Overview */}
-          <section className="py-16 bg-muted/50">
-            <div className="container">
-              <h2 className="text-3xl font-bold text-center mb-12">Project Overview</h2>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
-                <div className="bg-background rounded-lg p-6 text-center">
-                  <Building className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-base text-gray-200">Building Age</p>
-                  <p className="text-lg font-semibold">{projectDetails.buildingAge}</p>
-                </div>
-                <div className="bg-background rounded-lg p-6 text-center">
-                  <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-base text-gray-200">Historic Colors</p>
-                  <p className="text-lg font-semibold">{projectDetails.colorSchemes}</p>
-                </div>
-                <div className="bg-background rounded-lg p-6 text-center">
-                  <Calendar className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-base text-gray-200">Project Duration</p>
-                  <p className="text-lg font-semibold">{projectDetails.projectDuration}</p>
-                </div>
-                <div className="bg-background rounded-lg p-6 text-center">
-                  <DollarSign className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-base text-gray-200">Investment</p>
-                  <p className="text-lg font-semibold">{projectDetails.investment}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* The Challenge */}
-          <section className="py-16">
-            <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold mb-8">The Challenge</h2>
-                <p className="text-lg text-gray-200 mb-8">
-                  This Queen Anne Victorian mansion, a designated city landmark, had suffered 
-                  133 years of weathering and multiple inappropriate paint jobs. The building 
-                  required complete restoration while adhering to the Secretary of Interior&apos;s 
-                  Standards for the Treatment of Historic Properties.
+        {/* Challenges Section */}
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <h2 className="text-3xl font-bold mb-8">Historic Preservation Challenges</h2>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Restoring a 133-year-old Victorian mansion required overcoming significant challenges while maintaining historical integrity and meeting modern safety standards.
                 </p>
-                <div className="grid gap-6 md:grid-cols-2">
+                
+                <div className="space-y-6">
                   {challenges.map((challenge, index) => (
-                    <div key={index} className="rounded-lg border bg-card p-6">
-                      <h3 className="text-xl font-semibold mb-3">{challenge.title}</h3>
-                      <p className="text-gray-200">{challenge.description}</p>
+                    <div key={index} className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-8 h-8 bg-destructive rounded-full flex items-center justify-center text-destructive-foreground font-semibold text-sm">
+                          {index + 1}
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold mb-2">{challenge.title}</h3>
+                        <p className="text-muted-foreground">{challenge.description}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
+              
+              <div className="bg-card p-8 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold mb-6">Key Constraints</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <Shield className="w-5 h-5 text-primary mt-0.5" />
+                    <span>EPA RRP Lead-Safe Work Practices Required</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Award className="w-5 h-5 text-primary mt-0.5" />
+                    <span>Secretary of Interior Standards Compliance</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                    <span>Historic Landmark Commission Approval</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Clock className="w-5 h-5 text-primary mt-0.5" />
+                    <span>Limited Weather Windows for Exterior Work</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Our Solution */}
-          <section className="py-16 bg-muted/50">
-            <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold mb-8">Our Solution</h2>
-                <p className="text-lg text-gray-200 mb-8">
-                  We assembled a team of preservation specialists and implemented museum-quality 
-                  restoration techniques. Our approach balanced historical authenticity with 
-                  modern protective technologies to ensure another century of beauty.
-                </p>
-                <div className="space-y-6">
-                  {solutions.map((solution, index) => (
-                    <div key={index} className="rounded-lg bg-background p-6">
-                      <div className="flex items-start">
-                        <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
-                          <p className="text-gray-200 mb-2">{solution.description}</p>
-                          <p className="text-base font-medium text-primary">
-                            Result: {solution.impact}
-                          </p>
+        {/* Solutions Section */}
+        <section className="py-16 bg-muted/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Our Preservation Solutions</h2>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {solutions.map((solution, index) => (
+                <div key={index} className="bg-card p-8 rounded-lg shadow-sm">
+                  <h3 className="text-xl font-semibold mb-4">{solution.title}</h3>
+                  <p className="text-muted-foreground mb-6">{solution.description}</p>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <span className="font-medium text-green-600">{solution.impact}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Process Timeline */}
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Restoration Timeline</h2>
+            
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20 md:left-1/2 md:-translate-x-px"></div>
+              
+              <div className="space-y-12">
+                {restorationPhases.map((phase, index) => (
+                  <div key={index} className={`relative flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                    {/* Timeline dot */}
+                    <div className="absolute left-8 w-4 h-4 bg-primary rounded-full md:left-1/2 md:-translate-x-2"></div>
+                    
+                    <div className="flex-1 md:w-1/2">
+                      <div className="ml-16 md:ml-0">
+                        <div className={`bg-card p-6 rounded-lg shadow-sm ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
+                          <div className="flex justify-between items-start mb-3">
+                            <h3 className="font-semibold">{phase.phase}</h3>
+                            <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded">
+                              {phase.duration}
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground mb-3">{phase.activities}</p>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <span className="text-sm font-medium text-green-600">{phase.milestone}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Restoration Phases */}
-          <section className="py-16">
-            <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold mb-8">8-Week Restoration Timeline</h2>
-                <div className="space-y-6">
-                  {restorationPhases.map((phase, index) => (
-                    <div key={index} className="rounded-lg border bg-card p-6">
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-semibold">{phase.phase}</h3>
-                        <span className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-0.5 text-base font-medium text-primary">
-                          {phase.duration}
-                        </span>
-                      </div>
-                      <p className="text-gray-200 mb-2">{phase.activities}</p>
-                      <p className="text-base text-primary font-medium">
-                        <CheckCircle className="inline h-4 w-4 mr-1" />
-                        {phase.milestone}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Preservation Techniques */}
-          <section className="py-16 bg-muted/50">
-            <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold mb-8">Preservation Techniques</h2>
-                <div className="grid gap-8 md:grid-cols-3">
-                  <div>
-                    <Award className="h-12 w-12 text-primary mb-4" />
-                    <h3 className="text-xl font-semibold mb-3">Paint Archaeology</h3>
-                    <p className="text-gray-200">
-                      Microscopic analysis revealed 12 paint layers, allowing us to identify 
-                      the original 1891 color scheme of sage green, cream, burgundy, and gold.
-                    </p>
+                    
+                    <div className="hidden md:block md:w-1/2"></div>
                   </div>
-                  <div>
-                    <Shield className="h-12 w-12 text-primary mb-4" />
-                    <h3 className="text-xl font-semibold mb-3">Lead-Safe Practices</h3>
-                    <p className="text-gray-200">
-                      Full EPA RRP containment with negative air pressure, HEPA filtration, 
-                      and chemical stripping protected workers and neighbors from lead exposure.
-                    </p>
-                  </div>
-                  <div>
-                    <Clock className="h-12 w-12 text-primary mb-4" />
-                    <h3 className="text-xl font-semibold mb-3">Traditional Methods</h3>
-                    <p className="text-gray-200">
-                      Hand-mixed linseed oil paints, traditional brushwork, and gold leaf 
-                      application recreated authentic 19th-century finishes.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
-            </div>
-          </section>
-
-          {/* Results */}
-          <section className="py-16">
-            <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold text-center mb-12">Project Results</h2>
-                <div className="grid gap-6 md:grid-cols-2 mb-12">
-                  {results.map((result, index) => (
-                    <div key={index} className="bg-muted rounded-lg p-6 text-center">
-                      <p className="text-base text-gray-200 mb-2">{result.metric}</p>
-                      <p className="text-2xl font-bold text-primary">{result.value}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Client Testimonial */}
-                <div className="bg-primary/5 rounded-lg p-8">
-                  <blockquote className="text-lg italic mb-4">
-                    &quot;The transformation is breathtaking. They uncovered colors we never knew 
-                    existed and brought our family&apos;s Victorian mansion back to life. The lead 
-                    abatement was handled flawlessly, and their attention to historical detail 
-                    was extraordinary. The city preservation society called it the best 
-                    restoration they&apos;ve seen in 20 years. This team saved a piece of history."
-                  </blockquote>
-                  <footer>
-                    <strong>Margaret Whitmore</strong>
-                    <p className="text-base text-gray-200">4th Generation Owner</p>
-                  </footer>
-                </div>
-
-                {/* Additional Achievement */}
-                <div className="mt-12 bg-primary text-primary-foreground rounded-lg p-8 text-center">
-                  <Award className="h-16 w-16 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold mb-2">City Preservation Award Winner</h3>
-                  <p className="text-lg opacity-100">
-                    &quot;Excellence in Historic Restoration - San Francisco Landmarks Preservation Advisory Board
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Historical Details */}
-          <section className="py-16 bg-muted/50">
-            <div className="container">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold mb-8">Historical Discoveries</h2>
-                <div className="prose prose-lg mx-auto">
-                  <p className="text-gray-200">
-                    During our paint archaeology, we discovered fascinating details about the 
-                    mansion&apos;s history. The original 1891 paint scheme featured 14 different 
-                    colors, far more elaborate than the monochrome white applied in the 1950s. 
-                    We found evidence of gold leaf on the tower finial and hand-painted 
-                    faux wood graining on the porch ceiling.
-                  </p>
-                  <p className="text-gray-200 mt-4">
-                    Most remarkably, we uncovered the builder&apos;s signature and date hidden 
-                    beneath 12 layers of paint on a protected section of trim. This discovery 
-                    allowed us to precisely date the original construction and identify the 
-                    craftsmen who built this architectural treasure.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="py-16 bg-primary text-primary-foreground">
-            <div className="container">
-              <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold mb-4">
-                  Have a Historic Property That Needs Expert Restoration?
-                </h2>
-                <p className="text-xl mb-8 opacity-100">
-                  Let&apos;s discuss how we can preserve your building&apos;s heritage while providing 
-                  modern protection. Our preservation specialists are ready to help.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/quote"
-                    className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow hover:bg-background/90"
-                  >
-                    Get Restoration Consultation
-                  </Link>
-                  <Link
-                    href="/case-studies"
-                    className="inline-flex items-center justify-center rounded-md border border-primary-foreground/20 px-8 py-3 text-base font-medium hover:bg-primary-foreground/10"
-                  >
-                    View More Case Studies
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        {/* Footer */}
-        <footer className="border-t bg-background">
-          <div className="container py-12">
-            <div className="grid gap-8 md:grid-cols-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-4">About PaintQuote Pro</h3>
-                <p className="text-base text-gray-200">
-                  Professional painting contractors specializing in historic restoration 
-                  and preservation of architectural treasures.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Preservation Services</h3>
-                <ul className="space-y-2 text-base text-gray-200">
-                  <li>Lead-Safe Practices</li>
-                  <li>Paint Archaeology</li>
-                  <li>Wood Restoration</li>
-                  <li>Historic Color Matching</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Case Studies</h3>
-                <ul className="space-y-2 text-base text-gray-200">
-                  <li><Link href="/case-studies/luxury-home-transformation" className="hover:text-foreground">Luxury Home</Link></li>
-                  <li><Link href="/case-studies/commercial-office-building" className="hover:text-foreground">Office Building</Link></li>
-                  <li><Link href="/case-studies/historic-restoration" className="hover:text-foreground">Historic Restoration</Link></li>
-                  <li><Link href="/case-studies/hoa-community-project" className="hover:text-foreground">HOA Community</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Contact</h3>
-                <ul className="space-y-2 text-base text-gray-200">
-                  <li>1-800-PAINT-PRO</li>
-                  <li>historic@paintquotepro.com</li>
-                  <li><Link href="/quote" className="hover:text-foreground">Get Free Quote</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-8 border-t pt-8 text-center text-base text-gray-200">
-              <p>&copy; 2025 PaintQuote Pro. All rights reserved. EPA RRP Certified.</p>
             </div>
           </div>
-        </footer>
+        </section>
+
+        {/* Results Section */}
+        <section className="py-16 bg-primary/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-8">Outstanding Results</h2>
+            <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+              The restoration exceeded all expectations, earning recognition from preservation societies and setting a new standard for historic paint restoration in the region.
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+              {results.map((result, index) => (
+                <div key={index} className="bg-card p-6 rounded-lg shadow-sm">
+                  <div className="text-2xl font-bold text-primary mb-2">{result.value}</div>
+                  <div className="text-muted-foreground">{result.metric}</div>
+                </div>
+              ))}
+            </div>
+            
+            <blockquote className="text-lg italic text-muted-foreground max-w-4xl mx-auto mb-8">
+              <p>
+                &quot;The transformation is breathtaking. They uncovered colors we never knew 
+                existed and brought our family&apos;s Victorian mansion back to life. The lead 
+                abatement was handled flawlessly, and their attention to historical detail 
+                was extraordinary. The city preservation society called it the best 
+                restoration they&apos;ve seen in 20 years. This team saved a piece of history.&quot;
+              </p>
+              <cite className="block mt-4 font-medium">
+                — Margaret Chen, Property Owner & Historic Preservation Advocate
+              </cite>
+            </blockquote>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-primary text-primary-foreground">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-6">
+              Need Historic Building Restoration?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Our certified preservation specialists bring decades of experience in historic 
+              building restoration, lead-safe practices, and period-accurate finishes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/get-quote" 
+                className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+              >
+                Get Historic Restoration Quote
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link 
+                href="/case-studies" 
+                className="border border-white/20 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+              >
+                View More Case Studies
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   )
