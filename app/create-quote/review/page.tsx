@@ -140,7 +140,7 @@ function QuoteReviewContent() {
   
   // Check if feature is available for user's tier
   const hasFeature = (feature: keyof typeof SUBSCRIPTION_TIERS.free.features) => {
-    return SUBSCRIPTION_TIERS[userTier].features[feature]
+    return (SUBSCRIPTION_TIERS as any)[userTier]?.features[feature] || false
   }
   
   // Visibility settings with tier restrictions
@@ -403,7 +403,7 @@ function QuoteReviewContent() {
   }
 
   const sendQuoteEmail = async () => {
-    if (!quoteData || !quoteData.customerEmail) {
+    if (!quoteData || !quote.customerEmail) {
       toast({
         title: 'Email Required',
         description: 'Please add a customer email address to send the quote.',
@@ -422,10 +422,10 @@ function QuoteReviewContent() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: quoteData.customerEmail,
-          customerName: quoteData.customerName || 'Valued Customer',
+          to: quote.customerEmail,
+          customerName: quote.customerName || 'Valued Customer',
           quoteData: {
-            ...quoteData,
+            ...quote,
             visibilitySettings,
             quoteSettings,
             companySettings,
@@ -441,13 +441,13 @@ function QuoteReviewContent() {
         setSendSuccess(true)
         toast({
           title: 'Quote Sent Successfully!',
-          description: `The quote has been sent to ${quoteData.customerEmail}`,
+          description: `The quote has been sent to ${quote.customerEmail}`,
         })
         
         // Track analytics if available
         if (hasFeature('analytics')) {
           // Track quote sent event
-          console.log('Analytics: Quote sent', quoteData.quoteNumber)
+          console.log('Analytics: Quote sent', quote.quoteNumber)
         }
         
         // Also create the quote in the database
@@ -569,6 +569,9 @@ function QuoteReviewContent() {
     )
   }
 
+  // TypeScript now knows quoteData is not null
+  const quote = quoteData as any
+
   const getTotal = (value: string | number | undefined): number => {
     if (typeof value === 'number') return value
     if (typeof value === 'object' && value && 'total' in value) return (value as any).total || 0
@@ -602,10 +605,10 @@ function QuoteReviewContent() {
               </Link>
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-xl font-semibold">Quote #{quoteData.quoteNumber}</h1>
+                  <h1 className="text-xl font-semibold">Quote #{quote.quoteNumber}</h1>
                   {userTier !== 'free' && (
-                    <Badge className={SUBSCRIPTION_TIERS[userTier].color}>
-                      {SUBSCRIPTION_TIERS[userTier].badge}
+                    <Badge className={(SUBSCRIPTION_TIERS as any)[userTier]?.color}>
+                      {(SUBSCRIPTION_TIERS as any)[userTier]?.badge}
                     </Badge>
                   )}
                 </div>
@@ -719,7 +722,7 @@ function QuoteReviewContent() {
                       >
                         <p className="text-2xl font-bold text-white">QUOTE</p>
                       </div>
-                      <p className="text-lg font-medium text-gray-700">#{quoteData.quoteNumber}</p>
+                      <p className="text-lg font-medium text-gray-700">#{quote.quoteNumber}</p>
                       <p className="text-sm text-gray-500">{quoteDate}</p>
                     </div>
                   </div>
@@ -732,23 +735,23 @@ function QuoteReviewContent() {
                     <div>
                       <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Bill To</h3>
                       <div className="space-y-1">
-                        <p className="font-semibold text-lg">{quoteData.customerName || 'Customer Name'}</p>
-                        {quoteData.customerEmail && (
+                        <p className="font-semibold text-lg">{quote.customerName || 'Customer Name'}</p>
+                        {quote.customerEmail && (
                           <p className="text-gray-600 flex items-center gap-2">
                             <Mail className="h-4 w-4" />
-                            {quoteData.customerEmail}
+                            {quote.customerEmail}
                           </p>
                         )}
-                        {quoteData.customerPhone && (
+                        {quote.customerPhone && (
                           <p className="text-gray-600 flex items-center gap-2">
                             <Phone className="h-4 w-4" />
-                            {quoteData.customerPhone}
+                            {quote.customerPhone}
                           </p>
                         )}
-                        {quoteData.address && (
+                        {quote.address && (
                           <p className="text-gray-600 flex items-center gap-2">
                             <MapPin className="h-4 w-4" />
-                            {quoteData.address}
+                            {quote.address}
                           </p>
                         )}
                       </div>
@@ -769,13 +772,13 @@ function QuoteReviewContent() {
                         {hasFeature('advancedPricing') && (
                           <div className="flex justify-between">
                             <span className="text-gray-600">Project Type:</span>
-                            <span className="font-medium capitalize">{quoteData.projectType} Painting</span>
+                            <span className="font-medium capitalize">{quote.projectType} Painting</span>
                           </div>
                         )}
-                        {quoteData.pricing?.timeline && (
+                        {quote.pricing?.timeline && (
                           <div className="flex justify-between">
                             <span className="text-gray-600">Timeline:</span>
-                            <span className="font-medium">{quoteData.pricing.timeline}</span>
+                            <span className="font-medium">{quote.pricing.timeline}</span>
                           </div>
                         )}
                       </div>
@@ -802,53 +805,53 @@ function QuoteReviewContent() {
                         </thead>
                         <tbody className="divide-y">
                           {/* Materials Section */}
-                          {visibilitySettings.showMaterialsBreakdown && quoteData.pricing?.breakdown ? (
+                          {visibilitySettings.showMaterialsBreakdown && quote.pricing?.breakdown ? (
                             <>
-                              {quoteData.pricing.breakdown.wallPaint && (
+                              {quote.pricing.breakdown.wallPaint && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Wall Paint</p>
                                     {visibilitySettings.showPaintDetails && (
                                       <p className="text-sm text-gray-600">
-                                        {quoteData.pricing.breakdown.wallPaint.product} - {quoteData.pricing.breakdown.wallPaint.finish}
+                                        {quote.pricing.breakdown.wallPaint.product} - {quote.pricing.breakdown.wallPaint.finish}
                                       </p>
                                     )}
                                   </td>
                                   {hasFeature('advancedPricing') && (
                                     <>
-                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.wallPaint.gallons} gal</td>
-                                      <td className="text-right py-3 px-4">${quoteData.pricing.breakdown.wallPaint.costPerGallon}</td>
+                                      <td className="text-right py-3 px-4">{quote.pricing.breakdown.wallPaint.gallons} gal</td>
+                                      <td className="text-right py-3 px-4">${quote.pricing.breakdown.wallPaint.costPerGallon}</td>
                                     </>
                                   )}
                                   <td className="text-right py-3 px-4 font-medium">
-                                    ${quoteData.pricing.breakdown.wallPaint.cost.toFixed(2)}
+                                    ${quote.pricing.breakdown.wallPaint.cost.toFixed(2)}
                                   </td>
                                 </tr>
                               )}
                               
-                              {quoteData.pricing.breakdown.ceilingPaint && (
+                              {quote.pricing.breakdown.ceilingPaint && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Ceiling Paint</p>
                                     {visibilitySettings.showPaintDetails && (
                                       <p className="text-sm text-gray-600">
-                                        {quoteData.pricing.breakdown.ceilingPaint.product} - {quoteData.pricing.breakdown.ceilingPaint.finish}
+                                        {quote.pricing.breakdown.ceilingPaint.product} - {quote.pricing.breakdown.ceilingPaint.finish}
                                       </p>
                                     )}
                                   </td>
                                   {hasFeature('advancedPricing') && (
                                     <>
-                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.ceilingPaint.gallons} gal</td>
-                                      <td className="text-right py-3 px-4">${quoteData.pricing.breakdown.ceilingPaint.costPerGallon}</td>
+                                      <td className="text-right py-3 px-4">{quote.pricing.breakdown.ceilingPaint.gallons} gal</td>
+                                      <td className="text-right py-3 px-4">${quote.pricing.breakdown.ceilingPaint.costPerGallon}</td>
                                     </>
                                   )}
                                   <td className="text-right py-3 px-4 font-medium">
-                                    ${quoteData.pricing.breakdown.ceilingPaint.cost.toFixed(2)}
+                                    ${quote.pricing.breakdown.ceilingPaint.cost.toFixed(2)}
                                   </td>
                                 </tr>
                               )}
                               
-                              {quoteData.pricing.breakdown.primer && (
+                              {quote.pricing.breakdown.primer && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Primer</p>
@@ -856,17 +859,17 @@ function QuoteReviewContent() {
                                   </td>
                                   {hasFeature('advancedPricing') && (
                                     <>
-                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.primer.gallons} gal</td>
-                                      <td className="text-right py-3 px-4">${quoteData.pricing.breakdown.primer.costPerGallon}</td>
+                                      <td className="text-right py-3 px-4">{quote.pricing.breakdown.primer.gallons} gal</td>
+                                      <td className="text-right py-3 px-4">${quote.pricing.breakdown.primer.costPerGallon}</td>
                                     </>
                                   )}
                                   <td className="text-right py-3 px-4 font-medium">
-                                    ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}
+                                    ${quote.pricing.breakdown.primer.cost.toFixed(2)}
                                   </td>
                                 </tr>
                               )}
                               
-                              {quoteData.pricing.breakdown.supplies && (
+                              {quote.pricing.breakdown.supplies && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Supplies & Equipment</p>
@@ -879,7 +882,7 @@ function QuoteReviewContent() {
                                     </>
                                   )}
                                   <td className="text-right py-3 px-4 font-medium">
-                                    ${quoteData.pricing.breakdown.supplies.toFixed(2)}
+                                    ${quote.pricing.breakdown.supplies.toFixed(2)}
                                   </td>
                                 </tr>
                               )}
@@ -897,15 +900,15 @@ function QuoteReviewContent() {
                                 </>
                               )}
                               <td className="text-right py-3 px-4 font-medium">
-                                ${getTotal(quoteData.pricing?.materials).toFixed(2)}
+                                ${getTotal(quote.pricing?.materials).toFixed(2)}
                               </td>
                             </tr>
                           )}
 
                           {/* Labor Section */}
-                          {visibilitySettings.showLaborBreakdown && quoteData.pricing?.breakdown ? (
+                          {visibilitySettings.showLaborBreakdown && quote.pricing?.breakdown ? (
                             <>
-                              {quoteData.pricing.breakdown.prepWork && (
+                              {quote.pricing.breakdown.prepWork && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Prep Work</p>
@@ -913,19 +916,19 @@ function QuoteReviewContent() {
                                   </td>
                                   {hasFeature('advancedPricing') && (
                                     <>
-                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.prepWork.hours} hrs</td>
+                                      <td className="text-right py-3 px-4">{quote.pricing.breakdown.prepWork.hours} hrs</td>
                                       <td className="text-right py-3 px-4">
-                                        {visibilitySettings.showHourlyRates ? `$${quoteData.pricing.breakdown.prepWork.rate}/hr` : '-'}
+                                        {visibilitySettings.showHourlyRates ? `$${quote.pricing.breakdown.prepWork.rate}/hr` : '-'}
                                       </td>
                                     </>
                                   )}
                                   <td className="text-right py-3 px-4 font-medium">
-                                    ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}
+                                    ${quote.pricing.breakdown.prepWork.cost.toFixed(2)}
                                   </td>
                                 </tr>
                               )}
                               
-                              {quoteData.pricing.breakdown.painting && (
+                              {quote.pricing.breakdown.painting && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Painting Labor</p>
@@ -933,14 +936,14 @@ function QuoteReviewContent() {
                                   </td>
                                   {hasFeature('advancedPricing') && (
                                     <>
-                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.painting.hours} hrs</td>
+                                      <td className="text-right py-3 px-4">{quote.pricing.breakdown.painting.hours} hrs</td>
                                       <td className="text-right py-3 px-4">
-                                        {visibilitySettings.showHourlyRates ? `$${quoteData.pricing.breakdown.painting.rate}/hr` : '-'}
+                                        {visibilitySettings.showHourlyRates ? `$${quote.pricing.breakdown.painting.rate}/hr` : '-'}
                                       </td>
                                     </>
                                   )}
                                   <td className="text-right py-3 px-4 font-medium">
-                                    ${quoteData.pricing.breakdown.painting.cost.toFixed(2)}
+                                    ${quote.pricing.breakdown.painting.cost.toFixed(2)}
                                   </td>
                                 </tr>
                               )}
@@ -958,7 +961,7 @@ function QuoteReviewContent() {
                                 </>
                               )}
                               <td className="text-right py-3 px-4 font-medium">
-                                ${getTotal(quoteData.pricing?.labor).toFixed(2)}
+                                ${getTotal(quote.pricing?.labor).toFixed(2)}
                               </td>
                             </tr>
                           )}
@@ -973,20 +976,20 @@ function QuoteReviewContent() {
                       <div className="space-y-2">
                         <div className="flex justify-between py-2">
                           <span className="text-gray-600">Subtotal</span>
-                          <span className="font-medium">${quoteData.pricing?.subtotal?.toFixed(2) || '0.00'}</span>
+                          <span className="font-medium">${quote.pricing?.subtotal?.toFixed(2) || '0.00'}</span>
                         </div>
                         
-                        {visibilitySettings.showMarkup && quoteData.pricing?.markup > 0 && (
+                        {visibilitySettings.showMarkup && quote.pricing?.markup > 0 && (
                           <div className="flex justify-between py-2 border-t">
-                            <span className="text-gray-600">Overhead & Profit ({quoteData.pricing.markupPercentage}%)</span>
-                            <span className="font-medium">${quoteData.pricing.markup.toFixed(2)}</span>
+                            <span className="text-gray-600">Overhead & Profit ({quote.pricing.markupPercentage}%)</span>
+                            <span className="font-medium">${quote.pricing.markup.toFixed(2)}</span>
                           </div>
                         )}
                         
                         <div className="flex justify-between py-3 border-t-2 border-gray-900">
                           <span className="text-xl font-bold">Total</span>
                           <span className="text-2xl font-bold text-blue-600">
-                            ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
+                            ${quote.pricing?.total?.toFixed(2) || '0.00'}
                           </span>
                         </div>
                         
@@ -995,7 +998,7 @@ function QuoteReviewContent() {
                             <p className="text-sm text-gray-600">
                               Deposit Required ({quoteSettings.depositPercentage}%): 
                               <span className="font-semibold ml-2">
-                                ${(quoteData.pricing?.total * (quoteSettings.depositPercentage / 100)).toFixed(2)}
+                                ${(quote.pricing?.total * (quoteSettings.depositPercentage / 100)).toFixed(2)}
                               </span>
                             </p>
                           </div>
@@ -1128,11 +1131,11 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="flex-1">{quoteData.customerName || 'Not specified'}</p>
+                            <p className="flex-1">{quote.customerName || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('customerName', quoteData.customerName)}
+                              onClick={() => handleEdit('customerName', quote.customerName)}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1160,11 +1163,11 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="flex-1">{quoteData.customerEmail || 'Not specified'}</p>
+                            <p className="flex-1">{quote.customerEmail || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('customerEmail', quoteData.customerEmail)}
+                              onClick={() => handleEdit('customerEmail', quote.customerEmail)}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1192,11 +1195,11 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="flex-1">{quoteData.customerPhone || 'Not specified'}</p>
+                            <p className="flex-1">{quote.customerPhone || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('customerPhone', quoteData.customerPhone)}
+                              onClick={() => handleEdit('customerPhone', quote.customerPhone)}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1223,11 +1226,11 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="flex-1">{quoteData.address || 'Not specified'}</p>
+                            <p className="flex-1">{quote.address || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('address', quoteData.address)}
+                              onClick={() => handleEdit('address', quote.address)}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1273,12 +1276,12 @@ function QuoteReviewContent() {
                         </>
                       ) : (
                         <>
-                          <p className="flex-1">${getTotal(quoteData.pricing?.materials).toFixed(2)}</p>
+                          <p className="flex-1">${getTotal(quote.pricing?.materials).toFixed(2)}</p>
                           {hasFeature('advancedPricing') && (
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('pricing.materials.total', getTotal(quoteData.pricing?.materials))}
+                              onClick={() => handleEdit('pricing.materials.total', getTotal(quote.pricing?.materials))}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1308,12 +1311,12 @@ function QuoteReviewContent() {
                         </>
                       ) : (
                         <>
-                          <p className="flex-1">${getTotal(quoteData.pricing?.labor).toFixed(2)}</p>
+                          <p className="flex-1">${getTotal(quote.pricing?.labor).toFixed(2)}</p>
                           {hasFeature('advancedPricing') && (
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('pricing.labor.total', getTotal(quoteData.pricing?.labor))}
+                              onClick={() => handleEdit('pricing.labor.total', getTotal(quote.pricing?.labor))}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1343,11 +1346,11 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="flex-1">{quoteData.pricing?.markupPercentage || 30}%</p>
+                            <p className="flex-1">{quote.pricing?.markupPercentage || 30}%</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
-                              onClick={() => handleEdit('pricing.markupPercentage', quoteData.pricing?.markupPercentage || 30)}
+                              onClick={() => handleEdit('pricing.markupPercentage', quote.pricing?.markupPercentage || 30)}
                             >
                               <Edit2 className="h-3 w-3" />
                             </Button>
@@ -1362,7 +1365,7 @@ function QuoteReviewContent() {
                   <div>
                     <Label>Final Total</Label>
                     <p className="text-2xl font-bold text-blue-600">
-                      ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
+                      ${quote.pricing?.total?.toFixed(2) || '0.00'}
                     </p>
                   </div>
                 </CardContent>
