@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { ChevronRight } from 'lucide-react'
 import MobileMenu from './mobile-menu'
@@ -27,11 +28,15 @@ function ModernNavigation() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-3 group"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-slate-400 to-slate-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">P</span>
-            </div>
+            <Image 
+              src="/Paint App Logo.png" 
+              alt="PaintQuote Pro Logo" 
+              width={40} 
+              height={40}
+              className="transition-transform group-hover:scale-105"
+            />
             <span className="font-bold text-lg text-white group-hover:text-gray-50 transition-colors">
               PaintQuote Pro
             </span>

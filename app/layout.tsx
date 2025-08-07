@@ -76,6 +76,11 @@ export const metadata: Metadata = {
   //   yandex: 'your-yandex-verification-code',
   //   yahoo: 'your-yahoo-site-verification-code',
   // },
+  icons: {
+    icon: '/Paint App Logo.png',
+    shortcut: '/Paint App Logo.png',
+    apple: '/Paint App Logo.png',
+  },
   other: {
     'msapplication-TileColor': '#3b82f6',
     'apple-mobile-web-app-capable': 'yes',
