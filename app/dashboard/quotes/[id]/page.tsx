@@ -489,13 +489,49 @@ Your Painting Company
           )}
           {quote.status === 'sent' && (
             <>
-              <Button className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20">
+              <Button 
+                className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20"
+                onClick={() => {
+                  if (quote.customer_phone) {
+                    window.location.href = `tel:${quote.customer_phone}`
+                  } else {
+                    alert('No phone number available for this customer')
+                  }
+                }}
+              >
                 📞 Call Customer
               </Button>
-              <Button className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20">
+              <Button 
+                className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20"
+                onClick={() => {
+                  if (quote.customer_phone) {
+                    window.location.href = `sms:${quote.customer_phone}?body=Hi ${quote.customer_name}, following up on your painting quote #${quote.quote_number}. Do you have any questions?`
+                  } else {
+                    alert('No phone number available for this customer')
+                  }
+                }}
+              >
                 📱 Send Follow-up Text
               </Button>
-              <Button className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20">
+              <Button 
+                className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20"
+                onClick={async () => {
+                  try {
+                    const response = await fetch(`/api/quotes/${quote.id}`, {
+                      method: 'PATCH',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ status: 'accepted' })
+                    })
+                    if (response.ok) {
+                      window.location.reload()
+                    } else {
+                      alert('Failed to update quote status')
+                    }
+                  } catch (error) {
+                    alert('Error updating quote status')
+                  }
+                }}
+              >
                 ✅ Mark as Won
               </Button>
             </>

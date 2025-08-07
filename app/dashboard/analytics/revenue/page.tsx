@@ -252,7 +252,33 @@ export default function RevenueAnalyticsPage() {
 
       {/* Export Button */}
       <div className="flex justify-end">
-        <Button className="btn-primary-modern">
+        <Button 
+          className="btn-primary-modern"
+          onClick={() => {
+            // Generate CSV data
+            const csvData = [
+              ['Period', 'Revenue', 'Quotes', 'Conversion Rate'],
+              ...revenueData.map(item => [
+                item.name,
+                `$${item.revenue}`,
+                item.quotes,
+                `${((item.revenue / (item.quotes * 2800)) * 100).toFixed(1)}%`
+              ])
+            ]
+            
+            // Convert to CSV string
+            const csv = csvData.map(row => row.join(',')).join('\n')
+            
+            // Create blob and download
+            const blob = new Blob([csv], { type: 'text/csv' })
+            const url = window.URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = `revenue-report-${new Date().toISOString().split('T')[0]}.csv`
+            a.click()
+            window.URL.revokeObjectURL(url)
+          }}
+        >
           <Download className="h-4 w-4 mr-2" />
           Export Revenue Report
         </Button>

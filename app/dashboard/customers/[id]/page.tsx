@@ -271,11 +271,33 @@ export default function CustomerDetailPage() {
           </div>
         </div>
         <div className="flex gap-2">
-          <Button className="btn-secondary-modern">
+          <Button 
+            className="btn-secondary-modern"
+            onClick={() => {
+              if (customer.email) {
+                window.location.href = `mailto:${customer.email}`
+              } else {
+                alert('No email address available for this customer')
+              }
+            }}
+          >
             <Mail className="h-4 w-4 mr-2" />
             Send Email
           </Button>
-          <Button className="btn-primary-modern">
+          <Button 
+            className="btn-primary-modern"
+            onClick={() => {
+              // Store customer info in localStorage for the quote creation
+              localStorage.setItem('selected_customer', JSON.stringify({
+                id: customer.id,
+                name: customer.name,
+                email: customer.email,
+                phone: customer.phone,
+                address: customer.address
+              }))
+              router.push('/create-quote')
+            }}
+          >
             <Plus className="h-4 w-4 mr-2" />
             New Quote
           </Button>
@@ -459,7 +481,19 @@ export default function CustomerDetailPage() {
                 <div className="text-center py-8">
                   <FileText className="h-12 w-12 text-gray-600 mx-auto mb-4" />
                   <p className="text-gray-200 mb-4">No quotes yet for this customer</p>
-                  <Button className="btn-primary-modern">
+                  <Button 
+                    className="btn-primary-modern"
+                    onClick={() => {
+                      localStorage.setItem('selected_customer', JSON.stringify({
+                        id: customer.id,
+                        name: customer.name,
+                        email: customer.email,
+                        phone: customer.phone,
+                        address: customer.address
+                      }))
+                      router.push('/create-quote')
+                    }}
+                  >
                     <Plus className="h-4 w-4 mr-2" />
                     Create First Quote
                   </Button>
@@ -508,7 +542,14 @@ export default function CustomerDetailPage() {
                   Track all interactions with this customer
                 </CardDescription>
               </div>
-              <Button className="btn-primary-modern" size="sm">
+              <Button 
+                className="btn-primary-modern" 
+                size="sm"
+                onClick={() => {
+                  // For now, show an alert. In production, this would open a modal
+                  alert('Activity logging coming soon! This will allow you to track calls, emails, and meetings with this customer.')
+                }}
+              >
                 <Plus className="h-4 w-4 mr-2" />
                 Log Activity
               </Button>
