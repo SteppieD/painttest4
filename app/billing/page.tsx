@@ -39,7 +39,21 @@ function BillingContent() {
 
   const fetchSubscriptionInfo = useCallback(async () => {
     try {
-      const response = await fetch('/api/stripe/subscription-info');
+      // Get company data from localStorage to send in header
+      const companyData = localStorage.getItem('paintquote_company');
+      if (!companyData) {
+        return;
+      }
+      const parsedCompany = JSON.parse(companyData);
+      
+      const response = await fetch('/api/stripe/subscription-info', {
+        headers: {
+          'x-company-data': JSON.stringify({
+            id: parsedCompany.id,
+            access_code: parsedCompany.access_code
+          })
+        }
+      });
       if (response.ok) {
         const data = await response.json();
         setSubscriptionInfo(data.subscription ? {
@@ -92,10 +106,19 @@ function BillingContent() {
   const handleSelectPlan = async (plan: string, billingPeriod: 'monthly' | 'yearly') => {
     setIsProcessing(true);
     try {
+      const companyData = localStorage.getItem('paintquote_company');
+      const parsedCompany = companyData ? JSON.parse(companyData) : null;
+      
       const response = await fetch('/api/stripe/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(parsedCompany && {
+            'x-company-data': JSON.stringify({
+              id: parsedCompany.id,
+              access_code: parsedCompany.access_code
+            })
+          })
         },
         body: JSON.stringify({ plan, billingPeriod }),
       });
@@ -123,8 +146,19 @@ function BillingContent() {
   const handleManageBilling = async () => {
     setIsProcessing(true);
     try {
+      const companyData = localStorage.getItem('paintquote_company');
+      const parsedCompany = companyData ? JSON.parse(companyData) : null;
+      
       const response = await fetch('/api/stripe/create-portal-session', {
         method: 'POST',
+        headers: {
+          ...(parsedCompany && {
+            'x-company-data': JSON.stringify({
+              id: parsedCompany.id,
+              access_code: parsedCompany.access_code
+            })
+          })
+        }
       });
 
       if (response.ok) {
@@ -204,7 +238,7 @@ function BillingContent() {
               ) : (
                 <BillingOverview
                   subscription={subscriptionInfo}
-                  usage={usageStats!}
+                  usage={usageStats || { quotesThisMonth: 0, quotesLimit: 50, plan: 'professional' }}
                   onManageBilling={handleManageBilling}
                   onUpgrade={handleUpgrade}
                   isLoading={isProcessing}
