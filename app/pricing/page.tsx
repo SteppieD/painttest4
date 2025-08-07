@@ -123,18 +123,23 @@ export default function PricingPage() {
     } else if (planKey === 'enterprise') {
       router.push('/contact?interest=enterprise')
     } else if (planKey === 'professional') {
-      // Professional plan Stripe links - using test mode
+      // Professional plan Stripe links
       if (billingPeriod === 'monthly') {
-        window.location.href = 'https://buy.stripe.com/test_cN2bJ13Ombnu7io144'
+        // Use environment variable if available, otherwise fallback to hardcoded link
+        const link = process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK || 'https://buy.stripe.com/test_cN2bJ13Ombnu7io144'
+        window.location.href = link
       } else {
-        window.location.href = 'https://buy.stripe.com/test_28o28r5Ww4T67io8wx'
+        const link = process.env.NEXT_PUBLIC_STRIPE_PRO_YEARLY_LINK || 'https://buy.stripe.com/test_28o28r5Ww4T67io8wx'
+        window.location.href = link
       }
     } else if (planKey === 'business') {
-      // Business plan Stripe links - using provided URLs
+      // Business plan Stripe links
       if (billingPeriod === 'monthly') {
-        window.location.href = 'https://buy.stripe.com/test_8wM9AVdoY9769qA8wy'
+        const link = process.env.NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_LINK || 'https://buy.stripe.com/test_8wM9AVdoY9769qA8wy'
+        window.location.href = link
       } else {
-        window.location.href = 'https://buy.stripe.com/test_3cs9AV0Cc3OW5ag9AD'
+        const link = process.env.NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_LINK || 'https://buy.stripe.com/test_3cs9AV0Cc3OW5ag9AD'
+        window.location.href = link
       }
     }
   }
