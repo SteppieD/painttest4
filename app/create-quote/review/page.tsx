@@ -9,9 +9,107 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ArrowLeft, Send, Download, Save, Edit2, Check, X, Eye, EyeOff, FileText, Settings, Palette, Clock, Shield, CreditCard, Phone, Mail, MapPin, Calendar, CheckCircle2 } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
+import { 
+  ArrowLeft, Send, Download, Save, Edit2, Check, X, Eye, Settings, 
+  Lock, Crown, Zap, Building2, Phone, Mail, MapPin, Calendar, 
+  CheckCircle2, FileText, Sparkles, TrendingUp, DollarSign,
+  Clock, Shield, CreditCard, Star, Palette, Image, Globe,
+  BarChart3, MessageSquare, Users, Briefcase
+} from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
 import Link from 'next/link'
+
+// Subscription tiers with available features
+const SUBSCRIPTION_TIERS = {
+  free: {
+    name: 'Free',
+    features: {
+      basicQuote: true,
+      customBranding: false,
+      advancedPricing: false,
+      customerPortal: false,
+      digitalSignatures: false,
+      paymentIntegration: false,
+      analytics: false,
+      customTerms: false,
+      multipleTemplates: false,
+      bulkQuoting: false,
+      apiAccess: false,
+      whiteLabel: false,
+      customWorkflows: false,
+      teamCollaboration: false,
+      advancedReporting: false
+    }
+  },
+  professional: {
+    name: 'Professional',
+    badge: 'Pro',
+    color: 'bg-blue-500',
+    features: {
+      basicQuote: true,
+      customBranding: true,
+      advancedPricing: true,
+      customerPortal: true,
+      digitalSignatures: true,
+      paymentIntegration: false,
+      analytics: true,
+      customTerms: true,
+      multipleTemplates: true,
+      bulkQuoting: false,
+      apiAccess: false,
+      whiteLabel: false,
+      customWorkflows: false,
+      teamCollaboration: true,
+      advancedReporting: false
+    }
+  },
+  business: {
+    name: 'Business',
+    badge: 'Business',
+    color: 'bg-purple-500',
+    features: {
+      basicQuote: true,
+      customBranding: true,
+      advancedPricing: true,
+      customerPortal: true,
+      digitalSignatures: true,
+      paymentIntegration: true,
+      analytics: true,
+      customTerms: true,
+      multipleTemplates: true,
+      bulkQuoting: true,
+      apiAccess: true,
+      whiteLabel: true,
+      customWorkflows: true,
+      teamCollaboration: true,
+      advancedReporting: true
+    }
+  },
+  enterprise: {
+    name: 'Enterprise',
+    badge: 'Enterprise',
+    color: 'bg-gradient-to-r from-amber-500 to-orange-500',
+    features: {
+      basicQuote: true,
+      customBranding: true,
+      advancedPricing: true,
+      customerPortal: true,
+      digitalSignatures: true,
+      paymentIntegration: true,
+      analytics: true,
+      customTerms: true,
+      multipleTemplates: true,
+      bulkQuoting: true,
+      apiAccess: true,
+      whiteLabel: true,
+      customWorkflows: true,
+      teamCollaboration: true,
+      advancedReporting: true
+    }
+  }
+}
 
 function QuoteReviewContent() {
   const router = useRouter()
@@ -24,32 +122,72 @@ function QuoteReviewContent() {
   const [sendSuccess, setSendSuccess] = useState(false)
   const [sendError, setSendError] = useState('')
   
-  // Visibility settings for customer view
+  // Get user subscription tier from localStorage (would come from auth/API in production)
+  const [userTier, setUserTier] = useState<keyof typeof SUBSCRIPTION_TIERS>('free')
+  
+  useEffect(() => {
+    // Get subscription tier from company data
+    const companyData = localStorage.getItem('paintquote_company')
+    if (companyData) {
+      const company = JSON.parse(companyData)
+      // Determine tier based on access code or subscription level
+      if (company.access_code === 'DEMO2024') {
+        setUserTier('professional') // Demo gets Professional features
+      } else if (company.subscription_tier) {
+        setUserTier(company.subscription_tier)
+      }
+    }
+  }, [])
+  
+  // Check if feature is available for user's tier
+  const hasFeature = (feature: keyof typeof SUBSCRIPTION_TIERS.free.features) => {
+    return SUBSCRIPTION_TIERS[userTier].features[feature]
+  }
+  
+  // Visibility settings with tier restrictions
   const [visibilitySettings, setVisibilitySettings] = useState({
     showMaterialsBreakdown: true,
     showLaborBreakdown: true,
-    showPaintDetails: true,
+    showPaintDetails: hasFeature('advancedPricing'),
     showHourlyRates: false,
     showMarkup: false,
     showTimeline: true,
     showWarranty: true,
     showPaymentTerms: true,
     showCompanyInfo: true,
-    showLicense: true,
-    showInsurance: true,
+    showLicense: hasFeature('customBranding'),
+    showInsurance: hasFeature('customBranding'),
+    showDigitalSignature: hasFeature('digitalSignatures'),
+    showCustomerPortal: hasFeature('customerPortal'),
+    showPaymentButton: hasFeature('paymentIntegration'),
   })
 
-  // Additional quote settings
+  // Company branding settings
+  const [companySettings, setCompanySettings] = useState({
+    companyName: 'PaintQuote Pro',
+    tagline: 'Professional Painting Services',
+    logo: null as string | null,
+    primaryColor: '#3B82F6', // Blue
+    secondaryColor: '#10B981', // Green
+    companyPhone: '1-800-PAINT-PRO',
+    companyEmail: 'quotes@paintquotepro.com',
+    companyWebsite: 'www.paintquotepro.com',
+    companyAddress: '123 Business Ave, Suite 100, Austin, TX 78701',
+    licenseNumber: 'LIC#123456',
+    insuranceInfo: 'Fully insured and bonded - $2M liability',
+    taxId: 'TAX-ID-123456',
+  })
+
+  // Quote settings
   const [quoteSettings, setQuoteSettings] = useState({
+    quoteTemplate: 'modern', // modern, classic, minimal
     validityDays: 30,
     depositPercentage: 25,
     warranty: '2 years on labor, manufacturer warranty on materials',
     paymentTerms: '25% deposit, 50% on start, 25% on completion',
-    licenseNumber: 'LIC#123456',
-    insuranceInfo: 'Fully insured and bonded - $2M liability',
-    companyPhone: '1-800-PAINT-PRO',
-    companyEmail: 'quotes@paintquotepro.com',
-    companyAddress: '123 Business Ave, Suite 100, Austin, TX 78701',
+    paymentMethods: 'Cash, Check, Credit Card, ACH Transfer',
+    termsAndConditions: 'Standard terms and conditions apply. See website for details.',
+    notes: '',
   })
 
   useEffect(() => {
@@ -197,6 +335,10 @@ function QuoteReviewContent() {
           else parsed.pricing.timeline = '7-10 days'
         }
         
+        // Generate quote number
+        parsed.quoteNumber = `PQ-${Date.now().toString().slice(-6)}`
+        parsed.quoteDate = new Date().toISOString()
+        
         setQuoteData(parsed)
       } catch (error) {
         console.error('Error parsing quote data:', error)
@@ -283,16 +425,10 @@ function QuoteReviewContent() {
             ...quoteData,
             visibilitySettings,
             quoteSettings,
-            id: Date.now().toString()
+            companySettings,
+            userTier,
           },
-          companyInfo: {
-            name: 'PaintQuote Pro',
-            phone: quoteSettings.companyPhone,
-            email: quoteSettings.companyEmail,
-            address: quoteSettings.companyAddress,
-            license: quoteSettings.licenseNumber,
-            insurance: quoteSettings.insuranceInfo,
-          }
+          companyInfo: companySettings,
         })
       })
       
@@ -304,6 +440,12 @@ function QuoteReviewContent() {
           title: 'Quote Sent Successfully!',
           description: `The quote has been sent to ${quoteData.customerEmail}`,
         })
+        
+        // Track analytics if available
+        if (hasFeature('analytics')) {
+          // Track quote sent event
+          console.log('Analytics: Quote sent', quoteData.quoteNumber)
+        }
         
         // Also create the quote in the database
         await createQuote()
@@ -340,6 +482,8 @@ function QuoteReviewContent() {
           ...quoteData,
           visibilitySettings,
           quoteSettings,
+          companySettings,
+          userTier,
         },
         conversationHistory: []
       }
@@ -388,11 +532,29 @@ function QuoteReviewContent() {
     localStorage.setItem('quote_draft', JSON.stringify({
       ...quoteData,
       visibilitySettings,
-      quoteSettings
+      quoteSettings,
+      companySettings,
     }))
     toast({
       title: 'Draft Saved',
       description: 'Your quote draft has been saved.',
+    })
+  }
+  
+  const downloadPDF = () => {
+    if (!hasFeature('basicQuote')) {
+      toast({
+        title: 'Upgrade Required',
+        description: 'PDF download requires a paid subscription.',
+        variant: 'destructive'
+      })
+      return
+    }
+    
+    // In production, this would generate a real PDF
+    toast({
+      title: 'Downloading PDF',
+      description: 'Your quote PDF is being generated...',
     })
   }
 
@@ -424,26 +586,27 @@ function QuoteReviewContent() {
   })
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-64 h-64 lg:w-96 lg:h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-64 h-64 lg:w-96 lg:h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="glass-card rounded-none border-b border-white/10 relative z-20">
+      <header className="bg-white border-b sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/create-quote">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-gray-900/70">
+                <Button variant="ghost" size="icon">
                   <ArrowLeft className="h-5 w-5" />
                 </Button>
               </Link>
               <div>
-                <h1 className="text-xl font-semibold text-white">Review & Customize Quote</h1>
-                <p className="text-sm text-gray-400">Configure what your customer will see</p>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-xl font-semibold">Quote #{quoteData.quoteNumber}</h1>
+                  {userTier !== 'free' && (
+                    <Badge className={SUBSCRIPTION_TIERS[userTier].color}>
+                      {SUBSCRIPTION_TIERS[userTier].badge}
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-sm text-gray-500">Review and customize your professional quote</p>
               </div>
             </div>
             
@@ -452,7 +615,6 @@ function QuoteReviewContent() {
               <Button
                 onClick={saveDraft}
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white/10"
                 disabled={isLoading}
               >
                 <Save className="h-4 w-4 mr-2" />
@@ -460,9 +622,18 @@ function QuoteReviewContent() {
               </Button>
               
               <Button
+                onClick={downloadPDF}
+                variant="outline"
+                disabled={isLoading}
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Download PDF
+              </Button>
+              
+              <Button
                 onClick={sendQuoteEmail}
                 disabled={isLoading || isSending || sendSuccess}
-                className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
               >
                 <Send className="h-4 w-4 mr-2" />
                 {isSending ? 'Sending...' : sendSuccess ? 'Sent!' : 'Send to Customer'}
@@ -473,275 +644,468 @@ function QuoteReviewContent() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6 relative z-10">
+      <main className="container mx-auto px-4 py-6">
         <Tabs defaultValue="preview" className="space-y-6">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-gray-900/80 border border-white/10">
-            <TabsTrigger value="preview" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
+            <TabsTrigger value="preview">
               <Eye className="h-4 w-4 mr-2" />
               Preview
             </TabsTrigger>
-            <TabsTrigger value="edit" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500">
+            <TabsTrigger value="edit">
               <Edit2 className="h-4 w-4 mr-2" />
               Edit
             </TabsTrigger>
-            <TabsTrigger value="settings" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500">
+            <TabsTrigger value="settings">
               <Settings className="h-4 w-4 mr-2" />
-              Settings
+              Customize
             </TabsTrigger>
           </TabsList>
 
-          {/* Preview Tab - Customer View */}
+          {/* Preview Tab - Professional Invoice Layout */}
           <TabsContent value="preview" className="space-y-6">
-            <Card className="bg-white text-gray-900 max-w-4xl mx-auto">
-              <CardContent className="p-8">
-                {/* Company Header */}
-                <div className="text-center mb-8 pb-8 border-b">
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">PaintQuote Pro</h1>
-                  <p className="text-gray-600">Professional Painting Services</p>
-                  {visibilitySettings.showCompanyInfo && (
-                    <div className="mt-4 space-y-1 text-sm text-gray-600">
-                      <p>{quoteSettings.companyPhone} • {quoteSettings.companyEmail}</p>
-                      <p>{quoteSettings.companyAddress}</p>
-                      {visibilitySettings.showLicense && <p>License: {quoteSettings.licenseNumber}</p>}
-                      {visibilitySettings.showInsurance && <p>{quoteSettings.insuranceInfo}</p>}
+            <Card className="max-w-5xl mx-auto shadow-xl">
+              <CardContent className="p-0">
+                {/* Invoice Header with Branding */}
+                <div 
+                  className="p-8 text-white"
+                  style={{ 
+                    background: hasFeature('customBranding') 
+                      ? `linear-gradient(135deg, ${companySettings.primaryColor}, ${companySettings.secondaryColor})`
+                      : 'linear-gradient(135deg, #3B82F6, #10B981)'
+                  }}
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h1 className="text-3xl font-bold mb-1">
+                        {hasFeature('customBranding') ? companySettings.companyName : 'PaintQuote Pro'}
+                      </h1>
+                      <p className="text-white/90">
+                        {hasFeature('customBranding') ? companySettings.tagline : 'Professional Painting Services'}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="bg-white/20 backdrop-blur rounded-lg px-4 py-2 mb-2">
+                        <p className="text-2xl font-bold">QUOTE</p>
+                      </div>
+                      <p className="text-white/90">#{quoteData.quoteNumber}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  {/* Quote Details Grid */}
+                  <div className="grid md:grid-cols-2 gap-8 mb-8">
+                    {/* Bill To */}
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Bill To</h3>
+                      <div className="space-y-1">
+                        <p className="font-semibold text-lg">{quoteData.customerName || 'Customer Name'}</p>
+                        {quoteData.customerEmail && (
+                          <p className="text-gray-600 flex items-center gap-2">
+                            <Mail className="h-4 w-4" />
+                            {quoteData.customerEmail}
+                          </p>
+                        )}
+                        {quoteData.customerPhone && (
+                          <p className="text-gray-600 flex items-center gap-2">
+                            <Phone className="h-4 w-4" />
+                            {quoteData.customerPhone}
+                          </p>
+                        )}
+                        {quoteData.address && (
+                          <p className="text-gray-600 flex items-center gap-2">
+                            <MapPin className="h-4 w-4" />
+                            {quoteData.address}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Quote Info */}
+                    <div className="text-right">
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Quote Information</h3>
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Quote Date:</span>
+                          <span className="font-medium">{quoteDate}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Valid Until:</span>
+                          <span className="font-medium">{validUntil}</span>
+                        </div>
+                        {hasFeature('advancedPricing') && (
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Project Type:</span>
+                            <span className="font-medium capitalize">{quoteData.projectType} Painting</span>
+                          </div>
+                        )}
+                        {quoteData.pricing?.timeline && (
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Timeline:</span>
+                            <span className="font-medium">{quoteData.pricing.timeline}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Company Info (if enabled) */}
+                  {visibilitySettings.showCompanyInfo && hasFeature('customBranding') && (
+                    <div className="mb-8 p-4 bg-gray-50 rounded-lg">
+                      <div className="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                          <p className="text-gray-500">Contact</p>
+                          <p className="font-medium">{companySettings.companyPhone}</p>
+                          <p className="font-medium">{companySettings.companyEmail}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Address</p>
+                          <p className="font-medium">{companySettings.companyAddress}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Credentials</p>
+                          {visibilitySettings.showLicense && <p className="font-medium">License: {companySettings.licenseNumber}</p>}
+                          {visibilitySettings.showInsurance && <p className="font-medium text-xs">{companySettings.insuranceInfo}</p>}
+                        </div>
+                      </div>
                     </div>
                   )}
-                </div>
 
-                {/* Quote Header */}
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-                  <div>
-                    <h2 className="text-lg font-semibold mb-4">Quote For:</h2>
-                    <div className="space-y-2">
-                      <p className="font-medium">{quoteData.customerName || 'Valued Customer'}</p>
-                      {quoteData.customerEmail && <p className="text-gray-600">{quoteData.customerEmail}</p>}
-                      {quoteData.customerPhone && <p className="text-gray-600">{quoteData.customerPhone}</p>}
-                      {quoteData.address && <p className="text-gray-600">{quoteData.address}</p>}
+                  {/* Line Items Table */}
+                  <div className="mb-8">
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Services & Materials</h3>
+                    <div className="border rounded-lg overflow-hidden">
+                      <table className="w-full">
+                        <thead className="bg-gray-50 border-b">
+                          <tr>
+                            <th className="text-left py-3 px-4 font-medium text-gray-700">Description</th>
+                            {hasFeature('advancedPricing') && (
+                              <>
+                                <th className="text-right py-3 px-4 font-medium text-gray-700">Qty</th>
+                                <th className="text-right py-3 px-4 font-medium text-gray-700">Rate</th>
+                              </>
+                            )}
+                            <th className="text-right py-3 px-4 font-medium text-gray-700">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                          {/* Materials Section */}
+                          {visibilitySettings.showMaterialsBreakdown && quoteData.pricing?.breakdown ? (
+                            <>
+                              {quoteData.pricing.breakdown.wallPaint && (
+                                <tr>
+                                  <td className="py-3 px-4">
+                                    <p className="font-medium">Wall Paint</p>
+                                    {visibilitySettings.showPaintDetails && (
+                                      <p className="text-sm text-gray-600">
+                                        {quoteData.pricing.breakdown.wallPaint.product} - {quoteData.pricing.breakdown.wallPaint.finish}
+                                      </p>
+                                    )}
+                                  </td>
+                                  {hasFeature('advancedPricing') && (
+                                    <>
+                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.wallPaint.gallons} gal</td>
+                                      <td className="text-right py-3 px-4">${quoteData.pricing.breakdown.wallPaint.costPerGallon}</td>
+                                    </>
+                                  )}
+                                  <td className="text-right py-3 px-4 font-medium">
+                                    ${quoteData.pricing.breakdown.wallPaint.cost.toFixed(2)}
+                                  </td>
+                                </tr>
+                              )}
+                              
+                              {quoteData.pricing.breakdown.ceilingPaint && (
+                                <tr>
+                                  <td className="py-3 px-4">
+                                    <p className="font-medium">Ceiling Paint</p>
+                                    {visibilitySettings.showPaintDetails && (
+                                      <p className="text-sm text-gray-600">
+                                        {quoteData.pricing.breakdown.ceilingPaint.product} - {quoteData.pricing.breakdown.ceilingPaint.finish}
+                                      </p>
+                                    )}
+                                  </td>
+                                  {hasFeature('advancedPricing') && (
+                                    <>
+                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.ceilingPaint.gallons} gal</td>
+                                      <td className="text-right py-3 px-4">${quoteData.pricing.breakdown.ceilingPaint.costPerGallon}</td>
+                                    </>
+                                  )}
+                                  <td className="text-right py-3 px-4 font-medium">
+                                    ${quoteData.pricing.breakdown.ceilingPaint.cost.toFixed(2)}
+                                  </td>
+                                </tr>
+                              )}
+                              
+                              {quoteData.pricing.breakdown.primer && (
+                                <tr>
+                                  <td className="py-3 px-4">
+                                    <p className="font-medium">Primer</p>
+                                    <p className="text-sm text-gray-600">Professional grade primer</p>
+                                  </td>
+                                  {hasFeature('advancedPricing') && (
+                                    <>
+                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.primer.gallons} gal</td>
+                                      <td className="text-right py-3 px-4">${quoteData.pricing.breakdown.primer.costPerGallon}</td>
+                                    </>
+                                  )}
+                                  <td className="text-right py-3 px-4 font-medium">
+                                    ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}
+                                  </td>
+                                </tr>
+                              )}
+                              
+                              {quoteData.pricing.breakdown.supplies && (
+                                <tr>
+                                  <td className="py-3 px-4">
+                                    <p className="font-medium">Supplies & Equipment</p>
+                                    <p className="text-sm text-gray-600">Brushes, rollers, tape, drop cloths, etc.</p>
+                                  </td>
+                                  {hasFeature('advancedPricing') && (
+                                    <>
+                                      <td className="text-right py-3 px-4">1</td>
+                                      <td className="text-right py-3 px-4">-</td>
+                                    </>
+                                  )}
+                                  <td className="text-right py-3 px-4 font-medium">
+                                    ${quoteData.pricing.breakdown.supplies.toFixed(2)}
+                                  </td>
+                                </tr>
+                              )}
+                            </>
+                          ) : (
+                            <tr>
+                              <td className="py-3 px-4">
+                                <p className="font-medium">Materials</p>
+                                <p className="text-sm text-gray-600">Paint, primer, and supplies</p>
+                              </td>
+                              {hasFeature('advancedPricing') && (
+                                <>
+                                  <td className="text-right py-3 px-4">-</td>
+                                  <td className="text-right py-3 px-4">-</td>
+                                </>
+                              )}
+                              <td className="text-right py-3 px-4 font-medium">
+                                ${getTotal(quoteData.pricing?.materials).toFixed(2)}
+                              </td>
+                            </tr>
+                          )}
+
+                          {/* Labor Section */}
+                          {visibilitySettings.showLaborBreakdown && quoteData.pricing?.breakdown ? (
+                            <>
+                              {quoteData.pricing.breakdown.prepWork && (
+                                <tr>
+                                  <td className="py-3 px-4">
+                                    <p className="font-medium">Prep Work</p>
+                                    <p className="text-sm text-gray-600">Surface preparation, patching, sanding</p>
+                                  </td>
+                                  {hasFeature('advancedPricing') && (
+                                    <>
+                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.prepWork.hours} hrs</td>
+                                      <td className="text-right py-3 px-4">
+                                        {visibilitySettings.showHourlyRates ? `$${quoteData.pricing.breakdown.prepWork.rate}/hr` : '-'}
+                                      </td>
+                                    </>
+                                  )}
+                                  <td className="text-right py-3 px-4 font-medium">
+                                    ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}
+                                  </td>
+                                </tr>
+                              )}
+                              
+                              {quoteData.pricing.breakdown.painting && (
+                                <tr>
+                                  <td className="py-3 px-4">
+                                    <p className="font-medium">Painting Labor</p>
+                                    <p className="text-sm text-gray-600">Professional painting application</p>
+                                  </td>
+                                  {hasFeature('advancedPricing') && (
+                                    <>
+                                      <td className="text-right py-3 px-4">{quoteData.pricing.breakdown.painting.hours} hrs</td>
+                                      <td className="text-right py-3 px-4">
+                                        {visibilitySettings.showHourlyRates ? `$${quoteData.pricing.breakdown.painting.rate}/hr` : '-'}
+                                      </td>
+                                    </>
+                                  )}
+                                  <td className="text-right py-3 px-4 font-medium">
+                                    ${quoteData.pricing.breakdown.painting.cost.toFixed(2)}
+                                  </td>
+                                </tr>
+                              )}
+                            </>
+                          ) : (
+                            <tr>
+                              <td className="py-3 px-4">
+                                <p className="font-medium">Labor</p>
+                                <p className="text-sm text-gray-600">Professional painting services</p>
+                              </td>
+                              {hasFeature('advancedPricing') && (
+                                <>
+                                  <td className="text-right py-3 px-4">-</td>
+                                  <td className="text-right py-3 px-4">-</td>
+                                </>
+                              )}
+                              <td className="text-right py-3 px-4 font-medium">
+                                ${getTotal(quoteData.pricing?.labor).toFixed(2)}
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                  
-                  <div className="text-right">
-                    <h2 className="text-lg font-semibold mb-4">Quote Details:</h2>
-                    <div className="space-y-2 text-gray-600">
-                      <p>Quote #: PQ-{Date.now().toString().slice(-6)}</p>
-                      <p>Date: {quoteDate}</p>
-                      <p>Valid Until: {validUntil}</p>
+
+                  {/* Totals Section */}
+                  <div className="mb-8">
+                    <div className="ml-auto max-w-sm">
+                      <div className="space-y-2">
+                        <div className="flex justify-between py-2">
+                          <span className="text-gray-600">Subtotal</span>
+                          <span className="font-medium">${quoteData.pricing?.subtotal?.toFixed(2) || '0.00'}</span>
+                        </div>
+                        
+                        {visibilitySettings.showMarkup && quoteData.pricing?.markup > 0 && (
+                          <div className="flex justify-between py-2 border-t">
+                            <span className="text-gray-600">Overhead & Profit ({quoteData.pricing.markupPercentage}%)</span>
+                            <span className="font-medium">${quoteData.pricing.markup.toFixed(2)}</span>
+                          </div>
+                        )}
+                        
+                        <div className="flex justify-between py-3 border-t-2 border-gray-900">
+                          <span className="text-xl font-bold">Total</span>
+                          <span className="text-2xl font-bold text-blue-600">
+                            ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
+                          </span>
+                        </div>
+                        
+                        {hasFeature('paymentIntegration') && (
+                          <div className="pt-2">
+                            <p className="text-sm text-gray-600">
+                              Deposit Required ({quoteSettings.depositPercentage}%): 
+                              <span className="font-semibold ml-2">
+                                ${(quoteData.pricing?.total * (quoteSettings.depositPercentage / 100)).toFixed(2)}
+                              </span>
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Project Scope */}
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold mb-4">Project Scope</h2>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="grid md:grid-cols-2 gap-4">
+                  {/* Terms and Conditions */}
+                  <div className="grid md:grid-cols-2 gap-8 mb-8">
+                    {/* Payment Terms */}
+                    {visibilitySettings.showPaymentTerms && (
                       <div>
-                        <p className="font-medium mb-2">Project Type:</p>
-                        <p className="text-gray-700 capitalize">{quoteData.projectType} Painting</p>
+                        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Payment Terms</h3>
+                        <div className="p-4 bg-gray-50 rounded-lg space-y-2">
+                          <p className="text-sm">{quoteSettings.paymentTerms}</p>
+                          <p className="text-sm text-gray-600">Accepted: {quoteSettings.paymentMethods}</p>
+                        </div>
                       </div>
+                    )}
+
+                    {/* Warranty */}
+                    {visibilitySettings.showWarranty && (
                       <div>
-                        <p className="font-medium mb-2">Square Footage:</p>
-                        <p className="text-gray-700">{quoteData.measurements?.wallSqft || 0} sq ft</p>
+                        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Warranty</h3>
+                        <div className="p-4 bg-green-50 rounded-lg">
+                          <p className="text-sm">{quoteSettings.warranty}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-medium mb-2">Surfaces:</p>
-                        <p className="text-gray-700 capitalize">{quoteData.surfaces?.join(', ') || 'Walls'}</p>
-                      </div>
-                      <div>
-                        <p className="font-medium mb-2">Prep Work:</p>
-                        <p className="text-gray-700 capitalize">{quoteData.prepWork || 'Standard'}</p>
+                    )}
+                  </div>
+
+                  {/* Notes */}
+                  {quoteSettings.notes && (
+                    <div className="mb-8">
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Additional Notes</h3>
+                      <div className="p-4 bg-yellow-50 rounded-lg">
+                        <p className="text-sm">{quoteSettings.notes}</p>
                       </div>
                     </div>
+                  )}
+
+                  {/* Call to Action */}
+                  <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-6 text-center">
+                    <h3 className="text-xl font-semibold mb-2">Ready to Transform Your Space?</h3>
+                    <p className="text-gray-600 mb-4">This quote is valid until {validUntil}</p>
                     
-                    {quoteData.specialRequests && quoteData.specialRequests.length > 0 && (
-                      <div className="mt-4">
-                        <p className="font-medium mb-2">Special Requirements:</p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-1">
-                          {quoteData.specialRequests.map((req: string, idx: number) => (
-                            <li key={idx}>{req}</li>
-                          ))}
-                        </ul>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                      {hasFeature('digitalSignatures') && visibilitySettings.showDigitalSignature && (
+                        <Button className="bg-green-600 hover:bg-green-700 text-white">
+                          <CheckCircle2 className="h-4 w-4 mr-2" />
+                          Accept & Sign Quote
+                        </Button>
+                      )}
+                      
+                      {hasFeature('customerPortal') && visibilitySettings.showCustomerPortal && (
+                        <Button variant="outline">
+                          <Globe className="h-4 w-4 mr-2" />
+                          View in Customer Portal
+                        </Button>
+                      )}
+                      
+                      {hasFeature('paymentIntegration') && visibilitySettings.showPaymentButton && (
+                        <Button variant="outline">
+                          <CreditCard className="h-4 w-4 mr-2" />
+                          Pay Deposit Now
+                        </Button>
+                      )}
+                      
+                      {!hasFeature('digitalSignatures') && !hasFeature('customerPortal') && (
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                          <Phone className="h-4 w-4 mr-2" />
+                          Contact Us to Accept
+                        </Button>
+                      )}
+                    </div>
+
+                    {userTier === 'free' && (
+                      <div className="mt-4 p-3 bg-white/50 rounded-lg">
+                        <p className="text-sm text-gray-600">
+                          <Lock className="h-4 w-4 inline mr-1" />
+                          Upgrade to Professional to enable digital signatures and customer portal
+                        </p>
                       </div>
                     )}
                   </div>
-                </div>
 
-                {/* Cost Breakdown */}
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold mb-4">Cost Breakdown</h2>
-                  <div className="space-y-3">
-                    {/* Materials */}
-                    {visibilitySettings.showMaterialsBreakdown ? (
-                      <div className="border-b pb-3">
-                        <div className="flex justify-between items-start mb-2">
-                          <div>
-                            <p className="font-medium">Materials</p>
-                            {visibilitySettings.showPaintDetails && quoteData.pricing?.breakdown && (
-                              <div className="mt-2 space-y-1 text-sm text-gray-600">
-                                {quoteData.pricing.breakdown.wallPaint && (
-                                  <p>• Wall Paint ({quoteData.pricing.breakdown.wallPaint.gallons} gal): ${quoteData.pricing.breakdown.wallPaint.cost.toFixed(2)}</p>
-                                )}
-                                {quoteData.pricing.breakdown.ceilingPaint && (
-                                  <p>• Ceiling Paint ({quoteData.pricing.breakdown.ceilingPaint.gallons} gal): ${quoteData.pricing.breakdown.ceilingPaint.cost.toFixed(2)}</p>
-                                )}
-                                {quoteData.pricing.breakdown.primer && (
-                                  <p>• Primer ({quoteData.pricing.breakdown.primer.gallons} gal): ${quoteData.pricing.breakdown.primer.cost.toFixed(2)}</p>
-                                )}
-                                {quoteData.pricing.breakdown.supplies && (
-                                  <p>• Supplies & Equipment: ${quoteData.pricing.breakdown.supplies.toFixed(2)}</p>
-                                )}
-                              </div>
-                            )}
-                          </div>
-                          <p className="font-semibold">${getTotal(quoteData.pricing?.materials).toFixed(2)}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="border-b pb-3">
-                        <div className="flex justify-between">
-                          <p className="font-medium">Materials</p>
-                          <p className="font-semibold">${getTotal(quoteData.pricing?.materials).toFixed(2)}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Labor */}
-                    {visibilitySettings.showLaborBreakdown ? (
-                      <div className="border-b pb-3">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <p className="font-medium">Labor</p>
-                            {quoteData.pricing?.breakdown && (
-                              <div className="mt-2 space-y-1 text-sm text-gray-600">
-                                {quoteData.pricing.breakdown.prepWork && (
-                                  <p>• Prep Work ({quoteData.pricing.breakdown.prepWork.hours} hrs{visibilitySettings.showHourlyRates && ` @ $${quoteData.pricing.breakdown.prepWork.rate}/hr`}): ${quoteData.pricing.breakdown.prepWork.cost.toFixed(2)}</p>
-                                )}
-                                {quoteData.pricing.breakdown.painting && (
-                                  <p>• Painting ({quoteData.pricing.breakdown.painting.hours} hrs{visibilitySettings.showHourlyRates && ` @ $${quoteData.pricing.breakdown.painting.rate}/hr`}): ${quoteData.pricing.breakdown.painting.cost.toFixed(2)}</p>
-                                )}
-                              </div>
-                            )}
-                          </div>
-                          <p className="font-semibold">${getTotal(quoteData.pricing?.labor).toFixed(2)}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="border-b pb-3">
-                        <div className="flex justify-between">
-                          <p className="font-medium">Labor</p>
-                          <p className="font-semibold">${getTotal(quoteData.pricing?.labor).toFixed(2)}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Markup - Only show if enabled */}
-                    {visibilitySettings.showMarkup && quoteData.pricing?.markup > 0 && (
-                      <div className="border-b pb-3">
-                        <div className="flex justify-between">
-                          <p className="font-medium">Overhead & Profit ({quoteData.pricing.markupPercentage}%)</p>
-                          <p className="font-semibold">${quoteData.pricing.markup.toFixed(2)}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Total */}
-                    <div className="pt-3">
-                      <div className="flex justify-between items-center">
-                        <p className="text-xl font-bold">Total Investment</p>
-                        <p className="text-2xl font-bold text-green-600">${quoteData.pricing?.total?.toFixed(2) || '0.00'}</p>
-                      </div>
+                  {/* Footer */}
+                  <div className="mt-8 pt-8 border-t text-center">
+                    <div className="space-y-1 text-sm text-gray-500">
+                      <p>Thank you for considering {companySettings.companyName}</p>
+                      <p>
+                        {companySettings.companyPhone} • {companySettings.companyEmail}
+                        {hasFeature('customBranding') && companySettings.companyWebsite && (
+                          <> • {companySettings.companyWebsite}</>
+                        )}
+                      </p>
                     </div>
                   </div>
-                </div>
-
-                {/* Timeline */}
-                {visibilitySettings.showTimeline && quoteData.pricing?.timeline && (
-                  <div className="mb-8">
-                    <h2 className="text-xl font-semibold mb-4">Project Timeline</h2>
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <div className="flex items-center">
-                        <Clock className="h-5 w-5 text-blue-600 mr-2" />
-                        <p className="text-gray-700">Estimated Completion: <span className="font-semibold">{quoteData.pricing.timeline}</span></p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Payment Terms */}
-                {visibilitySettings.showPaymentTerms && (
-                  <div className="mb-8">
-                    <h2 className="text-xl font-semibold mb-4">Payment Terms</h2>
-                    <div className="bg-gray-50 p-4 rounded-lg space-y-2">
-                      <div className="flex items-center">
-                        <CreditCard className="h-5 w-5 text-gray-600 mr-2" />
-                        <p className="text-gray-700">{quoteSettings.paymentTerms}</p>
-                      </div>
-                      <p className="text-sm text-gray-600">Deposit amount: ${(quoteData.pricing?.total * (quoteSettings.depositPercentage / 100)).toFixed(2)}</p>
-                      <p className="text-sm text-gray-600">We accept cash, check, and all major credit cards</p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Warranty */}
-                {visibilitySettings.showWarranty && (
-                  <div className="mb-8">
-                    <h2 className="text-xl font-semibold mb-4">Warranty & Guarantee</h2>
-                    <div className="bg-green-50 p-4 rounded-lg">
-                      <div className="flex items-start">
-                        <Shield className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
-                        <div>
-                          <p className="text-gray-700 font-medium">{quoteSettings.warranty}</p>
-                          <p className="text-sm text-gray-600 mt-1">We stand behind our work with a comprehensive warranty</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Call to Action */}
-                <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg text-center">
-                  <h3 className="text-xl font-semibold mb-2">Ready to Transform Your Space?</h3>
-                  <p className="text-gray-600 mb-4">This quote is valid until {validUntil}</p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white">
-                      <CheckCircle2 className="h-4 w-4 mr-2" />
-                      Accept Quote
-                    </Button>
-                    <Button variant="outline">
-                      <Phone className="h-4 w-4 mr-2" />
-                      Call to Discuss
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div className="mt-8 pt-8 border-t text-center text-sm text-gray-500">
-                  <p>Thank you for considering PaintQuote Pro for your painting needs.</p>
-                  <p className="mt-2">Questions? Contact us at {quoteSettings.companyPhone} or {quoteSettings.companyEmail}</p>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Edit Tab - Edit Quote Details */}
+          {/* Edit Tab */}
           <TabsContent value="edit" className="space-y-6">
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-6 lg:grid-cols-3 max-w-7xl mx-auto">
               {/* Customer Information */}
-              <Card className="lg:col-span-2 bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
+              <Card className="lg:col-span-2">
                 <CardHeader>
-                  <CardTitle className="text-white">Customer Information</CardTitle>
+                  <CardTitle>Customer Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <Label className="text-gray-400">Customer Name</Label>
+                      <Label>Customer Name</Label>
                       <div className="flex items-center gap-2">
                         {editMode === 'customerName' ? (
                           <>
                             <Input
                               value={editedValue}
                               onChange={(e) => setEditedValue(e.target.value)}
-                              className="bg-gray-800 border-gray-700 text-white"
                             />
                             <Button size="icon" variant="ghost" onClick={() => saveEdit('customerName')}>
                               <Check className="h-4 w-4" />
@@ -752,7 +1116,7 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="text-white">{quoteData.customerName || 'Not specified'}</p>
+                            <p className="flex-1">{quoteData.customerName || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
@@ -766,14 +1130,14 @@ function QuoteReviewContent() {
                     </div>
                     
                     <div>
-                      <Label className="text-gray-400">Email</Label>
+                      <Label>Email</Label>
                       <div className="flex items-center gap-2">
                         {editMode === 'customerEmail' ? (
                           <>
                             <Input
+                              type="email"
                               value={editedValue}
                               onChange={(e) => setEditedValue(e.target.value)}
-                              className="bg-gray-800 border-gray-700 text-white"
                             />
                             <Button size="icon" variant="ghost" onClick={() => saveEdit('customerEmail')}>
                               <Check className="h-4 w-4" />
@@ -784,7 +1148,7 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="text-white">{quoteData.customerEmail || 'Not specified'}</p>
+                            <p className="flex-1">{quoteData.customerEmail || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
@@ -798,14 +1162,14 @@ function QuoteReviewContent() {
                     </div>
                     
                     <div>
-                      <Label className="text-gray-400">Phone</Label>
+                      <Label>Phone</Label>
                       <div className="flex items-center gap-2">
                         {editMode === 'customerPhone' ? (
                           <>
                             <Input
+                              type="tel"
                               value={editedValue}
                               onChange={(e) => setEditedValue(e.target.value)}
-                              className="bg-gray-800 border-gray-700 text-white"
                             />
                             <Button size="icon" variant="ghost" onClick={() => saveEdit('customerPhone')}>
                               <Check className="h-4 w-4" />
@@ -816,7 +1180,7 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="text-white">{quoteData.customerPhone || 'Not specified'}</p>
+                            <p className="flex-1">{quoteData.customerPhone || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
@@ -830,14 +1194,13 @@ function QuoteReviewContent() {
                     </div>
                     
                     <div>
-                      <Label className="text-gray-400">Address</Label>
+                      <Label>Address</Label>
                       <div className="flex items-center gap-2">
                         {editMode === 'address' ? (
                           <>
                             <Input
                               value={editedValue}
                               onChange={(e) => setEditedValue(e.target.value)}
-                              className="bg-gray-800 border-gray-700 text-white"
                             />
                             <Button size="icon" variant="ghost" onClick={() => saveEdit('address')}>
                               <Check className="h-4 w-4" />
@@ -848,7 +1211,7 @@ function QuoteReviewContent() {
                           </>
                         ) : (
                           <>
-                            <p className="text-white">{quoteData.address || 'Not specified'}</p>
+                            <p className="flex-1">{quoteData.address || 'Not specified'}</p>
                             <Button 
                               size="icon" 
                               variant="ghost" 
@@ -865,13 +1228,21 @@ function QuoteReviewContent() {
               </Card>
 
               {/* Pricing Adjustments */}
-              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
+              <Card>
                 <CardHeader>
-                  <CardTitle className="text-white">Pricing Adjustments</CardTitle>
+                  <CardTitle>Pricing</CardTitle>
+                  {hasFeature('advancedPricing') ? (
+                    <CardDescription>Adjust pricing with advanced controls</CardDescription>
+                  ) : (
+                    <CardDescription>
+                      <Lock className="h-3 w-3 inline mr-1" />
+                      Upgrade to Professional for advanced pricing
+                    </CardDescription>
+                  )}
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <Label className="text-gray-400">Materials Cost</Label>
+                    <Label>Materials Cost</Label>
                     <div className="flex items-center gap-2">
                       {editMode === 'pricing.materials.total' ? (
                         <>
@@ -879,7 +1250,7 @@ function QuoteReviewContent() {
                             type="number"
                             value={editedValue}
                             onChange={(e) => setEditedValue(e.target.value)}
-                            className="bg-gray-800 border-gray-700 text-white"
+                            disabled={!hasFeature('advancedPricing')}
                           />
                           <Button size="icon" variant="ghost" onClick={() => saveEdit('pricing.materials.total')}>
                             <Check className="h-4 w-4" />
@@ -890,21 +1261,23 @@ function QuoteReviewContent() {
                         </>
                       ) : (
                         <>
-                          <p className="text-white">${getTotal(quoteData.pricing?.materials).toFixed(2)}</p>
-                          <Button 
-                            size="icon" 
-                            variant="ghost" 
-                            onClick={() => handleEdit('pricing.materials.total', getTotal(quoteData.pricing?.materials))}
-                          >
-                            <Edit2 className="h-3 w-3" />
-                          </Button>
+                          <p className="flex-1">${getTotal(quoteData.pricing?.materials).toFixed(2)}</p>
+                          {hasFeature('advancedPricing') && (
+                            <Button 
+                              size="icon" 
+                              variant="ghost" 
+                              onClick={() => handleEdit('pricing.materials.total', getTotal(quoteData.pricing?.materials))}
+                            >
+                              <Edit2 className="h-3 w-3" />
+                            </Button>
+                          )}
                         </>
                       )}
                     </div>
                   </div>
                   
                   <div>
-                    <Label className="text-gray-400">Labor Cost</Label>
+                    <Label>Labor Cost</Label>
                     <div className="flex items-center gap-2">
                       {editMode === 'pricing.labor.total' ? (
                         <>
@@ -912,7 +1285,7 @@ function QuoteReviewContent() {
                             type="number"
                             value={editedValue}
                             onChange={(e) => setEditedValue(e.target.value)}
-                            className="bg-gray-800 border-gray-700 text-white"
+                            disabled={!hasFeature('advancedPricing')}
                           />
                           <Button size="icon" variant="ghost" onClick={() => saveEdit('pricing.labor.total')}>
                             <Check className="h-4 w-4" />
@@ -923,260 +1296,410 @@ function QuoteReviewContent() {
                         </>
                       ) : (
                         <>
-                          <p className="text-white">${getTotal(quoteData.pricing?.labor).toFixed(2)}</p>
-                          <Button 
-                            size="icon" 
-                            variant="ghost" 
-                            onClick={() => handleEdit('pricing.labor.total', getTotal(quoteData.pricing?.labor))}
-                          >
-                            <Edit2 className="h-3 w-3" />
-                          </Button>
+                          <p className="flex-1">${getTotal(quoteData.pricing?.labor).toFixed(2)}</p>
+                          {hasFeature('advancedPricing') && (
+                            <Button 
+                              size="icon" 
+                              variant="ghost" 
+                              onClick={() => handleEdit('pricing.labor.total', getTotal(quoteData.pricing?.labor))}
+                            >
+                              <Edit2 className="h-3 w-3" />
+                            </Button>
+                          )}
                         </>
                       )}
                     </div>
                   </div>
+                  
+                  {hasFeature('advancedPricing') && (
+                    <div>
+                      <Label>Markup %</Label>
+                      <div className="flex items-center gap-2">
+                        {editMode === 'pricing.markupPercentage' ? (
+                          <>
+                            <Input
+                              type="number"
+                              value={editedValue}
+                              onChange={(e) => setEditedValue(e.target.value)}
+                            />
+                            <Button size="icon" variant="ghost" onClick={() => saveEdit('pricing.markupPercentage')}>
+                              <Check className="h-4 w-4" />
+                            </Button>
+                            <Button size="icon" variant="ghost" onClick={cancelEdit}>
+                              <X className="h-4 w-4" />
+                            </Button>
+                          </>
+                        ) : (
+                          <>
+                            <p className="flex-1">{quoteData.pricing?.markupPercentage || 30}%</p>
+                            <Button 
+                              size="icon" 
+                              variant="ghost" 
+                              onClick={() => handleEdit('pricing.markupPercentage', quoteData.pricing?.markupPercentage || 30)}
+                            >
+                              <Edit2 className="h-3 w-3" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  
+                  <Separator />
                   
                   <div>
-                    <Label className="text-gray-400">Markup %</Label>
-                    <div className="flex items-center gap-2">
-                      {editMode === 'pricing.markupPercentage' ? (
-                        <>
-                          <Input
-                            type="number"
-                            value={editedValue}
-                            onChange={(e) => setEditedValue(e.target.value)}
-                            className="bg-gray-800 border-gray-700 text-white"
-                          />
-                          <Button size="icon" variant="ghost" onClick={() => saveEdit('pricing.markupPercentage')}>
-                            <Check className="h-4 w-4" />
-                          </Button>
-                          <Button size="icon" variant="ghost" onClick={cancelEdit}>
-                            <X className="h-4 w-4" />
-                          </Button>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-white">{quoteData.pricing?.markupPercentage || 30}%</p>
-                          <Button 
-                            size="icon" 
-                            variant="ghost" 
-                            onClick={() => handleEdit('pricing.markupPercentage', quoteData.pricing?.markupPercentage || 30)}
-                          >
-                            <Edit2 className="h-3 w-3" />
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="pt-4 border-t border-gray-700">
-                    <Label className="text-gray-400">Final Total</Label>
-                    <div className="flex items-center gap-2">
-                      {editMode === 'pricing.total' ? (
-                        <>
-                          <Input
-                            type="number"
-                            value={editedValue}
-                            onChange={(e) => setEditedValue(e.target.value)}
-                            className="bg-gray-800 border-gray-700 text-white"
-                          />
-                          <Button size="icon" variant="ghost" onClick={() => saveEdit('pricing.total')}>
-                            <Check className="h-4 w-4" />
-                          </Button>
-                          <Button size="icon" variant="ghost" onClick={cancelEdit}>
-                            <X className="h-4 w-4" />
-                          </Button>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-xl font-bold text-green-400">${quoteData.pricing?.total?.toFixed(2) || '0.00'}</p>
-                          <Button 
-                            size="icon" 
-                            variant="ghost" 
-                            onClick={() => handleEdit('pricing.total', quoteData.pricing?.total)}
-                          >
-                            <Edit2 className="h-3 w-3" />
-                          </Button>
-                        </>
-                      )}
-                    </div>
+                    <Label>Final Total</Label>
+                    <p className="text-2xl font-bold text-blue-600">
+                      ${quoteData.pricing?.total?.toFixed(2) || '0.00'}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
             </div>
           </TabsContent>
 
-          {/* Settings Tab - Visibility & Company Settings */}
+          {/* Settings Tab - Customization Options */}
           <TabsContent value="settings" className="space-y-6">
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-6 lg:grid-cols-2 max-w-7xl mx-auto">
               {/* Visibility Settings */}
-              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
+              <Card>
                 <CardHeader>
-                  <CardTitle className="text-white">Customer View Settings</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Control what information is visible to the customer
+                  <CardTitle>Visibility Settings</CardTitle>
+                  <CardDescription>
+                    Control what information is visible to customers
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-materials" className="text-gray-300">Show Materials Breakdown</Label>
+                    <div className="space-y-0.5">
+                      <Label>Materials Breakdown</Label>
+                      <p className="text-sm text-gray-500">Show detailed materials list</p>
+                    </div>
                     <Switch
-                      id="show-materials"
                       checked={visibilitySettings.showMaterialsBreakdown}
                       onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showMaterialsBreakdown: checked }))}
                     />
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-labor" className="text-gray-300">Show Labor Breakdown</Label>
+                    <div className="space-y-0.5">
+                      <Label>Labor Breakdown</Label>
+                      <p className="text-sm text-gray-500">Show labor details</p>
+                    </div>
                     <Switch
-                      id="show-labor"
                       checked={visibilitySettings.showLaborBreakdown}
                       onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showLaborBreakdown: checked }))}
                     />
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-paint" className="text-gray-300">Show Paint Details</Label>
+                    <div className="space-y-0.5">
+                      <Label>
+                        Paint Details
+                        {!hasFeature('advancedPricing') && (
+                          <Badge variant="outline" className="ml-2">Pro</Badge>
+                        )}
+                      </Label>
+                      <p className="text-sm text-gray-500">Show paint brands and finishes</p>
+                    </div>
                     <Switch
-                      id="show-paint"
                       checked={visibilitySettings.showPaintDetails}
                       onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showPaintDetails: checked }))}
+                      disabled={!hasFeature('advancedPricing')}
                     />
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-hourly" className="text-gray-300">Show Hourly Rates</Label>
+                    <div className="space-y-0.5">
+                      <Label>
+                        Hourly Rates
+                        {!hasFeature('advancedPricing') && (
+                          <Badge variant="outline" className="ml-2">Pro</Badge>
+                        )}
+                      </Label>
+                      <p className="text-sm text-gray-500">Show hourly labor rates</p>
+                    </div>
                     <Switch
-                      id="show-hourly"
                       checked={visibilitySettings.showHourlyRates}
                       onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showHourlyRates: checked }))}
+                      disabled={!hasFeature('advancedPricing')}
                     />
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-markup" className="text-gray-300">Show Markup</Label>
+                    <div className="space-y-0.5">
+                      <Label>
+                        Digital Signatures
+                        {!hasFeature('digitalSignatures') && (
+                          <Badge variant="outline" className="ml-2">Pro</Badge>
+                        )}
+                      </Label>
+                      <p className="text-sm text-gray-500">Enable quote acceptance signatures</p>
+                    </div>
                     <Switch
-                      id="show-markup"
-                      checked={visibilitySettings.showMarkup}
-                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showMarkup: checked }))}
+                      checked={visibilitySettings.showDigitalSignature}
+                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showDigitalSignature: checked }))}
+                      disabled={!hasFeature('digitalSignatures')}
                     />
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-timeline" className="text-gray-300">Show Timeline</Label>
+                    <div className="space-y-0.5">
+                      <Label>
+                        Customer Portal
+                        {!hasFeature('customerPortal') && (
+                          <Badge variant="outline" className="ml-2">Pro</Badge>
+                        )}
+                      </Label>
+                      <p className="text-sm text-gray-500">Portal access for customers</p>
+                    </div>
                     <Switch
-                      id="show-timeline"
-                      checked={visibilitySettings.showTimeline}
-                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showTimeline: checked }))}
+                      checked={visibilitySettings.showCustomerPortal}
+                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showCustomerPortal: checked }))}
+                      disabled={!hasFeature('customerPortal')}
                     />
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="show-warranty" className="text-gray-300">Show Warranty</Label>
+                    <div className="space-y-0.5">
+                      <Label>
+                        Payment Integration
+                        {!hasFeature('paymentIntegration') && (
+                          <Badge variant="outline" className="ml-2">Business</Badge>
+                        )}
+                      </Label>
+                      <p className="text-sm text-gray-500">Accept deposits online</p>
+                    </div>
                     <Switch
-                      id="show-warranty"
-                      checked={visibilitySettings.showWarranty}
-                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showWarranty: checked }))}
-                    />
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="show-payment" className="text-gray-300">Show Payment Terms</Label>
-                    <Switch
-                      id="show-payment"
-                      checked={visibilitySettings.showPaymentTerms}
-                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showPaymentTerms: checked }))}
-                    />
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="show-license" className="text-gray-300">Show License Info</Label>
-                    <Switch
-                      id="show-license"
-                      checked={visibilitySettings.showLicense}
-                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showLicense: checked }))}
+                      checked={visibilitySettings.showPaymentButton}
+                      onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showPaymentButton: checked }))}
+                      disabled={!hasFeature('paymentIntegration')}
                     />
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Company Settings */}
-              <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
+              {/* Branding Settings */}
+              <Card>
                 <CardHeader>
-                  <CardTitle className="text-white">Quote Settings</CardTitle>
+                  <CardTitle>
+                    Company Branding
+                    {!hasFeature('customBranding') && (
+                      <Badge variant="outline" className="ml-2">Pro</Badge>
+                    )}
+                  </CardTitle>
+                  <CardDescription>
+                    Customize your company information and branding
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <Label className="text-gray-400">Quote Valid For (days)</Label>
+                    <Label>Company Name</Label>
+                    <Input
+                      value={companySettings.companyName}
+                      onChange={(e) => setCompanySettings(prev => ({ ...prev, companyName: e.target.value }))}
+                      disabled={!hasFeature('customBranding')}
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label>Tagline</Label>
+                    <Input
+                      value={companySettings.tagline}
+                      onChange={(e) => setCompanySettings(prev => ({ ...prev, tagline: e.target.value }))}
+                      disabled={!hasFeature('customBranding')}
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label>Primary Color</Label>
+                      <div className="flex items-center gap-2">
+                        <Input
+                          type="color"
+                          value={companySettings.primaryColor}
+                          onChange={(e) => setCompanySettings(prev => ({ ...prev, primaryColor: e.target.value }))}
+                          disabled={!hasFeature('customBranding')}
+                          className="w-16 h-10"
+                        />
+                        <Input
+                          value={companySettings.primaryColor}
+                          onChange={(e) => setCompanySettings(prev => ({ ...prev, primaryColor: e.target.value }))}
+                          disabled={!hasFeature('customBranding')}
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <Label>Secondary Color</Label>
+                      <div className="flex items-center gap-2">
+                        <Input
+                          type="color"
+                          value={companySettings.secondaryColor}
+                          onChange={(e) => setCompanySettings(prev => ({ ...prev, secondaryColor: e.target.value }))}
+                          disabled={!hasFeature('customBranding')}
+                          className="w-16 h-10"
+                        />
+                        <Input
+                          value={companySettings.secondaryColor}
+                          onChange={(e) => setCompanySettings(prev => ({ ...prev, secondaryColor: e.target.value }))}
+                          disabled={!hasFeature('customBranding')}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Label>License Number</Label>
+                    <Input
+                      value={companySettings.licenseNumber}
+                      onChange={(e) => setCompanySettings(prev => ({ ...prev, licenseNumber: e.target.value }))}
+                      disabled={!hasFeature('customBranding')}
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label>Insurance Info</Label>
+                    <Input
+                      value={companySettings.insuranceInfo}
+                      onChange={(e) => setCompanySettings(prev => ({ ...prev, insuranceInfo: e.target.value }))}
+                      disabled={!hasFeature('customBranding')}
+                    />
+                  </div>
+                  
+                  {!hasFeature('customBranding') && (
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <p className="text-sm text-gray-600">
+                        <Lock className="h-4 w-4 inline mr-1" />
+                        Upgrade to Professional to customize branding
+                      </p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Quote Settings */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Quote Settings</CardTitle>
+                  <CardDescription>
+                    Configure quote terms and conditions
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <Label>Quote Valid For (days)</Label>
                     <Input
                       type="number"
                       value={quoteSettings.validityDays}
                       onChange={(e) => setQuoteSettings(prev => ({ ...prev, validityDays: parseInt(e.target.value) || 30 }))}
-                      className="bg-gray-800 border-gray-700 text-white"
                     />
                   </div>
                   
                   <div>
-                    <Label className="text-gray-400">Deposit Percentage</Label>
+                    <Label>Deposit Percentage</Label>
                     <Input
                       type="number"
                       value={quoteSettings.depositPercentage}
                       onChange={(e) => setQuoteSettings(prev => ({ ...prev, depositPercentage: parseInt(e.target.value) || 25 }))}
-                      className="bg-gray-800 border-gray-700 text-white"
                     />
                   </div>
                   
                   <div>
-                    <Label className="text-gray-400">Payment Terms</Label>
+                    <Label>
+                      Payment Terms
+                      {!hasFeature('customTerms') && (
+                        <Badge variant="outline" className="ml-2">Pro</Badge>
+                      )}
+                    </Label>
                     <Textarea
                       value={quoteSettings.paymentTerms}
                       onChange={(e) => setQuoteSettings(prev => ({ ...prev, paymentTerms: e.target.value }))}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      disabled={!hasFeature('customTerms')}
                       rows={2}
                     />
                   </div>
                   
                   <div>
-                    <Label className="text-gray-400">Warranty</Label>
+                    <Label>
+                      Warranty
+                      {!hasFeature('customTerms') && (
+                        <Badge variant="outline" className="ml-2">Pro</Badge>
+                      )}
+                    </Label>
                     <Textarea
                       value={quoteSettings.warranty}
                       onChange={(e) => setQuoteSettings(prev => ({ ...prev, warranty: e.target.value }))}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      disabled={!hasFeature('customTerms')}
                       rows={2}
                     />
                   </div>
                   
                   <div>
-                    <Label className="text-gray-400">License Number</Label>
-                    <Input
-                      value={quoteSettings.licenseNumber}
-                      onChange={(e) => setQuoteSettings(prev => ({ ...prev, licenseNumber: e.target.value }))}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label className="text-gray-400">Insurance Info</Label>
-                    <Input
-                      value={quoteSettings.insuranceInfo}
-                      onChange={(e) => setQuoteSettings(prev => ({ ...prev, insuranceInfo: e.target.value }))}
-                      className="bg-gray-800 border-gray-700 text-white"
+                    <Label>Additional Notes</Label>
+                    <Textarea
+                      value={quoteSettings.notes}
+                      onChange={(e) => setQuoteSettings(prev => ({ ...prev, notes: e.target.value }))}
+                      placeholder="Any additional notes for the customer..."
+                      rows={3}
                     />
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Feature Upgrade Card */}
+              {userTier === 'free' && (
+                <Card className="border-blue-200 bg-blue-50">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Sparkles className="h-5 w-5 text-blue-600" />
+                      Unlock Premium Features
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <p className="font-medium">Professional Features:</p>
+                      <ul className="text-sm space-y-1 text-gray-600">
+                        <li>✓ Custom branding & colors</li>
+                        <li>✓ Digital signatures</li>
+                        <li>✓ Customer portal access</li>
+                        <li>✓ Advanced pricing controls</li>
+                        <li>✓ Analytics & insights</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <p className="font-medium">Business Features:</p>
+                      <ul className="text-sm space-y-1 text-gray-600">
+                        <li>✓ Payment integration</li>
+                        <li>✓ QuickBooks sync</li>
+                        <li>✓ White-label portal</li>
+                        <li>✓ API access</li>
+                        <li>✓ Bulk quoting</li>
+                      </ul>
+                    </div>
+                    
+                    <Button 
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                      onClick={() => router.push('/pricing')}
+                    >
+                      <Crown className="h-4 w-4 mr-2" />
+                      Upgrade Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              )}
             </div>
           </TabsContent>
         </Tabs>
 
         {/* Mobile Action Buttons */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-gray-900/95 backdrop-blur-lg border-t border-white/10 z-50">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t z-50">
           <div className="flex gap-3">
             <Button
               onClick={saveDraft}
               variant="outline"
-              className="flex-1 border-white/20 text-white hover:bg-white/10"
+              className="flex-1"
               disabled={isLoading}
             >
               <Save className="h-4 w-4 mr-2" />
@@ -1186,7 +1709,7 @@ function QuoteReviewContent() {
             <Button
               onClick={sendQuoteEmail}
               disabled={isLoading || isSending || sendSuccess}
-              className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+              className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
             >
               <Send className="h-4 w-4 mr-2" />
               {isSending ? 'Sending...' : sendSuccess ? 'Sent!' : 'Send'}
@@ -1196,14 +1719,17 @@ function QuoteReviewContent() {
         
         {/* Success/Error Messages */}
         {sendSuccess && (
-          <div className="fixed bottom-20 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-green-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg z-50">
-            <p className="text-green-400 text-center">✅ Quote sent successfully!</p>
+          <div className="fixed bottom-20 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-green-50 border border-green-200 rounded-lg z-50">
+            <p className="text-green-700 text-center font-medium">
+              <CheckCircle2 className="h-5 w-5 inline mr-2" />
+              Quote sent successfully!
+            </p>
           </div>
         )}
         
         {sendError && (
-          <div className="fixed bottom-20 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-red-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg z-50">
-            <p className="text-red-400 text-center">❌ {sendError}</p>
+          <div className="fixed bottom-20 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-red-50 border border-red-200 rounded-lg z-50">
+            <p className="text-red-700 text-center">{sendError}</p>
           </div>
         )}
       </main>
@@ -1214,10 +1740,10 @@ function QuoteReviewContent() {
 export default function QuoteReviewPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-gray-200">Loading quote review...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading quote...</p>
         </div>
       </div>
     }>
