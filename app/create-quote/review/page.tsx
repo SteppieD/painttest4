@@ -148,6 +148,8 @@ function QuoteReviewContent() {
   const [visibilitySettings, setVisibilitySettings] = useState({
     showMaterialsBreakdown: true,
     showLaborBreakdown: true,
+    showMaterialsItemized: true,  // New: control itemized vs summary for materials
+    showLaborItemized: true,      // New: control itemized vs summary for labor
     showPaintDetails: hasFeature('advancedPricing'),
     showHourlyRates: false,
     showMarkup: false,
@@ -806,9 +808,10 @@ function QuoteReviewContent() {
                         </thead>
                         <tbody className="divide-y">
                           {/* Materials Section */}
-                          {visibilitySettings.showMaterialsBreakdown && quote.pricing?.breakdown ? (
-                            <>
-                              {quote.pricing.breakdown.wallPaint && (
+                          {visibilitySettings.showMaterialsBreakdown && (
+                            visibilitySettings.showMaterialsItemized && quote.pricing?.breakdown ? (
+                              <>
+                                {quote.pricing.breakdown.wallPaint && (
                                 <tr>
                                   <td className="py-3 px-4">
                                     <p className="font-medium">Wall Paint</p>
@@ -887,28 +890,30 @@ function QuoteReviewContent() {
                                   </td>
                                 </tr>
                               )}
-                            </>
-                          ) : (
-                            <tr>
-                              <td className="py-3 px-4">
-                                <p className="font-medium">Materials</p>
-                                <p className="text-sm text-gray-600">Paint, primer, and supplies</p>
-                              </td>
-                              {hasFeature('advancedPricing') && (
-                                <>
-                                  <td className="text-right py-3 px-4">-</td>
-                                  <td className="text-right py-3 px-4">-</td>
-                                </>
-                              )}
-                              <td className="text-right py-3 px-4 font-medium">
-                                ${getTotal(quote.pricing?.materials).toFixed(2)}
-                              </td>
-                            </tr>
+                              </>
+                            ) : (
+                              <tr>
+                                <td className="py-3 px-4">
+                                  <p className="font-medium">Materials</p>
+                                  <p className="text-sm text-gray-600">Paint, primer, and supplies</p>
+                                </td>
+                                {hasFeature('advancedPricing') && (
+                                  <>
+                                    <td className="text-right py-3 px-4">-</td>
+                                    <td className="text-right py-3 px-4">-</td>
+                                  </>
+                                )}
+                                <td className="text-right py-3 px-4 font-medium">
+                                  ${getTotal(quote.pricing?.materials).toFixed(2)}
+                                </td>
+                              </tr>
+                            )
                           )}
 
                           {/* Labor Section */}
-                          {visibilitySettings.showLaborBreakdown && quote.pricing?.breakdown ? (
-                            <>
+                          {visibilitySettings.showLaborBreakdown && (
+                            visibilitySettings.showLaborItemized && quote.pricing?.breakdown ? (
+                              <>
                               {quote.pricing.breakdown.prepWork && (
                                 <tr>
                                   <td className="py-3 px-4">
@@ -948,23 +953,24 @@ function QuoteReviewContent() {
                                   </td>
                                 </tr>
                               )}
-                            </>
-                          ) : (
-                            <tr>
-                              <td className="py-3 px-4">
-                                <p className="font-medium">Labor</p>
-                                <p className="text-sm text-gray-600">Professional painting services</p>
-                              </td>
-                              {hasFeature('advancedPricing') && (
-                                <>
-                                  <td className="text-right py-3 px-4">-</td>
-                                  <td className="text-right py-3 px-4">-</td>
-                                </>
-                              )}
-                              <td className="text-right py-3 px-4 font-medium">
-                                ${getTotal(quote.pricing?.labor).toFixed(2)}
-                              </td>
-                            </tr>
+                              </>
+                            ) : (
+                              <tr>
+                                <td className="py-3 px-4">
+                                  <p className="font-medium">Labor</p>
+                                  <p className="text-sm text-gray-600">Professional painting services</p>
+                                </td>
+                                {hasFeature('advancedPricing') && (
+                                  <>
+                                    <td className="text-right py-3 px-4">-</td>
+                                    <td className="text-right py-3 px-4">-</td>
+                                  </>
+                                )}
+                                <td className="text-right py-3 px-4 font-medium">
+                                  ${getTotal(quote.pricing?.labor).toFixed(2)}
+                                </td>
+                              </tr>
+                            )
                           )}
                         </tbody>
                       </table>
@@ -1388,25 +1394,51 @@ function QuoteReviewContent() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
-                      <Label>Materials Breakdown</Label>
-                      <p className="text-sm text-gray-500">Show detailed materials list</p>
+                      <Label>Show Materials Section</Label>
+                      <p className="text-sm text-gray-500">Include materials costs in quote</p>
                     </div>
                     <Switch
                       checked={visibilitySettings.showMaterialsBreakdown}
                       onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showMaterialsBreakdown: checked }))}
                     />
                   </div>
+
+                  {visibilitySettings.showMaterialsBreakdown && (
+                    <div className="flex items-center justify-between ml-6">
+                      <div className="space-y-0.5">
+                        <Label>Itemize Materials</Label>
+                        <p className="text-sm text-gray-500">Show paint, primer, supplies separately</p>
+                      </div>
+                      <Switch
+                        checked={visibilitySettings.showMaterialsItemized}
+                        onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showMaterialsItemized: checked }))}
+                      />
+                    </div>
+                  )}
                   
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
-                      <Label>Labor Breakdown</Label>
-                      <p className="text-sm text-gray-500">Show labor details</p>
+                      <Label>Show Labor Section</Label>
+                      <p className="text-sm text-gray-500">Include labor costs in quote</p>
                     </div>
                     <Switch
                       checked={visibilitySettings.showLaborBreakdown}
                       onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showLaborBreakdown: checked }))}
                     />
                   </div>
+
+                  {visibilitySettings.showLaborBreakdown && (
+                    <div className="flex items-center justify-between ml-6">
+                      <div className="space-y-0.5">
+                        <Label>Itemize Labor</Label>
+                        <p className="text-sm text-gray-500">Show prep work and painting separately</p>
+                      </div>
+                      <Switch
+                        checked={visibilitySettings.showLaborItemized}
+                        onCheckedChange={(checked) => setVisibilitySettings(prev => ({ ...prev, showLaborItemized: checked }))}
+                      />
+                    </div>
+                  )}
                   
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
