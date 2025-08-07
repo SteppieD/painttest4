@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Home, Calculator, DollarSign, Briefcase, Phone, LogIn, ChevronRight } from 'lucide-react'
+import { Menu, X, Home, Calculator, DollarSign, Briefcase, Phone, LogIn, ChevronRight, BookOpen, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -17,10 +17,17 @@ const navigationItems = [
   { name: 'Home', href: '/', icon: Home },
   { name: 'Features', href: '/#features', icon: Briefcase },
   { name: 'Pricing', href: '/pricing', icon: DollarSign },
-  { name: 'ROI Calculator', href: '/roi-calculator', icon: Calculator },
   { name: 'Demo', href: '/demo', icon: Briefcase },
-  { name: 'Case Studies', href: '/case-studies', icon: Briefcase },
   { name: 'Contact', href: '/contact', icon: Phone },
+]
+
+const resourceItems = [
+  { name: 'Pricing Guide', href: '/pillars/how-to-price-painting-jobs', icon: DollarSign },
+  { name: 'Cost Calculator', href: '/pillars/painting-cost-calculator', icon: Calculator },
+  { name: 'Compare Software', href: '/pillars/painting-estimate-software', icon: FileText },
+  { name: 'Business Guide', href: '/pillars/painting-contractor-business', icon: BookOpen },
+  { name: 'Templates', href: '/pillars/painting-estimate-templates', icon: FileText },
+  { name: 'ROI Calculator', href: '/roi-calculator', icon: Calculator },
 ]
 
 export default function MobileMenu() {
@@ -74,6 +81,34 @@ export default function MobileMenu() {
               </Link>
             )
           })}
+          
+          {/* Resources Section */}
+          <div className="mt-4 pt-4 border-t border-gray-800">
+            <h3 className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Resources</h3>
+            {resourceItems.map((item) => {
+              const Icon = item.icon
+              const isActive = pathname === item.href
+              
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+                    isActive 
+                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white' 
+                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex items-center space-x-3">
+                    <Icon className="h-5 w-5" />
+                    <span className="font-medium">{item.name}</span>
+                  </div>
+                  <ChevronRight className="h-4 w-4 opacity-50" />
+                </Link>
+              )
+            })}
+          </div>
         </nav>
         
         <div className="mt-8 space-y-3 px-4">

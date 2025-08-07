@@ -39,29 +39,6 @@ function ModernNavigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {/* Software Dropdown */}
-            <div className="relative group">
-              <button className="px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200 flex items-center gap-1">
-                Software
-                <ChevronRight className="h-3 w-3 rotate-90" />
-              </button>
-              <div className="absolute top-full left-0 mt-1 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="bg-gray-950/95 backdrop-filter backdrop-blur-md border border-white/30 rounded-lg p-2 space-y-1">
-                  <Link href="/painting-contractor-software" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
-                    Painting Contractor Software
-                  </Link>
-                  <Link href="/painting-quote-software" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
-                    Quote Software
-                  </Link>
-                  <Link href="/painting-estimate-software" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
-                    Estimate Software
-                  </Link>
-                  <Link href="/painting-business-software" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
-                    Business Software
-                  </Link>
-                </div>
-              </div>
-            </div>
             <Link 
               href="/#features" 
               className="px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200"
@@ -74,11 +51,45 @@ function ModernNavigation() {
             >
               Pricing
             </Link>
+            
+            {/* Resources Dropdown */}
+            <div className="relative group">
+              <button className="px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200 flex items-center gap-1">
+                Resources
+                <ChevronRight className="h-3 w-3 rotate-90" />
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="bg-gray-950/95 backdrop-filter backdrop-blur-md border border-white/30 rounded-lg p-2">
+                  <div className="text-xs text-gray-400 px-3 py-1 uppercase tracking-wider">Guides</div>
+                  <Link href="/pillars/how-to-price-painting-jobs" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
+                    How to Price Painting Jobs
+                  </Link>
+                  <Link href="/pillars/painting-contractor-business" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
+                    Start a Painting Business
+                  </Link>
+                  <div className="text-xs text-gray-400 px-3 py-1 uppercase tracking-wider mt-2">Tools</div>
+                  <Link href="/pillars/painting-cost-calculator" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
+                    🧮 Cost Calculator
+                  </Link>
+                  <Link href="/roi-calculator" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
+                    📊 ROI Calculator
+                  </Link>
+                  <Link href="/pillars/painting-estimate-templates" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
+                    📄 Estimate Templates
+                  </Link>
+                  <div className="text-xs text-gray-400 px-3 py-1 uppercase tracking-wider mt-2">Software</div>
+                  <Link href="/pillars/painting-estimate-software" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
+                    Compare Software Options
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
             <Link 
-              href="/roi-calculator" 
+              href="/demo" 
               className="px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200"
             >
-              ROI Calculator
+              Demo
             </Link>
             <Link 
               href="/contact" 
