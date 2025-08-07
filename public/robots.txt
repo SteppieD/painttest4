@@ -35,11 +35,16 @@ Allow: /*.svg$
 Allow: /*.webp$
 
 # Allow important pages
+Allow: /pillars/
 Allow: /guides/
 Allow: /features
 Allow: /pricing
 Allow: /about
 Allow: /trial-signup
+Allow: /demo
+Allow: /case-studies
+Allow: /roi-calculator
+Allow: /contact
 
 # Major search engine crawlers - no restrictions
 User-agent: Googlebot

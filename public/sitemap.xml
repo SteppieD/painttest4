@@ -9,7 +9,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://www.paintquotepro.com/</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -17,28 +17,93 @@
   <!-- Main Marketing Pages -->
   <url>
     <loc>https://www.paintquotepro.com/features</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/pricing</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/about</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/demo</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/contact</loc>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/trial-signup</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- SEO Pillar Pages (Highest Priority) -->
+  <url>
+    <loc>https://www.paintquotepro.com/pillars/how-to-price-painting-jobs</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/pillars/painting-estimate-software</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/pillars/painting-cost-calculator</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/pillars/painting-contractor-business</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/pillars/painting-estimate-templates</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Interactive Tools -->
+  <url>
+    <loc>https://www.paintquotepro.com/roi-calculator</loc>
+    <lastmod>2025-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.paintquotepro.com/create-quote</loc>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -46,137 +111,136 @@
   <!-- Guides Hub -->
   <url>
     <loc>https://www.paintquotepro.com/guides</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- Pillar Pages (Highest Priority) -->
+  <!-- Previous Guide Pages (Lower Priority Now) -->
   <url>
     <loc>https://www.paintquotepro.com/guides/how-to-quote-painting-jobs</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/painting-estimate-software</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/paint-calculator</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/painting-business-guide</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
   </url>
   
-  <!-- Cluster Pages for "How to Quote" Pillar -->
+  <!-- Cluster Pages -->
   <url>
     <loc>https://www.paintquotepro.com/guides/interior-painting-quotes</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/exterior-painting-quotes</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/commercial-painting-quotes</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/cabinet-painting-quotes</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/paint-quantity-calculations</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/labor-cost-estimation</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/pricing-psychology</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/quote-presentation-tips</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/follow-up-strategies</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/common-quoting-mistakes</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
-  <!-- Cluster Pages for "Paint Calculator" Pillar -->
   <url>
     <loc>https://www.paintquotepro.com/guides/paint-coverage-rates</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/guides/measurement-techniques</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   
   <!-- Legal Pages -->
   <url>
     <loc>https://www.paintquotepro.com/privacy</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.paintquotepro.com/terms</loc>
-    <lastmod>2024-01-25</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
