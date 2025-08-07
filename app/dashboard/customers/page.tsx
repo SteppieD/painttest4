@@ -351,17 +351,17 @@ export default function CustomersPage() {
 
       {/* Add Customer Dialog */}
       <Dialog open={showAddCustomer} onOpenChange={setShowAddCustomer}>
-        <DialogContent className="glass-card bg-surface border-white/20">
+        <DialogContent className="bg-white border border-gray-200 max-w-md mx-auto mt-20">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-gradient-modern">Add New Customer</DialogTitle>
-            <DialogDescription className="text-medium-contrast">
+            <DialogTitle className="text-xl font-bold text-gray-900">Add New Customer</DialogTitle>
+            <DialogDescription className="text-gray-600">
               Enter the customer's information to add them to your database
             </DialogDescription>
           </DialogHeader>
           
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-base font-medium text-high-contrast">
+              <Label htmlFor="name" className="text-sm font-medium text-gray-700">
                 Name *
               </Label>
               <Input
@@ -369,13 +369,13 @@ export default function CustomersPage() {
                 value={newCustomer.name}
                 onChange={(e) => setNewCustomer({ ...newCustomer, name: e.target.value })}
                 placeholder="John Smith"
-                className="input-modern"
+                className="bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-base font-medium text-high-contrast">
+              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
                 Email
               </Label>
               <Input
@@ -384,12 +384,12 @@ export default function CustomersPage() {
                 value={newCustomer.email}
                 onChange={(e) => setNewCustomer({ ...newCustomer, email: e.target.value })}
                 placeholder="john@example.com"
-                className="input-modern"
+                className="bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-base font-medium text-high-contrast">
+              <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
                 Phone
               </Label>
               <Input
@@ -398,12 +398,12 @@ export default function CustomersPage() {
                 value={newCustomer.phone}
                 onChange={(e) => setNewCustomer({ ...newCustomer, phone: e.target.value })}
                 placeholder="(555) 123-4567"
-                className="input-modern"
+                className="bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="address" className="text-base font-medium text-high-contrast">
+              <Label htmlFor="address" className="text-sm font-medium text-gray-700">
                 Address
               </Label>
               <Textarea
@@ -411,7 +411,7 @@ export default function CustomersPage() {
                 value={newCustomer.address}
                 onChange={(e) => setNewCustomer({ ...newCustomer, address: e.target.value })}
                 placeholder="123 Main St, City, State 12345"
-                className="input-modern"
+                className="bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
                 rows={3}
               />
             </div>
@@ -419,7 +419,8 @@ export default function CustomersPage() {
           
           <DialogFooter>
             <Button 
-              variant="outline" 
+              variant="outline"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50"
               onClick={() => {
                 setShowAddCustomer(false)
                 setNewCustomer({ name: '', email: '', phone: '', address: '' })
@@ -428,7 +429,7 @@ export default function CustomersPage() {
               Cancel
             </Button>
             <Button 
-              className="btn-primary-modern"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
               onClick={async () => {
                 if (!newCustomer.name.trim()) {
                   alert('Please enter a customer name')
