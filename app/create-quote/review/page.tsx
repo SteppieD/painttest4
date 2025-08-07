@@ -16,7 +16,7 @@ import {
   Lock, Crown, Zap, Building2, Phone, Mail, MapPin, Calendar, 
   CheckCircle2, FileText, Sparkles, TrendingUp, DollarSign,
   Clock, Shield, CreditCard, Star, Palette, Image, Globe,
-  BarChart3, MessageSquare, Users, Briefcase
+  BarChart3, MessageSquare, Users, Briefcase, Upload
 } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
 import Link from 'next/link'
@@ -162,17 +162,17 @@ function QuoteReviewContent() {
     showPaymentButton: hasFeature('paymentIntegration'),
   })
 
-  // Company branding settings
+  // Company branding settings (Contractor's business info)
   const [companySettings, setCompanySettings] = useState({
-    companyName: 'PaintQuote Pro',
+    companyName: 'Your Painting Company',
     tagline: 'Professional Painting Services',
     logo: null as string | null,
     primaryColor: '#3B82F6', // Blue
     secondaryColor: '#10B981', // Green
-    companyPhone: '1-800-PAINT-PRO',
-    companyEmail: 'quotes@paintquotepro.com',
-    companyWebsite: 'www.paintquotepro.com',
-    companyAddress: '123 Business Ave, Suite 100, Austin, TX 78701',
+    companyPhone: '555-PAINT-NOW',
+    companyEmail: 'info@yourcompany.com',
+    companyWebsite: 'www.yourcompany.com',
+    companyAddress: '123 Main St, Your City, ST 12345',
     licenseNumber: 'LIC#123456',
     insuranceInfo: 'Fully insured and bonded - $2M liability',
     taxId: 'TAX-ID-123456',
@@ -646,16 +646,16 @@ function QuoteReviewContent() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
         <Tabs defaultValue="preview" className="space-y-6">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
-            <TabsTrigger value="preview">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-gray-100 p-1">
+            <TabsTrigger value="preview" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm">
               <Eye className="h-4 w-4 mr-2" />
               Preview
             </TabsTrigger>
-            <TabsTrigger value="edit">
+            <TabsTrigger value="edit" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm">
               <Edit2 className="h-4 w-4 mr-2" />
               Edit
             </TabsTrigger>
-            <TabsTrigger value="settings">
+            <TabsTrigger value="settings" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm">
               <Settings className="h-4 w-4 mr-2" />
               Customize
             </TabsTrigger>
@@ -665,29 +665,59 @@ function QuoteReviewContent() {
           <TabsContent value="preview" className="space-y-6">
             <Card className="max-w-5xl mx-auto shadow-xl">
               <CardContent className="p-0">
-                {/* Invoice Header with Branding */}
-                <div 
-                  className="p-8 text-white"
-                  style={{ 
-                    background: hasFeature('customBranding') 
-                      ? `linear-gradient(135deg, ${companySettings.primaryColor}, ${companySettings.secondaryColor})`
-                      : 'linear-gradient(135deg, #3B82F6, #10B981)'
-                  }}
-                >
+                {/* Invoice Header with Contractor's Business Info */}
+                <div className="bg-white p-8 border-b">
                   <div className="flex justify-between items-start">
-                    <div>
-                      <h1 className="text-3xl font-bold mb-1">
-                        {hasFeature('customBranding') ? companySettings.companyName : 'PaintQuote Pro'}
-                      </h1>
-                      <p className="text-white/90">
-                        {hasFeature('customBranding') ? companySettings.tagline : 'Professional Painting Services'}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="bg-white/20 backdrop-blur rounded-lg px-4 py-2 mb-2">
-                        <p className="text-2xl font-bold">QUOTE</p>
+                    {/* Left side - Logo and Company Info */}
+                    <div className="flex gap-6">
+                      {/* Logo Space */}
+                      <div className="flex-shrink-0">
+                        {companySettings.logo ? (
+                          <img 
+                            src={companySettings.logo} 
+                            alt={companySettings.companyName}
+                            className="h-20 w-20 object-contain rounded-lg"
+                          />
+                        ) : (
+                          <div className="h-20 w-20 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+                            <div className="text-center">
+                              <Image className="h-6 w-6 text-gray-400 mx-auto" />
+                              <p className="text-xs text-gray-500 mt-1">Logo</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <p className="text-white/90">#{quoteData.quoteNumber}</p>
+                      
+                      {/* Company Details */}
+                      <div>
+                        <h1 className="text-2xl font-bold text-gray-900">
+                          {hasFeature('customBranding') ? companySettings.companyName : 'Your Painting Company'}
+                        </h1>
+                        <p className="text-gray-600 mb-2">
+                          {hasFeature('customBranding') ? companySettings.tagline : 'Professional Painting Services'}
+                        </p>
+                        <div className="text-sm text-gray-600 space-y-0.5">
+                          <p>{companySettings.companyPhone} • {companySettings.companyEmail}</p>
+                          <p>{companySettings.companyAddress}</p>
+                          {visibilitySettings.showLicense && <p>License: {companySettings.licenseNumber}</p>}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Right side - Quote Label */}
+                    <div className="text-right">
+                      <div 
+                        className="inline-block px-6 py-3 rounded-lg mb-2"
+                        style={{ 
+                          background: hasFeature('customBranding') 
+                            ? `linear-gradient(135deg, ${companySettings.primaryColor}, ${companySettings.secondaryColor})`
+                            : 'linear-gradient(135deg, #3B82F6, #10B981)'
+                        }}
+                      >
+                        <p className="text-2xl font-bold text-white">QUOTE</p>
+                      </div>
+                      <p className="text-lg font-medium text-gray-700">#{quoteData.quoteNumber}</p>
+                      <p className="text-sm text-gray-500">{quoteDate}</p>
                     </div>
                   </div>
                 </div>
@@ -749,27 +779,6 @@ function QuoteReviewContent() {
                     </div>
                   </div>
 
-                  {/* Company Info (if enabled) */}
-                  {visibilitySettings.showCompanyInfo && hasFeature('customBranding') && (
-                    <div className="mb-8 p-4 bg-gray-50 rounded-lg">
-                      <div className="grid md:grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <p className="text-gray-500">Contact</p>
-                          <p className="font-medium">{companySettings.companyPhone}</p>
-                          <p className="font-medium">{companySettings.companyEmail}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-500">Address</p>
-                          <p className="font-medium">{companySettings.companyAddress}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-500">Credentials</p>
-                          {visibilitySettings.showLicense && <p className="font-medium">License: {companySettings.licenseNumber}</p>}
-                          {visibilitySettings.showInsurance && <p className="font-medium text-xs">{companySettings.insuranceInfo}</p>}
-                        </div>
-                      </div>
-                    </div>
-                  )}
 
                   {/* Line Items Table */}
                   <div className="mb-8">
@@ -1493,12 +1502,75 @@ function QuoteReviewContent() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
+                  {/* Logo Upload */}
+                  <div>
+                    <Label>Company Logo</Label>
+                    <div className="flex items-center gap-4 mt-2">
+                      {companySettings.logo ? (
+                        <div className="relative">
+                          <img 
+                            src={companySettings.logo} 
+                            alt="Company logo"
+                            className="h-16 w-16 object-contain rounded-lg border"
+                          />
+                          <Button
+                            size="icon"
+                            variant="destructive"
+                            className="absolute -top-2 -right-2 h-6 w-6"
+                            onClick={() => setCompanySettings(prev => ({ ...prev, logo: null }))}
+                            disabled={!hasFeature('customBranding')}
+                          >
+                            <X className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="h-16 w-16 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+                          <Image className="h-6 w-6 text-gray-400" />
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          id="logo-upload"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) {
+                              const reader = new FileReader()
+                              reader.onloadend = () => {
+                                setCompanySettings(prev => ({ ...prev, logo: reader.result as string }))
+                              }
+                              reader.readAsDataURL(file)
+                            }
+                          }}
+                          disabled={!hasFeature('customBranding')}
+                        />
+                        <Label 
+                          htmlFor="logo-upload"
+                          className={`inline-flex items-center px-4 py-2 border rounded-md text-sm font-medium ${
+                            hasFeature('customBranding') 
+                              ? 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 cursor-pointer' 
+                              : 'border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed'
+                          }`}
+                        >
+                          <Upload className="h-4 w-4 mr-2" />
+                          Upload Logo
+                        </Label>
+                        {!hasFeature('customBranding') && (
+                          <p className="text-xs text-gray-500 mt-1">Pro feature</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  
                   <div>
                     <Label>Company Name</Label>
                     <Input
                       value={companySettings.companyName}
                       onChange={(e) => setCompanySettings(prev => ({ ...prev, companyName: e.target.value }))}
                       disabled={!hasFeature('customBranding')}
+                      placeholder="Your Painting Company"
                     />
                   </div>
                   
@@ -1508,6 +1580,7 @@ function QuoteReviewContent() {
                       value={companySettings.tagline}
                       onChange={(e) => setCompanySettings(prev => ({ ...prev, tagline: e.target.value }))}
                       disabled={!hasFeature('customBranding')}
+                      placeholder="Professional Painting Services"
                     />
                   </div>
                   
