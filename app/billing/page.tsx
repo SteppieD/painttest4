@@ -182,11 +182,8 @@ function BillingContent() {
   };
 
   const handleUpgrade = () => {
-    // Switch to plans tab or open upgrade modal
-    const plansTab = document.querySelector('[value="plans"]') as HTMLElement;
-    if (plansTab) {
-      plansTab.click();
-    }
+    // Redirect to pricing page to choose a plan
+    router.push('/pricing');
   };
 
   if (isLoading) {

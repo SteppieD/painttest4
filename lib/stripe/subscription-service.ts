@@ -259,13 +259,24 @@ export class SubscriptionService {
   async getUsageStats(companyId: number): Promise<{
     quotesThisMonth: number;
     quotesLimit: number;
-    plan: SubscriptionPlan;
+    plan: SubscriptionPlan | 'free';
   }> {
     const company = await this.db.getCompany(companyId);
     const subscriptionInfo = await this.getSubscriptionInfo(companyId);
     
-    const plan = subscriptionInfo?.plan || 'professional';
-    const quotesLimit = plan === 'business' ? -1 : 50; // -1 means unlimited
+    // Determine plan and quote limits
+    let plan: SubscriptionPlan | 'free';
+    let quotesLimit: number;
+    
+    if (!subscriptionInfo || subscriptionInfo.status !== 'active') {
+      // Free tier
+      plan = 'free';
+      quotesLimit = 5; // Free tier gets 5 quotes per month
+    } else {
+      // Paid tiers
+      plan = subscriptionInfo.plan;
+      quotesLimit = plan === 'business' ? -1 : 50; // -1 means unlimited
+    }
     
     // Get quotes created this month
     const startOfMonth = new Date();
