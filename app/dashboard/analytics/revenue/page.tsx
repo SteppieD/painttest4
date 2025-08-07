@@ -255,16 +255,25 @@ export default function RevenueAnalyticsPage() {
         <Button 
           className="btn-primary-modern"
           onClick={() => {
-            // Generate CSV data
+            if (!revenueData) return
+            
+            // Generate CSV data from monthly revenue
             const csvData = [
-              ['Period', 'Revenue', 'Quotes', 'Conversion Rate'],
-              ...(revenueData as any[]).map((item: any) => [
-                item.name,
-                `$${item.revenue}`,
-                item.quotes,
-                `${((item.revenue / (item.quotes * 2800)) * 100).toFixed(1)}%`
+              ['Month', 'Revenue'],
+              ...revenueData.revenueByMonth.map(item => [
+                item.month,
+                `$${item.revenue.toLocaleString()}`
               ])
             ]
+            
+            // Add summary data
+            csvData.push(['', ''])
+            csvData.push(['Summary', ''])
+            csvData.push(['Total Revenue', `$${revenueData.totalRevenue.toLocaleString()}`])
+            csvData.push(['Monthly Average', `$${revenueData.monthlyRevenue.toLocaleString()}`])
+            csvData.push(['Average Quote Value', `$${revenueData.averageQuoteValue.toLocaleString()}`])
+            csvData.push(['Largest Quote', `$${revenueData.largestQuote.toLocaleString()}`])
+            csvData.push(['Revenue Growth', `${revenueData.revenueGrowth}%`])
             
             // Convert to CSV string
             const csv = csvData.map(row => row.join(',')).join('\n')

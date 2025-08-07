@@ -517,7 +517,7 @@ Your Painting Company
                 className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20"
                 onClick={async () => {
                   try {
-                    const response = await fetch(`/api/quotes/${id}`, {
+                    const response = await fetch(`/api/quotes/${params.id}`, {
                       method: 'PATCH',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({ status: 'accepted' })
