@@ -631,6 +631,7 @@ function QuoteReviewContent() {
                 onClick={saveDraft}
                 variant="outline"
                 disabled={isLoading}
+                className="h-11 px-4" // Increased touch target
               >
                 <Save className="h-4 w-4 mr-2" />
                 Save Draft
@@ -640,6 +641,7 @@ function QuoteReviewContent() {
                 onClick={downloadPDF}
                 variant="outline"
                 disabled={isLoading}
+                className="h-11 px-4" // Increased touch target
               >
                 <Download className="h-4 w-4 mr-2" />
                 Download PDF
@@ -648,7 +650,7 @@ function QuoteReviewContent() {
               <Button
                 onClick={sendQuoteEmail}
                 disabled={isLoading || isSending || sendSuccess}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-11 px-4" // Increased touch target
               >
                 <Send className="h-4 w-4 mr-2" />
                 {isSending ? 'Sending...' : sendSuccess ? 'Sent!' : 'Send to Customer'}
@@ -661,18 +663,21 @@ function QuoteReviewContent() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
         <Tabs defaultValue="preview" className="space-y-6">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-gray-100 p-1">
-            <TabsTrigger value="preview" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm">
-              <Eye className="h-4 w-4 mr-2" />
-              Preview
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-gray-100 p-1 h-12"> {/* Increased height for better touch targets */}
+            <TabsTrigger value="preview" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm h-10 text-sm">
+              <Eye className="h-4 w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Preview</span>
+              <span className="sm:hidden">View</span>
             </TabsTrigger>
-            <TabsTrigger value="edit" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm">
-              <Edit2 className="h-4 w-4 mr-2" />
-              Edit
+            <TabsTrigger value="edit" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm h-10 text-sm">
+              <Edit2 className="h-4 w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Edit</span>
+              <span className="sm:hidden">Edit</span>
             </TabsTrigger>
-            <TabsTrigger value="settings" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm">
-              <Settings className="h-4 w-4 mr-2" />
-              Customize
+            <TabsTrigger value="settings" className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm h-10 text-sm">
+              <Settings className="h-4 w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Customize</span>
+              <span className="sm:hidden">Set</span>
             </TabsTrigger>
           </TabsList>
 
@@ -697,7 +702,7 @@ function QuoteReviewContent() {
                           <div className="h-20 w-20 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
                             <div className="text-center">
                               <Image className="h-6 w-6 text-gray-400 mx-auto" aria-label="Logo placeholder" />
-                              <p className="text-xs text-gray-500 mt-1">Logo</p>
+                              <p className="text-sm text-gray-500 mt-1">Logo</p>
                             </div>
                           </div>
                         )}
@@ -797,30 +802,32 @@ function QuoteReviewContent() {
 
                   {/* Line Items Table */}
                   <div className="mb-8">
-                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Services & Materials</h3>
+                    <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wider mb-3">Services & Materials</h3> {/* Increased from text-sm */}
                     <div className="border rounded-lg overflow-hidden">
-                      <table className="w-full">
-                        <thead className="bg-gray-50 border-b">
-                          <tr>
-                            <th className="text-left py-3 px-4 font-medium text-gray-700">Description</th>
-                            {hasFeature('advancedPricing') && (
-                              <>
-                                <th className="text-right py-3 px-4 font-medium text-gray-700">Qty</th>
-                                <th className="text-right py-3 px-4 font-medium text-gray-700">Rate</th>
-                              </>
-                            )}
-                            <th className="text-right py-3 px-4 font-medium text-gray-700">Amount</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y">
+                      {/* Mobile responsive table - stacked layout on small screens */}
+                      <div className="hidden md:block">
+                        <table className="w-full">
+                          <thead className="bg-gray-50 border-b">
+                            <tr>
+                              <th className="text-left py-4 px-4 font-medium text-gray-700 text-base">Description</th> {/* Increased padding and text size */}
+                              {hasFeature('advancedPricing') && (
+                                <>
+                                  <th className="text-right py-4 px-4 font-medium text-gray-700 text-base">Qty</th>
+                                  <th className="text-right py-4 px-4 font-medium text-gray-700 text-base">Rate</th>
+                                </>
+                              )}
+                              <th className="text-right py-4 px-4 font-medium text-gray-700 text-base">Amount</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y">
                           {/* Materials Section */}
                           {visibilitySettings.showMaterialsBreakdown && (
                             visibilitySettings.showMaterialsItemized && quote.pricing?.breakdown ? (
                               <>
                                 {quote.pricing.breakdown.wallPaint && (
                                 <tr>
-                                  <td className="py-3 px-4">
-                                    <p className="font-medium">Wall Paint</p>
+                                  <td className="py-4 px-4"> {/* Increased padding */}
+                                    <p className="font-medium text-base">Wall Paint</p> {/* Increased text size */}
                                     {visibilitySettings.showPaintDetails && (
                                       <p className="text-sm text-gray-600">
                                         {quote.pricing.breakdown.wallPaint.product} - {quote.pricing.breakdown.wallPaint.finish}
@@ -829,11 +836,11 @@ function QuoteReviewContent() {
                                   </td>
                                   {hasFeature('advancedPricing') && (
                                     <>
-                                      <td className="text-right py-3 px-4">{quote.pricing.breakdown.wallPaint.gallons} gal</td>
-                                      <td className="text-right py-3 px-4">${quote.pricing.breakdown.wallPaint.costPerGallon}</td>
+                                      <td className="text-right py-4 px-4 text-base">{quote.pricing.breakdown.wallPaint.gallons} gal</td>
+                                      <td className="text-right py-4 px-4 text-base">${quote.pricing.breakdown.wallPaint.costPerGallon}</td>
                                     </>
                                   )}
-                                  <td className="text-right py-3 px-4 font-medium">
+                                  <td className="text-right py-4 px-4 font-medium text-base">
                                     ${quote.pricing.breakdown.wallPaint.cost.toFixed(2)}
                                   </td>
                                 </tr>
@@ -978,8 +985,148 @@ function QuoteReviewContent() {
                               </tr>
                             )
                           )}
-                        </tbody>
-                      </table>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      {/* Mobile stacked layout */}
+                      <div className="md:hidden divide-y">
+                        {/* Materials Section - Mobile */}
+                        {visibilitySettings.showMaterialsBreakdown && (
+                          visibilitySettings.showMaterialsItemized && quote.pricing?.breakdown ? (
+                            <>
+                              {quote.pricing.breakdown.wallPaint && (
+                                <div className="p-4 bg-white">
+                                  <div className="flex justify-between items-start mb-2">
+                                    <div>
+                                      <p className="font-medium text-base">Wall Paint</p>
+                                      {visibilitySettings.showPaintDetails && (
+                                        <p className="text-sm text-gray-600">
+                                          {quote.pricing.breakdown.wallPaint.product} - {quote.pricing.breakdown.wallPaint.finish}
+                                        </p>
+                                      )}
+                                      {hasFeature('advancedPricing') && (
+                                        <p className="text-sm text-gray-500">
+                                          {quote.pricing.breakdown.wallPaint.gallons} gal × ${quote.pricing.breakdown.wallPaint.costPerGallon}
+                                        </p>
+                                      )}
+                                    </div>
+                                    <p className="font-medium text-base">
+                                      ${quote.pricing.breakdown.wallPaint.cost.toFixed(2)}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {quote.pricing.breakdown.ceilingPaint && (
+                                <div className="p-4 bg-white">
+                                  <div className="flex justify-between items-start mb-2">
+                                    <div>
+                                      <p className="font-medium text-base">Ceiling Paint</p>
+                                      {visibilitySettings.showPaintDetails && (
+                                        <p className="text-sm text-gray-600">
+                                          {quote.pricing.breakdown.ceilingPaint.product} - {quote.pricing.breakdown.ceilingPaint.finish}
+                                        </p>
+                                      )}
+                                      {hasFeature('advancedPricing') && (
+                                        <p className="text-sm text-gray-500">
+                                          {quote.pricing.breakdown.ceilingPaint.gallons} gal × ${quote.pricing.breakdown.ceilingPaint.costPerGallon}
+                                        </p>
+                                      )}
+                                    </div>
+                                    <p className="font-medium text-base">
+                                      ${quote.pricing.breakdown.ceilingPaint.cost.toFixed(2)}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {quote.pricing.breakdown.supplies && (
+                                <div className="p-4 bg-white">
+                                  <div className="flex justify-between items-start mb-2">
+                                    <div>
+                                      <p className="font-medium text-base">Supplies & Equipment</p>
+                                      <p className="text-sm text-gray-600">Brushes, rollers, tape, drop cloths, etc.</p>
+                                    </div>
+                                    <p className="font-medium text-base">
+                                      ${quote.pricing.breakdown.supplies.toFixed(2)}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <div className="p-4 bg-white">
+                              <div className="flex justify-between items-start">
+                                <div>
+                                  <p className="font-medium text-base">Materials</p>
+                                  <p className="text-sm text-gray-600">Paint, primer, and supplies</p>
+                                </div>
+                                <p className="font-medium text-base">
+                                  ${getTotal(quote.pricing?.materials).toFixed(2)}
+                                </p>
+                              </div>
+                            </div>
+                          )
+                        )}
+                        
+                        {/* Labor Section - Mobile */}
+                        {visibilitySettings.showLaborBreakdown && (
+                          visibilitySettings.showLaborItemized && quote.pricing?.breakdown ? (
+                            <>
+                              {quote.pricing.breakdown.prepWork && (
+                                <div className="p-4 bg-white">
+                                  <div className="flex justify-between items-start">
+                                    <div>
+                                      <p className="font-medium text-base">Prep Work</p>
+                                      <p className="text-sm text-gray-600">Surface preparation, patching, sanding</p>
+                                      {hasFeature('advancedPricing') && visibilitySettings.showHourlyRates && (
+                                        <p className="text-sm text-gray-500">
+                                          {quote.pricing.breakdown.prepWork.hours} hrs × ${quote.pricing.breakdown.prepWork.rate}/hr
+                                        </p>
+                                      )}
+                                    </div>
+                                    <p className="font-medium text-base">
+                                      ${quote.pricing.breakdown.prepWork.cost.toFixed(2)}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {quote.pricing.breakdown.painting && (
+                                <div className="p-4 bg-white">
+                                  <div className="flex justify-between items-start">
+                                    <div>
+                                      <p className="font-medium text-base">Painting Labor</p>
+                                      <p className="text-sm text-gray-600">Professional painting application</p>
+                                      {hasFeature('advancedPricing') && visibilitySettings.showHourlyRates && (
+                                        <p className="text-sm text-gray-500">
+                                          {quote.pricing.breakdown.painting.hours} hrs × ${quote.pricing.breakdown.painting.rate}/hr
+                                        </p>
+                                      )}
+                                    </div>
+                                    <p className="font-medium text-base">
+                                      ${quote.pricing.breakdown.painting.cost.toFixed(2)}
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <div className="p-4 bg-white">
+                              <div className="flex justify-between items-start">
+                                <div>
+                                  <p className="font-medium text-base">Labor</p>
+                                  <p className="text-sm text-gray-600">Professional painting services</p>
+                                </div>
+                                <p className="font-medium text-base">
+                                  ${getTotal(quote.pricing?.labor).toFixed(2)}
+                                </p>
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -987,19 +1134,19 @@ function QuoteReviewContent() {
                   <div className="mb-8">
                     <div className="ml-auto max-w-sm">
                       <div className="space-y-2">
-                        <div className="flex justify-between py-2">
-                          <span className="text-gray-600">Subtotal</span>
-                          <span className="font-medium">${quote.pricing?.subtotal?.toFixed(2) || '0.00'}</span>
+                        <div className="flex justify-between py-3"> {/* Increased padding */}
+                          <span className="text-gray-600 text-base">Subtotal</span> {/* Increased text size */}
+                          <span className="font-medium text-base">${quote.pricing?.subtotal?.toFixed(2) || '0.00'}</span>
                         </div>
                         
                         {visibilitySettings.showMarkup && quote.pricing?.markup > 0 && (
-                          <div className="flex justify-between py-2 border-t">
-                            <span className="text-gray-600">Overhead & Profit ({quote.pricing.markupPercentage}%)</span>
-                            <span className="font-medium">${quote.pricing.markup.toFixed(2)}</span>
+                          <div className="flex justify-between py-3 border-t"> {/* Increased padding */}
+                            <span className="text-gray-600 text-base">Overhead & Profit ({quote.pricing.markupPercentage}%)</span>
+                            <span className="font-medium text-base">${quote.pricing.markup.toFixed(2)}</span>
                           </div>
                         )}
                         
-                        <div className="flex justify-between py-3 border-t-2 border-gray-900">
+                        <div className="flex justify-between py-4 border-t-2 border-gray-900"> {/* Increased padding */}
                           <span className="text-xl font-bold">Total</span>
                           <span className="text-2xl font-bold text-blue-600">
                             ${quote.pricing?.total?.toFixed(2) || '0.00'}
@@ -1007,8 +1154,8 @@ function QuoteReviewContent() {
                         </div>
                         
                         {hasFeature('paymentIntegration') && (
-                          <div className="pt-2">
-                            <p className="text-sm text-gray-600">
+                          <div className="pt-3"> {/* Increased padding */}
+                            <p className="text-base text-gray-600"> {/* Increased text size */}
                               Deposit Required ({quoteSettings.depositPercentage}%): 
                               <span className="font-semibold ml-2">
                                 ${(quote.pricing?.total * (quoteSettings.depositPercentage / 100)).toFixed(2)}
@@ -1061,29 +1208,29 @@ function QuoteReviewContent() {
                     
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                       {hasFeature('digitalSignatures') && visibilitySettings.showDigitalSignature && (
-                        <Button className="bg-green-600 hover:bg-green-700 text-white">
-                          <CheckCircle2 className="h-4 w-4 mr-2" />
+                        <Button className="bg-green-600 hover:bg-green-700 text-white h-12 text-base px-6"> {/* Better touch target */}
+                          <CheckCircle2 className="h-5 w-5 mr-2" />
                           Accept & Sign Quote
                         </Button>
                       )}
                       
                       {hasFeature('customerPortal') && visibilitySettings.showCustomerPortal && (
-                        <Button variant="outline">
-                          <Globe className="h-4 w-4 mr-2" />
+                        <Button variant="outline" className="h-12 text-base px-6">
+                          <Globe className="h-5 w-5 mr-2" />
                           View in Customer Portal
                         </Button>
                       )}
                       
                       {hasFeature('paymentIntegration') && visibilitySettings.showPaymentButton && (
-                        <Button variant="outline">
-                          <CreditCard className="h-4 w-4 mr-2" />
+                        <Button variant="outline" className="h-12 text-base px-6">
+                          <CreditCard className="h-5 w-5 mr-2" />
                           Pay Deposit Now
                         </Button>
                       )}
                       
                       {!hasFeature('digitalSignatures') && !hasFeature('customerPortal') && (
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                          <Phone className="h-4 w-4 mr-2" />
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white h-12 text-base px-6">
+                          <Phone className="h-5 w-5 mr-2" />
                           Contact Us to Accept
                         </Button>
                       )}
@@ -1135,10 +1282,10 @@ function QuoteReviewContent() {
                               value={editedValue}
                               onChange={(e) => setEditedValue(e.target.value)}
                             />
-                            <Button size="icon" variant="ghost" onClick={() => saveEdit('customerName')}>
+                            <Button size="sm" variant="ghost" onClick={() => saveEdit('customerName')} className="h-8 w-8">
                               <Check className="h-4 w-4" />
                             </Button>
-                            <Button size="icon" variant="ghost" onClick={cancelEdit}>
+                            <Button size="sm" variant="ghost" onClick={cancelEdit} className="h-8 w-8">
                               <X className="h-4 w-4" />
                             </Button>
                           </>
@@ -1146,11 +1293,12 @@ function QuoteReviewContent() {
                           <>
                             <p className="flex-1">{quote.customerName || 'Not specified'}</p>
                             <Button 
-                              size="icon" 
+                              size="sm" 
                               variant="ghost" 
                               onClick={() => handleEdit('customerName', quote.customerName)}
+                              className="h-8 w-8 min-w-[2rem]" // Better touch target
                             >
-                              <Edit2 className="h-3 w-3" />
+                              <Edit2 className="h-4 w-4" />
                             </Button>
                           </>
                         )}
@@ -1603,7 +1751,7 @@ function QuoteReviewContent() {
                           Upload Logo
                         </Label>
                         {!hasFeature('customBranding') && (
-                          <p className="text-xs text-gray-500 mt-1">Pro feature</p>
+                          <p className="text-sm text-gray-500 mt-1">Pro feature</p>
                         )}
                       </div>
                     </div>
@@ -1812,24 +1960,24 @@ function QuoteReviewContent() {
         </Tabs>
 
         {/* Mobile Action Buttons */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t z-50">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t z-50 pb-safe"> {/* Added safe area padding */}
           <div className="flex gap-3">
             <Button
               onClick={saveDraft}
               variant="outline"
-              className="flex-1"
+              className="flex-1 h-12 text-base" // Increased height and text size for better touch targets
               disabled={isLoading}
             >
-              <Save className="h-4 w-4 mr-2" />
+              <Save className="h-5 w-5 mr-2" /> {/* Larger icon */}
               Save
             </Button>
             
             <Button
               onClick={sendQuoteEmail}
               disabled={isLoading || isSending || sendSuccess}
-              className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
+              className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 text-base"
             >
-              <Send className="h-4 w-4 mr-2" />
+              <Send className="h-5 w-5 mr-2" /> {/* Larger icon */}
               {isSending ? 'Sending...' : sendSuccess ? 'Sent!' : 'Send'}
             </Button>
           </div>
@@ -1837,8 +1985,8 @@ function QuoteReviewContent() {
         
         {/* Success/Error Messages */}
         {sendSuccess && (
-          <div className="fixed bottom-20 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-green-50 border border-green-200 rounded-lg z-50">
-            <p className="text-green-700 text-center font-medium">
+          <div className="fixed bottom-24 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-green-50 border border-green-200 rounded-lg z-50"> {/* Increased bottom spacing */}
+            <p className="text-green-700 text-center font-medium text-base"> {/* Increased text size */}
               <CheckCircle2 className="h-5 w-5 inline mr-2" />
               Quote sent successfully!
             </p>
@@ -1846,8 +1994,8 @@ function QuoteReviewContent() {
         )}
         
         {sendError && (
-          <div className="fixed bottom-20 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-red-50 border border-red-200 rounded-lg z-50">
-            <p className="text-red-700 text-center">{sendError}</p>
+          <div className="fixed bottom-24 lg:bottom-8 left-4 right-4 lg:left-auto lg:right-8 lg:w-96 p-4 bg-red-50 border border-red-200 rounded-lg z-50"> {/* Increased bottom spacing */}
+            <p className="text-red-700 text-center text-base">{sendError}</p> {/* Increased text size */}
           </div>
         )}
       </main>

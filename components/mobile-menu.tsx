@@ -45,7 +45,7 @@ export default function MobileMenu() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden text-white hover:bg-white/10"
+          className="md:hidden text-white hover:bg-white/10 h-11 w-11" {/* Better touch target */}
           aria-label="Open menu"
         >
           <Menu className="h-6 w-6" />
@@ -66,7 +66,7 @@ export default function MobileMenu() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+                className={`flex items-center justify-between px-4 py-4 rounded-lg transition-colors min-h-[48px] ${
                   isActive 
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white' 
                     : 'text-gray-300 hover:bg-white/5 hover:text-white'
@@ -75,7 +75,7 @@ export default function MobileMenu() {
               >
                 <div className="flex items-center space-x-3">
                   <Icon className="h-5 w-5" />
-                  <span className="font-medium">{item.name}</span>
+                  <span className="font-medium text-base">{item.name}</span>
                 </div>
                 <ChevronRight className="h-4 w-4 opacity-50" />
               </Link>
@@ -84,7 +84,7 @@ export default function MobileMenu() {
           
           {/* Resources Section */}
           <div className="mt-4 pt-4 border-t border-gray-800">
-            <h3 className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Resources</h3>
+            <h3 className="px-4 text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Resources</h3>
             {resourceItems.map((item) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -93,7 +93,7 @@ export default function MobileMenu() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+                  className={`flex items-center justify-between px-4 py-4 rounded-lg transition-colors min-h-[48px] ${
                     isActive 
                       ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white' 
                       : 'text-gray-300 hover:bg-white/5 hover:text-white'
@@ -102,7 +102,7 @@ export default function MobileMenu() {
                 >
                   <div className="flex items-center space-x-3">
                     <Icon className="h-5 w-5" />
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-medium text-base">{item.name}</span>
                   </div>
                   <ChevronRight className="h-4 w-4 opacity-50" />
                 </Link>
@@ -113,14 +113,14 @@ export default function MobileMenu() {
         
         <div className="mt-8 space-y-3 px-4">
           <Link href="/access-code" onClick={() => setIsOpen(false)}>
-            <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
+            <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white h-12 text-base">
               <LogIn className="mr-2 h-4 w-4" />
               Login
             </Button>
           </Link>
           
           <Link href="/trial-signup" onClick={() => setIsOpen(false)}>
-            <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">
+            <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 h-12 text-base">
               Start Free Trial
             </Button>
           </Link>

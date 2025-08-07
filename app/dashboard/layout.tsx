@@ -173,12 +173,13 @@ export default function DashboardLayout({
                 {navItems.find(item => item.href === pathname)?.label || 'Dashboard'}
               </h2>
               <div className="flex items-center gap-4">
-                <span className="text-base text-gray-200 hidden md:block">⚡ {company.email}</span>
+                <span className="text-sm text-gray-200 hidden md:block">⚡ {company.email}</span> {/* Smaller text for mobile */}
                 <Link href="/create-quote" className="group relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-sm opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="relative btn-primary-modern inline-flex items-center gap-2">
+                  <div className="relative btn-primary-modern inline-flex items-center gap-2 h-10 px-4 text-sm"> {/* Better touch target */}
                     <Sparkles className="h-4 w-4" />
-                    New Quote
+                    <span className="hidden sm:inline">New Quote</span>
+                    <span className="sm:hidden">Quote</span> {/* Shorter text on mobile */}
                   </div>
                 </Link>
               </div>
@@ -186,15 +187,15 @@ export default function DashboardLayout({
           </div>
           
           {/* Page Content */}
-          <div className="flex-1 p-4 lg:p-8 pb-20 lg:pb-8">
+          <div className="flex-1 p-4 lg:p-8 pb-32 lg:pb-8"> {/* Increased bottom padding for mobile nav */}
             {children}
           </div>
         </main>
       </div>
 
       {/* Mobile Navigation */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 glass-card rounded-t-2xl border-t border-white/10">
-        <div className="grid grid-cols-4 gap-1 p-2">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 glass-card rounded-t-2xl border-t border-white/10 pb-safe"> {/* Added safe area padding */}
+        <div className="grid grid-cols-4 gap-1 p-3"> {/* Increased padding */}
           {navItems.slice(0, 4).map((item) => {
             const Icon = item.icon
             const isActive = pathname === item.href
@@ -204,20 +205,49 @@ export default function DashboardLayout({
                 key={item.href}
                 href={item.href}
                 className={`
-                  flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition-all
+                  flex flex-col items-center gap-2 py-3 px-2 rounded-lg transition-all min-h-[60px] {/* Better touch targets */}
                   ${isActive 
                     ? 'bg-gray-900/70 text-white' 
                     : 'text-gray-200 hover:text-white hover:bg-gray-900/80'
                   }
                 `}
               >
-                <div className={`relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} ${isActive ? '' : 'opacity-60'} transition-opacity`}>
-                  <Icon className="h-4 w-4 text-white" />
+                <div className={`relative flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br ${item.color} ${isActive ? '' : 'opacity-60'} transition-opacity`}> {/* Increased icon container */}
+                  <Icon className="h-5 w-5 text-white" /> {/* Larger icons */}
                 </div>
-                <span className="text-base font-medium">{item.label}</span>
+                <span className="text-sm font-medium text-center leading-tight">{item.label}</span> {/* Improved text wrapping */}
               </Link>
             )
           })}
+        </div>
+        
+        {/* Additional mobile nav for Settings and Billing - horizontal scroll or overflow menu */}
+        <div className="px-3 pb-3">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+            {navItems.slice(4).map((item) => {
+              const Icon = item.icon
+              const isActive = pathname === item.href
+              
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    flex items-center gap-2 py-2 px-4 rounded-lg transition-all whitespace-nowrap min-h-[44px] {/* Better touch targets */}
+                    ${isActive 
+                      ? 'bg-gray-900/70 text-white' 
+                      : 'text-gray-200 hover:text-white hover:bg-gray-900/80'
+                    }
+                  `}
+                >
+                  <div className={`relative flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br ${item.color} ${isActive ? '' : 'opacity-60'} transition-opacity`}>
+                    <Icon className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-sm font-medium">{item.label}</span>
+                </Link>
+              )
+            })}
+          </div>
         </div>
       </nav>
 
