@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaintQuote Pro - Screenshot Gallery</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .stats {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 2em;
+      font-weight: bold;
+      color: #667eea;
+    }
+    .stat-label {
+      color: #666;
+      margin-top: 5px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    .screenshot-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .screenshot-card:hover {
+      transform: translateY(-5px);
+    }
+    .screenshot-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 2px solid #eee;
+      cursor: pointer;
+    }
+    .screenshot-info {
+      padding: 15px;
+    }
+    .screenshot-title {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .screenshot-filename {
+      color: #666;
+      font-size: 0.9em;
+      font-family: monospace;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      cursor: pointer;
+    }
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+    .timestamp {
+      text-align: center;
+      color: white;
+      margin-top: 20px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 PaintQuote Pro - Screenshot Gallery</h1>
+    
+    <div class="stats">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value">36</div>
+          <div class="stat-label">Total Screenshots</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Mobile Views</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">16</div>
+          <div class="stat-label">Viewport Captures</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">20</div>
+          <div class="stat-label">Pages Captured</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gallery">
+      
+        <div class="screenshot-card">
+          <img 
+            src="01-homepage-viewport.png" 
+            alt="Homepage Viewport" 
+            class="screenshot-img"
+            onclick="openModal('01-homepage-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Homepage Viewport</div>
+            <div class="screenshot-filename">01-homepage-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="01-homepage.png" 
+            alt="Homepage" 
+            class="screenshot-img"
+            onclick="openModal('01-homepage.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Homepage</div>
+            <div class="screenshot-filename">01-homepage.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="02-features-viewport.png" 
+            alt="Features Viewport" 
+            class="screenshot-img"
+            onclick="openModal('02-features-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Features Viewport</div>
+            <div class="screenshot-filename">02-features-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="02-features.png" 
+            alt="Features" 
+            class="screenshot-img"
+            onclick="openModal('02-features.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Features</div>
+            <div class="screenshot-filename">02-features.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="03-pricing-viewport.png" 
+            alt="Pricing Viewport" 
+            class="screenshot-img"
+            onclick="openModal('03-pricing-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Pricing Viewport</div>
+            <div class="screenshot-filename">03-pricing-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="03-pricing.png" 
+            alt="Pricing" 
+            class="screenshot-img"
+            onclick="openModal('03-pricing.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Pricing</div>
+            <div class="screenshot-filename">03-pricing.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="04-access-code-viewport.png" 
+            alt="Access Code Viewport" 
+            class="screenshot-img"
+            onclick="openModal('04-access-code-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Access Code Viewport</div>
+            <div class="screenshot-filename">04-access-code-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="04-access-code.png" 
+            alt="Access Code" 
+            class="screenshot-img"
+            onclick="openModal('04-access-code.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Access Code</div>
+            <div class="screenshot-filename">04-access-code.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="05-create-quote-viewport.png" 
+            alt="Create Quote Viewport" 
+            class="screenshot-img"
+            onclick="openModal('05-create-quote-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Create Quote Viewport</div>
+            <div class="screenshot-filename">05-create-quote-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="05-create-quote.png" 
+            alt="Create Quote" 
+            class="screenshot-img"
+            onclick="openModal('05-create-quote.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Create Quote</div>
+            <div class="screenshot-filename">05-create-quote.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="06-demo-viewport.png" 
+            alt="Demo Viewport" 
+            class="screenshot-img"
+            onclick="openModal('06-demo-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Demo Viewport</div>
+            <div class="screenshot-filename">06-demo-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="06-demo.png" 
+            alt="Demo" 
+            class="screenshot-img"
+            onclick="openModal('06-demo.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Demo</div>
+            <div class="screenshot-filename">06-demo.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="07-roi-calculator-viewport.png" 
+            alt="Roi Calculator Viewport" 
+            class="screenshot-img"
+            onclick="openModal('07-roi-calculator-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Roi Calculator Viewport</div>
+            <div class="screenshot-filename">07-roi-calculator-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="07-roi-calculator.png" 
+            alt="Roi Calculator" 
+            class="screenshot-img"
+            onclick="openModal('07-roi-calculator.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Roi Calculator</div>
+            <div class="screenshot-filename">07-roi-calculator.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="10-painting-business-software-viewport.png" 
+            alt="Painting Business Software Viewport" 
+            class="screenshot-img"
+            onclick="openModal('10-painting-business-software-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Painting Business Software Viewport</div>
+            <div class="screenshot-filename">10-painting-business-software-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="10-painting-business-software.png" 
+            alt="Painting Business Software" 
+            class="screenshot-img"
+            onclick="openModal('10-painting-business-software.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Painting Business Software</div>
+            <div class="screenshot-filename">10-painting-business-software.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="11-mobile-app-viewport.png" 
+            alt="Mobile App Viewport" 
+            class="screenshot-img"
+            onclick="openModal('11-mobile-app-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Mobile App Viewport</div>
+            <div class="screenshot-filename">11-mobile-app-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="11-mobile-app.png" 
+            alt="Mobile App" 
+            class="screenshot-img"
+            onclick="openModal('11-mobile-app.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Mobile App</div>
+            <div class="screenshot-filename">11-mobile-app.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="12-case-studies-viewport.png" 
+            alt="Case Studies Viewport" 
+            class="screenshot-img"
+            onclick="openModal('12-case-studies-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Case Studies Viewport</div>
+            <div class="screenshot-filename">12-case-studies-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="12-case-studies.png" 
+            alt="Case Studies" 
+            class="screenshot-img"
+            onclick="openModal('12-case-studies.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Case Studies</div>
+            <div class="screenshot-filename">12-case-studies.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="14-integrations-viewport.png" 
+            alt="Integrations Viewport" 
+            class="screenshot-img"
+            onclick="openModal('14-integrations-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Integrations Viewport</div>
+            <div class="screenshot-filename">14-integrations-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="14-integrations.png" 
+            alt="Integrations" 
+            class="screenshot-img"
+            onclick="openModal('14-integrations.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Integrations</div>
+            <div class="screenshot-filename">14-integrations.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="15-about-viewport.png" 
+            alt="About Viewport" 
+            class="screenshot-img"
+            onclick="openModal('15-about-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">About Viewport</div>
+            <div class="screenshot-filename">15-about-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="15-about.png" 
+            alt="About" 
+            class="screenshot-img"
+            onclick="openModal('15-about.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">About</div>
+            <div class="screenshot-filename">15-about.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="16-contact-viewport.png" 
+            alt="Contact Viewport" 
+            class="screenshot-img"
+            onclick="openModal('16-contact-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Contact Viewport</div>
+            <div class="screenshot-filename">16-contact-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="16-contact.png" 
+            alt="Contact" 
+            class="screenshot-img"
+            onclick="openModal('16-contact.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Contact</div>
+            <div class="screenshot-filename">16-contact.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="17-help-viewport.png" 
+            alt="Help Viewport" 
+            class="screenshot-img"
+            onclick="openModal('17-help-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Help Viewport</div>
+            <div class="screenshot-filename">17-help-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="17-help.png" 
+            alt="Help" 
+            class="screenshot-img"
+            onclick="openModal('17-help.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Help</div>
+            <div class="screenshot-filename">17-help.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="19-paint-contractor-app-viewport.png" 
+            alt="Paint Contractor App Viewport" 
+            class="screenshot-img"
+            onclick="openModal('19-paint-contractor-app-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Paint Contractor App Viewport</div>
+            <div class="screenshot-filename">19-paint-contractor-app-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="19-paint-contractor-app.png" 
+            alt="Paint Contractor App" 
+            class="screenshot-img"
+            onclick="openModal('19-paint-contractor-app.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Paint Contractor App</div>
+            <div class="screenshot-filename">19-paint-contractor-app.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="20-painting-quote-generator-viewport.png" 
+            alt="Painting Quote Generator Viewport" 
+            class="screenshot-img"
+            onclick="openModal('20-painting-quote-generator-viewport.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Painting Quote Generator Viewport</div>
+            <div class="screenshot-filename">20-painting-quote-generator-viewport.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="20-painting-quote-generator.png" 
+            alt="Painting Quote Generator" 
+            class="screenshot-img"
+            onclick="openModal('20-painting-quote-generator.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Painting Quote Generator</div>
+            <div class="screenshot-filename">20-painting-quote-generator.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="mobile-01-homepage.png" 
+            alt="Mobile 01 Homepage" 
+            class="screenshot-img"
+            onclick="openModal('mobile-01-homepage.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Mobile 01 Homepage</div>
+            <div class="screenshot-filename">mobile-01-homepage.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="mobile-02-create-quote.png" 
+            alt="Mobile 02 Create Quote" 
+            class="screenshot-img"
+            onclick="openModal('mobile-02-create-quote.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Mobile 02 Create Quote</div>
+            <div class="screenshot-filename">mobile-02-create-quote.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="mobile-03-pricing.png" 
+            alt="Mobile 03 Pricing" 
+            class="screenshot-img"
+            onclick="openModal('mobile-03-pricing.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Mobile 03 Pricing</div>
+            <div class="screenshot-filename">mobile-03-pricing.png</div>
+          </div>
+        </div>
+        
+        <div class="screenshot-card">
+          <img 
+            src="mobile-04-features.png" 
+            alt="Mobile 04 Features" 
+            class="screenshot-img"
+            onclick="openModal('mobile-04-features.png')"
+          >
+          <div class="screenshot-info">
+            <div class="screenshot-title">Mobile 04 Features</div>
+            <div class="screenshot-filename">mobile-04-features.png</div>
+          </div>
+        </div>
+        
+    </div>
+    
+    <div class="timestamp">
+      Generated on 2025-08-06, 11:05:03 p.m.
+    </div>
+  </div>
+  
+  <div id="modal" class="modal" onclick="closeModal()">
+    <div class="modal-content">
+      <img id="modal-img" src="" alt="">
+    </div>
+  </div>
+  
+  <script>
+    function openModal(src) {
+      document.getElementById('modal').style.display = 'block';
+      document.getElementById('modal-img').src = src;
+    }
+    
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
+  

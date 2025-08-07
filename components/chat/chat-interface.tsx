@@ -405,7 +405,7 @@ export function ChatInterface({
         ))}
         {isLoading && (
           <MessageBubble
-            message={{ role: 'assistant', content: '' }}
+            message={{ role: 'assistant', content: 'Analyzing your project and creating a professional quote...' }}
             isTyping
           />
         )}

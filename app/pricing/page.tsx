@@ -117,13 +117,25 @@ export default function PricingPage() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
   const router = useRouter()
 
-  const handleSelectPlan = (_planKey: string) => {
-    if (_planKey === 'free') {
-      router.push('/auth/signup?plan=free')
-    } else if (_planKey === 'enterprise') {
+  const handleSelectPlan = (planKey: string) => {
+    if (planKey === 'free') {
+      router.push('/access-code')
+    } else if (planKey === 'enterprise') {
       router.push('/contact?interest=enterprise')
-    } else {
-      router.push(`/auth/signup?plan=${_planKey}&billing=${billingPeriod}`)
+    } else if (planKey === 'professional') {
+      // Use environment variables for Stripe links
+      if (billingPeriod === 'monthly') {
+        window.location.href = process.env.NEXT_PUBLIC_STRIPE_PROFESSIONAL_MONTHLY_URL || 'https://buy.stripe.com/test_professional_monthly'
+      } else {
+        window.location.href = process.env.NEXT_PUBLIC_STRIPE_PROFESSIONAL_YEARLY_URL || 'https://buy.stripe.com/test_professional_yearly'
+      }
+    } else if (planKey === 'business') {
+      // Business plan Stripe links
+      if (billingPeriod === 'monthly') {
+        window.location.href = 'https://buy.stripe.com/bJe7sL5WucqObuF98X5EY02'
+      } else {
+        window.location.href = 'https://buy.stripe.com/14AaEXgB80I66al84T5EY03'
+      }
     }
   }
 
@@ -258,8 +270,9 @@ export default function PricingPage() {
                         : 'glass-card border-white/20 text-white hover:bg-gray-900/70'
                     }`}
                     onClick={() => handleSelectPlan(key)}
+                    size="lg"
                   >
-                    {key === 'free' ? 'Start Free' : key === 'enterprise' ? 'Contact Sales' : 'Get Started'}
+                    {key === 'free' ? 'Start Free' : key === 'enterprise' ? 'Contact Sales' : billingPeriod === 'monthly' ? `Start Now - $${plan.monthlyPrice}/mo` : `Start Now - $${Math.round((plan.yearlyPrice || 0) / 12)}/mo`}
                   </Button>
                 </CardFooter>
               </Card>

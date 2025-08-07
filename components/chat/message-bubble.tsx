@@ -30,10 +30,13 @@ export function MessageBubble({ message, isTyping }: MessageBubbleProps) {
         )}
       >
         {isTyping ? (
-          <div className="flex space-x-2 py-1">
-            <div className="h-2 w-2 animate-bounce rounded-full bg-gray-500 animation-delay-0"></div>
-            <div className="h-2 w-2 animate-bounce rounded-full bg-gray-500 animation-delay-200"></div>
-            <div className="h-2 w-2 animate-bounce rounded-full bg-gray-500 animation-delay-400"></div>
+          <div className="flex items-center gap-3">
+            <div className="flex space-x-1.5">
+              <div className="h-2 w-2 animate-bounce rounded-full bg-blue-400" style={{ animationDelay: '0ms' }}></div>
+              <div className="h-2 w-2 animate-bounce rounded-full bg-blue-400" style={{ animationDelay: '150ms' }}></div>
+              <div className="h-2 w-2 animate-bounce rounded-full bg-blue-400" style={{ animationDelay: '300ms' }}></div>
+            </div>
+            <span className="text-sm text-gray-200 italic">{message.content || 'Processing...'}</span>
           </div>
         ) : (
           <>

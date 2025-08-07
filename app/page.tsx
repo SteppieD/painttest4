@@ -121,6 +121,12 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link href="/access-code?code=DEMO2024">
+                <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-6 text-lg shadow-lg">
+                  Try Demo Now - No Signup
+                  <Zap className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
               <Link href="/trial-signup">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg">
                   Start Free Trial
@@ -135,6 +141,14 @@ export default function Home() {
               </Link>
             </div>
 
+            {/* Demo Access Badge */}
+            <div className="mb-6">
+              <Badge className="bg-green-500/10 text-green-400 border-green-500/20 px-4 py-2">
+                <Shield className="h-4 w-4 mr-2" />
+                Access Code: DEMO2024 - Full feature access, no credit card required
+              </Badge>
+            </div>
+            
             {/* Social Proof */}
             <div className="flex items-center justify-center gap-8 text-gray-200">
               <div className="flex items-center gap-2">
@@ -148,6 +162,117 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <FileText className="h-5 w-5" />
                 <span>10,000+ Quotes Created</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Testimonials Section */}
+      <section className="py-20 bg-gray-900/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
+              <Award className="h-3 w-3 mr-1" />
+              Trusted by 500+ Painting Contractors
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Real Results from Real Contractors
+            </h2>
+            <p className="text-xl text-gray-200">
+              See how PaintQuote Pro transforms painting businesses
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Testimonial 1 */}
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-100 mb-6 italic">
+                "We went from 7 to 12 jobs won per month. The speed of creating quotes is incredible - what used to take 3 hours now takes 15 minutes. Our close rate jumped from 35% to 52%."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                  JR
+                </div>
+                <div>
+                  <div className="font-semibold text-white">John Rodriguez</div>
+                  <div className="text-sm text-gray-400">Rodriguez Painting Co.</div>
+                  <div className="text-sm text-green-400">+$18,000/month revenue</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-100 mb-6 italic">
+                "The professional look of the quotes alone wins us more jobs. Customers are impressed when they receive a detailed quote within hours, not days."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold">
+                  SC
+                </div>
+                <div>
+                  <div className="font-semibold text-white">Sarah Chen</div>
+                  <div className="text-sm text-gray-400">Premier Paint Solutions</div>
+                  <div className="text-sm text-green-400">200+ quotes/month</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 3 */}
+            <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-100 mb-6 italic">
+                "Best investment for my business. The AI understands painting projects better than any software I've tried. ROI in the first month!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                  MT
+                </div>
+                <div>
+                  <div className="font-semibold text-white">Mike Thompson</div>
+                  <div className="text-sm text-gray-400">Thompson & Sons Painting</div>
+                  <div className="text-sm text-green-400">60% win rate increase</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Trust Indicators */}
+          <div className="mt-12 pt-12 border-t border-gray-800">
+            <div className="text-center mb-8">
+              <p className="text-gray-400 text-sm uppercase tracking-wider mb-4">Trusted by Industry Leaders</p>
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
+              <div className="text-gray-400">
+                <div className="text-2xl font-bold">Sherwin-Williams</div>
+                <p className="text-xs">Preferred Partner</p>
+              </div>
+              <div className="text-gray-400">
+                <div className="text-2xl font-bold">Benjamin Moore</div>
+                <p className="text-xs">Certified Integration</p>
+              </div>
+              <div className="text-gray-400">
+                <div className="text-2xl font-bold">PPG Paints</div>
+                <p className="text-xs">Recommended Software</p>
+              </div>
+              <div className="text-gray-400">
+                <div className="text-2xl font-bold">PDCA</div>
+                <p className="text-xs">Member Benefit</p>
               </div>
             </div>
           </div>

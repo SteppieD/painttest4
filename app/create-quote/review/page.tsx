@@ -18,6 +18,9 @@ function QuoteReviewContent() {
   const [editMode, setEditMode] = useState<string | null>(null)
   const [quoteData, setQuoteData] = useState<any>(null)
   const [editedValue, setEditedValue] = useState('')
+  const [isSending, setIsSending] = useState(false)
+  const [sendSuccess, setSendSuccess] = useState(false)
+  const [sendError, setSendError] = useState('')
 
   useEffect(() => {
     const data = searchParams.get('data')
@@ -73,6 +76,77 @@ function QuoteReviewContent() {
     setEditedValue('')
   }
 
+  const sendQuoteEmail = async () => {
+    if (!quoteData.customerEmail) {
+      toast({
+        title: 'Email Required',
+        description: 'Please add a customer email address to send the quote.',
+        variant: 'destructive'
+      })
+      return
+    }
+    
+    setIsSending(true)
+    setSendError('')
+    
+    try {
+      const response = await fetch('/api/quotes/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: quoteData.customerEmail,
+          customerName: quoteData.customerName || 'Valued Customer',
+          quoteData: {
+            projectType: quoteData.projectType || 'Interior Painting',
+            squareFootage: quoteData.sqft || quoteData.surfaces?.walls || 0,
+            rooms: quoteData.roomCount || quoteData.rooms?.length || 0,
+            materials: quoteData.pricing?.materials || {},
+            labor: quoteData.pricing?.labor || {},
+            total: quoteData.pricing?.total || 0,
+            timeline: quoteData.pricing?.timeline || '3-5 days',
+            id: Date.now().toString()
+          },
+          companyInfo: {
+            name: 'PaintQuote Pro',
+            phone: '1-800-PAINT-PRO',
+            email: 'quotes@paintquotepro.com'
+          }
+        })
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok) {
+        setSendSuccess(true)
+        toast({
+          title: 'Quote Sent Successfully!',
+          description: `The quote has been sent to ${quoteData.customerEmail}`,
+        })
+        
+        // Also create the quote in the database
+        await createQuote()
+      } else {
+        setSendError(result.error || 'Failed to send quote')
+        toast({
+          title: 'Failed to Send',
+          description: result.error || 'Unable to send the quote email.',
+          variant: 'destructive'
+        })
+      }
+    } catch (error) {
+      setSendError('An error occurred while sending the quote')
+      toast({
+        title: 'Error',
+        description: 'An error occurred while sending the quote.',
+        variant: 'destructive'
+      })
+    } finally {
+      setIsSending(false)
+    }
+  }
+  
   const createQuote = async () => {
     setIsLoading(true)
     try {
@@ -498,13 +572,13 @@ function QuoteReviewContent() {
             <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
               <CardContent className="pt-6 space-y-3">
                 <Button
-                  onClick={createQuote}
-                  disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                  onClick={sendQuoteEmail}
+                  disabled={isLoading || isSending || sendSuccess}
+                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white disabled:opacity-50"
                   size="lg"
                 >
                   <Send className="h-4 w-4 mr-2" />
-                  {isLoading ? 'Creating...' : 'Create & Send Quote'}
+                  {isSending ? 'Sending...' : sendSuccess ? 'Sent!' : 'Create & Send Quote'}
                 </Button>
                 
                 <Button
@@ -529,6 +603,19 @@ function QuoteReviewContent() {
                 </Button>
               </CardContent>
             </Card>
+            
+            {/* Success/Error Messages */}
+            {sendSuccess && (
+              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                <p className="text-green-400 text-center">✅ Quote sent successfully!</p>
+              </div>
+            )}
+            
+            {sendError && (
+              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                <p className="text-red-400 text-center">❌ {sendError}</p>
+              </div>
+            )}
 
             {/* Quick Actions */}
             <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">

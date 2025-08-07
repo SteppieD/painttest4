@@ -22,11 +22,18 @@ export default function AccessCodePage() {
   const [forgotCodeLoading, setForgotCodeLoading] = useState(false);
   const [forgotCodeSuccess, setForgotCodeSuccess] = useState(false);
 
-  // Handle autofill detection - run only once on mount
+  // Handle autofill detection and URL params - run only once on mount
   useEffect(() => {
+    // Check for code in URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const codeFromUrl = urlParams.get('code');
+    if (codeFromUrl) {
+      setAccessCode(codeFromUrl);
+    }
+    
     const checkAutofill = () => {
       const input = document.getElementById('accessCode') as HTMLInputElement;
-      if (input && input.value && !accessCode) {
+      if (input && input.value && !accessCode && !codeFromUrl) {
         setAccessCode(input.value);
       }
     };
