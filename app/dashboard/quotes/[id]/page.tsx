@@ -505,7 +505,7 @@ Your Painting Company
                 className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20"
                 onClick={() => {
                   if (quote.customer_phone) {
-                    window.location.href = `sms:${quote.customer_phone}?body=Hi ${quote.customer_name}, following up on your painting quote #${quote.quote_number}. Do you have any questions?`
+                    window.location.href = `sms:${quote.customer_phone}?body=Hi ${quote.customer_name}, following up on your painting quote. Do you have any questions?`
                   } else {
                     alert('No phone number available for this customer')
                   }
@@ -517,7 +517,7 @@ Your Painting Company
                 className="bg-gray-900/70 hover:bg-white/20 text-white border border-white/20"
                 onClick={async () => {
                   try {
-                    const response = await fetch(`/api/quotes/${quote.id}`, {
+                    const response = await fetch(`/api/quotes/${id}`, {
                       method: 'PATCH',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({ status: 'accepted' })

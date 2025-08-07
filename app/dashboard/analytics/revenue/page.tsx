@@ -258,7 +258,7 @@ export default function RevenueAnalyticsPage() {
             // Generate CSV data
             const csvData = [
               ['Period', 'Revenue', 'Quotes', 'Conversion Rate'],
-              ...revenueData.map(item => [
+              ...(revenueData as any[]).map((item: any) => [
                 item.name,
                 `$${item.revenue}`,
                 item.quotes,
