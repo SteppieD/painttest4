@@ -112,10 +112,10 @@ function ModernNavigation() {
               Sign In
             </Link>
             <Link
-              href="/access-code?code=DEMO2024"
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 text-white font-medium text-base rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+              href="/trial-signup"
+              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium text-base rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
             >
-              Try Demo
+              Start Free
               <ChevronRight className="h-4 w-4" />
             </Link>
           </div>

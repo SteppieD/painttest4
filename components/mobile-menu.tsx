@@ -119,9 +119,9 @@ export default function MobileMenu() {
             </Button>
           </Link>
           
-          <Link href="/access-code?code=DEMO2024" onClick={() => setIsOpen(false)}>
+          <Link href="/trial-signup" onClick={() => setIsOpen(false)}>
             <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">
-              Try Demo
+              Start Free Trial
             </Button>
           </Link>
         </div>

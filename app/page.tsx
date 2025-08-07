@@ -121,14 +121,8 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href="/access-code?code=DEMO2024">
-                <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-6 text-lg shadow-lg">
-                  Try Demo Now - No Signup
-                  <Zap className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
               <Link href="/trial-signup">
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg">
+                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg shadow-lg">
                   Start Free Trial
                   <Sparkles className="ml-2 h-5 w-5" />
                 </Button>
@@ -141,11 +135,11 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Demo Access Badge */}
+            {/* Free Plan Badge */}
             <div className="mb-6">
-              <Badge className="bg-green-500/10 text-green-400 border-green-500/20 px-4 py-2">
+              <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 px-4 py-2">
                 <Shield className="h-4 w-4 mr-2" />
-                Access Code: DEMO2024 - Full feature access, no credit card required
+                Free Forever Plan - 5 quotes/month, no credit card required
               </Badge>
             </div>
             
