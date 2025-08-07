@@ -363,7 +363,7 @@ function QuoteReviewContent() {
     const newData = { ...quoteData }
     
     // Navigate to nested field and update value
-    let current = newData
+    let current: any = newData
     for (let i = 0; i < fieldPath.length - 1; i++) {
       current = current[fieldPath[i]]
     }
@@ -380,13 +380,17 @@ function QuoteReviewContent() {
     
     // Recalculate totals if materials or labor changed
     if (field.includes('materials') || field.includes('labor')) {
-      const materials = newData.pricing?.materials?.total || 0
-      const labor = newData.pricing?.labor?.total || 0
+      if (!(newData as any).pricing) {
+        (newData as any).pricing = {}
+      }
+      const pricing = (newData as any).pricing
+      const materials = pricing?.materials?.total || 0
+      const labor = pricing?.labor?.total || 0
       const subtotal = materials + labor
-      const markup = subtotal * ((newData.pricing?.markupPercentage || 30) / 100)
-      newData.pricing.subtotal = subtotal
-      newData.pricing.markup = markup
-      newData.pricing.total = subtotal + markup
+      const markup = subtotal * ((pricing?.markupPercentage || 30) / 100)
+      pricing.subtotal = subtotal
+      pricing.markup = markup
+      pricing.total = subtotal + markup
     }
     
     setQuoteData(newData)
@@ -399,7 +403,7 @@ function QuoteReviewContent() {
   }
 
   const sendQuoteEmail = async () => {
-    if (!quoteData.customerEmail) {
+    if (!quoteData || !quoteData.customerEmail) {
       toast({
         title: 'Email Required',
         description: 'Please add a customer email address to send the quote.',
@@ -567,7 +571,7 @@ function QuoteReviewContent() {
 
   const getTotal = (value: string | number | undefined): number => {
     if (typeof value === 'number') return value
-    if (typeof value === 'object' && value && 'total' in value) return value.total || 0
+    if (typeof value === 'object' && value && 'total' in value) return (value as any).total || 0
     return 0
   }
   
