@@ -21,12 +21,12 @@ export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
     ],
     price: 0
   },
-  pro: {
-    name: 'pro',
-    displayName: 'Pro',
-    monthlyQuoteLimit: -1, // Unlimited
+  professional: {
+    name: 'professional',
+    displayName: 'Professional',
+    monthlyQuoteLimit: 50, // 50 quotes per month
     features: [
-      'Unlimited quotes',
+      '50 quotes per month',
       'Professional templates',
       'Custom branding',
       'Analytics & insights',
@@ -37,12 +37,12 @@ export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
     ],
     price: 79
   },
-  enterprise: {
-    name: 'enterprise',
-    displayName: 'Enterprise',
+  business: {
+    name: 'business',
+    displayName: 'Business',
     monthlyQuoteLimit: -1, // Unlimited
     features: [
-      'Everything in Pro',
+      'Everything in Professional',
       'Multiple users',
       'API access',
       'Custom integrations',
@@ -50,7 +50,7 @@ export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
       'Custom reporting',
       'White-label options'
     ],
-    price: -1 // Custom pricing
+    price: 149 // $149/month
   }
 };
 
@@ -68,7 +68,7 @@ export class SubscriptionService {
     const limit = tier.monthlyQuoteLimit;
     const count = company.monthly_quote_count || 0;
 
-    // Unlimited for pro and enterprise
+    // Unlimited for business tier
     if (limit === -1) {
       return { allowed: true, remaining: -1, limit: -1 };
     }
@@ -102,7 +102,7 @@ export class SubscriptionService {
     // or by adding the field to the Company interface and database schema
   }
 
-  static async upgradeToPro(companyId: number, stripeCustomerId?: string, stripeSubscriptionId?: string): Promise<void> {
+  static async upgradeToProfessional(companyId: number, stripeCustomerId?: string, stripeSubscriptionId?: string): Promise<void> {
     const company = await db.getCompany(companyId);
     if (!company) {
       throw new Error('Company not found');
@@ -111,11 +111,11 @@ export class SubscriptionService {
     const previousTier = company.subscription_tier || 'free';
     
     await db.updateCompany(companyId, {
-      subscription_tier: 'pro'
+      subscription_tier: 'professional'
     } as any);
 
     // Log the subscription event
-    await this.logSubscriptionEvent(companyId, 'upgrade', previousTier, 'pro');
+    await this.logSubscriptionEvent(companyId, 'upgrade', previousTier, 'professional');
   }
 
   static async startTrial(companyId: number, durationDays: number = 14): Promise<Date> {
@@ -123,10 +123,10 @@ export class SubscriptionService {
     trialEndDate.setDate(trialEndDate.getDate() + durationDays);
 
     await db.updateCompany(companyId, {
-      subscription_tier: 'pro'
+      subscription_tier: 'professional'
     } as any);
 
-    await this.logSubscriptionEvent(companyId, 'trial_started', 'free', 'pro', { 
+    await this.logSubscriptionEvent(companyId, 'trial_started', 'free', 'professional', { 
       duration_days: durationDays 
     });
 
@@ -142,7 +142,7 @@ export class SubscriptionService {
     const company = await db.getCompany(companyId);
     if (!company) return;
 
-    const previousTier = company.subscription_tier || 'pro';
+    const previousTier = company.subscription_tier || 'professional';
 
     await db.updateCompany(companyId, {
       subscription_tier: 'free'
