@@ -1,14 +1,11 @@
-'use client'
-
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Calculator, Clock, DollarSign, FileText, Home, Paintbrush, TrendingUp, Users, CheckCircle, ArrowRight, AlertCircle, Target, Sparkles, Download, BarChart, Shield, Zap } from 'lucide-react'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
+import PricingCalculator from './PricingCalculator'
+import ShowCalculatorButton from './ShowCalculatorButton'
 
 export const metadata = {
   title: "How to Price Painting Jobs: Professional Guide 2025 | Stop Losing $47K/Year",
@@ -38,30 +35,6 @@ export const metadata = {
 }
 
 export default function HowToPricePaintingJobsPage() {
-  const [sqft, setSqft] = useState('')
-  const [laborRate, setLaborRate] = useState('45')
-  const [paintCost, setPaintCost] = useState('35')
-  const [estimatedPrice, setEstimatedPrice] = useState(0)
-  const [showCalculator, setShowCalculator] = useState(false)
-
-  useEffect(() => {
-    if (sqft && laborRate && paintCost) {
-      const area = parseFloat(sqft)
-      const labor = parseFloat(laborRate)
-      const paint = parseFloat(paintCost)
-      
-      // Professional pricing formula
-      const laborHours = area / 350 * 8 // 350 sqft per day, 8 hours
-      const laborCost = laborHours * labor
-      const paintGallons = area / 350 // 1 gallon per 350 sqft
-      const materialCost = paintGallons * paint
-      const overhead = (laborCost + materialCost) * 0.20
-      const profit = (laborCost + materialCost + overhead) * 0.35
-      
-      const total = laborCost + materialCost + overhead + profit
-      setEstimatedPrice(Math.round(total))
-    }
-  }, [sqft, laborRate, paintCost])
 
   const tableOfContents = [
     { id: 'pricing-formula', title: 'The Professional Pricing Formula' },
@@ -208,14 +181,7 @@ export default function HowToPricePaintingJobsPage() {
                 <strong>REVEALED:</strong> The 3-minute calculation that adds $1,200 to EVERY estimate
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-white text-blue-600 hover:bg-gray-100 animate-pulse"
-                  onClick={() => setShowCalculator(true)}
-                >
-                  <Calculator className="mr-2 h-5 w-5" />
-                  Get My Profit Calculator FREE
-                </Button>
+                <ShowCalculatorButton />
                 <Link href="/create-quote">
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                     <Zap className="mr-2 h-5 w-5" />
@@ -240,44 +206,7 @@ export default function HowToPricePaintingJobsPage() {
                 </div>
               </div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 ring-2 ring-yellow-400">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold animate-pulse">HOT</span>
-                <span className="text-yellow-300 text-sm">847 contractors used this today</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-6">The $47K Calculator That Changes Everything</h3>
-              <div className="space-y-4">
-                <div>
-                  <Label className="text-white mb-2">Square Footage</Label>
-                  <Input
-                    type="number"
-                    placeholder="Enter square feet"
-                    value={sqft}
-                    onChange={(e) => setSqft(e.target.value)}
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/60"
-                  />
-                </div>
-                <div>
-                  <Label className="text-white mb-2">Hourly Labor Rate</Label>
-                  <Input
-                    type="number"
-                    value={laborRate}
-                    onChange={(e) => setLaborRate(e.target.value)}
-                    className="bg-white/20 border-white/30 text-white"
-                  />
-                </div>
-                {estimatedPrice > 0 && (
-                  <div className="bg-green-500/20 border-2 border-green-400 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-green-100 mb-1">Your Professional Quote</div>
-                    <div className="text-3xl font-bold text-green-100">${estimatedPrice.toLocaleString()}</div>
-                    <div className="text-xs text-green-200 mt-2">⬆ This includes proper profit margins (most contractors miss this)</div>
-                    <Button className="w-full mt-3 bg-green-500 hover:bg-green-600 text-black font-bold" size="sm">
-                      Get This Quote as PDF
-                    </Button>
-                  </div>
-                )}
-              </div>
-            </div>
+            <PricingCalculator onShowCalculator={() => {}} />
           </div>
         </div>
       </div>
