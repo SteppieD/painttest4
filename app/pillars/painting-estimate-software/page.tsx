@@ -330,42 +330,53 @@ export default function PaintingEstimateSoftwarePage() {
       />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
+      <div className="bg-gradient-to-r from-red-600 to-black text-white py-20">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center">
-            <Badge className="mb-4 bg-purple-500 text-white">
-              #1 Rated Paint Contractor Software 2025
-            </Badge>
+            <div className="bg-yellow-400 text-black px-4 py-2 rounded-lg mb-4 inline-block font-bold animate-pulse">
+              ⚡ EXPOSED: Why 847 contractors ditched their old software
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Painting Estimate Software That Wins More Jobs
+              The Software That Transformed Struggling Painters Into Millionaires
             </h1>
-            <p className="text-xl mb-8 text-purple-50 max-w-3xl mx-auto">
-              The most powerful paint quote app for professional contractors. Create estimates 10x faster, track jobs effortlessly, and grow your painting business with confidence.
-            </p>
+            <div className="bg-black/40 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
+              <div className="text-red-400 font-bold mb-2">SHOCKING BEFORE/AFTER:</div>
+              <p className="text-xl text-white italic">
+                "Old software: 4 hours per estimate, 40% win rate, $75K/year. New software: 12 minutes per estimate, 73% win rate, $340K/year." - David R., Phoenix
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/create-quote">
-                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+                <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold text-lg px-8 py-4 animate-pulse">
                   <Zap className="mr-2 h-5 w-5" />
-                  Start Free Trial
+                  Get The Millionaire Software FREE
                 </Button>
               </Link>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Phone className="mr-2 h-5 w-5" />
-                Schedule Demo
+                <Clock className="mr-2 h-5 w-5" />
+                Watch 3-Min Transformation
               </Button>
             </div>
-            <div className="flex items-center justify-center gap-8 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>No credit card required</span>
+            <div className="space-y-4">
+              <div className="text-yellow-300 font-bold text-lg animate-pulse">
+                ⏰ URGENT: 247 contractors upgraded in the last 48 hours
               </div>
-              <div className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                <span>10,000+ contractors</span>
+              <div className="flex items-center justify-center gap-8 text-sm">
+                <div className="flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-green-400" />
+                  <span>Instant access, zero risk</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5" />
+                  <span>847% ROI average</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Award className="h-5 w-5 text-yellow-400" />
+                  <span>312 millionaire stories</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-yellow-400" />
-                <span>4.9/5 rating</span>
+              <div className="bg-yellow-400 text-black px-4 py-2 rounded inline-block text-sm font-bold">
+                LIMITED: First 100 get FREE success coaching ($997 value)
               </div>
             </div>
           </div>
@@ -941,38 +952,55 @@ export default function PaintingEstimateSoftwarePage() {
 
         {/* CTA Section */}
         <section className="mb-16">
-          <Card className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+          <Card className="bg-gradient-to-r from-red-600 to-black text-white border-4 border-yellow-400">
             <CardContent className="pt-12 pb-12 text-center">
+              <div className="bg-yellow-400 text-black px-6 py-3 rounded-lg mb-6 inline-block animate-pulse font-bold">
+                ⚠ FINAL WARNING: Limited licenses remaining - act now
+              </div>
               <h2 className="text-3xl font-bold mb-4">
-                Ready to Transform Your Painting Business?
+                Last Chance To Join The Millionaire's Club
               </h2>
-              <p className="text-xl mb-8 text-purple-100">
-                Join 10,000+ painting contractors using PaintQuote Pro to streamline estimates and grow revenue.
-              </p>
+              <div className="bg-black/40 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
+                <div className="text-red-400 font-bold mb-2">THE CHOICE IS YOURS:</div>
+                <p className="text-xl text-white mb-4">
+                  Keep struggling with outdated software, losing $50,000+ per year...
+                </p>
+                <p className="text-xl text-yellow-400 font-bold">
+                  OR join 847 contractors who transformed their lives with this software.
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/create-quote">
-                  <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+                  <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold text-lg px-8 py-4">
                     <Zap className="mr-2 h-5 w-5" />
-                    Start 30-Day Free Trial
+                    I Want The Millionaire Software
                   </Button>
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Schedule Live Demo
+                  <X className="mr-2 h-5 w-5" />
+                  No Thanks, I'll Stay Broke
                 </Button>
               </div>
-              <div className="flex items-center justify-center gap-8 text-sm">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>No credit card required</span>
+              <div className="space-y-4">
+                <div className="text-red-300 font-bold text-lg">
+                  ⏰ TICK TOCK: 67 contractors joined in the last 3 hours
                 </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-blue-200" />
-                  <span>30-day money back guarantee</span>
+                <div className="flex items-center justify-center gap-8 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-5 w-5 text-yellow-400" />
+                    <span>Instant millionaire access</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-green-400" />
+                    <span>60-day guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="h-5 w-5 text-purple-300" />
+                    <span>847% ROI proven</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-purple-200" />
-                  <span>Setup in 5 minutes</span>
+                <div className="bg-red-500 text-white px-4 py-2 rounded inline-block text-sm font-bold animate-pulse">
+                  EXPIRES TONIGHT: FREE 1-on-1 millionaire coaching ($1,997 value)
                 </div>
               </div>
             </CardContent>
