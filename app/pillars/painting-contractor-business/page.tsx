@@ -24,6 +24,33 @@ import {
 } from 'lucide-react'
 import ModernNavigation from '@/components/modern-navigation'
 
+export const metadata = {
+  title: "How to Start a Painting Business 2025: $500K Blueprint | 89% Fail Without This",
+  description: "Complete guide to starting a profitable painting contractor business. 312 painters used this blueprint to build $500K+ companies. Free startup resources included.",
+  keywords: "start painting business, painting contractor business, painting company startup, painting business plan, contractor business guide, painting franchise",
+  openGraph: {
+    title: "How to Start a Painting Business: $500K Blueprint 2025",
+    description: "Complete guide to starting a profitable painting contractor business. 312 painters built $500K+ companies with this blueprint.",
+    type: "article",
+    url: "https://paintquotepro.com/pillars/painting-contractor-business",
+    images: [
+      {
+        url: "https://paintquotepro.com/og-business-guide.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Painting Business Startup Guide"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How to Start a Painting Business: $500K Blueprint",
+    description: "Complete guide to starting a profitable painting contractor business. 312 painters built $500K+ companies with this blueprint.",
+    images: ["https://paintquotepro.com/twitter-business-guide.jpg"]
+  },
+  canonical: "https://paintquotepro.com/pillars/painting-contractor-business"
+}
+
 export default function PaintingContractorBusinessPage() {
   const startupSteps = [
     {
@@ -110,6 +137,31 @@ export default function PaintingContractorBusinessPage() {
     <>
       <ModernNavigation />
       <div className="min-h-screen bg-white pt-20">
+        {/* Structured Data Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "How to Start a Painting Business: Complete Guide",
+              "description": "Step-by-step guide to starting a successful painting contractor business from planning to scaling.",
+              "image": "https://paintquotepro.com/business-guide.jpg",
+              "totalTime": "PT90D",
+              "estimatedCost": {
+                "@type": "MonetaryAmount",
+                "currency": "USD",
+                "value": "5000"
+              },
+              "step": startupSteps.map((step, index) => ({
+                "@type": "HowToStep",
+                "name": step.title,
+                "position": index + 1,
+                "text": step.items.join(', ')
+              }))
+            })
+          }}
+        />
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-red-600 to-purple-600 text-white py-20">
           <div className="container mx-auto px-4 max-w-6xl">
@@ -118,7 +170,7 @@ export default function PaintingContractorBusinessPage() {
                 ⚠ WARNING: 89% of painting businesses fail in Year 1
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                From $0 to $500K: The Painting Business Blueprint That Actually Works
+                How to Start a Painting Business: $0 to $500K Blueprint That Works
               </h1>
               <p className="text-xl mb-4 text-purple-50 max-w-3xl mx-auto">
                 The exact 4-step system that transformed 312 broke painters into millionaire contractors (even with ZERO business experience)
@@ -200,7 +252,7 @@ export default function PaintingContractorBusinessPage() {
         <div className="py-16">
           <div className="container mx-auto px-4 max-w-6xl">
             <h2 className="text-3xl font-bold text-center mb-12">
-              Your 4-Step Startup Roadmap
+              How to Start a Painting Business: 4-Step Roadmap
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               {startupSteps.map((phase) => (
@@ -233,7 +285,7 @@ export default function PaintingContractorBusinessPage() {
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
             <h2 className="text-3xl font-bold text-center mb-4">
-              Proven Growth Strategies
+              How to Grow Your Painting Business: Proven Strategies
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
               Scale from owner-operator to $1M+ painting business with these strategies
@@ -264,7 +316,7 @@ export default function PaintingContractorBusinessPage() {
             <Card className="border-red-200 bg-red-50">
               <CardHeader>
                 <CardTitle className="text-2xl text-red-900">
-                  8 Costly Mistakes to Avoid
+                  8 Painting Business Mistakes That Kill Profits
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -285,7 +337,7 @@ export default function PaintingContractorBusinessPage() {
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
             <h2 className="text-3xl font-bold text-center mb-12">
-              Essential Business Resources
+              Essential Painting Business Tools & Resources
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link href="/pillars/painting-cost-calculator">

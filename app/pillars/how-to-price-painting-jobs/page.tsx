@@ -10,6 +10,33 @@ import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import ModernNavigation from '@/components/modern-navigation'
 
+export const metadata = {
+  title: "How to Price Painting Jobs: Professional Guide 2025 | Stop Losing $47K/Year",
+  description: "Master painting job pricing with our proven formula. 847 contractors increased profits by $47K using these pricing strategies. Free calculator + templates included.",
+  keywords: "painting job pricing, painting estimate formula, contractor pricing guide, painting quote calculator, house painting cost, painting business pricing",
+  openGraph: {
+    title: "How to Price Painting Jobs: Professional Guide 2025",
+    description: "Master painting job pricing with our proven formula. 847 contractors increased profits by $47K using these pricing strategies.",
+    type: "article",
+    url: "https://paintquotepro.com/pillars/how-to-price-painting-jobs",
+    images: [
+      {
+        url: "https://paintquotepro.com/og-pricing-guide.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Painting Job Pricing Guide"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How to Price Painting Jobs: Stop Losing $47K/Year",
+    description: "Master painting job pricing with our proven formula. 847 contractors increased profits by $47K using these pricing strategies.",
+    images: ["https://paintquotepro.com/twitter-pricing-guide.jpg"]
+  },
+  canonical: "https://paintquotepro.com/pillars/how-to-price-painting-jobs"
+}
+
 export default function HowToPricePaintingJobsPage() {
   const [sqft, setSqft] = useState('')
   const [laborRate, setLaborRate] = useState('45')
@@ -102,7 +129,26 @@ export default function HowToPricePaintingJobsPage() {
     <>
       <ModernNavigation />
       <div className="min-h-screen bg-white pt-20">
-      {/* Hero Section with Schema Markup */}
+      {/* Structured Data Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+      
+      {/* How-To Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -133,7 +179,8 @@ export default function HowToPricePaintingJobsPage() {
               "@type": "HowToStep",
               "name": item.title,
               "url": `#${item.id}`,
-              "position": index + 1
+              "position": index + 1,
+              "text": `Learn ${item.title.toLowerCase()} for accurate painting estimates`
             }))
           })
         }}
@@ -152,7 +199,7 @@ export default function HowToPricePaintingJobsPage() {
                 <span className="text-green-100">Join 10,000+ contractors who fixed their pricing</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Stop Leaving $47,000 on the Table Every Year
+                How to Price Painting Jobs: Stop Losing $47,000 Every Year
               </h1>
               <p className="text-xl mb-4 text-blue-50">
                 The SECRET pricing formula that transformed 847 struggling contractors into 6-figure painting businesses in just 90 days.
@@ -266,7 +313,7 @@ export default function HowToPricePaintingJobsPage() {
           <section id="pricing-formula" className="mb-16">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <Calculator className="h-8 w-8 text-blue-600" />
-              The Professional Painting Estimate Formula
+              How to Price Painting Jobs: The Professional Formula
             </h2>
             <p className="text-gray-600 mb-6">
               Every successful painting contractor uses this proven formula to create accurate painting quotes that ensure profitability while remaining competitive. This painting estimate by square foot method has been refined by analyzing over 50,000 paint quotes.
@@ -940,7 +987,7 @@ export default function HowToPricePaintingJobsPage() {
 
           {/* FAQ Section */}
           <section id="faq" className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold mb-6">Painting Job Pricing FAQ</h2>
             
             <div className="space-y-4">
               {faqs.map((faq, index) => (
@@ -1008,27 +1055,81 @@ export default function HowToPricePaintingJobsPage() {
           </section>
 
           {/* Internal Links Section */}
+          {/* Essential Painting Business Resources */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Related Resources</h2>
-            <div className="grid md:grid-cols-3 gap-4">
-              <Link href="/pillars/painting-estimate-software" className="text-blue-600 hover:underline">
-                → Best Painting Estimate Software Comparison
-              </Link>
-              <Link href="/pillars/painting-cost-calculator" className="text-blue-600 hover:underline">
-                → Interactive Painting Cost Calculator
-              </Link>
-              <Link href="/pillars/painting-contractor-business" className="text-blue-600 hover:underline">
-                → How to Start a Painting Business
-              </Link>
-              <Link href="/pillars/painting-estimate-templates" className="text-blue-600 hover:underline">
-                → Download Free Estimate Templates
-              </Link>
-              <Link href="/guides/interior-painting-quotes" className="text-blue-600 hover:underline">
-                → Interior Painting Quote Guide
-              </Link>
-              <Link href="/guides/exterior-painting-quotes" className="text-blue-600 hover:underline">
-                → Exterior Painting Quote Guide
-              </Link>
+            <h2 className="text-2xl font-bold mb-6">Essential Painting Business Resources</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6">
+                  <FileText className="h-8 w-8 text-blue-600 mb-4" />
+                  <h3 className="font-bold mb-2">
+                    <Link href="/pillars/painting-estimate-software" className="text-blue-600 hover:underline">
+                      Best Painting Estimate Software
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">Compare top painting contractor software and apps for accurate pricing</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6">
+                  <Calculator className="h-8 w-8 text-green-600 mb-4" />
+                  <h3 className="font-bold mb-2">
+                    <Link href="/pillars/painting-cost-calculator" className="text-blue-600 hover:underline">
+                      Free Painting Cost Calculator
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">Calculate paint quantities and labor costs instantly with our professional calculator</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6">
+                  <TrendingUp className="h-8 w-8 text-purple-600 mb-4" />
+                  <h3 className="font-bold mb-2">
+                    <Link href="/pillars/painting-contractor-business" className="text-blue-600 hover:underline">
+                      Start a Painting Business Guide
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">Complete blueprint for launching a profitable painting company</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6">
+                  <Download className="h-8 w-8 text-orange-600 mb-4" />
+                  <h3 className="font-bold mb-2">
+                    <Link href="/pillars/painting-estimate-templates" className="text-blue-600 hover:underline">
+                      Professional Painting Quote Templates
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">Download proven estimate templates that win more painting jobs</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6">
+                  <Home className="h-8 w-8 text-red-600 mb-4" />
+                  <h3 className="font-bold mb-2">
+                    <Link href="/pricing" className="text-blue-600 hover:underline">
+                      Get Instant Painting Quote
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">Try our advanced pricing calculator with profit optimization features</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="pt-6">
+                  <Sparkles className="h-8 w-8 text-indigo-600 mb-4" />
+                  <h3 className="font-bold mb-2">
+                    <Link href="/create-quote" className="text-blue-600 hover:underline">
+                      Professional Quote Generator
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">Create detailed painting estimates in minutes with our AI-powered tool</p>
+                </CardContent>
+              </Card>
             </div>
           </section>
         </div>

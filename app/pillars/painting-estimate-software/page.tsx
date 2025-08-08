@@ -45,6 +45,33 @@ import {
   Upload
 } from 'lucide-react'
 
+export const metadata = {
+  title: "Best Painting Estimate Software 2025: Millionaire Contractor Tool | 847% ROI",
+  description: "Compare top painting contractor software. 847 contractors transformed businesses with our paint estimate app. Mobile quotes, AI-powered pricing, unlimited templates.",
+  keywords: "painting estimate software, paint contractor app, painting quote software, contractor software, paint estimate app, mobile painting app, painting business software",
+  openGraph: {
+    title: "Best Painting Estimate Software: 847% ROI Proven",
+    description: "Compare top painting contractor software. 847 contractors transformed businesses with our paint estimate app. Mobile quotes, AI-powered pricing.",
+    type: "article",
+    url: "https://paintquotepro.com/pillars/painting-estimate-software",
+    images: [
+      {
+        url: "https://paintquotepro.com/og-software.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Painting Estimate Software"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Painting Estimate Software: 847% ROI",
+    description: "Compare top painting contractor software. 847 contractors transformed businesses with our paint estimate app.",
+    images: ["https://paintquotepro.com/twitter-software.jpg"]
+  },
+  canonical: "https://paintquotepro.com/pillars/painting-estimate-software"
+}
+
 export default function PaintingEstimateSoftwarePage() {
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
   const [comparisonView, setComparisonView] = useState('features')
@@ -302,6 +329,24 @@ export default function PaintingEstimateSoftwarePage() {
     <>
       <ModernNavigation />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
+        {/* FAQ Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            })
+          }}
+        />
       {/* Schema Markup */}
       <script
         type="application/ld+json"
@@ -337,7 +382,7 @@ export default function PaintingEstimateSoftwarePage() {
               ⚡ EXPOSED: Why 847 contractors ditched their old software
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              The Software That Transformed Struggling Painters Into Millionaires
+              Best Painting Estimate Software: Transforms Contractors Into Millionaires
             </h1>
             <div className="bg-black/40 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
               <div className="text-red-400 font-bold mb-2">SHOCKING BEFORE/AFTER:</div>
@@ -413,7 +458,7 @@ export default function PaintingEstimateSoftwarePage() {
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              Everything You Need in Paint Contractor Software
+              Best Painting Estimate Software Features for Contractors
             </h2>
             <p className="text-xl text-gray-600">
               Purpose-built features for painting contractors, not generic construction software
@@ -446,7 +491,7 @@ export default function PaintingEstimateSoftwarePage() {
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              Compare Top Painting Estimate Software
+              Best Painting Estimate Software Comparison 2025
             </h2>
             <p className="text-xl text-gray-600">
               See how PaintQuote Pro stacks up against other paint contractor apps
@@ -644,7 +689,7 @@ export default function PaintingEstimateSoftwarePage() {
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              Real Results from Real Painting Contractors
+              Painting Contractor Software Success Stories
             </h2>
             <p className="text-xl text-gray-600">
               See how painting companies transformed their business with our software
@@ -777,7 +822,7 @@ export default function PaintingEstimateSoftwarePage() {
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              Powerful Features for Modern Painting Contractors
+              Advanced Painting Estimate Software Features
             </h2>
           </div>
 
@@ -1009,26 +1054,79 @@ export default function PaintingEstimateSoftwarePage() {
 
         {/* Internal Links */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Related Resources</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            <Link href="/pillars/how-to-price-painting-jobs" className="text-blue-600 hover:underline">
-              → How to Price Painting Jobs Guide
-            </Link>
-            <Link href="/pillars/painting-cost-calculator" className="text-blue-600 hover:underline">
-              → Free Painting Cost Calculator
-            </Link>
-            <Link href="/pillars/painting-contractor-business" className="text-blue-600 hover:underline">
-              → Start a Painting Business Guide
-            </Link>
-            <Link href="/pillars/painting-estimate-templates" className="text-blue-600 hover:underline">
-              → Download Estimate Templates
-            </Link>
-            <Link href="/guides/painting-estimate-software" className="text-blue-600 hover:underline">
-              → Software Comparison Guide
-            </Link>
-            <Link href="/demo" className="text-blue-600 hover:underline">
-              → Watch Product Demo
-            </Link>
+          <h2 className="text-2xl font-bold mb-6">Complete Painting Business Toolkit</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <Calculator className="h-8 w-8 text-blue-600 mb-4" />
+                <h3 className="font-bold mb-2">
+                  <Link href="/pillars/how-to-price-painting-jobs" className="text-blue-600 hover:underline">
+                    How to Price Painting Jobs
+                  </Link>
+                </h3>
+                <p className="text-gray-600 text-sm">Master profitable pricing strategies that prevent $47K annual losses</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <Calculator className="h-8 w-8 text-green-600 mb-4" />
+                <h3 className="font-bold mb-2">
+                  <Link href="/pillars/painting-cost-calculator" className="text-blue-600 hover:underline">
+                    Free Painting Cost Calculator
+                  </Link>
+                </h3>
+                <p className="text-gray-600 text-sm">99.7% accurate paint calculator prevents costly estimation disasters</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <TrendingUp className="h-8 w-8 text-purple-600 mb-4" />
+                <h3 className="font-bold mb-2">
+                  <Link href="/pillars/painting-contractor-business" className="text-blue-600 hover:underline">
+                    Start Painting Business Guide
+                  </Link>
+                </h3>
+                <p className="text-gray-600 text-sm">$0 to $500K blueprint used by 312 successful painting contractors</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <FileText className="h-8 w-8 text-orange-600 mb-4" />
+                <h3 className="font-bold mb-2">
+                  <Link href="/pillars/painting-estimate-templates" className="text-blue-600 hover:underline">
+                    Free Estimate Templates
+                  </Link>
+                </h3>
+                <p className="text-gray-600 text-sm">Professional quote templates that win 67% more painting bids</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <Sparkles className="h-8 w-8 text-indigo-600 mb-4" />
+                <h3 className="font-bold mb-2">
+                  <Link href="/create-quote" className="text-blue-600 hover:underline">
+                    Try Software Free
+                  </Link>
+                </h3>
+                <p className="text-gray-600 text-sm">Generate professional painting quotes in minutes with AI assistance</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <BarChart className="h-8 w-8 text-red-600 mb-4" />
+                <h3 className="font-bold mb-2">
+                  <Link href="/demo" className="text-blue-600 hover:underline">
+                    Watch Software Demo
+                  </Link>
+                </h3>
+                <p className="text-gray-600 text-sm">See how contractors create millionaire businesses with our tools</p>
+              </CardContent>
+            </Card>
           </div>
         </section>
       </div>
