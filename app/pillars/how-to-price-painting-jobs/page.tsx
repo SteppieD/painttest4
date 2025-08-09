@@ -208,7 +208,7 @@ export default function HowToPricePaintingJobsPage() {
                 </div>
               </div>
             </div>
-            <PricingCalculator onShowCalculator={() => {}} />
+            <PricingCalculator />
           </div>
         </div>
       </div>

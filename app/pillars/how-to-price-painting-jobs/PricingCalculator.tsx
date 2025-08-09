@@ -6,11 +6,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Calculator } from 'lucide-react'
 
-interface PricingCalculatorProps {
-  onShowCalculator: () => void
-}
-
-export default function PricingCalculator({ onShowCalculator }: PricingCalculatorProps) {
+export default function PricingCalculator() {
   const [sqft, setSqft] = useState('')
   const [laborRate, setLaborRate] = useState('45')
   const [paintCost, setPaintCost] = useState('35')
