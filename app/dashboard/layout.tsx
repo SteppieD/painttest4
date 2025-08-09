@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutGrid, FileText, Users, Settings, LogOut, Sparkles, CreditCard, Zap } from 'lucide-react'
+import { LayoutGrid, FileText, Users, Settings, LogOut, Sparkles, CreditCard, Zap, Trophy } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { OnboardingModal } from '@/components/onboarding-modal'
 interface CompanyData {
@@ -63,6 +63,7 @@ export default function DashboardLayout({
     { href: '/create-quote', label: 'Quick Quote', icon: Zap, color: 'from-purple-400 to-pink-400' },
     { href: '/dashboard/quotes', label: 'Quote Pipeline', icon: FileText, color: 'from-emerald-400 to-green-400' },
     { href: '/dashboard/customers', label: 'Customers', icon: Users, color: 'from-amber-400 to-orange-400' },
+    { href: '/dashboard/achievements', label: 'Achievements', icon: Trophy, color: 'from-yellow-400 to-orange-400' },
     { href: '/billing', label: 'Billing', icon: CreditCard, color: 'from-rose-400 to-pink-400' },
     { href: '/dashboard/settings', label: 'Settings', icon: Settings, color: 'from-slate-400 to-gray-400' },
   ]
