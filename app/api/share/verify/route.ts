@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCompanyFromHeaders } from '@/lib/auth/auth-helpers';
+import { getAuthContext } from '@/lib/auth/middleware';
 
 export async function POST(request: NextRequest) {
   try {
-    const company = await getCompanyFromHeaders(request);
-    if (!company) {
+    const auth = await getAuthContext(request);
+    if (!auth || auth.type !== 'company') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+    const company = auth.company;
 
     const { shareCode } = await request.json();
 
