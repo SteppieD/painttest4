@@ -65,10 +65,6 @@ export async function POST(request: NextRequest) {
           professional: {
             monthly: !!STRIPE_PAYMENT_LINKS.professional.monthly,
             yearly: !!STRIPE_PAYMENT_LINKS.professional.yearly
-          },
-          business: {
-            monthly: !!STRIPE_PAYMENT_LINKS.business.monthly,
-            yearly: !!STRIPE_PAYMENT_LINKS.business.yearly
           }
         }
       });
@@ -93,7 +89,7 @@ export async function POST(request: NextRequest) {
     let finalLink = paymentLink;
     if (auth.company) {
       // Try to get company email from auth context or database if needed
-      const companyEmail = (auth.company as any).email;
+      const companyEmail = (auth.company as { email?: string })?.email;
       if (companyEmail) {
         const separator = finalLink.includes('?') ? '&' : '?';
         finalLink = `${finalLink}${separator}prefilled_email=${encodeURIComponent(companyEmail)}`;

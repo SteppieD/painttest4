@@ -7,9 +7,9 @@ export async function POST(request: NextRequest) {
     if (!auth || auth.type !== 'company') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const company = auth.company;
+    const _company = auth.company;
 
-    const { shareCode } = await request.json();
+    const { shareCode: _shareCode } = await request.json();
 
     // In production, this would:
     // 1. Check if the share belongs to this company

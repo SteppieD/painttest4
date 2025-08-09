@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     if (!auth || auth.type !== 'company') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const company = auth.company;
+    const _company = auth.company;
 
     const { platform, shareCode } = await request.json();
 
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     if (!auth || auth.type !== 'company') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const company = auth.company;
+    const _company = auth.company;
 
     // In production, fetch from database
     // For now, return empty stats
