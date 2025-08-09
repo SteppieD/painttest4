@@ -469,10 +469,10 @@ export function ChatInterface({
       
       // Check for achievements using the new service
       const timeToCreate = Date.now() - startTime;
-      const companyData = JSON.parse(localStorage.getItem('paintquote_company') || '{}');
-      if (companyData.id) {
+      const companyInfo = JSON.parse(localStorage.getItem('paintquote_company') || '{}');
+      if (companyInfo.id) {
         const newAchievements = await achievementService.checkQuoteCreationAchievements(
-          companyData.id,
+          companyInfo.id,
           quoteData,
           timeToCreate
         );
