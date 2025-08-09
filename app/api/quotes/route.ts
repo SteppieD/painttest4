@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    const { companyId, quoteData, conversationHistory } = validatedData;
+    const { companyId, quoteData, conversationHistory: _conversationHistory } = validatedData;
     
     console.log('[QUOTES API] Request data (validated):', { companyId, customerName: quoteData.customerName });
     console.log('[QUOTES API] Company from auth:', company);

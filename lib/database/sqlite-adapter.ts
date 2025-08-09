@@ -80,6 +80,10 @@ export class SQLiteAdapter implements DatabaseAdapter {
     return result ? result as unknown as Quote : null;
   }
 
+  async getQuotes(companyId: number): Promise<Quote[]> {
+    return this.getQuotesByCompanyId(companyId);
+  }
+
   async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
     const stmt = this.db.prepare('SELECT * FROM quotes WHERE company_id = ? ORDER BY created_at DESC');
     return stmt.all(companyId) as unknown as Quote[];

@@ -3,7 +3,11 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import confetti from 'canvas-confetti'
+import { Star } from 'lucide-react'
 import { achievements } from '@/lib/gamification/achievements'
+
+// Re-export achievements for backward compatibility
+export { achievements }
 
 interface AchievementNotificationProps {
   achievementId: string | null

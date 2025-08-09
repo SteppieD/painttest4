@@ -12,6 +12,7 @@ import { achievementService } from '@/lib/gamification/achievement-service';
 import { AchievementNotification } from '@/components/achievements/achievement-notification';
 import { redirectToStripePayment } from '@/lib/config/stripe-links';
 import { OnboardingAssistant } from '@/lib/onboarding/onboarding-assistant';
+import { trackQuoteCreated, trackAIChatInteraction } from '@/lib/analytics/track-events';
 interface Message {
   role: 'user' | 'assistant';
   content: string;

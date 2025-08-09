@@ -92,7 +92,7 @@ function processWeeklyData(quotes: any[]) {
   
   // Process last 12 weeks
   for (let i = 0; i < 12; i++) {
-    const weekStart = new Date(Date.now() - (i * 7 * 24 * 60 * 60 * 1000))
+    const _weekStart = new Date(Date.now() - (i * 7 * 24 * 60 * 60 * 1000))
     const weekKey = `Week ${12 - i}`
     weeklyQuotes[weekKey] = { created: 0, accepted: 0 }
   }

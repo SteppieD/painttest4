@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Check Detail Master achievement - quotes with custom line items
-    const quotesWithCustomItems = quotes.filter(q => {
+    const quotesWithCustomItems = quotes.filter((q: any) => {
       try {
         const roomData = q.room_data ? JSON.parse(q.room_data) : null
         return roomData && roomData.customLineItems && roomData.customLineItems.length > 0
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Check First Win achievement - accepted quotes
-    const acceptedQuotes = quotes.filter(q => q.status === 'accepted')
+    const acceptedQuotes = quotes.filter((q: any) => q.status === 'accepted')
     if (acceptedQuotes.length > 0) {
       achievements.push({
         id: 'first_win',
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Check Early Bird achievement - quotes created before 9 AM
-    const earlyQuotes = quotes.filter(q => {
+    const earlyQuotes = quotes.filter((q: any) => {
       const date = new Date(q.created_at)
       return date.getHours() < 9
     })

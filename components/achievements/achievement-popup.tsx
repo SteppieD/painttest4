@@ -67,9 +67,12 @@ export function AchievementPopup() {
       triggerCelebration(achievementId)
     }
     
-    window.addEventListener('achievement-unlocked', handleAchievement as EventListener)
+    const eventHandler = (event: Event) => {
+      handleAchievement(event as CustomEvent);
+    };
+    window.addEventListener('achievement-unlocked', eventHandler)
     return () => {
-      window.removeEventListener('achievement-unlocked', handleAchievement as EventListener)
+      window.removeEventListener('achievement-unlocked', eventHandler)
     }
   }, [companyData?.id])
 
@@ -116,11 +119,11 @@ export function AchievementPopup() {
       const count = 200
       const defaults = { origin: { y: 0.7 } }
       
-      confetti({ ...defaults, count, particleCount: count * 0.25, spread: 26, startVelocity: 55 })
-      confetti({ ...defaults, count, particleCount: count * 0.2, spread: 60 })
-      confetti({ ...defaults, count, particleCount: count * 0.35, spread: 100, decay: 0.91, scalar: 0.8 })
-      confetti({ ...defaults, count, particleCount: count * 0.1, spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 })
-      confetti({ ...defaults, count, particleCount: count * 0.1, spread: 120, startVelocity: 45 })
+      confetti({ ...defaults, particleCount: count * 0.25, spread: 26, startVelocity: 55 })
+      confetti({ ...defaults, particleCount: count * 0.2, spread: 60 })
+      confetti({ ...defaults, particleCount: count * 0.35, spread: 100, decay: 0.91, scalar: 0.8 })
+      confetti({ ...defaults, particleCount: count * 0.1, spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 })
+      confetti({ ...defaults, particleCount: count * 0.1, spread: 120, startVelocity: 45 })
     } else {
       // Normal achievement - standard burst
       confetti({

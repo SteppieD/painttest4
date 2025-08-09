@@ -21,18 +21,18 @@ export async function GET(request: NextRequest) {
     const totalQuotes = quotes.length
     
     // Get accepted quotes count
-    const acceptedQuotes = quotes.filter(q => q.status === 'accepted').length
+    const acceptedQuotes = quotes.filter((q: any) => q.status === 'accepted').length
     
     // Get quotes created today
     const today = new Date()
     today.setHours(0, 0, 0, 0)
-    const quotesToday = quotes.filter(q => {
+    const quotesToday = quotes.filter((q: any) => {
       const quoteDate = new Date(q.created_at)
       return quoteDate >= today
     }).length
     
     // Get quotes with custom line items
-    const quotesWithCustomItems = quotes.filter(q => {
+    const quotesWithCustomItems = quotes.filter((q: any) => {
       try {
         const roomData = q.room_data ? JSON.parse(q.room_data) : null
         return roomData && roomData.customLineItems && roomData.customLineItems.length > 0
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     }).length
     
     // Calculate average quote value
-    const totalValue = quotes.reduce((sum, q) => sum + (q.total_revenue || 0), 0)
+    const totalValue = quotes.reduce((sum: any, q: any) => sum + (q.total_revenue || 0), 0)
     const averageQuoteValue = totalQuotes > 0 ? totalValue / totalQuotes : 0
     
     // Get the creation time of the first quote

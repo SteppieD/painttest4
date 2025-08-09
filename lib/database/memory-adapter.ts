@@ -158,6 +158,10 @@ export class MemoryAdapter implements DatabaseAdapter {
     return null;
   }
 
+  async getQuotes(companyId: number): Promise<Quote[]> {
+    return this.getQuotesByCompanyId(companyId);
+  }
+
   async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
     const quotes = [];
     for (const quote of memoryStore.quotes.values()) {

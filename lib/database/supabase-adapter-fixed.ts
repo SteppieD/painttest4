@@ -127,6 +127,10 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     return data as Quote | null;
   }
 
+  async getQuotes(companyId: number): Promise<Quote[]> {
+    return this.getQuotesByCompanyId(companyId);
+  }
+
   async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
     const { data, error } = await this.client
       .from('quotes')

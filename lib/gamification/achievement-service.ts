@@ -96,7 +96,7 @@ class AchievementService {
     // Track unique customers
     const db = await getDatabase()
     const quotes = await db.getQuotes(companyId)
-    const uniqueCustomers = new Set(quotes.map(q => q.customer_name?.toLowerCase())).size
+    const uniqueCustomers = new Set(quotes.map((q: any) => q.customer_name?.toLowerCase())).size
     progress.statistics.totalCustomers = uniqueCustomers
     
     // Update average creation time

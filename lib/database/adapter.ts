@@ -11,6 +11,8 @@ export interface Company {
   email: string;
   phone?: string;
   address?: string;
+  city?: string;
+  state?: string;
   onboarding_completed: boolean | number;
   onboarding_step: number;
   tax_rate: number;
@@ -19,6 +21,8 @@ export interface Company {
   monthly_quote_limit: number;
   default_hourly_rate?: number;
   default_labor_percentage?: number;
+  markup_percentage?: number;
+  minimum_job_size?: number;
   setup_completed_at?: string;
   created_at?: string;
   updated_at?: string;
@@ -40,6 +44,8 @@ export interface Quote {
   labor_cost: number;
   material_cost: number;
   total_cost: number;
+  total_revenue?: number;
+  total_price?: number;
   status: string;
   created_at: string;
   updated_at?: string;
@@ -110,6 +116,7 @@ export interface DatabaseAdapter {
   // Quote operations
   createQuote(data: CreateQuoteData): Promise<Quote>;
   getQuote(quoteId: string): Promise<Quote | null>;
+  getQuotes(companyId: number): Promise<Quote[]>; // Alias for getQuotesByCompanyId
   getQuotesByCompanyId(companyId: number): Promise<Quote[]>;
   getQuotesCount(companyId: number, since?: Date): Promise<number>;
   updateQuote(id: number, data: UpdateQuoteData): Promise<Quote>;
@@ -245,6 +252,10 @@ export class SupabaseAdapter implements DatabaseAdapter {
 
     if (error) throw error;
     return data;
+  }
+
+  async getQuotes(companyId: number): Promise<Quote[]> {
+    return this.getQuotesByCompanyId(companyId);
   }
 
   async getQuotesByCompanyId(companyId: number): Promise<Quote[]> {
@@ -384,6 +395,9 @@ export function getDb(): DatabaseAdapter {
   }
   return dbInstance;
 }
+
+// Alias for backward compatibility
+export const getDatabase = getDb;
 
 // Export the database instance
 export const db = (() => {

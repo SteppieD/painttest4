@@ -261,7 +261,7 @@ export class SubscriptionService {
     quotesLimit: number;
     plan: SubscriptionPlan | 'free';
   }> {
-    const company = await this.db.getCompany(companyId);
+    const _company = await this.db.getCompany(companyId);
     const subscriptionInfo = await this.getSubscriptionInfo(companyId);
     
     // Determine plan and quote limits
