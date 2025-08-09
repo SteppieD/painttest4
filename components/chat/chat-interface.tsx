@@ -528,13 +528,13 @@ export function ChatInterface({
             <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
             <div className="flex-1">
               <h3 className="font-semibold text-green-300 text-lg">
-                Quote Ready to Save!
+                Quote Draft Complete! 
               </h3>
               <p className="text-base text-green-400/80 mt-1">
                 {quoteData.customerName} - {quoteData.address}
               </p>
               <p className="text-sm text-green-400/60 mt-2">
-                Click "Save & View Quote" to save this quote and view the full details, or "Review & Edit" to make changes first.
+                <strong>Review & Customize</strong> to adjust pricing, add terms, and choose what to show customers • <strong>Quick Save</strong> to save as-is
               </p>
               
               {/* Quote Breakdown */}
@@ -586,26 +586,26 @@ export function ChatInterface({
                   </div>
                   <div className="flex gap-2">
                     <Button
+                      onClick={createQuote}
+                      disabled={isLoading}
+                      size="lg"
+                      variant="outline"
+                      className="border-green-500/50 text-green-300 hover:bg-green-500/20"
+                    >
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Quick Save
+                    </Button>
+                    <Button
                       onClick={() => {
                         // Navigate to quote review page with the generated data
                         router.push(`/create-quote/review?data=${encodeURIComponent(JSON.stringify(quoteData))}`);
                       }}
                       disabled={isLoading}
                       size="lg"
-                      variant="outline"
-                      className="border-green-500/50 text-green-300 hover:bg-green-500/20"
-                    >
-                      <Edit className="h-4 w-4 mr-2" />
-                      Review & Edit
-                    </Button>
-                    <Button
-                      onClick={createQuote}
-                      disabled={isLoading}
-                      size="lg"
                       className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg shadow-green-500/25 group"
                     >
-                      <CheckCircle className="h-4 w-4 mr-2" />
-                      Save & View Quote
+                      <Edit className="h-4 w-4 mr-2" />
+                      Review & Customize
                       <svg className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -625,7 +625,7 @@ export function ChatInterface({
         suggestedReplies={suggestedReplies}
         placeholder={
           quoteData 
-            ? "Quote is ready! Click 'Save & View Quote' above to save it."
+            ? "Quote draft is ready! Click 'Review & Customize' or 'Quick Save' above."
             : "Type your message..."
         }
       />

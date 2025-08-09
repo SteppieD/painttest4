@@ -459,8 +459,11 @@ function QuoteReviewContent() {
           console.log('Analytics: Quote sent', quote.quoteNumber)
         }
         
-        // Also create the quote in the database
-        await createQuote()
+        // Note: Quote should already be saved before sending
+        // If not saved yet, save it now
+        if (!quote.id) {
+          await createQuote()
+        }
       } else {
         setSendError(result.error || 'Failed to send quote')
         toast({
@@ -628,13 +631,12 @@ function QuoteReviewContent() {
             {/* Action Buttons - Desktop */}
             <div className="hidden lg:flex items-center gap-3">
               <Button
-                onClick={saveDraft}
-                variant="outline"
+                onClick={createQuote}
                 disabled={isLoading}
-                className="h-11 px-4" // Increased touch target
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white h-11 px-4"
               >
                 <Save className="h-4 w-4 mr-2" />
-                Save Draft
+                Save Quote
               </Button>
               
               <Button
@@ -1963,13 +1965,12 @@ function QuoteReviewContent() {
         <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t z-50 pb-safe"> {/* Added safe area padding */}
           <div className="flex gap-3">
             <Button
-              onClick={saveDraft}
-              variant="outline"
-              className="flex-1 h-12 text-base" // Increased height and text size for better touch targets
+              onClick={createQuote}
+              className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white h-12 text-base"
               disabled={isLoading}
             >
               <Save className="h-5 w-5 mr-2" /> {/* Larger icon */}
-              Save
+              Save Quote
             </Button>
             
             <Button
