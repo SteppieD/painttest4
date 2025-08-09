@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { ArrowLeft, AlertCircle, Sparkles } from 'lucide-react';
+import { AchievementPopup } from '@/components/achievements/achievement-popup';
 import Link from 'next/link';
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
 function CreateQuoteContent() {
@@ -225,6 +226,9 @@ function CreateQuoteContent() {
           </div>
         </div>
       </main>
+      
+      {/* Achievement Popup */}
+      <AchievementPopup />
     </div>
   );
 }

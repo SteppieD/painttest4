@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { LayoutGrid, FileText, Users, Settings, LogOut, Sparkles, CreditCard, Zap, Trophy } from 'lucide-react'
+import { AchievementPopup } from '@/components/achievements/achievement-popup'
 import { useEffect, useState } from 'react'
 import { OnboardingModal } from '@/components/onboarding-modal'
 interface CompanyData {
@@ -258,6 +259,9 @@ export default function DashboardLayout({
         onClose={() => setShowOnboarding(false)}
         companyData={company}
       />
+      
+      {/* Achievement Popup */}
+      <AchievementPopup />
     </div>
   )
 }
