@@ -12,6 +12,25 @@ export interface Achievement {
 }
 
 export const achievements: Record<string, Achievement> = {
+  // Onboarding Achievements
+  welcome_aboard: {
+    id: 'welcome_aboard',
+    name: 'Welcome Aboard',
+    description: 'Completed your business setup',
+    icon: Sparkles,
+    points: 100,
+    color: 'from-purple-400 to-pink-500',
+    category: 'milestone'
+  },
+  quick_setup: {
+    id: 'quick_setup',
+    name: 'Quick Start Pro',
+    description: 'Completed setup during your first quote',
+    icon: Zap,
+    points: 150,
+    color: 'from-blue-400 to-cyan-500',
+    category: 'milestone'
+  },
   // Milestone Achievements
   first_quote: {
     id: 'first_quote',

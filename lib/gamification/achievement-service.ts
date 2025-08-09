@@ -289,6 +289,34 @@ class AchievementService {
     return newAchievements
   }
 
+  // Check onboarding completion achievements
+  async checkOnboardingAchievements(companyId: number): Promise<string[]> {
+    const progress = await this.getProgress(companyId)
+    const newAchievements: string[] = []
+    
+    // Welcome achievement for completing onboarding
+    if (!progress.achievements.includes('welcome_aboard')) {
+      progress.achievements.push('welcome_aboard')
+      progress.totalPoints += 100
+      newAchievements.push('welcome_aboard')
+    }
+    
+    // Quick setup achievement if done during first quote
+    if (!progress.achievements.includes('quick_setup')) {
+      progress.achievements.push('quick_setup')
+      progress.totalPoints += 150
+      newAchievements.push('quick_setup')
+    }
+    
+    this.saveProgress(progress)
+    
+    if (newAchievements.length > 0) {
+      this.triggerAchievementNotifications(newAchievements)
+    }
+    
+    return newAchievements
+  }
+
   // Track feature usage for power user achievement
   async trackFeatureUsage(companyId: number, feature: string): Promise<string[]> {
     const progress = await this.getProgress(companyId)
@@ -331,13 +359,24 @@ class AchievementService {
 
   // Trigger achievement notifications
   private triggerAchievementNotifications(achievementIds: string[]): void {
-    // Dispatch custom events for each achievement
-    achievementIds.forEach(id => {
-      const event = new CustomEvent('achievement-unlocked', {
-        detail: { achievementId: id }
+    // Import tracking function dynamically to avoid SSR issues
+    if (typeof window !== 'undefined') {
+      import('@/lib/analytics/track-events').then(({ trackAchievementUnlocked }) => {
+        achievementIds.forEach(id => {
+          // Track achievement in GTM
+          const achievement = achievements[id]
+          if (achievement) {
+            trackAchievementUnlocked(id, achievement.points)
+          }
+          
+          // Dispatch custom event for the popup component
+          const event = new CustomEvent('achievement-unlocked', {
+            detail: { achievementId: id }
+          })
+          window.dispatchEvent(event)
+        })
       })
-      window.dispatchEvent(event)
-    })
+    }
   }
 
   // Get all achievements for a company

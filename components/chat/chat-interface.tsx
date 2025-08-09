@@ -6,11 +6,12 @@ import { MessageBubble } from './message-bubble';
 import { ChatInput } from './chat-input';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, CheckCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle, Sparkles } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { achievementService } from '@/lib/gamification/achievement-service';
 import { AchievementNotification } from '@/components/achievements/achievement-notification';
 import { redirectToStripePayment } from '@/lib/config/stripe-links';
+import { OnboardingAssistant } from '@/lib/onboarding/onboarding-assistant';
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -31,6 +32,8 @@ export function ChatInterface({
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
+  const [isFirstQuote, setIsFirstQuote] = useState(false);
+  const [onboardingSettings, setOnboardingSettings] = useState({});
   interface QuoteData {
     customerName?: string;
     customerEmail?: string;
@@ -68,6 +71,34 @@ export function ChatInterface({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [latestAchievement, setLatestAchievement] = useState<string | null>(null);
+
+  // Check if this is the user's first quote
+  useEffect(() => {
+    const checkFirstQuote = async () => {
+      try {
+        const companyData = localStorage.getItem('paintquote_company');
+        if (companyData) {
+          const data = JSON.parse(companyData);
+          // Check if onboarding is not completed or this is their first quote
+          if (!data.onboarding_completed) {
+            setIsFirstQuote(true);
+            OnboardingAssistant.reset();
+            
+            // Add welcome message for first-time users
+            setMessages([{
+              role: 'assistant',
+              content: "🎨 Welcome to PaintQuote Pro! I'm here to help you create your first professional quote. As we go through this, I'll also set up your account preferences to make future quotes even faster. Let's start - what type of painting project are you quoting for?",
+              timestamp: new Date()
+            }]);
+          }
+        }
+      } catch (error) {
+        console.error('Error checking first quote:', error);
+      }
+    };
+    
+    checkFirstQuote();
+  }, []);
 
   // Listen for achievement events
   useEffect(() => {
@@ -168,6 +199,15 @@ export function ChatInterface({
     setIsLoading(true);
     setSuggestedReplies([]);
 
+    // Extract onboarding settings from message if first quote
+    if (isFirstQuote) {
+      const extracted = OnboardingAssistant.extractSettingsFromMessage(content);
+      if (Object.keys(extracted).length > 0) {
+        setOnboardingSettings(prev => ({ ...prev, ...extracted }));
+        console.log('[ONBOARDING] Extracted settings:', extracted);
+      }
+    }
+
     try {
       // Get company data from localStorage for access code
       const companyData = localStorage.getItem('paintquote_company');
@@ -185,7 +225,9 @@ export function ChatInterface({
         body: JSON.stringify({
           message: content,
           sessionId,
-          isDemo: isDemo
+          isDemo: isDemo,
+          isFirstQuote,
+          onboardingSettings: OnboardingAssistant.getExtractedSettings()
         })
       });
 
@@ -272,6 +314,39 @@ export function ChatInterface({
     });
 
     setIsLoading(true);
+    
+    // Save onboarding settings if this is the first quote
+    if (isFirstQuote) {
+      try {
+        const settings = OnboardingAssistant.getExtractedSettings();
+        if (Object.keys(settings).length > 0) {
+          await OnboardingAssistant.saveSettings(companyId, settings);
+          
+          // Update localStorage to mark onboarding as complete
+          const companyData = localStorage.getItem('paintquote_company');
+          if (companyData) {
+            const data = JSON.parse(companyData);
+            localStorage.setItem('paintquote_company', JSON.stringify({
+              ...data,
+              ...settings,
+              onboarding_completed: true
+            }));
+          }
+          
+          // Trigger onboarding achievement
+          await achievementService.checkOnboardingAchievements(companyId);
+          
+          toast({
+            title: '✨ Setup Complete!',
+            description: 'Your business settings have been saved. Future quotes will be even faster!',
+          });
+        }
+      } catch (error) {
+        console.error('Error saving onboarding settings:', error);
+        // Continue with quote creation even if settings save fails
+      }
+    }
+    
     try {
       // Get company data from localStorage for access code
       const companyData = localStorage.getItem('paintquote_company');
@@ -380,6 +455,18 @@ export function ChatInterface({
         )
       });
 
+      // Track quote creation event
+      trackQuoteCreated({
+        quoteId: result.quoteId || result.quote?.id || 'unknown',
+        value: quoteData.pricing?.total || quoteData.finalPrice || 0,
+        customerName: quoteData.customerName,
+        projectType: quoteData.projectType
+      });
+      
+      // Track AI chat interaction
+      const sessionDuration = Math.floor((Date.now() - startTime) / 1000);
+      trackAIChatInteraction(messages.length, sessionDuration);
+      
       // Check for achievements using the new service
       const timeToCreate = Date.now() - startTime;
       const companyData = JSON.parse(localStorage.getItem('paintquote_company') || '{}');

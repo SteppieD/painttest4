@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 
     console.log('[CHAT] Company found:', company.name);
 
-    const { message, sessionId, useContext = true } = await request.json();
+    const { message, sessionId, useContext = true, isFirstQuote = false, onboardingSettings = {} } = await request.json();
     
     if (!message) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
@@ -116,9 +116,11 @@ export async function POST(request: NextRequest) {
 Company: ${company.name}
 Monthly quotes used: ${monthlyQuoteCount}
 Recent quote count: ${recentQuotes.length}
-Company tax rate: ${companyData?.tax_rate || 8.25}%
-Default hourly rate: $${companyData?.default_hourly_rate || 45}
+Company tax rate: ${companyData?.tax_rate || onboardingSettings?.taxRate || 8.25}%
+Default hourly rate: $${companyData?.default_hourly_rate || onboardingSettings?.laborRate || 45}
 Subscription tier: ${companyData?.subscription_tier || 'basic'}
+Is first quote: ${isFirstQuote}
+Onboarding settings collected: ${Object.keys(onboardingSettings || {}).join(', ') || 'none'}
 
 Paint products preferences: ${paintProducts.length > 0 ? paintProducts.map((p: PaintProduct) => p.name || p.product_name).join(', ') : 'Using default product recommendations'}
 
