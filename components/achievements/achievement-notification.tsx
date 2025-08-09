@@ -2,60 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Star, Zap, Target, Clock } from 'lucide-react'
 import confetti from 'canvas-confetti'
-
-interface Achievement {
-  id: string
-  name: string
-  description: string
-  icon: React.ElementType
-  points: number
-  color: string
-}
-
-export const achievements: Record<string, Achievement> = {
-  first_quote: {
-    id: 'first_quote',
-    name: 'First Quote',
-    description: 'Created your first professional quote',
-    icon: Trophy,
-    points: 100,
-    color: 'from-yellow-400 to-orange-500'
-  },
-  speed_demon: {
-    id: 'speed_demon',
-    name: 'Speed Demon',
-    description: 'Created a quote in under 2 minutes',
-    icon: Zap,
-    points: 200,
-    color: 'from-blue-400 to-purple-500'
-  },
-  early_bird: {
-    id: 'early_bird',
-    name: 'Early Bird',
-    description: 'Created a quote before 9 AM',
-    icon: Clock,
-    points: 150,
-    color: 'from-green-400 to-teal-500'
-  },
-  detail_master: {
-    id: 'detail_master',
-    name: 'Detail Master',
-    description: 'Added custom line items to a quote',
-    icon: Star,
-    points: 250,
-    color: 'from-purple-400 to-pink-500'
-  },
-  first_win: {
-    id: 'first_win',
-    name: 'First Win',
-    description: 'Your first quote was accepted!',
-    icon: Target,
-    points: 500,
-    color: 'from-emerald-400 to-green-500'
-  }
-}
+import { achievements } from '@/lib/gamification/achievements'
 
 interface AchievementNotificationProps {
   achievementId: string | null

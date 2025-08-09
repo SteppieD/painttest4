@@ -205,6 +205,9 @@ export async function POST(request: NextRequest) {
     // Track usage for subscription
     await SubscriptionService.incrementQuoteCount(numericCompanyId);
 
+    // Track achievements (server-side tracking for security)
+    // Note: Client will also track for immediate feedback
+    
     console.log('[QUOTES API] Quote created successfully:', {
       id: createdQuote.id,
       quote_id: createdQuote.quote_id,

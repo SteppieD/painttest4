@@ -1,18 +1,53 @@
 'use client'
 
-import { useAchievements } from '@/hooks/use-achievements'
-import { achievements } from './achievement-notification'
+import { useEffect, useState } from 'react'
+import { achievements, calculateLevel, getLevelTitle, getLevelColor } from '@/lib/gamification/achievements'
+import { achievementService } from '@/lib/gamification/achievement-service'
 import { Progress } from '@/components/ui/progress'
 import { Trophy, Lock, Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
- // TODO: Check if this import is needed
+import { useCompanyAuth } from '@/components/auth-wrapper'
+
 export function AchievementDisplay() {
-  const { achievements: unlockedAchievements, totalPoints, hasAchievement } = useAchievements()
+  const companyData = useCompanyAuth()
+  const [unlockedAchievements, setUnlockedAchievements] = useState<string[]>([])
+  const [totalPoints, setTotalPoints] = useState(0)
+  const [loading, setLoading] = useState(true)
   
-  const _totalPossiblePoints = Object.values(achievements).reduce((sum, a) => sum + a.points, 0)
-  const level = Math.floor(totalPoints / 500) + 1
-  const pointsInCurrentLevel = totalPoints % 500
-  const pointsForNextLevel = 500
+  useEffect(() => {
+    async function loadAchievements() {
+      if (companyData?.id) {
+        const progress = await achievementService.getAllAchievements(companyData.id)
+        setUnlockedAchievements(progress.achievements)
+        setTotalPoints(progress.totalPoints)
+        setLoading(false)
+      }
+    }
+    
+    loadAchievements()
+    
+    // Listen for achievement updates
+    const handleUpdate = () => loadAchievements()
+    window.addEventListener('achievement-unlocked', handleUpdate)
+    return () => window.removeEventListener('achievement-unlocked', handleUpdate)
+  }, [companyData?.id])
+  
+  const hasAchievement = (id: string) => unlockedAchievements.includes(id)
+  
+  const levelInfo = calculateLevel(totalPoints)
+  const levelTitle = getLevelTitle(levelInfo.level)
+  const levelColor = getLevelColor(levelInfo.level)
+  
+  if (loading) {
+    return (
+      <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
+        <div className="animate-pulse">
+          <div className="h-6 bg-gray-700 rounded w-1/3 mb-4"></div>
+          <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+        </div>
+      </div>
+    )
+  }
   
   return (
     <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg p-6">
@@ -24,8 +59,10 @@ export function AchievementDisplay() {
           </h3>
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <p className="text-base text-gray-200">Level</p>
-              <p className="text-xl font-bold text-white">{level}</p>
+              <p className="text-base text-gray-200">Level {levelInfo.level}</p>
+              <p className={cn("text-lg font-bold bg-gradient-to-r text-transparent bg-clip-text", levelColor)}>
+                {levelTitle}
+              </p>
             </div>
             <div className="text-right">
               <p className="text-base text-gray-200">Total XP</p>
@@ -38,15 +75,15 @@ export function AchievementDisplay() {
         {/* Level Progress */}
         <div className="mb-6">
           <div className="flex justify-between text-base text-gray-200 mb-2">
-            <span>{pointsInCurrentLevel} XP</span>
-            <span>{pointsForNextLevel} XP</span>
+            <span>{levelInfo.pointsInLevel} XP</span>
+            <span>{levelInfo.pointsForNextLevel} XP</span>
           </div>
           <Progress 
-            value={(pointsInCurrentLevel / pointsForNextLevel) * 100} 
+            value={levelInfo.progress} 
             className="h-2 bg-gray-700"
           />
           <p className="text-base text-gray-200 mt-1 text-center">
-            {pointsForNextLevel - pointsInCurrentLevel} XP to level {level + 1}
+            {levelInfo.pointsForNextLevel - levelInfo.pointsInLevel} XP to level {levelInfo.level + 1}
           </p>
         </div>
 

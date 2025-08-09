@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db, UpdateQuoteData } from '@/lib/database/adapter';
+import { achievementService } from '@/lib/gamification/achievement-service';
 export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -28,6 +29,13 @@ export async function POST(
         
       case 'accepted':
         updates.status = 'accepted';
+        // Track achievement for accepted quote
+        if (quote.company_id) {
+          await achievementService.checkQuoteAcceptedAchievements(
+            quote.company_id,
+            quote.total_revenue || quote.total_cost || quote.total_price
+          );
+        }
         break;
         
       case 'follow_up':

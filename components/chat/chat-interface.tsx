@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
-import { useAchievements } from '@/hooks/use-achievements';
+import { achievementService } from '@/lib/gamification/achievement-service';
 import { AchievementNotification } from '@/components/achievements/achievement-notification';
 import { redirectToStripePayment } from '@/lib/config/stripe-links';
 interface Message {
@@ -67,7 +67,20 @@ export function ChatInterface({
   const [startTime] = useState(Date.now());
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const { latestAchievement, checkQuoteAchievements } = useAchievements();
+  const [latestAchievement, setLatestAchievement] = useState<string | null>(null);
+
+  // Listen for achievement events
+  useEffect(() => {
+    const handleAchievement = (event: CustomEvent) => {
+      setLatestAchievement(event.detail.achievementId);
+      setTimeout(() => setLatestAchievement(null), 100);
+    };
+    
+    window.addEventListener('achievement-unlocked', handleAchievement as EventListener);
+    return () => {
+      window.removeEventListener('achievement-unlocked', handleAchievement as EventListener);
+    };
+  }, []);
 
   // Helper function to safely extract total values
   const getTotal = (value: { total?: number } | number | undefined): number => {
@@ -367,9 +380,22 @@ export function ChatInterface({
         )
       });
 
-      // Check for achievements
+      // Check for achievements using the new service
       const timeToCreate = Date.now() - startTime;
-      await checkQuoteAchievements(quoteData, timeToCreate);
+      const companyData = JSON.parse(localStorage.getItem('paintquote_company') || '{}');
+      if (companyData.id) {
+        const newAchievements = await achievementService.checkQuoteCreationAchievements(
+          companyData.id,
+          quoteData,
+          timeToCreate
+        );
+        
+        // Show the first achievement if any were unlocked
+        if (newAchievements.length > 0) {
+          setLatestAchievement(newAchievements[0]);
+          setTimeout(() => setLatestAchievement(null), 100);
+        }
+      }
 
       // Navigate to the quote using the quote_id (like Q-2025-00001-1NWTY8)
       if (onQuoteCreated) {

@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AchievementDisplay } from '@/components/achievements/achievement-display'
 import { ROIWidget } from '@/components/roi-widget'
+import { usePageFeatureTracking } from '@/hooks/use-feature-tracking'
 interface DashboardData {
   companyName: string
   totalQuotes: number
@@ -37,6 +38,9 @@ export function ClientDashboard() {
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)
   const [authChecked, setAuthChecked] = useState(false)
+  
+  // Track dashboard feature usage
+  usePageFeatureTracking('dashboard')
 
   useEffect(() => {
     console.log('ClientDashboard - companyData:', companyData)
