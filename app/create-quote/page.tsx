@@ -93,12 +93,12 @@ function CreateQuoteContent() {
       </div>
 
       {/* Header */}
-      <header className="glass-card rounded-none border-b border-white/10 relative z-20">
+      <header className="bg-gray-900/90 backdrop-blur-md border-b border-white/20 relative z-20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link href="/dashboard">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-gray-900/70">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                   <ArrowLeft className="h-5 w-5" />
                 </Button>
               </Link>
