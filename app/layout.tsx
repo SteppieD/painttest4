@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Suspense } from 'react'
 import './globals.css'
 import '../styles/contractor-theme.css'
 import '../styles/modern-design-system.css'
@@ -116,7 +117,9 @@ export default function RootLayout({
           <GoogleTagManagerNoscript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
         <CacheClearer />
-        <ShareLinkTracker />
+        <Suspense fallback={null}>
+          <ShareLinkTracker />
+        </Suspense>
         <GTMProvider>
           {children}
         </GTMProvider>
