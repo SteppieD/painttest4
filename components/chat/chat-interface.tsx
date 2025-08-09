@@ -148,7 +148,7 @@ export function ChatInterface({
         setTimeout(() => {
           setMessages(prev => [...prev, {
             role: 'assistant',
-            content: "Great! I&apos;ll help you create a quote for Sarah Johnson&apos;s interior painting project. Let me gather a few more details. What&apos;s the approximate square footage of the home?",
+            content: "Great! I'll help you create a quote for Sarah Johnson's interior painting project. Let me gather a few more details. What's the approximate square footage of the home?",
             timestamp: new Date()
           }]);
           setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
@@ -158,7 +158,7 @@ export function ChatInterface({
 
       // Auto-continue demo
       setTimeout(() => {
-        sendMessage("It&apos;s about 2,000 sq ft with standard 8-foot ceilings");
+        sendMessage("It's about 2,000 sq ft with standard 8-foot ceilings");
       }, 5000);
     };
 
@@ -167,7 +167,7 @@ export function ChatInterface({
       setMessages([
         {
           role: 'assistant',
-          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I&apos;ll walk you through a typical residential project.",
+          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I'll walk you through a typical residential project.",
           timestamp: new Date()
         }
       ]);
@@ -179,7 +179,7 @@ export function ChatInterface({
       setMessages([
         {
           role: 'assistant',
-          content: "Hi! I&apos;ll help you create a professional quote for your customer. What type of painting project are you quoting today?",
+          content: "Hi! I'll help you create a professional quote for your customer. What type of painting project are you quoting today?",
           timestamp: new Date()
         }
       ]);
