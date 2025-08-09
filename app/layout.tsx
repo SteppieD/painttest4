@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster-fixed'
 import { CacheClearer } from '@/components/cache-clearer'
 import GoogleTagManager, { GoogleTagManagerNoscript } from '@/components/GoogleTagManager'
 import GTMProvider from '@/components/analytics/GTMProvider'
+import { ShareLinkTracker } from '@/components/share-link-tracker'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -115,6 +116,7 @@ export default function RootLayout({
           <GoogleTagManagerNoscript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
         <CacheClearer />
+        <ShareLinkTracker />
         <GTMProvider>
           {children}
         </GTMProvider>

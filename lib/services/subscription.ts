@@ -9,6 +9,7 @@ export interface SubscriptionTier {
   price: number;
 }
 
+// Business tier removed - see PRICING_STRATEGY.md for future add-on plans
 export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
   free: {
     name: 'free',
@@ -25,9 +26,10 @@ export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
   professional: {
     name: 'professional',
     displayName: 'Professional',
-    monthlyQuoteLimit: 50, // 50 quotes per month
+    monthlyQuoteLimit: -1, // Unlimited quotes for Pro users
     features: [
-      '50 quotes per month',
+      'Unlimited quotes',
+      'AI-powered instant quoting',
       'Professional templates',
       'Custom branding',
       'Analytics & insights',
@@ -38,20 +40,24 @@ export const SUBSCRIPTION_TIERS: Record<string, SubscriptionTier> = {
     ],
     price: 79
   },
-  business: {
-    name: 'business',
-    displayName: 'Business',
-    monthlyQuoteLimit: -1, // Unlimited
+  // Pro tier simplified to just Free and Professional
+  // Future: Add modular add-ons instead of fixed business tier
+  pro: {
+    name: 'pro',
+    displayName: 'Professional',
+    monthlyQuoteLimit: -1,
     features: [
-      'Everything in Professional',
-      'Multiple users',
-      'API access',
-      'Custom integrations',
-      'Dedicated support',
-      'Custom reporting',
-      'White-label options'
+      'Unlimited quotes',
+      'AI-powered instant quoting',
+      'Professional templates',
+      'Custom branding',
+      'Analytics & insights',
+      'Priority support',
+      'Advanced AI features',
+      'Quote tracking',
+      'Automated follow-ups'
     ],
-    price: 149 // $149/month
+    price: 79
   }
 };
 
@@ -71,7 +77,7 @@ export class SubscriptionService {
     const limit = tier.monthlyQuoteLimit;
     const count = company.monthly_quote_count || 0;
 
-    // Unlimited for business tier
+    // Unlimited for professional/pro tier
     if (limit === -1) {
       return { allowed: true, remaining: -1, limit: -1 };
     }

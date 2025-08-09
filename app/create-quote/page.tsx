@@ -11,6 +11,8 @@ import { ArrowLeft, AlertCircle, Sparkles } from 'lucide-react';
 import { AchievementPopup } from '@/components/achievements/achievement-popup';
 import Link from 'next/link';
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth';
+import { ShareRewardWidget } from '@/components/sharing/share-reward-widget';
+import { QuickUpgradeButton } from '@/components/quick-upgrade-button';
 function CreateQuoteContent() {
   const searchParams = useSearchParams();
   const isDemo = searchParams.get('demo') === 'true';
@@ -113,11 +115,18 @@ function CreateQuoteContent() {
         </div>
       </header>
 
-      {/* Quota Display */}
-      {quotaInfo && !quotaInfo.isUnlimited && (
-        <div className="container mx-auto px-4 py-4 relative z-20">
-          <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
-            <CardContent className="p-4">
+      {/* Quota and Share Display */}
+      <div className="container mx-auto px-4 py-4 relative z-20">
+        <div className="grid md:grid-cols-2 gap-4">
+          {/* Share & Earn Widget */}
+          {companyData && (
+            <ShareRewardWidget companyId={companyData.id} variant="compact" />
+          )}
+          
+          {/* Quota Display */}
+          {quotaInfo && !quotaInfo.isUnlimited && (
+            <Card className="bg-gray-900/80 backdrop-filter backdrop-blur-md border-white/10">
+              <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div>
@@ -140,21 +149,14 @@ function CreateQuoteContent() {
                 )}
                 
                 {quotaInfo.remaining === 0 && (
-                  <Link href="/dashboard/settings/billing">
-                    <Button 
-                      size="default" 
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
-                    >
-                      <Sparkles className="h-4 w-4 mr-2" />
-                      Upgrade to Pro
-                    </Button>
-                  </Link>
+                  <QuickUpgradeButton variant="default" showPricing={true} />
                 )}
               </div>
             </CardContent>
           </Card>
-        </div>
-      )}
+        )}
+      </div>
+    </div>
 
       {/* Limit Reached Alert */}
       {quotaInfo && quotaInfo.remaining === 0 && (
@@ -169,11 +171,7 @@ function CreateQuoteContent() {
                     You{'ve'} used all {quotaInfo.limit} quotes in your free plan this month. 
                     Upgrade to Pro for unlimited quotes and advanced features.
                   </p>
-                  <Link href="/dashboard/settings/billing">
-                    <Button size="default" variant="outline" className="border-white/20 text-white">
-                      View Upgrade Options
-                    </Button>
-                  </Link>
+                  <QuickUpgradeButton variant="cta" />
                 </div>
               </div>
             </CardContent>
@@ -205,12 +203,7 @@ function CreateQuoteContent() {
                       You{'ve'} reached your monthly limit of {quotaInfo.limit} quotes. 
                       Upgrade to Pro for unlimited quotes and continue growing your business.
                     </p>
-                    <Link href="/dashboard/settings/billing">
-                      <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
-                        <Sparkles className="h-4 w-4 mr-2" />
-                        Upgrade to Pro
-                      </Button>
-                    </Link>
+                    <QuickUpgradeButton variant="cta" />
                   </div>
                 </div>
               ) : (

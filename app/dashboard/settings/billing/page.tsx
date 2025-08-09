@@ -9,7 +9,7 @@ import { Progress } from '@/components/ui/progress'
 import { toast } from '@/components/ui/use-toast'
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 import { SUBSCRIPTION_TIERS } from '@/lib/services/subscription'
-// Removed redirectToStripePayment - now using router.push to pricing page
+import { redirectToStripePayment } from '@/lib/config/stripe-links'
 import { 
   CreditCard, 
   Check, 
@@ -74,7 +74,7 @@ export default function BillingPage() {
     }
   }
 
-  const handleUpgrade = async (tier: string) => {
+  const handleUpgrade = async (billing: 'monthly' | 'yearly' = 'monthly') => {
     setProcessingUpgrade(true)
     try {
       toast({
@@ -82,10 +82,8 @@ export default function BillingPage() {
         description: 'You will be redirected to complete your purchase...'
       })
       
-      // Redirect to pricing page
-      setTimeout(() => {
-        router.push('/pricing')
-      }, 1000)
+      // Direct redirect to Stripe checkout - Professional tier only
+      await redirectToStripePayment('professional', billing)
     } catch (error) {
       toast({
         title: 'Error',
@@ -221,7 +219,8 @@ export default function BillingPage() {
           {currentTier === 'free' ? 'Upgrade Your Plan' : 'Plan Comparison'}
         </h2>
         
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Business tier removed - now just Free and Pro */}
+        <div className="grid md:grid-cols-2 gap-6">
           {Object.entries(SUBSCRIPTION_TIERS).map(([key, tier]) => {
             const isCurrentPlan = key === currentTier
             const isPro = key === 'pro'
@@ -276,14 +275,23 @@ export default function BillingPage() {
                       Contact Sales
                     </Button>
                   ) : key === 'pro' && currentTier === 'free' ? (
-                    <Button 
-                      className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
-                      onClick={() => handleUpgrade('pro')}
-                      disabled={processingUpgrade}
-                    >
-                      {processingUpgrade ? 'Processing...' : 'Upgrade to Pro'}
-                      <ChevronRight className="h-4 w-4 ml-2" />
-                    </Button>
+                    <div className="space-y-2">
+                      <Button 
+                        className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+                        onClick={() => handleUpgrade('monthly')}
+                        disabled={processingUpgrade}
+                      >
+                        {processingUpgrade ? 'Processing...' : 'Upgrade Monthly - $79/mo'}
+                        <ChevronRight className="h-4 w-4 ml-2" />
+                      </Button>
+                      <Button 
+                        className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                        onClick={() => handleUpgrade('yearly')}
+                        disabled={processingUpgrade}
+                      >
+                        {processingUpgrade ? 'Processing...' : 'Upgrade Yearly - $790/yr (Save $158)'}
+                      </Button>
+                    </div>
                   ) : null}
                 </CardContent>
               </Card>

@@ -98,6 +98,9 @@ local/
 LOCAL_NOTES.md
 TODO_LOCAL.md
 
+# Business Analysis
+competitor-analysis.md
+
 # Cache
 .cache/
 .parcel-cache/

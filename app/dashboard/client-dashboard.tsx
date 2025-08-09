@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation'
 import { AchievementDisplay } from '@/components/achievements/achievement-display'
 import { ROIWidget } from '@/components/roi-widget'
 import { usePageFeatureTracking } from '@/hooks/use-feature-tracking'
+import { ShareRewardWidget } from '@/components/sharing/share-reward-widget'
+import { QuickUpgradeButton } from '@/components/quick-upgrade-button'
 interface DashboardData {
   companyName: string
   totalQuotes: number
@@ -300,6 +302,13 @@ export function ClientDashboard() {
         </Card>
       )}
       
+      {/* Upgrade Banner for Free Users */}
+      {dashboardData.subscriptionTier === 'free' && dashboardData.quotesUsed >= 3 && (
+        <div className="mb-6">
+          <QuickUpgradeButton variant="banner" />
+        </div>
+      )}
+      
       {/* ROI Widget - Show for all users */}
       <ROIWidget 
         companyName={dashboardData.companyName}
@@ -466,46 +475,54 @@ export function ClientDashboard() {
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
-          <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-            <Target className="h-5 w-5 text-purple-400" />
-            Quick Actions
-          </h2>
+        {/* Right Column */}
+        <div className="space-y-6">
+          {/* Share & Earn Widget */}
+          {companyData?.id && (
+            <ShareRewardWidget companyId={companyData.id} variant="dashboard" />
+          )}
           
-          <div className="space-y-3">
-            <Link href="/create-quote" className="block p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 hover:from-blue-500/20 hover:to-purple-500/20 rounded-xl border border-blue-500/20 transition-all duration-300 group">
-              <div className="flex items-center gap-3">
-                <Sparkles className="h-5 w-5 text-blue-400" />
-                <div className="flex-1">
-                  <p className="font-medium text-white">AI Quote Assistant</p>
-                  <p className="text-base text-gray-200">Create quotes with AI help</p>
-                </div>
-                <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
-              </div>
-            </Link>
+          {/* Quick Actions */}
+          <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md p-6">
+            <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <Target className="h-5 w-5 text-purple-400" />
+              Quick Actions
+            </h2>
             
-            <Link href="/dashboard/customers" className="block p-4 bg-gradient-to-r from-emerald-500/10 to-green-500/10 hover:from-emerald-500/20 hover:to-green-500/20 rounded-xl border border-emerald-500/20 transition-all duration-300 group">
-              <div className="flex items-center gap-3">
-                <Users className="h-5 w-5 text-emerald-400" />
-                <div className="flex-1">
-                  <p className="font-medium text-white">Manage Customers</p>
-                  <p className="text-base text-gray-200">View customer database</p>
+            <div className="space-y-3">
+              <Link href="/create-quote" className="block p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 hover:from-blue-500/20 hover:to-purple-500/20 rounded-xl border border-blue-500/20 transition-all duration-300 group">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="h-5 w-5 text-blue-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white">AI Quote Assistant</p>
+                    <p className="text-base text-gray-200">Create quotes with AI help</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
-              </div>
-            </Link>
-            
-            <Link href="/roi-calculator" className="block p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20 rounded-xl border border-amber-500/20 transition-all duration-300 group">
-              <div className="flex items-center gap-3">
-                <TrendingUp className="h-5 w-5 text-amber-400" />
-                <div className="flex-1">
-                  <p className="font-medium text-white">ROI Calculator</p>
-                  <p className="text-base text-gray-200">Calculate your savings</p>
+              </Link>
+              
+              <Link href="/dashboard/customers" className="block p-4 bg-gradient-to-r from-emerald-500/10 to-green-500/10 hover:from-emerald-500/20 hover:to-green-500/20 rounded-xl border border-emerald-500/20 transition-all duration-300 group">
+                <div className="flex items-center gap-3">
+                  <Users className="h-5 w-5 text-emerald-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white">Manage Customers</p>
+                    <p className="text-base text-gray-200">View customer database</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
-              </div>
-            </Link>
+              </Link>
+              
+              <Link href="/roi-calculator" className="block p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20 rounded-xl border border-amber-500/20 transition-all duration-300 group">
+                <div className="flex items-center gap-3">
+                  <TrendingUp className="h-5 w-5 text-amber-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white">ROI Calculator</p>
+                    <p className="text-base text-gray-200">Calculate your savings</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-gray-200 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import ModernNavigation from '@/components/modern-navigation'
 import ModernFooter from '@/components/modern-footer'
+import { ShareRewardPromo } from '@/components/sharing/share-reward-promo'
 import { 
   Sparkles, 
   Clock, 
@@ -683,6 +684,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Share & Earn Promo Section */}
+      <ShareRewardPromo />
       </main>
       <ModernFooter />
     </>

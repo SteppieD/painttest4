@@ -4,19 +4,17 @@ import { getAuthContext } from '@/lib/auth/middleware';
 export const dynamic = 'force-dynamic';
 
 // Server-side only Stripe payment links - these should never be exposed to client
+// In production, these environment variables should be set in Vercel with real Stripe links
+// Business tier removed - see PRICING_STRATEGY.md for future add-on plans
 const STRIPE_PAYMENT_LINKS = {
   professional: {
-    monthly: process.env.STRIPE_PRO_MONTHLY_LINK || 'https://buy.stripe.com/test_cN2bJ13Ombnu7io144',
-    yearly: process.env.STRIPE_PRO_YEARLY_LINK || 'https://buy.stripe.com/test_28o28r5Ww4T67io8wx'
-  },
-  business: {
-    monthly: process.env.STRIPE_BUSINESS_MONTHLY_LINK || 'https://buy.stripe.com/test_8wM9AVdoY9769qA8wy',
-    yearly: process.env.STRIPE_BUSINESS_YEARLY_LINK || 'https://buy.stripe.com/test_3cs9AV0Cc3OW5ag9AD'
+    monthly: process.env.STRIPE_PRO_MONTHLY_LINK || process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_LINK,
+    yearly: process.env.STRIPE_PRO_YEARLY_LINK || process.env.NEXT_PUBLIC_STRIPE_PRO_YEARLY_LINK
   }
 };
 
 interface GetPaymentLinkRequest {
-  plan: 'professional' | 'business';
+  plan: 'professional'; // Only professional tier now
   billingPeriod: 'monthly' | 'yearly';
 }
 
@@ -42,9 +40,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!['professional', 'business'].includes(plan)) {
+    if (plan !== 'professional') {
       return NextResponse.json(
-        { error: 'Invalid plan. Must be professional or business' },
+        { error: 'Invalid plan. Must be professional' },
         { status: 400 }
       );
     }
@@ -60,11 +58,36 @@ export async function POST(request: NextRequest) {
     const paymentLink = STRIPE_PAYMENT_LINKS[plan][billingPeriod];
 
     if (!paymentLink) {
+      console.error('Payment link not found:', {
+        plan,
+        billingPeriod,
+        availableLinks: {
+          professional: {
+            monthly: !!STRIPE_PAYMENT_LINKS.professional.monthly,
+            yearly: !!STRIPE_PAYMENT_LINKS.professional.yearly
+          },
+          business: {
+            monthly: !!STRIPE_PAYMENT_LINKS.business.monthly,
+            yearly: !!STRIPE_PAYMENT_LINKS.business.yearly
+          }
+        }
+      });
       return NextResponse.json(
-        { error: 'Payment link not configured for this plan' },
+        { 
+          error: 'Payment link not configured for this plan',
+          details: `Missing link for ${plan} ${billingPeriod}` 
+        },
         { status: 500 }
       );
     }
+
+    // Log for debugging (remove in production)
+    console.log('Payment link retrieved:', {
+      plan,
+      billingPeriod,
+      linkFound: !!paymentLink,
+      linkPrefix: paymentLink ? paymentLink.substring(0, 30) + '...' : 'none'
+    });
 
     // Optionally, add customer email if available for better UX
     let finalLink = paymentLink;

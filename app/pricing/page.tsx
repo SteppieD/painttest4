@@ -19,6 +19,8 @@ interface PlanFeatures {
   highlight?: string;
 }
 
+// Business tier removed - focusing on Free and Professional with future add-ons
+// See PRICING_STRATEGY.md for future plans
 const plans: Record<string, PlanFeatures> = {
   free: {
     name: 'Free Forever',
@@ -69,29 +71,6 @@ const plans: Record<string, PlanFeatures> = {
     popular: true,
     highlight: 'ROI: Win 3 more jobs = $8,400+ revenue per month'
   },
-  business: {
-    name: 'Business',
-    description: 'Scale your painting empire',
-    monthlyPrice: 149,
-    yearlyPrice: 1490, // 2 months free
-    features: [
-      'Everything in Professional',
-      'Unlimited team members',
-      'QuickBooks & Xero integration',
-      'Advanced win/loss analytics',
-      'Quote conversion insights',
-      'Custom workflows & approval chains',
-      'Phone & chat support',
-      'Weekly training sessions',
-      'Bulk quote creation',
-      'Multi-location support',
-      'API access',
-      'White-label customer portal',
-      'Priority feature requests'
-    ],
-    limitations: [],
-    highlight: 'High-volume teams see $25,000+ monthly revenue gains'
-  },
   enterprise: {
     name: 'Enterprise',
     description: 'For large organizations',
@@ -122,7 +101,7 @@ export default function PricingPage() {
       router.push('/access-code')
     } else if (planKey === 'enterprise') {
       router.push('/contact?interest=enterprise')
-    } else if (planKey === 'professional' || planKey === 'business') {
+    } else if (planKey === 'professional') {
       try {
         // Get company data from localStorage for authentication
         const companyData = typeof window !== 'undefined' ? localStorage.getItem('paintquote_company') : null;

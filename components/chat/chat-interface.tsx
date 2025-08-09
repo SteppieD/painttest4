@@ -10,7 +10,7 @@ import { AlertCircle, CheckCircle, Sparkles } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { achievementService } from '@/lib/gamification/achievement-service';
 import { AchievementNotification } from '@/components/achievements/achievement-notification';
-import { redirectToStripePayment } from '@/lib/config/stripe-links';
+import { QuickUpgradeButton } from '@/components/quick-upgrade-button';
 import { OnboardingAssistant } from '@/lib/onboarding/onboarding-assistant';
 import { trackQuoteCreated, trackAIChatInteraction } from '@/lib/analytics/track-events';
 interface Message {
@@ -250,12 +250,7 @@ export function ChatInterface({
             title: 'Upgrade Required',
             description: data.message || 'You\'ve reached your monthly quote limit.',
             action: (
-              <Button 
-                size="default" 
-                onClick={() => redirectToStripePayment('professional', 'monthly')}
-              >
-                Upgrade Now
-              </Button>
+              <QuickUpgradeButton variant="compact" showPricing={false} />
             )
           });
           

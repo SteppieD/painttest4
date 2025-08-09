@@ -6,7 +6,8 @@
  * Secure client-side helper to redirect to Stripe payment
  * This function calls our secure API endpoint instead of using hardcoded URLs
  */
-export async function redirectToStripePayment(plan: 'professional' | 'business', billing?: 'monthly' | 'yearly') {
+// Business tier removed - Professional tier only
+export async function redirectToStripePayment(plan: 'professional', billing?: 'monthly' | 'yearly') {
   try {
     // Get company data from localStorage for authentication
     const companyData = typeof window !== 'undefined' ? localStorage.getItem('paintquote_company') : null;
@@ -58,7 +59,7 @@ export async function redirectToStripePayment(plan: 'professional' | 'business',
  * DEPRECATED: getStripePaymentLink is no longer used for security reasons
  * Use redirectToStripePayment() instead which calls secure API endpoints
  */
-export function getStripePaymentLink(plan: 'professional' | 'business' | 'upgrade', billing?: 'monthly' | 'yearly'): string {
+export function getStripePaymentLink(plan: 'professional' | 'upgrade', billing?: 'monthly' | 'yearly'): string {
   console.warn('getStripePaymentLink is deprecated - use redirectToStripePayment() for secure payment processing');
   return '/access-code'; // Redirect to authentication instead of exposing URLs
 }
