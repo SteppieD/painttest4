@@ -110,6 +110,9 @@ export async function POST(request: NextRequest) {
         }
 
         console.log('[CHAT] Paint products found:', paintProducts.length);
+        if (paintProducts.length > 0) {
+          console.log('[CHAT] Sample paint products:', paintProducts.slice(0, 3).map(p => ({ name: p.product_name || p.name, use_case: p.use_case, cost: p.cost_per_gallon })));
+        }
 
         // Build context string with company information
         context = `

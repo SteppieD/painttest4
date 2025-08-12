@@ -103,8 +103,18 @@ export default function DashboardLayout({
             <Link href="/dashboard" className="flex items-center gap-3 p-6 border-b border-white/10 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-600 rounded-xl blur-md opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-600 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-black text-xl">P</span>
+                <div className="relative w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-600 rounded-xl flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/Paint Quote App Logo Transparent.png" 
+                    alt="PaintQuote Pro Logo" 
+                    className="w-8 h-8 object-contain"
+                    onError={(e) => {
+                      // Fallback to letter if image fails to load
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling!.style.display = 'block';
+                    }}
+                  />
+                  <span className="text-white font-black text-xl hidden">P</span>
                 </div>
               </div>
               <div>

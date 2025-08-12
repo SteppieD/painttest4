@@ -57,6 +57,17 @@ export default function SharedNavigation() {
       <nav className="container flex h-14 items-center">
         <div className="mr-4 flex flex-1">
           <Link href="/" className="mr-6 flex items-center space-x-2">
+            <img 
+              src="/Paint Quote App Logo Transparent.png" 
+              alt="PaintQuote Pro Logo" 
+              className="w-8 h-8 object-contain"
+              onError={(e) => {
+                // Fallback to text if image fails to load
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling!.style.display = 'inline';
+              }}
+            />
+            <span className="font-bold hidden">PaintQuote Pro</span>
             <span className="font-bold">PaintQuote Pro</span>
           </Link>
           

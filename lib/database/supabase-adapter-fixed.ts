@@ -221,17 +221,62 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
 
   async getPaintProductsByCompanyId(companyId: number): Promise<Record<string, unknown>[]> {
     try {
-      // Use the RPC function we created in the migration
+      // Query paint_products table directly using company_id
+      // First try to find paint products associated with the company
       const { data, error } = await this.client
-        .rpc('get_company_paint_products', { p_company_id: companyId });
+        .from('paint_products')
+        .select('*')
+        .eq('company_id', companyId)
+        .eq('is_active', true)
+        .order('use_case')
+        .order('product_name');
 
       if (error) {
         console.error('[SupabaseAdapterFixed] Error fetching company paint products:', error);
-        return [];
+        // Try alternative approach - get products by user_id associated with company
+        return this.getPaintProductsByCompanyIdFallback(companyId);
       }
+      
+      console.log(`[SupabaseAdapterFixed] Found ${data?.length || 0} paint products for company ${companyId}`);
       return data || [];
     } catch (error) {
       console.error('[SupabaseAdapterFixed] getPaintProductsByCompanyId failed:', error);
+      return [];
+    }
+  }
+
+  // Fallback method to get paint products via user lookup
+  private async getPaintProductsByCompanyIdFallback(companyId: number): Promise<Record<string, unknown>[]> {
+    try {
+      // Get the company info to find associated users
+      const company = await this.getCompany(companyId);
+      if (!company) {
+        console.log('[SupabaseAdapterFixed] Company not found for paint products lookup');
+        return [];
+      }
+
+      // Try to find users associated with this company
+      const { data: users, error: userError } = await this.client
+        .from('users')
+        .select('id')
+        .eq('company_id', companyId);
+
+      if (userError || !users || users.length === 0) {
+        console.log('[SupabaseAdapterFixed] No users found for company, checking by email');
+        
+        // Try to find user by company email
+        const userByEmail = await this.getUserByEmail(company.email);
+        if (userByEmail) {
+          return this.getPaintProductsByUserId(userByEmail.id.toString());
+        }
+        return [];
+      }
+
+      // Get paint products for the first user (most companies have one user)
+      const userId = users[0].id;
+      return this.getPaintProductsByUserId(userId.toString());
+    } catch (error) {
+      console.error('[SupabaseAdapterFixed] Fallback paint products lookup failed:', error);
       return [];
     }
   }
