@@ -27,13 +27,24 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Help Center | Support Documentation & Resources',
+  title: 'Help Center | PaintQuote Pro Support & Resources',
   description: 'Get help with PaintQuote Pro. Browse our knowledge base, watch video tutorials, and contact support. Find answers to common questions.',
   openGraph: {
     title: 'PaintQuote Pro Help Center',
-    description: 'Support documentation, tutorials, and resources',
+    description: 'Support documentation, tutorials, and resources for painting contractors',
+    type: 'website',
     images: ['/og-help.png'],
+    url: 'https://paintquotepro.com/help'
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PaintQuote Pro Help Center',
+    description: 'Support documentation, tutorials, and resources for painting contractors',
+    images: ['/og-help.png']
+  },
+  alternates: {
+    canonical: '/help'
+  }
 }
 
 export default function HelpPage() {
@@ -215,7 +226,7 @@ export default function HelpPage() {
             </Badge>
             
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              How Can We Help?
+              Help Center
             </h1>
             
             <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">

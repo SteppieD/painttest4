@@ -1,0 +1,3 @@
+# This file was removed because we now use app/robots.ts for better SEO
+# The robots.txt is now generated dynamically by Next.js
+# Original content moved to app/robots.ts

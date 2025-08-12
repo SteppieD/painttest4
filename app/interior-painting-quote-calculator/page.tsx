@@ -6,19 +6,26 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import { Button } from '@/components/ui/button'
  // TODO: Check if this import is needed
 export const metadata: Metadata = {
-  title: 'Interior Painting Quote Calculator | Free Room & House Interior Estimates',
+  title: 'Interior Painting Quote Calculator | Free Room Estimates',
   description: 'Calculate accurate interior painting quotes instantly. Get professional estimates for bedrooms, living rooms, kitchens, and entire houses with our specialized interior paint calculator.',
   keywords: 'interior painting quote calculator, interior paint cost calculator, room painting estimate, house interior painting cost, interior paint quote',
   openGraph: {
     title: 'Interior Painting Quote Calculator - Instant Room Estimates',
     description: 'Professional interior painting cost calculator for rooms and houses. Get accurate quotes in minutes.',
     type: 'website',
+    url: 'https://paintquotepro.com/interior-painting-quote-calculator',
     images: [{
       url: '/og-interior-painting-calculator.jpg',
       width: 1200,
       height: 630,
       alt: 'Interior Painting Quote Calculator'
     }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Interior Painting Quote Calculator',
+    description: 'Professional interior painting cost calculator for rooms and houses. Get accurate quotes in minutes.',
+    images: ['/og-interior-painting-calculator.jpg']
   },
   alternates: {
     canonical: '/interior-painting-quote-calculator'

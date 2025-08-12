@@ -13,6 +13,7 @@ import { AchievementNotification } from '@/components/achievements/achievement-n
 import { QuickUpgradeButton } from '@/components/quick-upgrade-button';
 import { OnboardingAssistant } from '@/lib/onboarding/onboarding-assistant';
 import { trackQuoteCreated, trackAIChatInteraction } from '@/lib/analytics/track-events';
+import ErrorBoundary, { useErrorHandler } from '@/components/error-boundary';
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -25,7 +26,7 @@ interface ChatInterfaceProps {
   onQuoteCreated?: (quoteId: string) => void;
 }
 
-export function ChatInterface({ 
+function ChatInterfaceCore({ 
   companyId, 
   isDemo = false,
   onQuoteCreated
@@ -35,6 +36,8 @@ export function ChatInterface({
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [isFirstQuote, setIsFirstQuote] = useState(false);
   const [onboardingSettings, setOnboardingSettings] = useState({});
+  const [quoteCreationInProgress, setQuoteCreationInProgress] = useState(false);
+  const [lastQuoteCreationTime, setLastQuoteCreationTime] = useState<number | null>(null);
   interface QuoteData {
     customerName?: string;
     customerEmail?: string;
@@ -72,6 +75,7 @@ export function ChatInterface({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [latestAchievement, setLatestAchievement] = useState<string | null>(null);
+  const errorHandler = useErrorHandler();
 
   // Check if this is the user's first quote
   useEffect(() => {
@@ -214,6 +218,12 @@ export function ChatInterface({
       const companyData = localStorage.getItem('paintquote_company');
       const company = companyData ? JSON.parse(companyData) : null;
       
+      // Create abort controller for timeout handling
+      const abortController = new AbortController();
+      const timeoutId = setTimeout(() => {
+        abortController.abort();
+      }, 60000); // 60 second timeout
+      
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -229,8 +239,12 @@ export function ChatInterface({
           isDemo: isDemo,
           isFirstQuote,
           onboardingSettings: OnboardingAssistant.getExtractedSettings()
-        })
+        }),
+        signal: abortController.signal
       });
+      
+      // Clear timeout on successful response
+      clearTimeout(timeoutId);
 
       let data;
       try {
@@ -265,6 +279,17 @@ export function ChatInterface({
         }
         throw new Error(data.error || 'Failed to send message');
       }
+      
+      // Validate AI response
+      if (!data.response || typeof data.response !== 'string') {
+        throw new Error('Invalid AI response format');
+      }
+      
+      // Check for potentially harmful content in AI response
+      if (data.response.length > 10000) {
+        console.warn('[SECURITY] AI response too long, truncating');
+        data.response = data.response.substring(0, 10000) + '... [Response truncated for security]';
+      }
 
       // Add assistant response
       const assistantMessage: Message = {
@@ -276,18 +301,100 @@ export function ChatInterface({
 
       // Update session and other data
       if (data.sessionId) setSessionId(data.sessionId);
-      if (data.suggestedReplies) setSuggestedReplies(data.suggestedReplies);
+      if (data.suggestedReplies) {
+        setSuggestedReplies(data.suggestedReplies);
+      } else if (data.userWantsReview || data.hasMinimumInfo) {
+        // Provide review-oriented suggested replies when user shows readiness
+        setSuggestedReplies([
+          "That looks good, let's review",
+          "Ready to see the quote",
+          "Perfect, proceed with the quote",
+          "Sounds good, finalize it"
+        ]);
+      }
       
-      // Handle quote completion
+      // Validate quote data if present
+      if (data.quoteData && typeof data.quoteData === 'object') {
+        // Basic validation of quote data structure
+        const requiredFields = ['customerName'];
+        const hasRequiredFields = requiredFields.every(field => 
+          data.quoteData[field] && typeof data.quoteData[field] === 'string'
+        );
+        
+        if (!hasRequiredFields) {
+          console.warn('[VALIDATION] Quote data missing required fields');
+          errorHandler(new Error('Quote data validation failed'), 'Missing required customer information');
+          return;
+        }
+      }
+      
+      // Handle quote completion and readiness states
       if (data.isComplete && data.quoteData) {
         setQuoteData(data.quoteData);
+        
+        // If the AI response indicates the quote is finalized, automatically trigger creation
+        // Add safety checks to prevent duplicate quote creation
+        if (!quoteCreationInProgress && 
+            (data.response.toLowerCase().includes('finalized') || 
+             data.response.toLowerCase().includes('have a great') ||
+             data.response.toLowerCase().includes('good luck'))) {
+          
+          // Check if we recently created a quote (within last 5 seconds)
+          const now = Date.now();
+          if (lastQuoteCreationTime && (now - lastQuoteCreationTime) < 5000) {
+            console.log('[CHAT] Preventing duplicate quote creation - too soon after last attempt');
+            return;
+          }
+          
+          // Set flag to prevent concurrent creation
+          setQuoteCreationInProgress(true);
+          setLastQuoteCreationTime(now);
+          
+          // Small delay to let user see the final message
+          setTimeout(() => {
+            createQuote();
+          }, 2000);
+        }
+      } else if (data.userWantsReview && data.hasMinimumInfo) {
+        // User expressed readiness but quote might need more info
+        if (!data.quoteData) {
+          // Add a helpful message suggesting what to do next
+          const helpMessage: Message = {
+            role: 'assistant',
+            content: "I can see you're ready to review the quote! I have the basic information, but let me gather a few more details to create the most accurate quote possible. What's the total square footage or specific measurements for the project?",
+            timestamp: new Date()
+          };
+          setMessages(prev => [...prev, helpMessage]);
+        } else {
+          setQuoteData(data.quoteData);
+        }
       }
+
+      // Add debug logging
+      console.log('[CHAT] Quote status:', {
+        isComplete: data.isComplete,
+        userWantsReview: data.userWantsReview,
+        hasMinimumInfo: data.hasMinimumInfo,
+        hasQuoteData: !!data.quoteData,
+        debug: data.debug
+      });
 
     } catch (error) {
       console.error('Chat error:', error);
+      
+      let errorMessage = 'Failed to send message. Please try again.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'Request timed out. Please try again.';
+        } else if (error.message.includes('fetch')) {
+          errorMessage = 'Network error. Please check your connection.';
+        }
+      }
+      
       toast({
         title: 'Error',
-        description: 'Failed to send message. Please try again.',
+        description: errorMessage,
         variant: 'destructive'
       });
     } finally {
@@ -296,7 +403,11 @@ export function ChatInterface({
   };
 
   const createQuote = async () => {
-    if (!quoteData) return;
+    // Prevent duplicate quote creation
+    if (!quoteData || quoteCreationInProgress) {
+      console.log('[CHAT] Quote creation blocked - no data or already in progress');
+      return;
+    }
 
     console.log('[CHAT] Quote data from AI:', quoteData);
     console.log('[CHAT] Pricing structure:', quoteData.pricing);
@@ -397,6 +508,12 @@ export function ChatInterface({
         conversationHistory: limitedMessages
       };
 
+      // Add timeout handling for quote creation
+      const abortController = new AbortController();
+      const timeoutId = setTimeout(() => {
+        abortController.abort();
+      }, 90000); // 90 second timeout for quote creation
+      
       const response = await fetch('/api/quotes', {
         method: 'POST',
         headers: {
@@ -406,8 +523,12 @@ export function ChatInterface({
             access_code: company?.access_code
           })
         },
-        body: JSON.stringify(finalRequestBody)
+        body: JSON.stringify(finalRequestBody),
+        signal: abortController.signal
       });
+      
+      // Clear timeout on successful response
+      clearTimeout(timeoutId);
 
       let result;
       try {
@@ -492,13 +613,33 @@ export function ChatInterface({
 
     } catch (error) {
       console.error('Create quote error:', error);
+      // Provide specific error messages based on error type
+      let errorMessage = 'Failed to create quote. Please try again.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'Quote creation timed out. Please try again.';
+        } else if (error.message.includes('401') || error.message.includes('unauthorized')) {
+          errorMessage = 'Authorization failed. Please check your account status.';
+        } else if (error.message.includes('403') || error.message.includes('upgrade')) {
+          errorMessage = 'Upgrade required to create more quotes.';
+        } else if (error.message.includes('500') || error.message.includes('server')) {
+          errorMessage = 'Server error. Please try again in a moment.';
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          errorMessage = 'Network error. Please check your connection.';
+        } else if (error.message.includes('validation')) {
+          errorMessage = 'Quote data validation failed. Please check all required fields.';
+        }
+      }
+      
       toast({
-        title: 'Error',
-        description: 'Failed to create quote. Please try again.',
+        title: 'Error Creating Quote',
+        description: errorMessage,
         variant: 'destructive'
       });
     } finally {
       setIsLoading(false);
+      setQuoteCreationInProgress(false);
     }
   };
 
@@ -587,7 +728,7 @@ export function ChatInterface({
                   <div className="flex gap-2">
                     <Button
                       onClick={createQuote}
-                      disabled={isLoading}
+                      disabled={isLoading || quoteCreationInProgress}
                       size="lg"
                       variant="outline"
                       className="border-green-500/50 text-green-300 hover:bg-green-500/20"
@@ -636,5 +777,19 @@ export function ChatInterface({
         onClose={() => {}}
       />
     </div>
+  );
+}
+
+// Export wrapped component with error boundary
+export function ChatInterface(props: ChatInterfaceProps) {
+  return (
+    <ErrorBoundary
+      onError={(error, errorInfo) => {
+        console.error('[ChatInterface] Error caught by boundary:', error);
+        console.error('[ChatInterface] Error info:', errorInfo);
+      }}
+    >
+      <ChatInterfaceCore {...props} />
+    </ErrorBoundary>
   );
 }

@@ -4,13 +4,21 @@ import { FileText, Download, CheckCircle, Star, Clock, Users, Zap, Award } from 
 import Breadcrumbs from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Painting Quote Templates | Professional Contractor Proposals 2025',
+  title: 'Painting Quote Templates | Professional Contractor Proposals',
   description: 'Free painting quote templates for contractors. Professional, customizable proposals that win jobs. Download Word, Excel, and PDF formats. Used by 2,847+ painters.',
   keywords: 'painting quote template, painting proposal template, contractor quote template, painting bid template, free painting quote forms, professional painting templates',
   openGraph: {
     title: 'Professional Painting Quote Templates - Win More Jobs',
     description: 'Download free painting quote templates that convert. Professional formats that help you close 40% more deals.',
     type: 'website',
+    images: ['/og-templates.png'],
+    url: 'https://paintquotepro.com/painting-quote-templates'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Professional Painting Quote Templates',
+    description: 'Download free painting quote templates that convert. Professional formats that help you close 40% more deals.',
+    images: ['/og-templates.png']
   },
   alternates: {
     canonical: '/painting-quote-templates'
@@ -200,7 +208,7 @@ export default function PaintingQuoteTemplates() {
                   Trusted by 2,847+ Painting Contractors
                 </div>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  Professional Painting Quote Templates That Win Jobs
+                  Pro Painting Quote Templates That Win Jobs
                 </h1>
                 <p className="mt-6 text-xl text-gray-200">
                   Download free painting quote templates that help you close 40% more deals. 

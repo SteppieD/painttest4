@@ -13,12 +13,19 @@ export const metadata: Metadata = {
     title: 'Free Paint Cost Calculator - Budget Your Painting Project',
     description: 'Calculate total painting costs including paint, materials, and labor. Get accurate budget estimates for your painting project.',
     type: 'website',
+    url: 'https://paintquotepro.com/paint-cost-calculator',
     images: [{
       url: '/og-paint-cost-calculator.jpg',
       width: 1200,
       height: 630,
       alt: 'Paint Cost Calculator'
     }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Paint Cost Calculator',
+    description: 'Calculate total painting costs including paint, materials, and labor. Get accurate budget estimates.',
+    images: ['/og-paint-cost-calculator.jpg']
   },
   alternates: {
     canonical: '/paint-cost-calculator'

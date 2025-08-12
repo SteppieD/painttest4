@@ -162,12 +162,17 @@ Calculator instance available with default settings.
       timestamp: new Date()
     });
 
-    // Check if the quote is complete by looking for key indicators
-    const isQuoteComplete = aiResponse.toLowerCase().includes('total project cost') || 
-                          aiResponse.toLowerCase().includes('total: $') ||
-                          (aiResponse.toLowerCase().includes('finalize') && aiResponse.toLowerCase().includes('quote'));
+    // Check if user is ready to review or if quote is complete
+    const userWantsReview = quoteAssistant.isReadyToReview(message);
+    const hasMinimumInfo = quoteAssistant.hasMinimumQuoteInformation(quoteContext, conversationHistory);
+    const aiGeneratedCompleteQuote = quoteAssistant.isQuoteComplete(aiResponse);
     
-    let quoteData = null;
+    // Quote is ready if:
+    // 1. User expresses readiness AND we have minimum info, OR
+    // 2. AI has generated a complete quote (determined it has all info needed)
+    const isQuoteComplete = (userWantsReview && hasMinimumInfo) || aiGeneratedCompleteQuote;
+    
+    let quoteData: any = null;
     if (isQuoteComplete) {
       // Parse the conversation to extract quote data
       const fullConversation = conversationManager.getMessages()
@@ -175,36 +180,100 @@ Calculator instance available with default settings.
         .join('\n');
       
       try {
-        const parsedData = await quoteAssistant.parseQuoteInformation(fullConversation);
+        const parsedData: any = await quoteAssistant.parseQuoteInformation(fullConversation);
         console.log('[CHAT] Parsed quote data:', parsedData);
         
-        // Only set quoteData if we have enough information
-        if (parsedData.customerName && (parsedData.measurements?.wallSqft || parsedData.measurements?.linearFeetWalls)) {
+        // Set quoteData if we have enough information OR user expressed readiness
+        const hasBasicInfo = parsedData.customerName && 
+                            (parsedData.measurements?.wallSqft || 
+                             parsedData.measurements?.linearFeetWalls ||
+                             userWantsReview); // Allow with less info if user wants to review
+        
+        if (hasBasicInfo) {
           quoteData = {
             ...parsedData,
             pricing: {
-              total: 0, // This will be calculated based on the conversation
+              total: 0,
               materials: { total: 0 },
-              labor: { total: 0 }
+              labor: { total: 0 },
+              breakdown: {}
             }
           };
           
-          // Extract pricing from the conversation
-          const priceMatch = aiResponse.match(/\$[\d,]+(?:\.\d{2})?/g);
-          if (priceMatch && priceMatch.length > 0) {
-            // Get the last/largest price as the total
-            const prices = priceMatch.map(p => parseFloat(p.replace(/[$,]/g, '')));
-            quoteData.pricing.total = Math.max(...prices);
+          // Extract pricing from the AI response and full conversation
+          const fullText = fullConversation + ' ' + aiResponse;
+          
+          // Use parsed data pricing if available, otherwise extract from text
+          if ((parsedData as any).pricing) {
+            quoteData.pricing = {
+              ...quoteData.pricing,
+              ...(parsedData as any).pricing
+            };
+          } else {
+            const priceMatch = fullText.match(/\$[\d,]+(?:\.\d{2})?/g);
             
-            // Try to extract materials and labor
-            const materialMatch = aiResponse.match(/(?:materials?|paint)[:\s]+\$?([\d,]+(?:\.\d{2})?)/i);
-            const laborMatch = aiResponse.match(/(?:labor)[:\s]+\$?([\d,]+(?:\.\d{2})?)/i);
-            
-            if (materialMatch) {
-              quoteData.pricing.materials.total = parseFloat(materialMatch[1].replace(/,/g, ''));
+            if (priceMatch && priceMatch.length > 0) {
+              // Get all prices and find the total
+              const prices = priceMatch.map(p => parseFloat(p.replace(/[$,]/g, '')));
+              
+              // Look for explicit total mentions
+              const totalMatch = fullText.match(/(?:total|total\s+cost|total\s+price|final\s+price)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
+              if (totalMatch) {
+                quoteData.pricing.total = parseFloat(totalMatch[1].replace(/,/g, ''));
+              } else {
+                quoteData.pricing.total = Math.max(...prices);
+              }
+              
+              // Extract materials and labor with better patterns
+              const materialMatch = fullText.match(/(?:materials?|paint|supplies)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
+              const laborMatch = fullText.match(/(?:labor|labour)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
+              
+              if (materialMatch) {
+                quoteData.pricing.materials.total = parseFloat(materialMatch[1].replace(/,/g, ''));
+              }
+              if (laborMatch) {
+                quoteData.pricing.labor.total = parseFloat(laborMatch[1].replace(/,/g, ''));
+              }
+              
+              // Extract detailed breakdown items
+              const gallonMatch = fullText.match(/(\d+)\s*gallons?[^$]*\$?([\d,]+(?:\.\d{2})?)/gi);
+              const hoursMatch = fullText.match(/(\d+)\s*hours?[^$]*\$?([\d,]+(?:\.\d{2})?)/gi);
+              
+              if (gallonMatch) {
+                gallonMatch.forEach((match, i) => {
+                  const parts = match.match(/(\d+)\s*gallons?[^$]*\$?([\d,]+(?:\.\d{2})?)/i);
+                  if (parts) {
+                    const gallons = parseInt(parts[1]);
+                    const cost = parseFloat(parts[2].replace(/,/g, ''));
+                    if (i === 0) quoteData.pricing.breakdown.wallPaint = { gallons, cost };
+                  }
+                });
+              }
+              
+              if (hoursMatch) {
+                hoursMatch.forEach((match, i) => {
+                  const parts = match.match(/(\d+)\s*hours?[^$]*\$?([\d,]+(?:\.\d{2})?)/i);
+                  if (parts) {
+                    const hours = parseInt(parts[1]);
+                    const cost = parseFloat(parts[2].replace(/,/g, ''));
+                    if (i === 0) quoteData.pricing.breakdown.painting = { hours, cost };
+                  }
+                });
+              }
             }
-            if (laborMatch) {
-              quoteData.pricing.labor.total = parseFloat(laborMatch[1].replace(/,/g, ''));
+          }
+          
+          // If user wants to review but we don't have pricing yet, create basic structure
+          if (userWantsReview && quoteData.pricing.total === 0) {
+            // Set a placeholder or try to extract from conversation context
+            const basicPriceMatch = fullConversation.match(/\$?(\d+(?:,\d{3})*(?:\.\d{2})?)/g);
+            if (basicPriceMatch) {
+              const price = parseFloat(basicPriceMatch[basicPriceMatch.length - 1].replace(/[$,]/g, ''));
+              if (price > 100) { // Reasonable quote minimum
+                quoteData.pricing.total = price;
+                quoteData.pricing.materials.total = Math.round(price * 0.4); // Estimate 40% materials
+                quoteData.pricing.labor.total = Math.round(price * 0.6); // Estimate 60% labor
+              }
             }
           }
         }
@@ -219,7 +288,15 @@ Calculator instance available with default settings.
       contextUsed: useContext,
       companyName: company.name,
       isComplete: isQuoteComplete,
-      quoteData
+      quoteData,
+      userWantsReview,
+      hasMinimumInfo,
+      debug: {
+        userWantsReview,
+        hasMinimumInfo,
+        aiGeneratedCompleteQuote,
+        isQuoteComplete
+      }
     });
 
   } catch (error) {

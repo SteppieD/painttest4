@@ -25,13 +25,24 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Features | PaintQuote Pro - Professional Painting Estimating Software',
+  title: 'Features | PaintQuote Pro Painting Software',
   description: 'Explore all features of PaintQuote Pro: AI-powered quotes, paint calculators, customer management, mobile app, and more. Everything you need to grow your painting business.',
   keywords: 'painting software features, paint calculator, estimating features, contractor tools, painting business management',
   openGraph: {
     title: 'PaintQuote Pro Features - Complete Painting Business Solution',
     description: 'All-in-one painting estimating software with AI quotes, calculators, CRM, mobile app, and more.',
     type: 'website',
+    images: ['/og-features.png'],
+    url: 'https://paintquotepro.com/features'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PaintQuote Pro Features',
+    description: 'All-in-one painting estimating software with AI quotes, calculators, CRM, mobile app, and more.',
+    images: ['/og-features.png']
+  },
+  alternates: {
+    canonical: '/features'
   }
 }
 

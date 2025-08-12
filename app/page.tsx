@@ -30,11 +30,14 @@ export const metadata: Metadata = {
     title: 'Paint Quote Pro - Professional Painting Quotes in Minutes',
     description: 'Create winning painting quotes in 10-15 minutes. Join 500+ contractors who win 40-60% more jobs with our AI-powered quoting software.',
     type: 'website',
+    images: ['/og-homepage.png'],
+    url: 'https://paintquotepro.com'
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Paint Quote Pro - Professional Painting Quotes in Minutes',
     description: 'Create winning painting quotes in 10-15 minutes. Win 40-60% more jobs with our AI-powered quoting software.',
+    images: ['/og-homepage.png']
   },
   alternates: {
     canonical: '/',

@@ -161,6 +161,98 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ]
 
+  // Tool and calculator pages
+  const toolPages: SitemapEntry[] = [
+    {
+      url: `${baseUrl}/painting-quote-templates`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/paint-cost-calculator`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/mobile-painting-estimate-app`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7
+    },
+    {
+      url: `${baseUrl}/integrations`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7
+    },
+    {
+      url: `${baseUrl}/commercial-painting-estimating-software`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/painting-business-software`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/paint-contractor-app`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7
+    },
+    {
+      url: `${baseUrl}/painting-estimate-calculator-free`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/interior-painting-quote-calculator`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/exterior-painting-estimate-calculator`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    }
+  ]
+
+  // Support and documentation pages
+  const supportPages: SitemapEntry[] = [
+    {
+      url: `${baseUrl}/help`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.6
+    },
+    {
+      url: `${baseUrl}/contact-sales`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7
+    },
+    {
+      url: `${baseUrl}/api-docs`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.5
+    },
+    {
+      url: `${baseUrl}/status`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.3
+    }
+  ]
+
 
   // Legal pages
   const legalPages: SitemapEntry[] = [
@@ -184,6 +276,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pillarPages,
     ...clusterPages,
     ...marketingPages,
+    ...toolPages,
+    ...supportPages,
     ...legalPages
   ]
 
