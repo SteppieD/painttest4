@@ -64,7 +64,7 @@ export default function SharedNavigation() {
               onError={(e) => {
                 // Fallback to text if image fails to load
                 e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling!.style.display = 'inline';
+                (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'inline';
               }}
             />
             <span className="font-bold hidden">PaintQuote Pro</span>
