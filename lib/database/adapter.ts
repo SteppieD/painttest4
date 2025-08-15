@@ -23,6 +23,12 @@ export interface Company {
   default_labor_percentage?: number;
   markup_percentage?: number;
   minimum_job_size?: number;
+  default_walls_paint_cost?: number;
+  default_ceilings_paint_cost?: number;
+  default_trim_paint_cost?: number;
+  default_paint_coverage?: number;
+  default_sundries_percentage?: number;
+  overhead_percent?: number;
   setup_completed_at?: string;
   created_at?: string;
   updated_at?: string;

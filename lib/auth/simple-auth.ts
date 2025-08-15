@@ -6,6 +6,7 @@ export interface CompanyAuth {
   access_code: string;
   name: string;
   email?: string;
+  subscription_tier?: string;
 }
 
 /**
@@ -49,7 +50,8 @@ export async function getCompanyFromRequest(request: NextRequest): Promise<Compa
         id: companyFromDb.id,
         access_code: companyFromDb.access_code,
         name: companyFromDb.company_name || companyFromDb.name || 'Unknown Company',
-        email: companyFromDb.email
+        email: companyFromDb.email,
+        subscription_tier: companyFromDb.subscription_tier
       };
       
     } catch (dbError) {

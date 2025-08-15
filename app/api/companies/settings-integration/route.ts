@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
     const response = {
       company: {
         id: company.id,
-        name: company.company_name,
+        name: company.name,
         email: company.email,
         subscriptionTier: company.subscription_tier
       },
