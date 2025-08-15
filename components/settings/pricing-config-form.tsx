@@ -108,13 +108,20 @@ export function PricingConfigForm({ companyId, initialConfig, onSave }: PricingC
       });
 
       if (response.ok) {
-        toast.success('Pricing configuration saved successfully');
+        toast({
+          title: 'Success',
+          description: 'Pricing configuration saved successfully'
+        });
         onSave?.(config);
       } else {
         throw new Error('Failed to save configuration');
       }
     } catch (error) {
-      toast.error('Failed to save pricing configuration');
+      toast({
+        title: 'Error',
+        description: 'Failed to save pricing configuration',
+        variant: 'destructive'
+      });
       console.error(error);
     }
   };
