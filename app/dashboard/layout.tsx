@@ -111,7 +111,7 @@ export default function DashboardLayout({
                     onError={(e) => {
                       // Fallback to letter if image fails to load
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling!.style.display = 'block';
+                      (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
                     }}
                   />
                   <span className="text-white font-black text-xl hidden">P</span>

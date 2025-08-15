@@ -70,7 +70,7 @@ export interface CalculatorOutput {
 }
 
 export class QuoteCalculator {
-  // Default rates and constants
+  // Default rates and constants (fallbacks when company settings not available)
   private static readonly DEFAULT_COVERAGE = 350; // sqft per gallon
   private static readonly DEFAULT_LABOR_RATE = 45; // per hour
   private static readonly SUPPLIES_BASE = 100; // base supplies cost

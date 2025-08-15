@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SubscriptionService } from '@/lib/stripe/subscription-service';
+import { enhancedSubscriptionService } from '@/lib/stripe/enhanced-subscription-service';
 import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
@@ -17,8 +17,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const subscriptionService = new SubscriptionService();
-    const result = await subscriptionService.handleWebhook(body, signature);
+    // Using enhanced service with N8N integration
+    const result = await enhancedSubscriptionService.handleWebhook(body, signature);
 
     if (result.processed) {
       return NextResponse.json({ received: true });

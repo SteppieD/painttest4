@@ -1,0 +1,404 @@
+{
+  "workflows": [
+    {
+      "name": "Payment Success Email",
+      "description": "Send payment confirmation email with invoice",
+      "webhookPath": "/webhook/payment-success",
+      "nodes": [
+        {
+          "type": "webhook",
+          "name": "Payment Success Webhook",
+          "position": [250, 300],
+          "parameters": {
+            "path": "payment-success",
+            "responseMode": "onReceived",
+            "responseData": "allEntries"
+          }
+        },
+        {
+          "type": "set",
+          "name": "Format Email Data",
+          "position": [450, 300],
+          "parameters": {
+            "values": {
+              "string": [
+                {
+                  "name": "subject",
+                  "value": "Payment Received - Thank You!"
+                },
+                {
+                  "name": "preheader",
+                  "value": "Your payment of ${{$json.data.amount}} has been processed"
+                },
+                {
+                  "name": "invoiceDate",
+                  "value": "={{$now.format('MMMM D, YYYY')}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Send Payment Email",
+          "position": [650, 300],
+          "parameters": {
+            "fromEmail": "billing@paintquotepro.com",
+            "toEmail": "={{$json.data.customerEmail}}",
+            "subject": "Payment Received - PaintQuote Pro",
+            "html": "payment-success-template.html",
+            "attachments": []
+          }
+        },
+        {
+          "type": "postgres",
+          "name": "Log Email Event",
+          "position": [850, 300],
+          "parameters": {
+            "operation": "insert",
+            "table": "email_events",
+            "columns": "company_id,email_type,recipient_email,subject,status",
+            "values": "={{$json.data.companyId}},'payment_success','{{$json.data.customerEmail}}','Payment Received','sent'"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment Failed Recovery",
+      "description": "Multi-step payment recovery sequence",
+      "webhookPath": "/webhook/payment-failed",
+      "nodes": [
+        {
+          "type": "webhook",
+          "name": "Payment Failed Webhook",
+          "position": [250, 300]
+        },
+        {
+          "type": "switch",
+          "name": "Check Attempt Count",
+          "position": [450, 300],
+          "parameters": {
+            "conditions": [
+              {
+                "value1": "={{$json.data.attemptCount}}",
+                "operation": "equals",
+                "value2": 1
+              },
+              {
+                "value1": "={{$json.data.attemptCount}}",
+                "operation": "equals",
+                "value2": 2
+              },
+              {
+                "value1": "={{$json.data.attemptCount}}",
+                "operation": "greaterThan",
+                "value2": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "First Failure Email",
+          "position": [650, 200],
+          "parameters": {
+            "subject": "Payment Issue - Action Required",
+            "template": "payment-failed-first"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Second Failure Email",
+          "position": [650, 300],
+          "parameters": {
+            "subject": "Urgent: Update Payment Method",
+            "template": "payment-failed-second"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Final Warning Email",
+          "position": [650, 400],
+          "parameters": {
+            "subject": "Final Notice: Service Suspension Pending",
+            "template": "payment-failed-final"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 3 Days",
+          "position": [850, 300],
+          "parameters": {
+            "amount": 3,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "http",
+          "name": "Check Payment Status",
+          "position": [1050, 300],
+          "parameters": {
+            "url": "https://yourapp.com/api/stripe/check-payment",
+            "method": "POST",
+            "body": {
+              "companyId": "={{$json.data.companyId}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscription Welcome Sequence",
+      "description": "Onboarding email sequence for new subscriptions",
+      "webhookPath": "/webhook/subscription-created",
+      "nodes": [
+        {
+          "type": "webhook",
+          "name": "Subscription Created"
+        },
+        {
+          "type": "emailSend",
+          "name": "Welcome Email",
+          "parameters": {
+            "subject": "Welcome to PaintQuote Pro {{$json.data.plan}}!",
+            "template": "welcome-subscription"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 1 Day",
+          "parameters": {
+            "amount": 1,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Getting Started Guide",
+          "parameters": {
+            "subject": "Get the Most from PaintQuote Pro",
+            "template": "getting-started"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 3 Days",
+          "parameters": {
+            "amount": 3,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Tips and Tricks",
+          "parameters": {
+            "subject": "Pro Tips for Faster Quotes",
+            "template": "tips-and-tricks"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 7 Days",
+          "parameters": {
+            "amount": 7,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Check-in Email",
+          "parameters": {
+            "subject": "How's Your Experience So Far?",
+            "template": "7-day-checkin"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quote Follow-up Sequence",
+      "description": "Automated follow-up for created quotes",
+      "webhookPath": "/webhook/quote-created",
+      "nodes": [
+        {
+          "type": "webhook",
+          "name": "Quote Created"
+        },
+        {
+          "type": "emailSend",
+          "name": "Quote Confirmation",
+          "parameters": {
+            "toEmail": "={{$json.data.customerEmail}}",
+            "subject": "Your Painting Quote from {{$json.data.companyName}}",
+            "template": "quote-confirmation"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 2 Days",
+          "parameters": {
+            "amount": 2,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Follow-up 1",
+          "parameters": {
+            "subject": "Questions About Your Quote?",
+            "template": "quote-followup-1"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 5 Days",
+          "parameters": {
+            "amount": 5,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Follow-up 2",
+          "parameters": {
+            "subject": "Special Offer on Your Quote",
+            "template": "quote-followup-2-discount"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usage Limit Warning",
+      "description": "Alert when approaching quote limits",
+      "webhookPath": "/webhook/usage-limit-warning",
+      "nodes": [
+        {
+          "type": "webhook",
+          "name": "Usage Warning Trigger"
+        },
+        {
+          "type": "if",
+          "name": "Check Percentage",
+          "parameters": {
+            "conditions": {
+              "all": [
+                {
+                  "value1": "={{$json.data.percentageUsed}}",
+                  "operation": "greaterThanOrEqual",
+                  "value2": 80
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "80% Warning",
+          "parameters": {
+            "subject": "You've used {{$json.data.currentUsage}} of {{$json.data.limit}} quotes",
+            "template": "usage-warning-80"
+          }
+        },
+        {
+          "type": "if",
+          "name": "Check if 100%",
+          "parameters": {
+            "conditions": {
+              "all": [
+                {
+                  "value1": "={{$json.data.percentageUsed}}",
+                  "operation": "greaterThanOrEqual",
+                  "value2": 100
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Limit Reached",
+          "parameters": {
+            "subject": "Quote Limit Reached - Upgrade Now",
+            "template": "usage-limit-reached"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscription Cancellation Recovery",
+      "description": "Win-back sequence for cancelled subscriptions",
+      "webhookPath": "/webhook/subscription-cancelled",
+      "nodes": [
+        {
+          "type": "webhook",
+          "name": "Subscription Cancelled"
+        },
+        {
+          "type": "emailSend",
+          "name": "Cancellation Confirmation",
+          "parameters": {
+            "subject": "We're Sorry to See You Go",
+            "template": "cancellation-confirmation"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 7 Days",
+          "parameters": {
+            "amount": 7,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Win-back Offer 1",
+          "parameters": {
+            "subject": "We Miss You - 20% Off If You Return",
+            "template": "winback-20-percent"
+          }
+        },
+        {
+          "type": "wait",
+          "name": "Wait 14 Days",
+          "parameters": {
+            "amount": 14,
+            "unit": "days"
+          }
+        },
+        {
+          "type": "emailSend",
+          "name": "Win-back Offer 2",
+          "parameters": {
+            "subject": "Last Chance: 30% Off Your First Month",
+            "template": "winback-30-percent"
+          }
+        }
+      ]
+    }
+  ],
+  "emailTemplates": {
+    "payment-success": {
+      "subject": "Payment Received - Thank You!",
+      "variables": ["customerName", "amount", "invoiceNumber", "nextBillingDate", "invoiceUrl"]
+    },
+    "payment-failed-first": {
+      "subject": "Payment Issue - Please Update Your Card",
+      "variables": ["customerName", "amount", "failureReason", "updatePaymentUrl"]
+    },
+    "payment-failed-final": {
+      "subject": "Final Notice: Service Will Be Suspended",
+      "variables": ["customerName", "amount", "suspensionDate", "updatePaymentUrl"]
+    },
+    "welcome-subscription": {
+      "subject": "Welcome to PaintQuote Pro!",
+      "variables": ["customerName", "plan", "features", "gettingStartedUrl"]
+    },
+    "quote-confirmation": {
+      "subject": "Your Painting Quote",
+      "variables": ["customerName", "quoteAmount", "projectDetails", "validUntil", "acceptUrl"]
+    },
+    "usage-warning-80": {
+      "subject": "80% of Monthly Quotes Used",
+      "variables": ["currentUsage", "limit", "upgradeUrl"]
+    }
+  }
+}
