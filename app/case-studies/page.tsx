@@ -435,7 +435,7 @@ export default function CaseStudies() {
                 href="/auth/signup"
                 className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
               >
-                Start Your Free Trial
+                Get Started Free Today
               </Link>
             </div>
           </div>

@@ -520,7 +520,7 @@ export default function ExteriorPaintingCalculatorClient() {
                   href="/auth/signup"
                   className="mt-6 inline-flex items-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90"
                 >
-                  Start Free Trial
+                  Get Started Free
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>

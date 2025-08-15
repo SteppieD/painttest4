@@ -5,18 +5,18 @@ import ModernNavigation from '@/components/modern-navigation'
 import Breadcrumbs from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Start Your Free Trial | PaintQuote Pro - Professional Painting Estimating Software',
-  description: 'Get started with PaintQuote Pro today! Start your free 14-day trial of professional painting estimating software. No credit card required.',
+  title: 'Get Started Free | PaintQuote Pro - Professional Painting Estimating Software',
+  description: 'Get started with PaintQuote Pro today! Start with our free forever plan - 5 quotes per month, no credit card required.',
   keywords: 'free trial, painting estimating software, painting contractor software, paint quote calculator, free painting software trial',
   openGraph: {
-    title: 'Start Your Free Trial - PaintQuote Pro',
-    description: 'Try PaintQuote Pro free for 14 days. Professional painting estimating software with no credit card required.',
+    title: 'Get Started Free - PaintQuote Pro',
+    description: 'Start with PaintQuote Pro free forever plan. Professional painting estimating software with no credit card required.',
     type: 'website',
     images: [{
       url: '/og-free-trial.jpg',
       width: 1200,
       height: 630,
-      alt: 'Start Your Free Trial - PaintQuote Pro'
+      alt: 'Get Started Free Today - PaintQuote Pro'
     }]
   },
   alternates: {
@@ -103,7 +103,7 @@ const supportOptions = [
 export default function ContactFreeTrial() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Start Free Trial' }
+    { label: 'Get Started Free' }
   ]
 
   return (
@@ -123,7 +123,7 @@ export default function ContactFreeTrial() {
             <div className="container mx-auto px-4">
               <div className="text-center max-w-4xl mx-auto">
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                  Start Your <span className="text-gradient-modern">14-Day Free Trial</span>
+                  Start Your <span className="text-gradient-modern">Free Forever Plan</span>
                 </h1>
                 <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
                   Join 15,000+ painting contractors who create professional quotes 10x faster. 
@@ -135,7 +135,7 @@ export default function ContactFreeTrial() {
                     className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                   >
                     <Zap className="mr-2 h-5 w-5" />
-                    Start Free Trial Now
+                    Get Started Free Now
                   </Link>
                   <Link
                     href="/painting-contractor-software"
@@ -350,7 +350,7 @@ export default function ContactFreeTrial() {
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   <Zap className="mr-2 h-5 w-5" />
-                  Start Free Trial
+                  Get Started Free
                 </Link>
                 <Link
                   href="/pricing"
@@ -360,7 +360,7 @@ export default function ContactFreeTrial() {
                 </Link>
               </div>
               <p className="mt-6 text-base text-blue-100">
-                14-day free trial • No credit card required • Cancel anytime
+                free forever plan • No credit card required • Cancel anytime
               </p>
             </div>
           </section>

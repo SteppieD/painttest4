@@ -6,7 +6,7 @@ import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
   title: 'Painting Quote Software for Denver Contractors | PaintQuote Pro',
-  description: 'AI-powered quoting software for Denver painting contractors. Create professional quotes in 10-15 minutes instead of hours. Win more jobs in the Mile High City. Free trial available.',
+  description: 'AI-powered quoting software for Denver painting contractors. Create professional quotes in 10-15 minutes instead of hours. Win more jobs in the Mile High City. Free forever plan available.',
   keywords: 'painting quote software Denver, Denver contractor software, painting estimator Denver CO, quote generator Denver painters, contractor business software Denver',
   openGraph: {
     title: 'PaintQuote Pro - Painting Quote Software for Denver Contractors',
@@ -131,7 +131,7 @@ export default function DenverPaintingSoftware() {
                       href="/auth/signup"
                       className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
                     >
-                      Start Free Trial
+                      Get Started Free
                     </Link>
                     <Link
                       href="/roi-calculator"
@@ -446,7 +446,7 @@ export default function DenverPaintingSoftware() {
                   href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Start Your Free Trial
+                  Get Started Free Today
                 </Link>
                 <Link
                   href="/pricing"
@@ -545,7 +545,7 @@ export default function DenverPaintingSoftware() {
               <div>
                 <h3 className="text-lg font-semibold">Get Started</h3>
                 <ul className="mt-4 space-y-2 text-base text-gray-200">
-                  <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
+                  <li><Link href="/auth/signup" className="hover:text-foreground">Get Started Free</Link></li>
                   <li><Link href="/contact" className="hover:text-foreground">Contact Sales</Link></li>
                   <li><Link href="/support" className="hover:text-foreground">Support Center</Link></li>
                   <li><Link href="/blog" className="hover:text-foreground">Blog</Link></li>

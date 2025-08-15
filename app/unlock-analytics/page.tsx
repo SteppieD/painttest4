@@ -288,7 +288,7 @@ export default function UnlockAnalyticsPage() {
                 disabled={isLoading}
                 className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8"
               >
-                {isLoading ? 'Loading...' : `Start Free Trial - $${selectedPlan === 'monthly' ? '79' : '63'}/mo`}
+                {isLoading ? 'Loading...' : `Get Started Free - $${selectedPlan === 'monthly' ? '79' : '63'}/mo`}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </CardContent>

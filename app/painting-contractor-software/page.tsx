@@ -80,7 +80,7 @@ export default function PaintingContractorSoftwarePage() {
                   <div className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Link href="/trial-signup">
                       <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg group">
-                        Start Free Trial
+                        Get Started Free
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
@@ -650,7 +650,7 @@ export default function PaintingContractorSoftwarePage() {
                 </p>
                 <Link href="/trial-signup">
                   <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
-                    Start Free Trial
+                    Get Started Free
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -753,7 +753,7 @@ export default function PaintingContractorSoftwarePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/trial-signup">
                   <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg group">
-                    Start 14-Day Free Trial
+                    Start Free Forever Plan
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>

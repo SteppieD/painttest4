@@ -200,7 +200,7 @@ export default function IntegrationsPage() {
               <Link href="/trial-signup">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                   <Sparkles className="h-5 w-5 mr-2" />
-                  Start Free Trial
+                  Get Started Free
                 </Button>
               </Link>
               <Link href="/api-docs">
@@ -389,7 +389,7 @@ export default function IntegrationsPage() {
           <Link href="/trial-signup">
             <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
               <Sparkles className="h-5 w-5 mr-2" />
-              Start Free Trial
+              Get Started Free
             </Button>
           </Link>
         </div>

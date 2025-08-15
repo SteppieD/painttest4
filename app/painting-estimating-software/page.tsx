@@ -747,7 +747,7 @@ export default function PaintingEstimatingSoftware() {
                 </Link>
               </div>
               <p className="mt-4 text-base opacity-100">
-                Free plan available • No credit card required • 14-day pro trial
+                Free plan available • No credit card required • free forever plan
               </p>
             </div>
           </section>

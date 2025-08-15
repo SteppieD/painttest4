@@ -311,7 +311,7 @@ export default function PaintingProjectsPage() {
                     href="/auth/signup"
                     className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
                   >
-                    Start Free Trial
+                    Get Started Free
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </div>
@@ -375,7 +375,7 @@ export default function PaintingProjectsPage() {
                   <li><Link href="/case-studies" className="hover:text-foreground">Success Stories</Link></li>
                   <li><Link href="/painting-estimate-software" className="hover:text-foreground">Quoting Software</Link></li>
                   <li><Link href="/roi-calculator" className="hover:text-foreground">ROI Calculator</Link></li>
-                  <li><Link href="/auth/signup" className="hover:text-foreground">Start Free Trial</Link></li>
+                  <li><Link href="/auth/signup" className="hover:text-foreground">Get Started Free</Link></li>
                 </ul>
               </div>
               <div>

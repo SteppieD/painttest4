@@ -32,7 +32,7 @@ import {
 
 export const metadata: Metadata = {
   title: '15 Best Painting Estimate Software [2024]: Save 6+ Hours Weekly',
-  description: 'Compare top painting software with pricing & features. PaintQuote Pro vs JobNimbus vs Jobber. See why 2,000+ contractors switched. Free trials →',
+  description: 'Compare top painting software with pricing & features. PaintQuote Pro vs JobNimbus vs Jobber. See why 2,000+ contractors switched. Free forevers →',
   keywords: 'painting estimate software, painting quote software, contractor estimating software, painting business software, best painting apps',
   openGraph: {
     title: 'Best Painting Estimate Software: 2024 Comparison Guide',
@@ -744,7 +744,7 @@ export default function PaintingEstimateSoftwareGuide() {
                       <ul className="space-y-2 text-gray-100 text-base">
                         <li>• Long-term contracts required</li>
                         <li>• Hidden setup or training fees</li>
-                        <li>• No free trial available</li>
+                        <li>• No free forever plan available</li>
                         <li>• Poor mobile experience</li>
                         <li>• Generic (not painting-specific)</li>
                       </ul>

@@ -1046,7 +1046,7 @@ export default function PaintingBusinessGuide() {
                   </p>
                   <Link href="/trial-signup">
                     <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
-                      Start Your Free Trial
+                      Get Started Free Today
                       <Sparkles className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
@@ -1232,7 +1232,7 @@ export default function PaintingBusinessGuide() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/trial-signup">
                   <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600">
-                    Start Your Free Trial
+                    Get Started Free Today
                     <Sparkles className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

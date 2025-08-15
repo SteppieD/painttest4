@@ -782,7 +782,7 @@ export function ClientDashboard() {
             <Link href="/unlock-analytics">
               <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                 <Sparkles className="h-5 w-5 mr-2" />
-                Start 14-Day Free Trial
+                Start Free Forever Plan
               </Button>
             </Link>
           </div>

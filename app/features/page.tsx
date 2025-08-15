@@ -222,7 +222,7 @@ export default function FeaturesPage() {
                   href="/trial-signup"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                 >
-                  Start Free Trial
+                  Get Started Free
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
@@ -399,7 +399,7 @@ export default function FeaturesPage() {
                 href="/trial-signup"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-blue-600 bg-white hover:bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
               >
-                Start Free Trial
+                Get Started Free
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
@@ -410,7 +410,7 @@ export default function FeaturesPage() {
               </Link>
             </div>
             <p className="mt-6 text-blue-100">
-              No credit card required • 14-day free trial • Cancel anytime
+              No credit card required • free forever plan • Cancel anytime
             </p>
           </div>
         </section>

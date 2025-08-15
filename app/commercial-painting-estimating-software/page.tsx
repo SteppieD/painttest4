@@ -100,7 +100,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                     href="/auth/signup"
                     className="inline-flex items-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90"
                   >
-                    Start Free Trial
+                    Get Started Free
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
@@ -620,7 +620,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                     href="/auth/signup"
                     className="inline-flex items-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground hover:bg-background/90"
                   >
-                    Start Free Trial
+                    Get Started Free
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
@@ -631,7 +631,7 @@ export default function CommercialPaintingEstimatingSoftware() {
                   </Link>
                 </div>
                 <p className="mt-4 text-base opacity-100">
-                  30-day free trial • No credit card required • Full feature access
+                  Free forever plan • No credit card required • Full feature access
                 </p>
               </div>
             </div>

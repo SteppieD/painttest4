@@ -127,7 +127,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/trial-signup">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg shadow-lg">
-                  Start Free Trial
+                  Get Started Free
                   <Sparkles className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -621,7 +621,7 @@ export default function Home() {
                 </ul>
                 <Link href="/trial-signup" className="block">
                   <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
-                    Start 14-Day Trial
+                    Start Free
                   </Button>
                 </Link>
             </div>
@@ -678,7 +678,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/trial-signup">
                   <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8">
-                    Start Your Free Trial
+                    Get Started Free Today
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

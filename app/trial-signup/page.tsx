@@ -111,7 +111,7 @@ export default function TrialSignupPage() {
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to home
             </Link>
-            <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Start Your Free Trial</h1>
+            <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Get Started Free Today</h1>
             <p className="text-base text-gray-100 mt-1.5">
               Get 5 free quotes per month • No credit card required
             </p>

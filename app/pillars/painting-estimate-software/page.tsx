@@ -486,7 +486,7 @@ export default function PaintingEstimateSoftwarePage() {
                       className={`w-full ${plan.highlighted ? 'bg-purple-600 hover:bg-purple-700' : ''}`}
                       variant={plan.highlighted ? 'default' : 'outline'}
                     >
-                      Start Free Trial
+                      Get Started Free
                     </Button>
                   </Link>
                 </CardContent>

@@ -78,7 +78,7 @@ export default function PaintingBusinessSoftware() {
                 href="/auth/signup"
                 className="inline-flex h-9 items-center rounded-md bg-primary px-4 py-2 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
-                Start Free Trial
+                Get Started Free
               </Link>
             </div>
           </nav>
@@ -101,7 +101,7 @@ export default function PaintingBusinessSoftware() {
                     href="/auth/signup"
                     className="inline-flex items-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground hover:bg-primary/90"
                   >
-                    Start 14-Day Free Trial
+                    Start Free Forever Plan
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
@@ -513,7 +513,7 @@ export default function PaintingBusinessSoftware() {
                     href="/auth/signup"
                     className="inline-flex items-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground hover:bg-background/90"
                   >
-                    Start 14-Day Free Trial
+                    Start Free Forever Plan
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link

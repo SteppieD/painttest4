@@ -8,7 +8,7 @@ import { PaintEstimateCalculator } from '@/components/calculators/paint-estimate
 import { ROICalculator } from '@/components/calculators/roi-calculator'
 export const metadata: Metadata = {
   title: 'Painting Estimate Software | Fast & Accurate Quotes | PaintQuote Pro',
-  description: 'Professional painting estimate software with AI-powered accuracy. Create detailed estimates in minutes, track costs, and win more painting jobs. Free trial available.',
+  description: 'Professional painting estimate software with AI-powered accuracy. Create detailed estimates in minutes, track costs, and win more painting jobs. Free forever plan available.',
   keywords: 'painting estimate software, painting estimating software, painting quote software, estimate painting jobs, painting calculator software, contractor estimate software',
   openGraph: {
     title: 'Painting Estimate Software - Create Accurate Quotes in Minutes',
@@ -88,7 +88,7 @@ export default function PaintingEstimateSoftware() {
                       className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-6 py-3 text-base font-medium text-white shadow-lg"
                     >
                       <Zap className="mr-2 h-5 w-5" />
-                      Start Free Trial
+                      Get Started Free
                     </Link>
                     <Link
                       href="/painting-estimate-calculator-free"
@@ -622,7 +622,7 @@ export default function PaintingEstimateSoftware() {
                     Ready to create professional estimates for your actual painting jobs?
                   </p>
                   <Link href="/trial-signup" className="btn-primary inline-flex items-center gap-2">
-                    Start Your Free Trial
+                    Get Started Free Today
                     <Zap className="h-4 w-4" />
                   </Link>
                 </div>
@@ -645,7 +645,7 @@ export default function PaintingEstimateSoftware() {
                   href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Start Free Trial
+                  Get Started Free
                 </Link>
                 <Link
                   href="/demo"
@@ -655,7 +655,7 @@ export default function PaintingEstimateSoftware() {
                 </Link>
               </div>
               <p className="mt-4 text-base text-gray-200">
-                Free trial • No credit card • 5-minute setup
+                Free forever • No credit card • 5-minute setup
               </p>
             </div>
           </section>

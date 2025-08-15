@@ -567,7 +567,7 @@ export default function HowToEstimateInteriorPaintJobs() {
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
                   <Zap className="mr-2 h-5 w-5" />
-                  Start Free Trial
+                  Get Started Free
                 </Link>
                 <Link
                   href="/paint-quote-calculator"

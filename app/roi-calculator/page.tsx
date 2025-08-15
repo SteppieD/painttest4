@@ -393,7 +393,7 @@ export default function ROICalculator() {
                             href="/trial-signup"
                             className="mt-4 inline-flex items-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-6 py-2 text-base font-medium text-white"
                           >
-                            Start Free Trial
+                            Get Started Free
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Link>
                         </div>
@@ -530,7 +530,7 @@ export default function ROICalculator() {
                   href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Start Free Trial
+                  Get Started Free
                 </Link>
                 <Link
                   href="/pricing"

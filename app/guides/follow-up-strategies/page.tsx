@@ -513,7 +513,7 @@ export default function FollowUpStrategiesGuide() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/trial-signup">
                     <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600">
-                      Start Free Trial
+                      Get Started Free
                       <Sparkles className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>

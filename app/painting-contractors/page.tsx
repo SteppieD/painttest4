@@ -80,7 +80,7 @@ export default function PaintingContractors() {
                     href="/trial-signup"
                     className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-8 py-3 text-base font-medium text-white shadow-lg"
                   >
-                    Start Free Trial
+                    Get Started Free
                   </Link>
                   <Link
                     href="/demo"
@@ -486,7 +486,7 @@ export default function PaintingContractors() {
                   href="/auth/signup"
                   className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
                 >
-                  Start Free Trial
+                  Get Started Free
                 </Link>
                 <Link
                   href="/demo"
