@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X, Home, Calculator, DollarSign, Briefcase, Phone, LogIn, ChevronRight, BookOpen, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
@@ -27,6 +27,7 @@ const resourceItems = [
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   // Close menu when route changes
   useEffect(() => {
@@ -65,7 +66,15 @@ export default function MobileMenu() {
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white' 
                     : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  console.log(`Mobile navigation to: ${item.href}`);
+                  setIsOpen(false);
+                  // Use router.push for better navigation
+                  if (item.href === '/pricing' || item.href === '/demo') {
+                    e.preventDefault();
+                    router.push(item.href);
+                  }
+                }}
               >
                 <div className="flex items-center space-x-3">
                   <Icon className="h-5 w-5" />

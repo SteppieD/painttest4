@@ -3,11 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
 import MobileMenu from './mobile-menu'
 
 function ModernNavigation() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,18 +54,26 @@ function ModernNavigation() {
             </Link>
             <Link 
               href="/pricing" 
-              className="px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200"
+              className="relative z-10 px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200"
+              onClick={(e) => {
+                // Ensure navigation happens with fallback
+                console.log('Pricing link clicked');
+                if (e.defaultPrevented) {
+                  e.preventDefault();
+                  router.push('/pricing');
+                }
+              }}
             >
               Pricing
             </Link>
             
             {/* Resources Dropdown */}
-            <div className="relative group">
+            <div className="relative group z-20">
               <button className="px-4 py-2 text-base font-medium text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-all duration-200 flex items-center gap-1">
                 Resources
                 <ChevronRight className="h-3 w-3 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 mt-1 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full left-0 mt-1 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="bg-gray-950/95 backdrop-filter backdrop-blur-md border border-white/30 rounded-lg p-2">
                   <div className="text-xs text-gray-400 px-3 py-1 uppercase tracking-wider">Guides</div>
                   <Link href="/pillars/how-to-price-painting-jobs" className="block px-3 py-2 text-base text-gray-50 hover:text-white hover:bg-gray-950/80 rounded-lg transition-colors">
