@@ -36,6 +36,7 @@ export interface QuoteContext {
   rushJob?: boolean;
   companyRates?: {
     paintingRate?: number;
+    ceilingRate?: number;
     primingRate?: number;
     trimRate?: number;
     doorRate?: number;
