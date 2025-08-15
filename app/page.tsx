@@ -127,7 +127,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/trial-signup">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-6 text-lg shadow-lg">
-                  Get Started Free
+                  Quote Free in 2 Minutes
                   <Sparkles className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -139,13 +139,10 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Free Plan Badge */}
-            <div className="mb-6">
-              <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 px-4 py-2">
-                <Shield className="h-4 w-4 mr-2" />
-                Free Forever Plan - 5 quotes/month, no credit card required
-              </Badge>
-            </div>
+            {/* Supporting Microcopy */}
+            <p className="text-sm text-gray-400 mb-6">
+              ✓ 5 quotes free every month ✓ No credit card needed ✓ Professional results in minutes
+            </p>
             
             {/* Social Proof */}
             <div className="flex items-center justify-center gap-8 text-gray-50">

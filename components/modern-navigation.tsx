@@ -119,8 +119,9 @@ function ModernNavigation() {
             <Link
               href="/trial-signup"
               className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium text-base rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+              title="Forever free plan • Join 15K+ contractors"
             >
-              Start Free
+              Get 5 Free Quotes
               <ChevronRight className="h-4 w-4" />
             </Link>
           </div>

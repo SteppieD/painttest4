@@ -111,9 +111,9 @@ export default function TrialSignupPage() {
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back to home
             </Link>
-            <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Get Started Free Today</h1>
+            <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Quote Free in 2 Minutes</h1>
             <p className="text-base text-gray-100 mt-1.5">
-              Get 5 free quotes per month • No credit card required
+              Join 15,000+ contractors • 5 quotes free every month
             </p>
           </div>
           <div>
@@ -177,10 +177,10 @@ export default function TrialSignupPage() {
                   disabled={loading || !companyName.trim() || !email.trim()}
                 >
                   {loading ? (
-                    <span>Sending Magic Link...</span>
+                    <span>Creating Your Account...</span>
                   ) : (
                     <span className="flex items-center justify-center">
-                      Send Magic Link
+                      Start Your 5 Free Quotes
                       <Sparkles className="ml-2 h-4 w-4" />
                     </span>
                   )}

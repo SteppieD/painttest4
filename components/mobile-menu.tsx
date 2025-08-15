@@ -115,7 +115,7 @@ export default function MobileMenu() {
           
           <Link href="/trial-signup" onClick={() => setIsOpen(false)}>
             <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 h-12 text-base">
-              Start Free Trial
+              Quote Free Now
             </Button>
           </Link>
         </div>

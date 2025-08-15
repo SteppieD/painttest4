@@ -164,8 +164,10 @@ export default function PricingPage() {
               Your $8,400/Month Revenue Opportunity
             </h1>
             <p className="mt-4 text-xl text-gray-200 font-medium">
-              Based on our research: Win 3 more jobs per month (from 7 to 10 out of 20 quotes) 
-              at $2,800 average = $8,400 additional revenue monthly
+              Join 15,000+ contractors who save 4 hours per quote and win 30% more jobs.
+            </p>
+            <p className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+              Get your first 5 professional quotes free – no credit card required. Start creating winning quotes in under 2 minutes.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-base">
               <div className="flex items-center gap-2">
@@ -281,8 +283,18 @@ export default function PricingPage() {
                     onClick={() => handleSelectPlan(key)}
                     size="lg"
                   >
-                    {key === 'free' ? 'Start Free' : key === 'enterprise' ? 'Contact Sales' : billingPeriod === 'monthly' ? `Start Now - $${plan.monthlyPrice}/mo` : `Start Now - $${Math.round((plan.yearlyPrice || 0) / 12)}/mo`}
+                    {key === 'free' ? 'Get 5 Free Quotes' : key === 'enterprise' ? 'Contact Sales' : 'Start Winning More Jobs'}
                   </Button>
+                  {key === 'free' && (
+                    <p className="text-sm text-gray-400 text-center mt-2">
+                      Forever free plan • Join 15K+ contractors
+                    </p>
+                  )}
+                  {key === 'professional' && (
+                    <p className="text-sm text-gray-400 text-center mt-2">
+                      Start winning more jobs today – your first 5 quotes are on us
+                    </p>
+                  )}
                 </CardFooter>
               </Card>
             ))}
