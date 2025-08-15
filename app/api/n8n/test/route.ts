@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { n8nService } from '@/lib/services/n8n-integration-service';
-import { auth } from '@/lib/auth';
+import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 
 export async function GET(request: NextRequest) {
   try {
     // Check authentication
-    const session = await auth();
-    if (!session?.user) {
+    const company = await getCompanyFromRequest(request);
+    if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -36,8 +36,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
-    const session = await auth();
-    if (!session?.user) {
+    const company = await getCompanyFromRequest(request);
+    if (!company) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -51,8 +51,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get company ID from session
-    const companyId = (session.user as any).companyId || 1;
+    // Get company ID from auth
+    const companyId = company.id;
 
     // Create test data based on workflow type
     const defaultTestData: any = {
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         amount: 99.99,
         currency: 'usd',
         invoiceNumber: 'TEST-001',
-        customerEmail: session.user.email || 'test@example.com',
+        customerEmail: company.email || 'test@example.com',
         customerName: 'Test Company',
         subscriptionPlan: 'professional',
         nextBillingDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
         amount: 99.99,
         currency: 'usd',
         invoiceNumber: 'TEST-002',
-        customerEmail: session.user.email || 'test@example.com',
+        customerEmail: company.email || 'test@example.com',
         customerName: 'Test Company',
         failureReason: 'Card declined',
         attemptCount: 1,
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
         companyId,
         plan: 'professional',
         billingPeriod: 'monthly' as const,
-        customerEmail: session.user.email || 'test@example.com',
+        customerEmail: company.email || 'test@example.com',
         customerName: 'Test Company'
       },
       quote_created: {
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
         currentUsage: 40,
         limit: 50,
         percentageUsed: 80,
-        customerEmail: session.user.email || 'test@example.com'
+        customerEmail: company.email || 'test@example.com'
       }
     };
 
