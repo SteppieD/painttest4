@@ -14,7 +14,7 @@ export default function SharedNavigation() {
   const navigationItems = [
     {
       label: 'Features',
-      href: '/#features',
+      href: '/features',
       type: 'link'
     },
     {

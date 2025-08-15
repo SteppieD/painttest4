@@ -134,7 +134,7 @@ export default function PaintingContractorBusinessPage() {
   return (
     <>
       <ModernNavigation />
-      <div className="min-h-screen bg-white pt-20">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
         {/* Structured Data Markup */}
         <script
           type="application/ld+json"

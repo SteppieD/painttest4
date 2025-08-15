@@ -1,432 +1,420 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import SharedNavigation from '@/components/shared-navigation'
+import ModernNavigation from '@/components/modern-navigation'
 import { 
   Calculator, 
+  Palette, 
   Clock, 
-  FileText, 
   Users, 
-  Smartphone, 
-  Cloud, 
+  FileText, 
+  BarChart3, 
   Shield, 
-  TrendingUp,
-  Palette,
-  DollarSign,
-  CheckCircle,
+  Smartphone,
   Zap,
-  BarChart,
+  CheckCircle,
+  ArrowRight,
+  Sparkles,
+  Brain,
+  Layers,
+  PaintBucket,
+  Image,
+  DollarSign,
+  TrendingUp,
   Mail,
-  Camera,
   Globe,
-  Briefcase,
-  MessageSquare,
-  Database,
-  Settings
+  Lock,
+  Cpu,
+  Cloud,
+  Download,
+  Eye,
+  Wand2
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Features | PaintQuote Pro Painting Software',
-  description: 'Explore all features of PaintQuote Pro: AI-powered quotes, paint calculators, customer management, mobile app, and more. Everything you need to grow your painting business.',
-  keywords: 'painting software features, paint calculator, estimating features, contractor tools, painting business management',
-  openGraph: {
-    title: 'PaintQuote Pro Features - Complete Painting Business Solution',
-    description: 'All-in-one painting estimating software with AI quotes, calculators, CRM, mobile app, and more.',
-    type: 'website',
-    images: ['/og-features.png'],
-    url: 'https://paintquotepro.com/features'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'PaintQuote Pro Features',
-    description: 'All-in-one painting estimating software with AI quotes, calculators, CRM, mobile app, and more.',
-    images: ['/og-features.png']
-  },
-  alternates: {
-    canonical: '/features'
-  }
+  title: 'Features - Professional Painting Estimating Software | PaintQuote Pro',
+  description: 'Explore all features of PaintQuote Pro: AI-powered quotes, smart color matching from logos, advanced calculations, customer management, analytics, and more.',
+  keywords: 'painting software features, painting estimator, quote calculator, paint color matching, logo color extraction, contractor tools',
 }
 
-const featureCategories = [
+const mainFeatures = [
   {
-    title: 'Quote Creation & Estimation',
-    description: 'Create professional quotes in minutes, not hours',
-    features: [
-      {
-        icon: Calculator,
-        title: 'Advanced Paint Calculators',
-        description: 'Accurate paint quantity calculations for walls, ceilings, trim, and specialty surfaces'
-      },
-      {
-        icon: Zap,
-        title: 'AI-Powered Quote Generation',
-        description: 'Generate complete quotes in 10-15 minutes with intelligent suggestions'
-      },
-      {
-        icon: FileText,
-        title: 'Professional Templates',
-        description: 'Pre-built templates for residential, commercial, interior, and exterior projects'
-      },
-      {
-        icon: DollarSign,
-        title: 'Smart Pricing Engine',
-        description: 'Automatic material costs, labor calculations, and profit margin optimization'
-      }
+    icon: Brain,
+    title: 'AI-Powered Quote Generation',
+    description: 'Generate accurate, professional quotes in seconds using advanced AI that understands painting requirements.',
+    benefits: [
+      'Save 10+ hours per week',
+      'Reduce errors by 95%',
+      'Quote complex projects instantly'
     ]
   },
   {
-    title: 'Business Management',
-    description: 'Streamline your entire painting business operations',
-    features: [
-      {
-        icon: Users,
-        title: 'Customer Relationship Management',
-        description: 'Track leads, customers, project history, and follow-ups in one place'
-      },
-      {
-        icon: BarChart,
-        title: 'Business Analytics Dashboard',
-        description: 'Real-time insights on quotes, conversions, revenue, and team performance'
-      },
-      {
-        icon: Briefcase,
-        title: 'Project Management',
-        description: 'Track job progress, scheduling, crew assignments, and completion status'
-      },
-      {
-        icon: Database,
-        title: 'Paint Product Database',
-        description: 'Pre-loaded database of major paint brands with updated pricing'
-      }
+    icon: Eye,
+    title: 'Smart Logo Color Extraction',
+    description: 'Automatically extract brand colors from customer logos to create perfectly branded, personalized quotes that match their visual identity.',
+    benefits: [
+      'Extract colors from any logo image',
+      'Create on-brand proposals instantly',
+      'Impress clients with customization'
+    ],
+    premium: true,
+    highlight: true
+  },
+  {
+    icon: Calculator,
+    title: 'Advanced Calculations',
+    description: 'Precise paint quantity calculations based on surface area, coverage rates, and number of coats.',
+    benefits: [
+      'Accurate material estimates',
+      'Reduce waste and overages',
+      'Include all surfaces automatically'
     ]
   },
   {
-    title: 'Mobile & Field Tools',
-    description: 'Work efficiently from anywhere',
-    features: [
-      {
-        icon: Smartphone,
-        title: 'Mobile App Access',
-        description: 'Create and edit quotes on-site with iOS and Android apps'
-      },
-      {
-        icon: Camera,
-        title: 'Photo Documentation',
-        description: 'Capture and attach project photos directly to quotes'
-      },
-      {
-        icon: Globe,
-        title: 'Offline Mode',
-        description: 'Work without internet and sync when connected'
-      },
-      {
-        icon: Cloud,
-        title: 'Cloud Sync',
-        description: 'Access your data from any device, anywhere, anytime'
-      }
+    icon: Users,
+    title: 'Customer Management',
+    description: 'Complete CRM system to track leads, customers, and job history in one place.',
+    benefits: [
+      'Never lose a lead',
+      'Track customer preferences',
+      'Build lasting relationships'
     ]
   },
   {
-    title: 'Professional Output',
-    description: 'Impress clients with polished presentations',
-    features: [
-      {
-        icon: FileText,
-        title: 'Branded Proposals',
-        description: 'Customizable quote templates with your logo and branding'
-      },
-      {
-        icon: Mail,
-        title: 'Email Delivery',
-        description: 'Send professional quotes directly to clients with tracking'
-      },
-      {
-        icon: CheckCircle,
-        title: 'Digital Signatures',
-        description: 'Get quotes approved instantly with e-signature integration'
-      },
-      {
-        icon: MessageSquare,
-        title: 'Client Portal',
-        description: 'Let clients view, approve, and communicate about quotes online'
-      }
-    ]
+    icon: BarChart3,
+    title: 'Advanced Analytics',
+    description: 'Real-time insights into your business performance, conversion rates, and profitability.',
+    benefits: [
+      'Track win/loss rates',
+      'Identify profitable services',
+      'Make data-driven decisions'
+    ],
+    premium: true
   },
   {
-    title: 'Advanced Features',
-    description: 'Power tools for growing businesses',
-    features: [
-      {
-        icon: TrendingUp,
-        title: 'Multi-Location Support',
-        description: 'Manage multiple crews and locations from one account'
-      },
-      {
-        icon: Shield,
-        title: 'Team Permissions',
-        description: 'Control access levels for estimators, sales reps, and admins'
-      },
-      {
-        icon: Settings,
-        title: 'Custom Workflows',
-        description: 'Tailor the software to match your business processes'
-      },
-      {
-        icon: Palette,
-        title: 'Color Matching Tools',
-        description: 'Advanced color selection and visualization features'
-      }
-    ]
+    icon: Wand2,
+    title: 'Dynamic Theme Matching',
+    description: 'Quotes automatically adapt their visual style to match customer branding for a cohesive, professional look.',
+    benefits: [
+      'Automatic color scheme adaptation',
+      'Professional branded layouts',
+      'Stand out from competitors'
+    ],
+    premium: true
   }
 ]
 
-const comparisonData = {
-  traditional: {
-    title: 'Traditional Estimating',
-    timePerQuote: '3-6 hours',
-    accuracy: '70-80%',
-    professionalLook: 'Basic',
-    mobileAccess: 'No',
-    followUp: 'Manual',
-    costTracking: 'Spreadsheets'
+const additionalFeatures = [
+  {
+    icon: Smartphone,
+    title: 'Mobile Optimized',
+    description: 'Create and send quotes from anywhere, on any device.',
   },
-  paintquotepro: {
-    title: 'With PaintQuote Pro',
-    timePerQuote: '10-15 minutes',
-    accuracy: '95%+',
-    professionalLook: 'Premium',
-    mobileAccess: 'Full mobile app',
-    followUp: 'Automated',
-    costTracking: 'Real-time analytics'
+  {
+    icon: Zap,
+    title: 'Instant Quote Delivery',
+    description: 'Send quotes via email or text message instantly.',
+  },
+  {
+    icon: Shield,
+    title: 'Secure & Reliable',
+    description: 'Bank-level encryption and 99.9% uptime guarantee.',
+  },
+  {
+    icon: Globe,
+    title: 'Multi-Location Support',
+    description: 'Manage multiple locations and territories from one account.',
+    premium: true
+  },
+  {
+    icon: Layers,
+    title: 'Surface Detection',
+    description: 'Automatically identify and calculate different surface types.',
+  },
+  {
+    icon: PaintBucket,
+    title: 'Paint Database',
+    description: 'Access pricing for major paint brands and products.',
+  },
+  {
+    icon: Image,
+    title: 'Photo Attachments',
+    description: 'Add project photos directly to quotes.',
+  },
+  {
+    icon: DollarSign,
+    title: 'Dynamic Pricing',
+    description: 'Adjust margins and markups based on project type.',
+    premium: true
+  },
+  {
+    icon: TrendingUp,
+    title: 'Growth Tracking',
+    description: 'Monitor business growth and set targets.',
+    premium: true
+  },
+  {
+    icon: Mail,
+    title: 'Email Automation',
+    description: 'Automated follow-ups and reminders.',
+    premium: true
+  },
+  {
+    icon: Lock,
+    title: 'Role-Based Access',
+    description: 'Control team member permissions and access.',
+    premium: true
+  },
+  {
+    icon: Cpu,
+    title: 'API Access',
+    description: 'Integrate with your existing tools and workflows.',
+    premium: true
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud Backup',
+    description: 'Never lose your data with automatic cloud backups.',
+  },
+  {
+    icon: Download,
+    title: 'Export Options',
+    description: 'Export quotes to PDF, Excel, or other formats.',
   }
-}
+]
+
+const comparisonTable = [
+  { feature: 'Quote Generation', free: '5/month', pro: 'Unlimited', business: 'Unlimited' },
+  { feature: 'AI Assistant', free: '✓', pro: '✓', business: '✓ Advanced' },
+  { feature: 'Customer Management', free: '10 customers', pro: 'Unlimited', business: 'Unlimited' },
+  { feature: 'Logo Color Extraction', free: '✗', pro: '✓', business: '✓' },
+  { feature: 'Dynamic Theme Matching', free: '✗', pro: '✓', business: '✓' },
+  { feature: 'Analytics Dashboard', free: 'Basic', pro: 'Advanced', business: 'Advanced + Custom' },
+  { feature: 'Team Members', free: '1', pro: '5', business: 'Unlimited' },
+  { feature: 'API Access', free: '✗', pro: '✗', business: '✓' },
+  { feature: 'White Label', free: '✗', pro: '✗', business: '✓' },
+  { feature: 'Priority Support', free: '✗', pro: '✓', business: '✓ 24/7' },
+  { feature: 'Custom Training', free: '✗', pro: '✗', business: '✓' },
+]
 
 export default function FeaturesPage() {
   return (
     <>
-      <SharedNavigation />
-      
-      <main className="pt-14">
+      <ModernNavigation />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-muted/50 to-background py-16 md:py-24">
-          <div className="container">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                Everything You Need to Run a 
-                <span className="text-primary"> Successful Painting Business</span>
+        <section className="pt-32 pb-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="inline-flex items-center justify-center px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-6">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Everything You Need to Grow Your Painting Business
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                Powerful Features for
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500"> Modern Contractors</span>
               </h1>
-              <p className="mt-6 text-xl text-gray-200">
-                From quick estimates to complete business management, PaintQuote Pro has 
-                all the tools professional painting contractors need to win more jobs and 
-                increase profits.
+              <p className="text-xl text-gray-600 mb-8">
+                From AI-powered quote generation to smart color matching from customer logos, 
+                PaintQuote Pro gives you the tools to work smarter, not harder.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/auth/signup"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg hover:bg-primary/90"
+                  href="/trial-signup"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                 >
-                  <Zap className="mr-2 h-5 w-5" />
                   Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
-                  href="/paint-quote-calculator"
-                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                  href="/demo"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 border-2 border-gray-300 hover:bg-gray-50 rounded-lg transition-all duration-200"
                 >
-                  <Calculator className="mr-2 h-5 w-5" />
-                  Try Free Calculator
+                  Watch Demo
                 </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Feature Categories */}
-        {featureCategories.map((category, categoryIndex) => (
-          <section key={categoryIndex} className={`py-16 md:py-24 ${categoryIndex % 2 === 1 ? 'bg-muted/30' : ''}`}>
-            <div className="container">
-              <div className="mx-auto max-w-6xl">
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                    {category.title}
-                  </h2>
-                  <p className="mt-4 text-lg text-gray-200">
-                    {category.description}
+        {/* Main Features Grid */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Core Features
+              </h2>
+              <p className="text-xl text-gray-600">
+                Everything you need to streamline your quoting process
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {mainFeatures.map((feature, index) => (
+                <div 
+                  key={index}
+                  className={`relative p-8 bg-white rounded-2xl border ${
+                    feature.highlight 
+                      ? 'border-purple-300 shadow-xl bg-gradient-to-br from-purple-50 to-white' 
+                      : 'border-gray-200 hover:border-blue-300 hover:shadow-xl'
+                  } transition-all duration-300`}
+                >
+                  {feature.premium && (
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold rounded-full">
+                        PREMIUM
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className={`w-14 h-14 ${
+                    feature.highlight 
+                      ? 'bg-gradient-to-br from-purple-500 to-pink-500' 
+                      : 'bg-gradient-to-br from-blue-500 to-purple-500'
+                  } rounded-xl flex items-center justify-center mb-6`}>
+                    <feature.icon className="w-7 h-7 text-white" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 mb-4">
+                    {feature.description}
+                  </p>
+                  
+                  <ul className="space-y-2">
+                    {feature.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Additional Features */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Plus Everything Else You Need
+              </h2>
+              <p className="text-xl text-gray-600">
+                Comprehensive tools to run your entire painting business
+              </p>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {additionalFeatures.map((feature, index) => (
+                <div 
+                  key={index}
+                  className="p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <feature.icon className="w-8 h-8 text-blue-500" />
+                    {feature.premium && (
+                      <span className="px-2 py-1 bg-purple-100 text-purple-600 text-xs font-semibold rounded">
+                        PRO
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {feature.description}
                   </p>
                 </div>
-                
-                <div className="grid gap-8 md:grid-cols-2">
-                  {category.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="rounded-lg border bg-background p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                          <feature.icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                          <p className="text-gray-200">{feature.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-        ))}
-
-        {/* Comparison Section */}
-        <section className="py-16 md:py-24 bg-muted/50">
-          <div className="container">
-            <div className="mx-auto max-w-5xl">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                  See the Difference
-                </h2>
-                <p className="mt-4 text-lg text-gray-200">
-                  Compare traditional estimating methods with PaintQuote Pro
-                </p>
-              </div>
-
-              <div className="grid gap-8 md:grid-cols-2">
-                {/* Traditional Method */}
-                <div className="rounded-lg border bg-background p-8">
-                  <h3 className="text-xl font-bold mb-6">{comparisonData.traditional.title}</h3>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Time per quote</span>
-                      <span className="font-medium text-destructive">{comparisonData.traditional.timePerQuote}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Accuracy</span>
-                      <span className="font-medium">{comparisonData.traditional.accuracy}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Professional look</span>
-                      <span className="font-medium">{comparisonData.traditional.professionalLook}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Mobile access</span>
-                      <span className="font-medium">{comparisonData.traditional.mobileAccess}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Follow-up</span>
-                      <span className="font-medium">{comparisonData.traditional.followUp}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2">
-                      <span className="text-gray-200">Cost tracking</span>
-                      <span className="font-medium">{comparisonData.traditional.costTracking}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PaintQuote Pro */}
-                <div className="rounded-lg border-2 border-primary bg-primary/5 p-8">
-                  <h3 className="text-xl font-bold mb-6 text-primary">{comparisonData.paintquotepro.title}</h3>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Time per quote</span>
-                      <span className="font-medium text-primary">{comparisonData.paintquotepro.timePerQuote}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Accuracy</span>
-                      <span className="font-medium text-primary">{comparisonData.paintquotepro.accuracy}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Professional look</span>
-                      <span className="font-medium text-primary">{comparisonData.paintquotepro.professionalLook}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Mobile access</span>
-                      <span className="font-medium text-primary">{comparisonData.paintquotepro.mobileAccess}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-200">Follow-up</span>
-                      <span className="font-medium text-primary">{comparisonData.paintquotepro.followUp}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2">
-                      <span className="text-gray-200">Cost tracking</span>
-                      <span className="font-medium text-primary">{comparisonData.paintquotepro.costTracking}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Integration Section */}
-        <section className="py-16 md:py-24">
-          <div className="container">
-            <div className="mx-auto max-w-5xl">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                  Integrations & Compatibility
-                </h2>
-                <p className="mt-4 text-lg text-gray-200">
-                  Works seamlessly with your existing tools
-                </p>
-              </div>
-
-              <div className="grid gap-6 md:grid-cols-3">
-                <div className="rounded-lg border bg-background p-6 text-center">
-                  <h3 className="font-semibold mb-2">QuickBooks Integration</h3>
-                  <p className="text-base text-gray-200">Sync invoices and payments</p>
-                </div>
-                <div className="rounded-lg border bg-background p-6 text-center">
-                  <h3 className="font-semibold mb-2">Google Calendar Sync</h3>
-                  <p className="text-base text-gray-200">Schedule jobs and appointments</p>
-                </div>
-                <div className="rounded-lg border bg-background p-6 text-center">
-                  <h3 className="font-semibold mb-2">Email Marketing Tools</h3>
-                  <p className="text-base text-gray-200">Automated follow-up campaigns</p>
-                </div>
-                <div className="rounded-lg border bg-background p-6 text-center">
-                  <h3 className="font-semibold mb-2">Payment Processing</h3>
-                  <p className="text-base text-gray-200">Accept payments online</p>
-                </div>
-                <div className="rounded-lg border bg-background p-6 text-center">
-                  <h3 className="font-semibold mb-2">Cloud Storage</h3>
-                  <p className="text-base text-gray-200">Backup to Google Drive or Dropbox</p>
-                </div>
-                <div className="rounded-lg border bg-background p-6 text-center">
-                  <h3 className="font-semibold mb-2">API Access</h3>
-                  <p className="text-base text-gray-200">Build custom integrations</p>
-                </div>
-              </div>
+        {/* Comparison Table */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Compare Plans
+              </h2>
+              <p className="text-xl text-gray-600">
+                Choose the perfect plan for your business
+              </p>
+            </div>
+            
+            <div className="max-w-5xl mx-auto overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
+                    <th className="text-center py-4 px-4 font-semibold text-gray-900">Free</th>
+                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                      <span className="text-blue-600">Professional</span>
+                    </th>
+                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                      <span className="text-purple-600">Business</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonTable.map((row, index) => (
+                    <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                      <td className="py-4 px-4 font-medium text-gray-900">{row.feature}</td>
+                      <td className="text-center py-4 px-4 text-gray-600">{row.free}</td>
+                      <td className="text-center py-4 px-4 text-gray-900 font-medium">{row.pro}</td>
+                      <td className="text-center py-4 px-4 text-gray-900 font-medium">{row.business}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Link
+                href="/pricing"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                View Pricing Plans
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="bg-primary py-16 text-primary-foreground">
-          <div className="container text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Painting Business?
+        <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-500">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Transform Your Business?
             </h2>
-            <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
-              Join thousands of painting contractors who save hours on every quote 
-              and win more jobs with professional estimates.
+            <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+              Join thousands of painting contractors who are winning more jobs and saving time with PaintQuote Pro.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/auth/signup"
-                className="inline-flex items-center justify-center rounded-md bg-background px-8 py-3 text-base font-medium text-foreground shadow-lg hover:bg-background/90"
+                href="/trial-signup"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-blue-600 bg-white hover:bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
               >
-                Start Your Free Trial
-                <Zap className="ml-2 h-5 w-5" />
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                href="/pricing"
-                className="inline-flex items-center justify-center rounded-md border border-primary-foreground/20 px-8 py-3 text-base font-medium hover:bg-primary-foreground/10"
+                href="/contact-sales"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border-2 border-white hover:bg-white hover:text-blue-600 rounded-lg transition-all duration-200"
               >
-                View Pricing Plans
+                Contact Sales
               </Link>
             </div>
-            <p className="mt-4 text-base opacity-100">
-              Free trial • No credit card required • Cancel anytime
+            <p className="mt-6 text-blue-100">
+              No credit card required • 14-day free trial • Cancel anytime
             </p>
           </div>
         </section>
-      </main>
+      </div>
     </>
   )
 }

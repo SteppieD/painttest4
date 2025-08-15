@@ -655,9 +655,11 @@ export default function Home() {
                     <span>Dedicated support</span>
                   </li>
                 </ul>
-                <Button className="w-full" variant="outline">
-                  Contact Sales
-                </Button>
+                <Link href="/contact-sales">
+                  <Button className="w-full" variant="outline">
+                    Contact Sales
+                  </Button>
+                </Link>
             </div>
           </div>
         </div>
