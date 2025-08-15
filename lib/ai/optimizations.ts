@@ -1,5 +1,8 @@
 // Performance optimizations for AI integration
 
+import { ConversationMessage } from './quote-assistant';
+import { PaintProduct } from '../database/adapter';
+
 export class ChatOptimizer {
   private static readonly MAX_CONTEXT_TOKENS = 3000;
   private static readonly MAX_HISTORY_MESSAGES = 20;
@@ -30,7 +33,7 @@ export class ChatOptimizer {
     
     const summarized = paintProducts
       .slice(0, 5) // Limit to top 5 products
-      .map(p => `${p.name}: $${p.costPerGallon}/gal, ${p.coverageRate} sqft/gal`)
+      .map(p => `${p.product_name}: $${p.cost_per_gallon}/gal, ${p.coverage_rate} sqft/gal`)
       .join('; ');
       
     const additional = paintProducts.length > 5 ? ` + ${paintProducts.length - 5} more` : '';
