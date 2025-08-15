@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { quoteAssistant } from '@/lib/ai/quote-assistant';
 import { ConversationManager } from '@/lib/chat/conversation-manager';
-import { db, DatabaseAdapter } from '@/lib/database/adapter';
+import { db, DatabaseAdapter, PaintProduct } from '@/lib/database/adapter';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,13 +11,8 @@ interface ExtendedDatabaseAdapter extends DatabaseAdapter {
   getPaintProductsByCompanyId?: (companyId: number) => Promise<unknown[]>;
 }
 
-// Paint product interface
-interface PaintProduct {
-  name?: string;
-  product_name?: string;
-  brand?: string;
-  type?: string;
-}
+// Use the PaintProduct interface from the database adapter
+// (imported above to ensure consistency)
 
 // Store conversation managers per session
 const sessions = new Map<string, ConversationManager>();
@@ -111,7 +106,7 @@ export async function POST(request: NextRequest) {
 
         console.log('[CHAT] Paint products found:', paintProducts.length);
         if (paintProducts.length > 0) {
-          console.log('[CHAT] Sample paint products:', paintProducts.slice(0, 3).map(p => ({ name: p.product_name || p.name, cost: p.cost_per_gallon })));
+          console.log('[CHAT] Sample paint products:', paintProducts.slice(0, 3).map(p => ({ name: p.product_name, cost: p.cost_per_gallon })));
         }
 
         // Build context string with company information
@@ -125,7 +120,7 @@ Subscription tier: ${companyData?.subscription_tier || 'basic'}
 Is first quote: ${isFirstQuote}
 Onboarding settings collected: ${Object.keys(onboardingSettings || {}).join(', ') || 'none'}
 
-Paint products preferences: ${paintProducts.length > 0 ? paintProducts.map((p: PaintProduct) => p.name || p.product_name).join(', ') : 'Using default product recommendations'}
+Paint products preferences: ${paintProducts.length > 0 ? paintProducts.map((p: PaintProduct) => p.product_name).join(', ') : 'Using default product recommendations'}
 
 Available quote types: Residential Interior, Residential Exterior, Commercial Interior, Commercial Exterior
 
