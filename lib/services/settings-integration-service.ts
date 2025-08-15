@@ -267,7 +267,16 @@ export class SettingsIntegrationService {
         overheadPercent: calculatorSettings.overheadPercent,
         profitMargin: calculatorSettings.profitMargin
       },
-      prepCondition: options.prepWork || 'good',
+      prepCondition: (() => {
+        const prepMap: Record<string, 'good' | 'minor' | 'major'> = {
+          'none': 'good',
+          'light': 'good',
+          'moderate': 'minor',
+          'heavy': 'major',
+          'extreme': 'major'
+        };
+        return options.prepWork ? prepMap[options.prepWork] || 'good' : 'good';
+      })(),
       rushJob: options.isRushJob || false
     };
 

@@ -236,7 +236,7 @@ export class N8NIntegrationService {
     payload: N8NWebhookPayload
   ): Promise<void> {
     try {
-      const { error } = await this.db.client
+      const { error } = await this.db.getClient()
         .from('n8n_workflow_logs')
         .insert({
           workflow_type: workflowType,
@@ -263,7 +263,7 @@ export class N8NIntegrationService {
     error?: any
   ): Promise<void> {
     try {
-      const { error: dbError } = await this.db.client
+      const { error: dbError } = await this.db.getClient()
         .from('n8n_workflow_logs')
         .update({
           status,
@@ -343,7 +343,7 @@ export class N8NIntegrationService {
     limit = 50
   ): Promise<any[]> {
     try {
-      const { data, error } = await this.db.client
+      const { data, error } = await this.db.getClient()
         .from('n8n_workflow_logs')
         .select('*')
         .eq('company_id', companyId)

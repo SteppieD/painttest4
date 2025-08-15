@@ -19,6 +19,11 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
     this.client = createClient(supabaseUrl, supabaseKey);
   }
 
+  // Public method to access the Supabase client
+  getClient(): SupabaseClient {
+    return this.client;
+  }
+
   // Company operations
   async getCompanyByAccessCode(accessCode: string): Promise<Company | null> {
     try {
@@ -266,7 +271,7 @@ export class SupabaseAdapterFixed implements DatabaseAdapter {
         
         // Try to find user by company email
         const userByEmail = await this.getUserByEmail(company.email);
-        if (userByEmail) {
+        if (userByEmail && userByEmail.id) {
           return this.getPaintProductsByUserId(userByEmail.id.toString());
         }
         return [];

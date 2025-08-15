@@ -434,4 +434,4 @@ export async function benchmarkSettingsIntegration(companyId: number, iterations
 }
 
 // Export for use in applications
-export { TestResults };
+export type { TestResults };

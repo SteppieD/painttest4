@@ -3,7 +3,7 @@
  * Extends the base subscription service to trigger N8N workflows
  */
 
-import { SubscriptionService } from './subscription-service';
+import { SubscriptionService, SubscriptionPlan } from './subscription-service';
 import { n8nService } from '@/lib/services/n8n-integration-service';
 import { db } from '@/lib/database/adapter';
 import Stripe from 'stripe';
@@ -72,9 +72,10 @@ export class EnhancedSubscriptionService extends SubscriptionService {
     const company = await db.getCompany(companyId);
     if (!company) return;
 
-    // Get subscription details
-    const subscription = invoice.subscription 
-      ? await this.stripe.subscriptions.retrieve(invoice.subscription as string)
+    // Get subscription details - invoice may have subscription info
+    const subscriptionId = (invoice as any).subscription as string | null;
+    const subscription = subscriptionId 
+      ? await this.stripe.subscriptions.retrieve(subscriptionId)
       : null;
 
     await n8nService.triggerWorkflow('payment_success', {
@@ -237,37 +238,14 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
   private getFailureReason(invoice: Stripe.Invoice): string {
     // Extract failure reason from invoice
-    const charge = invoice.charge;
-    if (typeof charge === 'object' && charge !== null) {
-      return (charge as any).failure_message || 'Payment failed';
+    // In Stripe v18, charge info is accessed differently
+    if (invoice.last_finalization_error) {
+      return invoice.last_finalization_error.message || 'Payment failed';
     }
     return 'Payment failed';
   }
 
   private stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-  
-  private async getCompanyIdFromCustomer(customerId: string): Promise<number | null> {
-    const customer = await this.stripe.customers.retrieve(customerId);
-    if ('metadata' in customer && customer.metadata?.companyId) {
-      return parseInt(customer.metadata.companyId);
-    }
-    return null;
-  }
-
-  private getPlanFromPriceId(priceId: string): string {
-    // Import from parent class configuration
-    const { STRIPE_PRICE_IDS } = require('./stripe-client');
-    
-    if (priceId === STRIPE_PRICE_IDS.professional.monthly || 
-        priceId === STRIPE_PRICE_IDS.professional.yearly) {
-      return 'professional';
-    }
-    if (priceId === STRIPE_PRICE_IDS.business.monthly || 
-        priceId === STRIPE_PRICE_IDS.business.yearly) {
-      return 'business';
-    }
-    return 'professional';
-  }
 }
 
 // Export enhanced service

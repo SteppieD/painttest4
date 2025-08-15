@@ -235,7 +235,7 @@ export class SubscriptionService {
     console.log(`Payment failed for company ${companyId}, amount: ${invoice.amount_due}`);
   }
 
-  private async getCompanyIdFromCustomer(customerId: string): Promise<number | null> {
+  protected async getCompanyIdFromCustomer(customerId: string): Promise<number | null> {
     const customer = await stripe.customers.retrieve(customerId);
     if ('metadata' in customer && customer.metadata?.companyId) {
       return parseInt(customer.metadata.companyId);
@@ -243,7 +243,7 @@ export class SubscriptionService {
     return null;
   }
 
-  private getPlanFromPriceId(priceId: string): SubscriptionPlan {
+  protected getPlanFromPriceId(priceId: string): SubscriptionPlan {
     // Check against our configured price IDs
     if (priceId === STRIPE_PRICE_IDS.professional.monthly || 
         priceId === STRIPE_PRICE_IDS.professional.yearly) {

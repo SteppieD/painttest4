@@ -664,7 +664,7 @@ Would you like to make any adjustments before saving?`;
   }
 
   // Calculate quote using the V2 calculator with dynamic pricing
-  async calculateQuote(context: QuoteContext, pricingConfig?: CompanyPricingConfig): CalculatorOutputV2 | null {
+  async calculateQuote(context: QuoteContext, pricingConfig?: CompanyPricingConfig): Promise<CalculatorOutputV2 | null> {
     // Convert QuoteContext to CalculatorInputV2
     const input: CalculatorInputV2 = {
       linearFeetWalls: context.measurements?.linearFeetWalls,
