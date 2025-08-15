@@ -3,7 +3,7 @@
  * Handles communication between PaintQuote Pro and N8N workflows
  */
 
-import { SupabaseAdapter } from '@/lib/database/supabase-adapter-fixed';
+import { SupabaseAdapterFixed } from '@/lib/database/supabase-adapter-fixed';
 
 export interface N8NWebhookPayload {
   workflowId: string;
@@ -91,14 +91,14 @@ export interface N8NWorkflowTrigger {
 export class N8NIntegrationService {
   private baseUrl: string;
   private apiKey?: string;
-  private db: SupabaseAdapter;
+  private db: SupabaseAdapterFixed;
   private retryAttempts = 3;
   private retryDelay = 1000; // ms
 
   constructor() {
     this.baseUrl = process.env.N8N_WEBHOOK_BASE_URL || '';
     this.apiKey = process.env.N8N_API_KEY;
-    this.db = new SupabaseAdapter();
+    this.db = new SupabaseAdapterFixed();
     
     if (!this.baseUrl) {
       console.warn('[N8N] No webhook base URL configured. N8N integration disabled.');

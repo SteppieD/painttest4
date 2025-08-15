@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
-import { pricingConfigManager, CompanyPricingConfig } from '@/lib/config/pricing-config';
+import { pricingConfigManager, PricingConfigManager, CompanyPricingConfig } from '@/lib/config/pricing-config';
 import { SettingsIntegrationService } from '@/lib/services/settings-integration-service';
 
 export const dynamic = 'force-dynamic';
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     
     if (!config) {
       // Return default configuration
-      const defaultConfig = pricingConfigManager.createDefaultConfig(company.id);
+      const defaultConfig = PricingConfigManager.createDefaultConfig(company.id);
       return NextResponse.json({ config: defaultConfig });
     }
 
