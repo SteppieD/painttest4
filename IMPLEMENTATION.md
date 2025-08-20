@@ -324,24 +324,51 @@ Form Input → Client Validation → API Submission
 
 ## 🛠️ Development Workflow
 
+### Branch Strategy and Deployment Pipeline
+
+```
+dev branch (development) → Docker Testing → main branch (production) → Vercel (auto-deploy)
+```
+
+**Key Commands**:
+```bash
+git checkout dev         # Always develop on dev branch
+npm run dev             # Start development (port 3005)
+npm run docker:test     # Test in Vercel-like environment
+npm run deploy          # Automated deployment to production
+```
+
 ### Adding New Features
 
-1. **Plan**: Update this IMPLEMENTATION.md with design
-2. **Schema**: Update database models if needed
-3. **API**: Create/modify API routes
-4. **UI**: Build React components
-5. **Connect**: Wire up data flow
-6. **Test**: Manual testing (automated TODO)
-7. **Document**: Update relevant .md files
+1. **Branch**: Start on `dev` branch (`git checkout dev`)
+2. **Plan**: Update this IMPLEMENTATION.md with design
+3. **Schema**: Update database models if needed
+4. **API**: Create/modify API routes
+5. **UI**: Build React components
+6. **Connect**: Wire up data flow
+7. **Test**: Local + Docker testing
+8. **Deploy**: Use `npm run deploy` for production
+9. **Document**: Update relevant .md files
 
 ### Modifying Existing Features
 
-1. **Locate**: Use this guide to find all touchpoints
-2. **Assess**: Check dependencies and impacts
-3. **Update**: Modify all related files
-4. **Validate**: Ensure type safety with TypeScript
-5. **Test**: Check all integration points
-6. **Document**: Update this implementation guide
+1. **Branch**: Ensure on `dev` branch
+2. **Locate**: Use this guide to find all touchpoints
+3. **Assess**: Check dependencies and impacts
+4. **Update**: Modify all related files
+5. **Validate**: Run `npm run cli check`
+6. **Test**: Docker testing before production
+7. **Deploy**: Merge to main via deployment script
+8. **Document**: Update this implementation guide
+
+### Deployment Process
+
+1. **Development**: Work on `dev` branch
+2. **Quality Checks**: `npm run cli check`
+3. **Docker Test**: `npm run docker:test`
+4. **Deploy**: `npm run deploy` (interactive script)
+5. **Monitor**: Check Vercel dashboard
+6. **Rollback**: If needed, revert on main branch
 
 ## 📁 Key File Locations
 
