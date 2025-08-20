@@ -3,14 +3,17 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "regions": ["iad1"],
+  "ignoreCommand": "if [ \"$VERCEL_GIT_COMMIT_REF\" != \"main\" ]; then exit 0; fi",
   "env": {
     "NEXTAUTH_URL": "https://paintquotepro.vercel.app",
     "NEXT_PUBLIC_SITE_URL": "https://paintquotepro.vercel.app",
-    "USE_SUPABASE": "true"
+    "USE_SUPABASE": "false",
+    "SUPABASE_URL": "https://placeholder.supabase.co",
+    "SUPABASE_ANON_KEY": "placeholder_key"
   },
   "build": {
     "env": {
-      "USE_SUPABASE": "true"
+      "USE_SUPABASE": "false"
     }
   }
 }
