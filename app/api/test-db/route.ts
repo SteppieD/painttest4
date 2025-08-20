@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server'
-import { getDb } from '@/lib/database/db'
+import { getDatabase } from '@/lib/database/adapter'
 
 // Force dynamic rendering since we're accessing the database
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const db = await getDb()
+    const db = getDatabase()
     
     // Use Supabase-compatible method to get companies
     // Since we can't use raw SQL, we'll use the adapter's methods
