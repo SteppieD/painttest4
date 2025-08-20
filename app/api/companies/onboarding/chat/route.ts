@@ -64,7 +64,7 @@ Important: You must respond with a JSON object containing:
     if (anthropic) {
       try {
         const completion = await anthropic.messages.create({
-          model: 'claude-3-haiku-20240307',
+          model: 'claude-3-haiku-20240307',  // Using Haiku for fast onboarding responses
           max_tokens: 500,
           temperature: 0.7,
           system: systemPrompt,
@@ -99,7 +99,7 @@ Important: You must respond with a JSON object containing:
             'X-Title': 'PaintQuote Pro'
           },
           body: JSON.stringify({
-            model: 'anthropic/claude-3-haiku',
+            model: 'anthropic/claude-3-haiku-20240307',  // Using Haiku for fast onboarding responses
             messages: [
               {
                 role: 'system',

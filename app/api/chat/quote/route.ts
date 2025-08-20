@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
           'X-Title': 'PaintQuote Pro'
         },
         body: JSON.stringify({
-          model: 'anthropic/claude-3-sonnet:beta',
+          model: 'anthropic/claude-sonnet-4',
           messages: [
             {
               role: 'system',

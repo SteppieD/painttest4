@@ -62,7 +62,7 @@ export interface ConversationMessage {
 
 export class QuoteAssistant {
   // Use the exact model ID that worked in the test
-  private model = 'anthropic/claude-3.5-sonnet';
+  private model = 'anthropic/claude-sonnet-4';
   
   async processMessage(
     userMessage: string,
