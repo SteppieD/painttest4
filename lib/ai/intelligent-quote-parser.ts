@@ -167,7 +167,7 @@ Return JSON in this exact structure:
         'X-Title': 'PaintQuote Pro'
       },
       body: JSON.stringify({
-        model: 'anthropic/claude-sonnet-4',
+        model: 'anthropic/claude-3.5-sonnet-20241022',  // Latest Claude 3.5 Sonnet
         messages: [{
           role: 'user',
           content: prompt

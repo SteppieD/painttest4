@@ -76,7 +76,7 @@ export async function GET() {
   return NextResponse.json({
     status: 'ok',
     configured: hasApiKey,
-    model: 'anthropic/claude-sonnet-4',
+    model: 'anthropic/claude-3.5-sonnet-20241022',  // Latest Claude 3.5 Sonnet
     message: hasApiKey 
       ? 'OpenRouter AI assistant is configured and ready' 
       : 'OpenRouter API key not configured - using mock responses'
