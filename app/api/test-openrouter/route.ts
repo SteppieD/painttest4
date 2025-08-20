@@ -19,11 +19,11 @@ export async function GET() {
     
     // Try different model names to find the correct one
     const modelTests = [
-      'anthropic/claude-3.5-sonnet',
-      'anthropic/claude-3.5-sonnet-20241022',
-      'anthropic/claude-sonnet-4',
-      'anthropic/claude-3-5-sonnet-20241022',
-      'claude-3.5-sonnet'
+      'anthropic/claude-sonnet-4',  // Primary model
+      'anthropic/claude-4-sonnet',  // Alternative naming
+      'anthropic/claude-opus-4',  // Try Opus 4
+      'anthropic/claude-3-haiku-20240307',  // Fast fallback
+      'claude-sonnet-4'  // Simple naming
     ];
     
     let workingModel = null;

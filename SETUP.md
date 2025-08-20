@@ -19,7 +19,7 @@ OPENROUTER_API_KEY=sk-or-v1-YOUR-ACTUAL-KEY-HERE
 ### 2. Current LLM Model
 
 The chatbot is configured to use:
-- **Model:** `anthropic/claude-3.5-sonnet`
+- **Model:** `anthropic/claude-sonnet-4`
 - **Location:** `/lib/ai/quote-assistant.ts`
 
 This is a good model for quote generation. Make sure your OpenRouter account has credits for this model.

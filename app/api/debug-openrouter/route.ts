@@ -84,7 +84,7 @@ export async function GET() {
           'X-Title': 'PaintQuote Pro Debug'
         },
         body: JSON.stringify({
-          model: 'anthropic/claude-3.5-sonnet',
+          model: 'anthropic/claude-sonnet-4',
           messages: [
             { role: 'system', content: 'You are a test assistant.' },
             { role: 'user', content: 'Reply with just "OK".' }
