@@ -1,4 +1,4 @@
-# Stripe Email Setup Guide - Simple Version
+Do we have t# Stripe Email Setup Guide - Simple Version
 
 ## Overview
 This guide walks you through enabling Stripe's built-in email notifications for PaintQuote Pro. This is the simplest way to ensure customers receive payment notifications without setting up complex workflows.
