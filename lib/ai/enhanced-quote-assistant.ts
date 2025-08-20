@@ -58,7 +58,7 @@ export interface ConversationMessage {
 }
 
 export class EnhancedQuoteAssistant {
-  private model = 'anthropic/claude-sonnet-4';
+  private model = 'anthropic/claude-3.5-sonnet-20241022';  // Latest Claude 3.5 Sonnet
   
   async processMessage(
     userMessage: string,

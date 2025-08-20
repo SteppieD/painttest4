@@ -32,7 +32,7 @@ export interface OpenRouterModel {
 export class OpenRouterClient {
   private apiKey: string;
   private baseUrl = 'https://openrouter.ai/api/v1';
-  private defaultModel = 'anthropic/claude-sonnet-4';
+  private defaultModel = 'anthropic/claude-3.5-sonnet-20241022';  // Latest Claude 3.5 Sonnet
 
   constructor(apiKey?: string) {
     this.apiKey = apiKey || process.env.OPENROUTER_API_KEY || '';
