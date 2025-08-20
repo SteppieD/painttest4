@@ -6,6 +6,14 @@ node_modules/
 # Testing
 coverage/
 .nyc_output/
+test-results/
+test-screenshots/
+flow-test-screenshots/
+docker-screenshots/
+docker-test-results/
+playwright-report/
+e2e-test-report.html
+test-*.html
 
 # Next.js
 .next/
@@ -69,6 +77,9 @@ Thumbs.db
 # Logs
 logs/
 *.log
+dev-server.log
+build-output.log
+vercel-build.log
 
 # Runtime data
 pids/
@@ -126,6 +137,18 @@ stats.json
 
 # Generated files
 generated/
+eslint-*.json
+any-type-files.txt
+jsx-entity-files.txt
+unused-imports-files.txt
+URGENT_FIX_COMMANDS.txt
+*-SUMMARY.md
+*-FIX-*.md
+DEBUG_*.md
+WEBPACK-*.md
+SESSION_*.md
+DEVELOPMENT_HISTORY.md
+COMPREHENSIVE_TEST_REPORT.md
 
 # Upload directories
 uploads/
@@ -137,6 +160,10 @@ sessions/
 # Local scripts
 scripts/local/
 *.local.sh
+test-*.js
+test-*.ts
+test-*.sh
+capture-screenshots.js
 
 # Test databases
 test.db
