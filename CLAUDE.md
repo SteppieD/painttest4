@@ -90,6 +90,8 @@ npm run docker:down      # When done
 ```
 
 ### 6. Deploying to Production
+
+#### Option A: Automatic GitHub → Vercel (painttest4)
 ```bash
 # Use the automated script
 npm run deploy
@@ -99,6 +101,20 @@ git checkout main
 git merge dev --no-ff
 git push origin main     # Triggers Vercel deployment
 git checkout dev
+```
+
+#### Option B: Direct Vercel Deployment (painttest4.1)
+```bash
+# Deploy directly to painttest4.1 project on Vercel
+vercel --prod --yes --name painttest41
+
+# Alternative: Deploy specific branch
+vercel --prod --yes --scope danger-dangers-projects --project painttest4.1
+
+# Note: The painttest4.1 project is configured as:
+# - Project Name: painttest4.1
+# - Production URL: https://painttest41.vercel.app
+# - Preview URLs: https://painttest41-[hash]-danger-dangers-projects.vercel.app
 ```
 
 ## 🎯 Quick Command Reference
@@ -344,6 +360,13 @@ Before deploying to production:
 3. **Local Port**: Development runs on 3005
 4. **Docker Port**: Testing runs on 3000
 5. **Database**: Can use SQLite (dev) or PostgreSQL (prod)
+
+### Vercel Projects
+- **painttest4**: Original project (auto-deploys from GitHub main branch)
+- **painttest4.1**: Manual deployment project
+  - Production URL: https://painttest41.vercel.app
+  - Deploy command: `vercel --prod --yes --name painttest41`
+  - Used for: Testing deployments independently of GitHub
 
 ## 🔑 Key Files Modified Recently
 Track these files for context:
