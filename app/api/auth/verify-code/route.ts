@@ -37,7 +37,9 @@ export async function POST(request: NextRequest) {
         email: company.email,
         logoUrl: null,
         isTrial: company.subscription_tier === 'free',
+        subscription_tier: company.subscription_tier || 'free',
         quoteLimit: company.monthly_quote_limit,
+        monthly_quote_limit: company.monthly_quote_limit,
         needsOnboarding: false,
         onboarding_completed: company.onboarding_completed || false
       }

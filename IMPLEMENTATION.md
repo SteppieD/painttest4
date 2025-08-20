@@ -6,7 +6,8 @@ This document provides a comprehensive map of how all components in PaintQuote P
 
 **Last Updated**: 2025-08-20  
 **Version**: 1.0.0  
-**Status**: Active Development
+**Status**: Active Development  
+**Business Model**: [Freemium SaaS](./FREEMIUM_MODEL.md) - Free tier (5 quotes) + Professional ($79/month)
 
 ## 🏗️ System Architecture Map
 
@@ -155,7 +156,47 @@ User Upgrade → Create Session → Redirect to Stripe
 
 **Status**: ⚠️ Basic implementation, needs testing
 
-### 6. SEO & Performance System
+### 6. Freemium Model & Subscription Management
+
+**Files Involved**:
+- `/lib/auth/tier-utils.ts` - Tier limits and feature gating
+- `/lib/stripe/subscription-service.ts` - Subscription logic
+- `/components/quote-usage-indicator.tsx` - Usage display
+- `/app/api/setup-premium-test/route.ts` - Premium test setup
+- `/app/pricing/page.tsx` - Pricing page
+
+**Tier Structure**:
+```
+FREE TIER (Default):
+- 5 quotes/month
+- No AI assistance
+- Blurred analytics
+- Single user
+
+PROFESSIONAL TIER ($79/month):
+- Unlimited quotes (-1 in system)
+- Full AI access
+- Complete analytics
+- Team features (3 users)
+```
+
+**Flow**:
+```
+Sign Up → Free Tier → Use Quotes → Hit Limit 
+→ Upgrade Prompt → Stripe Checkout → Professional Access
+```
+
+**Key Components**:
+- Monthly quote tracking: `monthly_quote_count`
+- Tier field: `subscription_tier` (free/professional)
+- Reset mechanism: First of month via cron
+- Feature gating: Check tier before access
+
+**Documentation**: See [FREEMIUM_MODEL.md](./FREEMIUM_MODEL.md) for complete strategy
+
+**Status**: ✅ Fully implemented
+
+### 7. SEO & Performance System
 
 **Files Involved**:
 - `/app/sitemap.ts` - Dynamic sitemap generation
@@ -172,7 +213,7 @@ Page Load → Render SSR Content → Add Schema Markup
 
 **Status**: ✅ Implemented and monitoring
 
-### 7. Settings Management
+### 8. Settings Management
 
 **Files Involved**:
 - `/lib/config/pricing-config.ts` - Pricing configuration

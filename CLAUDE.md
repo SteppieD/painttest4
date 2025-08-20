@@ -10,13 +10,22 @@ This file contains essential information for AI assistants working on the PaintQ
 **Current Branch Strategy**: `dev` (development) → `main` (production/Vercel)
 **Port**: 3005 (development)
 
+### 💰 Business Model
+**Type**: Freemium SaaS
+**Tiers**: 
+- Free: 5 quotes/month ($0)
+- Professional: Unlimited quotes with AI ($79/month)
+**Details**: See [FREEMIUM_MODEL.md](./FREEMIUM_MODEL.md) for complete strategy
+
 ## 📁 Critical Files to Reference
 
 1. **IMPLEMENTATION.md** - Complete system architecture and component map
-2. **DEPLOYMENT_WORKFLOW.md** - Deployment procedures and safety checks
-3. **CLI_TOOLS_GUIDE.md** - Available CLI tools and commands
-4. **GIT_WORKFLOW_SUMMARY.md** - Quick Git workflow reference
-5. **package.json** - Scripts and dependencies
+2. **FREEMIUM_MODEL.md** - Freemium strategy, tiers, and conversion paths
+3. **PRICING_STRATEGY.md** - Pricing decisions and future add-ons
+4. **DEPLOYMENT_WORKFLOW.md** - Deployment procedures and safety checks
+5. **CLI_TOOLS_GUIDE.md** - Available CLI tools and commands
+6. **GIT_WORKFLOW_SUMMARY.md** - Quick Git workflow reference
+7. **package.json** - Scripts and dependencies
 
 ## 🔄 Standard Development Workflow
 
