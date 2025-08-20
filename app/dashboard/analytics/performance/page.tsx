@@ -169,9 +169,9 @@ export default function PerformanceAnalyticsPage() {
             <Percent className="h-4 w-4 text-green-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-white">{performanceData.winRate}%</div>
-            <p className={`text-xs mt-1 ${performanceData.winRateChange > 0 ? 'text-green-400' : 'text-red-400'}`}>
-              {performanceData.winRateChange > 0 ? '+' : ''}{performanceData.winRateChange}% from last period
+            <div className="text-3xl font-bold text-white">{performanceData.winRate || 0}%</div>
+            <p className={`text-xs mt-1 ${(performanceData.winRateChange || 0) > 0 ? 'text-green-400' : 'text-red-400'}`}>
+              {(performanceData.winRateChange || 0) > 0 ? '+' : ''}{performanceData.winRateChange || 0}% from last period
             </p>
           </CardContent>
         </Card>
@@ -182,7 +182,7 @@ export default function PerformanceAnalyticsPage() {
             <Clock className="h-4 w-4 text-blue-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-white">{performanceData.averageCloseTime} days</div>
+            <div className="text-3xl font-bold text-white">{performanceData.averageCloseTime || 0} days</div>
             <p className="text-xs text-gray-400 mt-1">From quote to acceptance</p>
           </CardContent>
         </Card>
@@ -193,7 +193,7 @@ export default function PerformanceAnalyticsPage() {
             <Activity className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-white">{performanceData.quotesCreated}</div>
+            <div className="text-3xl font-bold text-white">{performanceData.quotesCreated || 0}</div>
             <p className="text-xs text-gray-400 mt-1">This {selectedPeriod}</p>
           </CardContent>
         </Card>
@@ -204,8 +204,8 @@ export default function PerformanceAnalyticsPage() {
             <CheckCircle className="h-4 w-4 text-emerald-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-white">{performanceData.quotesAccepted}</div>
-            <p className="text-xs text-amber-400 mt-1">{performanceData.quotesPending} pending</p>
+            <div className="text-3xl font-bold text-white">{performanceData.quotesAccepted || 0}</div>
+            <p className="text-xs text-amber-400 mt-1">{performanceData.quotesPending || 0} pending</p>
           </CardContent>
         </Card>
       </div>
@@ -219,7 +219,7 @@ export default function PerformanceAnalyticsPage() {
           <div className="h-64 relative">
             {/* Win rate line chart visualization */}
             <div className="absolute inset-0 flex items-end justify-between gap-4">
-              {performanceData.performanceTrend.map((month, index) => (
+              {(performanceData.performanceTrend || []).map((month, index) => (
                 <div key={index} className="flex-1 flex flex-col items-center">
                   <div className="text-xs text-gray-400 mb-2">{month.winRate}%</div>
                   <div 
@@ -242,7 +242,7 @@ export default function PerformanceAnalyticsPage() {
             <CardTitle className="text-white">Conversion by Type</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {performanceData.conversionByType.map((type, index) => (
+            {(performanceData.conversionByType || []).map((type, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-300">{type.type}</span>
@@ -272,7 +272,7 @@ export default function PerformanceAnalyticsPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {performanceData.topPerformingServices.map((service, index) => (
+              {(performanceData.topPerformingServices || []).map((service, index) => (
                 <div key={index} className="p-3 rounded-lg bg-gray-800/50">
                   <div className="flex justify-between items-start">
                     <div>
@@ -301,7 +301,7 @@ export default function PerformanceAnalyticsPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {performanceData.lossReasons.map((reason, index) => (
+            {(performanceData.lossReasons || []).map((reason, index) => (
               <div key={index} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <XCircle className="h-3 w-3 text-red-400" />
@@ -326,31 +326,31 @@ export default function PerformanceAnalyticsPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="text-center p-4 rounded-lg bg-green-500/10 border border-green-500/20">
               <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{performanceData.quotesAccepted}</div>
+              <div className="text-2xl font-bold text-white">{performanceData.quotesAccepted || 0}</div>
               <div className="text-sm text-gray-300">Accepted</div>
               <div className="text-xs text-green-400 mt-1">
-                {Math.round((performanceData.quotesAccepted / performanceData.quotesCreated) * 100)}%
+                {(performanceData.quotesCreated || 0) > 0 ? Math.round(((performanceData.quotesAccepted || 0) / (performanceData.quotesCreated || 1)) * 100) : 0}%
               </div>
             </div>
             <div className="text-center p-4 rounded-lg bg-amber-500/10 border border-amber-500/20">
               <Clock className="h-8 w-8 text-amber-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{performanceData.quotesPending}</div>
+              <div className="text-2xl font-bold text-white">{performanceData.quotesPending || 0}</div>
               <div className="text-sm text-gray-300">Pending</div>
               <div className="text-xs text-amber-400 mt-1">
-                {Math.round((performanceData.quotesPending / performanceData.quotesCreated) * 100)}%
+                {(performanceData.quotesCreated || 0) > 0 ? Math.round(((performanceData.quotesPending || 0) / (performanceData.quotesCreated || 1)) * 100) : 0}%
               </div>
             </div>
             <div className="text-center p-4 rounded-lg bg-red-500/10 border border-red-500/20">
               <XCircle className="h-8 w-8 text-red-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{performanceData.quotesDeclined}</div>
+              <div className="text-2xl font-bold text-white">{performanceData.quotesDeclined || 0}</div>
               <div className="text-sm text-gray-300">Declined</div>
               <div className="text-xs text-red-400 mt-1">
-                {Math.round((performanceData.quotesDeclined / performanceData.quotesCreated) * 100)}%
+                {(performanceData.quotesCreated || 0) > 0 ? Math.round(((performanceData.quotesDeclined || 0) / (performanceData.quotesCreated || 1)) * 100) : 0}%
               </div>
             </div>
             <div className="text-center p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
               <Target className="h-8 w-8 text-blue-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{performanceData.quotesCreated}</div>
+              <div className="text-2xl font-bold text-white">{performanceData.quotesCreated || 0}</div>
               <div className="text-sm text-gray-300">Total Created</div>
               <div className="text-xs text-blue-400 mt-1">This {selectedPeriod}</div>
             </div>

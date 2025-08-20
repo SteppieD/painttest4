@@ -82,6 +82,8 @@ export default function AccessCodePage() {
             phone: data.company.phone || '',
             email: data.company.email || '',
             logoUrl: data.company.logoUrl || null,
+            subscription_tier: data.company.subscription_tier || 'free',
+            monthly_quote_limit: data.company.monthly_quote_limit || 5,
             loginTime: Date.now(),
             isNewCompany: data.company.needsOnboarding || false,
             onboarding_completed: data.company.onboarding_completed || false

@@ -26,6 +26,8 @@
     "test:payments": "node tests/payment-flow-test.js",
     "test:tiers": "node tests/dashboard-tier-test.js",
     "test:all": "node tests/run-all-tests.js",
+    "test:premium": "./scripts/test-premium.sh",
+    "premium:setup": "curl http://localhost:3005/api/setup-premium-test",
     "deps:check": "npm-check-updates",
     "deps:update": "npm-check-updates -u",
     "deps:audit": "npm audit",
