@@ -38,6 +38,9 @@ const nextConfig = {
     optimizeCss: false
   },
   
+  // Enable standalone output for Docker
+  output: 'standalone',
+  
   // Image configuration
   images: {
     domains: ['localhost', 'paintquotepro.com'],

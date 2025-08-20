@@ -33,6 +33,11 @@
     "clean:install": "npm run clean && npm install",
     "analyze": "ANALYZE=true npm run build",
     "cli": "node scripts/cli.js",
+    "docker:build": "docker-compose -f docker-compose.vercel.yml build",
+    "docker:up": "docker-compose -f docker-compose.vercel.yml up",
+    "docker:down": "docker-compose -f docker-compose.vercel.yml down",
+    "docker:test": "docker-compose -f docker-compose.vercel.yml up -d && echo 'Testing at http://localhost:3000'",
+    "deploy": "./scripts/deploy.sh",
     "prepare": "husky"
   },
   "dependencies": {
