@@ -10,7 +10,7 @@ export async function GET() {
     
     // Use Supabase-compatible method to get companies
     // Since we can't use raw SQL, we'll use the adapter's methods
-    let companies = [];
+    let companies: Array<{ access_code: string; company_name: string }> = [];
     
     try {
       // Try to get all companies (limited for testing)
