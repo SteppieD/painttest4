@@ -20,10 +20,10 @@ export async function GET() {
     // Try different model names to find the correct one
     const modelTests = [
       'anthropic/claude-3.5-sonnet-20241022',  // Latest Claude 3.5 Sonnet
-      'anthropic/claude-3.5-sonnet',  // Claude 3.5 Sonnet
+      'anthropic/claude-3.5-sonnet',  // Claude 3.5 Sonnet (alternate)
       'anthropic/claude-3-opus-20240229',  // Claude 3 Opus
-      'anthropic/claude-3-haiku-20240307',  // Claude 3 Haiku (fast)
-      'anthropic/claude-2.1'  // Claude 2.1 fallback
+      'anthropic/claude-3-sonnet-20240229',  // Claude 3 Sonnet
+      'openai/gpt-4-turbo-preview'  // GPT-4 Turbo fallback
     ];
     
     let workingModel = null;
