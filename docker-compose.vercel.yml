@@ -1,0 +1,75 @@
+# Docker Compose for Vercel-like environment testing
+# This configuration mimics Vercel's production environment
+
+version: '3.8'
+
+services:
+  # Next.js application (Vercel-like)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.vercel
+    container_name: paintquote-vercel
+    ports:
+      - "3000:3000"
+    environment:
+      # Production environment variables
+      NODE_ENV: production
+      
+      # Database connection (use your production or staging DB)
+      DATABASE_URL: ${DATABASE_URL}
+      
+      # Authentication secrets
+      JWT_SECRET: ${JWT_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      
+      # API Keys (if needed)
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+      
+      # Site configuration
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      
+    volumes:
+      # Mount .env file
+      - ./.env:/app/.env:ro
+    networks:
+      - paintquote-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # PostgreSQL database (for local testing)
+  postgres:
+    image: postgres:15-alpine
+    container_name: paintquote-postgres-vercel
+    environment:
+      POSTGRES_DB: paintquotepro
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - "5433:5432"  # Different port to avoid conflicts
+    volumes:
+      - postgres-vercel-data:/var/lib/postgresql/data
+    networks:
+      - paintquote-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+networks:
+  paintquote-network:
+    driver: bridge
+
+volumes:
+  postgres-vercel-data:
