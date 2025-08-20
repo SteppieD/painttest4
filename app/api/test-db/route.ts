@@ -18,12 +18,12 @@ export async function GET() {
       // Take only first 5 for testing
       companies = allCompanies.slice(0, 5).map(company => ({
         access_code: company.access_code,
-        company_name: company.company_name || company.name
+        company_name: company.company_name || company.name || 'Unknown Company'
       }));
     } catch (err) {
       console.log('Error fetching companies:', err);
       // Fallback: return empty array if method doesn't exist
-      companies = [];
+      // companies already initialized as empty array
     }
     
     return NextResponse.json({
