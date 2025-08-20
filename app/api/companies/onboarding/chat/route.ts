@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import Anthropic from '@anthropic-ai/sdk';
 
+// Force dynamic rendering since we use request headers for auth
+export const dynamic = 'force-dynamic';
+
 const anthropic = process.env.ANTHROPIC_API_KEY ? new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY!,
 }) : null;

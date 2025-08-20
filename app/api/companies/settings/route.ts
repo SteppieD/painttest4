@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
 import { db } from '@/lib/database/adapter';
 
+// Force dynamic rendering since we use request headers for auth
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const company = await getCompanyFromRequest(request);

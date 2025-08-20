@@ -2,6 +2,9 @@ import { NextResponse, NextRequest } from 'next/server'
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth'
 import { getDb } from '@/lib/database/adapter'
 
+// Force dynamic rendering since we use request headers for auth
+export const dynamic = 'force-dynamic';
+
 // Demo data for when no quotes exist
 const getDemoData = () => ({
   totalRevenue: 125430,
