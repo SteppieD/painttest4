@@ -136,7 +136,8 @@ function processProjectTypes(quotes: Quote[]) {
   
   quotes.forEach(quote => {
     // Try to categorize based on line items or quote details
-    const lineItems = quote.line_items || []
+    const pricing = quote.pricing as Record<string, any>
+    const lineItems = pricing?.line_items || []
     let categorized = false
     
     lineItems.forEach((item: { description?: string; quantity?: number; rate?: number; total?: number }) => {

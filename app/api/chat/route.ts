@@ -182,9 +182,10 @@ Calculator instance available with default settings.
         console.log('[CHAT] Parsed quote data:', parsedData);
         
         // Set quoteData if we have enough information OR user expressed readiness
+        const measurements = parsedData.measurements as Record<string, any>
         const hasBasicInfo = parsedData.customerName && 
-                            (parsedData.measurements?.wallSqft || 
-                             parsedData.measurements?.linearFeetWalls ||
+                            (measurements?.wallSqft || 
+                             measurements?.linearFeetWalls ||
                              userWantsReview); // Allow with less info if user wants to review
         
         if (hasBasicInfo) {
@@ -204,7 +205,7 @@ Calculator instance available with default settings.
           // Use parsed data pricing if available, otherwise extract from text
           if ((parsedData as any).pricing) {
             quoteData.pricing = {
-              ...quoteData.pricing,
+              ...(quoteData.pricing || {}),
               ...(parsedData as any).pricing
             };
           } else {
@@ -216,22 +217,27 @@ Calculator instance available with default settings.
               
               // Look for explicit total mentions
               const totalMatch = fullText.match(/(?:total|total\s+cost|total\s+price|final\s+price)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
+              const pricingData = quoteData.pricing as Record<string, any>;
               if (totalMatch) {
-                quoteData.pricing.total = parseFloat(totalMatch[1].replace(/,/g, ''));
+                pricingData.total = parseFloat(totalMatch[1].replace(/,/g, ''));
               } else {
-                quoteData.pricing.total = Math.max(...prices);
+                pricingData.total = Math.max(...prices);
               }
+              quoteData.pricing = pricingData;
               
               // Extract materials and labor with better patterns
               const materialMatch = fullText.match(/(?:materials?|paint|supplies)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
               const laborMatch = fullText.match(/(?:labor|labour)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
               
               if (materialMatch) {
-                quoteData.pricing.materials.total = parseFloat(materialMatch[1].replace(/,/g, ''));
+                if (!pricingData.materials) pricingData.materials = {};
+                pricingData.materials.total = parseFloat(materialMatch[1].replace(/,/g, ''));
               }
               if (laborMatch) {
-                quoteData.pricing.labor.total = parseFloat(laborMatch[1].replace(/,/g, ''));
+                if (!pricingData.labor) pricingData.labor = {};
+                pricingData.labor.total = parseFloat(laborMatch[1].replace(/,/g, ''));
               }
+              quoteData.pricing = pricingData;
               
               // Extract detailed breakdown items
               const gallonMatch = fullText.match(/(\d+)\s*gallons?[^$]*\$?([\d,]+(?:\.\d{2})?)/gi);
@@ -243,7 +249,11 @@ Calculator instance available with default settings.
                   if (parts) {
                     const gallons = parseInt(parts[1]);
                     const cost = parseFloat(parts[2].replace(/,/g, ''));
-                    if (i === 0) quoteData.pricing.breakdown.wallPaint = { gallons, cost };
+                    if (i === 0 && quoteData) {
+                      if (!pricingData.breakdown) pricingData.breakdown = {};
+                      pricingData.breakdown.wallPaint = { gallons, cost };
+                      quoteData.pricing = pricingData;
+                    }
                   }
                 });
               }
@@ -254,7 +264,11 @@ Calculator instance available with default settings.
                   if (parts) {
                     const hours = parseInt(parts[1]);
                     const cost = parseFloat(parts[2].replace(/,/g, ''));
-                    if (i === 0) quoteData.pricing.breakdown.painting = { hours, cost };
+                    if (i === 0 && quoteData) {
+                      if (!pricingData.breakdown) pricingData.breakdown = {};
+                      pricingData.breakdown.painting = { hours, cost };
+                      quoteData.pricing = pricingData;
+                    }
                   }
                 });
               }
@@ -262,15 +276,19 @@ Calculator instance available with default settings.
           }
           
           // If user wants to review but we don't have pricing yet, create basic structure
-          if (userWantsReview && quoteData.pricing.total === 0) {
+          const currentPricing = quoteData.pricing as Record<string, any>;
+          if (userWantsReview && currentPricing.total === 0) {
             // Set a placeholder or try to extract from conversation context
             const basicPriceMatch = fullConversation.match(/\$?(\d+(?:,\d{3})*(?:\.\d{2})?)/g);
             if (basicPriceMatch) {
               const price = parseFloat(basicPriceMatch[basicPriceMatch.length - 1].replace(/[$,]/g, ''));
               if (price > 100) { // Reasonable quote minimum
-                quoteData.pricing.total = price;
-                quoteData.pricing.materials.total = Math.round(price * 0.4); // Estimate 40% materials
-                quoteData.pricing.labor.total = Math.round(price * 0.6); // Estimate 60% labor
+                currentPricing.total = price;
+                if (!currentPricing.materials) currentPricing.materials = {};
+                currentPricing.materials.total = Math.round(price * 0.4); // Estimate 40% materials
+                if (!currentPricing.labor) currentPricing.labor = {};
+                currentPricing.labor.total = Math.round(price * 0.6); // Estimate 60% labor
+                quoteData.pricing = currentPricing;
               }
             }
           }

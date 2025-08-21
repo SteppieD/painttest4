@@ -19,7 +19,8 @@ import {
   Globe,
   RefreshCw,
   TrendingUp,
-  X
+  X,
+  Sparkles
 } from 'lucide-react'
 
 export const metadata = {
