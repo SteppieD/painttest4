@@ -37,8 +37,15 @@ export async function GET(request: NextRequest) {
     // Get quotes with custom line items
     const quotesWithCustomItems = quotes.filter((q: Quote) => {
       try {
-        const roomData = q.room_data ? JSON.parse(q.room_data) : null
-        return roomData && roomData.customLineItems && roomData.customLineItems.length > 0
+        // Check if custom line items exist in measurements or pricing
+        const measurements = q.measurements as Record<string, any>
+        const pricing = q.pricing as Record<string, any>
+        
+        // Check for custom line items in various possible locations
+        const hasCustomInMeasurements = measurements?.customLineItems?.length > 0
+        const hasCustomInPricing = pricing?.customLineItems?.length > 0
+        
+        return hasCustomInMeasurements || hasCustomInPricing
       } catch {
         return false
       }
