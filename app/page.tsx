@@ -120,7 +120,7 @@ export default function Home() {
             </h1>
             
             <p className="text-xl text-gray-50 mb-8 max-w-2xl mx-auto">
-              While your competitors take 3-6 hours to create quotes, you{'''}ll deliver professional estimates in 10-15 minutes. 
+              While your competitors take 3-6 hours to create quotes, you&apos;ll deliver professional estimates in 10-15 minutes. 
               <span className="text-white font-semibold"> Win 40-60% more jobs</span> with speed and professionalism.
             </p>
 
@@ -361,7 +361,7 @@ export default function Home() {
                   <Smartphone className="h-6 w-6 text-purple-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Quote On-Site</h3>
-                <p className="text-gray-50">Mobile-first design lets you create and deliver quotes before leaving the customer{'''}s property</p>
+                <p className="text-gray-50">Mobile-first design lets you create and deliver quotes before leaving the customer&apos;s property</p>
             </div>
 
             <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-green-500/50 transition-all p-6">
@@ -377,7 +377,7 @@ export default function Home() {
                   <Clock className="h-6 w-6 text-orange-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Beat the 24hr Window</h3>
-                <p className="text-gray-50">Respond to leads while they{'''}re hot - quote delivery in minutes, not days</p>
+                <p className="text-gray-50">Respond to leads while they&apos;re hot - quote delivery in minutes, not days</p>
             </div>
 
             <div className="bg-gray-950/90 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg group hover:border-yellow-500/50 transition-all p-6">
@@ -472,7 +472,7 @@ export default function Home() {
                 </div>
                 <p className="text-white">Additional revenue with PaintQuote Pro</p>
                 <p className="text-gray-200 text-base mt-2">
-                  That{'''}s a 283x ROI on our $79/month Pro plan
+                  That&apos;s a 283x ROI on our $79/month Pro plan
                 </p>
               </div>
           </div>

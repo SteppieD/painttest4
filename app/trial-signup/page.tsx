@@ -195,7 +195,7 @@ export default function TrialSignupPage() {
             </div>
 
             <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
-              <p className="text-base font-medium text-white">What{'''}s included:</p>
+              <p className="text-base font-medium text-white">What&apos;s included:</p>
               <ul className="space-y-2 text-base text-gray-100">
                 <li className="flex items-center">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mr-2" />
