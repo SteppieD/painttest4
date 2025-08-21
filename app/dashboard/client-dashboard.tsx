@@ -166,7 +166,7 @@ export function ClientDashboard() {
     },
     {
       title: 'Win Rate',
-      value: dashboardData.totalQuotes > 0 ? `${dashboardData.acceptanceRate}%` : 'Coming Soon',
+      value: dashboardData.totalQuotes > 0 ? `${dashboardData.acceptanceRate}%` : '0%',
       change: dashboardData.totalQuotes > 0 ? '+5%' : '',
       icon: Percent,
       color: 'from-emerald-400 to-green-400',

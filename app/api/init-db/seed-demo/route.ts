@@ -3,6 +3,14 @@ import { db } from '@/lib/database/adapter';
 
 export async function GET() {
   try {
+    // Only allow in development environment
+    if (process.env.NODE_ENV === 'production') {
+      return NextResponse.json({
+        success: false,
+        error: 'Demo seeding is disabled in production'
+      }, { status: 403 });
+    }
+    
     console.log('Creating demo companies...');
     
     const demoCompanies = [

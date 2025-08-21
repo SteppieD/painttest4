@@ -3,6 +3,14 @@ import { getDb, Quote } from '@/lib/database/adapter'
 
 export async function GET() {
   try {
+    // Only allow in development environment
+    if (process.env.NODE_ENV === 'production') {
+      return NextResponse.json({
+        success: false,
+        error: 'Sample data creation is disabled in production'
+      }, { status: 403 });
+    }
+    
     const db = getDb()
     
     // Create sample quotes for testing
