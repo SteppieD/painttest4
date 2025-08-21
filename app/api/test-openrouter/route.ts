@@ -21,9 +21,9 @@ export async function GET() {
     const modelTests = [
       'anthropic/claude-3.5-sonnet-20241022',  // Latest Claude 3.5 Sonnet
       'anthropic/claude-3.5-sonnet',  // Claude 3.5 Sonnet (alternate)
-      'anthropic/claude-3-opus-20240229',  // Claude 3 Opus
-      'anthropic/claude-3-sonnet-20240229',  // Claude 3 Sonnet
-      'openai/gpt-4-turbo-preview'  // GPT-4 Turbo fallback
+      'openai/gpt-4-turbo-preview',  // GPT-4 Turbo
+      'openai/gpt-3.5-turbo',  // GPT-3.5 Turbo (widely available)
+      'meta-llama/llama-3-70b-instruct'  // Llama 3 70B (open source alternative)
     ];
     
     let workingModel = null;
