@@ -8,7 +8,7 @@ import { SupabaseAdapterFixed } from '@/lib/database/supabase-adapter-fixed';
 export interface N8NWebhookPayload {
   workflowId: string;
   eventType: string;
-  data: any;
+  data: Record<string, unknown>;
   metadata?: {
     companyId?: number;
     userId?: string;
@@ -260,7 +260,7 @@ export class N8NIntegrationService {
   private async updateWorkflowStatus(
     payload: N8NWebhookPayload,
     status: string,
-    error?: any
+    error?: Error | string | Record<string, unknown>
   ): Promise<void> {
     try {
       const { error: dbError } = await this.db.getClient()
@@ -289,7 +289,7 @@ export class N8NIntegrationService {
   async testConnection(): Promise<{
     connected: boolean;
     message: string;
-    details?: any;
+    details?: Record<string, unknown>;
   }> {
     if (!this.isConfigured()) {
       return {

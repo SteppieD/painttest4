@@ -11,7 +11,7 @@ import { achievements as achievementDefinitions } from '@/components/achievement
 
 export default function AchievementsPage() {
   const [checking, setChecking] = useState(false)
-  const [checkResult, setCheckResult] = useState<any>(null)
+  const [checkResult, setCheckResult] = useState<{ achievements: { id: string; name: string; description: string; points: number }[] } | null>(null)
   const { achievements, totalPoints, unlockAchievement } = useAchievements()
   const companyData = useCompanyAuth()
 
@@ -36,7 +36,7 @@ export default function AchievementsPage() {
       
       // Automatically unlock achievements that should be unlocked
       if (data.achievements) {
-        data.achievements.forEach((achievement: any) => {
+        data.achievements.forEach((achievement: { id: string; name: string; description: string; points: number }) => {
           const achDef = achievementDefinitions[achievement.id]
           if (achDef) {
             unlockAchievement(achievement.id, achievement.points)
@@ -134,7 +134,7 @@ export default function AchievementsPage() {
                     <div className="mt-3">
                       <p className="font-semibold mb-1">Achievements Unlocked:</p>
                       <ul className="space-y-1">
-                        {checkResult.achievements.map((ach: any) => (
+                        {checkResult.achievements.map((ach: { id: string; name: string; description: string; points: number }) => (
                           <li key={ach.id} className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-400" />
                             <span>{ach.name} (+{ach.points} XP)</span>

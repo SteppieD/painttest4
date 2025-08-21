@@ -1,5 +1,5 @@
 import { achievements } from './achievements'
-import { getDatabase } from '@/lib/database/adapter'
+import { getDatabase, Quote } from '@/lib/database/adapter'
 
 interface AchievementProgress {
   companyId: number
@@ -77,8 +77,8 @@ class AchievementService {
   async checkQuoteCreationAchievements(
     companyId: number,
     quoteData: {
-      customLineItems?: any[]
-      rooms?: any[]
+      customLineItems?: { name: string; cost: number }[]
+      rooms?: { name: string; size: number }[]
       totalCost?: number
       customerName?: string
     },
@@ -96,7 +96,7 @@ class AchievementService {
     // Track unique customers
     const db = await getDatabase()
     const quotes = await db.getQuotes(companyId)
-    const uniqueCustomers = new Set(quotes.map((q: any) => q.customer_name?.toLowerCase())).size
+    const uniqueCustomers = new Set(quotes.map((q: Quote) => q.customer_name?.toLowerCase())).size
     progress.statistics.totalCustomers = uniqueCustomers
     
     // Update average creation time

@@ -253,7 +253,7 @@ export default function OnboardingPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Welcome to PaintQuote Pro! 🎨</h1>
-          <p className="text-gray-200">Let{'s'} get your account set up in just a few minutes</p>
+          <p className="text-gray-200">Let{'''}s get your account set up in just a few minutes</p>
         </div>
 
 
@@ -338,7 +338,7 @@ export default function OnboardingPage() {
           {currentStep === 2 && (
             <>
               <div className="mb-6">
-                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Tax & Location</h3>
+                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">Tax &amp; Location</h3>
                 <p className="text-base text-gray-200 mt-1.5">
                   Set up your local tax rate and service area
                 </p>
@@ -437,7 +437,7 @@ export default function OnboardingPage() {
                     placeholder="500"
                   />
                   <p className="text-base text-gray-200 mt-1">
-                    Smallest job you{'ll'} accept
+                    Smallest job you{'''}ll accept
                   </p>
                 </div>
               </div>
@@ -447,9 +447,9 @@ export default function OnboardingPage() {
           {currentStep === 4 && (
             <>
               <div className="mb-6">
-                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">You{'re'} All Set! 🎉</h3>
+                <h3 className="text-2xl font-semibold leading-none tracking-tight text-white">You{'''}re All Set! 🎉</h3>
                 <p className="text-base text-gray-200 mt-1.5">
-                  Here{'s'} what you can do with PaintQuote Pro
+                  Here{'''}s what you can do with PaintQuote Pro
                 </p>
               </div>
               <div className="space-y-6">

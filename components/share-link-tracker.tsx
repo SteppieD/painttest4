@@ -1,11 +1,31 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
 
 export function ShareLinkTracker() {
   const searchParams = useSearchParams();
+
+  const trackShareVisit = useCallback(async (shareCode: string, platform: string) => {
+    try {
+      // Track visit in analytics
+      if (typeof window !== 'undefined' && window.dataLayer) {
+        window.dataLayer.push({
+          event: 'share_link_visit',
+          share_code: shareCode,
+          platform: platform
+        });
+      }
+
+      // In production, this would also:
+      // 1. Send tracking data to backend
+      // 2. Update share statistics
+      // 3. Potentially trigger verification for the sharer
+    } catch (error) {
+      console.error('Error tracking share visit:', error);
+    }
+  }, []);
 
   useEffect(() => {
     const ref = searchParams.get('ref');
@@ -30,27 +50,8 @@ export function ShareLinkTracker() {
         description: 'You were referred by a fellow contractor. Start your free trial to create professional quotes in minutes!',
       });
     }
-  }, [searchParams]);
+  }, [searchParams, trackShareVisit]);
 
-  const trackShareVisit = async (shareCode: string, platform: string) => {
-    try {
-      // Track visit in analytics
-      if (typeof window !== 'undefined' && window.dataLayer) {
-        window.dataLayer.push({
-          event: 'share_link_visit',
-          share_code: shareCode,
-          platform: platform
-        });
-      }
-
-      // In production, this would also:
-      // 1. Send tracking data to backend
-      // 2. Update share statistics
-      // 3. Potentially trigger verification for the sharer
-    } catch (error) {
-      console.error('Error tracking share visit:', error);
-    }
-  };
 
   return null;
 }

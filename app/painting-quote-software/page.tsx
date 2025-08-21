@@ -257,7 +257,7 @@ export default function PaintingQuoteSoftwarePage() {
                           </li>
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
-                            <span>Auto-calculates materials & labor</span>
+                            <span>Auto-calculates materials &amp; labor</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
@@ -311,7 +311,7 @@ export default function PaintingQuoteSoftwarePage() {
                           </li>
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
-                            <span>Take & attach photos</span>
+                            <span>Take &amp; attach photos</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
@@ -338,7 +338,7 @@ export default function PaintingQuoteSoftwarePage() {
                           </li>
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
-                            <span>Customizable terms & conditions</span>
+                            <span>Customizable terms &amp; conditions</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5" />
@@ -490,9 +490,9 @@ export default function PaintingQuoteSoftwarePage() {
                   <ul className="space-y-2 text-gray-100 mb-6">
                     <li>• Single rooms to whole houses</li>
                     <li>• Walls, ceilings, trim, doors</li>
-                    <li>• Cabinet painting & refinishing</li>
-                    <li>• Accent walls & special finishes</li>
-                    <li>• Stairwells & high ceilings</li>
+                    <li>• Cabinet painting &amp; refinishing</li>
+                    <li>• Accent walls &amp; special finishes</li>
+                    <li>• Stairwells &amp; high ceilings</li>
                   </ul>
                   <Link href="/interior-painting-quote-calculator" className="text-blue-400 hover:text-blue-300 inline-flex items-center gap-2">
                     Try Interior Calculator
@@ -510,8 +510,8 @@ export default function PaintingQuoteSoftwarePage() {
                   </div>
                   <ul className="space-y-2 text-gray-100 mb-6">
                     <li>• House siding (all types)</li>
-                    <li>• Decks & fences</li>
-                    <li>• Garage doors & shutters</li>
+                    <li>• Decks &amp; fences</li>
+                    <li>• Garage doors &amp; shutters</li>
                     <li>• Power washing included</li>
                     <li>• Weather-resistant coatings</li>
                   </ul>
@@ -532,7 +532,7 @@ export default function PaintingQuoteSoftwarePage() {
                   <ul className="space-y-2 text-gray-100 mb-6">
                     <li>• Office buildings</li>
                     <li>• Retail spaces</li>
-                    <li>• Apartments & HOAs</li>
+                    <li>• Apartments &amp; HOAs</li>
                     <li>• Industrial coatings</li>
                     <li>• Epoxy floor systems</li>
                   </ul>
@@ -676,7 +676,7 @@ export default function PaintingQuoteSoftwarePage() {
                       ))}
                     </div>
                     <p className="text-gray-100 mb-6">
-                      {"This painting quote app changed my business. I"}{''}m responding to leads in 15 minutes instead of 2 days. My close rate went from 25% to 45%!{""}
+                      This painting quote app changed my business. I{'''}m responding to leads in 15 minutes instead of 2 days. My close rate went from 25% to 45%!
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500"></div>
@@ -696,7 +696,7 @@ export default function PaintingQuoteSoftwarePage() {
                       ))}
                     </div>
                     <p className="text-gray-100 mb-6">
-                      {"The painting calculator is spot-on accurate. No more underquoting jobs. I"}{''}ve increased my profit margins by 20% just by having better estimates.{""}
+                      The painting calculator is spot-on accurate. No more underquoting jobs. I{'''}ve increased my profit margins by 20% just by having better estimates.
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-500"></div>

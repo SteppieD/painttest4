@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -44,9 +44,9 @@ export default function QuoteDetailPage({ params }: { params: { id: string } }) 
 
   useEffect(() => {
     fetchQuote()
-  }, [params.id])
+  }, [params.id, fetchQuote])
 
-  const fetchQuote = async () => {
+  const fetchQuote = useCallback(async () => {
     try {
       // Get company data from localStorage for authentication
       const companyData = localStorage.getItem('paintquote_company')
@@ -85,7 +85,7 @@ export default function QuoteDetailPage({ params }: { params: { id: string } }) 
     } finally {
       setLoading(false)
     }
-  }
+  }, [params.id, router])
 
   const copyToClipboard = () => {
     if (!quote) return

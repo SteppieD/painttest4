@@ -425,7 +425,7 @@ export function ClientDashboard() {
           
           <div className="space-y-3">
             {dashboardData.recentQuotes.length > 0 ? (
-              dashboardData.recentQuotes.map((quote: any) => (
+              dashboardData.recentQuotes.map((quote: { id?: number; quote_id: string; customer_name: string; status: string; total_cost: number; created_at: string }) => (
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}

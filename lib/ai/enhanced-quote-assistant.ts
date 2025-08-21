@@ -108,7 +108,7 @@ export class EnhancedQuoteAssistant {
   /**
    * Parse quote information from conversation with enhanced validation
    */
-  async parseQuoteInformation(conversation: string, companyId: number): Promise<any> {
+  async parseQuoteInformation(conversation: string, companyId: number): Promise<Record<string, unknown>> {
     console.log('[ENHANCED-QUOTE-ASSISTANT] Parsing quote information with company validation');
     
     // Get company settings for validation
@@ -202,7 +202,7 @@ Use the company's paint products when available. Apply appropriate quality level
   async generateEnhancedQuote(
     context: EnhancedQuoteContext,
     conversation: string
-  ): Promise<any> {
+  ): Promise<Record<string, unknown>> {
     console.log('[ENHANCED-QUOTE-ASSISTANT] Generating enhanced quote for company:', context.companyId);
     
     try {

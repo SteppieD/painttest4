@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { FileText, DollarSign, Clock, CheckCircle, XCircle, Send, Plus } from 'lucide-react'
+import { FileText, DollarSign, Clock, CheckCircle, Plus } from 'lucide-react'
 import { getCompanyFromLocalStorage } from '@/lib/auth/simple-auth'
 import { cn } from '@/lib/utils'
 interface Quote {
@@ -40,9 +40,9 @@ export default function QuotesPage() {
       return
     }
     fetchQuotes(company)
-  }, [router])
+  }, [router, fetchQuotes])
 
-  const fetchQuotes = async (company: { id: number; access_code: string }) => {
+  const fetchQuotes = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch('/api/quotes', {
         headers: {
@@ -74,7 +74,7 @@ export default function QuotesPage() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [])
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {

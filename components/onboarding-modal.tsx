@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Dialog,
@@ -43,11 +43,11 @@ export function OnboardingModal({ isOpen, onClose, companyData }: OnboardingModa
     setShowModal(isOpen);
   }, [isOpen]);
 
-  const handleSetupNow = () => {
+  const handleSetupNow = useCallback(() => {
     router.push('/onboarding/chat');
-  };
+  }, [router]);
 
-  const handleSetupLater = () => {
+  const handleSetupLater = useCallback(() => {
     // Update local storage to mark that user skipped onboarding
     const stored = localStorage.getItem('paintquote_company');
     if (stored) {
@@ -58,7 +58,7 @@ export function OnboardingModal({ isOpen, onClose, companyData }: OnboardingModa
       }));
     }
     onClose();
-  };
+  }, [onClose]);
 
   return (
     <Dialog open={showModal} onOpenChange={(open) => !open && handleSetupLater()}>

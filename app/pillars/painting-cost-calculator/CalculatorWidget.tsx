@@ -11,28 +11,17 @@ import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import { 
   Calculator, 
-  Home, 
-  Paintbrush, 
-  DollarSign,
-  CheckCircle,
-  AlertCircle,
-  Download,
-  Share2,
-  Printer,
-  Save,
-  TrendingUp,
-  Info,
+  Home,
   ChevronDown,
   ChevronUp,
   Plus,
   Minus,
-  Building,
   Droplets,
   Clock,
-  Users,
   FileText,
-  BarChart,
-  Sparkles
+  Share2,
+  Printer,
+  Save
 } from 'lucide-react'
 
 interface Room {
@@ -251,7 +240,7 @@ export default function CalculatorWidget() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs value={calculatorType} onValueChange={(v) => setCalculatorType(v as any)}>
+        <Tabs value={calculatorType} onValueChange={(v) => setCalculatorType(v as 'quick' | 'detailed' | 'commercial')}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="quick">Quick Estimate</TabsTrigger>
             <TabsTrigger value="detailed">Room-by-Room</TabsTrigger>

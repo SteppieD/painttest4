@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     const settings = await request.json();
     
     // Update company settings
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
     
     if (settings.companyName) updateData.name = settings.companyName;
     if (settings.email) updateData.email = settings.email;

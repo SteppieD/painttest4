@@ -206,8 +206,8 @@ export async function requireTier(
  * Decorator for API routes to require specific tier
  */
 export function withTierAccess(requiredTier: SubscriptionTier) {
-  return function<T extends (...args: any[]) => any>(target: T): T {
-    return (async (request: NextRequest, ...args: any[]) => {
+  return function<T extends (request: NextRequest, ...args: unknown[]) => Promise<Response>>(target: T): T {
+    return (async (request: NextRequest, ...args: unknown[]) => {
       const tierCheck = await requireTier(request, requiredTier);
       
       if (!tierCheck.success) {
@@ -215,7 +215,7 @@ export function withTierAccess(requiredTier: SubscriptionTier) {
       }
       
       // Add companyId to request for convenience
-      (request as any).companyId = tierCheck.companyId;
+      (request as NextRequest & { companyId?: number }).companyId = tierCheck.companyId;
       
       return target(request, ...args);
     }) as T;

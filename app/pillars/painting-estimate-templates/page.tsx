@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Download, FileText, Calculator, Sparkles, CheckCircle, Home, Paintbrush, BarChart } from 'lucide-react'
+import { Download, FileText, Calculator, CheckCircle } from 'lucide-react'
 import ModernNavigation from '@/components/modern-navigation'
 
 export const metadata = {

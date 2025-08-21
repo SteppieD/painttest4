@@ -66,7 +66,7 @@ export async function PUT(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    let quoteData: any;
+    let quoteData: Record<string, unknown>;
     try {
       quoteData = await request.json();
     } catch (parseError) {

@@ -170,7 +170,7 @@ Calculator instance available with default settings.
     // 2. AI has generated a complete quote (determined it has all info needed)
     const isQuoteComplete = (userWantsReview && hasMinimumInfo) || aiGeneratedCompleteQuote;
     
-    let quoteData: any = null;
+    let quoteData: Record<string, unknown> | null = null;
     if (isQuoteComplete) {
       // Parse the conversation to extract quote data
       const fullConversation = conversationManager.getMessages()
@@ -178,7 +178,7 @@ Calculator instance available with default settings.
         .join('\n');
       
       try {
-        const parsedData: any = await quoteAssistant.parseQuoteInformation(fullConversation);
+        const parsedData: Record<string, unknown> = await quoteAssistant.parseQuoteInformation(fullConversation);
         console.log('[CHAT] Parsed quote data:', parsedData);
         
         // Set quoteData if we have enough information OR user expressed readiness

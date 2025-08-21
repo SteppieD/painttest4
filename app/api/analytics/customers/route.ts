@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth'
-import { getDb } from '@/lib/database/adapter'
+import { getDb, Quote } from '@/lib/database/adapter'
 
 // Force dynamic rendering since we use request headers for auth
 export const dynamic = 'force-dynamic';
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     
     // Extract unique customers from quotes
     const customersMap = new Map()
-    quotes.forEach((quote: any) => {
+    quotes.forEach((quote: Quote) => {
       if (!customersMap.has(quote.customer_email)) {
         customersMap.set(quote.customer_email, {
           id: quote.customer_email,
@@ -47,12 +47,12 @@ export async function GET(request: NextRequest) {
 
     // Calculate customer lifetime values
     const customerValues: { [key: string]: number } = {}
-    quotes?.forEach((quote: any) => {
+    quotes?.forEach((quote: Quote) => {
       if (quote.customer_email && quote.status === 'accepted') {
         if (!customerValues[quote.customer_email]) {
           customerValues[quote.customer_email] = 0
         }
-        customerValues[quote.customer_email] += quote.pricing?.total || quote.total || 0
+        customerValues[quote.customer_email] += (quote.pricing as { total?: number })?.total || quote.total_cost || 0
       }
     })
 
@@ -70,13 +70,13 @@ export async function GET(request: NextRequest) {
       .sort(([, a], [, b]) => b - a)
       .slice(0, 10)
       .map(([customerEmail, value]) => {
-        const customer = customers?.find((c: any) => c.email === customerEmail)
+        const customer = customers?.find(c => c.email === customerEmail)
         return {
           id: customerEmail,
           name: customer?.name || 'Unknown',
           email: customerEmail,
           totalValue: value,
-          quotesCount: quotes?.filter((q: any) => q.customer_email === customerEmail).length || 0
+          quotesCount: quotes?.filter((q: Quote) => q.customer_email === customerEmail).length || 0
         }
       })
 
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
     ]
     
     // Format top customers to match expected structure
-    const formattedTopCustomers = topCustomers.map((c: any) => ({
+    const formattedTopCustomers = topCustomers.map(c => ({
       id: c.id,
       name: c.name,
       email: c.email,
@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
     }))
     
     // Format customer growth to match expected structure
-    const formattedGrowth = monthlyGrowth.map((item: any) => ({
+    const formattedGrowth = monthlyGrowth.map(item => ({
       month: item.month,
       count: item.customers
     }))
@@ -126,7 +126,15 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function processMonthlyGrowth(customers: any[]) {
+interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  created_at: string;
+}
+
+function processMonthlyGrowth(customers: Customer[]) {
   const monthlyData: { [key: string]: number } = {}
   
   // Get last 12 months

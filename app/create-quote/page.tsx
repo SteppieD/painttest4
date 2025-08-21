@@ -64,18 +64,14 @@ function CreateQuoteContent() {
       router.push('/access-code');
       return;
     }
-    setCompanyData({
+    const companyInfo = {
       id: data.id,
       access_code: data.access_code,
       name: data.name,
       email: data.email
-    });
-    fetchQuotaInfo({
-      id: data.id,
-      access_code: data.access_code,
-      name: data.name,
-      email: data.email
-    });
+    };
+    setCompanyData(companyInfo);
+    fetchQuotaInfo(companyInfo);
   }, [router, fetchQuotaInfo]);
 
   if (!companyData) {
@@ -168,7 +164,7 @@ function CreateQuoteContent() {
                 <div className="flex-1">
                   <h3 className="font-medium text-white mb-1">Monthly Quote Limit Reached</h3>
                   <p className="text-base text-gray-100 mb-3">
-                    You{'ve'} used all {quotaInfo.limit} quotes in your free plan this month. 
+                    You{'''}ve used all {quotaInfo.limit} quotes in your free plan this month. 
                     Upgrade to Pro for unlimited quotes and advanced features.
                   </p>
                   <QuickUpgradeButton variant="cta" />
@@ -200,7 +196,7 @@ function CreateQuoteContent() {
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">Quote Limit Reached</h3>
                     <p className="text-gray-200 mb-6 max-w-md">
-                      You{'ve'} reached your monthly limit of {quotaInfo.limit} quotes. 
+                      You{'''}ve reached your monthly limit of {quotaInfo.limit} quotes. 
                       Upgrade to Pro for unlimited quotes and continue growing your business.
                     </p>
                     <QuickUpgradeButton variant="cta" />

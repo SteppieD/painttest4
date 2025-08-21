@@ -101,7 +101,14 @@ export interface EnhancedCalculatorOutput {
   };
   usedSettings: {
     companyName: string;
-    paintProducts: any[];
+    paintProducts: {
+      id: string;
+      product_name: string;
+      brand?: string;
+      use_case: string;
+      cost_per_gallon: number;
+      coverage_rate: number;
+    }[];
     laborRate: number;
     taxRate: number;
     overheadPercent: number;
@@ -287,11 +294,18 @@ export class EnhancedQuoteCalculator {
   private static calculateLaborWithAdjustments(
     input: EnhancedCalculatorInput, 
     settings: QuoteCalculatorSettings,
-    pricingConfig: any
+    pricingConfig: {
+      seasonalPricing: Record<string, number>;
+      locationPricing: Record<string, number>;
+      prepWorkMultipliers: Record<string, number>;
+      complexityMultipliers: Record<string, number>;
+      heightMultipliers: Record<string, number>;
+      rushJobMultiplier: number;
+    }
   ) {
     // Calculate base labor hours
     let baseHours = 0;
-    const hourBreakdown: any = {};
+    const hourBreakdown: Record<string, number> = {};
 
     if (input.surfaces.walls) {
       const hours = input.surfaces.walls / this.PRODUCTIVITY_RATES.walls;
@@ -358,12 +372,37 @@ export class EnhancedQuoteCalculator {
   private static buildBreakdown(
     input: EnhancedCalculatorInput,
     settings: QuoteCalculatorSettings,
-    materials: any,
-    labor: any
+    materials: {
+      paint: number;
+      primer: number;
+      supplies: number;
+      total: number;
+    },
+    labor: {
+      hours: number;
+      rate: number;
+      baseTotal: number;
+      adjustedTotal: number;
+      adjustments: Record<string, number>;
+      hourBreakdown: Record<string, number>;
+    }
   ) {
-    const breakdown: any = {
+    const breakdown: {
       labor: {
-        baseHours: labor.hours / Object.values(labor.adjustments).reduce((acc: number, mult: any) => acc * mult, 1),
+        baseHours: number;
+        adjustedHours: number;
+        breakdown: Record<string, number>;
+      };
+      walls?: { sqft: number; gallons: number; cost: number };
+      ceilings?: { sqft: number; gallons: number; cost: number };
+      trim?: { linearFt: number; cost: number };
+      doors?: { count: number; cost: number };
+      windows?: { count: number; cost: number };
+      primer?: { sqft: number; gallons: number; cost: number };
+      supplies?: { description: string; cost: number };
+    } = {
+      labor: {
+        baseHours: labor.hours / Object.values(labor.adjustments).reduce((acc: number, mult: number) => acc * mult, 1),
         adjustedHours: labor.hours,
         breakdown: labor.hourBreakdown
       }
@@ -429,7 +468,17 @@ export class EnhancedQuoteCalculator {
     return breakdown;
   }
 
-  private static calculateAdjustmentsSummary(pricingConfig: any, options: PricingOptions) {
+  private static calculateAdjustmentsSummary(
+    pricingConfig: {
+      seasonalPricing: Record<string, number>;
+      locationPricing: Record<string, number>;
+      prepWorkMultipliers: Record<string, number>;
+      complexityMultipliers: Record<string, number>;
+      heightMultipliers: Record<string, number>;
+      rushJobMultiplier: number;
+    }, 
+    options: PricingOptions
+  ) {
     const seasonal = pricingConfig.seasonalPricing[options.season || PricingConfigManager.getCurrentSeason()];
     const location = options.locationType ? pricingConfig.locationPricing[options.locationType] : 1;
     const prep = this.getPrepMultiplier(options.prepWork, pricingConfig);
@@ -468,17 +517,26 @@ export class EnhancedQuoteCalculator {
     }
   }
 
-  private static getPrepMultiplier(prepWork?: string, pricingConfig?: any): number {
+  private static getPrepMultiplier(
+    prepWork?: string, 
+    pricingConfig?: { prepWorkMultipliers: Record<string, number> }
+  ): number {
     if (!prepWork || !pricingConfig?.prepWorkMultipliers) return 1;
     return pricingConfig.prepWorkMultipliers[prepWork] || 1;
   }
 
-  private static getComplexityMultiplier(complexity?: string, pricingConfig?: any): number {
+  private static getComplexityMultiplier(
+    complexity?: string, 
+    pricingConfig?: { complexityMultipliers: Record<string, number> }
+  ): number {
     if (!complexity || !pricingConfig?.complexityMultipliers) return 1;
     return pricingConfig.complexityMultipliers[complexity] || 1;
   }
 
-  private static getHeightMultiplier(height?: string, pricingConfig?: any): number {
+  private static getHeightMultiplier(
+    height?: string, 
+    pricingConfig?: { heightMultipliers: Record<string, number> }
+  ): number {
     if (!height || !pricingConfig?.heightMultipliers) return 1;
     return pricingConfig.heightMultipliers[height] || 1;
   }
