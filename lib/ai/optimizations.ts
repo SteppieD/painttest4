@@ -43,17 +43,17 @@ export class ChatOptimizer {
 
 // Caching layer for frequently accessed data
 export class AICache {
-  private static cache = new Map<string, { data: any; expires: number }>();
+  private static cache = new Map<string, { data: unknown; expires: number }>();
   private static readonly TTL = 5 * 60 * 1000; // 5 minutes
   
-  static set(key: string, data: any): void {
+  static set(key: string, data: unknown): void {
     this.cache.set(key, {
       data,
       expires: Date.now() + this.TTL
     });
   }
   
-  static get(key: string): any | null {
+  static get(key: string): unknown | null {
     const item = this.cache.get(key);
     if (!item || Date.now() > item.expires) {
       this.cache.delete(key);

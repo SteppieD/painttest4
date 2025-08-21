@@ -3,10 +3,7 @@ import Link from 'next/link'
 import ModernNavigation from '@/components/modern-navigation'
 import { 
   Calculator, 
-  Palette, 
-  Clock, 
   Users, 
-  FileText, 
   BarChart3, 
   Shield, 
   Smartphone,

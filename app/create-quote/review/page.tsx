@@ -220,7 +220,7 @@ function QuoteReviewContent() {
           
           // Add any additional line items
           if (parsed.lineItems && parsed.lineItems.length > 0) {
-            parsed.lineItems.forEach((item: any) => {
+            parsed.lineItems.forEach((item: { total?: number; description?: string }) => {
               totalBaseCost += item.total || 0
             })
           }
@@ -372,7 +372,7 @@ function QuoteReviewContent() {
     const newData = { ...quoteData }
     
     // Navigate to nested field and update value
-    let current: any = newData
+    let current: Record<string, unknown> = newData
     for (let i = 0; i < fieldPath.length - 1; i++) {
       current = current[fieldPath[i]]
     }
@@ -804,7 +804,7 @@ function QuoteReviewContent() {
 
                   {/* Line Items Table */}
                   <div className="mb-8">
-                    <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wider mb-3">Services & Materials</h3> {/* Increased from text-sm */}
+                    <h3 className="text-base font-semibold text-gray-500 uppercase tracking-wider mb-3">Services &amp; Materials</h3> {/* Increased from text-sm */}
                     <div className="border rounded-lg overflow-hidden">
                       {/* Mobile responsive table - stacked layout on small screens */}
                       <div className="hidden md:block">
@@ -1143,7 +1143,7 @@ function QuoteReviewContent() {
                         
                         {visibilitySettings.showMarkup && quote.pricing?.markup > 0 && (
                           <div className="flex justify-between py-3 border-t"> {/* Increased padding */}
-                            <span className="text-gray-600 text-base">Overhead & Profit ({quote.pricing.markupPercentage}%)</span>
+                            <span className="text-gray-600 text-base">Overhead &amp; Profit ({quote.pricing.markupPercentage}%)</span>
                             <span className="font-medium text-base">${quote.pricing.markup.toFixed(2)}</span>
                           </div>
                         )}

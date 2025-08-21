@@ -4,16 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import ModernNavigation from '@/components/modern-navigation'
 import CalculatorWidget from './CalculatorWidget'
 import { 
-  Calculator, 
-  Home, 
-  Paintbrush, 
-  DollarSign,
+  Calculator,
   CheckCircle,
   AlertCircle,
-  Download,
-  Share2,
-  Printer,
-  Save,
   TrendingUp,
   Info,
   Sparkles,

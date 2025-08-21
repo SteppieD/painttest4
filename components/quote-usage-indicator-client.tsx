@@ -95,7 +95,7 @@ export function QuoteUsageIndicator() {
       {isAtLimit && (
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-red-400">
-            You{"'"}ve reached your monthly quote limit ({quotesLimit} quotes). Your limit resets next month.{' '}
+            You{'''}ve reached your monthly quote limit ({quotesLimit} quotes). Your limit resets next month.{' '}
             <Link href="/pricing" className="font-medium text-red-300 underline hover:no-underline">
               Upgrade to Pro
             </Link>{' '}
@@ -107,7 +107,7 @@ export function QuoteUsageIndicator() {
       {isNearLimit && !isAtLimit && (
         <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-yellow-400">
-            You{"'"}re approaching your quote limit. Only {quotesLimit - quotesUsed} quotes remaining this month.{' '}
+            You{'''}re approaching your quote limit. Only {quotesLimit - quotesUsed} quotes remaining this month.{' '}
             <Link href="/pricing" className="font-medium text-yellow-300 underline hover:no-underline">
               Upgrade to Pro
             </Link>{' '}
@@ -119,7 +119,7 @@ export function QuoteUsageIndicator() {
       {isApproachingLimit && !isNearLimit && !isAtLimit && (
         <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 backdrop-blur-sm">
           <p className="text-base text-blue-400">
-            You{"'"}ve used {quotesUsed} of {quotesLimit} quotes this month. Consider upgrading to{' '}
+            You{'''}ve used {quotesUsed} of {quotesLimit} quotes this month. Consider upgrading to{' '}
             <Link href="/pricing" className="font-medium text-blue-300 underline hover:no-underline">
               Professional plan
             </Link>{' '}

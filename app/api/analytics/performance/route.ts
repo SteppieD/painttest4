@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth'
-import { getDb } from '@/lib/database/adapter'
+import { getDb, Quote } from '@/lib/database/adapter'
 
 // Force dynamic rendering since we use request headers for auth
 export const dynamic = 'force-dynamic';
@@ -27,11 +27,11 @@ export async function GET(request: NextRequest) {
     const allQuotes = await db.getQuotesByCompanyId(validatedCompanyId)
     
     // Filter quotes by date
-    const recentQuotes = allQuotes?.filter((q: any) => 
+    const recentQuotes = allQuotes?.filter((q: Quote) => 
       new Date(q.created_at) >= thirtyDaysAgo
     ) || []
     
-    const quarterQuotes = allQuotes?.filter((q: any) => 
+    const quarterQuotes = allQuotes?.filter((q: Quote) => 
       new Date(q.created_at) >= ninetyDaysAgo
     ) || []
 
@@ -73,18 +73,18 @@ export async function GET(request: NextRequest) {
 
     // Calculate metrics
     const quotesCreated = recentQuotes?.length || 0
-    const quotesAccepted = recentQuotes?.filter((q: any) => q.status === 'accepted').length || 0
+    const quotesAccepted = recentQuotes?.filter((q: Quote) => q.status === 'accepted').length || 0
     const conversionRate = quotesCreated > 0 ? (quotesAccepted / quotesCreated) * 100 : 0
     
     // Calculate average time to close
-    const acceptedWithTime = recentQuotes?.filter((q: any) => 
+    const acceptedWithTime = recentQuotes?.filter((q: Quote) => 
       q.status === 'accepted' && q.updated_at
     ) || []
     
     const avgTimeToClose = acceptedWithTime.length > 0
-      ? acceptedWithTime.reduce((sum: number, q: any) => {
+      ? acceptedWithTime.reduce((sum: number, q: Quote) => {
           const created = new Date(q.created_at).getTime()
-          const updated = new Date(q.updated_at).getTime()
+          const updated = new Date(q.updated_at!).getTime()
           return sum + (updated - created) / (1000 * 60 * 60 * 24) // Convert to days
         }, 0) / acceptedWithTime.length
       : 0
@@ -93,17 +93,17 @@ export async function GET(request: NextRequest) {
     const weeklyData = processWeeklyData(quarterQuotes || [])
 
     // Calculate additional metrics
-    const quotesPending = recentQuotes?.filter((q: any) => q.status === 'pending').length || 0
-    const quotesDeclined = recentQuotes?.filter((q: any) => q.status === 'declined').length || 0
+    const quotesPending = recentQuotes?.filter((q: Quote) => q.status === 'pending').length || 0
+    const quotesDeclined = recentQuotes?.filter((q: Quote) => q.status === 'declined').length || 0
     
     // Calculate win rate change (compare to previous period)
-    const previousPeriodQuotes = allQuotes?.filter((q: any) => {
+    const previousPeriodQuotes = allQuotes?.filter((q: Quote) => {
       const quoteDate = new Date(q.created_at)
       return quoteDate >= new Date(Date.now() - 60 * 24 * 60 * 60 * 1000) && 
              quoteDate < thirtyDaysAgo
     }) || []
     
-    const previousAccepted = previousPeriodQuotes.filter((q: any) => q.status === 'accepted').length
+    const previousAccepted = previousPeriodQuotes.filter((q: Quote) => q.status === 'accepted').length
     const previousTotal = previousPeriodQuotes.length
     const previousWinRate = previousTotal > 0 ? (previousAccepted / previousTotal) * 100 : 0
     const winRateChange = conversionRate - previousWinRate
@@ -111,12 +111,12 @@ export async function GET(request: NextRequest) {
     // Group quotes by service type for conversion analysis
     const serviceTypes = ['Interior Residential', 'Exterior Residential', 'Commercial']
     const conversionByType = serviceTypes.map(type => {
-      const typeQuotes = recentQuotes?.filter((q: any) => 
-        q.service_type === type || 
-        (q.project_details && JSON.stringify(q.project_details).toLowerCase().includes(type.toLowerCase().split(' ')[0]))
+      const typeQuotes = recentQuotes?.filter((q: Quote) => 
+        q.project_type === type || 
+        (q.project_type && q.project_type.toLowerCase().includes(type.toLowerCase().split(' ')[0]))
       ) || []
       const sent = typeQuotes.length
-      const accepted = typeQuotes.filter((q: any) => q.status === 'accepted').length
+      const accepted = typeQuotes.filter((q: Quote) => q.status === 'accepted').length
       const rate = sent > 0 ? Math.round((accepted / sent) * 100) : 0
       
       return { type, sent, accepted, rate }
@@ -150,7 +150,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function processWeeklyData(quotes: any[]) {
+function processWeeklyData(quotes: Quote[]) {
   const weeklyQuotes: { [key: string]: { created: number, accepted: number } } = {}
   
   // Get last 12 weeks
@@ -192,7 +192,7 @@ function processWeeklyData(quotes: any[]) {
   }
 }
 
-function processMonthlyTrend(quotes: any[]) {
+function processMonthlyTrend(quotes: Quote[]) {
   const monthlyData: { [key: string]: { created: number, accepted: number } } = {}
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   
@@ -225,11 +225,11 @@ function processMonthlyTrend(quotes: any[]) {
   }))
 }
 
-function calculateTopServices(quotes: any[]) {
+function calculateTopServices(quotes: Quote[]) {
   const serviceData: { [key: string]: { total: number, accepted: number, revenue: number } } = {}
   
   quotes.forEach(quote => {
-    const service = quote.service_type || 'General Painting'
+    const service = quote.project_type || 'General Painting'
     if (!serviceData[service]) {
       serviceData[service] = { total: 0, accepted: 0, revenue: 0 }
     }
@@ -237,7 +237,7 @@ function calculateTopServices(quotes: any[]) {
     serviceData[service].total++
     if (quote.status === 'accepted') {
       serviceData[service].accepted++
-      serviceData[service].revenue += quote.pricing?.total || 0
+      serviceData[service].revenue += (quote.pricing as { total?: number })?.total || quote.total_cost || 0
     }
   })
   
@@ -252,7 +252,7 @@ function calculateTopServices(quotes: any[]) {
     .slice(0, 3)
 }
 
-function calculateLossReasons(quotes: any[]) {
+function calculateLossReasons(quotes: Quote[]) {
   const declinedQuotes = quotes.filter(q => q.status === 'declined')
   const total = declinedQuotes.length
   

@@ -10,15 +10,11 @@ import {
   FileText, 
   Calculator,
   Building2,
-  Briefcase,
   Award,
   Shield,
-  Clock,
   Target,
   BarChart3,
-  Lightbulb,
-  Rocket,
-  BookOpen
+  Rocket
 } from 'lucide-react'
 import ModernNavigation from '@/components/modern-navigation'
 

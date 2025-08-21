@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { Quote } from '@/lib/database/adapter'
 
 // Force dynamic rendering since we use authentication
 export const dynamic = 'force-dynamic';
@@ -86,7 +87,7 @@ export async function GET() {
   }
 }
 
-function processTimelineData(quotes: any[]) {
+function processTimelineData(quotes: Quote[]) {
   const monthlyData: { [key: string]: { started: number, completed: number } } = {}
   
   // Initialize last 6 months
@@ -124,7 +125,7 @@ function processTimelineData(quotes: any[]) {
     }))
 }
 
-function processProjectTypes(quotes: any[]) {
+function processProjectTypes(quotes: Quote[]) {
   const types: { [key: string]: number } = {
     'Interior': 0,
     'Exterior': 0,
@@ -138,7 +139,7 @@ function processProjectTypes(quotes: any[]) {
     const lineItems = quote.line_items || []
     let categorized = false
     
-    lineItems.forEach((item: any) => {
+    lineItems.forEach((item: { description?: string; quantity?: number; rate?: number; total?: number }) => {
       const desc = (item.description || '').toLowerCase()
       if (desc.includes('interior')) {
         types['Interior']++

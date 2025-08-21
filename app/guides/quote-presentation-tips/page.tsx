@@ -497,7 +497,7 @@ export default function QuotePresentationTipsGuide() {
                     <li>• &quot;To protect your investment...&quot;</li>
                     <li>• &quot;The smart choice would be...&quot;</li>
                     <li>• {"\"When would you like to start?\""}                    </li>
-                    <li>• {"I"}{''}m confident we can...{""}</li>
+                    <li>• I{'''}m confident we can...</li>
                     <li>• &quot;You&apos;ll love how this looks...&quot;</li>
                   </ul>
                 </Card>
@@ -553,8 +553,8 @@ export default function QuotePresentationTipsGuide() {
                   <h3 className="text-lg font-semibold text-blue-400 mb-3">&quot;We need to get other quotes&quot;</h3>
                   <p className="text-gray-100 mb-3">Response framework:</p>
                   <ul className="space-y-2 text-gray-100">
-                    <li>1. {"That"}{''}s smart - you should compare. What will you be looking for in other quotes?{""}</li>
-                    <li>2. {"While you"}{''}re comparing, make sure they include [unique value you offer]{""}</li>
+                    <li>1. That{'''}s smart - you should compare. What will you be looking for in other quotes?</li>
+                    <li>2. While you{'''}re comparing, make sure they include [unique value you offer]</li>
                     <li>3. &quot;I can hold this price for 7 days. After that, material costs may change.&quot;</li>
                   </ul>
                 </Card>

@@ -8,38 +8,18 @@ import FeatureSelector from './FeatureSelector'
 import { 
   Calculator, 
   Clock, 
-  DollarSign, 
   FileText, 
-  Home, 
-  Paintbrush, 
-  TrendingUp, 
-  Users, 
   CheckCircle, 
-  ArrowRight, 
-  AlertCircle, 
-  Target, 
-  Sparkles, 
-  Download, 
   BarChart, 
   Shield, 
   Zap,
-  Star,
   Smartphone,
-  Cloud,
-  Settings,
-  X,
-  Check,
   Award,
-  Cpu,
   Database,
   Globe,
-  Lock,
-  Mail,
-  Phone,
   RefreshCw,
-  Search,
-  Timer,
-  Upload
+  TrendingUp,
+  X
 } from 'lucide-react'
 
 export const metadata = {
@@ -847,7 +827,7 @@ export default function PaintingEstimateSoftwarePage() {
   )
 }
 
-function Quote(props: any) {
+function Quote(props: React.ComponentProps<'svg'>) {
   return (
     <svg
       {...props}

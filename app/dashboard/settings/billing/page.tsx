@@ -37,7 +37,7 @@ interface UsageStats {
 
 export default function BillingPage() {
   const router = useRouter()
-  const [company, setCompany] = useState<any>(null)
+  const [company, setCompany] = useState<{ id: number; company_name: string; subscription_tier: string; monthly_quote_count: number; monthly_quote_limit: number } | null>(null)
   const [loading, setLoading] = useState(true)
   const [usage, setUsage] = useState<UsageStats | null>(null)
   const [processingUpgrade, setProcessingUpgrade] = useState(false)

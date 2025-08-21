@@ -34,7 +34,7 @@ export async function applyPricingMultipliers(
  */
 export async function calculateQuoteWithSettings(
   input: EnhancedCalculatorInput
-): Promise<any> {
+): Promise<Record<string, unknown>> {
   return EnhancedQuoteCalculator.calculate(input);
 }
 
@@ -334,7 +334,7 @@ export function clearSettingsCache(companyId?: number): void {
  */
 export async function validateQuoteInput(
   companyId: number,
-  input: any
+  input: Record<string, unknown>
 ): Promise<{
   isValid: boolean;
   errors: string[];

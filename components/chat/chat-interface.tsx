@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { MessageBubble } from './message-bubble';
 import { ChatInput } from './chat-input';
@@ -103,6 +103,8 @@ function ChatInterfaceCore({
     };
     
     checkFirstQuote();
+    // setMessages and setIsFirstQuote are state setters (stable)
+    // OnboardingAssistant is imported module (stable)
   }, []);
 
   // Listen for achievement events
@@ -190,10 +192,11 @@ function ChatInterfaceCore({
       // Set initial suggested replies
       setSuggestedReplies(['Interior residential', 'Exterior residential', 'Commercial space', 'Single room', 'Whole house', 'Office space']);
     }
-  }, [isDemo]);
+    // sendMessage is used in timeout, add as dependency
+  }, [isDemo, sendMessage]);
 
 
-  const sendMessage = async (content: string) => {
+  const sendMessage = useCallback(async (content: string) => {
     // Add user message
     const userMessage: Message = {
       role: 'user',
@@ -400,9 +403,9 @@ function ChatInterfaceCore({
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [companyId, isDemo, isFirstQuote, sessionId, quoteCreationInProgress, lastQuoteCreationTime, errorHandler, createQuote]);
 
-  const createQuote = async () => {
+  const createQuote = useCallback(async () => {
     // Prevent duplicate quote creation
     if (!quoteData || quoteCreationInProgress) {
       console.log('[CHAT] Quote creation blocked - no data or already in progress');
@@ -641,7 +644,7 @@ function ChatInterfaceCore({
       setIsLoading(false);
       setQuoteCreationInProgress(false);
     }
-  };
+  }, [quoteData, quoteCreationInProgress, companyId, isFirstQuote, messages, onQuoteCreated, router, startTime]);
 
   return (
     <div className="flex h-full flex-col bg-gray-900/50">

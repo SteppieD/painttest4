@@ -109,7 +109,7 @@ export const trackPagePerformance = () => {
 };
 
 // Track user engagement
-export const trackUserEngagement = (engagementType: 'scroll' | 'click' | 'form_submit', details?: any) => {
+export const trackUserEngagement = (engagementType: 'scroll' | 'click' | 'form_submit', details?: Record<string, unknown>) => {
   pushToDataLayer({
     event: 'user_engagement',
     engagement_type: engagementType,

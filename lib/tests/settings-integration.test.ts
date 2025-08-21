@@ -382,7 +382,7 @@ async function testPricingAdjustments(companyId: number, settings: Comprehensive
 /**
  * Performance benchmark test
  */
-export async function benchmarkSettingsIntegration(companyId: number, iterations: number = 10): Promise<any> {
+export async function benchmarkSettingsIntegration(companyId: number, iterations: number = 10): Promise<Record<string, unknown>> {
   console.log(`[BENCHMARK] Running performance benchmark with ${iterations} iterations...`);
   
   const results = {

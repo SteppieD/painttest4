@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { achievements } from '@/lib/gamification/achievements'
 import { calculateLevel, getLevelTitle } from '@/lib/gamification/achievements'
@@ -74,9 +74,9 @@ export function AchievementPopup() {
     return () => {
       window.removeEventListener('achievement-unlocked', eventHandler)
     }
-  }, [companyData?.id])
+  }, [companyData?.id, triggerCelebration])
 
-  const triggerCelebration = (achievementId: string) => {
+  const triggerCelebration = useCallback((achievementId: string) => {
     const achievement = achievements[achievementId]
     if (!achievement) return
     
@@ -132,12 +132,12 @@ export function AchievementPopup() {
         origin: { y: 0.6 }
       })
     }
-  }
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setCurrentAchievement(null)
     setLevelUp(null)
-  }
+  }, []);
 
   const achievement = currentAchievement ? achievements[currentAchievement] : null
   const Icon = achievement?.icon

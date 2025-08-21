@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getDb } from '@/lib/database/adapter'
+import { getDb, Quote } from '@/lib/database/adapter'
 
 export async function GET() {
   try {
@@ -150,12 +150,12 @@ export async function GET() {
     
     // Calculate summary stats
     const totalQuotes = createdQuotes.length
-    const acceptedQuotes = createdQuotes.filter((q: any) => q.status === 'accepted').length
+    const acceptedQuotes = createdQuotes.filter((q: Quote) => q.status === 'accepted').length
     const totalRevenue = createdQuotes
-      .filter((q: any) => q.status === 'accepted')
-      .reduce((sum: number, q: any) => sum + (q.pricing?.total || 0), 0)
+      .filter((q: Quote) => q.status === 'accepted')
+      .reduce((sum: number, q: Quote) => sum + ((q.pricing as { total?: number })?.total || q.total_cost || 0), 0)
     
-    const uniqueCustomers = new Set(createdQuotes.map((q: any) => q.customer_email)).size
+    const uniqueCustomers = new Set(createdQuotes.map((q: Quote) => q.customer_email)).size
     
     return NextResponse.json({
       success: true,
@@ -166,7 +166,7 @@ export async function GET() {
         acceptanceRate: totalQuotes > 0 ? Math.round((acceptedQuotes / totalQuotes) * 100) : 0,
         totalRevenue: Math.round(totalRevenue),
         uniqueCustomers,
-        quotes: createdQuotes.map((q: any) => ({
+        quotes: createdQuotes.map((q: Quote) => ({
           id: q.quote_id,
           customer: q.customer_name,
           amount: q.pricing?.total || 0,

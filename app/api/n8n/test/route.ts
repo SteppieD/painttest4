@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     const companyId = company.id;
 
     // Create test data based on workflow type
-    const defaultTestData: any = {
+    const defaultTestData: Record<string, unknown> = {
       payment_success: {
         companyId,
         amount: 99.99,

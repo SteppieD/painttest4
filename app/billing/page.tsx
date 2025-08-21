@@ -205,7 +205,7 @@ function BillingContent() {
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             </Link>
-            <h1 className="text-xl font-semibold">Billing & Subscription</h1>
+            <h1 className="text-xl font-semibold">Billing &amp; Subscription</h1>
           </div>
         </div>
       </header>

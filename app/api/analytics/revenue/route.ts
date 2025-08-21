@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth'
-import { getDb } from '@/lib/database/adapter'
+import { getDb, Quote } from '@/lib/database/adapter'
 
 // Force dynamic rendering since we use request headers for auth
 export const dynamic = 'force-dynamic';
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
     const allQuotes = await db.getQuotesByCompanyId(validatedCompanyId)
     
     // Filter quotes by status
-    const acceptedQuotes = allQuotes?.filter((q: any) => q.status === 'accepted') || []
+    const acceptedQuotes = allQuotes?.filter((q: Quote) => q.status === 'accepted') || []
     
     // If no accepted quotes, return demo data
     if (acceptedQuotes.length === 0) {
@@ -63,17 +63,17 @@ export async function GET(request: NextRequest) {
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
     
     // Filter quotes for monthly calculation
-    const recentQuotes = acceptedQuotes.filter((q: any) => 
+    const recentQuotes = acceptedQuotes.filter((q: Quote) => 
       new Date(q.created_at) >= thirtyDaysAgo
     )
     
     // Calculate totals
-    const totalRevenue = acceptedQuotes.reduce((sum: number, q: any) => 
-      sum + (q.pricing?.total || q.total || 0), 0
+    const totalRevenue = acceptedQuotes.reduce((sum: number, q: Quote) => 
+      sum + ((q.pricing as { total?: number })?.total || q.total_cost || 0), 0
     )
     
-    const monthlyRevenue = recentQuotes.reduce((sum: number, q: any) => 
-      sum + (q.pricing?.total || q.total || 0), 0
+    const monthlyRevenue = recentQuotes.reduce((sum: number, q: Quote) => 
+      sum + ((q.pricing as { total?: number })?.total || q.total_cost || 0), 0
     )
     
     // Calculate average quote value
@@ -82,8 +82,8 @@ export async function GET(request: NextRequest) {
       : 0
     
     // Calculate largest quote
-    const largestQuote = acceptedQuotes.reduce((max: number, q: any) => {
-      const quoteValue = q.pricing?.total || q.total || 0
+    const largestQuote = acceptedQuotes.reduce((max: number, q: Quote) => {
+      const quoteValue = (q.pricing as { total?: number })?.total || q.total_cost || 0
       return quoteValue > max ? quoteValue : max
     }, 0)
     
@@ -122,7 +122,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function processMonthlyRevenue(quotes: any[]) {
+function processMonthlyRevenue(quotes: Quote[]) {
   const monthlyRevenue: { [key: string]: number } = {}
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   
@@ -140,7 +140,7 @@ function processMonthlyRevenue(quotes: any[]) {
     const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
     
     if (monthKey in monthlyRevenue) {
-      monthlyRevenue[monthKey] += quote.pricing?.total || quote.total || 0
+      monthlyRevenue[monthKey] += (quote.pricing as { total?: number })?.total || quote.total_cost || 0
     }
   })
   
@@ -157,7 +157,7 @@ function processMonthlyRevenue(quotes: any[]) {
     })
 }
 
-function processRevenueByProjectType(quotes: any[], totalRevenue: number) {
+function processRevenueByProjectType(quotes: Quote[], totalRevenue: number) {
   const revenueByType: { [key: string]: number } = {}
   
   quotes.forEach(quote => {
@@ -165,7 +165,7 @@ function processRevenueByProjectType(quotes: any[], totalRevenue: number) {
     if (!revenueByType[type]) {
       revenueByType[type] = 0
     }
-    revenueByType[type] += quote.pricing?.total || quote.total || 0
+    revenueByType[type] += (quote.pricing as { total?: number })?.total || quote.total_cost || 0
   })
   
   return Object.entries(revenueByType)
@@ -177,12 +177,12 @@ function processRevenueByProjectType(quotes: any[], totalRevenue: number) {
     .sort((a, b) => b.revenue - a.revenue)
 }
 
-function processTopRevenueCustomers(quotes: any[]) {
+function processTopRevenueCustomers(quotes: Quote[]) {
   const customerRevenue: { [key: string]: { revenue: number; quotes: number } } = {}
   
   quotes.forEach(quote => {
     const customerName = quote.customer_name || 'Unknown Customer'
-    const quoteValue = quote.pricing?.total || quote.total || 0
+    const quoteValue = (quote.pricing as { total?: number })?.total || quote.total_cost || 0
     
     if (!customerRevenue[customerName]) {
       customerRevenue[customerName] = { revenue: 0, quotes: 0 }

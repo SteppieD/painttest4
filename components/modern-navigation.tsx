@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
 import MobileMenu from './mobile-menu'
@@ -11,13 +11,14 @@ function ModernNavigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const router = useRouter()
 
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 10)
+  }, []);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [handleScroll])
 
   return (
     <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${

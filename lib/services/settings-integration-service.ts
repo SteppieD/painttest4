@@ -226,10 +226,10 @@ export class SettingsIntegrationService {
    * Calculate complete quote with all settings and multipliers
    */
   static async calculateQuoteWithSettings(
-    quoteData: any,
+    quoteData: Record<string, unknown>,
     companyId: number,
     options: PricingOptions = {}
-  ): Promise<any> {
+  ): Promise<Record<string, unknown>> {
     const calculatorSettings = await this.getQuoteCalculatorSettings(companyId, options);
     
     // Import calculator here to avoid circular dependencies

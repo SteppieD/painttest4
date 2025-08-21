@@ -357,8 +357,8 @@ export class ConversationManager {
   }
 
   // Quick quote mode parser - handles comprehensive messages
-  parseQuickQuote(input: string): Record<string, any> | null {
-    const data: any = {
+  parseQuickQuote(input: string): Record<string, unknown> | null {
+    const data: Record<string, unknown> = {
       measurements: {},
       surfaces: [],
       paintProducts: {}
