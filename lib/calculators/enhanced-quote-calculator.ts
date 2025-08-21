@@ -168,7 +168,7 @@ export class EnhancedQuoteCalculator {
     const materialsResult = this.calculateMaterials(input, settings);
     
     // Calculate labor with all adjustments
-    const laborResult = this.calculateLaborWithAdjustments(input, settings, comprehensiveSettings.pricingConfig);
+    const laborResult = this.calculateLaborWithAdjustments(input, settings, comprehensiveSettings.pricingConfig as any);
     
     // Calculate totals
     const subtotal = materialsResult.total + laborResult.adjustedTotal;
@@ -186,7 +186,7 @@ export class EnhancedQuoteCalculator {
 
     // Calculate adjustment multipliers for transparency
     const adjustmentsSummary = this.calculateAdjustmentsSummary(
-      comprehensiveSettings.pricingConfig, 
+      comprehensiveSettings.pricingConfig as any, 
       pricingOptions
     );
 

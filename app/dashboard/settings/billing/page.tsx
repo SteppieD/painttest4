@@ -37,7 +37,7 @@ interface UsageStats {
 
 export default function BillingPage() {
   const router = useRouter()
-  const [company, setCompany] = useState<{ id: number; company_name: string; subscription_tier: string; monthly_quote_count: number; monthly_quote_limit: number } | null>(null)
+  const [company, setCompany] = useState<{ id: number; company_name: string; subscription_tier: string; monthly_quote_count: number; monthly_quote_limit: number; access_code: string } | null>(null)
   const [loading, setLoading] = useState(true)
   const [usage, setUsage] = useState<UsageStats | null>(null)
   const [processingUpgrade, setProcessingUpgrade] = useState(false)
@@ -48,7 +48,15 @@ export default function BillingPage() {
       router.push('/access-code')
       return
     }
-    setCompany(companyData)
+    // Transform companyData to match expected state type
+    setCompany({
+      id: companyData.id,
+      company_name: companyData.name,
+      subscription_tier: companyData.subscription_tier || 'free',
+      monthly_quote_count: 0, // Will be updated from fetchUsageStats
+      monthly_quote_limit: 5,  // Default for free tier
+      access_code: companyData.access_code
+    })
     fetchUsageStats()
   }, [router])
 

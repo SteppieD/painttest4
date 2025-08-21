@@ -35,7 +35,7 @@ export async function applyPricingMultipliers(
 export async function calculateQuoteWithSettings(
   input: EnhancedCalculatorInput
 ): Promise<Record<string, unknown>> {
-  return EnhancedQuoteCalculator.calculate(input);
+  return EnhancedQuoteCalculator.calculate(input) as unknown as Record<string, unknown>;
 }
 
 /**
@@ -347,16 +347,17 @@ export async function validateQuoteInput(
     const settings = await SettingsIntegrationService.getCompanySettings(companyId);
     
     // Check required fields
-    if (!input.surfaces || (!input.surfaces.walls && !input.surfaces.ceilings)) {
+    const surfaces = input.surfaces as any;
+    if (!surfaces || (!surfaces.walls && !surfaces.ceilings)) {
       errors.push('At least walls or ceilings must be specified');
     }
     
     // Check minimum values
-    if (input.surfaces.walls && input.surfaces.walls < 50) {
+    if (surfaces?.walls && surfaces.walls < 50) {
       warnings.push('Wall area seems small, please verify measurements');
     }
     
-    if (input.surfaces.ceilings && input.surfaces.ceilings < 50) {
+    if (surfaces?.ceilings && surfaces.ceilings < 50) {
       warnings.push('Ceiling area seems small, please verify measurements');
     }
     

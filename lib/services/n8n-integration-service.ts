@@ -203,7 +203,7 @@ export class N8NIntegrationService {
         return await this.sendWithRetry(url, payload, attempt + 1);
       }
       
-      await this.updateWorkflowStatus(payload, 'error', error);
+      await this.updateWorkflowStatus(payload, 'error', error as Error);
       return false;
     }
   }
@@ -324,13 +324,13 @@ export class N8NIntegrationService {
       return {
         connected: false,
         message: `N8N connection failed with status ${response.status}`,
-        details: await response.text()
+        details: { error: await response.text() }
       };
     } catch (error) {
       return {
         connected: false,
         message: 'Failed to connect to N8N',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: { error: error instanceof Error ? error.message : 'Unknown error' }
       };
     }
   }

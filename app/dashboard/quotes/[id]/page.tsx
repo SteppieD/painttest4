@@ -42,10 +42,6 @@ export default function QuoteDetailPage({ params }: { params: { id: string } }) 
   const [copied, setCopied] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    fetchQuote()
-  }, [params.id, fetchQuote])
-
   const fetchQuote = useCallback(async () => {
     try {
       // Get company data from localStorage for authentication
@@ -86,6 +82,10 @@ export default function QuoteDetailPage({ params }: { params: { id: string } }) 
       setLoading(false)
     }
   }, [params.id, router])
+
+  useEffect(() => {
+    fetchQuote()
+  }, [params.id, fetchQuote])
 
   const copyToClipboard = () => {
     if (!quote) return

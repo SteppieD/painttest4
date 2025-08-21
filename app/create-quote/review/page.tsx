@@ -374,7 +374,7 @@ function QuoteReviewContent() {
     // Navigate to nested field and update value
     let current: Record<string, unknown> = newData
     for (let i = 0; i < fieldPath.length - 1; i++) {
-      current = current[fieldPath[i]]
+      current = current[fieldPath[i]] as Record<string, unknown>
     }
     
     // Parse number values for numeric fields

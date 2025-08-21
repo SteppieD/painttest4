@@ -11,7 +11,18 @@ import { achievements as achievementDefinitions } from '@/components/achievement
 
 export default function AchievementsPage() {
   const [checking, setChecking] = useState(false)
-  const [checkResult, setCheckResult] = useState<{ achievements: { id: string; name: string; description: string; points: number }[] } | null>(null)
+  const [checkResult, setCheckResult] = useState<{ 
+    achievements?: { id: string; name: string; description: string; points: number }[]; 
+    error?: string;
+    message?: string;
+    stats?: {
+      totalQuotes: number;
+      acceptedQuotes: number;
+      quotesWithCustomItems: number;
+      earlyBirdQuotes: number;
+      totalPotentialPoints?: number;
+    }
+  } | null>(null)
   const { achievements, totalPoints, unlockAchievement } = useAchievements()
   const companyData = useCompanyAuth()
 
