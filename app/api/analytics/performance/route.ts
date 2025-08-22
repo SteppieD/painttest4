@@ -89,8 +89,8 @@ export async function GET(request: NextRequest) {
         }, 0) / acceptedWithTime.length
       : 0
 
-    // Process weekly data for charts
-    const weeklyData = processWeeklyData(quarterQuotes || [])
+    // Process weekly data for charts (reserved for future chart implementation)
+    const _weeklyData = processWeeklyData(quarterQuotes || [])
 
     // Calculate additional metrics
     const quotesPending = recentQuotes?.filter((q: Quote) => q.status === 'pending').length || 0

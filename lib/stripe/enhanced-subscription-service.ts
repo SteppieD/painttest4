@@ -8,6 +8,51 @@ import { n8nService } from '@/lib/services/n8n-integration-service';
 import { db } from '@/lib/database/adapter';
 import Stripe from 'stripe';
 
+interface CompanyWithStripe {
+  id: number;
+  company_name: string;
+  email?: string;
+  contact_email?: string;
+  stripe_customer_id?: string;
+}
+
+interface StripeInvoiceData {
+  id: string;
+  subscription?: string;
+  customer: string;
+  amount_paid: number;
+  amount_due: number;
+  currency: string;
+  number?: string;
+  hosted_invoice_url?: string;
+  next_payment_attempt?: number;
+  attempt_count?: number;
+  last_finalization_error?: {
+    message?: string;
+  };
+}
+
+interface StripeSubscriptionData {
+  id: string;
+  customer: string;
+  current_period_end: number;
+  trial_end?: number;
+  canceled_at?: number;
+  cancellation_details?: {
+    reason?: string;
+  };
+  items: {
+    data: Array<{
+      price: {
+        id: string;
+        recurring?: {
+          interval: string;
+        };
+      };
+    }>;
+  };
+}
+
 export class EnhancedSubscriptionService extends SubscriptionService {
   
   /**
@@ -71,24 +116,26 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
     const company = await db.getCompany(companyId);
     if (!company) return;
+    const companyWithStripe = company as CompanyWithStripe;
 
     // Get subscription details - invoice may have subscription info
-    const subscriptionId = (invoice as any).subscription as string | null;
+    const invoiceData = invoice as unknown as StripeInvoiceData;
+    const subscriptionId = invoiceData.subscription;
     const subscription = subscriptionId 
-      ? await this.stripe.subscriptions.retrieve(subscriptionId)
+      ? await this.stripe.subscriptions.retrieve(subscriptionId) as unknown as StripeSubscriptionData
       : null;
 
     await n8nService.triggerWorkflow('payment_success', {
       companyId,
-      amount: invoice.amount_paid / 100, // Convert from cents
-      currency: invoice.currency || 'usd',
-      invoiceNumber: invoice.number || `INV-${invoice.id}`,
-      invoiceUrl: invoice.hosted_invoice_url || undefined,
-      customerEmail: company.email || (company as any).contact_email || '',
+      amount: invoiceData.amount_paid / 100, // Convert from cents
+      currency: invoiceData.currency || 'usd',
+      invoiceNumber: invoiceData.number || `INV-${invoiceData.id}`,
+      invoiceUrl: invoiceData.hosted_invoice_url || undefined,
+      customerEmail: company.email || companyWithStripe.contact_email || '',
       customerName: company.company_name,
       subscriptionPlan: this.getPlanFromSubscription(subscription),
       nextBillingDate: subscription 
-        ? new Date((subscription as any).current_period_end * 1000)
+        ? new Date(subscription.current_period_end * 1000)
         : new Date()
     });
   }
@@ -102,22 +149,24 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
     const company = await db.getCompany(companyId);
     if (!company) return;
+    const companyWithStripe = company as CompanyWithStripe;
+    const invoiceData = invoice as unknown as StripeInvoiceData;
 
     // Calculate next retry date if applicable
     let nextRetryDate: Date | undefined;
-    if (invoice.next_payment_attempt) {
-      nextRetryDate = new Date(invoice.next_payment_attempt * 1000);
+    if (invoiceData.next_payment_attempt) {
+      nextRetryDate = new Date(invoiceData.next_payment_attempt * 1000);
     }
 
     await n8nService.triggerWorkflow('payment_failed', {
       companyId,
-      amount: invoice.amount_due / 100, // Convert from cents
-      currency: invoice.currency || 'usd',
-      invoiceNumber: invoice.number || `INV-${invoice.id}`,
-      customerEmail: company.email || (company as any).contact_email || '',
+      amount: invoiceData.amount_due / 100, // Convert from cents
+      currency: invoiceData.currency || 'usd',
+      invoiceNumber: invoiceData.number || `INV-${invoiceData.id}`,
+      customerEmail: company.email || companyWithStripe.contact_email || '',
       customerName: company.company_name,
       failureReason: this.getFailureReason(invoice),
-      attemptCount: invoice.attempt_count || 1,
+      attemptCount: invoiceData.attempt_count || 1,
       nextRetryDate
     });
   }
@@ -131,6 +180,8 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
     const company = await db.getCompany(companyId);
     if (!company) return;
+    const companyWithStripe = company as CompanyWithStripe;
+    const subscriptionData = subscription as unknown as StripeSubscriptionData;
 
     const plan = this.getPlanFromSubscription(subscription);
     const billingPeriod = this.getBillingPeriod(subscription);
@@ -139,10 +190,10 @@ export class EnhancedSubscriptionService extends SubscriptionService {
       companyId,
       plan,
       billingPeriod,
-      customerEmail: company.email || (company as any).contact_email || '',
+      customerEmail: company.email || companyWithStripe.contact_email || '',
       customerName: company.company_name,
-      trialEndsAt: subscription.trial_end 
-        ? new Date(subscription.trial_end * 1000)
+      trialEndsAt: subscriptionData.trial_end 
+        ? new Date(subscriptionData.trial_end * 1000)
         : undefined
     });
   }
@@ -156,6 +207,7 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
     const company = await db.getCompany(companyId);
     if (!company) return;
+    const companyWithStripe = company as CompanyWithStripe;
 
     // For updates, we'd need to track the previous plan
     // This would require storing subscription history
@@ -165,7 +217,7 @@ export class EnhancedSubscriptionService extends SubscriptionService {
       companyId,
       oldPlan: 'previous_plan', // You'd need to track this
       newPlan,
-      customerEmail: company.email || (company as any).contact_email || '',
+      customerEmail: company.email || companyWithStripe.contact_email || '',
       customerName: company.company_name,
       effectiveDate: new Date()
     });
@@ -180,18 +232,20 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
     const company = await db.getCompany(companyId);
     if (!company) return;
+    const companyWithStripe = company as CompanyWithStripe;
+    const subscriptionData = subscription as unknown as StripeSubscriptionData;
 
     const plan = this.getPlanFromSubscription(subscription);
 
     await n8nService.triggerWorkflow('subscription_cancelled', {
       companyId,
       plan,
-      customerEmail: company.email || (company as any).contact_email || '',
+      customerEmail: company.email || companyWithStripe.contact_email || '',
       customerName: company.company_name,
-      cancellationDate: subscription.canceled_at 
-        ? new Date(subscription.canceled_at * 1000)
+      cancellationDate: subscriptionData.canceled_at 
+        ? new Date(subscriptionData.canceled_at * 1000)
         : new Date(),
-      reason: (subscription.cancellation_details as any)?.reason
+      reason: subscriptionData.cancellation_details?.reason
     });
   }
 
@@ -208,13 +262,14 @@ export class EnhancedSubscriptionService extends SubscriptionService {
       if (percentageUsed >= 80 && percentageUsed < 100) {
         const company = await db.getCompany(companyId);
         if (!company) return;
+        const companyWithStripe = company as CompanyWithStripe;
 
         await n8nService.triggerWorkflow('usage_limit_warning', {
           companyId,
           currentUsage: stats.quotesThisMonth,
           limit: stats.quotesLimit,
           percentageUsed,
-          customerEmail: company.email || (company as any).contact_email || ''
+          customerEmail: company.email || companyWithStripe.contact_email || ''
         });
       }
     }
@@ -225,22 +280,25 @@ export class EnhancedSubscriptionService extends SubscriptionService {
   private getPlanFromSubscription(subscription: Stripe.Subscription | null): string {
     if (!subscription) return 'free';
     
-    const priceId = subscription.items.data[0]?.price.id;
+    const subscriptionData = subscription as unknown as StripeSubscriptionData;
+    const priceId = subscriptionData.items.data[0]?.price.id;
     if (!priceId) return 'free';
     
     return this.getPlanFromPriceId(priceId);
   }
 
   private getBillingPeriod(subscription: Stripe.Subscription): 'monthly' | 'yearly' {
-    const interval = subscription.items.data[0]?.price.recurring?.interval;
+    const subscriptionData = subscription as unknown as StripeSubscriptionData;
+    const interval = subscriptionData.items.data[0]?.price.recurring?.interval;
     return interval === 'year' ? 'yearly' : 'monthly';
   }
 
   private getFailureReason(invoice: Stripe.Invoice): string {
     // Extract failure reason from invoice
     // In Stripe v18, charge info is accessed differently
-    if (invoice.last_finalization_error) {
-      return invoice.last_finalization_error.message || 'Payment failed';
+    const invoiceData = invoice as unknown as StripeInvoiceData;
+    if (invoiceData.last_finalization_error) {
+      return invoiceData.last_finalization_error.message || 'Payment failed';
     }
     return 'Payment failed';
   }

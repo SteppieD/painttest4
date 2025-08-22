@@ -60,7 +60,7 @@ export default function TrialSignupPage() {
             <div className="text-center mb-6">
               <Mail className="w-12 h-12 text-blue-400 mx-auto mb-4" />
               <h1 className="text-2xl font-semibold leading-none tracking-tight text-white">Check Your Email!</h1>
-              <p className="text-base text-gray-100 mt-1.5">We{"'"}ve sent you a magic link to sign in</p>
+              <p className="text-base text-gray-100 mt-1.5">We&rsquo;ve sent you a magic link to sign in</p>
             </div>
             <div className="space-y-4">
               <div className="bg-gray-900/80 backdrop-filter backdrop-blur-md border border-white/20 rounded-lg border-blue-500/20 p-4">
@@ -75,7 +75,7 @@ export default function TrialSignupPage() {
                 </p>
               </div>
               <div className="text-center space-y-2">
-                <p className="text-base text-gray-200">Didn{"'"}t receive the email?</p>
+                <p className="text-base text-gray-200">Didn&rsquo;t receive the email?</p>
                 <Button
                   variant="outline"
                   size="default"
@@ -123,7 +123,7 @@ export default function TrialSignupPage() {
                 <span className="text-base text-blue-400">Secure Magic Link Signup</span>
               </div>
               <p className="text-base text-gray-200">
-                No passwords needed - we'll email you a secure login link
+                No passwords needed - we&rsquo;ll email you a secure login link
               </p>
             </div>
 
@@ -161,7 +161,7 @@ export default function TrialSignupPage() {
                     } as React.CSSProperties}
                   />
                   <p className="text-base text-gray-200">
-                    We'll send a secure login link to your email
+                    We&rsquo;ll send a secure login link to your email
                   </p>
                 </div>
 

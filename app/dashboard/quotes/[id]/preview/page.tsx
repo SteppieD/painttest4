@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -48,9 +48,9 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
 
   useEffect(() => {
     fetchQuote()
-  }, [params.id])
+  }, [params.id, fetchQuote])
 
-  const fetchQuote = async () => {
+  const fetchQuote = useCallback(async () => {
     try {
       const response = await fetch(`/api/quotes/${params.id}`)
       if (!response.ok) {
@@ -69,7 +69,7 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
     } finally {
       setLoading(false)
     }
-  }
+  }, [params.id])
 
   const handleEdit = () => {
     setEditing(true)

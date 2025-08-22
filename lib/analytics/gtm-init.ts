@@ -47,5 +47,5 @@ export const pushEcommerceEvent = (eventData: unknown) => {
   if (!isGTMEnabled()) return;
   
   window.dataLayer.push({ ecommerce: null }); // Clear previous ecommerce data
-  window.dataLayer.push(eventData as Record<string, any>);
+  window.dataLayer.push(eventData as Record<string, unknown>);
 };

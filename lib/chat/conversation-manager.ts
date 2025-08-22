@@ -206,7 +206,7 @@ export class ConversationManager {
         currentStep.options?.includes(item)
       );
       
-      if ((processedValue as any[]).length === 0) {
+      if ((processedValue as string[]).length === 0) {
         return {
           response: `Please select from: ${currentStep.options?.join(', ')}`,
           isComplete: false,
@@ -374,22 +374,22 @@ export class ConversationManager {
     
     // Extract linear feet
     const linearMatch = input.match(/(\d+)\s*(linear\s*)?feet/i);
-    if (linearMatch) (data.measurements as any).linearFeetWalls = parseFloat(linearMatch[1]);
+    const measurements = data.measurements as Record<string, number>;
+    if (linearMatch) measurements.linearFeetWalls = parseFloat(linearMatch[1]);
     
     // Extract ceiling height
     const ceilingMatch = input.match(/(\d+)\s*(feet|ft|')\s*(tall|high|ceiling)/i);
-    if (ceilingMatch) (data.measurements as any).ceilingHeight = parseFloat(ceilingMatch[1]);
+    if (ceilingMatch) measurements.ceilingHeight = parseFloat(ceilingMatch[1]);
     
     // Calculate wall sqft
-    const measurements = data.measurements as any;
     if (measurements.linearFeetWalls && measurements.ceilingHeight) {
       measurements.wallSqft = measurements.linearFeetWalls * measurements.ceilingHeight;
     }
     
     // Extract paint cost
     const costMatch = input.match(/\$(\d+)\s*(a|per)?\s*gallon/i);
+    const paintProducts = data.paintProducts as Record<string, Record<string, unknown>>;
     if (costMatch) {
-      const paintProducts = data.paintProducts as any;
       paintProducts.walls = paintProducts.walls || {};
       paintProducts.walls.costPerGallon = parseFloat(costMatch[1]);
     }
@@ -397,7 +397,6 @@ export class ConversationManager {
     // Extract coverage rate
     const coverageMatch = input.match(/(\d+)\s*square\s*feet\s*per\s*gallon/i);
     if (coverageMatch) {
-      const paintProducts = data.paintProducts as any;
       paintProducts.walls = paintProducts.walls || {};
       paintProducts.walls.coverageRate = parseFloat(coverageMatch[1]);
     }
@@ -405,13 +404,12 @@ export class ConversationManager {
     // Extract paint name (e.g., "eggshell sherwin williams")
     const paintMatch = input.match(/(eggshell|flat|satin|semi-gloss|gloss)\s*([^.,]+)/i);
     if (paintMatch) {
-      const paintProducts = data.paintProducts as any;
       paintProducts.walls = paintProducts.walls || {};
       paintProducts.walls.name = paintMatch[0].trim();
     }
     
     // Determine surfaces
-    const surfaces = data.surfaces as any[];
+    const surfaces = data.surfaces as string[];
     if (/not\s*painting.*ceiling/i.test(input)) {
       surfaces.push('walls');
     } else if (/walls?\s*and\s*ceiling/i.test(input)) {
@@ -422,23 +420,22 @@ export class ConversationManager {
     
     // Check for trim/doors/windows
     if (!/not\s*painting.*trim/i.test(input) && /trim/i.test(input)) {
-      (data.surfaces as any[]).push('trim');
+      surfaces.push('trim');
     }
     if (!/not\s*painting.*door/i.test(input) && /door/i.test(input)) {
       const doorMatch = input.match(/(\d+)\s*doors?/i);
-      if (doorMatch) (data.measurements as any).doors = parseInt(doorMatch[1]);
+      if (doorMatch) measurements.doors = parseInt(doorMatch[1]);
     }
     if (!/not\s*painting.*window/i.test(input) && /window/i.test(input)) {
       const windowMatch = input.match(/(\d+)\s*windows?/i);
-      if (windowMatch) (data.measurements as any).windows = parseInt(windowMatch[1]);
+      if (windowMatch) measurements.windows = parseInt(windowMatch[1]);
     }
     
     // Default to interior if not specified
     data.projectType = 'interior';
     
     // Return null if we don't have minimum required data
-    const measurementsFinal = data.measurements as any;
-    if (!measurementsFinal.wallSqft && !measurementsFinal.linearFeetWalls) {
+    if (!measurements.wallSqft && !measurements.linearFeetWalls) {
       return null;
     }
     

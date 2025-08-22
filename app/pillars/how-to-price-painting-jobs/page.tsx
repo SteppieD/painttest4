@@ -76,11 +76,11 @@ export default function HowToPricePaintingJobsPage() {
   const faqs = [
     {
       question: "Why are 73% of painters broke despite working 60+ hour weeks?",
-      answer: "The brutal truth: Most contractors use outdated pricing from the 1990s. They charge $1.50-2.50/sqft when they should charge $3.50-5.00/sqft in 2025. This isn't about being greedy - it's about covering REAL costs: insurance ($4,000/year), truck payments ($800/month), equipment replacement, taxes, and actually paying yourself. Our formula shows you the REAL numbers that keep you profitable."
+      answer: "The brutal truth: Most contractors use outdated pricing from the 1990s. They charge $1.50-2.50/sqft when they should charge $3.50-5.00/sqft in 2025. This isn&rsquo;t about being greedy - it&rsquo;s about covering REAL costs: insurance ($4,000/year), truck payments ($800/month), equipment replacement, taxes, and actually paying yourself. Our formula shows you the REAL numbers that keep you profitable."
     },
     {
-      question: "What's the #1 mistake that costs contractors $47,000 per year?",
-      answer: "FORGETTING OVERHEAD AND PROFIT. Here's the killer: If you quote $10,000 in materials and labor but forget your 35% overhead and 25% profit margin, you just lost $6,000 on that job. Do this 8 times per year and you're out $48,000. Our automated quote templates FORCE you to include every cost so you never leave money on the table again."
+      question: "What&rsquo;s the #1 mistake that costs contractors $47,000 per year?",
+      answer: "FORGETTING OVERHEAD AND PROFIT. Here&rsquo;s the killer: If you quote $10,000 in materials and labor but forget your 35% overhead and 25% profit margin, you just lost $6,000 on that job. Do this 8 times per year and you&rsquo;re out $48,000. Our automated quote templates FORCE you to include every cost so you never leave money on the table again."
     },
     {
       question: "How did Mike from Dallas go from $3,000/month to $18,000/month in 90 days?",
@@ -88,15 +88,15 @@ export default function HowToPricePaintingJobsPage() {
     },
     {
       question: "Why do customers actually PAY MORE for quotes generated with PaintQuote Pro?",
-      answer: "Psychology. A hand-scribbled estimate on notebook paper says 'amateur.' A detailed, professional PDF with photos, line-items, and terms says 'expert.' We've analyzed 10,000+ quotes: Contractors using our templates win 67% more bids at 31% higher prices. The customer sees value, not just cost."
+      answer: "Psychology. A hand-scribbled estimate on notebook paper says &lsquo;amateur.&rsquo; A detailed, professional PDF with photos, line-items, and terms says &lsquo;expert.&rsquo; We&rsquo;ve analyzed 10,000+ quotes: Contractors using our templates win 67% more bids at 31% higher prices. The customer sees value, not just cost."
     },
     {
-      question: "What's the secret to never losing money on 'small' bathroom jobs again?",
+      question: "What&rsquo;s the secret to never losing money on &lsquo;small&rsquo; bathroom jobs again?",
       answer: "The $89 minimum rule. Every bathroom paint job - even tiny powder rooms - includes: prep work (2 hours), paint application (3 hours), cleanup (1 hour), plus materials and profit margin. Minimum profitable bathroom quote: $450. Stop doing $200 bathroom jobs that cost you money. Our calculator prevents this automatically."
     },
     {
       question: "How do I charge premium prices without losing customers to cheap competitors?",
-      answer: "VALUE STACKING. Don't compete on price, compete on value. Our quote templates include: premium paint warranty, detailed prep work descriptions, cleanup guarantee, and professional insurance certificates. When customers see what they're REALLY getting, price becomes secondary. Plus, cheap competitors can't match professional presentation."
+      answer: "VALUE STACKING. Don&rsquo;t compete on price, compete on value. Our quote templates include: premium paint warranty, detailed prep work descriptions, cleanup guarantee, and professional insurance certificates. When customers see what they&rsquo;re REALLY getting, price becomes secondary. Plus, cheap competitors can&rsquo;t match professional presentation."
     }
   ]
 
@@ -194,7 +194,7 @@ export default function HowToPricePaintingJobsPage() {
               <div className="mt-8 space-y-4">
                 <div className="bg-black/20 rounded-lg p-4">
                   <div className="text-yellow-300 text-sm font-bold mb-2">⚡ SOCIAL PROOF THAT WORKS:</div>
-                  <div className="text-white text-sm italic">"I was charging $2.50/sqft. After using this formula, I'm getting $4.20/sqft for the SAME work. Made an extra $23,000 in 3 months!" - Mike C., Dallas TX</div>
+                  <div className="text-white text-sm italic">&ldquo;I was charging $2.50/sqft. After using this formula, I&rsquo;m getting $4.20/sqft for the SAME work. Made an extra $23,000 in 3 months!&rdquo; - Mike C., Dallas TX</div>
                 </div>
                 <div className="flex items-center gap-6 text-sm">
                   <div className="flex items-center gap-2">

@@ -138,7 +138,13 @@ function getDeviceType(): string {
 function getConnectionType(): string {
   if (typeof navigator === 'undefined') return 'unknown'
   
-  const connection = (navigator as any).connection
+  // Network Information API is not standard but supported by Chrome
+  const navigatorWithConnection = navigator as {
+    connection?: {
+      effectiveType?: string;
+    };
+  };
+  const connection = navigatorWithConnection.connection;
   if (!connection) return 'unknown'
   
   return connection.effectiveType || 'unknown'

@@ -130,7 +130,7 @@ export default function ContactSalesPage() {
 
             <Card className="bg-gray-900/80 border-white/10 backdrop-blur-md">
               <CardHeader>
-                <CardTitle className="text-white">What's Included</CardTitle>
+                <CardTitle className="text-white">What&rsquo;s Included</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {BUSINESS_FEATURES.map((feature, index) => {

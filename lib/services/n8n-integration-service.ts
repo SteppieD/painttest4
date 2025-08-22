@@ -130,7 +130,7 @@ export class N8NIntegrationService {
       eventType: workflowType,
       data,
       metadata: {
-        companyId: (data as any).companyId,
+        companyId: (data as { companyId?: number }).companyId,
         timestamp: new Date().toISOString(),
         retryCount: 0
       }

@@ -72,7 +72,7 @@ const structuredData = {
           "name": "How do you calculate exterior painting square footage?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Calculate exterior square footage by measuring each wall's length × height, then subtract doors and windows. Add 10% for trim and details. For complex homes, use: (Perimeter × Average Height) + Gable Areas - Openings."
+            "text": "Calculate exterior square footage by measuring each wall&rsquo;s length × height, then subtract doors and windows. Add 10% for trim and details. For complex homes, use: (Perimeter × Average Height) + Gable Areas - Openings."
           }
         }
       ]

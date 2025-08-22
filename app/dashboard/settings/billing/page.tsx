@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -58,9 +58,9 @@ export default function BillingPage() {
       access_code: companyData.access_code
     })
     fetchUsageStats()
-  }, [router])
+  }, [router, fetchUsageStats])
 
-  const fetchUsageStats = async () => {
+  const fetchUsageStats = useCallback(async () => {
     try {
       const response = await fetch('/api/companies/usage', {
         headers: {
@@ -80,7 +80,7 @@ export default function BillingPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [company?.id, company?.access_code])
 
   const handleUpgrade = async (billing: 'monthly' | 'yearly' = 'monthly') => {
     setProcessingUpgrade(true)

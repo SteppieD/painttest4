@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { QuoteUsageIndicator } from '@/components/quote-usage-indicator-client'
 import { ClientDate } from '@/components/client-date'
 import { useCompanyAuth } from '@/components/auth-wrapper'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { AchievementDisplay } from '@/components/achievements/achievement-display'
 import { ROIWidget } from '@/components/roi-widget'
@@ -73,9 +73,9 @@ export function ClientDashboard() {
 
     // Fetch real usage data
     fetchDashboardData()
-  }, [companyData, router, authChecked])
+  }, [companyData, router, authChecked, fetchDashboardData])
 
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = useCallback(async () => {
     try {
       // Fetch usage data
       const response = await fetch('/api/companies/usage', {
@@ -134,7 +134,7 @@ export function ClientDashboard() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [companyData])
 
   if (loading || !dashboardData) {
     return (

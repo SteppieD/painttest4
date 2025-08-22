@@ -113,7 +113,7 @@ export default function PaintingEstimateTemplatesPage() {
             <div className="bg-gray-100 rounded-lg p-6 mt-8 mb-6">
               <h3 className="font-bold text-lg mb-4 text-center">What Makes These Templates Worth $50,000?</h3>
               <div className="space-y-4">
-                <h4 className="font-bold text-lg mb-4">What's Included in Our Template Library:</h4>
+                <h4 className="font-bold text-lg mb-4">What&rsquo;s Included in Our Template Library:</h4>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />

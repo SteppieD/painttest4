@@ -3,12 +3,12 @@
 
 declare global {
   interface Window {
-    dataLayer: Record<string, any>[];
+    dataLayer: Record<string, unknown>[];
   }
 }
 
 // Helper to safely push to dataLayer
-const pushToDataLayer = (data: Record<string, any>) => {
+const pushToDataLayer = (data: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && window.dataLayer) {
     window.dataLayer.push(data);
   }

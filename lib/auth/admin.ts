@@ -15,11 +15,13 @@ export interface AdminSession {
 
 // Admin credentials now handled via proper user creation only
 
-// JWT secret (required from environment)
-const JWT_SECRET = process.env.JWT_SECRET;
-
-if (!JWT_SECRET) {
-  throw new Error('JWT_SECRET environment variable is required');
+// JWT secret validation helper
+function getJWTSecret(): string {
+  const JWT_SECRET = process.env.JWT_SECRET;
+  if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET environment variable is required');
+  }
+  return JWT_SECRET;
 }
 
 // Verify admin credentials
@@ -50,6 +52,8 @@ export async function verifyAdminCredentials(email: string, password: string): P
 
 // Create admin session token
 export function createAdminToken(user: AdminUser): string {
+  const JWT_SECRET = getJWTSecret();
+  
   return jwt.sign(
     {
       id: user.id,
@@ -65,6 +69,8 @@ export function createAdminToken(user: AdminUser): string {
 // Verify admin token
 export function verifyAdminToken(token: string): AdminUser | null {
   try {
+    const JWT_SECRET = getJWTSecret();
+    
     interface JWTPayload {
       id: string;
       email: string;

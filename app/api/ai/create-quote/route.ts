@@ -172,7 +172,73 @@ export async function POST(request: NextRequest) {
     };
 
     // Save to database
-    const result = await db.createQuote(quote);
+    const result = await db.createQuote({
+      ...quote,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    });
+
+    // Send quote created notification email and start automation
+    try {
+      const { emailService } = await import('@/lib/email/EmailService');
+      const { EMAIL_TEMPLATES } = await import('@/lib/email/templates');
+      const { emailAutomationService } = await import('@/lib/email/EmailAutomationService');
+      
+      // Get full company details for email
+      const companyDetails = await db.getCompany(auth.company!.id);
+      if (companyDetails?.email) {
+        const quoteUrl = `${process.env.NEXTAUTH_URL || 'https://paintquotepro.com'}/dashboard/quotes/${result.id}`;
+        
+        // Send immediate notification to company
+        await emailService.sendTransactional(
+          EMAIL_TEMPLATES.QUOTE_CREATED,
+          companyDetails.email,
+          {
+            quoteId,
+            customerName: quoteContext.customerName,
+            projectType: quoteContext.projectType || 'interior',
+            totalAmount: calculation.total.toFixed(2),
+            quoteUrl,
+            companyName: companyDetails.company_name || companyDetails.name || 'Your Company',
+            contactName: companyDetails.name || 'there'
+          }
+        );
+        
+        console.log(`[EMAIL] Quote created notification sent to ${companyDetails.email}`);
+
+        // Start automated follow-up sequence if customer email is provided
+        if (quoteContext.customerEmail && result.id) {
+          await emailAutomationService.scheduleQuoteFollowUps(
+            {
+              id: result.id,
+              quote_id: quoteId,
+              customer_name: quoteContext.customerName,
+              customer_email: quoteContext.customerEmail,
+              project_type: quoteContext.projectType || 'interior',
+              total_cost: calculation.total,
+              created_at: new Date().toISOString(),
+              status: 'draft',
+              company_id: auth.company!.id
+            },
+            companyDetails as {
+              id: number;
+              company_name: string;
+              email: string;
+              name?: string;
+            }
+          );
+          
+          console.log(`[EMAIL] Follow-up automation scheduled for customer ${quoteContext.customerEmail}`);
+        } else {
+          console.log('[EMAIL] No customer email provided, skipping follow-up automation');
+        }
+      } else {
+        console.log('[EMAIL] No company email found, skipping quote notification');
+      }
+    } catch (emailError) {
+      // Don't fail the quote creation if email fails
+      console.error('Failed to send quote created email or schedule automation:', emailError);
+    }
 
     return NextResponse.json({
       success: true,

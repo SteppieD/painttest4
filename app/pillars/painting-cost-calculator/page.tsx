@@ -339,9 +339,9 @@ export default function PaintingCostCalculatorPage() {
 
             <Card className="border-2 border-green-300 bg-green-50">
               <CardContent className="pt-6">
-                <h3 className="font-bold mb-2 text-green-700">What's the $8,000 mistake contractors make measuring walls?</h3>
+                <h3 className="font-bold mb-2 text-green-700">What&rsquo;s the $8,000 mistake contractors make measuring walls?</h3>
                 <p className="text-green-700">
-                  They measure floor area instead of WALL area. A 20x30 room isn't 600 sqft of walls - it's 800+ sqft (perimeter x height). Miss this and you're short 6 gallons of paint, plus labor costs explode when you have to return. Our calculator prevents this costly amateur mistake automatically.
+                  They measure floor area instead of WALL area. A 20x30 room isn&rsquo;t 600 sqft of walls - it&rsquo;s 800+ sqft (perimeter x height). Miss this and you&rsquo;re short 6 gallons of paint, plus labor costs explode when you have to return. Our calculator prevents this costly amateur mistake automatically.
                 </p>
               </CardContent>
             </Card>

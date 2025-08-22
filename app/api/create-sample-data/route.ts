@@ -37,6 +37,9 @@ export async function GET() {
           tax: 296,
           total: 3996
         },
+        labor_cost: 2500,
+        material_cost: 1200,
+        total_cost: 3996,
         notes: 'Premium test quote - Living room renovation',
         created_at: new Date(Date.now() - 7 * 86400000).toISOString(), // 7 days ago
         updated_at: new Date(Date.now() - 2 * 86400000).toISOString()
@@ -63,6 +66,9 @@ export async function GET() {
           tax: 424,
           total: 5724
         },
+        labor_cost: 3500,
+        material_cost: 1800,
+        total_cost: 5724,
         notes: 'Full exterior paint job with deck staining',
         created_at: new Date(Date.now() - 3 * 86400000).toISOString(), // 3 days ago
         updated_at: new Date().toISOString()
@@ -89,6 +95,9 @@ export async function GET() {
           tax: 1016,
           total: 13716
         },
+        labor_cost: 8500,
+        material_cost: 4200,
+        total_cost: 13716,
         notes: 'Office building renovation - multiple floors',
         created_at: new Date(Date.now() - 14 * 86400000).toISOString(), // 14 days ago
         updated_at: new Date(Date.now() - 10 * 86400000).toISOString()
@@ -114,6 +123,9 @@ export async function GET() {
           tax: 144,
           total: 1944
         },
+        labor_cost: 1200,
+        material_cost: 600,
+        total_cost: 1944,
         notes: 'Bedroom painting - repeat customer',
         created_at: new Date(Date.now() - 30 * 86400000).toISOString(), // 30 days ago
         updated_at: new Date(Date.now() - 28 * 86400000).toISOString()
@@ -139,6 +151,9 @@ export async function GET() {
           tax: 216,
           total: 2916
         },
+        labor_cost: 1800,
+        material_cost: 900,
+        total_cost: 2916,
         notes: 'Waiting for customer approval',
         created_at: new Date().toISOString(), // Today
         updated_at: new Date().toISOString()
@@ -149,7 +164,7 @@ export async function GET() {
     const createdQuotes = []
     for (const quoteData of quotes) {
       try {
-        const quote = await db.createQuote(quoteData as any)
+        const quote = await db.createQuote(quoteData)
         createdQuotes.push(quote)
       } catch (error) {
         console.error('Error creating quote:', error)

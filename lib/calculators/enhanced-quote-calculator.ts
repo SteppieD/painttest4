@@ -168,7 +168,14 @@ export class EnhancedQuoteCalculator {
     const materialsResult = this.calculateMaterials(input, settings);
     
     // Calculate labor with all adjustments
-    const laborResult = this.calculateLaborWithAdjustments(input, settings, comprehensiveSettings.pricingConfig as any);
+    const laborResult = this.calculateLaborWithAdjustments(input, settings, comprehensiveSettings.pricingConfig as {
+      seasonalPricing: Record<string, number>;
+      locationPricing: Record<string, number>;
+      prepWorkMultipliers: Record<string, number>;
+      complexityMultipliers: Record<string, number>;
+      heightMultipliers: Record<string, number>;
+      rushJobMultiplier: number;
+    });
     
     // Calculate totals
     const subtotal = materialsResult.total + laborResult.adjustedTotal;
@@ -186,7 +193,14 @@ export class EnhancedQuoteCalculator {
 
     // Calculate adjustment multipliers for transparency
     const adjustmentsSummary = this.calculateAdjustmentsSummary(
-      comprehensiveSettings.pricingConfig as any, 
+      comprehensiveSettings.pricingConfig as {
+        seasonalPricing: Record<string, number>;
+        locationPricing: Record<string, number>;
+        prepWorkMultipliers: Record<string, number>;
+        complexityMultipliers: Record<string, number>;
+        heightMultipliers: Record<string, number>;
+        rushJobMultiplier: number;
+      }, 
       pricingOptions
     );
 

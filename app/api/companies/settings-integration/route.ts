@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCompanyFromRequest } from '@/lib/auth/simple-auth';
-import { SettingsIntegrationService } from '@/lib/services/settings-integration-service';
 import { 
   getCompanySettings,
   getAIContextString,

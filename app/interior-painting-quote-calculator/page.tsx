@@ -691,7 +691,7 @@ export default function InteriorPaintingQuoteCalculator() {
               </h2>
               <p className="mx-auto max-w-2xl text-xl opacity-100 mb-8">
                 Transform your home's interior with professional painting. Get accurate quotes, 
-                choose the perfect finishes, and create the space you{"'"}ve always wanted.
+                choose the perfect finishes, and create the space you&rsquo;ve always wanted.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link

@@ -182,7 +182,7 @@ Calculator instance available with default settings.
         console.log('[CHAT] Parsed quote data:', parsedData);
         
         // Set quoteData if we have enough information OR user expressed readiness
-        const measurements = parsedData.measurements as Record<string, any>
+        const measurements = parsedData.measurements as Record<string, number | undefined>
         const hasBasicInfo = parsedData.customerName && 
                             (measurements?.wallSqft || 
                              measurements?.linearFeetWalls ||
@@ -203,10 +203,11 @@ Calculator instance available with default settings.
           const fullText = fullConversation + ' ' + aiResponse;
           
           // Use parsed data pricing if available, otherwise extract from text
-          if ((parsedData as any).pricing) {
+          const parsedPricing = parsedData.pricing as Record<string, unknown> | undefined;
+          if (parsedPricing) {
             quoteData.pricing = {
               ...(quoteData.pricing || {}),
-              ...(parsedData as any).pricing
+              ...parsedPricing
             };
           } else {
             const priceMatch = fullText.match(/\$[\d,]+(?:\.\d{2})?/g);
@@ -217,7 +218,7 @@ Calculator instance available with default settings.
               
               // Look for explicit total mentions
               const totalMatch = fullText.match(/(?:total|total\s+cost|total\s+price|final\s+price)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
-              const pricingData = quoteData.pricing as Record<string, any>;
+              const pricingData = quoteData.pricing as Record<string, unknown>;
               if (totalMatch) {
                 pricingData.total = parseFloat(totalMatch[1].replace(/,/g, ''));
               } else {
@@ -230,12 +231,12 @@ Calculator instance available with default settings.
               const laborMatch = fullText.match(/(?:labor|labour)[:\s]*\$?([\d,]+(?:\.\d{2})?)/i);
               
               if (materialMatch) {
-                if (!pricingData.materials) pricingData.materials = {};
-                pricingData.materials.total = parseFloat(materialMatch[1].replace(/,/g, ''));
+                if (!pricingData.materials) pricingData.materials = {} as Record<string, unknown>;
+                (pricingData.materials as Record<string, unknown>).total = parseFloat(materialMatch[1].replace(/,/g, ''));
               }
               if (laborMatch) {
-                if (!pricingData.labor) pricingData.labor = {};
-                pricingData.labor.total = parseFloat(laborMatch[1].replace(/,/g, ''));
+                if (!pricingData.labor) pricingData.labor = {} as Record<string, unknown>;
+                (pricingData.labor as Record<string, unknown>).total = parseFloat(laborMatch[1].replace(/,/g, ''));
               }
               quoteData.pricing = pricingData;
               
@@ -250,8 +251,8 @@ Calculator instance available with default settings.
                     const gallons = parseInt(parts[1]);
                     const cost = parseFloat(parts[2].replace(/,/g, ''));
                     if (i === 0 && quoteData) {
-                      if (!pricingData.breakdown) pricingData.breakdown = {};
-                      pricingData.breakdown.wallPaint = { gallons, cost };
+                      if (!pricingData.breakdown) pricingData.breakdown = {} as Record<string, unknown>;
+                      (pricingData.breakdown as Record<string, unknown>).wallPaint = { gallons, cost };
                       quoteData.pricing = pricingData;
                     }
                   }
@@ -265,8 +266,8 @@ Calculator instance available with default settings.
                     const hours = parseInt(parts[1]);
                     const cost = parseFloat(parts[2].replace(/,/g, ''));
                     if (i === 0 && quoteData) {
-                      if (!pricingData.breakdown) pricingData.breakdown = {};
-                      pricingData.breakdown.painting = { hours, cost };
+                      if (!pricingData.breakdown) pricingData.breakdown = {} as Record<string, unknown>;
+                      (pricingData.breakdown as Record<string, unknown>).painting = { hours, cost };
                       quoteData.pricing = pricingData;
                     }
                   }
@@ -276,7 +277,7 @@ Calculator instance available with default settings.
           }
           
           // If user wants to review but we don't have pricing yet, create basic structure
-          const currentPricing = quoteData.pricing as Record<string, any>;
+          const currentPricing = quoteData.pricing as Record<string, unknown>;
           if (userWantsReview && currentPricing.total === 0) {
             // Set a placeholder or try to extract from conversation context
             const basicPriceMatch = fullConversation.match(/\$?(\d+(?:,\d{3})*(?:\.\d{2})?)/g);
@@ -284,10 +285,10 @@ Calculator instance available with default settings.
               const price = parseFloat(basicPriceMatch[basicPriceMatch.length - 1].replace(/[$,]/g, ''));
               if (price > 100) { // Reasonable quote minimum
                 currentPricing.total = price;
-                if (!currentPricing.materials) currentPricing.materials = {};
-                currentPricing.materials.total = Math.round(price * 0.4); // Estimate 40% materials
-                if (!currentPricing.labor) currentPricing.labor = {};
-                currentPricing.labor.total = Math.round(price * 0.6); // Estimate 60% labor
+                if (!currentPricing.materials) currentPricing.materials = {} as Record<string, unknown>;
+                (currentPricing.materials as Record<string, unknown>).total = Math.round(price * 0.4); // Estimate 40% materials
+                if (!currentPricing.labor) currentPricing.labor = {} as Record<string, unknown>;
+                (currentPricing.labor as Record<string, unknown>).total = Math.round(price * 0.6); // Estimate 60% labor
                 quoteData.pricing = currentPricing;
               }
             }
