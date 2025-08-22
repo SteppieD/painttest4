@@ -51,30 +51,6 @@ export function ClientDashboard() {
   // Track dashboard feature usage
   usePageFeatureTracking('dashboard')
 
-  useEffect(() => {
-    console.log('ClientDashboard - companyData:', companyData)
-    
-    if (!authChecked) {
-      setTimeout(() => {
-        setAuthChecked(true)
-      }, 500)
-      return
-    }
-    
-    if (!companyData && authChecked) {
-      console.log('No company data after auth check, redirecting to access-code')
-      router.push('/access-code')
-      return
-    }
-    
-    if (!companyData) {
-      return
-    }
-
-    // Fetch real usage data
-    fetchDashboardData()
-  }, [companyData, router, authChecked, fetchDashboardData])
-
   const fetchDashboardData = useCallback(async () => {
     try {
       // Fetch usage data
@@ -135,6 +111,30 @@ export function ClientDashboard() {
       setLoading(false);
     }
   }, [companyData])
+
+  useEffect(() => {
+    console.log('ClientDashboard - companyData:', companyData)
+    
+    if (!authChecked) {
+      setTimeout(() => {
+        setAuthChecked(true)
+      }, 500)
+      return
+    }
+    
+    if (!companyData && authChecked) {
+      console.log('No company data after auth check, redirecting to access-code')
+      router.push('/access-code')
+      return
+    }
+    
+    if (!companyData) {
+      return
+    }
+
+    // Fetch real usage data
+    fetchDashboardData()
+  }, [companyData, router, authChecked, fetchDashboardData])
 
   if (loading || !dashboardData) {
     return (

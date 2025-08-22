@@ -52,6 +52,15 @@ interface ProjectData {
   }[]
 }
 
+// Function to get icon component - moved before main component
+function getIconComponent(icon: string) {
+  switch (icon) {
+    case 'home': return <Home className="h-5 w-5" />
+    case 'building': return <Building className="h-5 w-5" />
+    default: return <Paintbrush className="h-5 w-5" />
+  }
+}
+
 export default function ProjectAnalyticsPage() {
   const router = useRouter()
   const [projectData, setProjectData] = useState<ProjectData | null>(null)
@@ -146,13 +155,6 @@ export default function ProjectAnalyticsPage() {
     }
   }
 
-  const getIconComponent = (icon: string) => {
-    switch (icon) {
-      case 'home': return <Home className="h-5 w-5" />
-      case 'building': return <Building className="h-5 w-5" />
-      default: return <Paintbrush className="h-5 w-5" />
-    }
-  }
 
   if (loading || !projectData) {
     return (

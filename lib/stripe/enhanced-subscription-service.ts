@@ -133,7 +133,7 @@ export class EnhancedSubscriptionService extends SubscriptionService {
       invoiceUrl: invoiceData.hosted_invoice_url || undefined,
       customerEmail: company.email || companyWithStripe.contact_email || '',
       customerName: company.company_name,
-      subscriptionPlan: this.getPlanFromSubscription(subscription),
+      subscriptionPlan: this.getPlanFromSubscriptionData(subscription),
       nextBillingDate: subscription 
         ? new Date(subscription.current_period_end * 1000)
         : new Date()
@@ -183,8 +183,8 @@ export class EnhancedSubscriptionService extends SubscriptionService {
     const companyWithStripe = company as CompanyWithStripe;
     const subscriptionData = subscription as unknown as StripeSubscriptionData;
 
-    const plan = this.getPlanFromSubscription(subscription);
-    const billingPeriod = this.getBillingPeriod(subscription);
+    const plan = this.getPlanFromSubscriptionData(subscriptionData);
+    const billingPeriod = this.getBillingPeriodFromData(subscriptionData);
 
     await n8nService.triggerWorkflow('subscription_created', {
       companyId,
@@ -211,7 +211,7 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
     // For updates, we'd need to track the previous plan
     // This would require storing subscription history
-    const newPlan = this.getPlanFromSubscription(subscription);
+    const newPlan = this.getPlanFromSubscriptionData(subscription as unknown as StripeSubscriptionData);
     
     await n8nService.triggerWorkflow('subscription_updated', {
       companyId,
@@ -235,7 +235,7 @@ export class EnhancedSubscriptionService extends SubscriptionService {
     const companyWithStripe = company as CompanyWithStripe;
     const subscriptionData = subscription as unknown as StripeSubscriptionData;
 
-    const plan = this.getPlanFromSubscription(subscription);
+    const plan = this.getPlanFromSubscriptionData(subscriptionData);
 
     await n8nService.triggerWorkflow('subscription_cancelled', {
       companyId,
@@ -277,19 +277,17 @@ export class EnhancedSubscriptionService extends SubscriptionService {
 
   // Helper methods
 
-  private getPlanFromSubscription(subscription: Stripe.Subscription | null): string {
+  private getPlanFromSubscriptionData(subscription: StripeSubscriptionData | null): string {
     if (!subscription) return 'free';
     
-    const subscriptionData = subscription as unknown as StripeSubscriptionData;
-    const priceId = subscriptionData.items.data[0]?.price.id;
+    const priceId = subscription.items.data[0]?.price.id;
     if (!priceId) return 'free';
     
     return this.getPlanFromPriceId(priceId);
   }
 
-  private getBillingPeriod(subscription: Stripe.Subscription): 'monthly' | 'yearly' {
-    const subscriptionData = subscription as unknown as StripeSubscriptionData;
-    const interval = subscriptionData.items.data[0]?.price.recurring?.interval;
+  private getBillingPeriodFromData(subscription: StripeSubscriptionData): 'monthly' | 'yearly' {
+    const interval = subscription.items.data[0]?.price.recurring?.interval;
     return interval === 'year' ? 'yearly' : 'monthly';
   }
 

@@ -86,15 +86,6 @@ export default function CustomerDetailPage() {
     rejectedQuotes: 0
   })
 
-  useEffect(() => {
-    const company = getCompanyFromLocalStorage()
-    if (!company) {
-      router.push('/access-code')
-      return
-    }
-    fetchCustomer(company)
-  }, [router, params.id, fetchCustomer])
-
   const fetchCustomer = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/customers/${params.id}`, {
@@ -178,6 +169,15 @@ export default function CustomerDetailPage() {
       setIsLoading(false)
     }
   }, [params.id])
+
+  useEffect(() => {
+    const company = getCompanyFromLocalStorage()
+    if (!company) {
+      router.push('/access-code')
+      return
+    }
+    fetchCustomer(company)
+  }, [router, params.id, fetchCustomer])
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {

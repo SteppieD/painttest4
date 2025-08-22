@@ -6,7 +6,7 @@
  */
 
 import { SettingsIntegrationService, QuoteCalculatorSettings, PricingOptions } from '@/lib/services/settings-integration-service';
-import { PricingConfigManager } from '@/lib/config/pricing-config';
+import { PricingConfigManager, CompanyPricingConfig, SeasonalPricing } from '@/lib/config/pricing-config';
 
 export interface EnhancedCalculatorInput {
   companyId: number;
@@ -168,14 +168,7 @@ export class EnhancedQuoteCalculator {
     const materialsResult = this.calculateMaterials(input, settings);
     
     // Calculate labor with all adjustments
-    const laborResult = this.calculateLaborWithAdjustments(input, settings, comprehensiveSettings.pricingConfig as {
-      seasonalPricing: Record<string, number>;
-      locationPricing: Record<string, number>;
-      prepWorkMultipliers: Record<string, number>;
-      complexityMultipliers: Record<string, number>;
-      heightMultipliers: Record<string, number>;
-      rushJobMultiplier: number;
-    });
+    const laborResult = this.calculateLaborWithAdjustments(input, settings, comprehensiveSettings.pricingConfig);
     
     // Calculate totals
     const subtotal = materialsResult.total + laborResult.adjustedTotal;
@@ -193,14 +186,7 @@ export class EnhancedQuoteCalculator {
 
     // Calculate adjustment multipliers for transparency
     const adjustmentsSummary = this.calculateAdjustmentsSummary(
-      comprehensiveSettings.pricingConfig as {
-        seasonalPricing: Record<string, number>;
-        locationPricing: Record<string, number>;
-        prepWorkMultipliers: Record<string, number>;
-        complexityMultipliers: Record<string, number>;
-        heightMultipliers: Record<string, number>;
-        rushJobMultiplier: number;
-      }, 
+      comprehensiveSettings.pricingConfig, 
       pricingOptions
     );
 
@@ -308,14 +294,7 @@ export class EnhancedQuoteCalculator {
   private static calculateLaborWithAdjustments(
     input: EnhancedCalculatorInput, 
     settings: QuoteCalculatorSettings,
-    pricingConfig: {
-      seasonalPricing: Record<string, number>;
-      locationPricing: Record<string, number>;
-      prepWorkMultipliers: Record<string, number>;
-      complexityMultipliers: Record<string, number>;
-      heightMultipliers: Record<string, number>;
-      rushJobMultiplier: number;
-    }
+    pricingConfig: CompanyPricingConfig
   ) {
     // Calculate base labor hours
     let baseHours = 0;
@@ -361,7 +340,7 @@ export class EnhancedQuoteCalculator {
     const adjustments = {
       seasonal: settings.seasonalMultiplier || 1,
       location: settings.locationMultiplier || 1,
-      prep: this.getPrepMultiplier(input.projectDetails?.prepCondition, pricingConfig),
+      prep: this.getPrepMultiplier(this.mapPrepCondition(input.projectDetails?.prepCondition), pricingConfig),
       complexity: this.getComplexityMultiplier(input.projectDetails?.complexity, pricingConfig),
       height: this.getHeightMultiplier(input.projectDetails?.ceilingHeight, pricingConfig),
       rush: input.projectDetails?.rushJob ? (settings.rushJobMultiplier || 1.25) : 1
@@ -483,18 +462,11 @@ export class EnhancedQuoteCalculator {
   }
 
   private static calculateAdjustmentsSummary(
-    pricingConfig: {
-      seasonalPricing: Record<string, number>;
-      locationPricing: Record<string, number>;
-      prepWorkMultipliers: Record<string, number>;
-      complexityMultipliers: Record<string, number>;
-      heightMultipliers: Record<string, number>;
-      rushJobMultiplier: number;
-    }, 
+    pricingConfig: CompanyPricingConfig, 
     options: PricingOptions
   ) {
-    const seasonal = pricingConfig.seasonalPricing[options.season || PricingConfigManager.getCurrentSeason()];
-    const location = options.locationType ? pricingConfig.locationPricing[options.locationType] : 1;
+    const seasonal = this.getSeasonalMultiplier(options.season, pricingConfig.seasonalPricing);
+    const location = this.getLocationMultiplier(options.locationType, pricingConfig.locationPricing);
     const prep = this.getPrepMultiplier(options.prepWork, pricingConfig);
     const complexity = this.getComplexityMultiplier(options.complexity, pricingConfig);
     const height = this.getHeightMultiplier(options.ceilingHeight, pricingConfig);
@@ -531,25 +503,42 @@ export class EnhancedQuoteCalculator {
     }
   }
 
+  private static getSeasonalMultiplier(
+    season?: keyof SeasonalPricing,
+    seasonalPricing?: SeasonalPricing
+  ): number {
+    if (!seasonalPricing) return 1;
+    const currentSeason = season || PricingConfigManager.getCurrentSeason();
+    return seasonalPricing[currentSeason] || 1;
+  }
+
+  private static getLocationMultiplier(
+    locationType?: 'urban' | 'suburban' | 'rural',
+    locationPricing?: CompanyPricingConfig['locationPricing']
+  ): number {
+    if (!locationType || !locationPricing) return 1;
+    return locationPricing[locationType] || 1;
+  }
+
   private static getPrepMultiplier(
-    prepWork?: string, 
-    pricingConfig?: { prepWorkMultipliers: Record<string, number> }
+    prepWork?: 'none' | 'light' | 'moderate' | 'heavy' | 'extreme', 
+    pricingConfig?: CompanyPricingConfig
   ): number {
     if (!prepWork || !pricingConfig?.prepWorkMultipliers) return 1;
     return pricingConfig.prepWorkMultipliers[prepWork] || 1;
   }
 
   private static getComplexityMultiplier(
-    complexity?: string, 
-    pricingConfig?: { complexityMultipliers: Record<string, number> }
+    complexity?: 'simple' | 'standard' | 'detailed' | 'highDetail' | 'custom', 
+    pricingConfig?: CompanyPricingConfig
   ): number {
     if (!complexity || !pricingConfig?.complexityMultipliers) return 1;
     return pricingConfig.complexityMultipliers[complexity] || 1;
   }
 
   private static getHeightMultiplier(
-    height?: string, 
-    pricingConfig?: { heightMultipliers: Record<string, number> }
+    height?: 'standard' | 'high' | 'veryHigh' | 'cathedral', 
+    pricingConfig?: CompanyPricingConfig
   ): number {
     if (!height || !pricingConfig?.heightMultipliers) return 1;
     return pricingConfig.heightMultipliers[height] || 1;
