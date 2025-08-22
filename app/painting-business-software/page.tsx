@@ -450,8 +450,8 @@ export default function PaintingBusinessSoftware() {
                     ))}
                   </div>
                   <p className="mt-4 text-gray-200">
-                    "PaintQuote Pro transformed how we run our business. We're more organized, 
-                    efficient, and profitable than ever before."
+                    &ldquo;PaintQuote Pro transformed how we run our business. We&rsquo;re more organized, 
+                    efficient, and profitable than ever before.&rdquo;
                   </p>
                   <div className="mt-4">
                     <p className="font-semibold">Robert Chen</p>

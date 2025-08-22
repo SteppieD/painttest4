@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { TrendingUp, Clock, DollarSign, Users, Star, BarChart } from 'lucide-react'
 import { Metadata } from 'next'
-import Image from 'next/image'
 import SharedNavigation from '@/components/shared-navigation'
 
 export const metadata: Metadata = {
@@ -99,9 +98,9 @@ export default function CaseStudies() {
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
-                    &quot;PaintQuote Pro transformed our business. We went from spending 2-3 hours per quote 
+                    &ldquo;PaintQuote Pro transformed our business. We went from spending 2-3 hours per quote 
                     to just 15 minutes. The AI understands painting terminology perfectly and catches 
-                    details we used to miss."
+                    details we used to miss.&rdquo;
                   </p>
                   <footer className="mt-4">
                     <strong>Mike Rodriguez</strong>, Owner
@@ -168,9 +167,9 @@ export default function CaseStudies() {
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
-                    &quot;The charge rate system is brilliant. No more complex calculations trying to 
+                    &ldquo;The charge rate system is brilliant. No more complex calculations trying to 
                     separate materials and labor. We set our rates once and the system handles 
-                    everything. Our profit margins improved by 15% immediately."
+                    everything. Our profit margins improved by 15% immediately.&rdquo;
                   </p>
                   <footer className="mt-4">
                     <strong>Sarah Chen</strong>, CEO
@@ -238,9 +237,9 @@ export default function CaseStudies() {
                 
                 <blockquote className="mt-8 border-l-4 border-primary pl-6">
                   <p className="text-xl italic">
-                    &quot;We&apos;ve increased our quote acceptance rate by 40% since switching to PaintQuote Pro. 
+                    &ldquo;We&apos;ve increased our quote acceptance rate by 40% since switching to PaintQuote Pro. 
                     Professional quotes make all the difference. Clients trust us more when they see 
-                    detailed, accurate proposals delivered quickly."
+                    detailed, accurate proposals delivered quickly.&rdquo;
                   </p>
                   <footer className="mt-4">
                     <strong>James Wilson</strong>, President
@@ -315,8 +314,8 @@ export default function CaseStudies() {
                     ))}
                   </div>
                   <p className="mt-4 text-base italic">
-                    &quot;As a one-man operation, time is everything. PaintQuote Pro lets me quote jobs 
-                    on-site and close deals immediately. My income doubled in the first year."
+                    &ldquo;As a one-man operation, time is everything. PaintQuote Pro lets me quote jobs 
+                    on-site and close deals immediately. My income doubled in the first year.&rdquo;
                   </p>
                   <p className="mt-2 text-base font-semibold">— Tom Martinez</p>
                 </div>
@@ -345,8 +344,8 @@ export default function CaseStudies() {
                     ))}
                   </div>
                   <p className="mt-4 text-base italic">
-                    &quot;We were drowning in paperwork. Now our crew leader can create quotes in the 
-                    field while I focus on growing the business. Game changer!"
+                    &ldquo;We were drowning in paperwork. Now our crew leader can create quotes in the 
+                    field while I focus on growing the business. Game changer!&rdquo;
                   </p>
                   <p className="mt-2 text-base font-semibold">— Lisa Park</p>
                 </div>
@@ -375,8 +374,8 @@ export default function CaseStudies() {
                     ))}
                   </div>
                   <p className="mt-4 text-base italic">
-                    &quot;PaintQuote Pro scaled with us perfectly. From 5 to 15 employees, the system 
-                    handled our growth and helped maintain quality standards."
+                    &ldquo;PaintQuote Pro scaled with us perfectly. From 5 to 15 employees, the system 
+                    handled our growth and helped maintain quality standards.&rdquo;
                   </p>
                   <p className="mt-2 text-base font-semibold">— Robert Lee</p>
                 </div>

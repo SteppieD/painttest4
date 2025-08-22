@@ -117,7 +117,7 @@ export default function ChatPage() {
     } finally {
       setIsLoading(false)
     }
-  }, [input, isLoading, messages, router])
+  }, [input, isLoading, messages, router, toast])
 
   return (
     <div className="mx-auto max-w-4xl space-y-4 md:space-y-8 px-4 md:px-0">

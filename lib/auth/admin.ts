@@ -13,29 +13,21 @@ export interface AdminSession {
   user: AdminUser;
 }
 
-// Default admin credentials (should be changed in production)
-const DEFAULT_ADMIN = {
-  email: 'admin@paintingapp.com',
-  password: 'admin123',
-  role: 'super_admin' as const
-};
+// Admin credentials now handled via proper user creation only
 
-// JWT secret (should be in env vars)
-const JWT_SECRET = process.env.JWT_SECRET || 'default-jwt-secret-change-in-production';
+// JWT secret validation helper
+function getJWTSecret(): string {
+  const JWT_SECRET = process.env.JWT_SECRET;
+  if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET environment variable is required');
+  }
+  return JWT_SECRET;
+}
 
 // Verify admin credentials
 export async function verifyAdminCredentials(email: string, password: string): Promise<AdminUser | null> {
   try {
-    // Check default admin first (for development)
-    if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
-      return {
-        id: 'admin-default',
-        email: DEFAULT_ADMIN.email,
-        role: DEFAULT_ADMIN.role
-      };
-    }
-    
-    // Check database for admin users
+    // Check database for admin users only - no hardcoded credentials
     const user = await db.getUserByEmail(email);
     
     if (user && user.role === 'admin') {
@@ -60,6 +52,8 @@ export async function verifyAdminCredentials(email: string, password: string): P
 
 // Create admin session token
 export function createAdminToken(user: AdminUser): string {
+  const JWT_SECRET = getJWTSecret();
+  
   return jwt.sign(
     {
       id: user.id,
@@ -75,6 +69,8 @@ export function createAdminToken(user: AdminUser): string {
 // Verify admin token
 export function verifyAdminToken(token: string): AdminUser | null {
   try {
+    const JWT_SECRET = getJWTSecret();
+    
     interface JWTPayload {
       id: string;
       email: string;

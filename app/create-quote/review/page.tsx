@@ -21,8 +21,33 @@ import {
 import { toast } from '@/components/ui/use-toast'
 import Link from 'next/link'
 
+interface SubscriptionTier {
+  name: string;
+  badge?: string;
+  color?: string;
+  features: {
+    basicQuote: boolean;
+    customBranding: boolean;
+    advancedPricing: boolean;
+    customerPortal: boolean;
+    digitalSignatures: boolean;
+    paymentIntegration: boolean;
+    analytics: boolean;
+    customTerms: boolean;
+    multipleTemplates: boolean;
+    bulkQuoting: boolean;
+    apiAccess: boolean;
+    whiteLabel: boolean;
+    customWorkflows: boolean;
+    teamCollaboration: boolean;
+    advancedReporting: boolean;
+  };
+}
+
+type SubscriptionTierName = 'free' | 'professional' | 'business' | 'enterprise';
+
 // Subscription tiers with available features
-const SUBSCRIPTION_TIERS = {
+const SUBSCRIPTION_TIERS: Record<SubscriptionTierName, SubscriptionTier> = {
   free: {
     name: 'Free',
     features: {
@@ -123,7 +148,7 @@ function QuoteReviewContent() {
   const [sendError, setSendError] = useState('')
   
   // Get user subscription tier from localStorage (would come from auth/API in production)
-  const [userTier, setUserTier] = useState<keyof typeof SUBSCRIPTION_TIERS>('free')
+  const [userTier, setUserTier] = useState<SubscriptionTierName>('free')
   
   useEffect(() => {
     // Get subscription tier from company data
@@ -140,8 +165,8 @@ function QuoteReviewContent() {
   }, [])
   
   // Check if feature is available for user's tier
-  const hasFeature = (feature: keyof typeof SUBSCRIPTION_TIERS.free.features) => {
-    return (SUBSCRIPTION_TIERS as any)[userTier]?.features[feature] || false
+  const hasFeature = (feature: keyof SubscriptionTier['features']) => {
+    return SUBSCRIPTION_TIERS[userTier]?.features[feature] || false
   }
   
   // Visibility settings with tier restrictions
@@ -374,7 +399,7 @@ function QuoteReviewContent() {
     // Navigate to nested field and update value
     let current: Record<string, unknown> = newData
     for (let i = 0; i < fieldPath.length - 1; i++) {
-      current = current[fieldPath[i]]
+      current = current[fieldPath[i]] as Record<string, unknown>
     }
     
     // Parse number values for numeric fields
@@ -389,14 +414,22 @@ function QuoteReviewContent() {
     
     // Recalculate totals if materials or labor changed
     if (field.includes('materials') || field.includes('labor')) {
-      if (!(newData as any).pricing) {
-        (newData as any).pricing = {}
+      interface PricingData {
+        total?: number;
+        materials?: { total?: number };
+        labor?: { total?: number };
+        [key: string]: unknown;
       }
-      const pricing = (newData as any).pricing
-      const materials = pricing?.materials?.total || 0
-      const labor = pricing?.labor?.total || 0
+      
+      const typedNewData = newData as { pricing?: PricingData };
+      if (!typedNewData.pricing) {
+        typedNewData.pricing = {}
+      }
+      const pricing = typedNewData.pricing
+      const materials = Number(pricing?.materials?.total || 0)
+      const labor = Number(pricing?.labor?.total || 0)
       const subtotal = materials + labor
-      const markup = subtotal * ((pricing?.markupPercentage || 30) / 100)
+      const markup = subtotal * ((Number(pricing?.markupPercentage) || 30) / 100)
       pricing.subtotal = subtotal
       pricing.markup = markup
       pricing.total = subtotal + markup
@@ -582,11 +615,26 @@ function QuoteReviewContent() {
   }
 
   // TypeScript now knows quoteData is not null
-  const quote = quoteData as any
+  interface QuoteData {
+    customerName?: string;
+    customerEmail?: string;
+    address?: string;
+    pricing?: {
+      total?: number;
+      materials?: { total?: number };
+      labor?: { total?: number };
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  }
+  
+  const quote = quoteData as QuoteData
 
   const getTotal = (value: string | number | undefined): number => {
     if (typeof value === 'number') return value
-    if (typeof value === 'object' && value && 'total' in value) return (value as any).total || 0
+    if (typeof value === 'object' && value && 'total' in value) {
+      return (value as { total?: number }).total || 0
+    }
     return 0
   }
   
@@ -617,10 +665,10 @@ function QuoteReviewContent() {
               </Link>
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-xl font-semibold">Quote #{quote.quoteNumber}</h1>
+                  <h1 className="text-xl font-semibold">Quote #{String(quote.quoteNumber || 'New')}</h1>
                   {userTier !== 'free' && (
-                    <Badge className={(SUBSCRIPTION_TIERS as any)[userTier]?.color}>
-                      {(SUBSCRIPTION_TIERS as any)[userTier]?.badge}
+                    <Badge className={SUBSCRIPTION_TIERS[userTier]?.color}>
+                      {SUBSCRIPTION_TIERS[userTier]?.badge}
                     </Badge>
                   )}
                 </div>

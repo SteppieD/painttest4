@@ -46,11 +46,11 @@ export async function verifyAccessCode(accessCode: string): Promise<Company | nu
     // Check if it's a valid pattern for auto-creation
     const validPattern = /^[A-Z]{3,10}\d{2,4}$/;
     if (validPattern.test(normalizedCode)) {
-      // Auto-create trial company
+      // Auto-create trial company - email will be collected during onboarding
       const newCompany = await db.createCompany({
         access_code: normalizedCode,
         company_name: `Company ${normalizedCode}`,
-        email: `${normalizedCode.toLowerCase()}@example.com`,
+        email: '', // Empty - will be required during onboarding
         subscription_tier: 'free',
         monthly_quote_limit: 5,
         monthly_quote_count: 0,

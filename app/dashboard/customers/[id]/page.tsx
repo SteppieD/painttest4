@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -93,9 +93,9 @@ export default function CustomerDetailPage() {
       return
     }
     fetchCustomer(company)
-  }, [router, params.id])
+  }, [router, params.id, fetchCustomer])
 
-  const fetchCustomer = async (company: { id: number; access_code: string }) => {
+  const fetchCustomer = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/customers/${params.id}`, {
         headers: {
@@ -177,7 +177,7 @@ export default function CustomerDetailPage() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [params.id])
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {

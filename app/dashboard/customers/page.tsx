@@ -355,7 +355,7 @@ export default function CustomersPage() {
           <DialogHeader>
             <DialogTitle className="text-xl font-bold text-gray-900">Add New Customer</DialogTitle>
             <DialogDescription className="text-gray-600">
-              Enter the customer's information to add them to your database
+              Enter the customer&rsquo;s information to add them to your database
             </DialogDescription>
           </DialogHeader>
           

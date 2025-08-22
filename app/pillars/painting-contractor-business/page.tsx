@@ -236,7 +236,7 @@ export default function PaintingContractorBusinessPage() {
             </div>
             <div className="text-center mt-8">
               <div className="bg-red-100 border border-red-300 rounded-lg p-4 inline-block">
-                <p className="text-red-700 font-bold">REALITY CHECK: Most contractors work twice as hard to earn half as much. Don't be most contractors.</p>
+                <p className="text-red-700 font-bold">REALITY CHECK: Most contractors work twice as hard to earn half as much. Don&rsquo;t be most contractors.</p>
               </div>
             </div>
           </div>
@@ -379,9 +379,9 @@ export default function PaintingContractorBusinessPage() {
             <div className="bg-black/40 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
               <div className="text-yellow-400 font-bold mb-2">THE HARSH TRUTH:</div>
               <p className="text-xl text-white italic">
-                "312 contractors used this blueprint to escape the $40K/year poverty trap. Meanwhile, their competitors are still charging 1995 prices and wondering why they're broke."
+                &ldquo;312 contractors used this blueprint to escape the $40K/year poverty trap. Meanwhile, their competitors are still charging 1995 prices and wondering why they&rsquo;re broke.&rdquo;
               </p>
-              <div className="text-green-400 font-bold mt-4">- Don't be them. Be smart.</div>
+              <div className="text-green-400 font-bold mt-4">- Don&rsquo;t be them. Be smart.</div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/trial-signup">

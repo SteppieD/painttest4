@@ -153,11 +153,11 @@ export default function PaintingEstimateSoftwarePage() {
   const faqs = [
     {
       question: "What makes PaintQuote Pro the best paint contractor software?",
-      answer: "PaintQuote Pro combines AI-powered quote generation, comprehensive paint calculators, mobile-first design, and industry-specific features. Unlike generic paint estimate apps, we're built specifically for painting contractors with features like paint consumption calculators, room-by-room estimates, and specialized templates."
+      answer: "PaintQuote Pro combines AI-powered quote generation, comprehensive paint calculators, mobile-first design, and industry-specific features. Unlike generic paint estimate apps, we&rsquo;re built specifically for painting contractors with features like paint consumption calculators, room-by-room estimates, and specialized templates."
     },
     {
       question: "Can I use this painting quote app on my iPhone?",
-      answer: "Yes! Our paint estimate apps for iPhone and Android work seamlessly across all devices. The mobile paint quote app includes full functionality - create quotes, calculate paint amounts, track jobs, and get signatures on-site. It's the most comprehensive paint contractor app available."
+      answer: "Yes! Our paint estimate apps for iPhone and Android work seamlessly across all devices. The mobile paint quote app includes full functionality - create quotes, calculate paint amounts, track jobs, and get signatures on-site. It&rsquo;s the most comprehensive paint contractor app available."
     },
     {
       question: "How does the painting quote generator work?",
@@ -198,7 +198,7 @@ export default function PaintingEstimateSoftwarePage() {
         revenueIncrease: "67%",
         quotesPerMonth: "200+"
       },
-      quote: "Best paint contractor software we've used. The mobile app lets our estimators create quotes on-site instantly."
+      quote: "Best paint contractor software we&rsquo;ve used. The mobile app lets our estimators create quotes on-site instantly."
     },
     {
       company: "Premium Painters Co",
@@ -696,7 +696,7 @@ export default function PaintingEstimateSoftwarePage() {
                 ⚠ FINAL WARNING: Limited licenses remaining - act now
               </div>
               <h2 className="text-3xl font-bold mb-4">
-                Last Chance To Join The Millionaire's Club
+                Last Chance To Join The Millionaire&rsquo;s Club
               </h2>
               <div className="bg-black/40 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
                 <div className="text-red-400 font-bold mb-2">THE CHOICE IS YOURS:</div>
@@ -716,7 +716,7 @@ export default function PaintingEstimateSoftwarePage() {
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   <X className="mr-2 h-5 w-5" />
-                  No Thanks, I'll Stay Broke
+                  No Thanks, I&rsquo;ll Stay Broke
                 </Button>
               </div>
               <div className="space-y-4">

@@ -64,7 +64,7 @@ export default function PerformanceAnalyticsPage() {
       return
     }
     fetchPerformanceData(company)
-  }, [router, selectedPeriod])
+  }, [router, selectedPeriod, fetchPerformanceData])
 
   const fetchPerformanceData = useCallback(async (company: { id: number; access_code: string }) => {
     try {

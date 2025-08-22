@@ -112,6 +112,32 @@ export async function POST(request: NextRequest) {
       path: '/',
     })
 
+    // Send welcome email
+    try {
+      const { emailService } = await import('@/lib/email/EmailService');
+      const { EMAIL_TEMPLATES } = await import('@/lib/email/templates');
+      
+      const dashboardUrl = `${process.env.NEXTAUTH_URL || 'https://paintquotepro.com'}/dashboard`;
+      
+      await emailService.sendTransactional(
+        EMAIL_TEMPLATES.WELCOME,
+        email,
+        {
+          companyName,
+          contactName: name,
+          contactEmail: email,
+          accessCode,
+          dashboardUrl,
+          loginUrl: `${process.env.NEXTAUTH_URL || 'https://paintquotepro.com'}/login`
+        }
+      );
+      
+      console.log(`[EMAIL] Welcome email sent to ${email}`);
+    } catch (emailError) {
+      // Don't fail the signup if email fails
+      console.error('Failed to send welcome email:', emailError);
+    }
+
     return NextResponse.json({
       user: {
         id: user.id,

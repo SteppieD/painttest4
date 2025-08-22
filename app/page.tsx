@@ -232,7 +232,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-50 mb-6 italic">
-                "Best investment for my business. The AI understands painting projects better than any software I've tried. ROI in the first month!"
+                &ldquo;Best investment for my business. The AI understands painting projects better than any software I&rsquo;ve tried. ROI in the first month!&rdquo;
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">

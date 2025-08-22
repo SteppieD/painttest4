@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -44,9 +44,9 @@ export default function RevenueAnalyticsPage() {
       return
     }
     fetchRevenueData(company)
-  }, [router, timeRange])
+  }, [router, timeRange, fetchRevenueData])
 
-  const fetchRevenueData = async (company: { id: number; access_code: string }) => {
+  const fetchRevenueData = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/analytics/revenue?range=${timeRange}`, {
         headers: {
@@ -93,7 +93,7 @@ export default function RevenueAnalyticsPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [timeRange])
 
   if (loading || !revenueData) {
     return (

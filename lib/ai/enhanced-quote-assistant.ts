@@ -192,7 +192,7 @@ Use the company's paint products when available. Apply appropriate quality level
       return parsed;
     } catch (error) {
       console.error('[ENHANCED-QUOTE-ASSISTANT] Error parsing quote information:', error);
-      return null;
+      return {};
     }
   }
 
@@ -217,14 +217,19 @@ Use the company's paint products when available. Apply appropriate quality level
       const calculatorInput: EnhancedCalculatorInput = {
         companyId: context.companyId,
         surfaces: parsedData.measurements || {},
-        paintProducts: parsedData.paintProducts,
+        paintProducts: parsedData.paintProducts as {
+          walls?: { name: string; coverageRate?: number; costPerGallon?: number };
+          ceiling?: { name: string; coverageRate?: number; costPerGallon?: number };
+          trim?: { name: string; coverageRate?: number; costPerGallon?: number };
+          primer?: { name: string; coverageRate?: number; costPerGallon?: number };
+        } | undefined,
         projectDetails: {
-          paintQuality: parsedData.projectDetails?.paintQuality || context.paintQuality || 'standard',
-          prepCondition: this.mapPrepCondition(parsedData.projectDetails?.prepCondition || context.prepWork),
-          rushJob: parsedData.projectDetails?.rushJob || context.isRushJob || false,
-          locationType: parsedData.projectDetails?.locationType || context.locationType || 'suburban',
-          complexity: parsedData.projectDetails?.complexity || context.complexity || 'standard',
-          ceilingHeight: parsedData.projectDetails?.ceilingHeight || context.ceilingHeight || 'standard'
+          paintQuality: (parsedData.projectDetails as any)?.paintQuality || context.paintQuality || 'standard',
+          prepCondition: this.mapPrepCondition((parsedData.projectDetails as any)?.prepCondition || context.prepWork),
+          rushJob: (parsedData.projectDetails as any)?.rushJob || context.isRushJob || false,
+          locationType: (parsedData.projectDetails as any)?.locationType || context.locationType || 'suburban',
+          complexity: (parsedData.projectDetails as any)?.complexity || context.complexity || 'standard',
+          ceilingHeight: (parsedData.projectDetails as any)?.ceilingHeight || context.ceilingHeight || 'standard'
         }
       };
       

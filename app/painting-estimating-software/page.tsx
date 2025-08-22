@@ -645,7 +645,7 @@ export default function PaintingEstimatingSoftware() {
                           <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
                         ))}
                       </div>
-                      <p className="text-gray-200 mb-4 italic">"{testimonial.text}"</p>
+                      <p className="text-gray-200 mb-4 italic">&ldquo;{testimonial.text}&rdquo;</p>
                       <div>
                         <div className="font-medium">{testimonial.name}</div>
                         <div className="text-base text-gray-200">{testimonial.company}</div>

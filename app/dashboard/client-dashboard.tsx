@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { QuoteUsageIndicator } from '@/components/quote-usage-indicator-client'
 import { ClientDate } from '@/components/client-date'
 import { useCompanyAuth } from '@/components/auth-wrapper'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { AchievementDisplay } from '@/components/achievements/achievement-display'
 import { ROIWidget } from '@/components/roi-widget'
@@ -24,7 +24,14 @@ interface DashboardData {
   acceptanceRate: number
   monthlyQuotes: number
   monthlyQuotedAmount: number
-  recentQuotes: unknown[]
+  recentQuotes: { 
+    id?: number; 
+    quote_id: string; 
+    customer_name: string; 
+    status: string; 
+    total_cost: number; 
+    created_at: string 
+  }[]
   quotesUsed: number
   quotesLimit: number
   hasUnlimitedQuotes: boolean
@@ -66,9 +73,9 @@ export function ClientDashboard() {
 
     // Fetch real usage data
     fetchDashboardData()
-  }, [companyData, router, authChecked])
+  }, [companyData, router, authChecked, fetchDashboardData])
 
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = useCallback(async () => {
     try {
       // Fetch usage data
       const response = await fetch('/api/companies/usage', {
@@ -127,7 +134,7 @@ export function ClientDashboard() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [companyData])
 
   if (loading || !dashboardData) {
     return (
@@ -159,7 +166,7 @@ export function ClientDashboard() {
     },
     {
       title: 'Win Rate',
-      value: dashboardData.totalQuotes > 0 ? `${dashboardData.acceptanceRate}%` : 'Coming Soon',
+      value: dashboardData.totalQuotes > 0 ? `${dashboardData.acceptanceRate}%` : '0%',
       change: dashboardData.totalQuotes > 0 ? '+5%' : '',
       icon: Percent,
       color: 'from-emerald-400 to-green-400',
@@ -425,7 +432,7 @@ export function ClientDashboard() {
           
           <div className="space-y-3">
             {dashboardData.recentQuotes.length > 0 ? (
-              dashboardData.recentQuotes.map((quote: { id?: number; quote_id: string; customer_name: string; status: string; total_cost: number; created_at: string }) => (
+              dashboardData.recentQuotes.map((quote) => (
                 <Link
                   key={quote.id}
                   href={`/dashboard/quotes/${quote.id}`}
@@ -434,15 +441,15 @@ export function ClientDashboard() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-medium text-white group-hover:text-blue-400 transition-colors">
-                        {quote.customer}
+                        {quote.customer_name}
                       </p>
                       <p className="text-base text-gray-200">
-                        <ClientDate date={quote.date} />
+                        <ClientDate date={quote.created_at} />
                       </p>
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-white">
-                        ${(quote.amount || 0).toLocaleString()}
+                        ${(quote.total_cost || 0).toLocaleString()}
                       </p>
                       <span className={`inline-flex items-center px-2 py-1 rounded-full text-base font-medium ${
                         quote.status === 'accepted' 

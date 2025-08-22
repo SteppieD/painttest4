@@ -82,31 +82,23 @@ export default function IntegrationsPage() {
       title: 'Accounting & Finance',
       icon: DollarSign,
       integrations: [
-        { name: 'QuickBooks Online', status: 'Available' },
-        { name: 'QuickBooks Desktop', status: 'Available' },
-        { name: 'Xero', status: 'Coming Soon' },
-        { name: 'FreshBooks', status: 'Coming Soon' },
-        { name: 'Wave', status: 'Planned' }
+        { name: 'QuickBooks', status: 'Planned' },
+        { name: 'Xero', status: 'Planned' },
+        { name: 'FreshBooks', status: 'Planned' }
       ]
     },
     {
       title: 'Payment Processing',
       icon: CreditCard,
       integrations: [
-        { name: 'Stripe', status: 'Available' },
-        { name: 'Square', status: 'Available' },
-        { name: 'PayPal', status: 'Available' },
-        { name: 'Authorize.net', status: 'Coming Soon' },
-        { name: 'Clover', status: 'Planned' }
+        { name: 'Stripe', status: 'Available' }
       ]
     },
     {
       title: 'Communication',
       icon: MessageSquare,
       integrations: [
-        { name: 'Twilio SMS', status: 'Available' },
-        { name: 'SendGrid Email', status: 'Available' },
-        { name: 'Mailchimp', status: 'Coming Soon' },
+        { name: 'Email (Resend)', status: 'Available' },
         { name: 'Slack', status: 'Coming Soon' },
         { name: 'WhatsApp Business', status: 'Planned' }
       ]
@@ -115,33 +107,22 @@ export default function IntegrationsPage() {
       title: 'Scheduling & CRM',
       icon: Calendar,
       integrations: [
-        { name: 'Google Calendar', status: 'Available' },
-        { name: 'Outlook Calendar', status: 'Available' },
-        { name: 'Calendly', status: 'Coming Soon' },
-        { name: 'HubSpot CRM', status: 'Coming Soon' },
-        { name: 'Salesforce', status: 'Planned' }
+        { name: 'Calendar Integration', status: 'Planned' },
+        { name: 'CRM Integration', status: 'Planned' }
       ]
     },
     {
       title: 'Project Management',
       icon: BarChart3,
       integrations: [
-        { name: 'Trello', status: 'Coming Soon' },
-        { name: 'Asana', status: 'Coming Soon' },
-        { name: 'Monday.com', status: 'Planned' },
-        { name: 'Basecamp', status: 'Planned' },
-        { name: 'ClickUp', status: 'Planned' }
+        { name: 'Project Management', status: 'Planned' }
       ]
     },
     {
       title: 'Storage & Files',
       icon: Cloud,
       integrations: [
-        { name: 'Google Drive', status: 'Available' },
-        { name: 'Dropbox', status: 'Available' },
-        { name: 'OneDrive', status: 'Coming Soon' },
-        { name: 'Box', status: 'Planned' },
-        { name: 'Amazon S3', status: 'Planned' }
+        { name: 'Cloud Storage', status: 'Planned' }
       ]
     }
   ]
@@ -149,12 +130,12 @@ export default function IntegrationsPage() {
   const integrationBenefits = [
     {
       icon: Clock,
-      title: 'Save 10+ Hours Weekly',
-      description: 'Eliminate double data entry and manual updates'
+      title: 'Save Time',
+      description: 'Streamlined workflows when integrations are available'
     },
     {
       icon: Shield,
-      title: 'Reduce Errors by 95%',
+      title: 'Reduce Errors',
       description: 'Automatic syncing prevents costly mistakes'
     },
     {

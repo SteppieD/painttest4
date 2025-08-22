@@ -33,15 +33,6 @@ export default function QuotesPage() {
     acceptanceRate: 0
   })
 
-  useEffect(() => {
-    const company = getCompanyFromLocalStorage()
-    if (!company) {
-      router.push('/access-code')
-      return
-    }
-    fetchQuotes(company)
-  }, [router, fetchQuotes])
-
   const fetchQuotes = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch('/api/quotes', {
@@ -75,6 +66,15 @@ export default function QuotesPage() {
       setIsLoading(false)
     }
   }, [])
+
+  useEffect(() => {
+    const company = getCompanyFromLocalStorage()
+    if (!company) {
+      router.push('/access-code')
+      return
+    }
+    fetchQuotes(company)
+  }, [router, fetchQuotes])
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {

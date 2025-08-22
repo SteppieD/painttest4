@@ -40,42 +40,6 @@ export function AchievementPopup() {
     }
   }, [currentAchievement, achievementQueue])
 
-  // Listen for achievement unlocks
-  useEffect(() => {
-    const handleAchievement = async (event: CustomEvent) => {
-      const achievementId = event.detail.achievementId
-      
-      // Add to queue
-      setAchievementQueue(prev => [...prev, { id: achievementId, timestamp: Date.now() }])
-      
-      // Check for level up
-      if (companyData?.id) {
-        const progress = await achievementService.getAllAchievements(companyData.id)
-        setTotalPoints(progress.totalPoints)
-        
-        const newLevel = calculateLevel(progress.totalPoints).level
-        const oldLevel = calculateLevel(progress.totalPoints - (achievements[achievementId]?.points || 0)).level
-        
-        if (newLevel > oldLevel) {
-          setLevelUp(newLevel)
-          // Play level up sound
-          SoundEffects.playLevelUpSound()
-        }
-      }
-      
-      // Trigger confetti and sound
-      triggerCelebration(achievementId)
-    }
-    
-    const eventHandler = (event: Event) => {
-      handleAchievement(event as CustomEvent);
-    };
-    window.addEventListener('achievement-unlocked', eventHandler)
-    return () => {
-      window.removeEventListener('achievement-unlocked', eventHandler)
-    }
-  }, [companyData?.id, triggerCelebration])
-
   const triggerCelebration = useCallback((achievementId: string) => {
     const achievement = achievements[achievementId]
     if (!achievement) return
@@ -133,6 +97,42 @@ export function AchievementPopup() {
       })
     }
   }, []);
+
+  // Listen for achievement unlocks
+  useEffect(() => {
+    const handleAchievement = async (event: CustomEvent) => {
+      const achievementId = event.detail.achievementId
+      
+      // Add to queue
+      setAchievementQueue(prev => [...prev, { id: achievementId, timestamp: Date.now() }])
+      
+      // Check for level up
+      if (companyData?.id) {
+        const progress = await achievementService.getAllAchievements(companyData.id)
+        setTotalPoints(progress.totalPoints)
+        
+        const newLevel = calculateLevel(progress.totalPoints).level
+        const oldLevel = calculateLevel(progress.totalPoints - (achievements[achievementId]?.points || 0)).level
+        
+        if (newLevel > oldLevel) {
+          setLevelUp(newLevel)
+          // Play level up sound
+          SoundEffects.playLevelUpSound()
+        }
+      }
+      
+      // Trigger confetti and sound
+      triggerCelebration(achievementId)
+    }
+    
+    const eventHandler = (event: Event) => {
+      handleAchievement(event as CustomEvent);
+    };
+    window.addEventListener('achievement-unlocked', eventHandler)
+    return () => {
+      window.removeEventListener('achievement-unlocked', eventHandler)
+    }
+  }, [companyData?.id, triggerCelebration])
 
   const handleClose = useCallback(() => {
     setCurrentAchievement(null)

@@ -16,6 +16,34 @@ export interface SubscriptionInfo {
   customerId: string;
 }
 
+interface CompanyWithStripe {
+  id: number;
+  company_name: string;
+  email?: string;
+  contact_email?: string;
+  stripe_customer_id?: string;
+  subscription_tier?: string;
+}
+
+interface StripeSubscriptionData {
+  id: string;
+  status: string;
+  current_period_start: number;
+  current_period_end: number;
+  cancel_at_period_end: boolean;
+  items: {
+    data: Array<{
+      price: {
+        id: string;
+        recurring?: {
+          interval: string;
+        };
+      };
+    }>;
+  };
+  customer: string;
+}
+
 export class SubscriptionService {
   private db = db;
 
@@ -36,10 +64,11 @@ export class SubscriptionService {
     }
 
     // Create or retrieve customer
-    let customerId = (company as any).stripe_customer_id;
+    const companyWithStripe = company as CompanyWithStripe;
+    let customerId = companyWithStripe.stripe_customer_id;
     if (!customerId) {
       const customer = await stripe.customers.create({
-        email: company.email || (company as any).contact_email,
+        email: company.email || companyWithStripe.contact_email,
         name: company.company_name,
         metadata: {
           companyId: companyId.toString()
@@ -49,8 +78,8 @@ export class SubscriptionService {
       
       // Update company with customer ID
       await this.db.updateCompany(companyId, {
-        // Store customer ID in a way that doesn't break the interface
-      } as any);
+        subscription_tier: 'free'
+      });
     }
 
     const session = await stripe.checkout.sessions.create({
@@ -77,17 +106,18 @@ export class SubscriptionService {
 
   async getSubscriptionInfo(companyId: number): Promise<SubscriptionInfo | null> {
     const company = await this.db.getCompany(companyId);
-    if (!(company as any)?.stripe_customer_id) {
+    const companyWithStripe = company as CompanyWithStripe;
+    if (!companyWithStripe?.stripe_customer_id) {
       return null;
     }
 
     const subscriptions = await stripe.subscriptions.list({
-      customer: (company as any).stripe_customer_id,
+      customer: companyWithStripe.stripe_customer_id,
       status: 'active',
       limit: 1
     });
 
-    const subscription = subscriptions.data[0];
+    const subscription = subscriptions.data[0] as unknown as StripeSubscriptionData;
     if (!subscription) {
       return null;
     }
@@ -101,10 +131,10 @@ export class SubscriptionService {
       status: subscription.status,
       plan,
       billingPeriod,
-      currentPeriodStart: new Date((subscription as any).current_period_start * 1000),
-      currentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
-      cancelAtPeriodEnd: (subscription as any).cancel_at_period_end,
-      customerId: (company as any).stripe_customer_id
+      currentPeriodStart: new Date(subscription.current_period_start * 1000),
+      currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+      cancelAtPeriodEnd: subscription.cancel_at_period_end,
+      customerId: companyWithStripe.stripe_customer_id
     };
   }
 
@@ -136,12 +166,13 @@ export class SubscriptionService {
 
   async createCustomerPortalSession(companyId: number, returnUrl: string): Promise<Stripe.BillingPortal.Session> {
     const company = await this.db.getCompany(companyId);
-    if (!(company as any)?.stripe_customer_id) {
+    const companyWithStripe = company as CompanyWithStripe;
+    if (!companyWithStripe?.stripe_customer_id) {
       throw new Error('No customer ID found');
     }
 
     return await stripe.billingPortal.sessions.create({
-      customer: (company as any).stripe_customer_id,
+      customer: companyWithStripe.stripe_customer_id,
       return_url: returnUrl,
     });
   }
@@ -195,7 +226,7 @@ export class SubscriptionService {
     // Update company subscription status
     await this.db.updateCompany(companyId, {
       subscription_tier: session.metadata?.plan === 'business' ? 'business' : 'professional'
-    } as any);
+    });
   }
 
   private async handleSubscriptionUpdated(subscription: Stripe.Subscription): Promise<void> {
@@ -207,7 +238,7 @@ export class SubscriptionService {
 
     await this.db.updateCompany(companyId, {
       subscription_tier: plan === 'business' ? 'business' : 'professional'
-    } as any);
+    });
   }
 
   private async handleSubscriptionDeleted(subscription: Stripe.Subscription): Promise<void> {
@@ -216,7 +247,7 @@ export class SubscriptionService {
 
     await this.db.updateCompany(companyId, {
       subscription_tier: 'free'
-    } as any);
+    });
   }
 
   private async handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<void> {

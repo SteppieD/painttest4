@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -46,9 +46,9 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     fetchQuote()
-  }, [params.id])
+  }, [params.id, fetchQuote])
 
-  const fetchQuote = async () => {
+  const fetchQuote = useCallback(async () => {
     try {
       const response = await fetch(`/api/quotes/${params.id}`)
       if (!response.ok) {
@@ -70,7 +70,7 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [params.id, router])
 
   const calculatePricing = () => {
     if (!quote) return

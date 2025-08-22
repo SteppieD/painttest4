@@ -27,7 +27,7 @@ const testQuote = {
 };
 
 // Test results tracking
-let testResults = {
+const testResults = {
   startTime: new Date(),
   tests: [],
   screenshots: [],

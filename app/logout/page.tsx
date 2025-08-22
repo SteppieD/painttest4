@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import Link from 'next/link';
 export default function LogoutPage() {
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     // Clear all auth data
     localStorage.removeItem('paintquote_company');
     sessionStorage.clear();
@@ -26,12 +26,12 @@ export default function LogoutPage() {
     setTimeout(() => {
       router.push('/access-code');
     }, 1500);
-  };
+  }, [router]);
 
   useEffect(() => {
     // Auto logout on page load
     handleLogout();
-  }, []);
+  }, [handleLogout]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center px-4">

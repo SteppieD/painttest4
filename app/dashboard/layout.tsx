@@ -52,7 +52,7 @@ export default function DashboardLayout({
     } finally {
       setLoading(false)
     }
-  }, [router])
+  }, [router, pathname])
   
   const handleSignOut = () => {
     localStorage.removeItem('paintquote_company')

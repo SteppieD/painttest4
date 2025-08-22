@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database/adapter';
-import bcrypt from 'bcryptjs';
 
 export async function GET() {
   try {
@@ -10,9 +9,6 @@ export async function GET() {
     const testEmail = 'premium@test.com';
     const testPassword = 'premium123';
     const companyName = 'Premium Test Company';
-    
-    // Hash the password
-    const passwordHash = await bcrypt.hash(testPassword, 10);
     
     // Check if company already exists by access code
     const accessCode = 'PREMIUM2024';

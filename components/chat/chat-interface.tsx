@@ -132,69 +132,246 @@ function ChatInterfaceCore({
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Move handleDemoStart inside useEffect to avoid dependency issues
-  useEffect(() => {
-    const handleDemoStartInternal = async () => {
-      // Simulate typing indicator
-      setIsLoading(true);
-      
-      // First user message
-      setTimeout(() => {
-        setMessages(prev => [...prev, {
-          role: 'user',
-          content: "I need a quote for painting a 3-bedroom house interior. The client is Sarah Johnson at 123 Maple Street.",
-          timestamp: new Date()
-        }]);
-        setIsLoading(false);
-      }, 500);
-
-      // Assistant response
-      setTimeout(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-          setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: "Great! I'll help you create a quote for Sarah Johnson's interior painting project. Let me gather a few more details. What's the approximate square footage of the home?",
-            timestamp: new Date()
-          }]);
-          setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
-          setIsLoading(false);
-        }, 1000);
-      }, 1500);
-
-      // Auto-continue demo
-      setTimeout(() => {
-        sendMessage("It's about 2,000 sq ft with standard 8-foot ceilings");
-      }, 5000);
-    };
-
-    if (isDemo) {
-      // Demo mode - pre-fill with demo data
-      setMessages([
-        {
-          role: 'assistant',
-          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I'll walk you through a typical residential project.",
-          timestamp: new Date()
-        }
-      ]);
-      // Auto-start the demo after a short delay
-      setTimeout(() => {
-        handleDemoStartInternal();
-      }, 1500);
-    } else {
-      setMessages([
-        {
-          role: 'assistant',
-          content: "Hi! I'll help you create a professional quote for your customer. What type of painting project are you quoting today?",
-          timestamp: new Date()
-        }
-      ]);
-      // Set initial suggested replies
-      setSuggestedReplies(['Interior residential', 'Exterior residential', 'Commercial space', 'Single room', 'Whole house', 'Office space']);
+  const createQuote = useCallback(async () => {
+    // Prevent duplicate quote creation
+    if (!quoteData || quoteCreationInProgress) {
+      console.log('[CHAT] Quote creation blocked - no data or already in progress');
+      return;
     }
-    // sendMessage is used in timeout, add as dependency
-  }, [isDemo, sendMessage]);
 
+    console.log('[CHAT] Quote data from AI:', quoteData);
+    console.log('[CHAT] Pricing structure:', quoteData.pricing);
+    
+    // Debug: Show what we're about to send
+    console.log('[CHAT DEBUG] Creating quote with data:', {
+      customerName: quoteData.customerName,
+      hasPricing: !!quoteData.pricing,
+      pricingKeys: quoteData.pricing ? Object.keys(quoteData.pricing) : 'no pricing',
+      pricingStructure: quoteData.pricing
+    });
+
+    setIsLoading(true);
+    
+    // Save onboarding settings if this is the first quote
+    if (isFirstQuote) {
+      try {
+        const settings = OnboardingAssistant.getExtractedSettings();
+        if (Object.keys(settings).length > 0) {
+          await OnboardingAssistant.saveSettings(companyId, settings);
+          
+          // Update localStorage to mark onboarding as complete
+          const companyData = localStorage.getItem('paintquote_company');
+          if (companyData) {
+            const data = JSON.parse(companyData);
+            localStorage.setItem('paintquote_company', JSON.stringify({
+              ...data,
+              ...settings,
+              onboarding_completed: true
+            }));
+          }
+          
+          // Trigger onboarding achievement
+          await achievementService.checkOnboardingAchievements(companyId);
+          
+          toast({
+            title: '✨ Setup Complete!',
+            description: 'Your business settings have been saved. Future quotes will be even faster!',
+          });
+        }
+      } catch (error) {
+        console.error('Error saving onboarding settings:', error);
+        // Continue with quote creation even if settings save fails
+      }
+    }
+    
+    try {
+      // Get company data from localStorage for access code
+      const companyData = localStorage.getItem('paintquote_company');
+      const company = companyData ? JSON.parse(companyData) : null;
+      
+      // Check if pricing data exists
+      if (!quoteData.pricing) {
+        console.error('[CHAT] No pricing data in quote:', quoteData);
+        toast({
+          title: 'Incomplete Quote',
+          description: 'The quote is missing pricing information. Please try again.',
+          variant: 'destructive'
+        });
+        return;
+      }
+      
+      const requestBody = {
+        companyId: Number(companyId), // Ensure it's a number
+        quoteData: {
+          customerName: quoteData.customerName || 'Unknown Customer',
+          customerEmail: quoteData.customerEmail || null,
+          customerPhone: quoteData.customerPhone || null,
+          address: quoteData.address || null,
+          projectType: quoteData.projectType || 'interior',
+          rooms: quoteData.rooms || [],
+          roomCount: quoteData.roomCount || 0,
+          paintQuality: quoteData.paintQuality || 'better',
+          prepWork: quoteData.prepWork || null,
+          timeEstimate: quoteData.timeline || null,
+          specialRequests: quoteData.specialRequests || null,
+          totalCost: quoteData.pricing?.subtotal || quoteData.pricing?.total || 0,
+          finalPrice: quoteData.pricing?.total || quoteData.pricing?.subtotal || 0,
+          markupPercentage: quoteData.markupPercentage || 30,
+          sqft: (quoteData.surfaces as { walls?: number })?.walls || (quoteData.measurements as { wallSqft?: number })?.wallSqft || quoteData.sqft || 0,
+          breakdown: {
+            materials: typeof quoteData.pricing?.materials === 'object' ? quoteData.pricing.materials.total || 0 : quoteData.pricing?.materials || 0,
+            labor: typeof quoteData.pricing?.labor === 'object' ? quoteData.pricing.labor.total || 0 : quoteData.pricing?.labor || 0,
+            markup: quoteData.pricing?.markup || 0
+          }
+        },
+        conversationHistory: messages
+      };
+
+      console.log('[CHAT] Request body to quotes API:', requestBody);
+      console.log('[CHAT] Conversation history length:', messages.length);
+      console.log('[CHAT] Request body size:', new Blob([JSON.stringify(requestBody)]).size, 'bytes');
+      
+      // Limit conversation history to prevent oversized requests
+      const limitedMessages = messages.slice(-10); // Keep only last 10 messages
+      const finalRequestBody = {
+        ...requestBody,
+        conversationHistory: limitedMessages
+      };
+
+      // Add timeout handling for quote creation
+      const abortController = new AbortController();
+      const timeoutId = setTimeout(() => {
+        abortController.abort();
+      }, 90000); // 90 second timeout for quote creation
+      
+      const response = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-company-data': JSON.stringify({ 
+            id: companyId,
+            access_code: company?.access_code
+          })
+        },
+        body: JSON.stringify(finalRequestBody),
+        signal: abortController.signal
+      });
+      
+      // Clear timeout on successful response
+      clearTimeout(timeoutId);
+
+      let result;
+      try {
+        const text = await response.text();
+        console.log('[CHAT] Quote API response text:', text);
+        
+        // Handle empty response
+        if (!text) {
+          console.error('Empty response from quote API');
+          throw new Error('Server returned empty response. Check server logs.');
+        }
+        
+        result = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Failed to parse quote response:', parseError);
+        console.error('Response status:', response.status);
+        console.error('Response text length:', response.text?.length || 0);
+        
+        // Check for common server errors
+        if (response.status === 500) {
+          throw new Error('Server error: Database might not be initialized. Please check /api/diagnose for details.');
+        }
+        throw new Error(`Failed to parse quote response: ${response.status}`);
+      }
+
+      if (!response.ok) {
+        console.error('Quote creation error response:', result);
+        throw new Error(result.details || result.error || 'Failed to create quote');
+      }
+      
+      toast({
+        title: 'Quote Created!',
+        description: `Quote ${result.quoteId} has been created successfully.`,
+        action: (
+          <Button 
+            size="default" 
+            onClick={() => router.push(`/dashboard/quotes/${result.quoteId}`)}
+          >
+            View Quote
+          </Button>
+        )
+      });
+
+      // Track quote creation event
+      trackQuoteCreated({
+        quoteId: result.quoteId || result.quote?.id || 'unknown',
+        value: quoteData.pricing?.total || quoteData.finalPrice || 0,
+        customerName: quoteData.customerName,
+        projectType: quoteData.projectType
+      });
+      
+      // Track AI chat interaction
+      const sessionDuration = Math.floor((Date.now() - startTime) / 1000);
+      trackAIChatInteraction(messages.length, sessionDuration);
+      
+      // Check for achievements using the new service
+      const timeToCreate = Date.now() - startTime;
+      const companyInfo = JSON.parse(localStorage.getItem('paintquote_company') || '{}');
+      if (companyInfo.id) {
+        const newAchievements = await achievementService.checkQuoteCreationAchievements(
+          companyInfo.id,
+          quoteData,
+          timeToCreate
+        );
+        
+        // Show the first achievement if any were unlocked
+        if (newAchievements.length > 0) {
+          setLatestAchievement(newAchievements[0]);
+          setTimeout(() => setLatestAchievement(null), 100);
+        }
+      }
+
+      // Navigate to the quote using the quote_id (like Q-2025-00001-1NWTY8)
+      if (onQuoteCreated) {
+        onQuoteCreated(result.quoteId);
+      } else {
+        // Small delay to show the toast
+        setTimeout(() => {
+          router.push(`/dashboard/quotes/${result.quoteId}`);
+        }, 1000);
+      }
+
+    } catch (error) {
+      console.error('Create quote error:', error);
+      // Provide specific error messages based on error type
+      let errorMessage = 'Failed to create quote. Please try again.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'Quote creation timed out. Please try again.';
+        } else if (error.message.includes('401') || error.message.includes('unauthorized')) {
+          errorMessage = 'Authorization failed. Please check your account status.';
+        } else if (error.message.includes('403') || error.message.includes('upgrade')) {
+          errorMessage = 'Upgrade required to create more quotes.';
+        } else if (error.message.includes('500') || error.message.includes('server')) {
+          errorMessage = 'Server error. Please try again in a moment.';
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          errorMessage = 'Network error. Please check your connection.';
+        } else if (error.message.includes('validation')) {
+          errorMessage = 'Quote data validation failed. Please check all required fields.';
+        }
+      }
+      
+      toast({
+        title: 'Error Creating Quote',
+        description: errorMessage,
+        variant: 'destructive'
+      });
+    } finally {
+      setIsLoading(false);
+      setQuoteCreationInProgress(false);
+    }
+  }, [quoteData, quoteCreationInProgress, companyId, isFirstQuote, messages, onQuoteCreated, router, startTime]);
 
   const sendMessage = useCallback(async (content: string) => {
     // Add user message
@@ -405,246 +582,69 @@ function ChatInterfaceCore({
     }
   }, [companyId, isDemo, isFirstQuote, sessionId, quoteCreationInProgress, lastQuoteCreationTime, errorHandler, createQuote]);
 
-  const createQuote = useCallback(async () => {
-    // Prevent duplicate quote creation
-    if (!quoteData || quoteCreationInProgress) {
-      console.log('[CHAT] Quote creation blocked - no data or already in progress');
-      return;
-    }
-
-    console.log('[CHAT] Quote data from AI:', quoteData);
-    console.log('[CHAT] Pricing structure:', quoteData.pricing);
-    
-    // Debug: Show what we&apos;re about to send
-    console.log('[CHAT DEBUG] Creating quote with data:', {
-      customerName: quoteData.customerName,
-      hasPricing: !!quoteData.pricing,
-      pricingKeys: quoteData.pricing ? Object.keys(quoteData.pricing) : 'no pricing',
-      pricingStructure: quoteData.pricing
-    });
-
-    setIsLoading(true);
-    
-    // Save onboarding settings if this is the first quote
-    if (isFirstQuote) {
-      try {
-        const settings = OnboardingAssistant.getExtractedSettings();
-        if (Object.keys(settings).length > 0) {
-          await OnboardingAssistant.saveSettings(companyId, settings);
-          
-          // Update localStorage to mark onboarding as complete
-          const companyData = localStorage.getItem('paintquote_company');
-          if (companyData) {
-            const data = JSON.parse(companyData);
-            localStorage.setItem('paintquote_company', JSON.stringify({
-              ...data,
-              ...settings,
-              onboarding_completed: true
-            }));
-          }
-          
-          // Trigger onboarding achievement
-          await achievementService.checkOnboardingAchievements(companyId);
-          
-          toast({
-            title: '✨ Setup Complete!',
-            description: 'Your business settings have been saved. Future quotes will be even faster!',
-          });
-        }
-      } catch (error) {
-        console.error('Error saving onboarding settings:', error);
-        // Continue with quote creation even if settings save fails
-      }
-    }
-    
-    try {
-      // Get company data from localStorage for access code
-      const companyData = localStorage.getItem('paintquote_company');
-      const company = companyData ? JSON.parse(companyData) : null;
+  // Move handleDemoStart inside useEffect to avoid dependency issues
+  useEffect(() => {
+    const handleDemoStartInternal = async () => {
+      // Simulate typing indicator
+      setIsLoading(true);
       
-      // Check if pricing data exists
-      if (!quoteData.pricing) {
-        console.error('[CHAT] No pricing data in quote:', quoteData);
-        toast({
-          title: 'Incomplete Quote',
-          description: 'The quote is missing pricing information. Please try again.',
-          variant: 'destructive'
-        });
-        return;
-      }
-      
-      const requestBody = {
-        companyId: Number(companyId), // Ensure it&apos;s a number
-        quoteData: {
-          customerName: quoteData.customerName || 'Unknown Customer',
-          customerEmail: quoteData.customerEmail || null,
-          customerPhone: quoteData.customerPhone || null,
-          address: quoteData.address || null,
-          projectType: quoteData.projectType || 'interior',
-          rooms: quoteData.rooms || [],
-          roomCount: quoteData.roomCount || 0,
-          paintQuality: quoteData.paintQuality || 'better',
-          prepWork: quoteData.prepWork || null,
-          timeEstimate: quoteData.timeline || null,
-          specialRequests: quoteData.specialRequests || null,
-          totalCost: quoteData.pricing?.subtotal || quoteData.pricing?.total || 0,
-          finalPrice: quoteData.pricing?.total || quoteData.pricing?.subtotal || 0,
-          markupPercentage: quoteData.markupPercentage || 30,
-          sqft: (quoteData.surfaces as { walls?: number })?.walls || (quoteData.measurements as { wallSqft?: number })?.wallSqft || quoteData.sqft || 0,
-          breakdown: {
-            materials: typeof quoteData.pricing?.materials === 'object' ? quoteData.pricing.materials.total || 0 : quoteData.pricing?.materials || 0,
-            labor: typeof quoteData.pricing?.labor === 'object' ? quoteData.pricing.labor.total || 0 : quoteData.pricing?.labor || 0,
-            markup: quoteData.pricing?.markup || 0
-          }
-        },
-        conversationHistory: messages
-      };
+      // First user message
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'user',
+          content: "I need a quote for painting a 3-bedroom house interior. The client is Sarah Johnson at 123 Maple Street.",
+          timestamp: new Date()
+        }]);
+        setIsLoading(false);
+      }, 500);
 
-      console.log('[CHAT] Request body to quotes API:', requestBody);
-      console.log('[CHAT] Conversation history length:', messages.length);
-      console.log('[CHAT] Request body size:', new Blob([JSON.stringify(requestBody)]).size, 'bytes');
-      
-      // Limit conversation history to prevent oversized requests
-      const limitedMessages = messages.slice(-10); // Keep only last 10 messages
-      const finalRequestBody = {
-        ...requestBody,
-        conversationHistory: limitedMessages
-      };
-
-      // Add timeout handling for quote creation
-      const abortController = new AbortController();
-      const timeoutId = setTimeout(() => {
-        abortController.abort();
-      }, 90000); // 90 second timeout for quote creation
-      
-      const response = await fetch('/api/quotes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-company-data': JSON.stringify({ 
-            id: companyId,
-            access_code: company?.access_code
-          })
-        },
-        body: JSON.stringify(finalRequestBody),
-        signal: abortController.signal
-      });
-      
-      // Clear timeout on successful response
-      clearTimeout(timeoutId);
-
-      let result;
-      try {
-        const text = await response.text();
-        console.log('[CHAT] Quote API response text:', text);
-        
-        // Handle empty response
-        if (!text) {
-          console.error('Empty response from quote API');
-          throw new Error('Server returned empty response. Check server logs.');
-        }
-        
-        result = JSON.parse(text);
-      } catch (parseError) {
-        console.error('Failed to parse quote response:', parseError);
-        console.error('Response status:', response.status);
-        console.error('Response text length:', response.text?.length || 0);
-        
-        // Check for common server errors
-        if (response.status === 500) {
-          throw new Error('Server error: Database might not be initialized. Please check /api/diagnose for details.');
-        }
-        throw new Error(`Failed to parse quote response: ${response.status}`);
-      }
-
-      if (!response.ok) {
-        console.error('Quote creation error response:', result);
-        throw new Error(result.details || result.error || 'Failed to create quote');
-      }
-      
-      toast({
-        title: 'Quote Created!',
-        description: `Quote ${result.quoteId} has been created successfully.`,
-        action: (
-          <Button 
-            size="default" 
-            onClick={() => router.push(`/dashboard/quotes/${result.quoteId}`)}
-          >
-            View Quote
-          </Button>
-        )
-      });
-
-      // Track quote creation event
-      trackQuoteCreated({
-        quoteId: result.quoteId || result.quote?.id || 'unknown',
-        value: quoteData.pricing?.total || quoteData.finalPrice || 0,
-        customerName: quoteData.customerName,
-        projectType: quoteData.projectType
-      });
-      
-      // Track AI chat interaction
-      const sessionDuration = Math.floor((Date.now() - startTime) / 1000);
-      trackAIChatInteraction(messages.length, sessionDuration);
-      
-      // Check for achievements using the new service
-      const timeToCreate = Date.now() - startTime;
-      const companyInfo = JSON.parse(localStorage.getItem('paintquote_company') || '{}');
-      if (companyInfo.id) {
-        const newAchievements = await achievementService.checkQuoteCreationAchievements(
-          companyInfo.id,
-          quoteData,
-          timeToCreate
-        );
-        
-        // Show the first achievement if any were unlocked
-        if (newAchievements.length > 0) {
-          setLatestAchievement(newAchievements[0]);
-          setTimeout(() => setLatestAchievement(null), 100);
-        }
-      }
-
-      // Navigate to the quote using the quote_id (like Q-2025-00001-1NWTY8)
-      if (onQuoteCreated) {
-        onQuoteCreated(result.quoteId);
-      } else {
-        // Small delay to show the toast
+      // Assistant response
+      setTimeout(() => {
+        setIsLoading(true);
         setTimeout(() => {
-          router.push(`/dashboard/quotes/${result.quoteId}`);
+          setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: "Great! I'll help you create a quote for Sarah Johnson's interior painting project. Let me gather a few more details. What's the approximate square footage of the home?",
+            timestamp: new Date()
+          }]);
+          setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
+          setIsLoading(false);
         }, 1000);
-      }
+      }, 1500);
 
-    } catch (error) {
-      console.error('Create quote error:', error);
-      // Provide specific error messages based on error type
-      let errorMessage = 'Failed to create quote. Please try again.';
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          errorMessage = 'Quote creation timed out. Please try again.';
-        } else if (error.message.includes('401') || error.message.includes('unauthorized')) {
-          errorMessage = 'Authorization failed. Please check your account status.';
-        } else if (error.message.includes('403') || error.message.includes('upgrade')) {
-          errorMessage = 'Upgrade required to create more quotes.';
-        } else if (error.message.includes('500') || error.message.includes('server')) {
-          errorMessage = 'Server error. Please try again in a moment.';
-        } else if (error.message.includes('network') || error.message.includes('fetch')) {
-          errorMessage = 'Network error. Please check your connection.';
-        } else if (error.message.includes('validation')) {
-          errorMessage = 'Quote data validation failed. Please check all required fields.';
+      // Auto-continue demo
+      setTimeout(() => {
+        sendMessage("It's about 2,000 sq ft with standard 8-foot ceilings");
+      }, 5000);
+    };
+
+    if (isDemo) {
+      // Demo mode - pre-fill with demo data
+      setMessages([
+        {
+          role: 'assistant',
+          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I'll walk you through a typical residential project.",
+          timestamp: new Date()
         }
-      }
-      
-      toast({
-        title: 'Error Creating Quote',
-        description: errorMessage,
-        variant: 'destructive'
-      });
-    } finally {
-      setIsLoading(false);
-      setQuoteCreationInProgress(false);
+      ]);
+      // Auto-start the demo after a short delay
+      setTimeout(() => {
+        handleDemoStartInternal();
+      }, 1500);
+    } else {
+      setMessages([
+        {
+          role: 'assistant',
+          content: "Hi! I'll help you create a professional quote for your customer. What type of painting project are you quoting today?",
+          timestamp: new Date()
+        }
+      ]);
+      // Set initial suggested replies
+      setSuggestedReplies(['Interior residential', 'Exterior residential', 'Commercial space', 'Single room', 'Whole house', 'Office space']);
     }
-  }, [quoteData, quoteCreationInProgress, companyId, isFirstQuote, messages, onQuoteCreated, router, startTime]);
+    // sendMessage is used in timeout, add as dependency
+  }, [isDemo, sendMessage]);
+
 
   return (
     <div className="flex h-full flex-col bg-gray-900/50">

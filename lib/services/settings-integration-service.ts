@@ -280,7 +280,7 @@ export class SettingsIntegrationService {
       rushJob: options.isRushJob || false
     };
 
-    return QuoteCalculator.calculate(calculatorInput);
+    return QuoteCalculator.calculate(calculatorInput) as unknown as Record<string, unknown>;
   }
 
   /**

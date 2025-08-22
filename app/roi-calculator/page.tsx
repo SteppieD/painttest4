@@ -485,7 +485,7 @@ export default function ROICalculator() {
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-semibold">What{"'"}s included in the ROI calculation?</h3>
+                    <h3 className="text-xl font-semibold">What&rsquo;s included in the ROI calculation?</h3>
                     <p className="mt-3 text-gray-200">
                       We calculate time saved on quoting, increased quote volume, improved close rates, 
                       and the resulting revenue increase. We subtract the software cost ($79/month for 

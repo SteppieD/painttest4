@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, Mic, Image } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 interface ChatInputProps {
@@ -55,27 +55,7 @@ export function ChatInput({
 
       {/* Input form */}
       <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4">
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="shrink-0 text-gray-200 hover:text-gray-200 hover:bg-gray-900/70"
-          disabled
-          title="Voice input coming soon"
-        >
-          <Mic className="h-5 w-5" />
-        </Button>
-
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="shrink-0 text-gray-200 hover:text-gray-200 hover:bg-gray-900/70"
-          disabled
-          title="Image upload coming soon"
-        >
-          <Image className="h-5 w-5" />
-        </Button>
+        {/* Voice and image features available in future updates */}
 
         <input
           value={message}

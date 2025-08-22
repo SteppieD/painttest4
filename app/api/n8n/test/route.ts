@@ -111,7 +111,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Trigger the workflow
-    const success = await n8nService.triggerWorkflow(workflowType as any, data);
+    type WorkflowType = 'quote_created' | 'quote_accepted' | 'payment_success' | 'payment_failed' | 'subscription_created' | 'subscription_cancelled';
+    const success = await n8nService.triggerWorkflow(workflowType as WorkflowType, data);
 
     return NextResponse.json({
       success,

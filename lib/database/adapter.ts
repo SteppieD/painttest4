@@ -405,9 +405,16 @@ export function getDb(): DatabaseAdapter {
 // Alias for backward compatibility
 export const getDatabase = getDb;
 
-// Export the database instance
-export const db = (() => {
-  const instance = getDb();
-  console.log('[DATABASE] Initialized adapter:', instance.constructor.name);
-  return instance;
-})();
+// Export the database instance with lazy initialization using Proxy
+export const db = new Proxy({}, {
+  get(target, prop: string | symbol) {
+    const adapter = getDb();
+    const value = (adapter as Record<string, unknown>)[prop];
+    
+    if (typeof value === 'function') {
+      return value.bind(adapter);
+    }
+    
+    return value;
+  }
+}) as DatabaseAdapter;
