@@ -409,7 +409,15 @@ export const getDatabase = getDb;
 export const db = new Proxy({}, {
   get(target, prop: string | symbol) {
     const adapter = getDb();
-    const value = (adapter as Record<string, unknown>)[prop];
+    
+    // Only handle string properties - symbols are not supported as object keys in our adapter
+    if (typeof prop === 'symbol') {
+      return undefined;
+    }
+    
+    // Type-safe property access with proper type guards
+    const adapterRecord = adapter as unknown as Record<string, unknown>;
+    const value = adapterRecord[prop];
     
     if (typeof value === 'function') {
       return value.bind(adapter);

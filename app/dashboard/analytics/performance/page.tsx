@@ -57,15 +57,6 @@ export default function PerformanceAnalyticsPage() {
   const [loading, setLoading] = useState(true)
   const [selectedPeriod, setSelectedPeriod] = useState<'week' | 'month' | 'quarter' | 'year'>('month')
 
-  useEffect(() => {
-    const company = getCompanyFromLocalStorage()
-    if (!company) {
-      router.push('/access-code')
-      return
-    }
-    fetchPerformanceData(company)
-  }, [router, selectedPeriod, fetchPerformanceData])
-
   const fetchPerformanceData = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/analytics/performance?period=${selectedPeriod}`, {
@@ -122,6 +113,15 @@ export default function PerformanceAnalyticsPage() {
       setLoading(false)
     }
   }, [selectedPeriod])
+
+  useEffect(() => {
+    const company = getCompanyFromLocalStorage()
+    if (!company) {
+      router.push('/access-code')
+      return
+    }
+    fetchPerformanceData(company)
+  }, [router, selectedPeriod, fetchPerformanceData])
 
   if (loading || !performanceData) {
     return (

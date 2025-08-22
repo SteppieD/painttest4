@@ -37,15 +37,6 @@ export default function RevenueAnalyticsPage() {
   const [loading, setLoading] = useState(true)
   const [timeRange, setTimeRange] = useState<'30d' | '90d' | '1y' | 'all'>('90d')
 
-  useEffect(() => {
-    const company = getCompanyFromLocalStorage()
-    if (!company) {
-      router.push('/access-code')
-      return
-    }
-    fetchRevenueData(company)
-  }, [router, timeRange, fetchRevenueData])
-
   const fetchRevenueData = useCallback(async (company: { id: number; access_code: string }) => {
     try {
       const response = await fetch(`/api/analytics/revenue?range=${timeRange}`, {
@@ -94,6 +85,15 @@ export default function RevenueAnalyticsPage() {
       setLoading(false)
     }
   }, [timeRange])
+
+  useEffect(() => {
+    const company = getCompanyFromLocalStorage()
+    if (!company) {
+      router.push('/access-code')
+      return
+    }
+    fetchRevenueData(company)
+  }, [router, timeRange, fetchRevenueData])
 
   if (loading || !revenueData) {
     return (

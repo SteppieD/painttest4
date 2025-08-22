@@ -44,10 +44,6 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
   const [saving, setSaving] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    fetchQuote()
-  }, [params.id, fetchQuote])
-
   const fetchQuote = useCallback(async () => {
     try {
       const response = await fetch(`/api/quotes/${params.id}`)
@@ -71,6 +67,10 @@ export default function QuoteEditPage({ params }: { params: { id: string } }) {
       setLoading(false)
     }
   }, [params.id, router])
+
+  useEffect(() => {
+    fetchQuote()
+  }, [params.id, fetchQuote])
 
   const calculatePricing = () => {
     if (!quote) return

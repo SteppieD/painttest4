@@ -42,24 +42,6 @@ export default function BillingPage() {
   const [usage, setUsage] = useState<UsageStats | null>(null)
   const [processingUpgrade, setProcessingUpgrade] = useState(false)
 
-  useEffect(() => {
-    const companyData = getCompanyFromLocalStorage()
-    if (!companyData) {
-      router.push('/access-code')
-      return
-    }
-    // Transform companyData to match expected state type
-    setCompany({
-      id: companyData.id,
-      company_name: companyData.name,
-      subscription_tier: companyData.subscription_tier || 'free',
-      monthly_quote_count: 0, // Will be updated from fetchUsageStats
-      monthly_quote_limit: 5,  // Default for free tier
-      access_code: companyData.access_code
-    })
-    fetchUsageStats()
-  }, [router, fetchUsageStats])
-
   const fetchUsageStats = useCallback(async () => {
     try {
       const response = await fetch('/api/companies/usage', {
@@ -81,6 +63,24 @@ export default function BillingPage() {
       setLoading(false)
     }
   }, [company?.id, company?.access_code])
+
+  useEffect(() => {
+    const companyData = getCompanyFromLocalStorage()
+    if (!companyData) {
+      router.push('/access-code')
+      return
+    }
+    // Transform companyData to match expected state type
+    setCompany({
+      id: companyData.id,
+      company_name: companyData.name,
+      subscription_tier: companyData.subscription_tier || 'free',
+      monthly_quote_count: 0, // Will be updated from fetchUsageStats
+      monthly_quote_limit: 5,  // Default for free tier
+      access_code: companyData.access_code
+    })
+    fetchUsageStats()
+  }, [router, fetchUsageStats])
 
   const handleUpgrade = async (billing: 'monthly' | 'yearly' = 'monthly') => {
     setProcessingUpgrade(true)

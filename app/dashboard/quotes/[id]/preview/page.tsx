@@ -46,10 +46,6 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
   const [saving, setSaving] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    fetchQuote()
-  }, [params.id, fetchQuote])
-
   const fetchQuote = useCallback(async () => {
     try {
       const response = await fetch(`/api/quotes/${params.id}`)
@@ -70,6 +66,10 @@ export default function QuotePreviewPage({ params }: { params: { id: string } })
       setLoading(false)
     }
   }, [params.id])
+
+  useEffect(() => {
+    fetchQuote()
+  }, [params.id, fetchQuote])
 
   const handleEdit = () => {
     setEditing(true)
