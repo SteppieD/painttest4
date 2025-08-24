@@ -97,7 +97,7 @@ export function QuoteExpirationEmail({
             <ul style={list}>
               <li style={listItem}>📈 Material costs may increase by 5-10%</li>
               <li style={listItem}>📅 Project scheduling may be delayed</li>
-              <li style={listItem}>🔄 We'll need to provide a new quote with current pricing</li>
+              <li style={listItem}>🔄 We&apos;ll need to provide a new quote with current pricing</li>
             </ul>
 
             <Section style={benefitsBox}>
@@ -130,7 +130,7 @@ export function QuoteExpirationEmail({
             <Hr style={hr} />
 
             <Text style={footerText}>
-              <strong>Need more time to decide?</strong> Reply to this email and I'll extend your quote 
+              <strong>Need more time to decide?</strong> Reply to this email and I&apos;ll extend your quote 
               for another week at no charge.
             </Text>
           </Section>

@@ -78,7 +78,7 @@ export function ProjectCompletionEmail({
 
             <Text style={paragraph}>
               <strong>Your satisfaction is our top priority.</strong> If you notice anything 
-              that needs our attention, please don't hesitate to reach out. We stand behind 
+              that needs our attention, please don&apos;t hesitate to reach out. We stand behind 
               our work with a full warranty.
             </Text>
 
@@ -102,8 +102,8 @@ export function ProjectCompletionEmail({
               <Text style={referralTitle}>💰 Earn Rewards for Referrals</Text>
               <Text style={referralText}>
                 Know someone who could use quality painting services? When you refer 
-                friends or family to {companyName}, they'll receive {referralIncentive}, 
-                and you'll get a <strong>$100 credit</strong> toward your next project!
+                friends or family to {companyName}, they&apos;ll receive {referralIncentive}, 
+                and you&apos;ll get a <strong>$100 credit</strong> toward your next project!
               </Text>
               
               <ul style={referralList}>
@@ -131,7 +131,7 @@ export function ProjectCompletionEmail({
 
             <Text style={paragraph}>
               Thank you again for choosing {companyName}. We look forward to helping 
-              you with future painting projects and hope you'll recommend us to friends and family!
+              you with future painting projects and hope you&apos;ll recommend us to friends and family!
             </Text>
 
             <Text style={signature}>
