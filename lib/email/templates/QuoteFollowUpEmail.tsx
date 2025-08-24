@@ -6,12 +6,10 @@ import {
   Container,
   Section,
   Text,
-  Link,
   Button,
-  Img,
   Hr,
 } from '@react-email/components';
-import { QuoteEmailData } from '../types';
+import { EmailData, QuoteEmailData } from '../types';
 
 interface QuoteFollowUpEmailProps extends QuoteEmailData {
   companyName: string;
@@ -21,17 +19,18 @@ interface QuoteFollowUpEmailProps extends QuoteEmailData {
   followUpNumber: number;
 }
 
-export function QuoteFollowUpEmail({
-  quoteId,
-  customerName,
-  projectType,
-  totalAmount,
-  quoteUrl,
-  companyName,
-  contactName,
-  daysSinceQuote,
-  followUpNumber
-}: QuoteFollowUpEmailProps) {
+export function QuoteFollowUpEmail(data: EmailData) {
+  const {
+    quoteId = 'Q001',
+    customerName = 'Valued Customer',
+    projectType = 'painting',
+    totalAmount = '0',
+    quoteUrl = '#',
+    companyName = 'PaintQuote Pro',
+    contactName = 'Your Painter',
+    daysSinceQuote = 3,
+    followUpNumber = 1
+  } = data as QuoteFollowUpEmailProps;
   const getSubjectLine = () => {
     switch (followUpNumber) {
       case 1:
@@ -57,8 +56,6 @@ export function QuoteFollowUpEmail({
         return `I wanted to check in about your painting project quote.`;
     }
   };
-
-  const previewText = getSubjectLine();
 
   return (
     <Html>

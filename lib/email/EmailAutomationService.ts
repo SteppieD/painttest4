@@ -86,13 +86,15 @@ export class EmailAutomationService {
     // In production, this would use a job scheduler
     // For now, we'll create a simple delayed execution simulation
     
-    const templateKey = `QUOTE_FOLLOW_UP_${followUpNumber}` as keyof typeof EMAIL_TEMPLATES;
-    const template = EMAIL_TEMPLATES[templateKey];
+    // Temporarily disabled - templates not available
+    // const templateKey = `QUOTE_FOLLOW_UP_${followUpNumber}` as keyof typeof EMAIL_TEMPLATES;
+    // const template = EMAIL_TEMPLATES[templateKey];
     
-    if (!template) {
-      console.error(`[EMAIL] Template not found: ${templateKey}`);
-      return;
-    }
+    // Temporarily disabled - templates not available
+    // if (!template) {
+    //   console.error(`[EMAIL] Template not found: ${templateKey}`);
+    //   return;
+    // }
 
     const emailData = {
       ...baseData,
@@ -101,7 +103,7 @@ export class EmailAutomationService {
     };
 
     // Log the scheduling (in production, this would be queued)
-    console.log(`[EMAIL] Scheduled ${template.name} for ${baseData.customerEmail} in ${daysDelay} days`);
+    console.log(`[EMAIL] Template scheduling disabled for ${baseData.customerEmail} in ${daysDelay} days`);
     
     // For immediate testing, you could uncomment this line:
     // await emailService.sendTransactional(template, baseData.customerEmail, emailData);
@@ -111,7 +113,8 @@ export class EmailAutomationService {
    * Schedule expiration reminder email
    */
   private async scheduleExpirationReminder(baseData: EmailBaseData, daysDelay: number): Promise<void> {
-    const template = EMAIL_TEMPLATES.QUOTE_EXPIRATION;
+    // Temporarily disabled - template not available
+    // const template = EMAIL_TEMPLATES.QUOTE_EXPIRATION;
     
     const emailData = {
       ...baseData,
@@ -136,12 +139,16 @@ export class EmailAutomationService {
       throw new Error('Customer email is required for follow-up');
     }
 
-    const templateKey = `QUOTE_FOLLOW_UP_${followUpNumber}` as keyof typeof EMAIL_TEMPLATES;
-    const template = EMAIL_TEMPLATES[templateKey];
+    // Temporarily disabled - templates not available
+    // const templateKey = `QUOTE_FOLLOW_UP_${followUpNumber}` as keyof typeof EMAIL_TEMPLATES;
+    // const template = EMAIL_TEMPLATES[templateKey];
     
-    if (!template) {
-      throw new Error(`Template not found: ${templateKey}`);
-    }
+    // Temporarily disabled - templates not available
+    // if (!template) {
+    //   throw new Error(`Template not found: ${templateKey}`);
+    // }
+    console.log('Email follow-up temporarily disabled - templates not available');
+    return 'email-disabled';
 
     const emailData = {
       quoteId: quote.quote_id,
@@ -156,7 +163,8 @@ export class EmailAutomationService {
       followUpNumber,
     };
 
-    return await emailService.sendTransactional(template, quote.customer_email, emailData);
+    // return await emailService.sendTransactional(template, quote.customer_email, emailData);
+    return 'email-templates-disabled';
   }
 
   /**
@@ -171,7 +179,8 @@ export class EmailAutomationService {
       throw new Error('Customer email is required for expiration warning');
     }
 
-    const template = EMAIL_TEMPLATES.QUOTE_EXPIRATION;
+    // Temporarily disabled - template not available
+    // const template = EMAIL_TEMPLATES.QUOTE_EXPIRATION;
     
     const emailData = {
       quoteId: quote.quote_id,
@@ -185,7 +194,8 @@ export class EmailAutomationService {
       daysUntilExpiration,
     };
 
-    return await emailService.sendTransactional(template, quote.customer_email, emailData);
+    // return await emailService.sendTransactional(template, quote.customer_email, emailData);
+    return 'email-templates-disabled';
   }
 
   /**
@@ -205,7 +215,10 @@ export class EmailAutomationService {
       referralIncentive?: string;
     } = {}
   ): Promise<string | null> {
-    const template = EMAIL_TEMPLATES.PROJECT_COMPLETION;
+    // Temporarily disabled - template not available
+    // const template = EMAIL_TEMPLATES.PROJECT_COMPLETION;
+    console.log('Project completion email disabled - templates not available');
+    return null;
     
     const emailData = {
       customerName,
@@ -218,7 +231,8 @@ export class EmailAutomationService {
       referralIncentive: options.referralIncentive || '10% off their first project',
     };
 
-    return await emailService.sendTransactional(template, customerEmail, emailData);
+    // return await emailService.sendTransactional(template, customerEmail, emailData);
+    // Template temporarily disabled
   }
 
   /**

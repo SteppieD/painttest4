@@ -92,7 +92,7 @@ function ChatInterfaceCore({
             // Add welcome message for first-time users
             setMessages([{
               role: 'assistant',
-              content: "🎨 Welcome to PaintQuote Pro! I'm here to help you create your first professional quote. As we go through this, I'll also set up your account preferences to make future quotes even faster. Let's start - what type of painting project are you quoting for?",
+              content: "🎨 Welcome to PaintQuote Pro! I{'\'}m here to help you create your first professional quote. As we go through this, I{'\'}ll also set up your account preferences to make future quotes even faster. Let{'\'}s start - what type of painting project are you quoting for?",
               timestamp: new Date()
             }]);
           }
@@ -142,7 +142,7 @@ function ChatInterfaceCore({
     console.log('[CHAT] Quote data from AI:', quoteData);
     console.log('[CHAT] Pricing structure:', quoteData.pricing);
     
-    // Debug: Show what we're about to send
+    // Debug: Show what we{'\'}re about to send
     console.log('[CHAT DEBUG] Creating quote with data:', {
       customerName: quoteData.customerName,
       hasPricing: !!quoteData.pricing,
@@ -486,7 +486,7 @@ function ChatInterfaceCore({
       } else if (data.userWantsReview || data.hasMinimumInfo) {
         // Provide review-oriented suggested replies when user shows readiness
         setSuggestedReplies([
-          "That looks good, let's review",
+          "That looks good, let{'\'}s review",
           "Ready to see the quote",
           "Perfect, proceed with the quote",
           "Sounds good, finalize it"
@@ -541,7 +541,7 @@ function ChatInterfaceCore({
           // Add a helpful message suggesting what to do next
           const helpMessage: Message = {
             role: 'assistant',
-            content: "I can see you're ready to review the quote! I have the basic information, but let me gather a few more details to create the most accurate quote possible. What's the total square footage or specific measurements for the project?",
+            content: "I can see you{'\'}re ready to review the quote! I have the basic information, but let me gather a few more details to create the most accurate quote possible. What{'\'}s the total square footage or specific measurements for the project?",
             timestamp: new Date()
           };
           setMessages(prev => [...prev, helpMessage]);
@@ -604,7 +604,7 @@ function ChatInterfaceCore({
         setTimeout(() => {
           setMessages(prev => [...prev, {
             role: 'assistant',
-            content: "Great! I'll help you create a quote for Sarah Johnson's interior painting project. Let me gather a few more details. What's the approximate square footage of the home?",
+            content: "Great! I{'\'}ll help you create a quote for Sarah Johnson{'\'}s interior painting project. Let me gather a few more details. What{'\'}s the approximate square footage of the home?",
             timestamp: new Date()
           }]);
           setSuggestedReplies(['1,500 sq ft', '2,000 sq ft', '2,500 sq ft', '3,000 sq ft']);
@@ -623,7 +623,7 @@ function ChatInterfaceCore({
       setMessages([
         {
           role: 'assistant',
-          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I'll walk you through a typical residential project.",
+          content: "🎯 **Demo Mode**: Let me show you how fast you can create professional quotes! I{'\'}ll walk you through a typical residential project.",
           timestamp: new Date()
         }
       ]);

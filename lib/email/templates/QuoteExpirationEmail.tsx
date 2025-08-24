@@ -6,12 +6,10 @@ import {
   Container,
   Section,
   Text,
-  Link,
   Button,
-  Img,
   Hr,
 } from '@react-email/components';
-import { QuoteEmailData } from '../types';
+import { EmailData, QuoteEmailData } from '../types';
 
 interface QuoteExpirationEmailProps extends QuoteEmailData {
   companyName: string;
@@ -20,16 +18,17 @@ interface QuoteExpirationEmailProps extends QuoteEmailData {
   daysUntilExpiration: number;
 }
 
-export function QuoteExpirationEmail({
-  quoteId,
-  customerName,
-  projectType,
-  totalAmount,
-  quoteUrl,
-  companyName,
-  contactName,
-  daysUntilExpiration
-}: QuoteExpirationEmailProps) {
+export function QuoteExpirationEmail(data: EmailData) {
+  const {
+    quoteId = 'Q001',
+    customerName = 'Valued Customer',
+    projectType = 'painting',
+    totalAmount = '0',
+    quoteUrl = '#',
+    companyName = 'PaintQuote Pro',
+    contactName = 'Your Painter',
+    daysUntilExpiration = 7
+  } = data as QuoteExpirationEmailProps;
   const previewText = `Your ${projectType} painting quote expires in ${daysUntilExpiration} days - Lock in your price today!`;
 
   const getUrgencyMessage = () => {
@@ -97,7 +96,7 @@ export function QuoteExpirationEmail({
             <ul style={list}>
               <li style={listItem}>📈 Material costs may increase by 5-10%</li>
               <li style={listItem}>📅 Project scheduling may be delayed</li>
-              <li style={listItem}>🔄 We&apos;ll need to provide a new quote with current pricing</li>
+              <li style={listItem}>🔄 We'll need to provide a new quote with current pricing</li>
             </ul>
 
             <Section style={benefitsBox}>
@@ -118,7 +117,7 @@ export function QuoteExpirationEmail({
 
             <Text style={paragraph}>
               Have questions about the project? I'm here to help! Just reply to this email 
-              or give me a call. I'd love to get your painting project started soon.
+              or give me a call. I would love to get your painting project started soon.
             </Text>
 
             <Text style={signature}>
@@ -130,7 +129,7 @@ export function QuoteExpirationEmail({
             <Hr style={hr} />
 
             <Text style={footerText}>
-              <strong>Need more time to decide?</strong> Reply to this email and I&apos;ll extend your quote 
+              <strong>Need more time to decide?</strong> Reply to this email and I'll extend your quote 
               for another week at no charge.
             </Text>
           </Section>

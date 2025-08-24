@@ -492,7 +492,7 @@ export default function QuotePresentationTipsGuide() {
                 <Card className="bg-gray-800/30 border-gray-700 p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-4">Power Phrases</h3>
                   <ul className="space-y-3 text-gray-100">
-                    <li>• {"\"Based on what you"}ve told me...{"\""}</li>
+                    <li>• {"\"Based on what you\'ve told me...\""}</li>
                     <li>• &quot;Many of your neighbors chose...&quot;</li>
                     <li>• &quot;To protect your investment...&quot;</li>
                     <li>• &quot;The smart choice would be...&quot;</li>

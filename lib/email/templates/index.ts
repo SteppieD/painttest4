@@ -29,7 +29,7 @@ export const EMAIL_TEMPLATES = {
   } as EmailTemplate,
 
   QUOTE_FOLLOW_UP_2: {
-    name: 'quote-follow-up-2', 
+    name: 'quote-follow-up-2',
     subject: 'Still thinking about your painting project, {{customerName}}?',
     category: 'marketing',
     component: QuoteFollowUpEmail,
@@ -44,25 +44,16 @@ export const EMAIL_TEMPLATES = {
 
   QUOTE_EXPIRATION: {
     name: 'quote-expiration',
-    subject: '⏰ Your painting quote expires in {{daysUntilExpiration}} days',
-    category: 'notification',
+    subject: 'Your {{projectType}} painting quote expires in {{daysUntilExpiration}} days',
+    category: 'transactional',
     component: QuoteExpirationEmail,
   } as EmailTemplate,
 
   PROJECT_COMPLETION: {
     name: 'project-completion',
-    subject: 'Thank you for choosing {{companyName}}! 🌟 Share your experience',
-    category: 'marketing',
-    component: (data: EmailData) => ProjectCompletionEmail({
-      customerName: data.customerName as string,
-      projectType: data.projectType as string,
-      companyName: data.companyName as string,
-      contactName: data.contactName as string,
-      totalAmount: data.totalAmount as string,
-      projectDuration: data.projectDuration as string,
-      reviewUrl: data.reviewUrl as string,
-      referralIncentive: data.referralIncentive as string,
-    }),
+    subject: 'Thank you for choosing {{companyName}}! 🌟',
+    category: 'transactional',
+    component: ProjectCompletionEmail,
   } as EmailTemplate,
 } as const;
 
